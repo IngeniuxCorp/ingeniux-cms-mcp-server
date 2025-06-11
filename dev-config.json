@@ -1,0 +1,18 @@
+{
+	// Local development configuration for Ingeniux CMS MCP Server
+	"logging": {
+		"level": "debug",
+		"format": "pretty",
+		"destination": "console"
+	},
+	"debug": true,
+	"mockEndpoints": {
+		"oauth": "http://localhost:4000/mock-oauth",
+		"cms": "http://localhost:4000/mock-cms"
+	},
+	"hotReload": true,
+	"monitoring": {
+		"enabled": true,
+		"dashboardUrl": "http://localhost:4000/dev-dashboard"
+	}
+}
