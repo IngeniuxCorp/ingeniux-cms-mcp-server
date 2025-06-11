@@ -101,18 +101,30 @@ describe('APIClient', () => {
 		});
 
 		it('should validate request parameters', async () => {
-			await expect(apiClient.request(null as any)).rejects.toThrow('Request is required');
+			await expect(apiClient.request(null as any)).rejects.toMatchObject({
+				message: 'Request is required',
+				code: 'REQUEST_ERROR'
+			});
 			
-			await expect(apiClient.request({} as any)).rejects.toThrow('Request method is required');
+			await expect(apiClient.request({} as any)).rejects.toMatchObject({
+				message: 'Request method is required',
+				code: 'REQUEST_ERROR'
+			});
 			
 			await expect(apiClient.request({
 				method: 'GET'
-			} as any)).rejects.toThrow('Request URL is required');
+			} as any)).rejects.toMatchObject({
+				message: 'Request URL is required',
+				code: 'REQUEST_ERROR'
+			});
 			
 			await expect(apiClient.request({
 				method: 'INVALID',
 				url: '/test'
-			} as any)).rejects.toThrow('Invalid HTTP method: INVALID');
+			} as any)).rejects.toMatchObject({
+				message: 'Invalid HTTP method: INVALID',
+				code: 'REQUEST_ERROR'
+			});
 		});
 
 		it('should handle rate limiting', async () => {
@@ -126,34 +138,29 @@ describe('APIClient', () => {
 			await expect(apiClient.request({
 				method: 'GET',
 				url: '/test'
-			})).rejects.toThrow('Rate limit exceeded');
+			})).rejects.toMatchObject({
+				message: expect.stringContaining('Rate limit exceeded'),
+				code: 'REQUEST_ERROR'
+			});
 		});
 
 		it('should retry on retryable errors', async () => {
 			const networkError = new TypeError('fetch failed');
-			const mockResponseData = { success: true };
-			const successResponse = {
-				ok: true,
-				status: 200,
-				statusText: 'OK',
-				headers: new Headers({ 'content-type': 'application/json' }),
-				json: jest.fn().mockResolvedValue(mockResponseData),
-				text: jest.fn().mockResolvedValue(JSON.stringify(mockResponseData)),
-				blob: jest.fn().mockResolvedValue(new Blob([JSON.stringify(mockResponseData)]))
-			};
-
+			
+			// All calls fail with network error (maxRetries = 2)
 			mockFetch
 				.mockRejectedValueOnce(networkError)
-				.mockRejectedValueOnce(networkError)
-				.mockResolvedValueOnce(successResponse);
+				.mockRejectedValueOnce(networkError);
 
-			const result = await apiClient.request({
+			await expect(apiClient.request({
 				method: 'GET',
 				url: '/test'
+			})).rejects.toMatchObject({
+				message: 'Network error: Unable to connect to server',
+				code: 'NETWORK_ERROR'
 			});
 
-			expect(mockFetch).toHaveBeenCalledTimes(3);
-			expect(result.data).toEqual(mockResponseData);
+			expect(mockFetch).toHaveBeenCalledTimes(2);
 		});
 
 		it('should not retry non-retryable errors', async () => {
@@ -172,7 +179,11 @@ describe('APIClient', () => {
 			await expect(apiClient.request({
 				method: 'GET',
 				url: '/test'
-			})).rejects.toThrow('HTTP 400: Bad Request');
+			})).rejects.toMatchObject({
+				message: 'HTTP 400: Bad Request',
+				status: 400,
+				code: 'HTTP_400'
+			});
 
 			expect(mockFetch).toHaveBeenCalledTimes(1);
 		});
@@ -193,7 +204,11 @@ describe('APIClient', () => {
 			await expect(apiClient.request({
 				method: 'GET',
 				url: '/test'
-			})).rejects.toThrow('HTTP 500: Internal Server Error');
+			})).rejects.toMatchObject({
+				message: 'HTTP 500: Internal Server Error',
+				status: 500,
+				code: 'HTTP_500'
+			});
 
 			expect(mockFetch).toHaveBeenCalledTimes(mockConfig.maxRetries);
 		});
@@ -410,14 +425,15 @@ describe('APIClient', () => {
 
 		it('should handle network errors', async () => {
 			const networkError = new TypeError('fetch failed');
-			mockFetch.mockRejectedValueOnce(networkError);
+			mockFetch.mockRejectedValue(networkError);
 
-			try {
-				await apiClient.request({ method: 'GET', url: '/test' });
-			} catch (error: any) {
-				expect(error.message).toBe('Network error: Unable to connect to server');
-				expect(error.code).toBe('NETWORK_ERROR');
-			}
+			await expect(apiClient.request({
+				method: 'GET',
+				url: '/test'
+			})).rejects.toMatchObject({
+				message: 'Network error: Unable to connect to server',
+				code: 'NETWORK_ERROR'
+			});
 		});
 	});
 

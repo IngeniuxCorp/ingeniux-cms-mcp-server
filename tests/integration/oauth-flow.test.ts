@@ -21,22 +21,27 @@ global.AbortSignal = {
 	}))
 } as any;
 
-// Mock token store
-const mockTokenStore = {
-	store: jest.fn(),
-	clear: jest.fn(),
-	getRefreshToken: jest.fn(),
-	isValid: jest.fn(),
-	expiresWithin: jest.fn(),
-	getAccessToken: jest.fn()
-};
+// Mock token store using factory function
+jest.mock('../../src/auth/token-store', () => {
+	const mockTokenStore = {
+		store: jest.fn(),
+		clear: jest.fn(),
+		getRefreshToken: jest.fn(),
+		isValid: jest.fn(),
+		expiresWithin: jest.fn(),
+		getAccessToken: jest.fn()
+	};
+	
+	return {
+		tokenStore: mockTokenStore,
+		TokenStore: {
+			getInstance: jest.fn(() => mockTokenStore)
+		}
+	};
+});
 
-jest.mock('../../src/auth/token-store', () => ({
-	tokenStore: mockTokenStore,
-	TokenStore: {
-		getInstance: jest.fn(() => mockTokenStore)
-	}
-}));
+// Get reference to mock for test usage
+const mockTokenStore = require('../../src/auth/token-store').tokenStore;
 
 describe('OAuth Flow Integration', () => {
 	let oauthManager: OAuthManager;
@@ -164,8 +169,10 @@ describe('OAuth Flow Integration', () => {
 				ok: true,
 				status: 200,
 				statusText: 'OK',
-				headers: new Headers(),
-				json: jest.fn().mockResolvedValue(mockApiResponseData)
+				headers: new Headers({ 'content-type': 'application/json' }),
+				json: jest.fn().mockResolvedValue(mockApiResponseData),
+				text: jest.fn().mockResolvedValue(JSON.stringify(mockApiResponseData)),
+				blob: jest.fn().mockResolvedValue(new Blob([JSON.stringify(mockApiResponseData)]))
 			};
 			mockFetch.mockResolvedValueOnce(mockResponse);
 

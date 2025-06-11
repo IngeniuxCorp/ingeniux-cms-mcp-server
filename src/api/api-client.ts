@@ -166,7 +166,8 @@ export class APIClient {
 
 			// Check if response is ok
 			if (!response.ok) {
-				throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+				const error = new Error(`HTTP ${response.status}: ${response.statusText}`);
+				throw error;
 			}
 
 			return response;

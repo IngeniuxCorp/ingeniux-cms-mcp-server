@@ -20,22 +20,27 @@ global.AbortSignal = {
 	}))
 } as any;
 
-// Mock token store
-const mockTokenStore = {
-	store: jest.fn(),
-	clear: jest.fn(),
-	getRefreshToken: jest.fn(),
-	isValid: jest.fn(),
-	expiresWithin: jest.fn(),
-	getAccessToken: jest.fn()
-};
+// Mock token store using factory function
+jest.mock('../../src/auth/token-store', () => {
+	const mockTokenStore = {
+		store: jest.fn(),
+		clear: jest.fn(),
+		getRefreshToken: jest.fn(),
+		isValid: jest.fn(),
+		expiresWithin: jest.fn(),
+		getAccessToken: jest.fn()
+	};
+	
+	return {
+		tokenStore: mockTokenStore,
+		TokenStore: {
+			getInstance: jest.fn(() => mockTokenStore)
+		}
+	};
+});
 
-jest.mock('../../src/auth/token-store', () => ({
-	tokenStore: mockTokenStore,
-	TokenStore: {
-		getInstance: jest.fn(() => mockTokenStore)
-	}
-}));
+// Get reference to mock for test usage
+const mockTokenStore = require('../../src/auth/token-store').tokenStore;
 
 // Mock crypto
 jest.mock('crypto', () => ({
@@ -92,13 +97,16 @@ describe('OAuthManager', () => {
 		});
 
 		it('should handle errors during flow initiation', () => {
-			// Mock crypto to throw error
-			const mockRandomBytes = require('crypto').randomBytes;
-			mockRandomBytes.mockImplementationOnce(() => {
-				throw new Error('Crypto error');
+			// Mock URLSearchParams to throw error during URL building
+			const originalURLSearchParams = global.URLSearchParams;
+			global.URLSearchParams = jest.fn().mockImplementation(() => {
+				throw new Error('URL construction error');
 			});
 
 			expect(() => oauthManager.initiateFlow()).toThrow('Failed to initiate OAuth flow');
+			
+			// Restore original
+			global.URLSearchParams = originalURLSearchParams;
 		});
 	});
 
