@@ -197,7 +197,12 @@ describe('ToolRegistry', () => {
 			});
 			const mockTool = MockFactories.createMCPTool({
 				name: 'test_tool',
-				handler: mockHandler
+				handler: mockHandler,
+				inputSchema: {
+					type: 'object',
+					properties: { param: { type: 'string' } },
+					additionalProperties: true
+				}
 			});
 
 			toolRegistry.registerTool(mockTool);
@@ -402,12 +407,23 @@ describe('ToolRegistry', () => {
 			toolRegistry.registerTool(validTool);
 
 			// Manually add invalid tool to bypass validation
-			(toolRegistry as any).tools.set('invalid_tool', { name: '' });
+			(toolRegistry as any).tools.set('invalid_tool', {
+				name: '',
+				description: '',
+				handler: null
+			});
 
 			const result = toolRegistry.validateAllTools();
 
-			expect(result.valid).toContain('valid_tool');
-			expect(result.invalid).toContain('invalid_tool');
+			expect(result.valid).toEqual(['valid_tool']);
+			expect(result.invalid).toEqual(['invalid_tool']);
+		});
+
+		it('should return empty arrays when no tools registered', () => {
+			const result = toolRegistry.validateAllTools();
+
+			expect(result.valid).toEqual([]);
+			expect(result.invalid).toEqual([]);
 		});
 	});
 });

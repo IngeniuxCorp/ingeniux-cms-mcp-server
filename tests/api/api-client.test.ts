@@ -12,7 +12,7 @@ global.fetch = mockFetch;
 // Mock AbortSignal.timeout
 global.AbortSignal = {
 	...global.AbortSignal,
-	timeout: jest.fn((timeout: number) => ({
+	timeout: jest.fn((_timeout: number) => ({
 		aborted: false,
 		addEventListener: jest.fn(),
 		removeEventListener: jest.fn(),
@@ -49,8 +49,10 @@ describe('APIClient', () => {
 				ok: true,
 				status: 200,
 				statusText: 'OK',
-				headers: new Headers(),
-				json: jest.fn().mockResolvedValue(mockResponseData)
+				headers: new Headers({ 'content-type': 'application/json' }),
+				json: jest.fn().mockResolvedValue(mockResponseData),
+				text: jest.fn().mockResolvedValue(JSON.stringify(mockResponseData)),
+				blob: jest.fn().mockResolvedValue(new Blob([JSON.stringify(mockResponseData)]))
 			};
 			
 			mockFetch.mockResolvedValueOnce(mockResponse);
@@ -72,6 +74,29 @@ describe('APIClient', () => {
 				})
 			);
 			expect(result.data).toEqual(mockResponseData);
+			expect(result.status).toBe(200);
+		});
+
+		it('should handle blob responses', async () => {
+			const mockBlobData = new Blob(['binary data']);
+			const mockResponse = {
+				ok: true,
+				status: 200,
+				statusText: 'OK',
+				headers: new Headers({ 'content-type': 'application/octet-stream' }),
+				json: jest.fn(),
+				text: jest.fn(),
+				blob: jest.fn().mockResolvedValue(mockBlobData)
+			};
+			
+			mockFetch.mockResolvedValueOnce(mockResponse);
+
+			const result = await apiClient.request({
+				method: 'GET',
+				url: '/test'
+			});
+
+			expect(result.data).toBe(mockBlobData);
 			expect(result.status).toBe(200);
 		});
 
@@ -111,8 +136,10 @@ describe('APIClient', () => {
 				ok: true,
 				status: 200,
 				statusText: 'OK',
-				headers: new Headers(),
-				json: jest.fn().mockResolvedValue(mockResponseData)
+				headers: new Headers({ 'content-type': 'application/json' }),
+				json: jest.fn().mockResolvedValue(mockResponseData),
+				text: jest.fn().mockResolvedValue(JSON.stringify(mockResponseData)),
+				blob: jest.fn().mockResolvedValue(new Blob([JSON.stringify(mockResponseData)]))
 			};
 
 			mockFetch
@@ -134,7 +161,10 @@ describe('APIClient', () => {
 				ok: false,
 				status: 400,
 				statusText: 'Bad Request',
-				headers: new Headers()
+				headers: new Headers(),
+				json: jest.fn().mockResolvedValue({}),
+				text: jest.fn().mockResolvedValue('Bad Request'),
+				blob: jest.fn().mockResolvedValue(new Blob(['Bad Request']))
 			};
 			
 			mockFetch.mockResolvedValueOnce(clientError);
@@ -152,7 +182,10 @@ describe('APIClient', () => {
 				ok: false,
 				status: 500,
 				statusText: 'Internal Server Error',
-				headers: new Headers()
+				headers: new Headers(),
+				json: jest.fn().mockResolvedValue({}),
+				text: jest.fn().mockResolvedValue('Internal Server Error'),
+				blob: jest.fn().mockResolvedValue(new Blob(['Internal Server Error']))
 			};
 			
 			mockFetch.mockResolvedValue(serverError);
@@ -173,8 +206,10 @@ describe('APIClient', () => {
 				ok: true,
 				status: 200,
 				statusText: 'OK',
-				headers: new Headers(),
-				json: jest.fn().mockResolvedValue(mockResponseData)
+				headers: new Headers({ 'content-type': 'application/json' }),
+				json: jest.fn().mockResolvedValue(mockResponseData),
+				text: jest.fn().mockResolvedValue(JSON.stringify(mockResponseData)),
+				blob: jest.fn().mockResolvedValue(new Blob([JSON.stringify(mockResponseData)]))
 			};
 			mockFetch.mockResolvedValueOnce(mockResponse);
 
@@ -197,8 +232,10 @@ describe('APIClient', () => {
 				ok: true,
 				status: 200,
 				statusText: 'OK',
-				headers: new Headers(),
-				json: jest.fn().mockResolvedValue(mockResponseData)
+				headers: new Headers({ 'content-type': 'application/json' }),
+				json: jest.fn().mockResolvedValue(mockResponseData),
+				text: jest.fn().mockResolvedValue(JSON.stringify(mockResponseData)),
+				blob: jest.fn().mockResolvedValue(new Blob([JSON.stringify(mockResponseData)]))
 			};
 			mockFetch.mockResolvedValueOnce(mockResponse);
 
@@ -222,8 +259,10 @@ describe('APIClient', () => {
 				ok: true,
 				status: 200,
 				statusText: 'OK',
-				headers: new Headers(),
-				json: jest.fn().mockResolvedValue(mockResponseData)
+				headers: new Headers({ 'content-type': 'application/json' }),
+				json: jest.fn().mockResolvedValue(mockResponseData),
+				text: jest.fn().mockResolvedValue(JSON.stringify(mockResponseData)),
+				blob: jest.fn().mockResolvedValue(new Blob([JSON.stringify(mockResponseData)]))
 			};
 			mockFetch.mockResolvedValueOnce(mockResponse);
 
@@ -244,8 +283,10 @@ describe('APIClient', () => {
 				ok: true,
 				status: 200,
 				statusText: 'OK',
-				headers: new Headers(),
-				json: jest.fn().mockResolvedValue(mockResponseData)
+				headers: new Headers({ 'content-type': 'application/json' }),
+				json: jest.fn().mockResolvedValue(mockResponseData),
+				text: jest.fn().mockResolvedValue(JSON.stringify(mockResponseData)),
+				blob: jest.fn().mockResolvedValue(new Blob([JSON.stringify(mockResponseData)]))
 			};
 			mockFetch.mockResolvedValueOnce(mockResponse);
 
@@ -265,8 +306,10 @@ describe('APIClient', () => {
 				ok: true,
 				status: 200,
 				statusText: 'OK',
-				headers: new Headers(),
-				json: jest.fn().mockResolvedValue(mockResponseData)
+				headers: new Headers({ 'content-type': 'application/json' }),
+				json: jest.fn().mockResolvedValue(mockResponseData),
+				text: jest.fn().mockResolvedValue(JSON.stringify(mockResponseData)),
+				blob: jest.fn().mockResolvedValue(new Blob([JSON.stringify(mockResponseData)]))
 			};
 			mockFetch.mockResolvedValueOnce(mockResponse);
 
@@ -294,7 +337,9 @@ describe('APIClient', () => {
 				status: 200,
 				statusText: 'OK',
 				headers,
-				json: jest.fn().mockResolvedValue({})
+				json: jest.fn().mockResolvedValue({}),
+				text: jest.fn().mockResolvedValue('{}'),
+				blob: jest.fn().mockResolvedValue(new Blob(['{}']))
 			};
 
 			mockFetch.mockResolvedValueOnce(mockResponse);
@@ -314,8 +359,10 @@ describe('APIClient', () => {
 				ok: true,
 				status: 200,
 				statusText: 'OK',
-				headers: new Headers(),
-				json: jest.fn().mockResolvedValue({})
+				headers: new Headers({ 'content-type': 'application/json' }),
+				json: jest.fn().mockResolvedValue({}),
+				text: jest.fn().mockResolvedValue('{}'),
+				blob: jest.fn().mockResolvedValue(new Blob(['{}']))
 			};
 
 			mockFetch.mockResolvedValueOnce(mockResponse);
@@ -333,7 +380,10 @@ describe('APIClient', () => {
 				ok: false,
 				status: 404,
 				statusText: 'Not Found',
-				headers: new Headers()
+				headers: new Headers(),
+				json: jest.fn().mockResolvedValue({}),
+				text: jest.fn().mockResolvedValue('Not Found'),
+				blob: jest.fn().mockResolvedValue(new Blob(['Not Found']))
 			};
 			mockFetch.mockResolvedValueOnce(httpError);
 
@@ -408,7 +458,10 @@ describe('APIClient', () => {
 				ok: false,
 				status: 500,
 				statusText: 'Internal Server Error',
-				headers: new Headers()
+				headers: new Headers(),
+				json: jest.fn().mockResolvedValue({}),
+				text: jest.fn().mockResolvedValue('Internal Server Error'),
+				blob: jest.fn().mockResolvedValue(new Blob(['Internal Server Error']))
 			};
 			mockFetch.mockResolvedValue(serverError);
 

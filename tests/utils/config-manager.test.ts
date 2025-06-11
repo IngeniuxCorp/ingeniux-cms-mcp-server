@@ -251,9 +251,7 @@ describe('ConfigManager', () => {
 		it('should handle invalid numeric values', () => {
 			process.env.PORT = 'invalid';
 
-			const config = configManager.loadConfiguration();
-
-			expect(config.port).toBeNaN();
+			expect(() => configManager.loadConfiguration()).toThrow('Configuration validation failed');
 		});
 
 		it('should use custom redirect URI when provided', () => {

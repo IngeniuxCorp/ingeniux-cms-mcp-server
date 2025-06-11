@@ -342,7 +342,8 @@ export class ToolRegistry {
 		try {
 			for (const [name, tool] of this.tools.entries()) {
 				try {
-					this.validateTool(tool);
+					// Validate tool structure without duplicate check
+					this.validateToolStructure(tool);
 					result.valid.push(name);
 				} catch {
 					result.invalid.push(name);
@@ -353,6 +354,27 @@ export class ToolRegistry {
 		}
 
 		return result;
+	}
+
+	/**
+	 * Validate tool structure without duplicate check
+	 */
+	private validateToolStructure(tool: MCPTool): void {
+		if (!tool.name || typeof tool.name !== 'string') {
+			throw new Error('Tool name is required and must be a string');
+		}
+
+		if (!tool.description || typeof tool.description !== 'string') {
+			throw new Error('Tool description is required and must be a string');
+		}
+
+		if (!tool.handler || typeof tool.handler !== 'function') {
+			throw new Error('Tool handler is required and must be a function');
+		}
+
+		if (tool.inputSchema && typeof tool.inputSchema !== 'object') {
+			throw new Error('Tool input schema must be an object');
+		}
 	}
 }
 

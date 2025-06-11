@@ -12,7 +12,7 @@ global.fetch = mockFetch;
 // Mock AbortSignal.timeout
 global.AbortSignal = {
 	...global.AbortSignal,
-	timeout: jest.fn((timeout: number) => ({
+	timeout: jest.fn((_timeout: number) => ({
 		aborted: false,
 		addEventListener: jest.fn(),
 		removeEventListener: jest.fn(),
@@ -31,7 +31,10 @@ const mockTokenStore = {
 };
 
 jest.mock('../../src/auth/token-store', () => ({
-	tokenStore: mockTokenStore
+	tokenStore: mockTokenStore,
+	TokenStore: {
+		getInstance: jest.fn(() => mockTokenStore)
+	}
 }));
 
 // Mock crypto
