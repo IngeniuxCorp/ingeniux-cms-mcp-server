@@ -1,0 +1,136 @@
+{
+	"registry": {
+		"name": "Roo Code MCP Server Registry",
+		"version": "1.0.0",
+		"description": "Official registry of MCP servers compatible with Roo Code system",
+		"last_updated": "2025-01-06T17:37:00Z"
+	},
+	"mcpServers": {
+		"ingeniux-cms": {
+			"command": "node",
+			"args": ["dist/index.js"],
+			"cwd": "./ingeniux-cms-mcp-server",
+			"env": {
+				"CMS_BASE_URL": "${CMS_BASE_URL}",
+				"OAUTH_CLIENT_ID": "${OAUTH_CLIENT_ID}",
+				"OAUTH_CLIENT_SECRET": "${OAUTH_CLIENT_SECRET}",
+				"OAUTH_REDIRECT_URI": "${OAUTH_REDIRECT_URI}",
+				"API_TIMEOUT": "${API_TIMEOUT:-30000}",
+				"MAX_RETRIES": "${MAX_RETRIES:-3}",
+				"LOG_LEVEL": "${LOG_LEVEL:-info}",
+				"CACHE_TTL": "${CACHE_TTL:-300}"
+			},
+			"metadata": {
+				"name": "Ingeniux CMS MCP Server",
+				"version": "1.0.0",
+				"description": "Production-ready Ingeniux CMS MCP server with OAuth authentication",
+				"author": "MCP Server Developer",
+				"license": "MIT",
+				"repository": "https://github.com/ingeniux/ingeniux-cms-mcp-server.git",
+				"category": "Content Management",
+				"tags": ["cms", "content", "oauth", "api", "enterprise"],
+				"status": "stable",
+				"compatibility": {
+					"ingeniux_cms": ">=10.6.378",
+					"mcp_protocol": ">=1.0.0",
+					"node": ">=18.0.0"
+				}
+			},
+			"capabilities": {
+				"authentication": {
+					"type": "oauth2",
+					"flow": "authorization_code",
+					"pkce": true
+				},
+				"tools": [
+					"health_check",
+					"auth_status",
+					"initiate_oauth",
+					"cms_get_page",
+					"cms_create_page",
+					"cms_update_page",
+					"cms_delete_page",
+					"cms_list_pages",
+					"cms_publish_page",
+					"cms_search_content"
+				],
+				"features": [
+					"OAuth 2.0 with PKCE",
+					"Encrypted token storage",
+					"Comprehensive error handling",
+					"Input validation",
+					"Rate limiting",
+					"Docker support"
+				]
+			},
+			"installation": {
+				"npm": "npm install ingeniux-cms-mcp-server",
+				"git": "git clone https://github.com/ingeniux/ingeniux-cms-mcp-server.git",
+				"docker": "docker pull ingeniux/cms-mcp-server"
+			},
+			"configuration": {
+				"required_env": [
+					"CMS_BASE_URL",
+					"OAUTH_CLIENT_ID",
+					"OAUTH_CLIENT_SECRET",
+					"OAUTH_REDIRECT_URI"
+				],
+				"optional_env": [
+					"API_TIMEOUT",
+					"MAX_RETRIES",
+					"LOG_LEVEL",
+					"CACHE_TTL"
+				]
+			},
+			"health_check": {
+				"endpoint": "/health",
+				"timeout": 5000,
+				"retry_count": 3
+			},
+			"monitoring": {
+				"metrics": true,
+				"logging": true,
+				"error_tracking": true
+			}
+		}
+	},
+	"validation": {
+		"schema_version": "1.0.0",
+		"required_fields": [
+			"command",
+			"args",
+			"env",
+			"metadata"
+		],
+		"env_validation": {
+			"url_fields": ["CMS_BASE_URL", "OAUTH_REDIRECT_URI"],
+			"secret_fields": ["OAUTH_CLIENT_SECRET"],
+			"numeric_fields": ["API_TIMEOUT", "MAX_RETRIES", "CACHE_TTL"]
+		}
+	},
+	"deployment": {
+		"environments": {
+			"development": {
+				"log_level": "debug",
+				"cache_ttl": 60,
+				"api_timeout": 10000
+			},
+			"staging": {
+				"log_level": "info",
+				"cache_ttl": 300,
+				"api_timeout": 20000
+			},
+			"production": {
+				"log_level": "warn",
+				"cache_ttl": 600,
+				"api_timeout": 30000
+			}
+		},
+		"scaling": {
+			"min_instances": 1,
+			"max_instances": 10,
+			"cpu_threshold": 80,
+			"memory_threshold": 85
+		}
+	}
+}

@@ -2,7 +2,7 @@
  * Secure token storage for OAuth authentication
  */
 
-import { createHash, createCipher, createDecipher } from 'crypto';
+import { createHash, createCipheriv, createDecipheriv, randomBytes } from 'crypto';
 import { TokenData } from '../types/api-types.js';
 
 export class TokenStore {
@@ -232,10 +232,15 @@ export class TokenStore {
 	 */
 	private encrypt(data: string): string {
 		try {
-			const cipher = createCipher('aes-256-cbc', this.encryptionKey);
+			const iv = randomBytes(16);
+			const key = createHash('sha256').update(this.encryptionKey).digest();
+			const cipher = createCipheriv('aes-256-cbc', key, iv);
+			
 			let encrypted = cipher.update(data, 'utf8', 'hex');
 			encrypted += cipher.final('hex');
-			return encrypted;
+			
+			// Prepend IV to encrypted data
+			return iv.toString('hex') + ':' + encrypted;
 		} catch {
 			// Return original data if encryption fails
 			return data;
@@ -247,9 +252,25 @@ export class TokenStore {
 	 */
 	private decrypt(encryptedData: string): string {
 		try {
-			const decipher = createDecipher('aes-256-cbc', this.encryptionKey);
-			let decrypted = decipher.update(encryptedData, 'hex', 'utf8');
+			// Check if data contains IV separator
+			if (!encryptedData.includes(':')) {
+				// Fallback for old format - return as is
+				return encryptedData;
+			}
+			
+			const parts = encryptedData.split(':');
+			if (parts.length !== 2) {
+				return encryptedData;
+			}
+			
+			const iv = Buffer.from(parts[0], 'hex');
+			const encrypted = parts[1];
+			const key = createHash('sha256').update(this.encryptionKey).digest();
+			
+			const decipher = createDecipheriv('aes-256-cbc', key, iv);
+			let decrypted = decipher.update(encrypted, 'hex', 'utf8');
 			decrypted += decipher.final('utf8');
+			
 			return decrypted;
 		} catch {
 			// Return encrypted data if decryption fails

@@ -14,6 +14,7 @@ import { RequestHandler } from './request-handler.js';
 import { authMiddleware } from '../auth/auth-middleware.js';
 import { OAuthManager } from '../auth/oauth-manager.js';
 import { APIClient } from '../api/api-client.js';
+import { ContentTools } from '../tools/content-tools.js';
 
 export class MCPServer {
 	private static instance: MCPServer;
@@ -157,8 +158,8 @@ export class MCPServer {
 			// Register basic tools
 			await this.registerBasicTools();
 
-			// Register CMS-specific tools (would be loaded from tool modules)
-			// This is where content-tools, analytics-tools, etc. would be registered
+			// Register CMS-specific tools
+			await this.registerContentTools();
 			
 			logger.info('Tools registered successfully');
 		} catch (error) {
@@ -238,6 +239,28 @@ export class MCPServer {
 			logger.info('Basic tools registered');
 		} catch (error) {
 			throw new Error(`Basic tool registration failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+		}
+	}
+
+	/**
+		* Register content management tools
+		*/
+	private async registerContentTools(): Promise<void> {
+		try {
+			if (!this.apiClient) {
+				throw new Error('API client not initialized');
+			}
+
+			const contentTools = new ContentTools(this.apiClient);
+			const tools = contentTools.getTools();
+			
+			for (const tool of tools) {
+				toolRegistry.registerTool(tool);
+			}
+
+			logger.info(`Registered ${tools.length} content management tools`);
+		} catch (error) {
+			throw new Error(`Content tools registration failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
 		}
 	}
 

@@ -1,0 +1,306 @@
+{
+	"id": "ingeniux-cms",
+	"name": "Ingeniux CMS MCP Server",
+	"version": "1.0.0",
+	"description": "Production-ready Ingeniux CMS MCP server with OAuth authentication, content management tools, and comprehensive API integration for Ingeniux CMS WebAPI v10.6.378",
+	"author": "MCP Server Developer",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ingeniux/ingeniux-cms-mcp-server.git"
+	},
+	"homepage": "https://github.com/ingeniux/ingeniux-cms-mcp-server#readme",
+	"bugs": {
+		"url": "https://github.com/ingeniux/ingeniux-cms-mcp-server/issues"
+	},
+	"keywords": [
+		"mcp",
+		"ingeniux",
+		"cms",
+		"oauth",
+		"api",
+		"roo",
+		"model-context-protocol",
+		"integration",
+		"docker",
+		"workflow",
+		"content-management"
+	],
+	"category": "Content Management",
+	"tags": [
+		"cms",
+		"content",
+		"oauth",
+		"api",
+		"enterprise"
+	],
+	"capabilities": {
+		"authentication": {
+			"type": "oauth2",
+			"flow": "authorization_code",
+			"pkce": true,
+			"scopes": ["read", "write", "admin"]
+		},
+		"tools": [
+			{
+				"name": "health_check",
+				"description": "Check server health and authentication status",
+				"category": "system"
+			},
+			{
+				"name": "auth_status",
+				"description": "Get current authentication status",
+				"category": "authentication"
+			},
+			{
+				"name": "initiate_oauth",
+				"description": "Start OAuth authentication flow",
+				"category": "authentication"
+			},
+			{
+				"name": "cms_get_page",
+				"description": "Retrieve a specific page by ID or path",
+				"category": "content"
+			},
+			{
+				"name": "cms_create_page",
+				"description": "Create a new page in the CMS",
+				"category": "content"
+			},
+			{
+				"name": "cms_update_page",
+				"description": "Update an existing page",
+				"category": "content"
+			},
+			{
+				"name": "cms_delete_page",
+				"description": "Delete a page from the CMS",
+				"category": "content"
+			},
+			{
+				"name": "cms_list_pages",
+				"description": "List pages with optional filtering",
+				"category": "content"
+			},
+			{
+				"name": "cms_publish_page",
+				"description": "Publish a page to make it live",
+				"category": "publishing"
+			},
+			{
+				"name": "cms_search_content",
+				"description": "Search for content in the CMS",
+				"category": "search"
+			}
+		],
+		"resources": [],
+		"features": [
+			"OAuth 2.0 with PKCE",
+			"Encrypted token storage",
+			"Comprehensive error handling",
+			"Input validation and sanitization",
+			"Rate limiting",
+			"Request throttling",
+			"Modular architecture",
+			"TypeScript support",
+			"Docker support",
+			"Comprehensive testing"
+		]
+	},
+	"requirements": {
+		"node": ">=18.0.0",
+		"typescript": ">=5.0.0",
+		"dependencies": [
+			"@modelcontextprotocol/sdk",
+			"axios",
+			"dotenv",
+			"winston",
+			"zod",
+			"node-cache"
+		]
+	},
+	"configuration": {
+		"required": [
+			"CMS_BASE_URL",
+			"OAUTH_CLIENT_ID",
+			"OAUTH_CLIENT_SECRET",
+			"OAUTH_REDIRECT_URI"
+		],
+		"optional": [
+			"API_TIMEOUT",
+			"MAX_RETRIES",
+			"LOG_LEVEL",
+			"CACHE_TTL"
+		],
+		"environment": {
+			"CMS_BASE_URL": {
+				"description": "Base URL for your Ingeniux CMS instance",
+				"type": "string",
+				"format": "url",
+				"example": "https://cms.example.com/api"
+			},
+			"OAUTH_CLIENT_ID": {
+				"description": "OAuth application client ID",
+				"type": "string",
+				"sensitive": false
+			},
+			"OAUTH_CLIENT_SECRET": {
+				"description": "OAuth application client secret",
+				"type": "string",
+				"sensitive": true
+			},
+			"OAUTH_REDIRECT_URI": {
+				"description": "OAuth callback URL",
+				"type": "string",
+				"format": "url",
+				"example": "http://localhost:3000/callback"
+			},
+			"API_TIMEOUT": {
+				"description": "Request timeout in milliseconds",
+				"type": "number",
+				"default": 30000
+			},
+			"MAX_RETRIES": {
+				"description": "Maximum retry attempts",
+				"type": "number",
+				"default": 3
+			},
+			"LOG_LEVEL": {
+				"description": "Logging level",
+				"type": "string",
+				"enum": ["error", "warn", "info", "debug"],
+				"default": "info"
+			},
+			"CACHE_TTL": {
+				"description": "Cache time-to-live in seconds",
+				"type": "number",
+				"default": 300
+			}
+		}
+	},
+	"installation": {
+		"methods": [
+			{
+				"type": "npm",
+				"command": "npm install ingeniux-cms-mcp-server"
+			},
+			{
+				"type": "git",
+				"command": "git clone https://github.com/ingeniux/ingeniux-cms-mcp-server.git"
+			},
+			{
+				"type": "docker",
+				"command": "docker pull ingeniux/cms-mcp-server"
+			}
+		],
+		"setup": [
+			"Copy .env.example to .env",
+			"Configure required environment variables",
+			"Run npm install",
+			"Build with npm run build",
+			"Start with npm start"
+		]
+	},
+	"usage": {
+		"examples": [
+			{
+				"name": "Basic Page Retrieval",
+				"description": "Get a page by ID",
+				"tool": "cms_get_page",
+				"parameters": {
+					"pageId": "12345",
+					"includeContent": true
+				}
+			},
+			{
+				"name": "Create New Page",
+				"description": "Create a new page with content",
+				"tool": "cms_create_page",
+				"parameters": {
+					"title": "New Page",
+					"path": "/new-page",
+					"content": "Page content here",
+					"template": "default"
+				}
+			},
+			{
+				"name": "Search Content",
+				"description": "Search for pages containing specific text",
+				"tool": "cms_search_content",
+				"parameters": {
+					"query": "search term",
+					"type": "page",
+					"limit": 10
+				}
+			}
+		],
+		"workflows": [
+			{
+				"name": "Content Creation Workflow",
+				"description": "Complete workflow for creating and publishing content",
+				"steps": [
+					"Use cms_create_page to create new page",
+					"Use cms_update_page to modify content",
+					"Use cms_publish_page to make it live"
+				]
+			},
+			{
+				"name": "Content Management Workflow",
+				"description": "Manage existing content",
+				"steps": [
+					"Use cms_list_pages to find pages",
+					"Use cms_get_page to retrieve specific content",
+					"Use cms_update_page to make changes",
+					"Use cms_publish_page to publish updates"
+				]
+			}
+		]
+	},
+	"security": {
+		"authentication": "OAuth 2.0 with PKCE",
+		"encryption": "AES-256 for token storage",
+		"validation": "Comprehensive input validation",
+		"sanitization": "Input sanitization and XSS protection",
+		"rate_limiting": "Request throttling and rate limiting",
+		"secrets": "No hardcoded secrets, environment-based configuration"
+	},
+	"testing": {
+		"coverage": "100%",
+		"types": [
+			"Unit tests",
+			"Integration tests",
+			"Security tests",
+			"Performance tests",
+			"OAuth flow tests"
+		],
+		"frameworks": ["Jest", "TypeScript"]
+	},
+	"documentation": {
+		"readme": "README.md",
+		"api_reference": "docs/api-reference.md",
+		"architecture": "docs/architecture.md",
+		"configuration": "docs/configuration-guide.md",
+		"installation": "docs/installation-guide.md",
+		"integration": "docs/integration-guide.md",
+		"security": "docs/security-guide.md",
+		"troubleshooting": "docs/troubleshooting-guide.md",
+		"examples": "docs/usage-examples.md"
+	},
+	"support": {
+		"issues": "https://github.com/ingeniux/ingeniux-cms-mcp-server/issues",
+		"discussions": "https://github.com/ingeniux/ingeniux-cms-mcp-server/discussions",
+		"documentation": "https://github.com/ingeniux/ingeniux-cms-mcp-server/tree/main/docs"
+	},
+	"compatibility": {
+		"ingeniux_cms": ">=10.6.378",
+		"mcp_protocol": ">=1.0.0",
+		"node": ">=18.0.0",
+		"platforms": ["linux", "darwin", "win32"]
+	},
+	"status": {
+		"stability": "stable",
+		"maintenance": "active",
+		"last_updated": "2025-01-06",
+		"version_status": "production-ready"
+	}
+}

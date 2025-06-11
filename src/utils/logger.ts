@@ -39,16 +39,34 @@ export class Logger {
 				winston.format.simple()
 			);
 
+		const transports: winston.transport[] = [
+			new winston.transports.Console({
+				handleExceptions: true,
+				handleRejections: true
+			})
+		];
+
+		// Add file transport if enabled
+		if (process.env.ENABLE_FILE_LOGGING === 'true') {
+			const logFilePath = process.env.LOG_FILE_PATH || './logs/mcp-server.log';
+			try {
+				transports.push(new winston.transports.File({
+					filename: logFilePath,
+					handleExceptions: true,
+					handleRejections: true,
+					maxsize: 5242880, // 5MB
+					maxFiles: 5
+				}));
+			} catch (error) {
+				console.warn('Failed to create file transport:', error);
+			}
+		}
+
 		return winston.createLogger({
 			level: logLevel,
 			format: logFormat,
 			defaultMeta: { service: 'ingeniux-cms-mcp-server' },
-			transports: [
-				new winston.transports.Console({
-					handleExceptions: true,
-					handleRejections: true
-				})
-			],
+			transports,
 			exitOnError: false
 		});
 	}

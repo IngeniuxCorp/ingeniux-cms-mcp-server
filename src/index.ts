@@ -67,8 +67,10 @@ async function shutdown(): Promise<void> {
 	}
 }
 
+const metaUrl = import.meta.url;
+const argUrl = `file:///${process.argv[1]}`.replace(/\\/g, '/'); // Normalize path for Windows compatibility
 // Start the server if this file is run directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (metaUrl === argUrl) {
 	main().catch((error) => {
 		console.error('Fatal error:', error);
 		process.exit(1);
