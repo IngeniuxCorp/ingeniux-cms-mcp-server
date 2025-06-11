@@ -1,0 +1,16 @@
+{
+	"mcpServers": {
+		"ingeniux-cms": {
+			"command": "node",
+			"args": ["dist/index.js"],
+			"cwd": "/path/to/ingeniux-cms-mcp-server",
+			"env": {
+				"CMS_BASE_URL": "https://cms.example.com/api",
+				"OAUTH_CLIENT_ID": "your_client_id",
+				"OAUTH_CLIENT_SECRET": "your_client_secret",
+				"OAUTH_REDIRECT_URI": "http://localhost:3000/callback",
+				"LOG_LEVEL": "info"
+			}
+		}
+	}
+}
