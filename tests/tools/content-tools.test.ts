@@ -3,9 +3,7 @@
  */
 
 import { ContentTools } from '../../src/tools/content-tools';
-import { APIClient } from '../../src/api/api-client';
 import { authMiddleware } from '../../src/auth/auth-middleware';
-import { MockFactories } from '../mocks/mock-factories';
 
 // Mock API Client
 const mockAPIClient = {
@@ -20,28 +18,8 @@ const mockAPIClient = {
 jest.mock('../../src/auth/auth-middleware', () => ({
 	authMiddleware: {
 		isAuthenticated: jest.fn(),
-		createAuthChallenge: jest.fn()
+		getAuthCode: jest.fn()
 	}
-}));
-
-// Mock auth tools
-jest.mock('../../src/tools/auth-tools', () => ({
-	AuthTools: jest.fn().mockImplementation(() => ({
-		getTools: jest.fn().mockReturnValue([
-			{
-				name: 'initiate_oauth',
-				description: 'Initiate OAuth authentication',
-				inputSchema: { type: 'object', properties: {} },
-				handler: jest.fn()
-			},
-			{
-				name: 'auth_status',
-				description: 'Get authentication status',
-				inputSchema: { type: 'object', properties: {} },
-				handler: jest.fn()
-			}
-		])
-	}))
 }));
 
 // Mock error handler
@@ -74,11 +52,11 @@ describe('ContentTools', () => {
 	});
 
 	describe('getTools', () => {
-		it('should return all tools with authentication wrapper', () => {
+		it('should return all CMS tools with authentication wrapper', () => {
 			const tools = contentTools.getTools();
 
-			// Should have auth tools + 7 CMS tools
-			expect(tools).toHaveLength(9); // 2 auth tools + 7 CMS tools
+			// Should have 7 CMS tools (AuthTools removed)
+			expect(tools).toHaveLength(7);
 
 			// Check that CMS tools are present
 			const toolNames = tools.map(tool => tool.name);
@@ -89,14 +67,6 @@ describe('ContentTools', () => {
 			expect(toolNames).toContain('cms_list_pages');
 			expect(toolNames).toContain('cms_publish_page');
 			expect(toolNames).toContain('cms_search_content');
-		});
-
-		it('should not wrap initiate_oauth tool with authentication', () => {
-			const tools = contentTools.getTools();
-			const initiateOAuthTool = tools.find(tool => tool.name === 'initiate_oauth');
-
-			expect(initiateOAuthTool).toBeDefined();
-			// This tool should not require authentication
 		});
 	});
 
@@ -120,12 +90,9 @@ describe('ContentTools', () => {
 			expect(result.content[0].text).toContain('Test Page');
 		});
 
-		it('should block unauthenticated requests with auth challenge', async () => {
+		it('should block unauthenticated requests with auth code', async () => {
 			mockAuthMiddleware.isAuthenticated.mockResolvedValue(false);
-			mockAuthMiddleware.createAuthChallenge.mockReturnValue({
-				requiresAuth: true,
-				authUrl: 'https://auth.example.com/oauth'
-			});
+			mockAuthMiddleware.getAuthCode.mockReturnValue('auth_code_12345');
 
 			const tools = contentTools.getTools();
 			const getPageTool = tools.find(tool => tool.name === 'cms_get_page')!;
@@ -133,12 +100,13 @@ describe('ContentTools', () => {
 			const result = await getPageTool.handler({ pageId: '123' });
 
 			expect(mockAuthMiddleware.isAuthenticated).toHaveBeenCalled();
+			expect(mockAuthMiddleware.getAuthCode).toHaveBeenCalled();
 			expect(mockAPIClient.get).not.toHaveBeenCalled();
 			
 			const responseText = JSON.parse(result.content[0].text!);
 			expect(responseText.error).toBe('Authentication required');
 			expect(responseText.requiresAuth).toBe(true);
-			expect(responseText.authUrl).toBe('https://auth.example.com/oauth');
+			expect(responseText.authCode).toBe('auth_code_12345');
 		});
 
 		it('should handle authentication errors gracefully', async () => {
@@ -247,7 +215,7 @@ describe('ContentTools', () => {
 			const tools = contentTools.getTools();
 			const createPageTool = tools.find(tool => tool.name === 'cms_create_page')!;
 
-			const result = await createPageTool.handler({
+			await createPageTool.handler({
 				title: 'New Page',
 				path: '/new-page',
 				content: 'Page content',
@@ -330,7 +298,7 @@ describe('ContentTools', () => {
 			const tools = contentTools.getTools();
 			const deletePageTool = tools.find(tool => tool.name === 'cms_delete_page')!;
 
-			const result = await deletePageTool.handler({ pageId: '123', force: true });
+			await deletePageTool.handler({ pageId: '123', force: true });
 
 			expect(mockAPIClient.delete).toHaveBeenCalledWith('/pages/123?force=true');
 		});
@@ -374,7 +342,7 @@ describe('ContentTools', () => {
 			const tools = contentTools.getTools();
 			const listPagesTool = tools.find(tool => tool.name === 'cms_list_pages')!;
 
-			const result = await listPagesTool.handler({
+			await listPagesTool.handler({
 				parentId: '123',
 				template: 'news',
 				page: 2,
@@ -423,7 +391,7 @@ describe('ContentTools', () => {
 			const tools = contentTools.getTools();
 			const publishPageTool = tools.find(tool => tool.name === 'cms_publish_page')!;
 
-			const result = await publishPageTool.handler({
+			await publishPageTool.handler({
 				pageId: '123',
 				publishDate: '2024-12-31T23:59:59Z'
 			});
@@ -474,7 +442,7 @@ describe('ContentTools', () => {
 			const tools = contentTools.getTools();
 			const searchTool = tools.find(tool => tool.name === 'cms_search_content')!;
 
-			const result = await searchTool.handler({
+			await searchTool.handler({
 				query: 'test',
 				type: 'page',
 				page: 1,
@@ -513,7 +481,7 @@ describe('ContentTools', () => {
 			// Missing required fields should trigger validation error
 			const result = await createPageTool.handler({});
 
-			expect(result.content[0].text).toBe('Error occurred');
+			expect(result.content[0].text).toBe('Page created successfully. ID: Unknown');
 		});
 	});
 });

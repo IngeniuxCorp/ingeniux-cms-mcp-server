@@ -5,7 +5,6 @@
 
 import { ToolRegistry } from '../../src/core/tool-registry';
 import { ContentTools } from '../../src/tools/content-tools';
-import { AuthTools } from '../../src/tools/auth-tools';
 import { MockFactories } from '../mocks/mock-factories';
 
 // Mock dependencies
@@ -93,82 +92,18 @@ describe('Duplicate Registration Regression Tests', () => {
 		});
 	});
 
-	describe('auth tools functionality regression', () => {
-		it('should create all auth tools correctly', () => {
-			const authTools = new AuthTools();
-			const tools = authTools.getTools();
-
-			expect(tools).toHaveLength(3);
-			expect(tools.map(t => t.name)).toEqual([
-				'health_check',
-				'auth_status', 
-				'initiate_oauth'
-			]);
-
-			// Verify each tool has required properties
-			tools.forEach(tool => {
-				expect(tool.name).toBeTruthy();
-				expect(tool.description).toBeTruthy();
-				expect(typeof tool.handler).toBe('function');
-				expect(tool.inputSchema).toBeDefined();
-			});
-		});
-
-		it('should execute health_check tool correctly', async () => {
-			const authTools = new AuthTools();
-			const tools = authTools.getTools();
-			const healthCheckTool = tools.find(t => t.name === 'health_check');
-
-			expect(healthCheckTool).toBeDefined();
-			
-			const result = await healthCheckTool!.handler({});
-			expect(result.content).toBeDefined();
-			expect(result.content[0].type).toBe('text');
-			
-			const healthData = JSON.parse(result.content[0].text!);
-			expect(healthData.status).toBe('healthy');
-			expect(healthData.authentication).toBeDefined();
-		});
-
-		it('should execute auth_status tool correctly', async () => {
-			const authTools = new AuthTools();
-			const tools = authTools.getTools();
-			const authStatusTool = tools.find(t => t.name === 'auth_status');
-
-			expect(authStatusTool).toBeDefined();
-			
-			const result = await authStatusTool!.handler({});
-			expect(result.content).toBeDefined();
-			expect(result.content[0].type).toBe('text');
-		});
-
-		it('should execute initiate_oauth tool correctly', async () => {
-			const authTools = new AuthTools();
-			const tools = authTools.getTools();
-			const oauthTool = tools.find(t => t.name === 'initiate_oauth');
-
-			expect(oauthTool).toBeDefined();
-			
-			const result = await oauthTool!.handler({});
-			expect(result.content).toBeDefined();
-			expect(result.content[0].type).toBe('text');
-			
-			const oauthData = JSON.parse(result.content[0].text!);
-			expect(oauthData.message).toBe('OAuth flow initiated');
-			expect(oauthData.authUrl).toBeDefined();
-		});
-	});
+	// AuthTools functionality removed - class deleted in phases 1-2
 
 	describe('content tools functionality regression', () => {
 		it('should create all CMS tools correctly', () => {
 			const contentTools = new ContentTools(mockAPIClient);
 			const tools = contentTools.getTools();
 
-			// Should include auth tools + CMS tools
-			expect(tools.length).toBeGreaterThan(7);
+			// Should have exactly 7 CMS tools (AuthTools integration removed)
+			expect(tools.length).toBe(7);
 			
 			// Verify CMS tools are present
-			const cmsToolNames = tools.map(t => t.name).filter(name => name.startsWith('cms_'));
+			const cmsToolNames = tools.map(t => t.name);
 			expect(cmsToolNames).toContain('cms_get_page');
 			expect(cmsToolNames).toContain('cms_create_page');
 			expect(cmsToolNames).toContain('cms_update_page');

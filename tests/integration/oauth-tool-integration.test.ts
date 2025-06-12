@@ -38,20 +38,7 @@ jest.mock('../../src/utils/validators', () => ({
 		isValidDate: jest.fn().mockReturnValue(true)
 	}
 }));
-jest.mock('../../src/tools/auth-tools', () => ({
-	AuthTools: jest.fn().mockImplementation(() => ({
-		getTools: jest.fn().mockReturnValue([
-			{
-				name: 'initiate_oauth',
-				description: 'Initiate OAuth authentication',
-				inputSchema: { type: 'object', properties: {} },
-				handler: jest.fn().mockResolvedValue({
-					content: [{ type: 'text', text: 'OAuth initiated' }]
-				})
-			}
-		])
-	}))
-}));
+// AuthTools removed - no longer needed
 
 /**
  * OAuth Tool Integration Tests - End-to-end OAuth flow with tool execution
@@ -122,21 +109,7 @@ jest.mock('../../src/utils/validators', () => ({
 	}
 }));
 
-// Mock auth tools
-jest.mock('../../src/tools/auth-tools', () => ({
-	AuthTools: jest.fn().mockImplementation(() => ({
-		getTools: jest.fn().mockReturnValue([
-			{
-				name: 'initiate_oauth',
-				description: 'Initiate OAuth authentication',
-				inputSchema: { type: 'object', properties: {} },
-				handler: jest.fn().mockResolvedValue({
-					content: [{ type: 'text', text: 'OAuth initiated' }]
-				})
-			}
-		])
-	}))
-}));
+// AuthTools removed - no longer needed
 
 describe('OAuth Tool Integration', () => {
 	let oauthManager: any;
@@ -287,7 +260,7 @@ describe('OAuth Tool Integration', () => {
 			const responseText = JSON.parse(result.content[0].text!);
 			expect(responseText.error).toBe('Authentication required');
 			expect(responseText.requiresAuth).toBe(true);
-			expect(responseText.authUrl).toBeDefined();
+			expect(responseText.authCode).toBeDefined();
 			
 			// No CMS API call should be made
 			expect(mockFetch).not.toHaveBeenCalled();
@@ -295,18 +268,6 @@ describe('OAuth Tool Integration', () => {
 	});
 
 	describe('tool authentication requirements', () => {
-		it('should allow initiate_oauth tool without authentication', async () => {
-			// Setup: Not authenticated
-			mockTokenStore.isValid.mockReturnValue(false);
-
-			const tools = contentTools.getTools();
-			const initiateOAuthTool = tools.find((tool: any) => tool.name === 'initiate_oauth')!;
-			const result = await initiateOAuthTool.handler({});
-
-			// Should execute without auth check
-			expect(result.content[0].text).toBe('OAuth initiated');
-		});
-
 		it('should require authentication for all 7 CMS tools', async () => {
 			// Setup: Not authenticated
 			mockTokenStore.isValid.mockReturnValue(false);

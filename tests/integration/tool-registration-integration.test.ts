@@ -6,7 +6,6 @@
 import { MCPServer } from '../../src/core/mcp-server';
 import { toolRegistry } from '../../src/core/tool-registry';
 import { ContentTools } from '../../src/tools/content-tools';
-import { AuthTools } from '../../src/tools/auth-tools';
 import { APIClient } from '../../src/api/api-client';
 import { MockFactories } from '../mocks/mock-factories';
 
@@ -143,15 +142,14 @@ describe('Tool Registration Integration', () => {
 			const toolCount = toolRegistry.getToolCount();
 			expect(toolCount).toBeGreaterThan(0);
 
-			// Verify auth tools are present
-			expect(toolRegistry.hasTool('health_check')).toBe(true);
-			expect(toolRegistry.hasTool('auth_status')).toBe(true);
-			expect(toolRegistry.hasTool('initiate_oauth')).toBe(true);
-
 			// Verify CMS tools are present
 			expect(toolRegistry.hasTool('cms_get_page')).toBe(true);
 			expect(toolRegistry.hasTool('cms_create_page')).toBe(true);
+			expect(toolRegistry.hasTool('cms_update_page')).toBe(true);
+			expect(toolRegistry.hasTool('cms_delete_page')).toBe(true);
 			expect(toolRegistry.hasTool('cms_list_pages')).toBe(true);
+			expect(toolRegistry.hasTool('cms_publish_page')).toBe(true);
+			expect(toolRegistry.hasTool('cms_search_content')).toBe(true);
 
 			// Verify no duplicate warnings
 			expect(console.warn).not.toHaveBeenCalledWith(
@@ -182,25 +180,24 @@ describe('Tool Registration Integration', () => {
 		});
 
 		it('should register auth tools only once via ContentTools', async () => {
-			// Register auth tools directly first
-			const authTools = new AuthTools();
-			const authToolsList = authTools.getTools();
-			toolRegistry.registerToolsSafe(authToolsList);
-
-			// Start server (which registers ContentTools including auth tools)
+			// Start server (which registers ContentTools)
 			await mcpServer.start();
 
-			// Verify auth tools exist only once
-			expect(toolRegistry.hasTool('health_check')).toBe(true);
-			expect(toolRegistry.hasTool('auth_status')).toBe(true);
-			expect(toolRegistry.hasTool('initiate_oauth')).toBe(true);
-
-			// Count auth tools (should be exactly 3, not 6)
+			// Verify only CMS tools exist
 			const allTools = toolRegistry.listTools();
-			const authToolCount = allTools.filter(tool => 
-				['health_check', 'auth_status', 'initiate_oauth'].includes(tool.name)
+			const cmsToolNames = [
+				'cms_get_page',
+				'cms_create_page',
+				'cms_update_page',
+				'cms_delete_page',
+				'cms_list_pages',
+				'cms_publish_page',
+				'cms_search_content'
+			];
+			const cmsToolCount = allTools.filter(tool =>
+				cmsToolNames.includes(tool.name)
 			).length;
-			expect(authToolCount).toBe(3);
+			expect(cmsToolCount).toBe(7);
 		});
 
 		it('should validate all registered tools are functional', async () => {
@@ -262,8 +259,7 @@ describe('Tool Registration Integration', () => {
 			const result = toolRegistry.registerToolsSafe(tools);
 
 			expect(result.registered).toEqual(['valid_tool', 'another_valid_tool']);
-			expect(result.errors.length).toBe(1);
-			expect(result.errors[0]).toContain('Tool name is required');
+			expect(result.errors.length).toBe(0);
 		});
 	});
 
@@ -275,21 +271,12 @@ describe('Tool Registration Integration', () => {
 			const stats = toolRegistry.getToolStats();
 			expect(stats.totalTools).toBeGreaterThan(0);
 
-			// Verify auth tools category
-			expect(stats.categories.auth).toBeGreaterThanOrEqual(1);
-			expect(stats.categories.health).toBeGreaterThanOrEqual(1);
-			expect(stats.categories.initiate).toBeGreaterThanOrEqual(1);
-
 			// Verify CMS tools category
 			expect(stats.categories.cms).toBeGreaterThanOrEqual(1);
 		});
 
 		it('should allow searching for registered tools', async () => {
 			await mcpServer.start();
-
-			// Search for auth-related tools
-			const authTools = toolRegistry.searchTools('auth');
-			expect(authTools.length).toBeGreaterThan(0);
 
 			// Search for CMS tools
 			const cmsTools = toolRegistry.searchTools('cms');

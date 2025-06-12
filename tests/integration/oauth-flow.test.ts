@@ -62,16 +62,22 @@ describe('OAuth Flow Integration', () => {
 	});
 
 	describe('Complete OAuth Flow', () => {
-		it('should complete full authorization code flow', async () => {
-			// Step 1: Initiate OAuth flow
-			const authFlow = oauthManager.initiateFlow();
+		it('should complete full authorization code flow with new initiateFlow', async () => {
+			// Step 1: Initiate OAuth flow (now returns string)
+			const authCode = oauthManager.initiateFlow();
+			
+			expect(typeof authCode).toBe('string');
+			expect(authCode).toContain('auth_code_');
+
+			// Step 2: Use getAuthorizationCode for traditional flow
+			const authFlow = oauthManager.getAuthorizationCode();
 			
 			expect(authFlow.url).toContain('response_type=code');
 			expect(authFlow.url).toContain('code_challenge_method=S256');
 			expect(authFlow.state).toBeDefined();
 			expect(authFlow.codeVerifier).toBeDefined();
 
-			// Step 2: Mock authorization server response
+			// Step 3: Mock authorization server response
 			const mockTokenResponse = MockFactories.createOAuthTokenResponse();
 			const mockResponse = {
 				ok: true,
@@ -81,7 +87,7 @@ describe('OAuth Flow Integration', () => {
 			};
 			mockFetch.mockResolvedValueOnce(mockResponse);
 
-			// Step 3: Exchange code for tokens
+			// Step 4: Exchange code for tokens
 			const tokenData = await oauthManager.exchangeCodeForToken('auth-code', authFlow.state);
 			
 			expect(mockFetch).toHaveBeenCalledWith(
@@ -137,7 +143,7 @@ describe('OAuth Flow Integration', () => {
 		});
 
 		it('should handle authentication errors gracefully', async () => {
-			const authFlow = oauthManager.initiateFlow();
+			const authFlow = oauthManager.getAuthorizationCode();
 			
 			// Mock OAuth server error
 			const errorResponse = {
@@ -222,7 +228,7 @@ describe('OAuth Flow Integration', () => {
 		});
 
 		it('should handle network errors during OAuth flow', async () => {
-			const authFlow = oauthManager.initiateFlow();
+			const authFlow = oauthManager.getAuthorizationCode();
 			const networkError = new TypeError('fetch failed');
 			
 			mockFetch.mockRejectedValueOnce(networkError);
@@ -233,7 +239,7 @@ describe('OAuth Flow Integration', () => {
 		});
 
 		it('should handle malformed token responses', async () => {
-			const authFlow = oauthManager.initiateFlow();
+			const authFlow = oauthManager.getAuthorizationCode();
 			
 			// Mock response without access_token
 			const mockResponse = {
@@ -261,7 +267,7 @@ describe('OAuth Flow Integration', () => {
 		});
 
 		it('should use PKCE for enhanced security', () => {
-			const authFlow = oauthManager.initiateFlow();
+			const authFlow = oauthManager.getAuthorizationCode();
 			
 			expect(authFlow.url).toContain('code_challenge=');
 			expect(authFlow.url).toContain('code_challenge_method=S256');

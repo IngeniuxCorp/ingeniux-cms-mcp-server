@@ -3,9 +3,7 @@
  */
 
 import { AuthMiddleware } from '../../src/auth/auth-middleware';
-import { OAuthManager } from '../../src/auth/oauth-manager';
 import { MCPRequest } from '../../src/types/mcp-types';
-import { MockFactories } from '../mocks/mock-factories';
 
 // Mock OAuth Manager
 const mockOAuthManager = {
@@ -392,27 +390,29 @@ describe('AuthMiddleware', () => {
 		});
 	});
 
-	describe('createAuthChallenge', () => {
-		it('should create auth challenge with OAuth URL', () => {
-			mockOAuthManager.initiateFlow.mockReturnValue({
-				url: 'https://auth.example.com/oauth',
-				state: 'test-state',
-				codeVerifier: 'test-verifier'
-			});
+	describe('getAuthCode', () => {
+		it('should return auth code string from OAuth flow', () => {
+			mockOAuthManager.initiateFlow.mockReturnValue('auth_code_12345');
 
-			const result = authMiddleware.createAuthChallenge();
+			const result = authMiddleware.getAuthCode();
 
-			expect(result.requiresAuth).toBe(true);
-			expect(result.authUrl).toBe('https://auth.example.com/oauth');
+			expect(typeof result).toBe('string');
+			expect(result).toBe('auth_code_12345');
+			expect(mockOAuthManager.initiateFlow).toHaveBeenCalled();
 		});
 
 		it('should handle OAuth manager not initialized', () => {
 			(authMiddleware as any).oauthManager = null;
 
-			const result = authMiddleware.createAuthChallenge();
+			expect(() => authMiddleware.getAuthCode()).toThrow('OAuth manager not initialized');
+		});
 
-			expect(result.requiresAuth).toBe(true);
-			expect(result.authUrl).toBeUndefined();
+		it('should handle errors during auth code generation', () => {
+			mockOAuthManager.initiateFlow.mockImplementation(() => {
+				throw new Error('Flow initiation failed');
+			});
+
+			expect(() => authMiddleware.getAuthCode()).toThrow('Failed to get auth code: Flow initiation failed');
 		});
 	});
 

@@ -5,7 +5,6 @@
 
 import { MCPServer } from '../../src/core/mcp-server';
 import { toolRegistry } from '../../src/core/tool-registry';
-import { MockFactories } from '../mocks/mock-factories';
 
 // Mock dependencies
 jest.mock('../../src/utils/config-manager', () => ({
@@ -147,16 +146,17 @@ describe('Server Startup Tests', () => {
 			
 			const toolCount = toolRegistry.getToolCount();
 			
-			// Should have auth tools (3) + CMS tools (7) = 10 total
-			expect(toolCount).toBe(10);
-			
-			// Verify specific tools exist
-			expect(toolRegistry.hasTool('health_check')).toBe(true);
-			expect(toolRegistry.hasTool('auth_status')).toBe(true);
-			expect(toolRegistry.hasTool('initiate_oauth')).toBe(true);
+			// Should have only CMS tools (7)
+			expect(toolCount).toBe(7);
+
+			// Verify specific CMS tools exist
 			expect(toolRegistry.hasTool('cms_get_page')).toBe(true);
 			expect(toolRegistry.hasTool('cms_create_page')).toBe(true);
+			expect(toolRegistry.hasTool('cms_update_page')).toBe(true);
+			expect(toolRegistry.hasTool('cms_delete_page')).toBe(true);
 			expect(toolRegistry.hasTool('cms_list_pages')).toBe(true);
+			expect(toolRegistry.hasTool('cms_publish_page')).toBe(true);
+			expect(toolRegistry.hasTool('cms_search_content')).toBe(true);
 		});
 
 		it('should not log duplicate registration warnings on clean startup', async () => {
