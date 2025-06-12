@@ -168,82 +168,21 @@ export class MCPServer {
 	}
 
 	/**
-	 * Register basic server tools
+	 * Register basic server tools (non-auth tools only)
 	 */
 	private async registerBasicTools(): Promise<void> {
 		try {
-			// Health check tool
-			toolRegistry.registerTool({
-				name: 'health_check',
-				description: 'Check server health and authentication status',
-				inputSchema: {
-					type: 'object',
-					properties: {},
-					additionalProperties: false
-				},
-				handler: async () => {
-					const health = await this.requestHandler.healthCheck();
-					return {
-						content: [{
-							type: 'text',
-							text: JSON.stringify(health, null, 2)
-						}]
-					};
-				}
-			});
-
-			// Authentication status tool
-			toolRegistry.registerTool({
-				name: 'auth_status',
-				description: 'Get current authentication status',
-				inputSchema: {
-					type: 'object',
-					properties: {},
-					additionalProperties: false
-				},
-				handler: async () => {
-					const authStatus = authMiddleware.getAuthStatus();
-					return {
-						content: [{
-							type: 'text',
-							text: JSON.stringify(authStatus, null, 2)
-						}]
-					};
-				}
-			});
-
-			// OAuth flow initiation tool
-			toolRegistry.registerTool({
-				name: 'initiate_oauth',
-				description: 'Initiate OAuth authentication flow',
-				inputSchema: {
-					type: 'object',
-					properties: {},
-					additionalProperties: false
-				},
-				handler: async () => {
-					if (!this.oauthManager) {
-						throw new Error('OAuth manager not initialized');
-					}
-
-					const authFlow = this.oauthManager.initiateFlow();
-					return {
-						content: [{
-							type: 'text',
-							text: `Please visit the following URL to authenticate:\n${authFlow.url}\n\nState: ${authFlow.state}`
-						}]
-					};
-				}
-			});
-
-			logger.info('Basic tools registered');
+			// Note: Auth tools (health_check, auth_status, initiate_oauth) are now
+			// registered via ContentTools to avoid duplication
+			
+			logger.info('Basic tools registered (auth tools handled by ContentTools)');
 		} catch (error) {
 			throw new Error(`Basic tool registration failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
 		}
 	}
 
 	/**
-		* Register content management tools
+		* Register content management tools with duplicate prevention
 		*/
 	private async registerContentTools(): Promise<void> {
 		try {
@@ -254,11 +193,23 @@ export class MCPServer {
 			const contentTools = new ContentTools(this.apiClient);
 			const tools = contentTools.getTools();
 			
-			for (const tool of tools) {
-				toolRegistry.registerTool(tool);
+			// Use safe registration to prevent duplicates
+			const result = toolRegistry.registerToolsSafe(tools, false);
+			
+			// Log registration results
+			if (result.registered.length > 0) {
+				logger.info(`Registered ${result.registered.length} content management tools: ${result.registered.join(', ')}`);
+			}
+			
+			if (result.skipped.length > 0) {
+				logger.warn(`Skipped ${result.skipped.length} duplicate tools: ${result.skipped.join(', ')}`);
+			}
+			
+			if (result.errors.length > 0) {
+				logger.error(`Failed to register ${result.errors.length} tools: ${result.errors.join('; ')}`);
+				throw new Error(`Some tools failed to register: ${result.errors.join('; ')}`);
 			}
 
-			logger.info(`Registered ${tools.length} content management tools`);
 		} catch (error) {
 			throw new Error(`Content tools registration failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
 		}
@@ -294,7 +245,7 @@ export class MCPServer {
 			return {
 				isRunning: this.isRunning,
 				toolCount: toolRegistry.getToolCount(),
-				authenticated: authMiddleware.isAuthenticated()
+				authenticated: authMiddleware.isAuthenticatedSync()
 			};
 		} catch {
 			return {

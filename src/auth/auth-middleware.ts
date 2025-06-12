@@ -27,7 +27,7 @@ export class AuthMiddleware {
 	}
 
 	/**
-	 * Authenticate MCP request
+	 * Authenticate MCP request with automatic token validation
 	 */
 	public async authenticate(request: MCPRequest): Promise<AuthenticatedRequest> {
 		try {
@@ -35,18 +35,18 @@ export class AuthMiddleware {
 				throw new Error('OAuth manager not initialized');
 			}
 
-			// Get valid access token
-			const accessToken = await this.oauthManager.getValidAccessToken();
+			// Validate authentication and get token
+			const authResult = await this.validateAuthentication();
 			
-			if (!accessToken) {
-				throw new Error('No valid access token available');
+			if (!authResult.isValid) {
+				throw new Error(`Authentication required: ${authResult.error || 'No valid token'}`);
 			}
 
 			// Add authentication headers
 			const authenticatedRequest: AuthenticatedRequest = {
 				...request,
 				headers: {
-					'Authorization': `Bearer ${accessToken}`,
+					'Authorization': `Bearer ${authResult.token}`,
 					'Content-Type': 'application/json',
 					'Accept': 'application/json'
 				}
@@ -59,9 +59,25 @@ export class AuthMiddleware {
 	}
 
 	/**
-	 * Check if user is authenticated
+	 * Check if user is authenticated with automatic validation
 	 */
-	public isAuthenticated(): boolean {
+	public async isAuthenticated(): Promise<boolean> {
+		try {
+			if (!this.oauthManager) {
+				return false;
+			}
+
+			const authResult = await this.validateAuthentication();
+			return authResult.isValid;
+		} catch {
+			return false;
+		}
+	}
+
+	/**
+	 * Synchronous authentication check (legacy)
+	 */
+	public isAuthenticatedSync(): boolean {
 		try {
 			if (!this.oauthManager) {
 				return false;
@@ -255,6 +271,87 @@ export class AuthMiddleware {
 			return null;
 		}
 	}
+
+	/**
+	 * Validate current authentication state
+	 */
+	private async validateAuthentication(): Promise<AuthValidationResult> {
+		try {
+			if (!this.oauthManager) {
+				return { isValid: false, error: 'OAuth manager not initialized' };
+			}
+
+			// Check if token exists and is valid
+			const token = await this.oauthManager.getValidAccessToken();
+			
+			if (!token) {
+				// Attempt to refresh or initiate OAuth
+				return await this.handleMissingToken();
+			}
+
+			return { isValid: true, token };
+		} catch (error) {
+			return {
+				isValid: false,
+				error: error instanceof Error ? error.message : 'Unknown error'
+			};
+		}
+	}
+
+	/**
+	 * Handle missing or expired token
+	 */
+	private async handleMissingToken(): Promise<AuthValidationResult> {
+		try {
+			if (!this.oauthManager) {
+				return { isValid: false, error: 'OAuth manager not initialized' };
+			}
+
+			// Try to refresh token first
+			try {
+				const refreshedToken = await this.oauthManager.refreshToken();
+				if (refreshedToken) {
+					return { isValid: true, token: refreshedToken.accessToken };
+				}
+			} catch (error) {
+				// Refresh failed, need new OAuth flow
+			}
+
+			// Initiate new OAuth flow
+			const authFlow = this.oauthManager.getAuthorizationCode();
+			return {
+				isValid: false,
+				requiresAuth: true,
+				authUrl: authFlow.url,
+				error: 'OAUTH_FLOW_REQUIRED'
+			};
+		} catch (error) {
+			return {
+				isValid: false,
+				error: error instanceof Error ? error.message : 'Unknown error'
+			};
+		}
+	}
+
+	/**
+	 * Validate authorization header format
+	 */
+	public validateAuthHeader(authHeader: string): boolean {
+		try {
+			const bearerPattern = /^Bearer\s+[A-Za-z0-9._-]{10,2048}$/;
+			return bearerPattern.test(authHeader);
+		} catch {
+			return false;
+		}
+	}
+}
+
+interface AuthValidationResult {
+	isValid: boolean;
+	token?: string;
+	requiresAuth?: boolean;
+	authUrl?: string;
+	error?: string;
 }
 
 // Export singleton instance

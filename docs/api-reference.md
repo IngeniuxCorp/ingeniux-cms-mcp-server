@@ -1,12 +1,25 @@
 # API Reference
 
-Complete reference for all MCP tools and resources provided by the Ingeniux CMS MCP Server.
+Complete reference for all MCP tools and resources provided by the Ingeniux CMS MCP Server with OAuth 2.0 authentication.
+
+## Overview
+
+All CMS tools now require OAuth 2.0 authentication with automatic token management. The server provides 3 authentication tools and 7 CMS tools with seamless OAuth integration.
+
+### Authentication Features
+- **20-minute token caching** with automatic refresh
+- **Automatic OAuth flow initiation** when tokens missing/expired
+- **Bearer token injection** for all authenticated requests
+- **Comprehensive error handling** with clear authentication guidance
 
 ## Authentication Tools
 
-### `health_check`
-Check server health and basic connectivity.
+These tools manage OAuth authentication and do not require prior authentication:
 
+### `health_check`
+Check server health and authentication status.
+
+**Authentication**: Not required
 **Parameters**: None
 
 **Response**:
@@ -14,7 +27,7 @@ Check server health and basic connectivity.
 {
   "content": [{
     "type": "text",
-    "text": "{\"status\": \"healthy\", \"timestamp\": \"2025-01-06T12:00:00Z\"}"
+    "text": "{\"status\": \"healthy\", \"timestamp\": \"2025-01-06T12:00:00Z\", \"authentication\": {\"isAuthenticated\": true, \"tokenExpiry\": \"2025-01-06T13:00:00Z\"}}"
   }]
 }
 ```
@@ -22,13 +35,14 @@ Check server health and basic connectivity.
 ### `auth_status`
 Get current authentication status and token information.
 
+**Authentication**: Not required
 **Parameters**: None
 
 **Response**:
 ```json
 {
   "content": [{
-    "type": "text", 
+    "type": "text",
     "text": "{\"isAuthenticated\": true, \"tokenExpiry\": \"2025-01-06T13:00:00Z\"}"
   }]
 }
@@ -37,6 +51,7 @@ Get current authentication status and token information.
 ### `initiate_oauth`
 Start OAuth 2.0 authentication flow with PKCE.
 
+**Authentication**: Not required
 **Parameters**: None
 
 **Response**:
@@ -44,16 +59,19 @@ Start OAuth 2.0 authentication flow with PKCE.
 {
   "content": [{
     "type": "text",
-    "text": "Please visit the following URL to authenticate:\nhttps://cms.example.com/oauth/authorize?...\n\nState: abc123"
+    "text": "{\"message\": \"OAuth flow initiated\", \"authUrl\": \"https://cms.example.com/oauth/authorize?...\", \"instructions\": \"Please visit the authorization URL to complete authentication\"}"
   }]
 }
 ```
 
 ## Content Management Tools
 
+All CMS tools require OAuth authentication and automatically handle token validation:
+
 ### `cms_get_page`
 Retrieve a specific page from the CMS by ID or path.
 
+**Authentication**: Required (automatic OAuth validation)
 **Parameters**:
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
@@ -84,6 +102,7 @@ Retrieve a specific page from the CMS by ID or path.
 ### `cms_create_page`
 Create a new page in the CMS.
 
+**Authentication**: Required (automatic OAuth validation)
 **Parameters**:
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
@@ -120,6 +139,7 @@ Create a new page in the CMS.
 ### `cms_update_page`
 Update an existing page in the CMS.
 
+**Authentication**: Required (automatic OAuth validation)
 **Parameters**:
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
@@ -150,6 +170,7 @@ Update an existing page in the CMS.
 ### `cms_delete_page`
 Delete a page from the CMS.
 
+**Authentication**: Required (automatic OAuth validation)
 **Parameters**:
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
@@ -177,6 +198,7 @@ Delete a page from the CMS.
 ### `cms_list_pages`
 List pages in the CMS with optional filtering and pagination.
 
+**Authentication**: Required (automatic OAuth validation)
 **Parameters**:
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
@@ -207,6 +229,7 @@ List pages in the CMS with optional filtering and pagination.
 ### `cms_publish_page`
 Publish a page to make it live.
 
+**Authentication**: Required (automatic OAuth validation)
 **Parameters**:
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
@@ -234,6 +257,7 @@ Publish a page to make it live.
 ### `cms_search_content`
 Search for content in the CMS.
 
+**Authentication**: Required (automatic OAuth validation)
 **Parameters**:
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
@@ -278,10 +302,35 @@ All tools return error responses in a consistent format when operations fail.
 
 ### Common Error Types
 
-#### Authentication Errors
+#### OAuth Authentication Errors
+When OAuth authentication is required or fails, tools return structured error responses:
+
+```json
+{
+  "content": [{
+    "type": "text",
+    "text": "{\"error\": \"Authentication required\", \"requiresAuth\": true, \"authUrl\": \"https://cms.example.com/oauth/authorize?...\", \"message\": \"Please complete OAuth authentication to use this tool\"}"
+  }]
+}
+```
+
+**Authentication Error Types**:
+- **TOKEN_MISSING**: No access token available
+- **TOKEN_EXPIRED**: Token expired (past 20 minutes)
+- **TOKEN_INVALID**: Token rejected by CMS
+- **OAUTH_FLOW_REQUIRED**: New OAuth flow needed
+- **REFRESH_FAILED**: Token refresh failed
+
+**Solutions**:
+1. Use [`initiate_oauth`](#initiate_oauth) tool to start authentication
+2. Visit provided authorization URL
+3. Complete OAuth flow in CMS
+4. Retry original tool operation
+
+#### Legacy Authentication Errors
 - **Message**: "Authentication failed: No valid access token available"
 - **Cause**: User not authenticated or token expired
-- **Solution**: Use `initiate_oauth` tool to re-authenticate
+- **Solution**: Use [`initiate_oauth`](#initiate_oauth) tool to re-authenticate
 
 #### Validation Errors
 - **Message**: "Either pageId or path is required"

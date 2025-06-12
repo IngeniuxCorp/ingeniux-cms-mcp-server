@@ -36,9 +36,9 @@ export class OAuthManager {
 	}
 
 	/**
-	 * Initiate OAuth flow with PKCE
+	 * Step 1: Get authorization code (initiate flow)
 	 */
-	public initiateFlow(): AuthorizationURL {
+	public getAuthorizationCode(): AuthorizationURL {
 		try {
 			// Generate PKCE parameters
 			const codeVerifier = this.generateCodeVerifier();
@@ -56,13 +56,41 @@ export class OAuthManager {
 			// Build authorization URL
 			const authUrl = this.buildAuthorizationUrl(codeChallenge, state);
 
+			console.log('OAuth authorization code flow initiated');
+
 			return {
 				url: authUrl,
 				state,
 				codeVerifier
 			};
 		} catch (error) {
-			throw new Error(`Failed to initiate OAuth flow: ${error instanceof Error ? error.message : 'Unknown error'}`);
+			throw new Error(`Failed to get authorization code: ${error instanceof Error ? error.message : 'Unknown error'}`);
+		}
+	}
+
+	/**
+	 * Initiate OAuth flow with PKCE (legacy method)
+	 */
+	public initiateFlow(): AuthorizationURL {
+		return this.getAuthorizationCode();
+	}
+
+	/**
+	 * Step 2: Get access token (exchange code)
+	 */
+	public async getAccessToken(code: string, state: string): Promise<TokenData> {
+		try {
+			// Exchange code for token
+			const tokenData = await this.exchangeCodeForToken(code, state);
+
+			// Store with 20-minute expiry
+			tokenStore.store(tokenData);
+
+			console.log('OAuth access token obtained and cached for 20 minutes');
+
+			return tokenData;
+		} catch (error) {
+			throw new Error(`Failed to get access token: ${error instanceof Error ? error.message : 'Unknown error'}`);
 		}
 	}
 
@@ -93,9 +121,8 @@ export class OAuthManager {
 			// Make token request
 			const response = await this.makeTokenRequest(tokenRequest);
 			
-			// Process and store tokens
+			// Process tokens
 			const tokenData = this.processTokenResponse(response);
-			tokenStore.store(tokenData);
 
 			return tokenData;
 		} catch (error) {
@@ -104,7 +131,7 @@ export class OAuthManager {
 	}
 
 	/**
-	 * Refresh access token using refresh token
+	 * Enhanced refresh with 20-minute expiry
 	 */
 	public async refreshToken(refreshToken?: string): Promise<TokenData> {
 		try {
@@ -125,20 +152,22 @@ export class OAuthManager {
 			// Make refresh request
 			const response = await this.makeTokenRequest(refreshRequest);
 			
-			// Process and store new tokens
+			// Process new tokens
 			const tokenData = this.processTokenResponse(response);
+			
+			// Store with 20-minute expiry
 			tokenStore.store(tokenData);
 
 			return tokenData;
 		} catch (error) {
-			// Clear stored tokens on refresh failure
+			// Clear tokens on refresh failure
 			tokenStore.clear();
 			throw new Error(`Token refresh failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
 		}
 	}
 
 	/**
-	 * Get current valid access token
+	 * Get valid access token with automatic refresh
 	 */
 	public async getValidAccessToken(): Promise<string | null> {
 		try {
@@ -147,18 +176,14 @@ export class OAuthManager {
 				return tokenStore.getAccessToken();
 			}
 
-			// Try to refresh token if it expires soon
-			if (tokenStore.expiresWithin(10)) { // 10 minutes
-				try {
-					const refreshedTokens = await this.refreshToken();
-					return refreshedTokens.accessToken;
-				} catch {
-					// Refresh failed, return null
-					return null;
-				}
+			// Try to refresh token
+			try {
+				const refreshedTokens = await this.refreshToken();
+				return refreshedTokens.accessToken;
+			} catch {
+				// Refresh failed, return null to trigger new OAuth flow
+				return null;
 			}
-
-			return null;
 		} catch {
 			return null;
 		}

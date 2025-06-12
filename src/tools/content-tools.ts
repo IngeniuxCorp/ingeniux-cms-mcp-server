@@ -6,6 +6,8 @@ import { MCPTool, ToolResult } from '../types/mcp-types.js';
 import { APIClient } from '../api/api-client.js';
 import { errorHandler } from '../utils/error-handler.js';
 import { Validators } from '../utils/validators.js';
+import { authMiddleware } from '../auth/auth-middleware.js';
+import { AuthTools } from './auth-tools.js';
 
 export class ContentTools {
 	private apiClient: APIClient;
@@ -15,10 +17,56 @@ export class ContentTools {
 	}
 
 	/**
-	 * Get all content management tools
+	 * Wrap tool with authentication check
+	 */
+	private wrapToolWithAuth(tool: MCPTool): MCPTool {
+		// Skip auth for initiate_oauth tool
+		if (tool.name === 'initiate_oauth') {
+			return tool;
+		}
+
+		return {
+			...tool,
+			handler: async (params: any): Promise<ToolResult> => {
+				try {
+					// Step 1: Validate authentication
+					const isAuthenticated = await authMiddleware.isAuthenticated();
+					
+					if (!isAuthenticated) {
+						const authChallenge = authMiddleware.createAuthChallenge();
+						return {
+							content: [{
+								type: 'text',
+								text: JSON.stringify({
+									error: 'Authentication required',
+									requiresAuth: true,
+									authUrl: authChallenge.authUrl,
+									message: 'Please complete OAuth authentication to use this tool'
+								}, null, 2)
+							}]
+						};
+					}
+
+					// Step 2: Execute original tool
+					return await tool.handler(params);
+					
+				} catch (error) {
+					return errorHandler.createErrorResult(error, {
+						operation: 'authentication_wrapper',
+						toolName: tool.name,
+						timestamp: new Date()
+					});
+				}
+			}
+		};
+	}
+
+	/**
+	 * Get all content management tools with authentication wrapper
 	 */
 	public getTools(): MCPTool[] {
-		return [
+		const authTools = new AuthTools();
+		const cmsTools = [
 			this.createGetPageTool(),
 			this.createCreatePageTool(),
 			this.createUpdatePageTool(),
@@ -26,6 +74,12 @@ export class ContentTools {
 			this.createListPagesTool(),
 			this.createPublishPageTool(),
 			this.createSearchContentTool()
+		];
+
+		// Combine auth tools (no wrapper needed) with wrapped CMS tools
+		return [
+			...authTools.getTools(),
+			...cmsTools.map(tool => this.wrapToolWithAuth(tool))
 		];
 	}
 

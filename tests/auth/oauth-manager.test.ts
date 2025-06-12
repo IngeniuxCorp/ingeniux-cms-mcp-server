@@ -75,7 +75,77 @@ describe('OAuthManager', () => {
 		});
 	});
 
-	describe('initiateFlow', () => {
+	describe('getAuthorizationCode (two-step OAuth process)', () => {
+		it('should generate authorization URL with PKCE parameters', () => {
+			const result = oauthManager.getAuthorizationCode();
+
+			expect(result).toHaveProperty('url');
+			expect(result).toHaveProperty('state');
+			expect(result).toHaveProperty('codeVerifier');
+			expect(result.url).toContain(mockConfig.authorizationUrl);
+			expect(result.url).toContain('response_type=code');
+			expect(result.url).toContain('client_id=test-client-id');
+			expect(result.url).toContain('code_challenge_method=S256');
+		});
+
+		it('should store PKCE data for later validation', () => {
+			const result = oauthManager.getAuthorizationCode();
+			
+			expect(result.state).toBeDefined();
+			expect(result.codeVerifier).toBeDefined();
+		});
+
+		it('should handle errors during authorization code generation', () => {
+			const originalURLSearchParams = global.URLSearchParams;
+			global.URLSearchParams = jest.fn().mockImplementation(() => {
+				throw new Error('URL construction error');
+			});
+
+			expect(() => oauthManager.getAuthorizationCode()).toThrow('Failed to get authorization code');
+			
+			global.URLSearchParams = originalURLSearchParams;
+		});
+	});
+
+	describe('getAccessToken (two-step OAuth process)', () => {
+		it('should exchange code for tokens and store with 20-minute expiry', async () => {
+			const authFlow = oauthManager.getAuthorizationCode();
+			const mockTokenResponse = MockFactories.createOAuthTokenResponse();
+			
+			const mockResponse = {
+				ok: true,
+				status: 200,
+				statusText: 'OK',
+				json: jest.fn().mockResolvedValue(mockTokenResponse)
+			};
+			mockFetch.mockResolvedValueOnce(mockResponse);
+
+			const result = await oauthManager.getAccessToken('auth-code', authFlow.state);
+
+			expect(mockTokenStore.store).toHaveBeenCalledWith(expect.objectContaining({
+				accessToken: mockTokenResponse.access_token,
+				refreshToken: mockTokenResponse.refresh_token
+			}));
+			expect(result.accessToken).toBe(mockTokenResponse.access_token);
+		});
+
+		it('should reject invalid state parameter', async () => {
+			await expect(
+				oauthManager.getAccessToken('auth-code', 'invalid-state')
+			).rejects.toThrow('Failed to get access token');
+		});
+
+		it('should handle token exchange errors', async () => {
+			const authFlow = oauthManager.getAuthorizationCode();
+			mockFetch.mockRejectedValueOnce(new Error('Network error'));
+
+			await expect(
+				oauthManager.getAccessToken('auth-code', authFlow.state)
+			).rejects.toThrow('Failed to get access token');
+		});
+	});
+
+	describe('initiateFlow (legacy method)', () => {
 		it('should generate PKCE parameters and authorization URL', () => {
 			const result = oauthManager.initiateFlow();
 

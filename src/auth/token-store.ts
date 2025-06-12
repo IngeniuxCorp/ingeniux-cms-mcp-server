@@ -9,6 +9,8 @@ export class TokenStore {
 	private static instance: TokenStore;
 	private tokenData: TokenData | null = null;
 	private encryptionKey: string;
+	private cleanupTimer: NodeJS.Timeout | null = null;
+	private readonly TOKEN_TTL = 1200; // 20 minutes in seconds
 
 	private constructor() {
 		// Generate encryption key from environment or create one
@@ -34,14 +36,26 @@ export class TokenStore {
 			// Validate token data
 			this.validateTokenData(tokens);
 
+			// Calculate exact 20-minute expiry
+			const expiresAt = new Date(Date.now() + (this.TOKEN_TTL * 1000));
+
+			// Override expiry time to enforce 20-minute limit
+			const tokenWithFixedExpiry: TokenData = {
+				...tokens,
+				expiresAt
+			};
+
 			// Store encrypted token data
 			this.tokenData = {
-				accessToken: this.encrypt(tokens.accessToken),
-				refreshToken: this.encrypt(tokens.refreshToken),
-				expiresAt: tokens.expiresAt,
-				tokenType: tokens.tokenType,
-				scope: tokens.scope
+				accessToken: this.encrypt(tokenWithFixedExpiry.accessToken),
+				refreshToken: this.encrypt(tokenWithFixedExpiry.refreshToken),
+				expiresAt: tokenWithFixedExpiry.expiresAt,
+				tokenType: tokenWithFixedExpiry.tokenType,
+				scope: tokenWithFixedExpiry.scope
 			};
+
+			// Schedule automatic cleanup
+			this.scheduleCleanup();
 		} catch (error) {
 			throw new Error(`Failed to store tokens: ${error instanceof Error ? error.message : 'Unknown error'}`);
 		}
@@ -76,6 +90,11 @@ export class TokenStore {
 	public clear(): void {
 		try {
 			this.tokenData = null;
+			
+			if (this.cleanupTimer) {
+				clearTimeout(this.cleanupTimer);
+				this.cleanupTimer = null;
+			}
 		} catch (error) {
 			// Silent fail for clearing
 		}
@@ -90,13 +109,11 @@ export class TokenStore {
 				return false;
 			}
 
-			// Check if token is expired
+			// Check against 20-minute expiry
 			const now = new Date();
 			const expiresAt = new Date(this.tokenData.expiresAt);
 			
-			// Add 5 minute buffer before expiration
-			const bufferTime = 5 * 60 * 1000; // 5 minutes in milliseconds
-			return expiresAt.getTime() > (now.getTime() + bufferTime);
+			return expiresAt.getTime() > now.getTime();
 		} catch {
 			return false;
 		}
@@ -275,6 +292,26 @@ export class TokenStore {
 		} catch {
 			// Return encrypted data if decryption fails
 			return encryptedData;
+		}
+	}
+
+	/**
+	 * Schedule automatic token cleanup
+	 */
+	private scheduleCleanup(): void {
+		try {
+			// Clear existing timer
+			if (this.cleanupTimer) {
+				clearTimeout(this.cleanupTimer);
+			}
+
+			// Schedule cleanup after 20 minutes
+			this.cleanupTimer = setTimeout(() => {
+				this.clear();
+				this.cleanupTimer = null;
+			}, this.TOKEN_TTL * 1000);
+		} catch {
+			// Silent fail for cleanup scheduling
 		}
 	}
 }

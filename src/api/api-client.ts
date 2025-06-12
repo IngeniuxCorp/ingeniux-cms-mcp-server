@@ -4,6 +4,7 @@
 
 import { APIRequest, APIResponse, APIError, RateLimitInfo } from '../types/api-types.js';
 import { ServerConfig } from '../types/config-types.js';
+import { authMiddleware } from '../auth/auth-middleware.js';
 
 export class APIClient {
 	private static instance: APIClient;
@@ -22,7 +23,7 @@ export class APIClient {
 	}
 
 	/**
-	 * Make authenticated API request
+	 * Make authenticated API request with automatic auth headers
 	 */
 	public async request<T = any>(request: APIRequest): Promise<APIResponse<T>> {
 		try {
@@ -32,22 +33,25 @@ export class APIClient {
 			// Check rate limits
 			await this.checkRateLimit();
 
+			// Add authentication headers automatically
+			const authenticatedRequest = await this.addAuthHeaders(request);
+
 			// Prepare fetch options
-			const url = this.buildUrl(request.url, request.params);
+			const url = this.buildUrl(authenticatedRequest.url, authenticatedRequest.params);
 			const options: RequestInit = {
-				method: request.method,
+				method: authenticatedRequest.method,
 				headers: {
 					'Content-Type': 'application/json',
 					'Accept': 'application/json',
 					'User-Agent': 'Ingeniux-CMS-MCP-Server/1.0.0',
-					...request.headers
+					...authenticatedRequest.headers
 				},
-				signal: AbortSignal.timeout(request.timeout || this.config.apiTimeout)
+				signal: AbortSignal.timeout(authenticatedRequest.timeout || this.config.apiTimeout)
 			};
 
 			// Add body for non-GET requests
-			if (request.data && request.method !== 'GET') {
-				options.body = JSON.stringify(request.data);
+			if (authenticatedRequest.data && authenticatedRequest.method !== 'GET') {
+				options.body = JSON.stringify(authenticatedRequest.data);
 			}
 
 			// Make request with retry logic
@@ -66,6 +70,10 @@ export class APIClient {
 				headers: this.normalizeHeaders(response.headers)
 			};
 		} catch (error) {
+			// Handle authentication errors
+			if (this.isAuthError(error)) {
+				throw new AuthenticationError(error instanceof Error ? error.message : 'Authentication failed');
+			}
 			throw this.createAPIError(error);
 		}
 	}
@@ -399,5 +407,75 @@ export class APIClient {
 	 */
 	public getBaseUrl(): string {
 		return this.config.cmsBaseUrl;
+	}
+
+	/**
+	 * Add authentication headers to request
+	 */
+	private async addAuthHeaders(request: APIRequest): Promise<APIRequest> {
+		try {
+			// Check if user is authenticated
+			const isAuthenticated = await authMiddleware.isAuthenticated();
+			
+			if (!isAuthenticated) {
+				throw new Error('Authentication required');
+			}
+
+			// Get authenticated request with headers
+			const mcpRequest = { method: request.method, url: request.url };
+			const authenticatedMcpRequest = await authMiddleware.authenticate(mcpRequest);
+
+			// Merge authentication headers with existing headers
+			return {
+				...request,
+				headers: {
+					...request.headers,
+					...authenticatedMcpRequest.headers
+				}
+			};
+		} catch (error) {
+			throw new Error(`Failed to add auth headers: ${error instanceof Error ? error.message : 'Unknown error'}`);
+		}
+	}
+
+	/**
+	 * Check if error is authentication-related
+	 */
+	private isAuthError(error: unknown): boolean {
+		if (error instanceof Error) {
+			// Check for HTTP 401/403 errors
+			const httpMatch = error.message.match(/HTTP (\d+):/);
+			if (httpMatch) {
+				const status = parseInt(httpMatch[1], 10);
+				if (status === 401 || status === 403) {
+					return true;
+				}
+			}
+
+			// Check for authentication error messages
+			const authErrorMessages = [
+				'authentication required',
+				'invalid token',
+				'token expired',
+				'unauthorized',
+				'authentication failed'
+			];
+
+			return authErrorMessages.some(msg =>
+				error.message?.toLowerCase().includes(msg)
+			);
+		}
+
+		return false;
+	}
+}
+
+/**
+	* Custom authentication error
+	*/
+class AuthenticationError extends Error {
+	constructor(message: string) {
+		super(message);
+		this.name = 'AuthenticationError';
 	}
 }

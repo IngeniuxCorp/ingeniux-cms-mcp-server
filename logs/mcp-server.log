@@ -1,0 +1,41 @@
+{"level":"info","message":"Server handlers configured","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:20:38.206Z"}
+{"level":"info","message":"Configuration loaded successfully","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:20:38.211Z"}
+{"level":"info","message":"OAuth manager initialized","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:20:38.211Z"}
+{"level":"info","message":"API client initialized","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:20:38.212Z"}
+{"level":"info","message":"Basic tools registered (auth tools handled by ContentTools)","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:20:38.212Z"}
+{"level":"info","message":"Registered 10 content management tools: health_check, auth_status, initiate_oauth, cms_get_page, cms_create_page, cms_update_page, cms_delete_page, cms_list_pages, cms_publish_page, cms_search_content","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:20:38.213Z"}
+{"level":"info","message":"Tools registered successfully","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:20:38.213Z"}
+{"level":"info","message":"Registered 10 tools","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:20:38.213Z"}
+{"level":"info","message":"MCP server started successfully","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:20:38.214Z"}
+{"level":"info","message":"MCP server is running and ready to accept connections","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:20:38.214Z"}
+{"level":"info","message":"Received SIGINT, shutting down gracefully...","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:20:46.575Z"}
+{"level":"info","message":"Server handlers configured","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:38.000Z"}
+{"level":"info","message":"Configuration loaded successfully","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:38.005Z"}
+{"level":"info","message":"OAuth manager initialized","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:38.006Z"}
+{"level":"info","message":"API client initialized","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:38.006Z"}
+{"level":"info","message":"Basic tools registered (auth tools handled by ContentTools)","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:38.006Z"}
+{"level":"info","message":"Registered 10 content management tools: health_check, auth_status, initiate_oauth, cms_get_page, cms_create_page, cms_update_page, cms_delete_page, cms_list_pages, cms_publish_page, cms_search_content","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:38.007Z"}
+{"level":"info","message":"Tools registered successfully","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:38.007Z"}
+{"level":"info","message":"Registered 10 tools","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:38.008Z"}
+{"level":"info","message":"MCP server started successfully","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:38.008Z"}
+{"level":"info","message":"MCP server is running and ready to accept connections","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:38.008Z"}
+{"level":"info","message":"Server handlers configured","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:49.093Z"}
+{"level":"info","message":"Configuration loaded successfully","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:49.098Z"}
+{"level":"info","message":"OAuth manager initialized","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:49.098Z"}
+{"level":"info","message":"API client initialized","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:49.098Z"}
+{"level":"info","message":"Basic tools registered (auth tools handled by ContentTools)","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:49.098Z"}
+{"level":"info","message":"Registered 10 content management tools: health_check, auth_status, initiate_oauth, cms_get_page, cms_create_page, cms_update_page, cms_delete_page, cms_list_pages, cms_publish_page, cms_search_content","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:49.099Z"}
+{"level":"info","message":"Tools registered successfully","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:49.100Z"}
+{"level":"info","message":"Registered 10 tools","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:49.100Z"}
+{"level":"info","message":"MCP server started successfully","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:49.100Z"}
+{"level":"info","message":"MCP server is running and ready to accept connections","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:21:49.100Z"}
+{"level":"info","message":"Server handlers configured","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:22:09.281Z"}
+{"level":"info","message":"Configuration loaded successfully","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:22:09.285Z"}
+{"level":"info","message":"OAuth manager initialized","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:22:09.286Z"}
+{"level":"info","message":"API client initialized","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:22:09.286Z"}
+{"level":"info","message":"Basic tools registered (auth tools handled by ContentTools)","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:22:09.286Z"}
+{"level":"info","message":"Registered 10 content management tools: health_check, auth_status, initiate_oauth, cms_get_page, cms_create_page, cms_update_page, cms_delete_page, cms_list_pages, cms_publish_page, cms_search_content","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:22:09.287Z"}
+{"level":"info","message":"Tools registered successfully","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:22:09.287Z"}
+{"level":"info","message":"Registered 10 tools","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:22:09.287Z"}
+{"level":"info","message":"MCP server started successfully","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:22:09.287Z"}
+{"level":"info","message":"MCP server is running and ready to accept connections","service":"ingeniux-cms-mcp-server","timestamp":"2025-06-12T00:22:09.287Z"}

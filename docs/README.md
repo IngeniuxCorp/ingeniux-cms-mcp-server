@@ -31,6 +31,18 @@ Perfect for end users, administrators, and those getting started:
   - Performance tuning
   - Validation rules and best practices
 
+- **[OAuth User Guide](oauth-user-guide.md)**
+  - OAuth 2.0 authentication setup
+  - Tool usage with automatic authentication
+  - 20-minute token caching
+  - Error handling and troubleshooting
+
+- **[OAuth Configuration Guide](oauth-configuration-guide.md)**
+  - OAuth application setup in CMS
+  - Environment variable configuration
+  - Security settings and encryption
+  - Multi-environment deployment
+
 - **[Usage Examples](usage-examples.md)**
   - Authentication workflows
   - Content management examples
@@ -43,6 +55,20 @@ Perfect for end users, administrators, and those getting started:
   - Recovery procedures
   - Performance analysis
 
+- **[OAuth Troubleshooting Guide](oauth-troubleshooting-guide.md)**
+  - OAuth authentication issues
+  - Token management problems
+  - Network connectivity debugging
+  - Configuration validation
+  - Recovery procedures
+
+- **[OAuth Migration Guide](oauth-migration-guide.md)**
+  - Upgrading from previous versions
+  - Breaking changes and compatibility
+  - Step-by-step migration process
+  - Common migration issues
+  - Rollback procedures
+
 ### Developer Documentation
 Essential for developers working with or extending the server:
 
@@ -52,6 +78,13 @@ Essential for developers working with or extending the server:
   - Adding new tools and features
   - Testing and debugging
   - Code quality standards
+
+- **[OAuth Developer Guide](oauth-developer-guide.md)**
+  - OAuth 2.0 implementation details
+  - Authentication wrapper patterns
+  - Token management architecture
+  - Security implementation
+  - Performance optimization
 
 - **[API Reference](api-reference.md)**
   - Complete MCP tools reference
@@ -238,12 +271,19 @@ OAUTH_REDIRECT_URI=http://localhost:3000/callback
 ```
 
 ### Essential Tools
-- `health_check` - Server health status
-- `auth_status` - Authentication status
-- `initiate_oauth` - Start authentication
+
+**Authentication Tools** (no auth required):
+- `health_check` - Server health and authentication status
+- `auth_status` - Current authentication status
+- `initiate_oauth` - Start OAuth 2.0 authentication flow
+
+**CMS Tools** (OAuth authentication required):
 - `cms_get_page` - Retrieve page content
 - `cms_create_page` - Create new page
+- `cms_update_page` - Update existing page
+- `cms_delete_page` - Delete page
 - `cms_list_pages` - List pages with filtering
+- `cms_publish_page` - Publish page
 - `cms_search_content` - Search CMS content
 
 For complete tool reference, see [API Reference](api-reference.md).

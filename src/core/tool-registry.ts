@@ -19,7 +19,7 @@ export class ToolRegistry {
 	}
 
 	/**
-	 * Register a new tool
+	 * Register a new tool with duplicate prevention
 	 */
 	public registerTool(tool: MCPTool): void {
 		try {
@@ -31,6 +31,33 @@ export class ToolRegistry {
 			this.tools.set(tool.name, tool);
 		} catch (error) {
 			throw new Error(`Failed to register tool: ${error instanceof Error ? error.message : 'Unknown error'}`);
+		}
+	}
+
+	/**
+	 * Register a tool with conditional duplicate handling
+	 */
+	public registerToolSafe(tool: MCPTool, allowOverwrite: boolean = false): boolean {
+		try {
+			if (!tool) {
+				throw new Error('Tool is required');
+			}
+
+			// Check for existing tool
+			if (this.tools.has(tool.name)) {
+				if (!allowOverwrite) {
+					console.warn(`Tool '${tool.name}' already exists, skipping registration`);
+					return false;
+				}
+				console.warn(`Tool '${tool.name}' already exists, overwriting`);
+			}
+
+			this.validateToolStructure(tool);
+			this.tools.set(tool.name, tool);
+			return true;
+		} catch (error) {
+			console.error(`Failed to register tool safely: ${error instanceof Error ? error.message : 'Unknown error'}`);
+			return false;
 		}
 	}
 
@@ -49,6 +76,36 @@ export class ToolRegistry {
 		} catch (error) {
 			throw new Error(`Failed to register tools: ${error instanceof Error ? error.message : 'Unknown error'}`);
 		}
+	}
+
+	/**
+	 * Register multiple tools safely with duplicate detection
+	 */
+	public registerToolsSafe(tools: MCPTool[], allowOverwrite: boolean = false): { registered: string[]; skipped: string[]; errors: string[] } {
+		const result = { registered: [] as string[], skipped: [] as string[], errors: [] as string[] };
+		
+		try {
+			if (!Array.isArray(tools)) {
+				throw new Error('Tools must be an array');
+			}
+
+			for (const tool of tools) {
+				try {
+					const success = this.registerToolSafe(tool, allowOverwrite);
+					if (success) {
+						result.registered.push(tool.name);
+					} else {
+						result.skipped.push(tool.name);
+					}
+				} catch (error) {
+					result.errors.push(`${tool.name}: ${error instanceof Error ? error.message : 'Unknown error'}`);
+				}
+			}
+		} catch (error) {
+			result.errors.push(`Registration failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+		}
+
+		return result;
 	}
 
 	/**
