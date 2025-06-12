@@ -92,7 +92,7 @@ describe('ContentTools', () => {
 
 		it('should block unauthenticated requests with auth code', async () => {
 			mockAuthMiddleware.isAuthenticated.mockResolvedValue(false);
-			mockAuthMiddleware.getAuthCode.mockReturnValue('auth_code_12345');
+			mockAuthMiddleware.getAuthCode.mockResolvedValue('auth_code_12345');
 
 			const tools = contentTools.getTools();
 			const getPageTool = tools.find(tool => tool.name === 'cms_get_page')!;

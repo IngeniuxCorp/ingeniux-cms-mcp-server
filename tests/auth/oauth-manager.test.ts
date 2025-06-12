@@ -146,34 +146,88 @@ describe('OAuthManager', () => {
 	});
 
 	describe('initiateFlow (updated method)', () => {
-		it('should return auth code string directly', () => {
-			const result = oauthManager.initiateFlow();
+		it('should return auth code string directly', async () => {
+			// Mock the HTTP request for extractAuthCodeFromCMS
+			const mockResponse = {
+				ok: true,
+				status: 200,
+				statusText: 'OK',
+				json: jest.fn().mockResolvedValue({ code: 'auth_code_12345' })
+			};
+			mockFetch.mockResolvedValueOnce(mockResponse);
+
+			const result = await oauthManager.initiateFlow();
 
 			expect(typeof result).toBe('string');
-			expect(result).toContain('auth_code_');
+			expect(result).toBe('auth_code_12345');
 		});
 
-		it('should handle errors during flow initiation', () => {
+		it('should handle errors during flow initiation', async () => {
 			// Mock URLSearchParams to throw error during URL building
 			const originalURLSearchParams = global.URLSearchParams;
 			global.URLSearchParams = jest.fn().mockImplementation(() => {
 				throw new Error('URL construction error');
 			});
 
-			expect(() => oauthManager.initiateFlow()).toThrow('Failed to initiate OAuth flow');
+			await expect(oauthManager.initiateFlow()).rejects.toThrow('Failed to initiate OAuth flow');
 			
 			// Restore original
 			global.URLSearchParams = originalURLSearchParams;
 		});
+
+		it('should handle HTTP errors from CMS server', async () => {
+			const mockErrorResponse = {
+				ok: false,
+				status: 400,
+				statusText: 'Bad Request',
+				json: jest.fn().mockResolvedValue({ error: 'Invalid request' })
+			};
+			mockFetch.mockResolvedValueOnce(mockErrorResponse);
+
+			await expect(oauthManager.initiateFlow()).rejects.toThrow('Failed to initiate OAuth flow');
+		});
+
+		it('should handle missing code in CMS response', async () => {
+			const mockResponse = {
+				ok: true,
+				status: 200,
+				statusText: 'OK',
+				json: jest.fn().mockResolvedValue({ message: 'No code provided' })
+			};
+			mockFetch.mockResolvedValueOnce(mockResponse);
+
+			await expect(oauthManager.initiateFlow()).rejects.toThrow('Failed to initiate OAuth flow');
+		});
 	});
 
 	describe('extractAuthCodeFromCMS helper method', () => {
-		it('should extract auth code from CMS response', () => {
+		it('should extract auth code from CMS response', async () => {
+			// Mock successful CMS response
+			const mockResponse = {
+				ok: true,
+				status: 200,
+				statusText: 'OK',
+				json: jest.fn().mockResolvedValue({ code: 'auth_code_67890' })
+			};
+			mockFetch.mockResolvedValueOnce(mockResponse);
+
 			// Test the helper method indirectly through initiateFlow
-			const result = oauthManager.initiateFlow();
+			const result = await oauthManager.initiateFlow();
 			
 			expect(typeof result).toBe('string');
-			expect(result).toMatch(/^auth_code_\d+$/);
+			expect(result).toBe('auth_code_67890');
+		});
+
+		it('should handle network errors', async () => {
+			mockFetch.mockRejectedValueOnce(new Error('Network error'));
+
+			await expect(oauthManager.initiateFlow()).rejects.toThrow('Failed to initiate OAuth flow');
+		});
+
+		it('should handle timeout errors', async () => {
+			mockFetch.mockRejectedValueOnce(new Error('Request timeout'));
+
+			await expect(oauthManager.initiateFlow()).rejects.toThrow('Failed to initiate OAuth flow');
 		});
 	});
 

@@ -2,8 +2,6 @@
  * API Client Tests - Authorization header injection
  */
 
-import { APIClient } from '../../src/api/api-client';
-import { authMiddleware } from '../../src/auth/auth-middleware';
 import { MockFactories } from '../mocks/mock-factories';
 
 // Mock fetch
@@ -29,8 +27,12 @@ jest.mock('../../src/auth/auth-middleware', () => ({
 	}
 }));
 
+// Import APIClient and mocked authMiddleware after jest.mock
+const { APIClient } = require('../../src/api/api-client');
+const { authMiddleware } = require('../../src/auth/auth-middleware');
+
 describe('APIClient - Authorization Header Injection', () => {
-	let apiClient: APIClient;
+	let apiClient: any;
 	let mockConfig: any;
 	const mockAuthMiddleware = authMiddleware as jest.Mocked<typeof authMiddleware>;
 
@@ -39,7 +41,7 @@ describe('APIClient - Authorization Header Injection', () => {
 		
 		// Reset singleton
 		(APIClient as any).instance = null;
-		apiClient = APIClient.getInstance(mockConfig);
+		apiClient = APIClient.getInstance(mockConfig, mockAuthMiddleware);
 
 		jest.clearAllMocks();
 	});

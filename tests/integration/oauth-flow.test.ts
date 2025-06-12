@@ -63,11 +63,20 @@ describe('OAuth Flow Integration', () => {
 
 	describe('Complete OAuth Flow', () => {
 		it('should complete full authorization code flow with new initiateFlow', async () => {
-			// Step 1: Initiate OAuth flow (now returns string)
-			const authCode = oauthManager.initiateFlow();
+			// Step 1: Mock CMS response for initiateFlow
+			const mockCMSResponse = {
+				ok: true,
+				status: 200,
+				statusText: 'OK',
+				json: jest.fn().mockResolvedValue({ code: 'auth_code_12345' })
+			};
+			mockFetch.mockResolvedValueOnce(mockCMSResponse);
+
+			// Step 1: Initiate OAuth flow (now returns Promise<string>)
+			const authCode = await oauthManager.initiateFlow();
 			
 			expect(typeof authCode).toBe('string');
-			expect(authCode).toContain('auth_code_');
+			expect(authCode).toBe('auth_code_12345');
 
 			// Step 2: Use getAuthorizationCode for traditional flow
 			const authFlow = oauthManager.getAuthorizationCode();
@@ -258,7 +267,16 @@ describe('OAuth Flow Integration', () => {
 
 	describe('Security Validations', () => {
 		it('should validate state parameter to prevent CSRF', async () => {
-			oauthManager.initiateFlow();
+			// Mock CMS response for initiateFlow
+			const mockCMSResponse = {
+				ok: true,
+				status: 200,
+				statusText: 'OK',
+				json: jest.fn().mockResolvedValue({ code: 'auth_code_12345' })
+			};
+			mockFetch.mockResolvedValueOnce(mockCMSResponse);
+
+			await oauthManager.initiateFlow();
 			
 			// Try to use different state
 			await expect(

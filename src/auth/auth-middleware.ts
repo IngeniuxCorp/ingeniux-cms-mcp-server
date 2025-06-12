@@ -55,7 +55,7 @@ export class AuthMiddleware {
 			oauthManagerExists: !!this.oauthManager,
 			timestamp: new Date().toISOString()
 		});
-
+	
 		try {
 			if (!this.oauthManager) {
 				logger.error('authenticate() - OAuth manager not initialized', {
@@ -66,58 +66,35 @@ export class AuthMiddleware {
 				});
 				throw new Error('OAuth manager not initialized');
 			}
-
-			logger.debug('authenticate() - OAuth manager validated, calling validateAuthentication()', {
+	
+			logger.debug('authenticate() - OAuth manager validated, calling getBearerToken()', {
 				operation: 'authenticate',
 				requestId,
 				oauthManagerState: 'initialized',
 				timestamp: new Date().toISOString()
 			});
-
-			// Validate authentication and get token
-			const authResult = await this.validateAuthentication();
-			
-			logger.debug('authenticate() - validateAuthentication() result', {
+	
+			// Get a new bearer token using the full OAuth flow
+			const token = await this.oauthManager.getBearerToken();
+	
+			logger.debug('authenticate() - getBearerToken() result', {
 				operation: 'authenticate',
 				requestId,
-				authResultIsValid: authResult.isValid,
-				authResultHasToken: !!authResult.token,
-				authResultError: authResult.error || 'none',
-				authResultRequiresAuth: authResult.requiresAuth || false,
-				maskedToken: this.maskToken(authResult.token),
+				hasToken: !!token,
+				maskedToken: this.maskToken(token.accessToken),
 				timestamp: new Date().toISOString()
 			});
-			
-			if (!authResult.isValid) {
-				logger.warn('authenticate() - Authentication validation failed', {
-					operation: 'authenticate',
-					requestId,
-					authError: authResult.error || 'No valid token',
-					requiresAuth: authResult.requiresAuth || false,
-					authUrl: authResult.authUrl || 'none',
-					timestamp: new Date().toISOString()
-				});
-				throw new Error(`Authentication required: ${authResult.error || 'No valid token'}`);
-			}
-
-			logger.debug('authenticate() - Creating authenticated request', {
-				operation: 'authenticate',
-				requestId,
-				hasValidToken: true,
-				maskedToken: this.maskToken(authResult.token),
-				timestamp: new Date().toISOString()
-			});
-
+	
 			// Add authentication headers
 			const authenticatedRequest: AuthenticatedRequest = {
 				...request,
 				headers: {
-					'Authorization': `Bearer ${authResult.token}`,
+					'Authorization': `Bearer ${token.accessToken}`,
 					'Content-Type': 'application/json',
 					'Accept': 'application/json'
 				}
 			};
-
+	
 			const duration = Date.now() - startTime;
 			logger.info('authenticate() - Method exit - Success', {
 				operation: 'authenticate',
@@ -127,7 +104,7 @@ export class AuthMiddleware {
 				hasAuthHeaders: !!authenticatedRequest.headers?.Authorization,
 				timestamp: new Date().toISOString()
 			});
-
+	
 			return authenticatedRequest;
 		} catch (error) {
 			const duration = Date.now() - startTime;
@@ -149,74 +126,10 @@ export class AuthMiddleware {
 	}
 
 	/**
-	 * Check if user is authenticated with automatic validation
+	 * Check if user is authenticated (always false, as we always get a new token)
 	 */
 	public async isAuthenticated(): Promise<boolean> {
-		const startTime = Date.now();
-		const operationId = `isAuth_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-		
-		logger.debug('isAuthenticated() - Method entry', {
-			operation: 'isAuthenticated',
-			operationId,
-			oauthManagerExists: !!this.oauthManager,
-			timestamp: new Date().toISOString()
-		});
-
-		try {
-			if (!this.oauthManager) {
-				logger.warn('isAuthenticated() - OAuth manager not initialized', {
-					operation: 'isAuthenticated',
-					operationId,
-					oauthManagerState: 'null',
-					result: false,
-					timestamp: new Date().toISOString()
-				});
-				return false;
-			}
-
-			logger.debug('isAuthenticated() - Calling validateAuthentication()', {
-				operation: 'isAuthenticated',
-				operationId,
-				oauthManagerState: 'initialized',
-				timestamp: new Date().toISOString()
-			});
-
-			const authResult = await this.validateAuthentication();
-			
-			const duration = Date.now() - startTime;
-			logger.debug('isAuthenticated() - validateAuthentication() completed', {
-				operation: 'isAuthenticated',
-				operationId,
-				authResultIsValid: authResult.isValid,
-				authResultError: authResult.error || 'none',
-				authResultRequiresAuth: authResult.requiresAuth || false,
-				maskedToken: this.maskToken(authResult.token),
-				duration,
-				timestamp: new Date().toISOString()
-			});
-
-			logger.info('isAuthenticated() - Method exit - Success', {
-				operation: 'isAuthenticated',
-				operationId,
-				result: authResult.isValid,
-				duration,
-				timestamp: new Date().toISOString()
-			});
-
-			return authResult.isValid;
-		} catch (error) {
-			const duration = Date.now() - startTime;
-			logger.error('isAuthenticated() - Method exit - Error', {
-				operation: 'isAuthenticated',
-				operationId,
-				result: false,
-				duration,
-				error: error instanceof Error ? error.message : 'Unknown error',
-				errorType: error instanceof Error ? error.constructor.name : 'unknown',
-				timestamp: new Date().toISOString()
-			});
-			return false;
-		}
+		return false;
 	}
 
 	/**
@@ -460,7 +373,7 @@ export class AuthMiddleware {
 	/**
 	 * Get authentication code directly from OAuth flow
 	 */
-	public getAuthCode(): string {
+	public async getAuthCode(): Promise<string> {
 		const operationId = `getAuthCode_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 		
 		logger.debug('getAuthCode() - Method entry', {
@@ -486,7 +399,7 @@ export class AuthMiddleware {
 				timestamp: new Date().toISOString()
 			});
 
-			const authCode = this.oauthManager.initiateFlow();
+			const authCode = await this.oauthManager.initiateFlow();
 
 			logger.info('getAuthCode() - Method exit - Success', {
 				operation: 'getAuthCode',
@@ -611,206 +524,9 @@ export class AuthMiddleware {
 		}
 	}
 
-	/**
-	 * Validate current authentication state
-	 */
-	private async validateAuthentication(): Promise<AuthValidationResult> {
-		const startTime = Date.now();
-		const operationId = `validateAuth_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-		
-		logger.debug('validateAuthentication() - Method entry', {
-			operation: 'validateAuthentication',
-			operationId,
-			oauthManagerExists: !!this.oauthManager,
-			timestamp: new Date().toISOString()
-		});
+	// Removed: validateAuthentication and handleMissingToken (no longer used)
 
-		try {
-			if (!this.oauthManager) {
-				logger.error('validateAuthentication() - OAuth manager not initialized', {
-					operation: 'validateAuthentication',
-					operationId,
-					result: { isValid: false, error: 'OAuth manager not initialized' },
-					timestamp: new Date().toISOString()
-				});
-				return { isValid: false, error: 'OAuth manager not initialized' };
-			}
-
-			logger.debug('validateAuthentication() - Getting valid access token', {
-				operation: 'validateAuthentication',
-				operationId,
-				timestamp: new Date().toISOString()
-			});
-
-			const token = await this.oauthManager.getValidAccessToken();
-			
-			logger.debug('validateAuthentication() - Access token result', {
-				operation: 'validateAuthentication',
-				operationId,
-				hasToken: !!token,
-				maskedToken: this.maskToken(token),
-				timestamp: new Date().toISOString()
-			});
-			
-			if (!token) {
-				logger.debug('validateAuthentication() - No valid token, calling handleMissingToken()', {
-					operation: 'validateAuthentication',
-					operationId,
-					timestamp: new Date().toISOString()
-				});
-
-				const result = await this.handleMissingToken();
-				const duration = Date.now() - startTime;
-				
-				logger.debug('validateAuthentication() - Method exit - Missing token handled', {
-					operation: 'validateAuthentication',
-					operationId,
-					result: { isValid: result.isValid, requiresAuth: result.requiresAuth },
-					duration,
-					timestamp: new Date().toISOString()
-				});
-				
-				return result;
-			}
-
-			const duration = Date.now() - startTime;
-			logger.info('validateAuthentication() - Method exit - Success', {
-				operation: 'validateAuthentication',
-				operationId,
-				result: { isValid: true },
-				duration,
-				maskedToken: this.maskToken(token),
-				timestamp: new Date().toISOString()
-			});
-
-			return { isValid: true, token };
-		} catch (error) {
-			const duration = Date.now() - startTime;
-			const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-			
-			logger.error('validateAuthentication() - Method exit - Error', {
-				operation: 'validateAuthentication',
-				operationId,
-				result: { isValid: false, error: errorMessage },
-				duration,
-				errorType: error instanceof Error ? error.constructor.name : 'unknown',
-				timestamp: new Date().toISOString()
-			});
-
-			return {
-				isValid: false,
-				error: errorMessage
-			};
-		}
-	}
-
-	/**
-	 * Handle missing or expired token
-	 */
-	private async handleMissingToken(): Promise<AuthValidationResult> {
-		const startTime = Date.now();
-		const operationId = `handleMissingToken_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-		
-		logger.debug('handleMissingToken() - Method entry', {
-			operation: 'handleMissingToken',
-			operationId,
-			oauthManagerExists: !!this.oauthManager,
-			timestamp: new Date().toISOString()
-		});
-
-		try {
-			if (!this.oauthManager) {
-				logger.error('handleMissingToken() - OAuth manager not initialized', {
-					operation: 'handleMissingToken',
-					operationId,
-					result: { isValid: false, error: 'OAuth manager not initialized' },
-					timestamp: new Date().toISOString()
-				});
-				return { isValid: false, error: 'OAuth manager not initialized' };
-			}
-
-			logger.debug('handleMissingToken() - Attempting token refresh', {
-				operation: 'handleMissingToken',
-				operationId,
-				timestamp: new Date().toISOString()
-			});
-
-			try {
-				const refreshedToken = await this.oauthManager.refreshToken();
-				
-				logger.debug('handleMissingToken() - Token refresh result', {
-					operation: 'handleMissingToken',
-					operationId,
-					refreshSuccess: !!refreshedToken,
-					hasAccessToken: !!(refreshedToken?.accessToken),
-					maskedToken: this.maskToken(refreshedToken?.accessToken),
-					timestamp: new Date().toISOString()
-				});
-
-				if (refreshedToken) {
-					const duration = Date.now() - startTime;
-					logger.info('handleMissingToken() - Method exit - Token refreshed successfully', {
-						operation: 'handleMissingToken',
-						operationId,
-						result: { isValid: true },
-						duration,
-						maskedToken: this.maskToken(refreshedToken.accessToken),
-						timestamp: new Date().toISOString()
-					});
-					return { isValid: true, token: refreshedToken.accessToken };
-				}
-			} catch (refreshError) {
-				logger.warn('handleMissingToken() - Token refresh failed', {
-					operation: 'handleMissingToken',
-					operationId,
-					refreshError: refreshError instanceof Error ? refreshError.message : 'Unknown refresh error',
-					timestamp: new Date().toISOString()
-				});
-			}
-
-			logger.debug('handleMissingToken() - Initiating new OAuth flow', {
-				operation: 'handleMissingToken',
-				operationId,
-				timestamp: new Date().toISOString()
-			});
-
-			const authFlow = this.oauthManager.getAuthorizationCode();
-			const result = {
-				isValid: false,
-				requiresAuth: true,
-				authUrl: authFlow.url,
-				error: 'OAUTH_FLOW_REQUIRED'
-			};
-
-			const duration = Date.now() - startTime;
-			logger.info('handleMissingToken() - Method exit - OAuth flow initiated', {
-				operation: 'handleMissingToken',
-				operationId,
-				result: { isValid: false, requiresAuth: true, hasAuthUrl: !!authFlow.url },
-				duration,
-				timestamp: new Date().toISOString()
-			});
-
-			return result;
-		} catch (error) {
-			const duration = Date.now() - startTime;
-			const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-			
-			logger.error('handleMissingToken() - Method exit - Error', {
-				operation: 'handleMissingToken',
-				operationId,
-				result: { isValid: false, error: errorMessage },
-				duration,
-				errorType: error instanceof Error ? error.constructor.name : 'unknown',
-				timestamp: new Date().toISOString()
-			});
-
-			return {
-				isValid: false,
-				error: errorMessage
-			};
-		}
-	}
+	// Removed: handleMissingToken (no longer used)
 
 	/**
 	 * Validate authorization header format

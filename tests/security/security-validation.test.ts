@@ -82,12 +82,33 @@ describe('Security Validation Tests', () => {
 			});
 		});
 
-		it('should use secure token generation', () => {
-			const authFlow = oauthManager.initiateFlow();
-			
-			// Verify PKCE parameters are generated
-			expect(typeof authFlow).toBe('string');
-			expect(authFlow.length).toBeGreaterThan(10);
+		it('should use secure token generation', async () => {
+			// Mock CMS response for initiateFlow
+			const mockCMSResponse = {
+				ok: true,
+				status: 200,
+				statusText: 'OK',
+				headers: new Headers(),
+				redirected: false,
+				type: 'basic' as any,
+				url: 'https://example.com',
+				clone: jest.fn(),
+				body: null,
+				bodyUsed: false,
+				arrayBuffer: jest.fn(),
+				blob: jest.fn(),
+				formData: jest.fn(),
+				text: jest.fn(),
+				json: jest.fn().mockResolvedValue({ code: 'auth_code_12345' })
+			};
+			const mockFetch = global.fetch as jest.MockedFunction<typeof fetch>;
+			mockFetch.mockResolvedValueOnce(mockCMSResponse as any);
+
+			const authCode = await oauthManager.initiateFlow();
+
+			// Verify auth code is generated securely
+			expect(typeof authCode).toBe('string');
+			expect(authCode.length).toBeGreaterThan(10);
 		});
 
 		it('should not store client secrets in accessible config', () => {

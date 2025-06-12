@@ -54,11 +54,31 @@ describe('Performance Tests', () => {
 	});
 
 	describe('OAuth Manager Performance', () => {
-		it('should generate PKCE parameters quickly', () => {
+		it('should generate PKCE parameters quickly', async () => {
 			const startTime = performance.now();
 			
+			// Mock CMS responses for all initiateFlow calls
+			const mockCMSResponse = {
+				ok: true,
+				status: 200,
+				statusText: 'OK',
+				headers: new Headers(),
+				redirected: false,
+				type: 'basic' as any,
+				url: 'https://example.com',
+				clone: jest.fn(),
+				body: null,
+				bodyUsed: false,
+				arrayBuffer: jest.fn(),
+				blob: jest.fn(),
+				formData: jest.fn(),
+				text: jest.fn(),
+				json: jest.fn().mockResolvedValue({ code: 'auth_code_12345' })
+			};
+			
 			for (let i = 0; i < 100; i++) {
-				oauthManager.initiateFlow();
+				mockFetch.mockResolvedValueOnce(mockCMSResponse as any);
+				await oauthManager.initiateFlow();
 			}
 			
 			const endTime = performance.now();
@@ -319,12 +339,31 @@ describe('Performance Tests', () => {
 	});
 
 	describe('Memory Usage', () => {
-		it('should not leak memory during OAuth operations', () => {
+		it('should not leak memory during OAuth operations', async () => {
 			const initialMemory = process.memoryUsage().heapUsed;
 			
 			// Perform many OAuth operations
 			for (let i = 0; i < 1000; i++) {
-				oauthManager.initiateFlow();
+				// Mock CMS response for each call
+				const mockCMSResponse = {
+					ok: true,
+					status: 200,
+					statusText: 'OK',
+					headers: new Headers(),
+					redirected: false,
+					type: 'basic' as any,
+					url: 'https://example.com',
+					clone: jest.fn(),
+					body: null,
+					bodyUsed: false,
+					arrayBuffer: jest.fn(),
+					blob: jest.fn(),
+					formData: jest.fn(),
+					text: jest.fn(),
+					json: jest.fn().mockResolvedValue({ code: `auth_code_${i}` })
+				};
+				mockFetch.mockResolvedValueOnce(mockCMSResponse as any);
+				await oauthManager.initiateFlow();
 				// Simulate cleanup
 				oauthManager.logout();
 			}

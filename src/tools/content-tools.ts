@@ -27,7 +27,7 @@ export class ContentTools {
 					const isAuthenticated = await authMiddleware.isAuthenticated();
 					
 					if (!isAuthenticated) {
-						const authCode = authMiddleware.getAuthCode();
+						const authCode = await authMiddleware.getAuthCode();
 						return {
 							content: [{
 								type: 'text',

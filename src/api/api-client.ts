@@ -4,20 +4,22 @@
 
 import { APIRequest, APIResponse, APIError, RateLimitInfo } from '../types/api-types.js';
 import { ServerConfig } from '../types/config-types.js';
-import { authMiddleware } from '../auth/auth-middleware.js';
+import { authMiddleware as defaultAuthMiddleware } from '../auth/auth-middleware.js';
 
 export class APIClient {
 	private static instance: APIClient;
 	private config: ServerConfig;
 	private rateLimitInfo: RateLimitInfo | null = null;
+	private authMiddleware: typeof defaultAuthMiddleware;
 
-	private constructor(config: ServerConfig) {
+	private constructor(config: ServerConfig, authMiddleware?: typeof defaultAuthMiddleware) {
 		this.config = config;
+		this.authMiddleware = authMiddleware || defaultAuthMiddleware;
 	}
 
-	public static getInstance(config: ServerConfig): APIClient {
+	public static getInstance(config: ServerConfig, authMiddleware?: typeof defaultAuthMiddleware): APIClient {
 		if (!APIClient.instance) {
-			APIClient.instance = new APIClient(config);
+			APIClient.instance = new APIClient(config, authMiddleware);
 		}
 		return APIClient.instance;
 	}
@@ -415,16 +417,16 @@ export class APIClient {
 	private async addAuthHeaders(request: APIRequest): Promise<APIRequest> {
 		try {
 			// Check if user is authenticated
-			const isAuthenticated = await authMiddleware.isAuthenticated();
+			const isAuthenticated = await this.authMiddleware.isAuthenticated();
 			
 			if (!isAuthenticated) {
 				throw new Error('Authentication required');
 			}
-
+	
 			// Get authenticated request with headers
 			const mcpRequest = { method: request.method, url: request.url };
-			const authenticatedMcpRequest = await authMiddleware.authenticate(mcpRequest);
-
+			const authenticatedMcpRequest = await this.authMiddleware.authenticate(mcpRequest);
+	
 			// Merge authentication headers with existing headers
 			return {
 				...request,

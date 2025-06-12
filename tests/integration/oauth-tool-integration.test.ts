@@ -248,6 +248,15 @@ describe('OAuth Tool Integration', () => {
 			mockTokenStore.isValid.mockReturnValue(false);
 			mockTokenStore.getRefreshToken.mockReturnValue(null);
 
+			// Mock getAuthCode response
+			const mockCMSResponse = {
+				ok: true,
+				status: 200,
+				statusText: 'OK',
+				json: jest.fn().mockResolvedValue({ code: 'auth_code_12345' })
+			};
+			mockFetch.mockResolvedValueOnce(mockCMSResponse);
+
 			// Execute tool without authentication
 			const tools = contentTools.getTools();
 			const createPageTool = tools.find((tool: any) => tool.name === 'cms_create_page')!;
@@ -260,10 +269,10 @@ describe('OAuth Tool Integration', () => {
 			const responseText = JSON.parse(result.content[0].text!);
 			expect(responseText.error).toBe('Authentication required');
 			expect(responseText.requiresAuth).toBe(true);
-			expect(responseText.authCode).toBeDefined();
+			expect(responseText.authCode).toBe('auth_code_12345');
 			
-			// No CMS API call should be made
-			expect(mockFetch).not.toHaveBeenCalled();
+			// Only the auth code fetch should be made, no CMS API call
+			expect(mockFetch).toHaveBeenCalledTimes(1);
 		});
 	});
 
@@ -271,6 +280,14 @@ describe('OAuth Tool Integration', () => {
 		it('should require authentication for all 7 CMS tools', async () => {
 			// Setup: Not authenticated
 			mockTokenStore.isValid.mockReturnValue(false);
+
+			// Mock getAuthCode response for each tool call
+			const mockCMSResponse = {
+				ok: true,
+				status: 200,
+				statusText: 'OK',
+				json: jest.fn().mockResolvedValue({ code: 'auth_code_12345' })
+			};
 
 			const tools = contentTools.getTools();
 			const cmsTools = [
@@ -285,12 +302,16 @@ describe('OAuth Tool Integration', () => {
 
 			// Test each CMS tool requires authentication
 			for (const toolName of cmsTools) {
+				// Mock fetch for each tool call
+				mockFetch.mockResolvedValueOnce(mockCMSResponse);
+				
 				const tool = tools.find((t: any) => t.name === toolName)!;
 				const result = await tool.handler({});
 				
 				const responseText = JSON.parse(result.content[0].text!);
 				expect(responseText.error).toBe('Authentication required');
 				expect(responseText.requiresAuth).toBe(true);
+				expect(responseText.authCode).toBe('auth_code_12345');
 			}
 		});
 	});

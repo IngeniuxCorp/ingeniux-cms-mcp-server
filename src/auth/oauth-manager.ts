@@ -71,7 +71,7 @@ export class OAuthManager {
 	/**
 	 * Initiate OAuth flow with PKCE - returns auth code directly
 	 */
-	public initiateFlow(): string {
+	public async initiateFlow(): Promise<string> {
 		try {
 			// Generate PKCE parameters
 			const codeVerifier = this.generateCodeVerifier();
@@ -87,13 +87,13 @@ export class OAuthManager {
 			this.pendingAuth.set(state, pkceData);
 
 			// Build authorization URL
-			this.buildAuthorizationUrl(codeChallenge, state);
+			const authUrl = this.buildAuthorizationUrl(codeChallenge, state);
 
 			console.log('OAuth authorization code flow initiated');
 
 			// Make request to CMS server to get auth code
 			// CMS server returns {code: string} when hitting authorization URL
-			return this.extractAuthCodeFromCMS();
+			return await this.extractAuthCodeFromCMS(authUrl);
 		} catch (error) {
 			throw new Error(`Failed to initiate OAuth flow: ${error instanceof Error ? error.message : 'Unknown error'}`);
 		}
@@ -102,13 +102,49 @@ export class OAuthManager {
 	/**
 	 * Extract auth code from CMS server response
 	 */
-	private extractAuthCodeFromCMS(): string {
+	private async extractAuthCodeFromCMS(authorizationUrl: string): Promise<string> {
 		try {
-			// Simulated code for now
-			const simulatedResponse = { code: `auth_code_${Date.now()}` };
-			return simulatedResponse.code;
+			if (!authorizationUrl) {
+				throw new Error('Authorization URL is required');
+			}
+
+			// Check if fetch is available (for test environments)
+			if (typeof fetch === 'undefined') {
+				throw new Error('Fetch API not available in this environment');
+			}
+
+			// Make HTTP GET request to the authorization URL
+			const response = await fetch(authorizationUrl, {
+				method: 'GET',
+				headers: {
+					'Accept': 'application/json',
+					'User-Agent': 'Ingeniux-CMS-MCP-Server/1.0'
+				},
+				signal: AbortSignal.timeout(30000)
+			});
+
+			if (!response || !response.ok) {
+				throw new Error(`HTTP ${response?.status || 'unknown'}: ${response?.statusText || 'Unknown error'}`);
+			}
+
+			// Parse the JSON response
+			const responseData = await response.json() as any;
+
+			// Extract the code property from the response
+			if (!responseData || typeof responseData !== 'object') {
+				throw new Error('Invalid response format from CMS server');
+			}
+
+			if (!responseData.code || typeof responseData.code !== 'string') {
+				throw new Error('No valid auth code found in CMS response');
+			}
+
+			return responseData.code;
 		} catch (error) {
-			throw new Error(`Failed to extract auth code from CMS: ${error instanceof Error ? error.message : 'Unknown error'}`);
+			if (error instanceof Error) {
+				throw new Error(`Failed to extract auth code from CMS: ${error.message}`);
+			}
+			throw new Error(`Failed to extract auth code from CMS: ${String(error)}`);
 		}
 	}
 
@@ -297,11 +333,7 @@ export class OAuthManager {
 			const params = new URLSearchParams({
 				response_type: 'code',
 				client_id: this.config.clientId,
-				redirect_uri: this.config.redirectUri,
-				scope: this.config.scopes.join(' '),
-				state,
-				code_challenge: codeChallenge,
-				code_challenge_method: 'S256'
+				redirect_uri: this.config.redirectUri
 			});
 
 			return `${this.config.authorizationUrl}?${params.toString()}`;
@@ -397,5 +429,32 @@ export class OAuthManager {
 			redirectUri: this.config.redirectUri,
 			scopes: [...this.config.scopes]
 		};
+	}
+/**
+	 * Complete OAuth flow: get auth code and exchange for access token.
+	 * No refresh logic. Always gets a new access token.
+	 * Returns the access token string.
+	 */
+	public async getBearerToken(): Promise<TokenData> {
+		try {
+			// Step 1: Get auth code from CMS
+			const code = await this.initiateFlow();
+	
+			// Step 2: Use state from last PKCE (most recent)
+			const lastState = Array.from(this.pendingAuth.keys()).pop();
+			if (!lastState) {
+				throw new Error('No state found for PKCE flow');
+			}
+	
+			// Step 3: Exchange code for access token
+			const tokenData = await this.exchangeCodeForToken(code, lastState);
+	
+			// Step 4: Store with 20-minute expiry
+			tokenStore.store(tokenData);
+	
+			return tokenData;
+		} catch (error) {
+			throw new Error(`Failed to complete OAuth flow: ${error instanceof Error ? error.message : 'Unknown error'}`);
+		}
 	}
 }

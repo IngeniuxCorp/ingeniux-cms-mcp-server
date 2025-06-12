@@ -391,28 +391,26 @@ describe('AuthMiddleware', () => {
 	});
 
 	describe('getAuthCode', () => {
-		it('should return auth code string from OAuth flow', () => {
-			mockOAuthManager.initiateFlow.mockReturnValue('auth_code_12345');
+		it('should return auth code string from OAuth flow', async () => {
+			mockOAuthManager.initiateFlow.mockResolvedValue('auth_code_12345');
 
-			const result = authMiddleware.getAuthCode();
+			const result = await authMiddleware.getAuthCode();
 
 			expect(typeof result).toBe('string');
 			expect(result).toBe('auth_code_12345');
 			expect(mockOAuthManager.initiateFlow).toHaveBeenCalled();
 		});
 
-		it('should handle OAuth manager not initialized', () => {
+		it('should handle OAuth manager not initialized', async () => {
 			(authMiddleware as any).oauthManager = null;
 
-			expect(() => authMiddleware.getAuthCode()).toThrow('OAuth manager not initialized');
+			await expect(authMiddleware.getAuthCode()).rejects.toThrow('OAuth manager not initialized');
 		});
 
-		it('should handle errors during auth code generation', () => {
-			mockOAuthManager.initiateFlow.mockImplementation(() => {
-				throw new Error('Flow initiation failed');
-			});
+		it('should handle errors during auth code generation', async () => {
+			mockOAuthManager.initiateFlow.mockRejectedValue(new Error('Flow initiation failed'));
 
-			expect(() => authMiddleware.getAuthCode()).toThrow('Failed to get auth code: Flow initiation failed');
+			await expect(authMiddleware.getAuthCode()).rejects.toThrow('Failed to get auth code: Flow initiation failed');
 		});
 	});
 
