@@ -61,7 +61,7 @@ export class MCPServer {
 
 			// Load and validate configuration
 			const config = configManager.loadConfiguration();
-			logger.info('Configuration loaded successfully');
+			logger.info('Configuration loaded successfully', { config });
 
 			// Initialize OAuth manager
 			this.oauthManager = OAuthManager.getInstance(config.oauth);

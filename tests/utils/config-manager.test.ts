@@ -281,6 +281,51 @@ describe('ConfigManager', () => {
 			expect(config.oauth.authorizationUrl).toBe('https://cms.example.com/oauth/authorize');
 		});
 
+		it('should handle base URL with /api suffix', () => {
+			process.env.CMS_BASE_URL = 'https://cms.example.com/api';
+
+			const config = configManager.loadConfiguration();
+
+			expect(config.oauth.authorizationUrl).toBe('https://cms.example.com/oauth/authorize');
+			expect(config.oauth.tokenUrl).toBe('https://cms.example.com/oauth/token');
+		});
+
+		it('should handle base URL with path and /api suffix', () => {
+			process.env.CMS_BASE_URL = 'https://cms.example.com/cxp4/api';
+
+			const config = configManager.loadConfiguration();
+
+			expect(config.oauth.authorizationUrl).toBe('https://cms.example.com/cxp4/oauth/authorize');
+			expect(config.oauth.tokenUrl).toBe('https://cms.example.com/cxp4/oauth/token');
+		});
+
+		it('should handle base URL with path but no /api suffix', () => {
+			process.env.CMS_BASE_URL = 'https://cms.example.com/cxp4';
+
+			const config = configManager.loadConfiguration();
+
+			expect(config.oauth.authorizationUrl).toBe('https://cms.example.com/cxp4/oauth/authorize');
+			expect(config.oauth.tokenUrl).toBe('https://cms.example.com/cxp4/oauth/token');
+		});
+
+		it('should handle base URL with /api suffix and trailing slash', () => {
+			process.env.CMS_BASE_URL = 'https://cms.example.com/api/';
+
+			const config = configManager.loadConfiguration();
+
+			expect(config.oauth.authorizationUrl).toBe('https://cms.example.com/oauth/authorize');
+			expect(config.oauth.tokenUrl).toBe('https://cms.example.com/oauth/token');
+		});
+
+		it('should handle base URL with path, /api suffix, and trailing slash', () => {
+			process.env.CMS_BASE_URL = 'https://cms.example.com/cxp4/api/';
+
+			const config = configManager.loadConfiguration();
+
+			expect(config.oauth.authorizationUrl).toBe('https://cms.example.com/cxp4/oauth/authorize');
+			expect(config.oauth.tokenUrl).toBe('https://cms.example.com/cxp4/oauth/token');
+		});
+
 		it('should handle empty base URL', () => {
 			process.env.CMS_BASE_URL = '';
 

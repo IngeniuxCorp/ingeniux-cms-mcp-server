@@ -85,6 +85,8 @@ export class ConfigManager {
 				rateLimitRpm: parseInt(env.RATE_LIMIT_RPM || '100', 10)
 			};
 
+            console.log('Loaded configuration:', configData);
+
 			// Validate configuration
 			const validation = this.validateConfig(configData);
 			if (!validation.isValid) {
@@ -157,7 +159,22 @@ export class ConfigManager {
 		
 		try {
 			const url = new URL(baseUrl);
-			url.pathname = `/oauth/${endpoint}`;
+			
+			// Extract base path by removing '/api' suffix if present
+			let basePath = url.pathname;
+			
+			// Remove trailing slash if present
+			if (basePath.endsWith('/')) {
+				basePath = basePath.slice(0, -1);
+			}
+			
+			// Remove '/api' suffix if present
+			if (basePath.endsWith('/api')) {
+				basePath = basePath.slice(0, -4);
+			}
+			
+			// Construct OAuth URL with proper base path
+			url.pathname = `${basePath}/oauth/${endpoint}`;
 			return url.toString();
 		} catch {
 			return '';
