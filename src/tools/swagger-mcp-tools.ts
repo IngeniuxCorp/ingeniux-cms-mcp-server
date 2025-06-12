@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { APIClient } from '../api/api-client.js';
 import { MCPTool } from '../types/mcp-types.js';
+import { logger } from '../utils/logger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -39,9 +40,10 @@ function loadSwaggerToolDefs(): MCPToolDef[] {
 function buildToolHandler(def: MCPToolDef, apiClient: APIClient) {
 	return async (args: any) => {
 		const method = def.method.toUpperCase();
-		const url = def.endpoint;
-		let resp;
-		try {
+		let url = def.endpoint;
+		try {		
+
+			let resp;
 			switch (method) {
 				case 'GET':
 					resp = await apiClient.get(url, args);
@@ -61,9 +63,50 @@ function buildToolHandler(def: MCPToolDef, apiClient: APIClient) {
 				default:
 					throw new Error('Unsupported HTTP method: ' + method);
 			}
-			return resp.data;
+			return {
+				content: [
+					{
+						type: 'text' as const,
+						text: typeof resp === 'string' ? resp : JSON.stringify(resp)
+					}
+				]
+			};
 		} catch (e) {
-			return { error: e instanceof Error ? e.message : String(e) };
+			// Collect detailed error info for logging
+			const errorDetails: Record<string, any> = {};
+			if (e && typeof e === 'object') {
+				const err = e as any;
+				errorDetails.message = err.message ?? '';
+				errorDetails.stack = err.stack ?? '';
+				errorDetails.code = err.code ?? '';
+				errorDetails.data = err.data ?? '';
+				errorDetails.response = err.response ?? '';
+				errorDetails.toString = typeof err.toString === 'function' ? err.toString() : String(err);
+				// Include all enumerable properties
+				for (const key of Object.keys(err)) {
+					if (!(key in errorDetails)) {
+						errorDetails[key] = err[key];
+					}
+				}
+			} else {
+				errorDetails.raw = String(e);
+			}
+			logger.error(
+				`Tool call failed for ${def.tool_name} (${def.method} ${def.endpoint})`,
+				{ error: errorDetails, args }
+			);
+			return {
+				content: [
+					{
+						type: 'text' as const,
+						text:
+							e instanceof Error
+								? (e.message || e.toString())
+								: String(e)
+					}
+				],
+				isError: true
+			};
 		}
 	};
 }

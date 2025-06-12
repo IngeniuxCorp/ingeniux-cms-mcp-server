@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "DITA_GetDITASetupInfo",
-		"description": "GET /api/v1/dita/setup-info",
+		"description": "GET /dita/setup-info",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -149,14 +149,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dita/setup-info",
+		"endpoint": "/dita/setup-info",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAOutputFormats",
-		"description": "GET /api/v1/dita/output-formats",
+		"description": "GET /dita/output-formats",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -246,14 +246,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dita/output-formats",
+		"endpoint": "/dita/output-formats",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetOTCommonParams",
-		"description": "GET /api/v1/dita/ot-params-common",
+		"description": "GET /dita/ot-params-common",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -337,14 +337,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dita/ot-params-common",
+		"endpoint": "/dita/ot-params-common",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetOTAdvancedParams",
-		"description": "GET /api/v1/dita/ot-params-advanced",
+		"description": "GET /dita/ot-params-advanced",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -433,14 +433,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dita/ot-params-advanced",
+		"endpoint": "/dita/ot-params-advanced",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAVals",
-		"description": "GET /api/v1/dita/ditavals",
+		"description": "GET /dita/ditavals",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -511,14 +511,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dita/ditavals",
+		"endpoint": "/dita/ditavals",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAAliases",
-		"description": "GET /api/v1/dita/aliases",
+		"description": "GET /dita/aliases",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -588,14 +588,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dita/aliases",
+		"endpoint": "/dita/aliases",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_DeleteAliases",
-		"description": "DELETE /api/v1/dita/aliases",
+		"description": "DELETE /dita/aliases",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -624,14 +624,14 @@
 			}
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/dita/aliases",
+		"endpoint": "/dita/aliases",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_UpdateAliases",
-		"description": "PATCH /api/v1/dita/aliases",
+		"description": "PATCH /dita/aliases",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -660,14 +660,14 @@
 			}
 		},
 		"method": "PATCH",
-		"endpoint": "/api/v1/dita/aliases",
+		"endpoint": "/dita/aliases",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_ViewDITAAlias",
-		"description": "GET /api/v1/dita/viewalias",
+		"description": "GET /dita/viewalias",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -760,14 +760,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dita/viewalias",
+		"endpoint": "/dita/viewalias",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAMaps",
-		"description": "POST /api/v1/dita/ditamaps",
+		"description": "POST /dita/ditamaps",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -974,14 +974,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/dita/ditamaps",
+		"endpoint": "/dita/ditamaps",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAMapTree",
-		"description": "GET /api/v1/dita/ditamaptree",
+		"description": "GET /dita/ditamaptree",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1079,14 +1079,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dita/ditamaptree",
+		"endpoint": "/dita/ditamaptree",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAMapDetails",
-		"description": "GET /api/v1/dita/ditamap-detail",
+		"description": "GET /dita/ditamap-detail",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1231,14 +1231,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dita/ditamap-detail",
+		"endpoint": "/dita/ditamap-detail",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAMapDetailConfiguration",
-		"description": "GET /api/v1/dita/ditamap-detail-config",
+		"description": "GET /dita/ditamap-detail-config",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1289,14 +1289,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dita/ditamap-detail-config",
+		"endpoint": "/dita/ditamap-detail-config",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_SetDITAMapDetailConfiguration",
-		"description": "PUT /api/v1/dita/ditamap-detail-config",
+		"description": "PUT /dita/ditamap-detail-config",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1361,14 +1361,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/dita/ditamap-detail-config",
+		"endpoint": "/dita/ditamap-detail-config",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_PutSetting",
-		"description": "PUT /api/v1/dita/setup-setting",
+		"description": "PUT /dita/setup-setting",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1392,14 +1392,14 @@
 			"type": "string"
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/dita/setup-setting",
+		"endpoint": "/dita/setup-setting",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_SetNormalizationFormat",
-		"description": "PUT /api/v1/dita/output-format-norm",
+		"description": "PUT /dita/output-format-norm",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1423,14 +1423,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/dita/output-format-norm",
+		"endpoint": "/dita/output-format-norm",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_SetStaticFormat",
-		"description": "PUT /api/v1/dita/output-format-static",
+		"description": "PUT /dita/output-format-static",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1458,14 +1458,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/dita/output-format-static",
+		"endpoint": "/dita/output-format-static",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_SetLocalizedRenderSchema",
-		"description": "PUT /api/v1/dita/localized-render-schema",
+		"description": "PUT /dita/localized-render-schema",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1545,14 +1545,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/dita/localized-render-schema",
+		"endpoint": "/dita/localized-render-schema",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_RemoveLocalizedRenderSchema",
-		"description": "DELETE /api/v1/dita/remove-localized-render-schema",
+		"description": "DELETE /dita/remove-localized-render-schema",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1603,14 +1603,14 @@
 			}
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/dita/remove-localized-render-schema",
+		"endpoint": "/dita/remove-localized-render-schema",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_SetOTParamValue",
-		"description": "PUT /api/v1/dita/ot-param",
+		"description": "PUT /dita/ot-param",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1749,7 +1749,7 @@
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/dita/ot-param",
+		"endpoint": "/dita/ot-param",
 		"tags": [
 			"DITA"
 		]

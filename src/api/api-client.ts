@@ -181,8 +181,23 @@ export class APIClient {
 
             // Check if response is ok
             if (!response.ok) {
-                const error = new Error(`HTTP ${response.status}: ${response.statusText}`);
-                throw error;
+            	let errorBody: any = null;
+            	try {
+            		const contentType = response.headers.get('content-type') || '';
+            		if (contentType.includes('application/json')) {
+            			errorBody = await response.clone().json();
+            		} else if (contentType.includes('text/')) {
+            			errorBody = await response.clone().text();
+            		}
+            	} catch (parseErr) {
+            		errorBody = '[Unable to parse error body]';
+            	}
+            	console.error(
+            		`API Error: HTTP ${response.status} ${response.statusText}`,
+            		{ url, method: options.method, body: errorBody }
+            	);
+            	const error = new Error(`HTTP ${response.status}: ${response.statusText}`);
+            	throw error;
             }
 
             return response;

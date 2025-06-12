@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Dashboard_GetOnlineUsers",
-		"description": "GET /api/v1/dashboard/online-users",
+		"description": "GET /dashboard/online-users",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -100,14 +100,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dashboard/online-users",
+		"endpoint": "/dashboard/online-users",
 		"tags": [
 			"Dashboard"
 		]
 	},
 	{
 		"tool_name": "Dashboard_PostComment",
-		"description": "POST /api/v1/dashboard/comment",
+		"description": "POST /dashboard/comment",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -145,14 +145,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/dashboard/comment",
+		"endpoint": "/dashboard/comment",
 		"tags": [
 			"Dashboard"
 		]
 	},
 	{
 		"tool_name": "Dashboard_GetActivityStream",
-		"description": "GET /api/v1/dashboard/activity-stream",
+		"description": "GET /dashboard/activity-stream",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -190,14 +190,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dashboard/activity-stream",
+		"endpoint": "/dashboard/activity-stream",
 		"tags": [
 			"Dashboard"
 		]
 	},
 	{
 		"tool_name": "Dashboard_GetAnalyticTrafficData",
-		"description": "GET /api/v1/dashboard/analytic_traffic-data",
+		"description": "GET /dashboard/analytic_traffic-data",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -249,14 +249,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dashboard/analytic_traffic-data",
+		"endpoint": "/dashboard/analytic_traffic-data",
 		"tags": [
 			"Dashboard"
 		]
 	},
 	{
 		"tool_name": "Dashboard_GetAnalyticMediumData",
-		"description": "GET /api/v1/dashboard/analytic_medium-data",
+		"description": "GET /dashboard/analytic_medium-data",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -312,14 +312,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dashboard/analytic_medium-data",
+		"endpoint": "/dashboard/analytic_medium-data",
 		"tags": [
 			"Dashboard"
 		]
 	},
 	{
 		"tool_name": "Dashboard_GetProductionData",
-		"description": "GET /api/v1/dashboard/production-data",
+		"description": "GET /dashboard/production-data",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -370,14 +370,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dashboard/production-data",
+		"endpoint": "/dashboard/production-data",
 		"tags": [
 			"Dashboard"
 		]
 	},
 	{
 		"tool_name": "Entity_Get",
-		"description": "GET /api/v1/documents",
+		"description": "GET /documents",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -452,14 +452,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/documents",
+		"endpoint": "/documents",
 		"tags": [
 			"Entity"
 		]
 	},
 	{
 		"tool_name": "Entity_Archive",
-		"description": "PATCH /api/v1/documents/archive",
+		"description": "PATCH /documents/archive",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -534,14 +534,14 @@
 			]
 		},
 		"method": "PATCH",
-		"endpoint": "/api/v1/documents/archive",
+		"endpoint": "/documents/archive",
 		"tags": [
 			"Entity"
 		]
 	},
 	{
 		"tool_name": "Entity_UnArchive",
-		"description": "PATCH /api/v1/documents/unarchive",
+		"description": "PATCH /documents/unarchive",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -616,14 +616,14 @@
 			]
 		},
 		"method": "PATCH",
-		"endpoint": "/api/v1/documents/unarchive",
+		"endpoint": "/documents/unarchive",
 		"tags": [
 			"Entity"
 		]
 	},
 	{
 		"tool_name": "Themes_Get",
-		"description": "GET /api/v1/themes/theme",
+		"description": "GET /themes/theme",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -758,14 +758,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/themes/theme",
+		"endpoint": "/themes/theme",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_Update",
-		"description": "PUT /api/v1/themes/theme",
+		"description": "PUT /themes/theme",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1016,14 +1016,14 @@
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/themes/theme",
+		"endpoint": "/themes/theme",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_Delete",
-		"description": "DELETE /api/v1/themes/theme",
+		"description": "DELETE /themes/theme",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1041,14 +1041,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/themes/theme",
+		"endpoint": "/themes/theme",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_Less",
-		"description": "GET /api/v1/themes/less",
+		"description": "GET /themes/less",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1071,14 +1071,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/themes/less",
+		"endpoint": "/themes/less",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_Scss",
-		"description": "GET /api/v1/themes/scss",
+		"description": "GET /themes/scss",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1101,14 +1101,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/themes/scss",
+		"endpoint": "/themes/scss",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_List",
-		"description": "GET /api/v1/themes",
+		"description": "GET /themes",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1270,14 +1270,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/themes",
+		"endpoint": "/themes",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_Create",
-		"description": "POST /api/v1/themes",
+		"description": "POST /themes",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1412,14 +1412,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/themes",
+		"endpoint": "/themes",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_SetDefault",
-		"description": "POST /api/v1/themes/default",
+		"description": "POST /themes/default",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1554,14 +1554,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/themes/default",
+		"endpoint": "/themes/default",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_Upload",
-		"description": "POST /api/v1/themes/upload",
+		"description": "POST /themes/upload",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1687,14 +1687,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/themes/upload",
+		"endpoint": "/themes/upload",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "PCR_ListPCRInfo",
-		"description": "GET /api/v1/pcr/info",
+		"description": "GET /pcr/info",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1812,14 +1812,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pcr/info",
+		"endpoint": "/pcr/info",
 		"tags": [
 			"PCR"
 		]
 	},
 	{
 		"tool_name": "PCR_GetPCRInfo",
-		"description": "GET /api/v1/pcr",
+		"description": "GET /pcr",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1910,7 +1910,7 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pcr",
+		"endpoint": "/pcr",
 		"tags": [
 			"PCR"
 		]

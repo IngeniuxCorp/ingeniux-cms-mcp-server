@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Schemas_SearchAssetSchemas",
-		"description": "GET /api/v1/schemas/search-asset-schemas",
+		"description": "GET /schemas/search-asset-schemas",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -289,14 +289,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/schemas/search-asset-schemas",
+		"endpoint": "/schemas/search-asset-schemas",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetSchemaUsage",
-		"description": "GET /api/v1/schemas/schema-usage",
+		"description": "GET /schemas/schema-usage",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -492,14 +492,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/schemas/schema-usage",
+		"endpoint": "/schemas/schema-usage",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetSchemaUsageForSyncLogPaginated",
-		"description": "GET /api/v1/schemas/schema-sync-log",
+		"description": "GET /schemas/schema-sync-log",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -700,14 +700,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/schemas/schema-sync-log",
+		"endpoint": "/schemas/schema-sync-log",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Assets_AdvanceWorkflow",
-		"description": "POST /api/v1/assets/asset/workflow/advance",
+		"description": "POST /assets/asset/workflow/advance",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -742,14 +742,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/assets/asset/workflow/advance",
+		"endpoint": "/assets/asset/workflow/advance",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_AssignToGroup",
-		"description": "POST /api/v1/assets/assign-to-group",
+		"description": "POST /assets/assign-to-group",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -783,14 +783,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/assets/assign-to-group",
+		"endpoint": "/assets/assign-to-group",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_AssignToUser",
-		"description": "POST /api/v1/assets/assign-to-user",
+		"description": "POST /assets/assign-to-user",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -824,14 +824,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/assets/assign-to-user",
+		"endpoint": "/assets/assign-to-user",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_CheckIn",
-		"description": "POST /api/v1/assets/checkin",
+		"description": "POST /assets/checkin",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1209,14 +1209,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/assets/checkin",
+		"endpoint": "/assets/checkin",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_CheckOut",
-		"description": "POST /api/v1/assets/checkout",
+		"description": "POST /assets/checkout",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1583,14 +1583,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/assets/checkout",
+		"endpoint": "/assets/checkout",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_Copy",
-		"description": "POST /api/v1/assets/copy",
+		"description": "POST /assets/copy",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1945,14 +1945,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/assets/copy",
+		"endpoint": "/assets/copy",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_CreateAssetFolder",
-		"description": "POST /api/v1/assets/asset-folder",
+		"description": "POST /assets/asset-folder",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2312,14 +2312,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/assets/asset-folder",
+		"endpoint": "/assets/asset-folder",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_CheckAssetAliases",
-		"description": "GET /api/v1/assets/asset-aliases",
+		"description": "GET /assets/asset-aliases",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2335,14 +2335,14 @@
 			"format": "int32"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/asset-aliases",
+		"endpoint": "/assets/asset-aliases",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_DeleteAssetItems",
-		"description": "DELETE /api/v1/assets",
+		"description": "DELETE /assets",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2382,14 +2382,14 @@
 			}
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/assets",
+		"endpoint": "/assets",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetAncestors",
-		"description": "GET /api/v1/assets/asset/ancestors",
+		"description": "GET /assets/asset/ancestors",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2733,14 +2733,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/asset/ancestors",
+		"endpoint": "/assets/asset/ancestors",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetAsset",
-		"description": "GET /api/v1/assets/asset",
+		"description": "GET /assets/asset",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -3074,14 +3074,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/asset",
+		"endpoint": "/assets/asset",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetAssetByPath",
-		"description": "GET /api/v1/assets/asset-by-path",
+		"description": "GET /assets/asset-by-path",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -3415,14 +3415,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/asset-by-path",
+		"endpoint": "/assets/asset-by-path",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetAssetContext",
-		"description": "POST /api/v1/assets/asset/context",
+		"description": "POST /assets/asset/context",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -3566,14 +3566,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/assets/asset/context",
+		"endpoint": "/assets/asset/context",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetAssetDetails",
-		"description": "GET /api/v1/assets/details",
+		"description": "GET /assets/details",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4067,14 +4067,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/details",
+		"endpoint": "/assets/details",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetAssetHistory",
-		"description": "GET /api/v1/assets/history",
+		"description": "GET /assets/history",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4189,14 +4189,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/history",
+		"endpoint": "/assets/history",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetChildren",
-		"description": "GET /api/v1/assets/asset/children",
+		"description": "GET /assets/asset/children",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4565,14 +4565,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/asset/children",
+		"endpoint": "/assets/asset/children",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetFileBinary",
-		"description": "GET /api/v1/assets/file",
+		"description": "GET /assets/file",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4595,7 +4595,7 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/file",
+		"endpoint": "/assets/file",
 		"tags": [
 			"Assets"
 		]

@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Site_DownloadReport",
-		"description": "GET /api/v1/site/report/{sessionId}/file",
+		"description": "GET /site/report/{sessionId}/file",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -19,14 +19,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/site/report/{sessionId}/file",
+		"endpoint": "/site/report/{sessionId}/file",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_RankedSearch",
-		"description": "GET /api/v1/site/ranked-search",
+		"description": "GET /site/ranked-search",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -378,14 +378,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/site/ranked-search",
+		"endpoint": "/site/ranked-search",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_GetContentItemUsageSummary",
-		"description": "GET /api/v1/site/usage-summary",
+		"description": "GET /site/usage-summary",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -412,14 +412,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/site/usage-summary",
+		"endpoint": "/site/usage-summary",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_GetContentItemUsageReport",
-		"description": "GET /api/v1/site/usage-report",
+		"description": "GET /site/usage-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -508,14 +508,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/site/usage-report",
+		"endpoint": "/site/usage-report",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Pages_GetPages",
-		"description": "GET /api/v1/pages",
+		"description": "GET /pages",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -828,14 +828,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages",
+		"endpoint": "/pages",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetRoot",
-		"description": "GET /api/v1/pages/root",
+		"description": "GET /pages/root",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1112,14 +1112,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages/root",
+		"endpoint": "/pages/root",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetRecycleFolder",
-		"description": "GET /api/v1/pages/recycle-folder",
+		"description": "GET /pages/recycle-folder",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1396,14 +1396,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages/recycle-folder",
+		"endpoint": "/pages/recycle-folder",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetChildren",
-		"description": "GET /api/v1/pages/page/children",
+		"description": "GET /pages/page/children",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1724,14 +1724,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages/page/children",
+		"endpoint": "/pages/page/children",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetDescendants",
-		"description": "GET /api/v1/pages/page/descendants",
+		"description": "GET /pages/page/descendants",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2052,14 +2052,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages/page/descendants",
+		"endpoint": "/pages/page/descendants",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetDescendantAliasCount",
-		"description": "GET /api/v1/pages/page/descendant-alias-count",
+		"description": "GET /pages/page/descendant-alias-count",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2088,14 +2088,14 @@
 			"format": "int32"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages/page/descendant-alias-count",
+		"endpoint": "/pages/page/descendant-alias-count",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetParent",
-		"description": "GET /api/v1/pages/page/parent",
+		"description": "GET /pages/page/parent",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2381,14 +2381,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages/page/parent",
+		"endpoint": "/pages/page/parent",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetAncestors",
-		"description": "GET /api/v1/pages/page/ancestors",
+		"description": "GET /pages/page/ancestors",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2677,14 +2677,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages/page/ancestors",
+		"endpoint": "/pages/page/ancestors",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetPage",
-		"description": "GET /api/v1/pages/page",
+		"description": "GET /pages/page",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2970,14 +2970,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages/page",
+		"endpoint": "/pages/page",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_DeletePage",
-		"description": "DELETE /api/v1/pages/page",
+		"description": "DELETE /pages/page",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2995,14 +2995,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/pages/page",
+		"endpoint": "/pages/page",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetPageDetails",
-		"description": "GET /api/v1/pages/page/details",
+		"description": "GET /pages/page/details",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -3482,14 +3482,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages/page/details",
+		"endpoint": "/pages/page/details",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetPageContext",
-		"description": "POST /api/v1/pages/page/context",
+		"description": "POST /pages/page/context",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -3609,14 +3609,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/pages/page/context",
+		"endpoint": "/pages/page/context",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_SetCategoryAssociations",
-		"description": "POST /api/v1/pages/page/associations",
+		"description": "POST /pages/page/associations",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -3910,14 +3910,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/pages/page/associations",
+		"endpoint": "/pages/page/associations",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetByCategory",
-		"description": "GET /api/v1/pages/by-category",
+		"description": "GET /pages/by-category",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4238,14 +4238,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages/by-category",
+		"endpoint": "/pages/by-category",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_Move",
-		"description": "PATCH /api/v1/pages/move",
+		"description": "PATCH /pages/move",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4548,14 +4548,14 @@
 			}
 		},
 		"method": "PATCH",
-		"endpoint": "/api/v1/pages/move",
+		"endpoint": "/pages/move",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_Copy",
-		"description": "POST /api/v1/pages/copy",
+		"description": "POST /pages/copy",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4876,7 +4876,7 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/pages/copy",
+		"endpoint": "/pages/copy",
 		"tags": [
 			"Pages"
 		]

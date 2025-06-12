@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Analytics_GetSiteOverview",
-		"description": "GET /api/v1/analytics/site-overview",
+		"description": "GET /analytics/site-overview",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -85,14 +85,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/analytics/site-overview",
+		"endpoint": "/analytics/site-overview",
 		"tags": [
 			"Analytics"
 		]
 	},
 	{
 		"tool_name": "Analytics_GetPageOverview",
-		"description": "GET /api/v1/analytics/page-overview",
+		"description": "GET /analytics/page-overview",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -145,14 +145,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/analytics/page-overview",
+		"endpoint": "/analytics/page-overview",
 		"tags": [
 			"Analytics"
 		]
 	},
 	{
 		"tool_name": "Analytics_GetReport",
-		"description": "GET /api/v1/analytics/report",
+		"description": "GET /analytics/report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -246,14 +246,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/analytics/report",
+		"endpoint": "/analytics/report",
 		"tags": [
 			"Analytics"
 		]
 	},
 	{
 		"tool_name": "Analytics_GoogleAuthCodeFlow",
-		"description": "POST /api/v1/analytics/google-analytic-authcode-flow",
+		"description": "POST /analytics/google-analytic-authcode-flow",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -302,14 +302,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/analytics/google-analytic-authcode-flow",
+		"endpoint": "/analytics/google-analytic-authcode-flow",
 		"tags": [
 			"Analytics"
 		]
 	},
 	{
 		"tool_name": "Analytics_GoogleConfirmProperty",
-		"description": "POST /api/v1/analytics/google-analytic-property-confirm",
+		"description": "POST /analytics/google-analytic-property-confirm",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -339,14 +339,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/analytics/google-analytic-property-confirm",
+		"endpoint": "/analytics/google-analytic-property-confirm",
 		"tags": [
 			"Analytics"
 		]
 	},
 	{
 		"tool_name": "Analytics_GoogleRevokeToken",
-		"description": "POST /api/v1/analytics/google-analytic-revoke-token",
+		"description": "POST /analytics/google-analytic-revoke-token",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -364,14 +364,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/analytics/google-analytic-revoke-token",
+		"endpoint": "/analytics/google-analytic-revoke-token",
 		"tags": [
 			"Analytics"
 		]
 	},
 	{
 		"tool_name": "Analytics_GetDeviceVerificationResponse",
-		"description": "POST /api/v1/analytics/device-verification",
+		"description": "POST /analytics/device-verification",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -412,14 +412,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/analytics/device-verification",
+		"endpoint": "/analytics/device-verification",
 		"tags": [
 			"Analytics"
 		]
 	},
 	{
 		"tool_name": "ContentUnits_GetContentUnitPreviewData",
-		"description": "GET /api/v1/content-units/content-unit-preview-data",
+		"description": "GET /content-units/content-unit-preview-data",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -483,14 +483,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/content-units/content-unit-preview-data",
+		"endpoint": "/content-units/content-unit-preview-data",
 		"tags": [
 			"ContentUnits"
 		]
 	},
 	{
 		"tool_name": "ContentUnits_GetComponentUnitFragmentInstances",
-		"description": "GET /api/v1/content-units/get-comp-unit-instances",
+		"description": "GET /content-units/get-comp-unit-instances",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -692,14 +692,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/content-units/get-comp-unit-instances",
+		"endpoint": "/content-units/get-comp-unit-instances",
 		"tags": [
 			"ContentUnits"
 		]
 	},
 	{
 		"tool_name": "ContentUnits_GetComponentUnitContent",
-		"description": "GET /api/v1/content-units/get-comp-unit-content",
+		"description": "GET /content-units/get-comp-unit-content",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -809,14 +809,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/content-units/get-comp-unit-content",
+		"endpoint": "/content-units/get-comp-unit-content",
 		"tags": [
 			"ContentUnits"
 		]
 	},
 	{
 		"tool_name": "ContentUnits_UpdateComponentUnitThumbnail",
-		"description": "PUT /api/v1/content-units/update-comp-unit-thumb",
+		"description": "PUT /content-units/update-comp-unit-thumb",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -845,14 +845,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/content-units/update-comp-unit-thumb",
+		"endpoint": "/content-units/update-comp-unit-thumb",
 		"tags": [
 			"ContentUnits"
 		]
 	},
 	{
 		"tool_name": "ContentUnits_GetClassNamesFromCss",
-		"description": "POST /api/v1/content-units/get-class-names-from-css",
+		"description": "POST /content-units/get-class-names-from-css",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -899,14 +899,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/content-units/get-class-names-from-css",
+		"endpoint": "/content-units/get-class-names-from-css",
 		"tags": [
 			"ContentUnits"
 		]
 	},
 	{
 		"tool_name": "Hooks_GetCustomHooks",
-		"description": "GET /api/v1/hooks",
+		"description": "GET /hooks",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -920,14 +920,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/hooks",
+		"endpoint": "/hooks",
 		"tags": [
 			"Hooks"
 		]
 	},
 	{
 		"tool_name": "Hooks_GetCustomMacros",
-		"description": "GET /api/v1/hooks/macros",
+		"description": "GET /hooks/macros",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -959,14 +959,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/hooks/macros",
+		"endpoint": "/hooks/macros",
 		"tags": [
 			"Hooks"
 		]
 	},
 	{
 		"tool_name": "Hooks_ExecuteCustomMacro",
-		"description": "POST /api/v1/hooks/macros",
+		"description": "POST /hooks/macros",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -984,14 +984,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/hooks/macros",
+		"endpoint": "/hooks/macros",
 		"tags": [
 			"Hooks"
 		]
 	},
 	{
 		"tool_name": "IceComponentPicker_GetComponentSchemas",
-		"description": "GET /api/v1/dialogs/ice-comp-picker/get-ice-comp-types",
+		"description": "GET /dialogs/ice-comp-picker/get-ice-comp-types",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1011,14 +1011,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-ice-comp-types",
+		"endpoint": "/dialogs/ice-comp-picker/get-ice-comp-types",
 		"tags": [
 			"IceComponentPicker"
 		]
 	},
 	{
 		"tool_name": "IceComponentPicker_GetTrays",
-		"description": "POST /api/v1/dialogs/ice-comp-picker/get-trays",
+		"description": "POST /dialogs/ice-comp-picker/get-trays",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1207,14 +1207,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-trays",
+		"endpoint": "/dialogs/ice-comp-picker/get-trays",
 		"tags": [
 			"IceComponentPicker"
 		]
 	},
 	{
 		"tool_name": "IceComponentPicker_GetComponentThumb",
-		"description": "GET /api/v1/dialogs/ice-comp-picker/get-comp-thumb",
+		"description": "GET /dialogs/ice-comp-picker/get-comp-thumb",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1237,14 +1237,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-comp-thumb",
+		"endpoint": "/dialogs/ice-comp-picker/get-comp-thumb",
 		"tags": [
 			"IceComponentPicker"
 		]
 	},
 	{
 		"tool_name": "IceComponentPicker_GetListPage",
-		"description": "GET /api/v1/dialogs/ice-comp-picker/get-list-page",
+		"description": "GET /dialogs/ice-comp-picker/get-list-page",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1363,14 +1363,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-list-page",
+		"endpoint": "/dialogs/ice-comp-picker/get-list-page",
 		"tags": [
 			"IceComponentPicker"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITABaseInfo",
-		"description": "GET /api/v1/dita/base",
+		"description": "GET /dita/base",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1387,7 +1387,7 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dita/base",
+		"endpoint": "/dita/base",
 		"tags": [
 			"DITA"
 		]

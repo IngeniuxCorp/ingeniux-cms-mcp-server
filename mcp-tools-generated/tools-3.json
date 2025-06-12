@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "DITA_AddOTParams",
-		"description": "PUT /api/v1/dita/ot-params",
+		"description": "PUT /dita/ot-params",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -67,14 +67,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/dita/ot-params",
+		"endpoint": "/dita/ot-params",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_RemoveOTParams",
-		"description": "DELETE /api/v1/dita/ot-params",
+		"description": "DELETE /dita/ot-params",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -140,14 +140,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/dita/ot-params",
+		"endpoint": "/dita/ot-params",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_ManipulateDITAVals",
-		"description": "PATCH /api/v1/dita/ditaval-manipulation",
+		"description": "PATCH /dita/ditaval-manipulation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -209,14 +209,14 @@
 			"type": "boolean"
 		},
 		"method": "PATCH",
-		"endpoint": "/api/v1/dita/ditaval-manipulation",
+		"endpoint": "/dita/ditaval-manipulation",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_RemoveDitaMapCollection",
-		"description": "DELETE /api/v1/dita/remove-ditamap",
+		"description": "DELETE /dita/remove-ditamap",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -234,14 +234,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/dita/remove-ditamap",
+		"endpoint": "/dita/remove-ditamap",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_MarkPublishDitaMapCollection",
-		"description": "PUT /api/v1/dita/mark-ditamap",
+		"description": "PUT /dita/mark-ditamap",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -282,14 +282,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/dita/mark-ditamap",
+		"endpoint": "/dita/mark-ditamap",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_CheckoutDitaMapCollection",
-		"description": "POST /api/v1/dita/checkout-ditamap",
+		"description": "POST /dita/checkout-ditamap",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -307,14 +307,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/dita/checkout-ditamap",
+		"endpoint": "/dita/checkout-ditamap",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_CheckInDitaMapCollection",
-		"description": "POST /api/v1/dita/checkin-ditamap",
+		"description": "POST /dita/checkin-ditamap",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -340,14 +340,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/dita/checkin-ditamap",
+		"endpoint": "/dita/checkin-ditamap",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_PublishDITAMap",
-		"description": "POST /api/v1/dita/publish-ditamap",
+		"description": "POST /dita/publish-ditamap",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -393,14 +393,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/dita/publish-ditamap",
+		"endpoint": "/dita/publish-ditamap",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_DownloadDITAMapsCsv",
-		"description": "GET /api/v1/dita/dita-maps-csv",
+		"description": "GET /dita/dita-maps-csv",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -409,14 +409,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dita/dita-maps-csv",
+		"endpoint": "/dita/dita-maps-csv",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_DownloadMap",
-		"description": "GET /api/v1/dita/download-ditamap",
+		"description": "GET /dita/download-ditamap",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -439,14 +439,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/dita/download-ditamap",
+		"endpoint": "/dita/download-ditamap",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "Configuration_GetHelpText",
-		"description": "GET /api/v1/configuration/help-text",
+		"description": "GET /configuration/help-text",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -484,14 +484,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/configuration/help-text",
+		"endpoint": "/configuration/help-text",
 		"tags": [
 			"Configuration"
 		]
 	},
 	{
 		"tool_name": "Configuration_GetAIHelpText",
-		"description": "GET /api/v1/configuration/ai-help-text",
+		"description": "GET /configuration/ai-help-text",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -529,14 +529,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/configuration/ai-help-text",
+		"endpoint": "/configuration/ai-help-text",
 		"tags": [
 			"Configuration"
 		]
 	},
 	{
 		"tool_name": "Configuration_GetHelpTextByContentItem",
-		"description": "GET /api/v1/configuration/help-text-by-content-item",
+		"description": "GET /configuration/help-text-by-content-item",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -574,14 +574,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/configuration/help-text-by-content-item",
+		"endpoint": "/configuration/help-text-by-content-item",
 		"tags": [
 			"Configuration"
 		]
 	},
 	{
 		"tool_name": "Configuration_GetAllHelpText",
-		"description": "GET /api/v1/configuration/help-texts",
+		"description": "GET /configuration/help-texts",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -613,14 +613,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/configuration/help-texts",
+		"endpoint": "/configuration/help-texts",
 		"tags": [
 			"Configuration"
 		]
 	},
 	{
 		"tool_name": "Configuration_GetPageContextMenuConfiguration",
-		"description": "GET /api/v1/configuration/pages/context-menu",
+		"description": "GET /configuration/pages/context-menu",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -660,14 +660,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/configuration/pages/context-menu",
+		"endpoint": "/configuration/pages/context-menu",
 		"tags": [
 			"Configuration"
 		]
 	},
 	{
 		"tool_name": "Configuration_GetAssetContextMenuConfiguration",
-		"description": "GET /api/v1/configuration/assets/context-menu",
+		"description": "GET /configuration/assets/context-menu",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -707,14 +707,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/configuration/assets/context-menu",
+		"endpoint": "/configuration/assets/context-menu",
 		"tags": [
 			"Configuration"
 		]
 	},
 	{
 		"tool_name": "Configuration_GetLegacyGlobals",
-		"description": "GET /api/v1/configuration/legacy-globals",
+		"description": "GET /configuration/legacy-globals",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1188,14 +1188,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/configuration/legacy-globals",
+		"endpoint": "/configuration/legacy-globals",
 		"tags": [
 			"Configuration"
 		]
 	},
 	{
 		"tool_name": "Configuration_GetFlag",
-		"description": "GET /api/v1/configuration/flag",
+		"description": "GET /configuration/flag",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1213,14 +1213,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/configuration/flag",
+		"endpoint": "/configuration/flag",
 		"tags": [
 			"Configuration"
 		]
 	},
 	{
 		"tool_name": "Configuration_GetGlobalCustomTabs",
-		"description": "GET /api/v1/configuration/global-custom-tabs",
+		"description": "GET /configuration/global-custom-tabs",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1329,14 +1329,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/configuration/global-custom-tabs",
+		"endpoint": "/configuration/global-custom-tabs",
 		"tags": [
 			"Configuration"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_GetCustomSettings",
-		"description": "GET /api/v1/insite-search/custom-settings",
+		"description": "GET /insite-search/custom-settings",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1368,7 +1368,7 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/insite-search/custom-settings",
+		"endpoint": "/insite-search/custom-settings",
 		"tags": [
 			"InsiteSearch"
 		]

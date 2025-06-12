@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Settings_GetServerVariables",
-		"description": "GET /api/v1/settings/server-variables",
+		"description": "GET /settings/server-variables",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -21,14 +21,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/settings/server-variables",
+		"endpoint": "/settings/server-variables",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_ForceArchive",
-		"description": "POST /api/v1/settings/force-archive",
+		"description": "POST /settings/force-archive",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -46,14 +46,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/settings/force-archive",
+		"endpoint": "/settings/force-archive",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveGroupProfileForPageTreeMenu",
-		"description": "DELETE /api/v1/settings/page-tree-group",
+		"description": "DELETE /settings/page-tree-group",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -103,14 +103,14 @@
 			]
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/settings/page-tree-group",
+		"endpoint": "/settings/page-tree-group",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveGroupProfileForAssetTreeMenu",
-		"description": "DELETE /api/v1/settings/asset-tree-group",
+		"description": "DELETE /settings/asset-tree-group",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -160,14 +160,14 @@
 			]
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/settings/asset-tree-group",
+		"endpoint": "/settings/asset-tree-group",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveTinyMceGroup",
-		"description": "DELETE /api/v1/settings/tinymce-group",
+		"description": "DELETE /settings/tinymce-group",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -223,14 +223,14 @@
 			]
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/settings/tinymce-group",
+		"endpoint": "/settings/tinymce-group",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveDictionary",
-		"description": "DELETE /api/v1/settings/dictionary",
+		"description": "DELETE /settings/dictionary",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -248,14 +248,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/settings/dictionary",
+		"endpoint": "/settings/dictionary",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_CreateCustomLocale",
-		"description": "PUT /api/v1/settings/custom-locale",
+		"description": "PUT /settings/custom-locale",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -299,14 +299,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/settings/custom-locale",
+		"endpoint": "/settings/custom-locale",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveCustomLocale",
-		"description": "DELETE /api/v1/settings/custom-locale",
+		"description": "DELETE /settings/custom-locale",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -324,14 +324,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/settings/custom-locale",
+		"endpoint": "/settings/custom-locale",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetStats",
-		"description": "GET /api/v1/taxonomy/statistics",
+		"description": "GET /taxonomy/statistics",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -362,14 +362,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/taxonomy/statistics",
+		"endpoint": "/taxonomy/statistics",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetCategories",
-		"description": "GET /api/v1/taxonomy/categories",
+		"description": "GET /taxonomy/categories",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -614,14 +614,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/taxonomy/categories",
+		"endpoint": "/taxonomy/categories",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetRootCategories",
-		"description": "GET /api/v1/taxonomy/root-categories",
+		"description": "GET /taxonomy/root-categories",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -856,14 +856,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/taxonomy/root-categories",
+		"endpoint": "/taxonomy/root-categories",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetChildren",
-		"description": "GET /api/v1/taxonomy/category/children",
+		"description": "GET /taxonomy/category/children",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1101,14 +1101,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/taxonomy/category/children",
+		"endpoint": "/taxonomy/category/children",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetParent",
-		"description": "GET /api/v1/taxonomy/category/parent",
+		"description": "GET /taxonomy/category/parent",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1311,14 +1311,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/taxonomy/category/parent",
+		"endpoint": "/taxonomy/category/parent",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetAncestors",
-		"description": "GET /api/v1/taxonomy/category/ancestors",
+		"description": "GET /taxonomy/category/ancestors",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1524,14 +1524,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/taxonomy/category/ancestors",
+		"endpoint": "/taxonomy/category/ancestors",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetCategory",
-		"description": "GET /api/v1/taxonomy/category",
+		"description": "GET /taxonomy/category",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1734,14 +1734,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/taxonomy/category",
+		"endpoint": "/taxonomy/category",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_CreateCategory",
-		"description": "POST /api/v1/taxonomy/category",
+		"description": "POST /taxonomy/category",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1954,14 +1954,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/taxonomy/category",
+		"endpoint": "/taxonomy/category",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_SaveCategory",
-		"description": "PUT /api/v1/taxonomy/category",
+		"description": "PUT /taxonomy/category",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2348,14 +2348,14 @@
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/taxonomy/category",
+		"endpoint": "/taxonomy/category",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_DeleteCategory",
-		"description": "DELETE /api/v1/taxonomy/category",
+		"description": "DELETE /taxonomy/category",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2373,14 +2373,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/taxonomy/category",
+		"endpoint": "/taxonomy/category",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetCategorySecurity",
-		"description": "GET /api/v1/taxonomy/category/security",
+		"description": "GET /taxonomy/category/security",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2464,14 +2464,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/taxonomy/category/security",
+		"endpoint": "/taxonomy/category/security",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_SetCategorySecurity",
-		"description": "PUT /api/v1/taxonomy/category/security",
+		"description": "PUT /taxonomy/category/security",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2620,7 +2620,7 @@
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/taxonomy/category/security",
+		"endpoint": "/taxonomy/category/security",
 		"tags": [
 			"Taxonomy"
 		]

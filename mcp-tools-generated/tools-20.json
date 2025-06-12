@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Workflow_DeleteWorkflowDefinition",
-		"description": "DELETE /api/v1/workflows/definition",
+		"description": "DELETE /workflows/definition",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -37,14 +37,14 @@
 			]
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/workflows/definition",
+		"endpoint": "/workflows/definition",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_SaveWorkstate",
-		"description": "POST /api/v1/workflows/workstate",
+		"description": "POST /workflows/workstate",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -207,14 +207,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/workflows/workstate",
+		"endpoint": "/workflows/workstate",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_CreateWorkstate",
-		"description": "PUT /api/v1/workflows/workstate",
+		"description": "PUT /workflows/workstate",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -377,14 +377,14 @@
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/workflows/workstate",
+		"endpoint": "/workflows/workstate",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_DeleteWorkstate",
-		"description": "DELETE /api/v1/workflows/workstate",
+		"description": "DELETE /workflows/workstate",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -425,14 +425,14 @@
 			}
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/workflows/workstate",
+		"endpoint": "/workflows/workstate",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_PrepareTemplate",
-		"description": "POST /api/v1/workflows/prepare-template",
+		"description": "POST /workflows/prepare-template",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -596,14 +596,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/workflows/prepare-template",
+		"endpoint": "/workflows/prepare-template",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Replication_ReplicationTarget",
-		"description": "GET /api/v1/publishing/replication/target",
+		"description": "GET /publishing/replication/target",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -912,14 +912,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/replication/target",
+		"endpoint": "/publishing/replication/target",
 		"tags": [
 			"Replication"
 		]
 	},
 	{
 		"tool_name": "Replication_CreateReplicationTarget",
-		"description": "POST /api/v1/publishing/replication/target",
+		"description": "POST /publishing/replication/target",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1506,14 +1506,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/publishing/replication/target",
+		"endpoint": "/publishing/replication/target",
 		"tags": [
 			"Replication"
 		]
 	},
 	{
 		"tool_name": "Replication_UpdateReplicationTarget",
-		"description": "PUT /api/v1/publishing/replication/target",
+		"description": "PUT /publishing/replication/target",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2100,14 +2100,14 @@
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/publishing/replication/target",
+		"endpoint": "/publishing/replication/target",
 		"tags": [
 			"Replication"
 		]
 	},
 	{
 		"tool_name": "Replication_DeleteReplicationTarget",
-		"description": "DELETE /api/v1/publishing/replication/target",
+		"description": "DELETE /publishing/replication/target",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2131,14 +2131,14 @@
 			"type": "object"
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/publishing/replication/target",
+		"endpoint": "/publishing/replication/target",
 		"tags": [
 			"Replication"
 		]
 	},
 	{
 		"tool_name": "Replication_GetAwsRegionEndpoints",
-		"description": "GET /api/v1/publishing/replication/aws-region-endpoints",
+		"description": "GET /publishing/replication/aws-region-endpoints",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -2158,14 +2158,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/replication/aws-region-endpoints",
+		"endpoint": "/publishing/replication/aws-region-endpoints",
 		"tags": [
 			"Replication"
 		]
 	},
 	{
 		"tool_name": "Replication_GetReplicationLogDetails",
-		"description": "GET /api/v1/publishing/replication/target/log-detail",
+		"description": "GET /publishing/replication/target/log-detail",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2258,14 +2258,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/replication/target/log-detail",
+		"endpoint": "/publishing/replication/target/log-detail",
 		"tags": [
 			"Replication"
 		]
 	},
 	{
 		"tool_name": "Replication_GetReplicationTargetTypes",
-		"description": "GET /api/v1/publishing/replication/target-types",
+		"description": "GET /publishing/replication/target-types",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -2285,14 +2285,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/replication/target-types",
+		"endpoint": "/publishing/replication/target-types",
 		"tags": [
 			"Replication"
 		]
 	},
 	{
 		"tool_name": "Replication_ReplicationTargets",
-		"description": "GET /api/v1/publishing/replication/targets",
+		"description": "GET /publishing/replication/targets",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2598,14 +2598,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/replication/targets",
+		"endpoint": "/publishing/replication/targets",
 		"tags": [
 			"Replication"
 		]
 	},
 	{
 		"tool_name": "Replication_SetReplicationTargets",
-		"description": "POST /api/v1/publishing/replication/targets",
+		"description": "POST /publishing/replication/targets",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -3204,14 +3204,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/publishing/replication/targets",
+		"endpoint": "/publishing/replication/targets",
 		"tags": [
 			"Replication"
 		]
 	},
 	{
 		"tool_name": "Replication_UploadCertificate",
-		"description": "POST /api/v1/publishing/replication/upload-cert",
+		"description": "POST /publishing/replication/upload-cert",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -3220,14 +3220,14 @@
 			"type": "string"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/publishing/replication/upload-cert",
+		"endpoint": "/publishing/replication/upload-cert",
 		"tags": [
 			"Replication"
 		]
 	},
 	{
 		"tool_name": "Replication_UploadPrivateKey",
-		"description": "POST /api/v1/publishing/replication/upload-private-key",
+		"description": "POST /publishing/replication/upload-private-key",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -3236,7 +3236,7 @@
 			"type": "string"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/publishing/replication/upload-private-key",
+		"endpoint": "/publishing/replication/upload-private-key",
 		"tags": [
 			"Replication"
 		]

@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Publishing_DeleteRedirects",
-		"description": "DELETE /api/v1/publishing/redirects",
+		"description": "DELETE /publishing/redirects",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -24,14 +24,14 @@
 			}
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/publishing/redirects",
+		"endpoint": "/publishing/redirects",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_SaveRedirect",
-		"description": "PUT /api/v1/publishing/redirect",
+		"description": "PUT /publishing/redirect",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -120,14 +120,14 @@
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/publishing/redirect",
+		"endpoint": "/publishing/redirect",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_DeleteRedirect",
-		"description": "DELETE /api/v1/publishing/redirect",
+		"description": "DELETE /publishing/redirect",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -145,14 +145,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/publishing/redirect",
+		"endpoint": "/publishing/redirect",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetPublishingTarget",
-		"description": "GET /api/v1/publishing/target",
+		"description": "GET /publishing/target",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -361,14 +361,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/target",
+		"endpoint": "/publishing/target",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_CreatePublishingTarget",
-		"description": "POST /api/v1/publishing/target",
+		"description": "POST /publishing/target",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -767,14 +767,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/publishing/target",
+		"endpoint": "/publishing/target",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_UpdatePublishingTarget",
-		"description": "PUT /api/v1/publishing/target",
+		"description": "PUT /publishing/target",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1173,14 +1173,14 @@
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/publishing/target",
+		"endpoint": "/publishing/target",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetPublishingTargets",
-		"description": "GET /api/v1/publishing/targets",
+		"description": "GET /publishing/targets",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1426,14 +1426,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/targets",
+		"endpoint": "/publishing/targets",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetPublishingTargetGroups",
-		"description": "GET /api/v1/publishing/target/groups",
+		"description": "GET /publishing/target/groups",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1522,14 +1522,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/target/groups",
+		"endpoint": "/publishing/target/groups",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_SetPublishingTargetGroups",
-		"description": "POST /api/v1/publishing/target/groups",
+		"description": "POST /publishing/target/groups",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1626,14 +1626,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/publishing/target/groups",
+		"endpoint": "/publishing/target/groups",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetContentItemPublishedToTarget",
-		"description": "POST /api/v1/publishing/content-publish-history",
+		"description": "POST /publishing/content-publish-history",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1687,14 +1687,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/publishing/content-publish-history",
+		"endpoint": "/publishing/content-publish-history",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetUserAgents",
-		"description": "GET /api/v1/publishing/user-agents",
+		"description": "GET /publishing/user-agents",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1720,14 +1720,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/user-agents",
+		"endpoint": "/publishing/user-agents",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetSites",
-		"description": "GET /api/v1/publishing/sites",
+		"description": "GET /publishing/sites",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1750,14 +1750,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/sites",
+		"endpoint": "/publishing/sites",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetDitaDependencies",
-		"description": "POST /api/v1/publishing/gather-dependencies",
+		"description": "POST /publishing/gather-dependencies",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1913,14 +1913,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/publishing/gather-dependencies",
+		"endpoint": "/publishing/gather-dependencies",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetDitaOutputFormats",
-		"description": "GET /api/v1/publishing/dita-output-formats",
+		"description": "GET /publishing/dita-output-formats",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1952,14 +1952,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/dita-output-formats",
+		"endpoint": "/publishing/dita-output-formats",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetPostPublishContentProcessors",
-		"description": "GET /api/v1/publishing/content-processors",
+		"description": "GET /publishing/content-processors",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2127,14 +2127,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/content-processors",
+		"endpoint": "/publishing/content-processors",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_SetPostPublishContentProcessor",
-		"description": "POST /api/v1/publishing/content-processors",
+		"description": "POST /publishing/content-processors",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2389,14 +2389,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/publishing/content-processors",
+		"endpoint": "/publishing/content-processors",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetContentProcessorLogs",
-		"description": "GET /api/v1/publishing/content-processor-logs",
+		"description": "GET /publishing/content-processor-logs",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2506,14 +2506,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/content-processor-logs",
+		"endpoint": "/publishing/content-processor-logs",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Reports_GetStats",
-		"description": "GET /api/v1/reports/stats",
+		"description": "GET /reports/stats",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2621,14 +2621,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/reports/stats",
+		"endpoint": "/reports/stats",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_GetScheduling",
-		"description": "GET /api/v1/reports/scheduling",
+		"description": "GET /reports/scheduling",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2692,14 +2692,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/reports/scheduling",
+		"endpoint": "/reports/scheduling",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_ToggleScheduler",
-		"description": "POST /api/v1/reports/toggle-scheduler",
+		"description": "POST /reports/toggle-scheduler",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2734,7 +2734,7 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/reports/toggle-scheduler",
+		"endpoint": "/reports/toggle-scheduler",
 		"tags": [
 			"Reports"
 		]
