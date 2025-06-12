@@ -1,0 +1,1376 @@
+[
+	{
+		"tool_name": "DITA_AddOTParams",
+		"description": "PUT /api/v1/dita/ot-params",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"otParams": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"Type",
+							"IsCommonParam"
+						],
+						"properties": {
+							"Name": {
+								"type": "string"
+							},
+							"Description": {
+								"type": "string"
+							},
+							"Type": {
+								"type": "string",
+								"description": "The object types of parameters for DITA OT processing",
+								"x-enumNames": [
+									"String",
+									"Number",
+									"Enum",
+									"Bool"
+								],
+								"enum": [
+									"String",
+									"Number",
+									"Enum",
+									"Bool"
+								]
+							},
+							"DefaultValue": {
+								"type": "string"
+							},
+							"Choices": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"BelongToFormats": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"IsCommonParam": {
+								"type": "boolean"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"otParams",
+				"otParams"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "PUT",
+		"endpoint": "/api/v1/dita/ot-params",
+		"tags": [
+			"DITA"
+		]
+	},
+	{
+		"tool_name": "DITA_RemoveOTParams",
+		"description": "DELETE /api/v1/dita/ot-params",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"otParams": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"Type",
+							"IsCommonParam"
+						],
+						"properties": {
+							"Name": {
+								"type": "string"
+							},
+							"Description": {
+								"type": "string"
+							},
+							"Type": {
+								"type": "string",
+								"description": "The object types of parameters for DITA OT processing",
+								"x-enumNames": [
+									"String",
+									"Number",
+									"Enum",
+									"Bool"
+								],
+								"enum": [
+									"String",
+									"Number",
+									"Enum",
+									"Bool"
+								]
+							},
+							"DefaultValue": {
+								"type": "string"
+							},
+							"Choices": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"BelongToFormats": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"IsCommonParam": {
+								"type": "boolean"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"otParams",
+				"otParams"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "DELETE",
+		"endpoint": "/api/v1/dita/ot-params",
+		"tags": [
+			"DITA"
+		]
+	},
+	{
+		"tool_name": "DITA_ManipulateDITAVals",
+		"description": "PATCH /api/v1/dita/ditaval-manipulation",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"operation": {
+					"type": "object",
+					"required": [
+						"DitavalAssetId",
+						"Action"
+					],
+					"properties": {
+						"DitavalAssetId": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"DitavalAssetPath": {
+							"type": "string"
+						},
+						"PubMarking": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"MarkedVersion"
+								],
+								"properties": {
+									"PubTargetId": {
+										"type": "string"
+									},
+									"MarkedVersion": {
+										"type": "integer",
+										"format": "int32"
+									}
+								}
+							}
+						},
+						"Action": {
+							"type": "string",
+							"description": "",
+							"x-enumNames": [
+								"Remove",
+								"Restore",
+								"SetPubMarking"
+							],
+							"enum": [
+								"Remove",
+								"Restore",
+								"SetPubMarking"
+							]
+						}
+					}
+				}
+			},
+			"required": [
+				"operation",
+				"operation"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "PATCH",
+		"endpoint": "/api/v1/dita/ditaval-manipulation",
+		"tags": [
+			"DITA"
+		]
+	},
+	{
+		"tool_name": "DITA_RemoveDitaMapCollection",
+		"description": "DELETE /api/v1/dita/remove-ditamap",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"mapId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"mapId"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "DELETE",
+		"endpoint": "/api/v1/dita/remove-ditamap",
+		"tags": [
+			"DITA"
+		]
+	},
+	{
+		"tool_name": "DITA_MarkPublishDitaMapCollection",
+		"description": "PUT /api/v1/dita/mark-ditamap",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"mapId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"marking": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"Number"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"Number": {
+								"type": "integer",
+								"format": "int32"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"mapId",
+				"marking",
+				"marking"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "PUT",
+		"endpoint": "/api/v1/dita/mark-ditamap",
+		"tags": [
+			"DITA"
+		]
+	},
+	{
+		"tool_name": "DITA_CheckoutDitaMapCollection",
+		"description": "POST /api/v1/dita/checkout-ditamap",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"mapId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"mapId"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/dita/checkout-ditamap",
+		"tags": [
+			"DITA"
+		]
+	},
+	{
+		"tool_name": "DITA_CheckInDitaMapCollection",
+		"description": "POST /api/v1/dita/checkin-ditamap",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"mapId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"pubTgtIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"mapId",
+				"pubTgtIds",
+				"pubTgtIds"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/dita/checkin-ditamap",
+		"tags": [
+			"DITA"
+		]
+	},
+	{
+		"tool_name": "DITA_PublishDITAMap",
+		"description": "POST /api/v1/dita/publish-ditamap",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"ditaPubParams": {
+					"type": "object",
+					"required": [
+						"replicate"
+					],
+					"properties": {
+						"mapId": {
+							"type": "string"
+						},
+						"pubTgtIds": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"replicate": {
+							"type": "boolean"
+						},
+						"formats": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"ditavals": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"ditaPubParams",
+				"ditaPubParams"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/dita/publish-ditamap",
+		"tags": [
+			"DITA"
+		]
+	},
+	{
+		"tool_name": "DITA_DownloadDITAMapsCsv",
+		"description": "GET /api/v1/dita/dita-maps-csv",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "file"
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/dita/dita-maps-csv",
+		"tags": [
+			"DITA"
+		]
+	},
+	{
+		"tool_name": "DITA_DownloadMap",
+		"description": "GET /api/v1/dita/download-ditamap",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"mapId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"publishingTargetId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"mapId"
+			]
+		},
+		"output_schema": {
+			"type": "file"
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/dita/download-ditamap",
+		"tags": [
+			"DITA"
+		]
+	},
+	{
+		"tool_name": "Configuration_GetHelpText",
+		"description": "GET /api/v1/configuration/help-text",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"schemaId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"schemaId"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"schemaId": {
+					"type": "string"
+				},
+				"schemaName": {
+					"type": "string"
+				},
+				"attributes": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				},
+				"elements": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/configuration/help-text",
+		"tags": [
+			"Configuration"
+		]
+	},
+	{
+		"tool_name": "Configuration_GetAIHelpText",
+		"description": "GET /api/v1/configuration/ai-help-text",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"schemaId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"schemaId"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"schemaId": {
+					"type": "string"
+				},
+				"schemaName": {
+					"type": "string"
+				},
+				"attributes": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				},
+				"elements": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/configuration/ai-help-text",
+		"tags": [
+			"Configuration"
+		]
+	},
+	{
+		"tool_name": "Configuration_GetHelpTextByContentItem",
+		"description": "GET /api/v1/configuration/help-text-by-content-item",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"contentItemId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"contentItemId"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"schemaId": {
+					"type": "string"
+				},
+				"schemaName": {
+					"type": "string"
+				},
+				"attributes": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				},
+				"elements": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/configuration/help-text-by-content-item",
+		"tags": [
+			"Configuration"
+		]
+	},
+	{
+		"tool_name": "Configuration_GetAllHelpText",
+		"description": "GET /api/v1/configuration/help-texts",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"schemaId": {
+						"type": "string"
+					},
+					"schemaName": {
+						"type": "string"
+					},
+					"attributes": {
+						"type": "object",
+						"additionalProperties": {
+							"type": "string"
+						}
+					},
+					"elements": {
+						"type": "object",
+						"additionalProperties": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/configuration/help-texts",
+		"tags": [
+			"Configuration"
+		]
+	},
+	{
+		"tool_name": "Configuration_GetPageContextMenuConfiguration",
+		"description": "GET /api/v1/configuration/pages/context-menu",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"IsDisplayed",
+					"IsSeparator"
+				],
+				"properties": {
+					"Name": {
+						"type": "string"
+					},
+					"Caption": {
+						"type": "string"
+					},
+					"Icon": {
+						"type": "string"
+					},
+					"IsDisplayed": {
+						"type": "boolean"
+					},
+					"IsSeparator": {
+						"type": "boolean"
+					},
+					"Children": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/ContextMenuItemModel",
+							"circular": true
+						}
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/configuration/pages/context-menu",
+		"tags": [
+			"Configuration"
+		]
+	},
+	{
+		"tool_name": "Configuration_GetAssetContextMenuConfiguration",
+		"description": "GET /api/v1/configuration/assets/context-menu",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"IsDisplayed",
+					"IsSeparator"
+				],
+				"properties": {
+					"Name": {
+						"type": "string"
+					},
+					"Caption": {
+						"type": "string"
+					},
+					"Icon": {
+						"type": "string"
+					},
+					"IsDisplayed": {
+						"type": "boolean"
+					},
+					"IsSeparator": {
+						"type": "boolean"
+					},
+					"Children": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/ContextMenuItemModel",
+							"circular": true
+						}
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/configuration/assets/context-menu",
+		"tags": [
+			"Configuration"
+		]
+	},
+	{
+		"tool_name": "Configuration_GetLegacyGlobals",
+		"description": "GET /api/v1/configuration/legacy-globals",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"enableWorldView",
+				"currentUserCanAdmin",
+				"currentUserHaveAccessToAnyAdminPanel",
+				"autoSave",
+				"inContextEditEnabled",
+				"siteStatusDialogDelay",
+				"tinymceMatchPreviewCss",
+				"messagingDebug",
+				"showUtilityTree",
+				"disabledLocalExports",
+				"autoShowPath",
+				"requireCheckinComments",
+				"showCommentModalOnCheckin",
+				"autoUpdateAliases",
+				"autoExpandMoreNodes",
+				"bypassMultiActionCheck"
+			],
+			"properties": {
+				"rootPath": {
+					"type": "string"
+				},
+				"applicationName": {
+					"type": "string"
+				},
+				"authToken": {
+					"type": "string"
+				},
+				"enableWorldView": {
+					"type": "boolean"
+				},
+				"currentUserCanAdmin": {
+					"type": "boolean"
+				},
+				"currentUserHaveAccessToAnyAdminPanel": {
+					"type": "boolean"
+				},
+				"currentUserRights": {
+					"type": "array",
+					"items": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"currentUserId": {
+					"type": "string"
+				},
+				"currentUserName": {
+					"type": "string"
+				},
+				"currentUserGroups": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"currentUserMembershipProvider": {
+					"type": "string"
+				},
+				"currentUserThumbnail": {
+					"type": "string"
+				},
+				"publishingTargets": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/definitions/IdNamePair",
+								"circular": true
+							},
+							{
+								"type": "object",
+								"required": [
+									"structuredUrlEnabled",
+									"dynamicPublish",
+									"mfo",
+									"replicationEnabled",
+									"analyticsEnabled",
+									"canPreviewDita"
+								],
+								"properties": {
+									"rootPageId": {
+										"type": "string"
+									},
+									"structuredUrlEnabled": {
+										"type": "boolean"
+									},
+									"previewUrl": {
+										"type": "string"
+									},
+									"dynamicPublish": {
+										"type": "boolean"
+									},
+									"mfo": {
+										"type": "boolean"
+									},
+									"replicationEnabled": {
+										"type": "boolean"
+									},
+									"analyticsEnabled": {
+										"type": "boolean"
+									},
+									"canPreviewDita": {
+										"type": "boolean"
+									}
+								}
+							}
+						]
+					}
+				},
+				"autoSave": {
+					"type": "boolean"
+				},
+				"inContextEditEnabled": {
+					"type": "boolean"
+				},
+				"iceHiliteColor": {
+					"type": "string"
+				},
+				"iceInvokeColor": {
+					"type": "string"
+				},
+				"localeList": {
+					"type": "object",
+					"additionalProperties": {
+						"$ref": "#/definitions/IgxLocale"
+					}
+				},
+				"contentLocalesChoices": {
+					"type": "string"
+				},
+				"languageChoices": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"locale": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"flag": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"languageRootIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"siteStatusDialogDelay": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"timezones": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"offset": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"serverUrl": {
+					"type": "string"
+				},
+				"authorHelpUrl": {
+					"type": "string"
+				},
+				"adminHelpUrl": {
+					"type": "string"
+				},
+				"recycleFolderId": {
+					"type": "string"
+				},
+				"assetRecycleFolderId": {
+					"type": "string"
+				},
+				"requestedPageId": {
+					"type": "string"
+				},
+				"contentStoreProps": {
+					"type": "string"
+				},
+				"tinymceConfig": {
+					"type": "object",
+					"required": [
+						"supportHtml5",
+						"supportHtml5CustomDataAttributes",
+						"verify_html",
+						"relative_urls",
+						"convert_urls",
+						"use_native_selects",
+						"apply_source_formatting",
+						"fix_list_elements",
+						"strict_loading_mode",
+						"convert_fonts_to_spans",
+						"auto_reset_designmode",
+						"importcss_append"
+					],
+					"properties": {
+						"supportHtml5": {
+							"type": "boolean"
+						},
+						"supportHtml5CustomDataAttributes": {
+							"type": "boolean"
+						},
+						"theme_igx_buttons1": {
+							"type": "string"
+						},
+						"plugins": {
+							"type": "string"
+						},
+						"table_class_list": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"title": {
+										"type": "string"
+									},
+									"value": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"link_class_list": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/TitleValuePair",
+								"circular": true
+							}
+						},
+						"image_class_list": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/TitleValuePair",
+								"circular": true
+							}
+						},
+						"block_formats": {
+							"type": "string"
+						},
+						"block_formats_list": {
+							"type": "object",
+							"properties": {
+								"title": {
+									"type": "string"
+								},
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"title": {
+												"type": "string"
+											},
+											"format": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						},
+						"heading_formats_list": {
+							"$ref": "#/definitions/StyleFormats",
+							"circular": true
+						},
+						"inline_formats_list": {
+							"$ref": "#/definitions/StyleFormats",
+							"circular": true
+						},
+						"style_formats": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/StyleFormats",
+								"circular": true
+							}
+						},
+						"font_formats": {
+							"type": "string"
+						},
+						"fontsize_formats": {
+							"type": "string"
+						},
+						"table_row_class_list": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/TitleValuePair",
+								"circular": true
+							}
+						},
+						"table_cell_class_list": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/TitleValuePair",
+								"circular": true
+							}
+						},
+						"content_css": {
+							"type": "string"
+						},
+						"mode": {
+							"type": "string"
+						},
+						"entity_encoding": {
+							"type": "string"
+						},
+						"theme": {
+							"type": "string"
+						},
+						"schema": {
+							"type": "string"
+						},
+						"verify_html": {
+							"type": "boolean"
+						},
+						"valid_elements": {
+							"type": "string"
+						},
+						"extended_valid_elements": {
+							"type": "string"
+						},
+						"invalid_elements": {
+							"type": "string"
+						},
+						"custom_elements": {
+							"type": "string"
+						},
+						"valid_children": {
+							"type": "string"
+						},
+						"width": {
+							"type": "string"
+						},
+						"height": {
+							"type": "string"
+						},
+						"file_browser_callback": {
+							"type": "string"
+						},
+						"relative_urls": {
+							"type": "boolean"
+						},
+						"convert_urls": {
+							"type": "boolean"
+						},
+						"document_base_url": {
+							"type": "string"
+						},
+						"forced_root_block": {
+							"type": "string"
+						},
+						"dialog_type": {
+							"type": "string"
+						},
+						"use_native_selects": {
+							"type": "boolean"
+						},
+						"apply_source_formatting": {
+							"type": "boolean"
+						},
+						"fix_list_elements": {
+							"type": "boolean"
+						},
+						"strict_loading_mode": {
+							"type": "boolean"
+						},
+						"convert_fonts_to_spans": {
+							"type": "boolean"
+						},
+						"font_size_style_values": {
+							"type": "string"
+						},
+						"spellchecker_languages": {
+							"type": "string"
+						},
+						"spellchecker_rpc_url": {
+							"type": "string"
+						},
+						"auto_reset_designmode": {
+							"type": "boolean"
+						},
+						"config_json": {
+							"type": "string"
+						},
+						"importcss_append": {
+							"type": "boolean"
+						}
+					}
+				},
+				"tinymceMatchPreviewCss": {
+					"type": "boolean"
+				},
+				"messagingDebug": {
+					"type": "boolean"
+				},
+				"assetTypes": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"assetSchemaVersionControlTypes": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"iconClasses": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				},
+				"showUtilityTree": {
+					"type": "boolean"
+				},
+				"playNotificationSound": {
+					"type": "string"
+				},
+				"defaultEditFormView": {
+					"type": "string"
+				},
+				"disabledLocalExports": {
+					"type": "boolean"
+				},
+				"autoShowPath": {
+					"type": "boolean"
+				},
+				"requireCheckinComments": {
+					"type": "boolean"
+				},
+				"showCommentModalOnCheckin": {
+					"type": "boolean"
+				},
+				"autoUpdateAliases": {
+					"type": "boolean"
+				},
+				"autoExpandMoreNodes": {
+					"type": "boolean"
+				},
+				"bypassMultiActionCheck": {
+					"type": "boolean"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/configuration/legacy-globals",
+		"tags": [
+			"Configuration"
+		]
+	},
+	{
+		"tool_name": "Configuration_GetFlag",
+		"description": "GET /api/v1/configuration/flag",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"locale": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"locale"
+			]
+		},
+		"output_schema": {
+			"type": "file"
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/configuration/flag",
+		"tags": [
+			"Configuration"
+		]
+	},
+	{
+		"tool_name": "Configuration_GetGlobalCustomTabs",
+		"description": "GET /api/v1/configuration/global-custom-tabs",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"type": "object",
+						"required": [
+							"isGlobal",
+							"appendPageId",
+							"appendAssetId",
+							"appendAssetFolderId"
+						],
+						"properties": {
+							"url": {
+								"type": "string"
+							},
+							"isGlobal": {
+								"type": "boolean"
+							},
+							"appendPageId": {
+								"type": "boolean"
+							},
+							"appendAssetId": {
+								"type": "boolean"
+							},
+							"appendAssetFolderId": {
+								"type": "boolean"
+							},
+							"resourceId": {
+								"type": "string"
+							},
+							"icon": {
+								"type": "string"
+							},
+							"iconClass": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"displayName": {
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "object",
+						"required": [
+							"autoSelect",
+							"allowPinning",
+							"show"
+						],
+						"properties": {
+							"id": {
+								"type": "string"
+							},
+							"autoSelect": {
+								"type": "boolean"
+							},
+							"allowPinning": {
+								"type": "boolean"
+							},
+							"show": {
+								"type": "boolean"
+							},
+							"localeName": {
+								"type": "string"
+							},
+							"schemaIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"assetSchemaIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"pageIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"assetIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"assetFolderIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/configuration/global-custom-tabs",
+		"tags": [
+			"Configuration"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_GetCustomSettings",
+		"description": "GET /api/v1/insite-search/custom-settings",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"Name": {
+						"type": "string"
+					},
+					"Value": {
+						"type": "string"
+					},
+					"PublishingTargetIds": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/custom-settings",
+		"tags": [
+			"InsiteSearch"
+		]
+	}
+]

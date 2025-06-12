@@ -1,0 +1,1438 @@
+[
+	{
+		"tool_name": "InsiteSearch_GetBoostSchemas",
+		"description": "GET /api/v1/insite-search/boost-schemas",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTgtId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"Boost"
+				],
+				"properties": {
+					"Id": {
+						"type": "string"
+					},
+					"FriendlyName": {
+						"type": "string"
+					},
+					"RootName": {
+						"type": "string"
+					},
+					"Boost": {
+						"type": "number",
+						"format": "double"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/boost-schemas",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_SaveBoostSchemas",
+		"description": "POST /api/v1/insite-search/boost-schemas",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"Boost"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"FriendlyName": {
+								"type": "string"
+							},
+							"RootName": {
+								"type": "string"
+							},
+							"Boost": {
+								"type": "number",
+								"format": "double"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"pubTgtId",
+				"data",
+				"data"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/boost-schemas",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_GetBoostFieldsForSchema",
+		"description": "GET /api/v1/insite-search/boost-fields",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"schemaId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTgtId",
+				"schemaId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"Indexed",
+					"Boost"
+				],
+				"properties": {
+					"FieldLabel": {
+						"type": "string"
+					},
+					"FieldName": {
+						"type": "string"
+					},
+					"Indexed": {
+						"type": "boolean"
+					},
+					"Boost": {
+						"type": "number",
+						"format": "double"
+					},
+					"Type": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/boost-fields",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_SaveBoostFieldsForSchema",
+		"description": "POST /api/v1/insite-search/boost-fields",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"schemaId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"Indexed",
+							"Boost"
+						],
+						"properties": {
+							"FieldLabel": {
+								"type": "string"
+							},
+							"FieldName": {
+								"type": "string"
+							},
+							"Indexed": {
+								"type": "boolean"
+							},
+							"Boost": {
+								"type": "number",
+								"format": "double"
+							},
+							"Type": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"pubTgtId",
+				"schemaId",
+				"data",
+				"data"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/boost-fields",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_GetBoostSiteWideFields",
+		"description": "GET /api/v1/insite-search/sitewide-boost-fields",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTgtId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"Indexed",
+					"Boost"
+				],
+				"properties": {
+					"FieldLabel": {
+						"type": "string"
+					},
+					"FieldName": {
+						"type": "string"
+					},
+					"Indexed": {
+						"type": "boolean"
+					},
+					"Boost": {
+						"type": "number",
+						"format": "double"
+					},
+					"Type": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/sitewide-boost-fields",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_SaveSiteWideBoostFields",
+		"description": "POST /api/v1/insite-search/site-wide-boost-fields",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"Indexed",
+							"Boost"
+						],
+						"properties": {
+							"FieldLabel": {
+								"type": "string"
+							},
+							"FieldName": {
+								"type": "string"
+							},
+							"Indexed": {
+								"type": "boolean"
+							},
+							"Boost": {
+								"type": "number",
+								"format": "double"
+							},
+							"Type": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"pubTgtId",
+				"data",
+				"data"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/site-wide-boost-fields",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_ApplyToTargets",
+		"description": "POST /api/v1/insite-search/apply-to-target",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"curPubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"pubTgtIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"curPubTgtId",
+				"pubTgtIds",
+				"pubTgtIds"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/apply-to-target",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "L10N_GetLocalizationStats",
+		"description": "GET /api/v1/L10N/stats",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"IsStats"
+			],
+			"properties": {
+				"PageSchemas": {
+					"type": "object",
+					"required": [
+						"Done",
+						"All",
+						"Percent"
+					],
+					"properties": {
+						"Done": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"All": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"Percent": {
+							"type": "integer",
+							"format": "int32"
+						}
+					}
+				},
+				"ComponentSchemas": {
+					"$ref": "#/definitions/SiteDefinitionItemLocalizationStats",
+					"circular": true
+				},
+				"PCRs": {
+					"$ref": "#/definitions/SiteDefinitionItemLocalizationStats",
+					"circular": true
+				},
+				"WorkflowDefinitions": {
+					"$ref": "#/definitions/SiteDefinitionItemLocalizationStats",
+					"circular": true
+				},
+				"WorkflowStates": {
+					"$ref": "#/definitions/SiteDefinitionItemLocalizationStats",
+					"circular": true
+				},
+				"LastUpdateDate": {
+					"type": "string"
+				},
+				"IsStats": {
+					"type": "boolean"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/L10N/stats",
+		"tags": [
+			"L10N"
+		]
+	},
+	{
+		"tool_name": "L10N_GetPageSchemas",
+		"description": "GET /api/v1/L10N/page-schemas",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"IsTranslated",
+							"IsIncomplete",
+							"IsOutDated"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"IsTranslated": {
+								"type": "boolean"
+							},
+							"IsIncomplete": {
+								"type": "boolean"
+							},
+							"IsOutDated": {
+								"type": "boolean"
+							}
+						}
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/L10N/page-schemas",
+		"tags": [
+			"L10N"
+		]
+	},
+	{
+		"tool_name": "L10N_GetComponentSchemas",
+		"description": "GET /api/v1/L10N/component-schemas",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"IsTranslated",
+							"IsIncomplete",
+							"IsOutDated"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"IsTranslated": {
+								"type": "boolean"
+							},
+							"IsIncomplete": {
+								"type": "boolean"
+							},
+							"IsOutDated": {
+								"type": "boolean"
+							}
+						}
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/L10N/component-schemas",
+		"tags": [
+			"L10N"
+		]
+	},
+	{
+		"tool_name": "L10N_GetAssetSchemas",
+		"description": "GET /api/v1/L10N/asset-schemas",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"IsTranslated",
+							"IsIncomplete",
+							"IsOutDated"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"IsTranslated": {
+								"type": "boolean"
+							},
+							"IsIncomplete": {
+								"type": "boolean"
+							},
+							"IsOutDated": {
+								"type": "boolean"
+							}
+						}
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/L10N/asset-schemas",
+		"tags": [
+			"L10N"
+		]
+	},
+	{
+		"tool_name": "L10N_GetPCRs",
+		"description": "GET /api/v1/L10N/pcrs",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"IsTranslated",
+							"IsIncomplete",
+							"IsOutDated"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"IsTranslated": {
+								"type": "boolean"
+							},
+							"IsIncomplete": {
+								"type": "boolean"
+							},
+							"IsOutDated": {
+								"type": "boolean"
+							}
+						}
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/L10N/pcrs",
+		"tags": [
+			"L10N"
+		]
+	},
+	{
+		"tool_name": "L10N_GetWorkflowDefinitions",
+		"description": "GET /api/v1/L10N/workflow-definitions",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"IsTranslated",
+							"IsIncomplete",
+							"IsOutDated"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"IsTranslated": {
+								"type": "boolean"
+							},
+							"IsIncomplete": {
+								"type": "boolean"
+							},
+							"IsOutDated": {
+								"type": "boolean"
+							}
+						}
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/L10N/workflow-definitions",
+		"tags": [
+			"L10N"
+		]
+	},
+	{
+		"tool_name": "L10N_GetWorkstates",
+		"description": "GET /api/v1/L10N/workstates",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"IsTranslated",
+							"IsIncomplete",
+							"IsOutDated"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"IsTranslated": {
+								"type": "boolean"
+							},
+							"IsIncomplete": {
+								"type": "boolean"
+							},
+							"IsOutDated": {
+								"type": "boolean"
+							}
+						}
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/L10N/workstates",
+		"tags": [
+			"L10N"
+		]
+	},
+	{
+		"tool_name": "Logs_GetCMSLog",
+		"description": "GET /api/v1/logs/cms",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"sort": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"type": "object",
+					"required": [
+						"TotalResults",
+						"PageSize",
+						"NextIndex"
+					],
+					"properties": {
+						"Results": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"LineNum"
+								],
+								"properties": {
+									"LineNum": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"Message": {
+										"type": "string"
+									},
+									"Type": {
+										"type": "string"
+									},
+									"Time": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"TotalResults": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"PageSize": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"NextIndex": {
+							"type": "integer",
+							"format": "int32"
+						}
+					}
+				},
+				{
+					"type": "object"
+				}
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/logs/cms",
+		"tags": [
+			"Logs"
+		]
+	},
+	{
+		"tool_name": "Logs_GetCMSLogFile",
+		"description": "GET /api/v1/logs/cms/file",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "file"
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/logs/cms/file",
+		"tags": [
+			"Logs"
+		]
+	},
+	{
+		"tool_name": "Logs_GetCMSLogArchives",
+		"description": "GET /api/v1/logs/cms/archive",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "file"
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/logs/cms/archive",
+		"tags": [
+			"Logs"
+		]
+	},
+	{
+		"tool_name": "Notifications_GetContentFreeze",
+		"description": "GET /api/v1/notifications/contentfreeze",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"AllowMe"
+			],
+			"properties": {
+				"StartTime": {
+					"type": "string"
+				},
+				"EndTime": {
+					"type": "string"
+				},
+				"AllowMe": {
+					"type": "boolean"
+				},
+				"Message": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/notifications/contentfreeze",
+		"tags": [
+			"Notifications"
+		]
+	},
+	{
+		"tool_name": "Notifications_GetAlerts",
+		"description": "GET /api/v1/notifications/alerts",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"all": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"systemAlerts": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"CreatedAt",
+							"Observed"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Title": {
+								"type": "string"
+							},
+							"CreatedAt": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"Observed": {
+								"type": "boolean"
+							},
+							"Message": {
+								"type": "string"
+							},
+							"Severity": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"dbAlerts": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/AlertModel",
+						"circular": true
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/notifications/alerts",
+		"tags": [
+			"Notifications"
+		]
+	},
+	{
+		"tool_name": "Dashboard_GetOverview",
+		"description": "GET /api/v1/dashboard/overview",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"InProgressTotal"
+			],
+			"properties": {
+				"UserStats": {
+					"type": "object",
+					"properties": {
+						"LastLogin": {
+							"type": "string"
+						},
+						"LastPageWorkedOnName": {
+							"type": "string"
+						},
+						"LastPageWorkedOnId": {
+							"type": "string"
+						},
+						"LastPageWorkedOn": {
+							"type": "string"
+						},
+						"LastPublishTime": {
+							"type": "string"
+						},
+						"PagesCheckedOut": {
+							"type": "string"
+						},
+						"DashboardOptions": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"Value",
+									"Order"
+								],
+								"properties": {
+									"Id": {
+										"type": "string"
+									},
+									"Value": {
+										"type": "boolean"
+									},
+									"Order": {
+										"type": "integer",
+										"format": "int32"
+									}
+								}
+							}
+						}
+					}
+				},
+				"PageCreationRules": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"properties": {
+									"Id": {
+										"type": "string"
+									},
+									"Name": {
+										"type": "string"
+									}
+								}
+							},
+							{
+								"type": "object",
+								"required": [
+									"Icon"
+								],
+								"properties": {
+									"Schema": {
+										"type": "string"
+									},
+									"Icon": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"ThumbUrl": {
+										"type": "string"
+									},
+									"Description": {
+										"type": "string"
+									},
+									"Author": {
+										"type": "string"
+									}
+								}
+							}
+						]
+					}
+				},
+				"InProgress": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/definitions/NameIdPair",
+								"circular": true
+							},
+							{
+								"type": "object",
+								"required": [
+									"Icon"
+								],
+								"properties": {
+									"Icon": {
+										"type": "integer",
+										"format": "int32"
+									}
+								}
+							}
+						]
+					}
+				},
+				"InProgressTotal": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"ActiveUsers": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/definitions/NameIdPair",
+								"circular": true
+							},
+							{
+								"type": "object",
+								"required": [
+									"AssignedPageCount"
+								],
+								"properties": {
+									"Email": {
+										"type": "string"
+									},
+									"LastLogin": {
+										"type": "string"
+									},
+									"AssignedPageCount": {
+										"type": "integer",
+										"format": "int32"
+									}
+								}
+							}
+						]
+					}
+				},
+				"PublishStats": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"type": "object",
+										"x-abstract": true,
+										"properties": {
+											"Id": {
+												"type": "string"
+											}
+										}
+									},
+									{
+										"type": "object",
+										"properties": {
+											"Name": {
+												"type": "string"
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"Value": {
+										"type": "string"
+									},
+									"LastPubDate": {
+										"type": "string"
+									}
+								}
+							}
+						]
+					}
+				},
+				"CMSStatistics": {
+					"type": "object",
+					"properties": {
+						"Statistics": {
+							"type": "object",
+							"required": [
+								"TotalPageCount",
+								"TotalAssetCount",
+								"TotalUsers"
+							],
+							"properties": {
+								"TotalPageCount": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"TotalAssetCount": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"TotalUsers": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"DatabaseBuild": {
+									"type": "string"
+								},
+								"SiteVersion": {
+									"type": "string"
+								},
+								"ContentVersion": {
+									"type": "string"
+								}
+							}
+						},
+						"SiteName": {
+							"type": "string"
+						}
+					}
+				},
+				"Preferences": {
+					"type": "object",
+					"properties": {
+						"WatchedPages": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/OverviewPageInformation",
+								"circular": true
+							}
+						},
+						"WatchedAssetItems": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/OverviewPageInformation",
+								"circular": true
+							}
+						},
+						"RecentPages": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/OverviewPageInformation",
+								"circular": true
+							}
+						},
+						"RecentAssetItems": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/OverviewPageInformation",
+								"circular": true
+							}
+						},
+						"Error": {
+							"type": "string"
+						}
+					}
+				},
+				"PubTargets": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/NameIdPair",
+						"circular": true
+					}
+				},
+				"Analytics": {
+					"type": "object",
+					"properties": {
+						"Targets": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/NameIdPair",
+								"circular": true
+							}
+						}
+					}
+				},
+				"AnalyticsInitial": {
+					"type": "object",
+					"properties": {
+						"Traffic": {
+							"allOf": [
+								{
+									"$ref": "#/definitions/NameIdPair",
+									"circular": true
+								},
+								{
+									"type": "object",
+									"properties": {
+										"Info": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"Value": {
+														"type": "string"
+													},
+													"Name": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"Error": {
+											"type": "string"
+										}
+									}
+								}
+							]
+						},
+						"Sources": {
+							"allOf": [
+								{
+									"$ref": "#/definitions/NameIdPair",
+									"circular": true
+								},
+								{
+									"type": "object",
+									"properties": {
+										"PiePieces": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"required": [
+													"Data"
+												],
+												"properties": {
+													"Label": {
+														"type": "string"
+													},
+													"Data": {
+														"type": "integer",
+														"format": "int32"
+													}
+												}
+											}
+										},
+										"Error": {
+											"type": "string"
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/dashboard/overview",
+		"tags": [
+			"Dashboard"
+		]
+	}
+]

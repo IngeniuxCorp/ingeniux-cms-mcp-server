@@ -1,0 +1,780 @@
+[
+	{
+		"tool_name": "Settings_GetOAuthIdentities",
+		"description": "GET /api/v1/settings/access-tokens",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"clientId": {
+						"type": "string"
+					},
+					"note": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/settings/access-tokens",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_SetOAuthIdentities",
+		"description": "PUT /api/v1/settings/access-tokens",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"input": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"userId": {
+								"type": "string"
+							},
+							"clientId": {
+								"type": "string"
+							},
+							"note": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"input",
+				"input"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"userId": {
+								"type": "string"
+							},
+							"clientId": {
+								"type": "string"
+							},
+							"note": {
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "object",
+						"properties": {
+							"clientSecret": {
+								"type": "string"
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "PUT",
+		"endpoint": "/api/v1/settings/access-tokens",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_GetGlobalVariables",
+		"description": "GET /api/v1/settings/global-variables",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"XPathQuery"
+				],
+				"properties": {
+					"Name": {
+						"type": "string"
+					},
+					"GlobalValue": {
+						"type": "string"
+					},
+					"XPathQuery": {
+						"type": "boolean"
+					},
+					"VariableType": {
+						"type": "string"
+					},
+					"PubTargetOverrides": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"Value": {
+									"type": "string"
+								},
+								"PubTargetId": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/settings/global-variables",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_SetGlobalVariables",
+		"description": "PUT /api/v1/settings/global-variables",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"input": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"XPathQuery"
+						],
+						"properties": {
+							"Name": {
+								"type": "string"
+							},
+							"GlobalValue": {
+								"type": "string"
+							},
+							"XPathQuery": {
+								"type": "boolean"
+							},
+							"VariableType": {
+								"type": "string"
+							},
+							"PubTargetOverrides": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"Value": {
+											"type": "string"
+										},
+										"PubTargetId": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"input",
+				"input"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"XPathQuery"
+				],
+				"properties": {
+					"Name": {
+						"type": "string"
+					},
+					"GlobalValue": {
+						"type": "string"
+					},
+					"XPathQuery": {
+						"type": "boolean"
+					},
+					"VariableType": {
+						"type": "string"
+					},
+					"PubTargetOverrides": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"Value": {
+									"type": "string"
+								},
+								"PubTargetId": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"method": "PUT",
+		"endpoint": "/api/v1/settings/global-variables",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_DeployDitaOT",
+		"description": "PATCH /api/v1/settings/deploy-dita-ot",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"version": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"downloadUrl": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"version",
+				"downloadUrl"
+			]
+		},
+		"output_schema": {
+			"type": "string"
+		},
+		"method": "PATCH",
+		"endpoint": "/api/v1/settings/deploy-dita-ot",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_RemoveDitaOTDeployment",
+		"description": "DELETE /api/v1/settings/remove-dita-ot",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "string"
+		},
+		"method": "DELETE",
+		"endpoint": "/api/v1/settings/remove-dita-ot",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_RemoveDitaOTPlugin",
+		"description": "DELETE /api/v1/settings/remove-dita-ot-plugin",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pluginFolder": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pluginFolder"
+			]
+		},
+		"output_schema": {
+			"type": "string"
+		},
+		"method": "DELETE",
+		"endpoint": "/api/v1/settings/remove-dita-ot-plugin",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_RestoreDitaOTPlugin",
+		"description": "DELETE /api/v1/settings/restore-dita-ot-plugin",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pluginFolder": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pluginFolder"
+			]
+		},
+		"output_schema": {
+			"type": "string"
+		},
+		"method": "DELETE",
+		"endpoint": "/api/v1/settings/restore-dita-ot-plugin",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_UploadDitaOTPlugin",
+		"description": "POST /api/v1/settings/add-dita-ot-plugin",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/settings/add-dita-ot-plugin",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_DeployCustomOT",
+		"description": "POST /api/v1/settings/deploy-custom-ot",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/settings/deploy-custom-ot",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_ManipulateDitavals",
+		"description": "POST /api/v1/settings/ditaval-manipulation",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"operation": {
+					"type": "object",
+					"required": [
+						"Remove",
+						"Restore"
+					],
+					"properties": {
+						"DitavalAssetIds": {
+							"type": "array",
+							"items": {
+								"type": "integer",
+								"format": "int32"
+							}
+						},
+						"PubMarking": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"MarkedVersion"
+								],
+								"properties": {
+									"PubTargetId": {
+										"type": "string"
+									},
+									"MarkedVersion": {
+										"type": "integer",
+										"format": "int32"
+									}
+								}
+							}
+						},
+						"Remove": {
+							"type": "boolean"
+						},
+						"Restore": {
+							"type": "boolean"
+						}
+					}
+				}
+			},
+			"required": [
+				"operation",
+				"operation"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/settings/ditaval-manipulation",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_GetArchiveTypes",
+		"description": "GET /api/v1/settings/archive-types",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"Id": {
+						"type": "string"
+					},
+					"Name": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/settings/archive-types",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_GetGroupsForTreeMenu",
+		"description": "GET /api/v1/settings/page-tree-menu-groups",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"active",
+					"_checked"
+				],
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"groupId": {
+						"type": "string"
+					},
+					"userRights": {
+						"type": "array",
+						"items": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					"active": {
+						"type": "boolean"
+					},
+					"_checked": {
+						"type": "boolean"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/settings/page-tree-menu-groups",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_GetGroupsForAssetTreeMenu",
+		"description": "GET /api/v1/settings/asset-tree-menu-groups",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"active",
+					"_checked"
+				],
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"groupId": {
+						"type": "string"
+					},
+					"userRights": {
+						"type": "array",
+						"items": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					"active": {
+						"type": "boolean"
+					},
+					"_checked": {
+						"type": "boolean"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/settings/asset-tree-menu-groups",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_GetPossiblePageTreeMenuItems",
+		"description": "GET /api/v1/settings/page-tree-menu-items",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"Id": {
+						"type": "string"
+					},
+					"Name": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/settings/page-tree-menu-items",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_GetPossibleAssetTreeMenuItems",
+		"description": "GET /api/v1/settings/asset-tree-menu-items",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"Id": {
+						"type": "string"
+					},
+					"Name": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/settings/asset-tree-menu-items",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_GetPossibleTinyMceItems",
+		"description": "GET /api/v1/settings/tinymce-items",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"propertyName": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"propertyName"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/settings/tinymce-items",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_GetTimeZones",
+		"description": "GET /api/v1/settings/timezones",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"Id": {
+						"type": "string"
+					},
+					"Name": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/settings/timezones",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_GetTinyMceGroups",
+		"description": "GET /api/v1/settings/tinymce-groups",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"settingName": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"settingName"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"active",
+					"_checked"
+				],
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"groupId": {
+						"type": "string"
+					},
+					"userRights": {
+						"type": "array",
+						"items": {
+							"type": "integer",
+							"format": "int32"
+						}
+					},
+					"active": {
+						"type": "boolean"
+					},
+					"_checked": {
+						"type": "boolean"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/settings/tinymce-groups",
+		"tags": [
+			"Settings"
+		]
+	},
+	{
+		"tool_name": "Settings_GetPresentationsFormatters",
+		"description": "GET /api/v1/settings/presentation-formatters",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"type": "object",
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "object"
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/settings/presentation-formatters",
+		"tags": [
+			"Settings"
+		]
+	}
+]

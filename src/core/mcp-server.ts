@@ -6,6 +6,13 @@ import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 
+import * as fs from 'fs';
+import * as path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 import { configManager } from '../utils/config-manager.js';
 import { logger } from '../utils/logger.js';
 import { errorHandler } from '../utils/error-handler.js';
@@ -15,6 +22,19 @@ import { authMiddleware } from '../auth/auth-middleware.js';
 import { OAuthManager } from '../auth/oauth-manager.js';
 import { APIClient } from '../api/api-client.js';
 import { ContentTools } from '../tools/content-tools.js';
+import { getSwaggerMcpTools } from '../tools/swagger-mcp-tools.js';
+
+const MCP_TOOLS_GEN_DIR = path.resolve(__dirname, '../../mcp-tools-generated');
+function ensureMcpToolsGeneratedDir() {
+	try {
+		if (!fs.existsSync(MCP_TOOLS_GEN_DIR)) {
+			fs.mkdirSync(MCP_TOOLS_GEN_DIR, { recursive: true });
+		}
+	} catch (e) {
+		console.error('Failed to ensure mcp-tools-generated directory:', e);
+		throw new Error('Startup failed: cannot create mcp-tools-generated directory');
+	}
+}
 
 export class MCPServer {
 	private static instance: MCPServer;
@@ -54,6 +74,9 @@ export class MCPServer {
 	 */
 	public async start(): Promise<void> {
 		try {
+			// Ensure mcp-tools-generated directory exists before any access
+			ensureMcpToolsGeneratedDir();
+
 			if (this.isRunning) {
 				logger.warn('Server is already running');
 				return;
@@ -192,24 +215,33 @@ export class MCPServer {
 
 			const contentTools = new ContentTools(this.apiClient);
 			const tools = contentTools.getTools();
-			
-			// Use safe registration to prevent duplicates
+
+			// Register ContentTools
 			const result = toolRegistry.registerToolsSafe(tools, false);
-			
+
+			// Register Swagger-generated MCP tools
+			const swaggerTools = getSwaggerMcpTools(this.apiClient);
+			const swaggerResult = toolRegistry.registerToolsSafe(swaggerTools, false);
+
+            console.log(`Registered ${swaggerTools.length} Swagger MCP tools`, swaggerTools, swaggerResult);
+
 			// Log registration results
 			if (result.registered.length > 0) {
 				logger.info(`Registered ${result.registered.length} content management tools: ${result.registered.join(', ')}`);
 			}
-			
-			if (result.skipped.length > 0) {
-				logger.warn(`Skipped ${result.skipped.length} duplicate tools: ${result.skipped.join(', ')}`);
+			if (swaggerResult.registered.length > 0) {
+				logger.info(`Registered ${swaggerResult.registered.length} Swagger MCP tools: ${swaggerResult.registered.join(', ')}`);
 			}
-			
-			if (result.errors.length > 0) {
-				logger.error(`Failed to register ${result.errors.length} tools: ${result.errors.join('; ')}`);
-				throw new Error(`Some tools failed to register: ${result.errors.join('; ')}`);
+			if (result.skipped.length > 0 || swaggerResult.skipped.length > 0) {
+				logger.warn(
+					`Skipped duplicate tools: ${[...result.skipped, ...swaggerResult.skipped].join(', ')}`
+				);
 			}
-
+			const allErrors = [...result.errors, ...swaggerResult.errors];
+			if (allErrors.length > 0) {
+				logger.error(`Failed to register ${allErrors.length} tools: ${allErrors.join('; ')}`);
+				throw new Error(`Some tools failed to register: ${allErrors.join('; ')}`);
+			}
 		} catch (error) {
 			throw new Error(`Content tools registration failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
 		}

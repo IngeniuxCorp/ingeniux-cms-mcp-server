@@ -1,0 +1,2195 @@
+[
+	{
+		"tool_name": "Preview_GetTaxonomyCategoriesByPage",
+		"description": "GET /api/v1/preview/taxonomy-by-page",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"type": "object",
+												"properties": {
+													"Id": {
+														"type": "string"
+													},
+													"Name": {
+														"type": "string"
+													}
+												}
+											},
+											{
+												"type": "object"
+											}
+										]
+									},
+									{
+										"type": "object",
+										"x-abstract": true,
+										"required": [
+											"Created",
+											"LastModified",
+											"Archived"
+										],
+										"properties": {
+											"CreationUser": {
+												"type": "string"
+											},
+											"Created": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"LastModifiedUser": {
+												"type": "string"
+											},
+											"LastModified": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"EntityType": {
+												"type": "string"
+											},
+											"Archived": {
+												"type": "boolean"
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"required": [
+									"ChildrenCount",
+									"SiblingPosition"
+								],
+								"properties": {
+									"ParentId": {
+										"type": "string"
+									},
+									"ChildrenCount": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"SiblingPosition": {
+										"type": "number",
+										"format": "double"
+									}
+								}
+							}
+						]
+					},
+					{
+						"type": "object",
+						"required": [
+							"SecurityLevel"
+						],
+						"properties": {
+							"Description": {
+								"type": "string"
+							},
+							"TypeName": {
+								"type": "string"
+							},
+							"ExternalId": {
+								"type": "string"
+							},
+							"PageIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"AssetIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"Locale": {
+								"type": "string"
+							},
+							"Synonyms": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"Locale": {
+											"type": "string"
+										},
+										"Value": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"SecurityLevel": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"GroupPermissions": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"required": [
+										"PermissionLevel"
+									],
+									"properties": {
+										"GroupId": {
+											"type": "string"
+										},
+										"GroupName": {
+											"type": "string"
+										},
+										"PermissionLevel": {
+											"type": "string",
+											"description": "The list of node-level permissions for Pages",
+											"x-enumNames": [
+												"NO_ACCESS",
+												"READ_ONLY",
+												"FULL_ACCESS"
+											],
+											"enum": [
+												"NO_ACCESS",
+												"READ_ONLY",
+												"FULL_ACCESS"
+											]
+										}
+									}
+								}
+							},
+							"Translations": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"required": [
+										"RequiresUpdate"
+									],
+									"properties": {
+										"Locale": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										},
+										"Description": {
+											"type": "string"
+										},
+										"TypeName": {
+											"type": "string"
+										},
+										"RequiresUpdate": {
+											"type": "boolean"
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/preview/taxonomy-by-page",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_GetTaxonomyCategoriesByAsset",
+		"description": "GET /api/v1/preview/taxonomy-by-asset",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"type": "object",
+												"properties": {
+													"Id": {
+														"type": "string"
+													},
+													"Name": {
+														"type": "string"
+													}
+												}
+											},
+											{
+												"type": "object"
+											}
+										]
+									},
+									{
+										"type": "object",
+										"x-abstract": true,
+										"required": [
+											"Created",
+											"LastModified",
+											"Archived"
+										],
+										"properties": {
+											"CreationUser": {
+												"type": "string"
+											},
+											"Created": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"LastModifiedUser": {
+												"type": "string"
+											},
+											"LastModified": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"EntityType": {
+												"type": "string"
+											},
+											"Archived": {
+												"type": "boolean"
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"required": [
+									"ChildrenCount",
+									"SiblingPosition"
+								],
+								"properties": {
+									"ParentId": {
+										"type": "string"
+									},
+									"ChildrenCount": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"SiblingPosition": {
+										"type": "number",
+										"format": "double"
+									}
+								}
+							}
+						]
+					},
+					{
+						"type": "object",
+						"required": [
+							"SecurityLevel"
+						],
+						"properties": {
+							"Description": {
+								"type": "string"
+							},
+							"TypeName": {
+								"type": "string"
+							},
+							"ExternalId": {
+								"type": "string"
+							},
+							"PageIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"AssetIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"Locale": {
+								"type": "string"
+							},
+							"Synonyms": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"Locale": {
+											"type": "string"
+										},
+										"Value": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"SecurityLevel": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"GroupPermissions": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"required": [
+										"PermissionLevel"
+									],
+									"properties": {
+										"GroupId": {
+											"type": "string"
+										},
+										"GroupName": {
+											"type": "string"
+										},
+										"PermissionLevel": {
+											"type": "string",
+											"description": "The list of node-level permissions for Pages",
+											"x-enumNames": [
+												"NO_ACCESS",
+												"READ_ONLY",
+												"FULL_ACCESS"
+											],
+											"enum": [
+												"NO_ACCESS",
+												"READ_ONLY",
+												"FULL_ACCESS"
+											]
+										}
+									}
+								}
+							},
+							"Translations": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"required": [
+										"RequiresUpdate"
+									],
+									"properties": {
+										"Locale": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										},
+										"Description": {
+											"type": "string"
+										},
+										"TypeName": {
+											"type": "string"
+										},
+										"RequiresUpdate": {
+											"type": "boolean"
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/preview/taxonomy-by-asset",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_GetTaxonomyCategoryDescendants",
+		"description": "GET /api/v1/preview/taxonomy-descendants",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"depth": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"maxCount": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"type": "object",
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "object",
+						"required": [
+							"SiblingPosition"
+						],
+						"properties": {
+							"ParentId": {
+								"type": "string"
+							},
+							"SiblingPosition": {
+								"type": "number",
+								"format": "double"
+							},
+							"CheckedOutName": {
+								"type": "string"
+							},
+							"CheckedInName": {
+								"type": "string"
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/preview/taxonomy-descendants",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_GetGlobalExports",
+		"description": "GET /api/v1/preview/global-exports",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"Name": {
+						"type": "string"
+					},
+					"Query": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/preview/global-exports",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_StreamPageXml",
+		"description": "GET /api/v1/preview/stream/page-xml",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"count": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTgtId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"Id": {
+												"type": "string"
+											},
+											"Name": {
+												"type": "string"
+											}
+										}
+									},
+									{
+										"type": "object"
+									}
+								]
+							},
+							{
+								"type": "object",
+								"x-abstract": true,
+								"required": [
+									"Created",
+									"LastModified",
+									"Archived"
+								],
+								"properties": {
+									"CreationUser": {
+										"type": "string"
+									},
+									"Created": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"LastModifiedUser": {
+										"type": "string"
+									},
+									"LastModified": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"EntityType": {
+										"type": "string"
+									},
+									"Archived": {
+										"type": "boolean"
+									}
+								}
+							}
+						]
+					},
+					{
+						"type": "object",
+						"required": [
+							"Version",
+							"CheckedOut"
+						],
+						"properties": {
+							"Content": {
+								"type": "string"
+							},
+							"PageId": {
+								"type": "string"
+							},
+							"Version": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"CheckedOut": {
+								"type": "boolean"
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/preview/stream/page-xml",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_StreamPageReferences",
+		"description": "GET /api/v1/preview/stream/page-references",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"count": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"type": "object",
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "object",
+						"required": [
+							"SiblingPosition"
+						],
+						"properties": {
+							"ParentId": {
+								"type": "string"
+							},
+							"SiblingPosition": {
+								"type": "number",
+								"format": "double"
+							},
+							"CheckedOutName": {
+								"type": "string"
+							},
+							"CheckedInName": {
+								"type": "string"
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/preview/stream/page-references",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_StreamAssetReferences",
+		"description": "GET /api/v1/preview/stream/asset-references",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"count": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"allOf": [
+							{
+								"type": "object",
+								"properties": {
+									"Id": {
+										"type": "string"
+									},
+									"Name": {
+										"type": "string"
+									}
+								}
+							},
+							{
+								"type": "object",
+								"required": [
+									"SiblingPosition"
+								],
+								"properties": {
+									"ParentId": {
+										"type": "string"
+									},
+									"SiblingPosition": {
+										"type": "number",
+										"format": "double"
+									},
+									"CheckedOutName": {
+										"type": "string"
+									},
+									"CheckedInName": {
+										"type": "string"
+									}
+								}
+							}
+						]
+					},
+					{
+						"type": "object",
+						"properties": {
+							"Extension": {
+								"type": "string"
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/preview/stream/asset-references",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_StreamTaxonomyCategories",
+		"description": "GET /api/v1/preview/stream/taxonomy",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"count": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"type": "object",
+												"properties": {
+													"Id": {
+														"type": "string"
+													},
+													"Name": {
+														"type": "string"
+													}
+												}
+											},
+											{
+												"type": "object"
+											}
+										]
+									},
+									{
+										"type": "object",
+										"x-abstract": true,
+										"required": [
+											"Created",
+											"LastModified",
+											"Archived"
+										],
+										"properties": {
+											"CreationUser": {
+												"type": "string"
+											},
+											"Created": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"LastModifiedUser": {
+												"type": "string"
+											},
+											"LastModified": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"EntityType": {
+												"type": "string"
+											},
+											"Archived": {
+												"type": "boolean"
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"required": [
+									"ChildrenCount",
+									"SiblingPosition"
+								],
+								"properties": {
+									"ParentId": {
+										"type": "string"
+									},
+									"ChildrenCount": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"SiblingPosition": {
+										"type": "number",
+										"format": "double"
+									}
+								}
+							}
+						]
+					},
+					{
+						"type": "object",
+						"required": [
+							"SecurityLevel"
+						],
+						"properties": {
+							"Description": {
+								"type": "string"
+							},
+							"TypeName": {
+								"type": "string"
+							},
+							"ExternalId": {
+								"type": "string"
+							},
+							"PageIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"AssetIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"Locale": {
+								"type": "string"
+							},
+							"Synonyms": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"Locale": {
+											"type": "string"
+										},
+										"Value": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"SecurityLevel": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"GroupPermissions": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"required": [
+										"PermissionLevel"
+									],
+									"properties": {
+										"GroupId": {
+											"type": "string"
+										},
+										"GroupName": {
+											"type": "string"
+										},
+										"PermissionLevel": {
+											"type": "string",
+											"description": "The list of node-level permissions for Pages",
+											"x-enumNames": [
+												"NO_ACCESS",
+												"READ_ONLY",
+												"FULL_ACCESS"
+											],
+											"enum": [
+												"NO_ACCESS",
+												"READ_ONLY",
+												"FULL_ACCESS"
+											]
+										}
+									}
+								}
+							},
+							"Translations": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"required": [
+										"RequiresUpdate"
+									],
+									"properties": {
+										"Locale": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										},
+										"Description": {
+											"type": "string"
+										},
+										"TypeName": {
+											"type": "string"
+										},
+										"RequiresUpdate": {
+											"type": "boolean"
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/preview/stream/taxonomy",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_GetPageForwardReferences",
+		"description": "GET /api/v1/preview/page-forward-references",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"ids": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"ids",
+				"ids"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/preview/page-forward-references",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_GetPageCrossReferences",
+		"description": "GET /api/v1/preview/page-cross-references",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"ids": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"ids",
+				"ids"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/preview/page-cross-references",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_GetDitaAssetPreviewStatus",
+		"description": "GET /api/v1/preview/dita-asset-preview-status",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"mapId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"ditavalId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"ditaNormPubTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"pubTargetId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetId",
+				"mapId",
+				"ditavalId",
+				"ditaNormPubTargetId"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"Running"
+			],
+			"properties": {
+				"Running": {
+					"type": "boolean"
+				},
+				"NormalizedTempFilePath": {
+					"type": "string"
+				},
+				"DitaRenderingXsltId": {
+					"type": "string"
+				},
+				"LogPath": {
+					"type": "string"
+				},
+				"TaskId": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/preview/dita-asset-preview-status",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_StartGeneratingDitaAssetPreview",
+		"description": "POST /api/v1/preview/dita-asset-preview",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"mapId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"ditavalId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"ditaNormPubTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"pubTargetId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetId",
+				"mapId",
+				"ditavalId",
+				"ditaNormPubTargetId"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"Running"
+			],
+			"properties": {
+				"Running": {
+					"type": "boolean"
+				},
+				"NormalizedTempFilePath": {
+					"type": "string"
+				},
+				"DitaRenderingXsltId": {
+					"type": "string"
+				},
+				"LogPath": {
+					"type": "string"
+				},
+				"TaskId": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/preview/dita-asset-preview",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_CancelDitaAssetPreview",
+		"description": "DELETE /api/v1/preview/dita-asset-preview",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"mapId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"ditavalId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"ditaNormPubTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"pubTargetId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetId",
+				"mapId",
+				"ditavalId",
+				"ditaNormPubTargetId"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "DELETE",
+		"endpoint": "/api/v1/preview/dita-asset-preview",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_DownloadLog",
+		"description": "GET /api/v1/preview/asset-dependents-csv",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"logPath": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"logPath"
+			]
+		},
+		"output_schema": {
+			"type": "file"
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/preview/asset-dependents-csv",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetPubPreviewTaskContentPage",
+		"description": "GET /api/v1/publishing/publish-preview-content",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"TaskId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"ForAssets": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				},
+				"Filter": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Version": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/publishing/publish-preview-content",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_PublishPreview",
+		"description": "POST /api/v1/publishing/publish-preview",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"contentItemId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"publishingTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"incremental": {
+					"type": "boolean",
+					"required": true,
+					"in": "query"
+				},
+				"includeChildren": {
+					"type": "boolean",
+					"required": true,
+					"in": "query"
+				},
+				"sitePublish": {
+					"type": "boolean",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"contentItemId",
+				"publishingTargetId",
+				"incremental",
+				"includeChildren",
+				"sitePublish"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"IsFullPublish",
+				"SitePublish",
+				"IncludeChildren",
+				"PagesCount",
+				"AssetsCount"
+			],
+			"properties": {
+				"TaskId": {
+					"type": "string"
+				},
+				"IsFullPublish": {
+					"type": "boolean"
+				},
+				"SitePublish": {
+					"type": "boolean"
+				},
+				"PublishingTargetName": {
+					"type": "string"
+				},
+				"SubmitTime": {
+					"type": "string"
+				},
+				"SubmitUserId": {
+					"type": "string"
+				},
+				"RootPageId": {
+					"type": "string"
+				},
+				"IncludeChildren": {
+					"type": "boolean"
+				},
+				"PagesCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"AssetsCount": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/publishing/publish-preview",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetPublishingLogDetails",
+		"description": "GET /api/v1/publishing/log-detail",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								},
+								{
+									"type": "object"
+								}
+							]
+						},
+						{
+							"type": "object",
+							"x-abstract": true,
+							"required": [
+								"Created",
+								"LastModified",
+								"Archived"
+							],
+							"properties": {
+								"CreationUser": {
+									"type": "string"
+								},
+								"Created": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastModifiedUser": {
+									"type": "string"
+								},
+								"LastModified": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"EntityType": {
+									"type": "string"
+								},
+								"Archived": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"StartTime",
+						"SubmitTime",
+						"Incremental",
+						"ForcedIncremental",
+						"TotalTimeSeconds",
+						"FailedItemsCount",
+						"AveragePagePublishMillis",
+						"TotalPagesPublished",
+						"AverageAssetPublishMillis",
+						"TotalAssetsPublished",
+						"ReplicationsToPerform",
+						"ReplicationStoppingError"
+					],
+					"properties": {
+						"Error": {
+							"type": "string"
+						},
+						"PublishingTargetId": {
+							"type": "string"
+						},
+						"PublishingTargetName": {
+							"type": "string"
+						},
+						"PublishingTaskId": {
+							"type": "string"
+						},
+						"StartTime": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"SubmitTime": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"UserID": {
+							"type": "string"
+						},
+						"UserName": {
+							"type": "string"
+						},
+						"Incremental": {
+							"type": "boolean"
+						},
+						"ForcedIncremental": {
+							"type": "boolean"
+						},
+						"TotalTimeSeconds": {
+							"type": "number",
+							"format": "double"
+						},
+						"FailedItemsCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"AveragePagePublishMillis": {
+							"type": "number",
+							"format": "double"
+						},
+						"TotalPagesPublished": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"AverageAssetPublishMillis": {
+							"type": "number",
+							"format": "double"
+						},
+						"TotalAssetsPublished": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"Entries": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"Success"
+								],
+								"properties": {
+									"PageID": {
+										"type": "string"
+									},
+									"Error": {
+										"type": "string"
+									},
+									"Success": {
+										"type": "boolean"
+									},
+									"SuccessMessage": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"CompletionTime": {
+							"type": "string"
+						},
+						"ReplicationsToPerform": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"ReplicationCompletionTime": {
+							"type": "string"
+						},
+						"ReplicationStoppingError": {
+							"type": "boolean"
+						}
+					}
+				}
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/publishing/log-detail",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetPublishingTargetPublishingSummary",
+		"description": "GET /api/v1/publishing/target-summary",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"publishingTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"publishingTargetId"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"numRows"
+			],
+			"properties": {
+				"identifier": {
+					"type": "string"
+				},
+				"numRows": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"label": {
+					"type": "string"
+				},
+				"items": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"FileName": {
+								"type": "string"
+							},
+							"PublishingTargetID": {
+								"type": "string"
+							},
+							"PublishTime": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"Full": {
+					"type": "object",
+					"required": [
+						"TotalPublishCount",
+						"AvgPublishTime",
+						"AvgPublishPages",
+						"AvgPublishAssets"
+					],
+					"properties": {
+						"TotalPublishCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"AvgPublishTime": {
+							"type": "number",
+							"format": "double"
+						},
+						"AvgPublishPages": {
+							"type": "number",
+							"format": "double"
+						},
+						"AvgPublishAssets": {
+							"type": "number",
+							"format": "double"
+						}
+					}
+				},
+				"Incremental": {
+					"$ref": "#/definitions/PublishingLogSummaryValues",
+					"circular": true
+				},
+				"repTargets": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/publishing/target-summary",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetCurrentTasks",
+		"description": "GET /api/v1/publishing/current-tasks",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"PendingItemsCount"
+			],
+			"properties": {
+				"PendingItemsCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Publishing": {
+					"allOf": [
+						{
+							"type": "object",
+							"required": [
+								"IsFullPublish",
+								"PagesCount",
+								"WaitingForSync"
+							],
+							"properties": {
+								"Id": {
+									"type": "string"
+								},
+								"Name": {
+									"type": "string"
+								},
+								"PubTargetName": {
+									"type": "string"
+								},
+								"RootPageId": {
+									"type": "string"
+								},
+								"IsFullPublish": {
+									"type": "boolean"
+								},
+								"SubmitTime": {
+									"type": "string"
+								},
+								"SubmitUserId": {
+									"type": "string"
+								},
+								"EstimatedStartTime": {
+									"type": "string"
+								},
+								"PagesCount": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"Pages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"WaitingForSync": {
+									"type": "boolean"
+								}
+							}
+						},
+						{
+							"type": "object",
+							"required": [
+								"TasksCount",
+								"PercentCompleted",
+								"AverageMilliSecondsPerPage",
+								"AveragePagesPerSecond",
+								"PagesPublished",
+								"Inactive"
+							],
+							"properties": {
+								"StartTime": {
+									"type": "string"
+								},
+								"TasksCount": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"CurrentStatus": {
+									"type": "string"
+								},
+								"PercentCompleted": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"EstimatedEndTime": {
+									"type": "string"
+								},
+								"AverageMilliSecondsPerPage": {
+									"type": "number",
+									"format": "double"
+								},
+								"AveragePagesPerSecond": {
+									"type": "number",
+									"format": "double"
+								},
+								"PagesPublished": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"Inactive": {
+									"type": "boolean"
+								},
+								"Errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"TaskId": {
+												"type": "string"
+											},
+											"ErrorMessage": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"UpdateTime": {
+									"type": "string"
+								}
+							}
+						}
+					]
+				},
+				"Replications": {
+					"type": "object",
+					"properties": {
+						"Tasks": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"Percentage",
+									"IsSimultaneous"
+								],
+								"properties": {
+									"Sessions": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"Started",
+												"Percentage",
+												"Completed",
+												"Cancelled",
+												"Error",
+												"DetectingChanges"
+											],
+											"properties": {
+												"Id": {
+													"type": "string"
+												},
+												"ReplicationTargetId": {
+													"type": "string"
+												},
+												"ReplicationTargetName": {
+													"type": "string"
+												},
+												"StartTime": {
+													"type": "string"
+												},
+												"Started": {
+													"type": "boolean"
+												},
+												"Percentage": {
+													"type": "integer",
+													"format": "int32"
+												},
+												"Completed": {
+													"type": "boolean"
+												},
+												"Cancelled": {
+													"type": "boolean"
+												},
+												"Error": {
+													"type": "boolean"
+												},
+												"DetectingChanges": {
+													"type": "boolean"
+												}
+											}
+										}
+									},
+									"PublishingTargetId": {
+										"type": "string"
+									},
+									"PublishingTargetName": {
+										"type": "string"
+									},
+									"SubmitUserId": {
+										"type": "string"
+									},
+									"SubmitUserName": {
+										"type": "string"
+									},
+									"StartTime": {
+										"type": "string"
+									},
+									"Percentage": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"EstimatedEndTime": {
+										"type": "string"
+									},
+									"IsSimultaneous": {
+										"type": "boolean"
+									}
+								}
+							}
+						}
+					}
+				},
+				"RecentCompletedPublishes": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"type": "object",
+												"properties": {
+													"Id": {
+														"type": "string"
+													},
+													"Name": {
+														"type": "string"
+													}
+												}
+											},
+											{
+												"type": "object"
+											}
+										]
+									},
+									{
+										"type": "object",
+										"x-abstract": true,
+										"required": [
+											"Created",
+											"LastModified",
+											"Archived"
+										],
+										"properties": {
+											"CreationUser": {
+												"type": "string"
+											},
+											"Created": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"LastModifiedUser": {
+												"type": "string"
+											},
+											"LastModified": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"EntityType": {
+												"type": "string"
+											},
+											"Archived": {
+												"type": "boolean"
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"required": [
+									"StartTime",
+									"SubmitTime",
+									"Incremental",
+									"ForcedIncremental",
+									"TotalTimeSeconds",
+									"FailedItemsCount",
+									"AveragePagePublishMillis",
+									"TotalPagesPublished",
+									"AverageAssetPublishMillis",
+									"TotalAssetsPublished",
+									"ReplicationsToPerform",
+									"ReplicationStoppingError"
+								],
+								"properties": {
+									"Error": {
+										"type": "string"
+									},
+									"PublishingTargetId": {
+										"type": "string"
+									},
+									"PublishingTargetName": {
+										"type": "string"
+									},
+									"PublishingTaskId": {
+										"type": "string"
+									},
+									"StartTime": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"SubmitTime": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"UserID": {
+										"type": "string"
+									},
+									"UserName": {
+										"type": "string"
+									},
+									"Incremental": {
+										"type": "boolean"
+									},
+									"ForcedIncremental": {
+										"type": "boolean"
+									},
+									"TotalTimeSeconds": {
+										"type": "number",
+										"format": "double"
+									},
+									"FailedItemsCount": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"AveragePagePublishMillis": {
+										"type": "number",
+										"format": "double"
+									},
+									"TotalPagesPublished": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"AverageAssetPublishMillis": {
+										"type": "number",
+										"format": "double"
+									},
+									"TotalAssetsPublished": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"Entries": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"Success"
+											],
+											"properties": {
+												"PageID": {
+													"type": "string"
+												},
+												"Error": {
+													"type": "string"
+												},
+												"Success": {
+													"type": "boolean"
+												},
+												"SuccessMessage": {
+													"type": "string"
+												}
+											}
+										}
+									},
+									"CompletionTime": {
+										"type": "string"
+									},
+									"ReplicationsToPerform": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"ReplicationCompletionTime": {
+										"type": "string"
+									},
+									"ReplicationStoppingError": {
+										"type": "boolean"
+									}
+								}
+							}
+						]
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/publishing/current-tasks",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetRedirects",
+		"description": "GET /api/v1/publishing/redirects",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"Sort": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"SortDirection": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"x-abstract": true,
+								"properties": {
+									"Id": {
+										"type": "string"
+									}
+								}
+							},
+							{
+								"type": "object",
+								"required": [
+									"Temp"
+								],
+								"properties": {
+									"SelectedTgtIds": {
+										"type": "string"
+									},
+									"SelectedTgtNames": {
+										"type": "string"
+									},
+									"From": {
+										"type": "string"
+									},
+									"To": {
+										"type": "string"
+									},
+									"Notes": {
+										"type": "string"
+									},
+									"Temp": {
+										"type": "boolean"
+									}
+								}
+							}
+						]
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/publishing/redirects",
+		"tags": [
+			"Publishing"
+		]
+	}
+]

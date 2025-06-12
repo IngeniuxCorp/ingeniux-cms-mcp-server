@@ -1,0 +1,932 @@
+[
+	{
+		"tool_name": "InsiteSearch_SaveCustomSettings",
+		"description": "POST /api/v1/insite-search/custom-settings",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Name": {
+								"type": "string"
+							},
+							"Value": {
+								"type": "string"
+							},
+							"PublishingTargetIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"pubTgtId",
+				"data",
+				"data"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/custom-settings",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_GetBatchSizes",
+		"description": "GET /api/v1/insite-search/batch-sizes",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"isAsset": {
+					"type": "boolean",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"isAsset"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"DefaultBatchSize"
+			],
+			"properties": {
+				"TargetSettings": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"BatchSize"
+						],
+						"properties": {
+							"PubTargetId": {
+								"type": "string"
+							},
+							"PubTargetName": {
+								"type": "string"
+							},
+							"BatchSize": {
+								"type": "integer",
+								"format": "int32"
+							}
+						}
+					}
+				},
+				"DefaultBatchSize": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/batch-sizes",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_SaveBatchSizes",
+		"description": "POST /api/v1/insite-search/batch-sizes",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"isAsset": {
+					"type": "boolean",
+					"required": true,
+					"in": "query"
+				},
+				"defaultSize": {
+					"type": "integer",
+					"required": true,
+					"in": "query"
+				},
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"BatchSize"
+						],
+						"properties": {
+							"PubTargetId": {
+								"type": "string"
+							},
+							"PubTargetName": {
+								"type": "string"
+							},
+							"BatchSize": {
+								"type": "integer",
+								"format": "int32"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"isAsset",
+				"defaultSize",
+				"data",
+				"data"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/batch-sizes",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_GetKeymatches",
+		"description": "GET /api/v1/insite-search/keymatches",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"KeyMatchType"
+				],
+				"properties": {
+					"Key": {
+						"type": "string"
+					},
+					"KeyMatchType": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"Url": {
+						"type": "string"
+					},
+					"Title": {
+						"type": "string"
+					},
+					"Abstract": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/keymatches",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_SaveKeymatches",
+		"description": "POST /api/v1/insite-search/keymatches",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"KeyMatchType"
+						],
+						"properties": {
+							"Key": {
+								"type": "string"
+							},
+							"KeyMatchType": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"Url": {
+								"type": "string"
+							},
+							"Title": {
+								"type": "string"
+							},
+							"Abstract": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"data",
+				"data"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/keymatches",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_ImportCsv",
+		"description": "POST /api/v1/insite-search/import-csv",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "file"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/import-csv",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_GetSynonyms",
+		"description": "GET /api/v1/insite-search/synonyms",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"LeadWord": {
+						"type": "string"
+					},
+					"Words": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"Type": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/synonyms",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_SaveSynonyms",
+		"description": "POST /api/v1/insite-search/synonyms",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"LeadWord": {
+								"type": "string"
+							},
+							"Words": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"Type": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"data",
+				"data"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/synonyms",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_ImportSynonyms",
+		"description": "POST /api/v1/insite-search/import-synonyms",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "file"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/import-synonyms",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_GetIndexingSchemas",
+		"description": "GET /api/v1/insite-search/indexing-schemas",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTgtId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"Indexed"
+				],
+				"properties": {
+					"Id": {
+						"type": "string"
+					},
+					"FriendlyName": {
+						"type": "string"
+					},
+					"Indexed": {
+						"type": "boolean"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/indexing-schemas",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_SaveIndexingSchemas",
+		"description": "POST /api/v1/insite-search/indexing-schemas",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"Indexed"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"FriendlyName": {
+								"type": "string"
+							},
+							"Indexed": {
+								"type": "boolean"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"pubTgtId",
+				"data",
+				"data"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/indexing-schemas",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_GetIndexingSchemasOnly",
+		"description": "GET /api/v1/insite-search/indexing-schemas-only",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTgtId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"Indexed"
+				],
+				"properties": {
+					"Id": {
+						"type": "string"
+					},
+					"FriendlyName": {
+						"type": "string"
+					},
+					"Indexed": {
+						"type": "boolean"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/indexing-schemas-only",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_GetIndexingFieldsForSchema",
+		"description": "GET /api/v1/insite-search/indexing-fields",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"schemaId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTgtId",
+				"schemaId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"Indexed",
+					"Boost"
+				],
+				"properties": {
+					"FieldLabel": {
+						"type": "string"
+					},
+					"FieldName": {
+						"type": "string"
+					},
+					"Indexed": {
+						"type": "boolean"
+					},
+					"Boost": {
+						"type": "number",
+						"format": "double"
+					},
+					"Type": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/indexing-fields",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_SaveIndexingFields",
+		"description": "POST /api/v1/insite-search/indexing-fields",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"schemaId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"Indexed",
+							"Boost"
+						],
+						"properties": {
+							"FieldLabel": {
+								"type": "string"
+							},
+							"FieldName": {
+								"type": "string"
+							},
+							"Indexed": {
+								"type": "boolean"
+							},
+							"Boost": {
+								"type": "number",
+								"format": "double"
+							},
+							"Type": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"pubTgtId",
+				"schemaId",
+				"data",
+				"data"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/indexing-fields",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_GetIndexingSiteWideFields",
+		"description": "GET /api/v1/insite-search/sitewide-indexing-fields",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTgtId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"Indexed",
+					"Boost"
+				],
+				"properties": {
+					"FieldLabel": {
+						"type": "string"
+					},
+					"FieldName": {
+						"type": "string"
+					},
+					"Indexed": {
+						"type": "boolean"
+					},
+					"Boost": {
+						"type": "number",
+						"format": "double"
+					},
+					"Type": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/sitewide-indexing-fields",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_SaveSiteWideIndexingFields",
+		"description": "POST /api/v1/insite-search/site-wide-indexing-fields",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"Indexed",
+							"Boost"
+						],
+						"properties": {
+							"FieldLabel": {
+								"type": "string"
+							},
+							"FieldName": {
+								"type": "string"
+							},
+							"Indexed": {
+								"type": "boolean"
+							},
+							"Boost": {
+								"type": "number",
+								"format": "double"
+							},
+							"Type": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"pubTgtId",
+				"data",
+				"data"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/site-wide-indexing-fields",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_GetAssetFolderChildren",
+		"description": "GET /api/v1/insite-search/assetfolder-children",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetFolderId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetFolderId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"IsFolder"
+				],
+				"properties": {
+					"Id": {
+						"type": "string"
+					},
+					"Name": {
+						"type": "string"
+					},
+					"IsFolder": {
+						"type": "boolean"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/assetfolder-children",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_GetIndexedAssetFolders",
+		"description": "GET /api/v1/insite-search/indexed-asset-folders",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTgtId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"type": "object",
+						"required": [
+							"IsFolder"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"IsFolder": {
+								"type": "boolean"
+							}
+						}
+					},
+					{
+						"type": "object",
+						"required": [
+							"DescedantFolders"
+						],
+						"properties": {
+							"Path": {
+								"type": "string"
+							},
+							"DescedantFolders": {
+								"type": "integer",
+								"format": "int32"
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/indexed-asset-folders",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_GetAssetFolderDetail",
+		"description": "GET /api/v1/insite-search/asset-folders-detail",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetFolderId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetFolderId"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"type": "object",
+					"required": [
+						"IsFolder"
+					],
+					"properties": {
+						"Id": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						},
+						"IsFolder": {
+							"type": "boolean"
+						}
+					}
+				},
+				{
+					"type": "object",
+					"required": [
+						"DescedantFolders"
+					],
+					"properties": {
+						"Path": {
+							"type": "string"
+						},
+						"DescedantFolders": {
+							"type": "integer",
+							"format": "int32"
+						}
+					}
+				}
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/insite-search/asset-folders-detail",
+		"tags": [
+			"InsiteSearch"
+		]
+	},
+	{
+		"tool_name": "InsiteSearch_SaveIndexingAssetFolders",
+		"description": "POST /api/v1/insite-search/indexing-asset-folders",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"data": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"required": [
+									"IsFolder"
+								],
+								"properties": {
+									"Id": {
+										"type": "string"
+									},
+									"Name": {
+										"type": "string"
+									},
+									"IsFolder": {
+										"type": "boolean"
+									}
+								}
+							},
+							{
+								"type": "object",
+								"required": [
+									"DescedantFolders"
+								],
+								"properties": {
+									"Path": {
+										"type": "string"
+									},
+									"DescedantFolders": {
+										"type": "integer",
+										"format": "int32"
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			"required": [
+				"pubTgtId",
+				"data",
+				"data"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/insite-search/indexing-asset-folders",
+		"tags": [
+			"InsiteSearch"
+		]
+	}
+]

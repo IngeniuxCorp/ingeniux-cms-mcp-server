@@ -1,0 +1,1395 @@
+[
+	{
+		"tool_name": "Analytics_GetSiteOverview",
+		"description": "GET /api/v1/analytics/site-overview",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"startDate": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"endDate": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTgtId",
+				"startDate",
+				"endDate"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"NotInitialized"
+			],
+			"properties": {
+				"NotInitialized": {
+					"type": "boolean"
+				},
+				"Data": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"required": [
+									"Value"
+								],
+								"properties": {
+									"Name": {
+										"type": "string"
+									},
+									"Link": {
+										"type": "string"
+									},
+									"Value": {
+										"type": "integer",
+										"format": "int64"
+									}
+								}
+							},
+							{
+								"type": "object",
+								"properties": {
+									"OverviewValue": {
+										"type": "string"
+									},
+									"GraphImage": {
+										"type": "string"
+									},
+									"ChartData": {
+										"type": "array",
+										"items": {
+											"type": "number",
+											"format": "double"
+										}
+									}
+								}
+							}
+						]
+					}
+				},
+				"ProviderName": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/analytics/site-overview",
+		"tags": [
+			"Analytics"
+		]
+	},
+	{
+		"tool_name": "Analytics_GetPageOverview",
+		"description": "GET /api/v1/analytics/page-overview",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pageId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"startDate": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"endDate": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pageId",
+				"pubTgtId",
+				"startDate",
+				"endDate"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"NotInitialized"
+			],
+			"properties": {
+				"NotInitialized": {
+					"type": "boolean"
+				},
+				"LiveUrl": {
+					"type": "string"
+				},
+				"PageId": {
+					"type": "string"
+				},
+				"ProviderName": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/analytics/page-overview",
+		"tags": [
+			"Analytics"
+		]
+	},
+	{
+		"tool_name": "Analytics_GetReport",
+		"description": "GET /api/v1/analytics/report",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"reportTypeFullName": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"pageId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"startDate": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"endDate": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTgtId",
+				"reportTypeFullName",
+				"pageId",
+				"startDate",
+				"endDate"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"Chart": {
+					"type": "object",
+					"properties": {
+						"datasets": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"data": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "int32"
+										}
+									},
+									"label": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"labels": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"Table": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"Value"
+						],
+						"properties": {
+							"Name": {
+								"type": "string"
+							},
+							"Link": {
+								"type": "string"
+							},
+							"Value": {
+								"type": "integer",
+								"format": "int64"
+							}
+						}
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/analytics/report",
+		"tags": [
+			"Analytics"
+		]
+	},
+	{
+		"tool_name": "Analytics_GoogleAuthCodeFlow",
+		"description": "POST /api/v1/analytics/google-analytic-authcode-flow",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubtgt": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"deviceCode": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"interval": {
+					"type": "integer",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubtgt",
+				"deviceCode",
+				"interval"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"Properties": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"AccessToken": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/analytics/google-analytic-authcode-flow",
+		"tags": [
+			"Analytics"
+		]
+	},
+	{
+		"tool_name": "Analytics_GoogleConfirmProperty",
+		"description": "POST /api/v1/analytics/google-analytic-property-confirm",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubtgt": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"propertyId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"propertyName": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubtgt",
+				"propertyId",
+				"propertyName"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/analytics/google-analytic-property-confirm",
+		"tags": [
+			"Analytics"
+		]
+	},
+	{
+		"tool_name": "Analytics_GoogleRevokeToken",
+		"description": "POST /api/v1/analytics/google-analytic-revoke-token",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubtgt": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubtgt"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/analytics/google-analytic-revoke-token",
+		"tags": [
+			"Analytics"
+		]
+	},
+	{
+		"tool_name": "Analytics_GetDeviceVerificationResponse",
+		"description": "POST /api/v1/analytics/device-verification",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubtgt": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubtgt"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"expires_in",
+				"interval"
+			],
+			"properties": {
+				"device_code": {
+					"type": "string"
+				},
+				"expires_in": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"interval": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"user_code": {
+					"type": "string"
+				},
+				"verification_url": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/analytics/device-verification",
+		"tags": [
+			"Analytics"
+		]
+	},
+	{
+		"tool_name": "ContentUnits_GetContentUnitPreviewData",
+		"description": "GET /api/v1/content-units/content-unit-preview-data",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"cuId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"cuId"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"type": "object",
+					"properties": {
+						"ID": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						}
+					}
+				},
+				{
+					"type": "object",
+					"required": [
+						"Finalized",
+						"CanEditView",
+						"UseExistingView"
+					],
+					"properties": {
+						"DssViewPath": {
+							"type": "string"
+						},
+						"AssetViewId": {
+							"type": "string"
+						},
+						"AssetViewCode": {
+							"type": "string"
+						},
+						"AssetViewCodeEsc": {
+							"type": "string"
+						},
+						"Finalized": {
+							"type": "boolean"
+						},
+						"CanEditView": {
+							"type": "boolean"
+						},
+						"UseExistingView": {
+							"type": "boolean"
+						},
+						"Thumbnail": {
+							"type": "string"
+						}
+					}
+				}
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/content-units/content-unit-preview-data",
+		"tags": [
+			"ContentUnits"
+		]
+	},
+	{
+		"tool_name": "ContentUnits_GetComponentUnitFragmentInstances",
+		"description": "GET /api/v1/content-units/get-comp-unit-instances",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"compUnitId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"compUnitId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"allOf": [
+							{
+								"type": "object",
+								"required": [
+									"IsComponentUnit",
+									"Reusable",
+									"HasView"
+								],
+								"properties": {
+									"Id": {
+										"type": "string"
+									},
+									"Name": {
+										"type": "string"
+									},
+									"IconName": {
+										"type": "string"
+									},
+									"ThumbnailPath": {
+										"type": "string"
+									},
+									"ElementName": {
+										"type": "string"
+									},
+									"TemplateName": {
+										"type": "string"
+									},
+									"IsComponentUnit": {
+										"type": "boolean"
+									},
+									"Reusable": {
+										"type": "boolean"
+									},
+									"HasView": {
+										"type": "boolean"
+									},
+									"AllowedSchemas": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"ComponentSchemaId": {
+										"type": "string"
+									},
+									"ComponentSchemaName": {
+										"type": "string"
+									}
+								}
+							},
+							{
+								"type": "object",
+								"required": [
+									"HasInstances"
+								],
+								"properties": {
+									"ElementData": {
+										"allOf": [
+											{
+												"type": "object",
+												"required": [
+													"nodePosition",
+													"contentUnitField"
+												],
+												"properties": {
+													"nodeName": {
+														"type": "string"
+													},
+													"nodePosition": {
+														"type": "integer",
+														"format": "int32"
+													},
+													"attributes": {
+														"type": "object",
+														"additionalProperties": {
+															"type": "string"
+														}
+													},
+													"deletedAttributes": {
+														"type": "object",
+														"additionalProperties": {
+															"type": "string"
+														}
+													},
+													"childSchemaName": {
+														"type": "string"
+													},
+													"childSchemaFriendlyName": {
+														"type": "string"
+													},
+													"childSchemaId": {
+														"type": "string"
+													},
+													"childName": {
+														"type": "string"
+													},
+													"childParentId": {
+														"type": "string"
+													},
+													"pageBuilderTemplateName": {
+														"type": "string"
+													},
+													"contentUnitField": {
+														"type": "boolean"
+													},
+													"extendedObject": {
+														"type": "string"
+													}
+												}
+											},
+											{
+												"type": "object",
+												"required": [
+													"disabled",
+													"ignoreEmbedding"
+												],
+												"properties": {
+													"childElementType": {
+														"type": "string"
+													},
+													"nodeValue": {
+														"type": "string"
+													},
+													"childElements": {
+														"type": "array",
+														"items": {
+															"$ref": "#/definitions/PageElementData",
+															"circular": true
+														}
+													},
+													"disabled": {
+														"type": "boolean"
+													},
+													"uniqueId": {
+														"type": "string"
+													},
+													"ignoreEmbedding": {
+														"type": "boolean"
+													}
+												}
+											}
+										]
+									},
+									"ElementId": {
+										"type": "string"
+									},
+									"ElementXml": {
+										"type": "string"
+									},
+									"FieldLabel": {
+										"type": "string"
+									},
+									"FieldType": {
+										"type": "string"
+									},
+									"ElementSchemaType": {
+										"type": "string"
+									},
+									"HasInstances": {
+										"type": "boolean"
+									}
+								}
+							}
+						]
+					},
+					{
+						"type": "object",
+						"properties": {
+							"ComponentId": {
+								"type": "string"
+							},
+							"ChildLayoutContainerId": {
+								"type": "string"
+							},
+							"VersionId": {
+								"type": "string"
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/content-units/get-comp-unit-instances",
+		"tags": [
+			"ContentUnits"
+		]
+	},
+	{
+		"tool_name": "ContentUnits_GetComponentUnitContent",
+		"description": "GET /api/v1/content-units/get-comp-unit-content",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"compUnitId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"compUnitId"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"model": {
+					"allOf": [
+						{
+							"type": "object",
+							"required": [
+								"nodePosition",
+								"contentUnitField"
+							],
+							"properties": {
+								"nodeName": {
+									"type": "string"
+								},
+								"nodePosition": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"attributes": {
+									"type": "object",
+									"additionalProperties": {
+										"type": "string"
+									}
+								},
+								"deletedAttributes": {
+									"type": "object",
+									"additionalProperties": {
+										"type": "string"
+									}
+								},
+								"childSchemaName": {
+									"type": "string"
+								},
+								"childSchemaFriendlyName": {
+									"type": "string"
+								},
+								"childSchemaId": {
+									"type": "string"
+								},
+								"childName": {
+									"type": "string"
+								},
+								"childParentId": {
+									"type": "string"
+								},
+								"pageBuilderTemplateName": {
+									"type": "string"
+								},
+								"contentUnitField": {
+									"type": "boolean"
+								},
+								"extendedObject": {
+									"type": "string"
+								}
+							}
+						},
+						{
+							"type": "object",
+							"required": [
+								"disabled",
+								"ignoreEmbedding"
+							],
+							"properties": {
+								"childElementType": {
+									"type": "string"
+								},
+								"nodeValue": {
+									"type": "string"
+								},
+								"childElements": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/PageElementData",
+										"circular": true
+									}
+								},
+								"disabled": {
+									"type": "boolean"
+								},
+								"uniqueId": {
+									"type": "string"
+								},
+								"ignoreEmbedding": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				},
+				"markup": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/content-units/get-comp-unit-content",
+		"tags": [
+			"ContentUnits"
+		]
+	},
+	{
+		"tool_name": "ContentUnits_UpdateComponentUnitThumbnail",
+		"description": "PUT /api/v1/content-units/update-comp-unit-thumb",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"tempAssetUrl": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"contentUnitId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"tempAssetUrl",
+				"contentUnitId"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"Result": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "PUT",
+		"endpoint": "/api/v1/content-units/update-comp-unit-thumb",
+		"tags": [
+			"ContentUnits"
+		]
+	},
+	{
+		"tool_name": "ContentUnits_GetClassNamesFromCss",
+		"description": "POST /api/v1/content-units/get-class-names-from-css",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"input": {
+					"type": "object",
+					"required": [
+						"count"
+					],
+					"properties": {
+						"filterText": {
+							"type": "string"
+						},
+						"stylesheetRefs": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"stylesheetContents": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"previewUrl": {
+							"type": "string"
+						},
+						"count": {
+							"type": "integer",
+							"format": "int32"
+						}
+					}
+				}
+			},
+			"required": [
+				"input",
+				"input"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/content-units/get-class-names-from-css",
+		"tags": [
+			"ContentUnits"
+		]
+	},
+	{
+		"tool_name": "Hooks_GetCustomHooks",
+		"description": "GET /api/v1/hooks",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"Result": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/hooks",
+		"tags": [
+			"Hooks"
+		]
+	},
+	{
+		"tool_name": "Hooks_GetCustomMacros",
+		"description": "GET /api/v1/hooks/macros",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"type": "object",
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "object",
+						"properties": {
+							"Description": {
+								"type": "string"
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/hooks/macros",
+		"tags": [
+			"Hooks"
+		]
+	},
+	{
+		"tool_name": "Hooks_ExecuteCustomMacro",
+		"description": "POST /api/v1/hooks/macros",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/hooks/macros",
+		"tags": [
+			"Hooks"
+		]
+	},
+	{
+		"tool_name": "IceComponentPicker_GetComponentSchemas",
+		"description": "GET /api/v1/dialogs/ice-comp-picker/get-ice-comp-types",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"Key": {
+						"type": "string"
+					},
+					"Value": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-ice-comp-types",
+		"tags": [
+			"IceComponentPicker"
+		]
+	},
+	{
+		"tool_name": "IceComponentPicker_GetTrays",
+		"description": "POST /api/v1/dialogs/ice-comp-picker/get-trays",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"parameters": {
+					"type": "object",
+					"required": [
+						"start",
+						"end",
+						"includeCus",
+						"includeComps",
+						"includeSeparators",
+						"divideRatio"
+					],
+					"properties": {
+						"start": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"end": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"type": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						},
+						"language": {
+							"type": "string"
+						},
+						"includeCus": {
+							"type": "boolean"
+						},
+						"includeComps": {
+							"type": "boolean"
+						},
+						"includeSeparators": {
+							"type": "boolean"
+						},
+						"divideRatio": {
+							"type": "number",
+							"format": "double"
+						}
+					}
+				}
+			},
+			"required": [
+				"parameters",
+				"parameters"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalCount"
+			],
+			"properties": {
+				"ItemsInRange": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"IsSeparator",
+							"IsContentUnit"
+						],
+						"properties": {
+							"ElementData": {
+								"allOf": [
+									{
+										"type": "object",
+										"required": [
+											"nodePosition",
+											"contentUnitField"
+										],
+										"properties": {
+											"nodeName": {
+												"type": "string"
+											},
+											"nodePosition": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"attributes": {
+												"type": "object",
+												"additionalProperties": {
+													"type": "string"
+												}
+											},
+											"deletedAttributes": {
+												"type": "object",
+												"additionalProperties": {
+													"type": "string"
+												}
+											},
+											"childSchemaName": {
+												"type": "string"
+											},
+											"childSchemaFriendlyName": {
+												"type": "string"
+											},
+											"childSchemaId": {
+												"type": "string"
+											},
+											"childName": {
+												"type": "string"
+											},
+											"childParentId": {
+												"type": "string"
+											},
+											"pageBuilderTemplateName": {
+												"type": "string"
+											},
+											"contentUnitField": {
+												"type": "boolean"
+											},
+											"extendedObject": {
+												"type": "string"
+											}
+										}
+									},
+									{
+										"type": "object",
+										"required": [
+											"disabled",
+											"ignoreEmbedding"
+										],
+										"properties": {
+											"childElementType": {
+												"type": "string"
+											},
+											"nodeValue": {
+												"type": "string"
+											},
+											"childElements": {
+												"type": "array",
+												"items": {
+													"$ref": "#/definitions/PageElementData",
+													"circular": true
+												}
+											},
+											"disabled": {
+												"type": "boolean"
+											},
+											"uniqueId": {
+												"type": "string"
+											},
+											"ignoreEmbedding": {
+												"type": "boolean"
+											}
+										}
+									}
+								]
+							},
+							"IsSeparator": {
+								"type": "boolean"
+							},
+							"Label": {
+								"type": "string"
+							},
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"SchemaName": {
+								"type": "string"
+							},
+							"Locale": {
+								"type": "string"
+							},
+							"IsContentUnit": {
+								"type": "boolean"
+							},
+							"Thumb": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"TotalCount": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-trays",
+		"tags": [
+			"IceComponentPicker"
+		]
+	},
+	{
+		"tool_name": "IceComponentPicker_GetComponentThumb",
+		"description": "GET /api/v1/dialogs/ice-comp-picker/get-comp-thumb",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"Result": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-comp-thumb",
+		"tags": [
+			"IceComponentPicker"
+		]
+	},
+	{
+		"tool_name": "IceComponentPicker_GetListPage",
+		"description": "GET /api/v1/dialogs/ice-comp-picker/get-list-page",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"start": {
+					"type": "integer",
+					"required": true,
+					"in": "query"
+				},
+				"count": {
+					"type": "integer",
+					"required": true,
+					"in": "query"
+				},
+				"sort": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"type": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"name": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"language": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"includeCus": {
+					"type": "boolean",
+					"required": true,
+					"in": "query"
+				},
+				"includeComps": {
+					"type": "boolean",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"start",
+				"count",
+				"sort",
+				"type",
+				"name",
+				"language",
+				"includeCus",
+				"includeComps"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"numRows"
+			],
+			"properties": {
+				"identifier": {
+					"type": "string"
+				},
+				"label": {
+					"type": "string"
+				},
+				"numRows": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"items": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											}
+										}
+									},
+									{
+										"type": "object",
+										"properties": {
+											"id": {
+												"type": "string"
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"required": [
+									"isCu"
+								],
+								"properties": {
+									"type": {
+										"type": "string"
+									},
+									"locale": {
+										"type": "string"
+									},
+									"isCu": {
+										"type": "boolean"
+									}
+								}
+							}
+						]
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-list-page",
+		"tags": [
+			"IceComponentPicker"
+		]
+	},
+	{
+		"tool_name": "DITA_GetDITABaseInfo",
+		"description": "GET /api/v1/dita/base",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"JavaNotFound"
+			],
+			"properties": {
+				"JavaNotFound": {
+					"type": "boolean"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/dita/base",
+		"tags": [
+			"DITA"
+		]
+	}
+]

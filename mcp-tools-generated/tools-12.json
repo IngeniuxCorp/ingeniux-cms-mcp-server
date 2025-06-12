@@ -1,0 +1,5000 @@
+[
+	{
+		"tool_name": "Assets_GetFolderDescendantMarkings",
+		"description": "GET /api/v1/assets/asset/descendant-targets",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/asset/descendant-targets",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_GetRecycleFolder",
+		"description": "GET /api/v1/assets/recycle-folder",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"Id": {
+																	"type": "string"
+																},
+																"Name": {
+																	"type": "string"
+																}
+															}
+														},
+														{
+															"type": "object"
+														}
+													]
+												},
+												{
+													"type": "object",
+													"x-abstract": true,
+													"required": [
+														"Created",
+														"LastModified",
+														"Archived"
+													],
+													"properties": {
+														"CreationUser": {
+															"type": "string"
+														},
+														"Created": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"LastModifiedUser": {
+															"type": "string"
+														},
+														"LastModified": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"EntityType": {
+															"type": "string"
+														},
+														"Archived": {
+															"type": "boolean"
+														}
+													}
+												}
+											]
+										},
+										{
+											"type": "object",
+											"required": [
+												"ChildrenCount",
+												"SiblingPosition"
+											],
+											"properties": {
+												"ParentId": {
+													"type": "string"
+												},
+												"ChildrenCount": {
+													"type": "integer",
+													"format": "int32"
+												},
+												"SiblingPosition": {
+													"type": "number",
+													"format": "double"
+												}
+											}
+										}
+									]
+								},
+								{
+									"type": "object",
+									"required": [
+										"Type",
+										"SecurityLevel",
+										"Version",
+										"CheckedOut",
+										"Icon",
+										"IsRegionRoot",
+										"CanParentRegionRoots",
+										"Favorite"
+									],
+									"properties": {
+										"LingualMaps": {
+											"type": "object",
+											"properties": {
+												"Master": {
+													"allOf": [
+														{
+															"type": "object",
+															"x-abstract": true,
+															"properties": {
+																"Id": {
+																	"type": "string"
+																}
+															}
+														},
+														{
+															"type": "object",
+															"properties": {
+																"Locale": {
+																	"type": "string"
+																}
+															}
+														}
+													]
+												},
+												"Clones": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/ContentItemLingualMapInformation",
+														"circular": true
+													}
+												}
+											}
+										},
+										"AssignedUserId": {
+											"type": "string"
+										},
+										"AssignedGroupId": {
+											"type": "string"
+										},
+										"AssignedUserName": {
+											"type": "string"
+										},
+										"AssignedGroupName": {
+											"type": "string"
+										},
+										"Type": {
+											"type": "string",
+											"description": "The types of content items",
+											"x-enumNames": [
+												"Page",
+												"Asset",
+												"AssetFolder",
+												"ContentAlias",
+												"Other"
+											],
+											"enum": [
+												"Page",
+												"Asset",
+												"AssetFolder",
+												"ContentAlias",
+												"Other"
+											]
+										},
+										"SecurityLevel": {
+											"type": "string",
+											"description": "The list of node-level permissions for Pages",
+											"x-enumNames": [
+												"NO_ACCESS",
+												"READ_ONLY",
+												"FULL_ACCESS"
+											],
+											"enum": [
+												"NO_ACCESS",
+												"READ_ONLY",
+												"FULL_ACCESS"
+											]
+										},
+										"SchemaId": {
+											"type": "string"
+										},
+										"SchemaName": {
+											"type": "string"
+										},
+										"SchemaDisplayName": {
+											"type": "string"
+										},
+										"Version": {
+											"type": "integer",
+											"format": "int32"
+										},
+										"CheckedOut": {
+											"type": "boolean"
+										},
+										"Icon": {
+											"type": "integer",
+											"format": "int32"
+										},
+										"SubType": {
+											"type": "string"
+										},
+										"SubTypeLabel": {
+											"type": "string"
+										},
+										"MarkedTargetIds": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"IsRegionRoot": {
+											"type": "boolean"
+										},
+										"Locale": {
+											"type": "string"
+										},
+										"CanParentRegionRoots": {
+											"type": "boolean"
+										},
+										"Favorite": {
+											"type": "boolean"
+										},
+										"Categorization": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "object",
+							"required": [
+								"AssetType",
+								"ByteSize",
+								"FolderCount",
+								"HasImagePreview",
+								"Height",
+								"IsUnmanaged",
+								"Width"
+							],
+							"properties": {
+								"AllowedExtensions": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"AssetType": {
+									"type": "string",
+									"description": "The list of types of Asset",
+									"x-enumNames": [
+										"Binary",
+										"Code",
+										"Css",
+										"Json",
+										"Text",
+										"Xml",
+										"XsltStylesheet",
+										"Document",
+										"Image",
+										"Audio",
+										"Video",
+										"View",
+										"Html",
+										"Js",
+										"Dita"
+									],
+									"enum": [
+										"Binary",
+										"Code",
+										"Css",
+										"Json",
+										"Text",
+										"Xml",
+										"XsltStylesheet",
+										"Document",
+										"Image",
+										"Audio",
+										"Video",
+										"View",
+										"Html",
+										"Js",
+										"Dita"
+									]
+								},
+								"ByteSize": {
+									"type": "integer",
+									"format": "int64"
+								},
+								"Extension": {
+									"type": "string"
+								},
+								"FolderCount": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"HasImagePreview": {
+									"type": "boolean"
+								},
+								"Height": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"IsUnmanaged": {
+									"type": "boolean"
+								},
+								"MimeType": {
+									"type": "string"
+								},
+								"Width": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"Aliases": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object"
+				}
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/recycle-folder",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_GetRoot",
+		"description": "GET /api/v1/assets/root",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"Id": {
+																	"type": "string"
+																},
+																"Name": {
+																	"type": "string"
+																}
+															}
+														},
+														{
+															"type": "object"
+														}
+													]
+												},
+												{
+													"type": "object",
+													"x-abstract": true,
+													"required": [
+														"Created",
+														"LastModified",
+														"Archived"
+													],
+													"properties": {
+														"CreationUser": {
+															"type": "string"
+														},
+														"Created": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"LastModifiedUser": {
+															"type": "string"
+														},
+														"LastModified": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"EntityType": {
+															"type": "string"
+														},
+														"Archived": {
+															"type": "boolean"
+														}
+													}
+												}
+											]
+										},
+										{
+											"type": "object",
+											"required": [
+												"ChildrenCount",
+												"SiblingPosition"
+											],
+											"properties": {
+												"ParentId": {
+													"type": "string"
+												},
+												"ChildrenCount": {
+													"type": "integer",
+													"format": "int32"
+												},
+												"SiblingPosition": {
+													"type": "number",
+													"format": "double"
+												}
+											}
+										}
+									]
+								},
+								{
+									"type": "object",
+									"required": [
+										"Type",
+										"SecurityLevel",
+										"Version",
+										"CheckedOut",
+										"Icon",
+										"IsRegionRoot",
+										"CanParentRegionRoots",
+										"Favorite"
+									],
+									"properties": {
+										"LingualMaps": {
+											"type": "object",
+											"properties": {
+												"Master": {
+													"allOf": [
+														{
+															"type": "object",
+															"x-abstract": true,
+															"properties": {
+																"Id": {
+																	"type": "string"
+																}
+															}
+														},
+														{
+															"type": "object",
+															"properties": {
+																"Locale": {
+																	"type": "string"
+																}
+															}
+														}
+													]
+												},
+												"Clones": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/ContentItemLingualMapInformation",
+														"circular": true
+													}
+												}
+											}
+										},
+										"AssignedUserId": {
+											"type": "string"
+										},
+										"AssignedGroupId": {
+											"type": "string"
+										},
+										"AssignedUserName": {
+											"type": "string"
+										},
+										"AssignedGroupName": {
+											"type": "string"
+										},
+										"Type": {
+											"type": "string",
+											"description": "The types of content items",
+											"x-enumNames": [
+												"Page",
+												"Asset",
+												"AssetFolder",
+												"ContentAlias",
+												"Other"
+											],
+											"enum": [
+												"Page",
+												"Asset",
+												"AssetFolder",
+												"ContentAlias",
+												"Other"
+											]
+										},
+										"SecurityLevel": {
+											"type": "string",
+											"description": "The list of node-level permissions for Pages",
+											"x-enumNames": [
+												"NO_ACCESS",
+												"READ_ONLY",
+												"FULL_ACCESS"
+											],
+											"enum": [
+												"NO_ACCESS",
+												"READ_ONLY",
+												"FULL_ACCESS"
+											]
+										},
+										"SchemaId": {
+											"type": "string"
+										},
+										"SchemaName": {
+											"type": "string"
+										},
+										"SchemaDisplayName": {
+											"type": "string"
+										},
+										"Version": {
+											"type": "integer",
+											"format": "int32"
+										},
+										"CheckedOut": {
+											"type": "boolean"
+										},
+										"Icon": {
+											"type": "integer",
+											"format": "int32"
+										},
+										"SubType": {
+											"type": "string"
+										},
+										"SubTypeLabel": {
+											"type": "string"
+										},
+										"MarkedTargetIds": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"IsRegionRoot": {
+											"type": "boolean"
+										},
+										"Locale": {
+											"type": "string"
+										},
+										"CanParentRegionRoots": {
+											"type": "boolean"
+										},
+										"Favorite": {
+											"type": "boolean"
+										},
+										"Categorization": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "object",
+							"required": [
+								"AssetType",
+								"ByteSize",
+								"FolderCount",
+								"HasImagePreview",
+								"Height",
+								"IsUnmanaged",
+								"Width"
+							],
+							"properties": {
+								"AllowedExtensions": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"AssetType": {
+									"type": "string",
+									"description": "The list of types of Asset",
+									"x-enumNames": [
+										"Binary",
+										"Code",
+										"Css",
+										"Json",
+										"Text",
+										"Xml",
+										"XsltStylesheet",
+										"Document",
+										"Image",
+										"Audio",
+										"Video",
+										"View",
+										"Html",
+										"Js",
+										"Dita"
+									],
+									"enum": [
+										"Binary",
+										"Code",
+										"Css",
+										"Json",
+										"Text",
+										"Xml",
+										"XsltStylesheet",
+										"Document",
+										"Image",
+										"Audio",
+										"Video",
+										"View",
+										"Html",
+										"Js",
+										"Dita"
+									]
+								},
+								"ByteSize": {
+									"type": "integer",
+									"format": "int64"
+								},
+								"Extension": {
+									"type": "string"
+								},
+								"FolderCount": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"HasImagePreview": {
+									"type": "boolean"
+								},
+								"Height": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"IsUnmanaged": {
+									"type": "boolean"
+								},
+								"MimeType": {
+									"type": "string"
+								},
+								"Width": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"Aliases": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object"
+				}
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/root",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_GetRootFolders",
+		"description": "GET /api/v1/assets/root-folders",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"startIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"pageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"allOf": [
+															{
+																"allOf": [
+																	{
+																		"type": "object",
+																		"properties": {
+																			"Id": {
+																				"type": "string"
+																			},
+																			"Name": {
+																				"type": "string"
+																			}
+																		}
+																	},
+																	{
+																		"type": "object"
+																	}
+																]
+															},
+															{
+																"type": "object",
+																"x-abstract": true,
+																"required": [
+																	"Created",
+																	"LastModified",
+																	"Archived"
+																],
+																"properties": {
+																	"CreationUser": {
+																		"type": "string"
+																	},
+																	"Created": {
+																		"type": "string",
+																		"format": "date-time"
+																	},
+																	"LastModifiedUser": {
+																		"type": "string"
+																	},
+																	"LastModified": {
+																		"type": "string",
+																		"format": "date-time"
+																	},
+																	"EntityType": {
+																		"type": "string"
+																	},
+																	"Archived": {
+																		"type": "boolean"
+																	}
+																}
+															}
+														]
+													},
+													{
+														"type": "object",
+														"required": [
+															"ChildrenCount",
+															"SiblingPosition"
+														],
+														"properties": {
+															"ParentId": {
+																"type": "string"
+															},
+															"ChildrenCount": {
+																"type": "integer",
+																"format": "int32"
+															},
+															"SiblingPosition": {
+																"type": "number",
+																"format": "double"
+															}
+														}
+													}
+												]
+											},
+											{
+												"type": "object",
+												"required": [
+													"Type",
+													"SecurityLevel",
+													"Version",
+													"CheckedOut",
+													"Icon",
+													"IsRegionRoot",
+													"CanParentRegionRoots",
+													"Favorite"
+												],
+												"properties": {
+													"LingualMaps": {
+														"type": "object",
+														"properties": {
+															"Master": {
+																"allOf": [
+																	{
+																		"type": "object",
+																		"x-abstract": true,
+																		"properties": {
+																			"Id": {
+																				"type": "string"
+																			}
+																		}
+																	},
+																	{
+																		"type": "object",
+																		"properties": {
+																			"Locale": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																]
+															},
+															"Clones": {
+																"type": "array",
+																"items": {
+																	"$ref": "#/definitions/ContentItemLingualMapInformation",
+																	"circular": true
+																}
+															}
+														}
+													},
+													"AssignedUserId": {
+														"type": "string"
+													},
+													"AssignedGroupId": {
+														"type": "string"
+													},
+													"AssignedUserName": {
+														"type": "string"
+													},
+													"AssignedGroupName": {
+														"type": "string"
+													},
+													"Type": {
+														"type": "string",
+														"description": "The types of content items",
+														"x-enumNames": [
+															"Page",
+															"Asset",
+															"AssetFolder",
+															"ContentAlias",
+															"Other"
+														],
+														"enum": [
+															"Page",
+															"Asset",
+															"AssetFolder",
+															"ContentAlias",
+															"Other"
+														]
+													},
+													"SecurityLevel": {
+														"type": "string",
+														"description": "The list of node-level permissions for Pages",
+														"x-enumNames": [
+															"NO_ACCESS",
+															"READ_ONLY",
+															"FULL_ACCESS"
+														],
+														"enum": [
+															"NO_ACCESS",
+															"READ_ONLY",
+															"FULL_ACCESS"
+														]
+													},
+													"SchemaId": {
+														"type": "string"
+													},
+													"SchemaName": {
+														"type": "string"
+													},
+													"SchemaDisplayName": {
+														"type": "string"
+													},
+													"Version": {
+														"type": "integer",
+														"format": "int32"
+													},
+													"CheckedOut": {
+														"type": "boolean"
+													},
+													"Icon": {
+														"type": "integer",
+														"format": "int32"
+													},
+													"SubType": {
+														"type": "string"
+													},
+													"SubTypeLabel": {
+														"type": "string"
+													},
+													"MarkedTargetIds": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"IsRegionRoot": {
+														"type": "boolean"
+													},
+													"Locale": {
+														"type": "string"
+													},
+													"CanParentRegionRoots": {
+														"type": "boolean"
+													},
+													"Favorite": {
+														"type": "boolean"
+													},
+													"Categorization": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										]
+									},
+									{
+										"type": "object",
+										"required": [
+											"AssetType",
+											"ByteSize",
+											"FolderCount",
+											"HasImagePreview",
+											"Height",
+											"IsUnmanaged",
+											"Width"
+										],
+										"properties": {
+											"AllowedExtensions": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"AssetType": {
+												"type": "string",
+												"description": "The list of types of Asset",
+												"x-enumNames": [
+													"Binary",
+													"Code",
+													"Css",
+													"Json",
+													"Text",
+													"Xml",
+													"XsltStylesheet",
+													"Document",
+													"Image",
+													"Audio",
+													"Video",
+													"View",
+													"Html",
+													"Js",
+													"Dita"
+												],
+												"enum": [
+													"Binary",
+													"Code",
+													"Css",
+													"Json",
+													"Text",
+													"Xml",
+													"XsltStylesheet",
+													"Document",
+													"Image",
+													"Audio",
+													"Video",
+													"View",
+													"Html",
+													"Js",
+													"Dita"
+												]
+											},
+											"ByteSize": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"Extension": {
+												"type": "string"
+											},
+											"FolderCount": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"HasImagePreview": {
+												"type": "boolean"
+											},
+											"Height": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"IsUnmanaged": {
+												"type": "boolean"
+											},
+											"MimeType": {
+												"type": "string"
+											},
+											"Width": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"Aliases": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object"
+							}
+						]
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/root-folders",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_GetUnmanagedAsset",
+		"description": "GET /api/v1/assets/unmanaged",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"Id": {
+															"type": "string"
+														},
+														"Name": {
+															"type": "string"
+														}
+													}
+												},
+												{
+													"type": "object"
+												}
+											]
+										},
+										{
+											"type": "object",
+											"x-abstract": true,
+											"required": [
+												"Created",
+												"LastModified",
+												"Archived"
+											],
+											"properties": {
+												"CreationUser": {
+													"type": "string"
+												},
+												"Created": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"LastModifiedUser": {
+													"type": "string"
+												},
+												"LastModified": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"EntityType": {
+													"type": "string"
+												},
+												"Archived": {
+													"type": "boolean"
+												}
+											}
+										}
+									]
+								},
+								{
+									"type": "object",
+									"required": [
+										"ChildrenCount",
+										"SiblingPosition"
+									],
+									"properties": {
+										"ParentId": {
+											"type": "string"
+										},
+										"ChildrenCount": {
+											"type": "integer",
+											"format": "int32"
+										},
+										"SiblingPosition": {
+											"type": "number",
+											"format": "double"
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "object",
+							"required": [
+								"Type",
+								"SecurityLevel",
+								"Version",
+								"CheckedOut",
+								"Icon",
+								"IsRegionRoot",
+								"CanParentRegionRoots",
+								"Favorite"
+							],
+							"properties": {
+								"LingualMaps": {
+									"type": "object",
+									"properties": {
+										"Master": {
+											"allOf": [
+												{
+													"type": "object",
+													"x-abstract": true,
+													"properties": {
+														"Id": {
+															"type": "string"
+														}
+													}
+												},
+												{
+													"type": "object",
+													"properties": {
+														"Locale": {
+															"type": "string"
+														}
+													}
+												}
+											]
+										},
+										"Clones": {
+											"type": "array",
+											"items": {
+												"$ref": "#/definitions/ContentItemLingualMapInformation",
+												"circular": true
+											}
+										}
+									}
+								},
+								"AssignedUserId": {
+									"type": "string"
+								},
+								"AssignedGroupId": {
+									"type": "string"
+								},
+								"AssignedUserName": {
+									"type": "string"
+								},
+								"AssignedGroupName": {
+									"type": "string"
+								},
+								"Type": {
+									"type": "string",
+									"description": "The types of content items",
+									"x-enumNames": [
+										"Page",
+										"Asset",
+										"AssetFolder",
+										"ContentAlias",
+										"Other"
+									],
+									"enum": [
+										"Page",
+										"Asset",
+										"AssetFolder",
+										"ContentAlias",
+										"Other"
+									]
+								},
+								"SecurityLevel": {
+									"type": "string",
+									"description": "The list of node-level permissions for Pages",
+									"x-enumNames": [
+										"NO_ACCESS",
+										"READ_ONLY",
+										"FULL_ACCESS"
+									],
+									"enum": [
+										"NO_ACCESS",
+										"READ_ONLY",
+										"FULL_ACCESS"
+									]
+								},
+								"SchemaId": {
+									"type": "string"
+								},
+								"SchemaName": {
+									"type": "string"
+								},
+								"SchemaDisplayName": {
+									"type": "string"
+								},
+								"Version": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"CheckedOut": {
+									"type": "boolean"
+								},
+								"Icon": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"SubType": {
+									"type": "string"
+								},
+								"SubTypeLabel": {
+									"type": "string"
+								},
+								"MarkedTargetIds": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"IsRegionRoot": {
+									"type": "boolean"
+								},
+								"Locale": {
+									"type": "string"
+								},
+								"CanParentRegionRoots": {
+									"type": "boolean"
+								},
+								"Favorite": {
+									"type": "boolean"
+								},
+								"Categorization": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"AssetType",
+						"ByteSize",
+						"FolderCount",
+						"HasImagePreview",
+						"Height",
+						"IsUnmanaged",
+						"Width"
+					],
+					"properties": {
+						"AllowedExtensions": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"AssetType": {
+							"type": "string",
+							"description": "The list of types of Asset",
+							"x-enumNames": [
+								"Binary",
+								"Code",
+								"Css",
+								"Json",
+								"Text",
+								"Xml",
+								"XsltStylesheet",
+								"Document",
+								"Image",
+								"Audio",
+								"Video",
+								"View",
+								"Html",
+								"Js",
+								"Dita"
+							],
+							"enum": [
+								"Binary",
+								"Code",
+								"Css",
+								"Json",
+								"Text",
+								"Xml",
+								"XsltStylesheet",
+								"Document",
+								"Image",
+								"Audio",
+								"Video",
+								"View",
+								"Html",
+								"Js",
+								"Dita"
+							]
+						},
+						"ByteSize": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"Extension": {
+							"type": "string"
+						},
+						"FolderCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"HasImagePreview": {
+							"type": "boolean"
+						},
+						"Height": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"IsUnmanaged": {
+							"type": "boolean"
+						},
+						"MimeType": {
+							"type": "string"
+						},
+						"Width": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"Aliases": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/unmanaged",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_GetUnmanagedChildren",
+		"description": "GET /api/v1/assets/unmanaged/children",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"startIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"pageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"Id": {
+																		"type": "string"
+																	},
+																	"Name": {
+																		"type": "string"
+																	}
+																}
+															},
+															{
+																"type": "object"
+															}
+														]
+													},
+													{
+														"type": "object",
+														"x-abstract": true,
+														"required": [
+															"Created",
+															"LastModified",
+															"Archived"
+														],
+														"properties": {
+															"CreationUser": {
+																"type": "string"
+															},
+															"Created": {
+																"type": "string",
+																"format": "date-time"
+															},
+															"LastModifiedUser": {
+																"type": "string"
+															},
+															"LastModified": {
+																"type": "string",
+																"format": "date-time"
+															},
+															"EntityType": {
+																"type": "string"
+															},
+															"Archived": {
+																"type": "boolean"
+															}
+														}
+													}
+												]
+											},
+											{
+												"type": "object",
+												"required": [
+													"ChildrenCount",
+													"SiblingPosition"
+												],
+												"properties": {
+													"ParentId": {
+														"type": "string"
+													},
+													"ChildrenCount": {
+														"type": "integer",
+														"format": "int32"
+													},
+													"SiblingPosition": {
+														"type": "number",
+														"format": "double"
+													}
+												}
+											}
+										]
+									},
+									{
+										"type": "object",
+										"required": [
+											"Type",
+											"SecurityLevel",
+											"Version",
+											"CheckedOut",
+											"Icon",
+											"IsRegionRoot",
+											"CanParentRegionRoots",
+											"Favorite"
+										],
+										"properties": {
+											"LingualMaps": {
+												"type": "object",
+												"properties": {
+													"Master": {
+														"allOf": [
+															{
+																"type": "object",
+																"x-abstract": true,
+																"properties": {
+																	"Id": {
+																		"type": "string"
+																	}
+																}
+															},
+															{
+																"type": "object",
+																"properties": {
+																	"Locale": {
+																		"type": "string"
+																	}
+																}
+															}
+														]
+													},
+													"Clones": {
+														"type": "array",
+														"items": {
+															"$ref": "#/definitions/ContentItemLingualMapInformation",
+															"circular": true
+														}
+													}
+												}
+											},
+											"AssignedUserId": {
+												"type": "string"
+											},
+											"AssignedGroupId": {
+												"type": "string"
+											},
+											"AssignedUserName": {
+												"type": "string"
+											},
+											"AssignedGroupName": {
+												"type": "string"
+											},
+											"Type": {
+												"type": "string",
+												"description": "The types of content items",
+												"x-enumNames": [
+													"Page",
+													"Asset",
+													"AssetFolder",
+													"ContentAlias",
+													"Other"
+												],
+												"enum": [
+													"Page",
+													"Asset",
+													"AssetFolder",
+													"ContentAlias",
+													"Other"
+												]
+											},
+											"SecurityLevel": {
+												"type": "string",
+												"description": "The list of node-level permissions for Pages",
+												"x-enumNames": [
+													"NO_ACCESS",
+													"READ_ONLY",
+													"FULL_ACCESS"
+												],
+												"enum": [
+													"NO_ACCESS",
+													"READ_ONLY",
+													"FULL_ACCESS"
+												]
+											},
+											"SchemaId": {
+												"type": "string"
+											},
+											"SchemaName": {
+												"type": "string"
+											},
+											"SchemaDisplayName": {
+												"type": "string"
+											},
+											"Version": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"CheckedOut": {
+												"type": "boolean"
+											},
+											"Icon": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"SubType": {
+												"type": "string"
+											},
+											"SubTypeLabel": {
+												"type": "string"
+											},
+											"MarkedTargetIds": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"IsRegionRoot": {
+												"type": "boolean"
+											},
+											"Locale": {
+												"type": "string"
+											},
+											"CanParentRegionRoots": {
+												"type": "boolean"
+											},
+											"Favorite": {
+												"type": "boolean"
+											},
+											"Categorization": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"required": [
+									"AssetType",
+									"ByteSize",
+									"FolderCount",
+									"HasImagePreview",
+									"Height",
+									"IsUnmanaged",
+									"Width"
+								],
+								"properties": {
+									"AllowedExtensions": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"AssetType": {
+										"type": "string",
+										"description": "The list of types of Asset",
+										"x-enumNames": [
+											"Binary",
+											"Code",
+											"Css",
+											"Json",
+											"Text",
+											"Xml",
+											"XsltStylesheet",
+											"Document",
+											"Image",
+											"Audio",
+											"Video",
+											"View",
+											"Html",
+											"Js",
+											"Dita"
+										],
+										"enum": [
+											"Binary",
+											"Code",
+											"Css",
+											"Json",
+											"Text",
+											"Xml",
+											"XsltStylesheet",
+											"Document",
+											"Image",
+											"Audio",
+											"Video",
+											"View",
+											"Html",
+											"Js",
+											"Dita"
+										]
+									},
+									"ByteSize": {
+										"type": "integer",
+										"format": "int64"
+									},
+									"Extension": {
+										"type": "string"
+									},
+									"FolderCount": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"HasImagePreview": {
+										"type": "boolean"
+									},
+									"Height": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"IsUnmanaged": {
+										"type": "boolean"
+									},
+									"MimeType": {
+										"type": "string"
+									},
+									"Width": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"Aliases": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						]
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/unmanaged/children",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_GetUnmanagedRootFolders",
+		"description": "GET /api/v1/assets/unmanaged/root-folders",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"startIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"pageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"allOf": [
+															{
+																"allOf": [
+																	{
+																		"type": "object",
+																		"properties": {
+																			"Id": {
+																				"type": "string"
+																			},
+																			"Name": {
+																				"type": "string"
+																			}
+																		}
+																	},
+																	{
+																		"type": "object"
+																	}
+																]
+															},
+															{
+																"type": "object",
+																"x-abstract": true,
+																"required": [
+																	"Created",
+																	"LastModified",
+																	"Archived"
+																],
+																"properties": {
+																	"CreationUser": {
+																		"type": "string"
+																	},
+																	"Created": {
+																		"type": "string",
+																		"format": "date-time"
+																	},
+																	"LastModifiedUser": {
+																		"type": "string"
+																	},
+																	"LastModified": {
+																		"type": "string",
+																		"format": "date-time"
+																	},
+																	"EntityType": {
+																		"type": "string"
+																	},
+																	"Archived": {
+																		"type": "boolean"
+																	}
+																}
+															}
+														]
+													},
+													{
+														"type": "object",
+														"required": [
+															"ChildrenCount",
+															"SiblingPosition"
+														],
+														"properties": {
+															"ParentId": {
+																"type": "string"
+															},
+															"ChildrenCount": {
+																"type": "integer",
+																"format": "int32"
+															},
+															"SiblingPosition": {
+																"type": "number",
+																"format": "double"
+															}
+														}
+													}
+												]
+											},
+											{
+												"type": "object",
+												"required": [
+													"Type",
+													"SecurityLevel",
+													"Version",
+													"CheckedOut",
+													"Icon",
+													"IsRegionRoot",
+													"CanParentRegionRoots",
+													"Favorite"
+												],
+												"properties": {
+													"LingualMaps": {
+														"type": "object",
+														"properties": {
+															"Master": {
+																"allOf": [
+																	{
+																		"type": "object",
+																		"x-abstract": true,
+																		"properties": {
+																			"Id": {
+																				"type": "string"
+																			}
+																		}
+																	},
+																	{
+																		"type": "object",
+																		"properties": {
+																			"Locale": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																]
+															},
+															"Clones": {
+																"type": "array",
+																"items": {
+																	"$ref": "#/definitions/ContentItemLingualMapInformation",
+																	"circular": true
+																}
+															}
+														}
+													},
+													"AssignedUserId": {
+														"type": "string"
+													},
+													"AssignedGroupId": {
+														"type": "string"
+													},
+													"AssignedUserName": {
+														"type": "string"
+													},
+													"AssignedGroupName": {
+														"type": "string"
+													},
+													"Type": {
+														"type": "string",
+														"description": "The types of content items",
+														"x-enumNames": [
+															"Page",
+															"Asset",
+															"AssetFolder",
+															"ContentAlias",
+															"Other"
+														],
+														"enum": [
+															"Page",
+															"Asset",
+															"AssetFolder",
+															"ContentAlias",
+															"Other"
+														]
+													},
+													"SecurityLevel": {
+														"type": "string",
+														"description": "The list of node-level permissions for Pages",
+														"x-enumNames": [
+															"NO_ACCESS",
+															"READ_ONLY",
+															"FULL_ACCESS"
+														],
+														"enum": [
+															"NO_ACCESS",
+															"READ_ONLY",
+															"FULL_ACCESS"
+														]
+													},
+													"SchemaId": {
+														"type": "string"
+													},
+													"SchemaName": {
+														"type": "string"
+													},
+													"SchemaDisplayName": {
+														"type": "string"
+													},
+													"Version": {
+														"type": "integer",
+														"format": "int32"
+													},
+													"CheckedOut": {
+														"type": "boolean"
+													},
+													"Icon": {
+														"type": "integer",
+														"format": "int32"
+													},
+													"SubType": {
+														"type": "string"
+													},
+													"SubTypeLabel": {
+														"type": "string"
+													},
+													"MarkedTargetIds": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"IsRegionRoot": {
+														"type": "boolean"
+													},
+													"Locale": {
+														"type": "string"
+													},
+													"CanParentRegionRoots": {
+														"type": "boolean"
+													},
+													"Favorite": {
+														"type": "boolean"
+													},
+													"Categorization": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										]
+									},
+									{
+										"type": "object",
+										"required": [
+											"AssetType",
+											"ByteSize",
+											"FolderCount",
+											"HasImagePreview",
+											"Height",
+											"IsUnmanaged",
+											"Width"
+										],
+										"properties": {
+											"AllowedExtensions": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"AssetType": {
+												"type": "string",
+												"description": "The list of types of Asset",
+												"x-enumNames": [
+													"Binary",
+													"Code",
+													"Css",
+													"Json",
+													"Text",
+													"Xml",
+													"XsltStylesheet",
+													"Document",
+													"Image",
+													"Audio",
+													"Video",
+													"View",
+													"Html",
+													"Js",
+													"Dita"
+												],
+												"enum": [
+													"Binary",
+													"Code",
+													"Css",
+													"Json",
+													"Text",
+													"Xml",
+													"XsltStylesheet",
+													"Document",
+													"Image",
+													"Audio",
+													"Video",
+													"View",
+													"Html",
+													"Js",
+													"Dita"
+												]
+											},
+											"ByteSize": {
+												"type": "integer",
+												"format": "int64"
+											},
+											"Extension": {
+												"type": "string"
+											},
+											"FolderCount": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"HasImagePreview": {
+												"type": "boolean"
+											},
+											"Height": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"IsUnmanaged": {
+												"type": "boolean"
+											},
+											"MimeType": {
+												"type": "string"
+											},
+											"Width": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"Aliases": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object"
+							}
+						]
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/unmanaged/root-folders",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_CheckDitaContentMovingOutOfDitaRoot",
+		"description": "GET /api/v1/assets/dita-move-validation",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"srcIds": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"tgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"srcIds",
+				"tgtId"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/dita-move-validation",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_Move",
+		"description": "PATCH /api/v1/assets/move",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"srcIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"tgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"overwriteSameName": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"srcIds",
+				"tgtId",
+				"srcIds"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"type": "object",
+														"properties": {
+															"Id": {
+																"type": "string"
+															},
+															"Name": {
+																"type": "string"
+															}
+														}
+													},
+													{
+														"type": "object"
+													}
+												]
+											},
+											{
+												"type": "object",
+												"x-abstract": true,
+												"required": [
+													"Created",
+													"LastModified",
+													"Archived"
+												],
+												"properties": {
+													"CreationUser": {
+														"type": "string"
+													},
+													"Created": {
+														"type": "string",
+														"format": "date-time"
+													},
+													"LastModifiedUser": {
+														"type": "string"
+													},
+													"LastModified": {
+														"type": "string",
+														"format": "date-time"
+													},
+													"EntityType": {
+														"type": "string"
+													},
+													"Archived": {
+														"type": "boolean"
+													}
+												}
+											}
+										]
+									},
+									{
+										"type": "object",
+										"required": [
+											"ChildrenCount",
+											"SiblingPosition"
+										],
+										"properties": {
+											"ParentId": {
+												"type": "string"
+											},
+											"ChildrenCount": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"SiblingPosition": {
+												"type": "number",
+												"format": "double"
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"required": [
+									"Type",
+									"SecurityLevel",
+									"Version",
+									"CheckedOut",
+									"Icon",
+									"IsRegionRoot",
+									"CanParentRegionRoots",
+									"Favorite"
+								],
+								"properties": {
+									"LingualMaps": {
+										"type": "object",
+										"properties": {
+											"Master": {
+												"allOf": [
+													{
+														"type": "object",
+														"x-abstract": true,
+														"properties": {
+															"Id": {
+																"type": "string"
+															}
+														}
+													},
+													{
+														"type": "object",
+														"properties": {
+															"Locale": {
+																"type": "string"
+															}
+														}
+													}
+												]
+											},
+											"Clones": {
+												"type": "array",
+												"items": {
+													"$ref": "#/definitions/ContentItemLingualMapInformation",
+													"circular": true
+												}
+											}
+										}
+									},
+									"AssignedUserId": {
+										"type": "string"
+									},
+									"AssignedGroupId": {
+										"type": "string"
+									},
+									"AssignedUserName": {
+										"type": "string"
+									},
+									"AssignedGroupName": {
+										"type": "string"
+									},
+									"Type": {
+										"type": "string",
+										"description": "The types of content items",
+										"x-enumNames": [
+											"Page",
+											"Asset",
+											"AssetFolder",
+											"ContentAlias",
+											"Other"
+										],
+										"enum": [
+											"Page",
+											"Asset",
+											"AssetFolder",
+											"ContentAlias",
+											"Other"
+										]
+									},
+									"SecurityLevel": {
+										"type": "string",
+										"description": "The list of node-level permissions for Pages",
+										"x-enumNames": [
+											"NO_ACCESS",
+											"READ_ONLY",
+											"FULL_ACCESS"
+										],
+										"enum": [
+											"NO_ACCESS",
+											"READ_ONLY",
+											"FULL_ACCESS"
+										]
+									},
+									"SchemaId": {
+										"type": "string"
+									},
+									"SchemaName": {
+										"type": "string"
+									},
+									"SchemaDisplayName": {
+										"type": "string"
+									},
+									"Version": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"CheckedOut": {
+										"type": "boolean"
+									},
+									"Icon": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"SubType": {
+										"type": "string"
+									},
+									"SubTypeLabel": {
+										"type": "string"
+									},
+									"MarkedTargetIds": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"IsRegionRoot": {
+										"type": "boolean"
+									},
+									"Locale": {
+										"type": "string"
+									},
+									"CanParentRegionRoots": {
+										"type": "boolean"
+									},
+									"Favorite": {
+										"type": "boolean"
+									},
+									"Categorization": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						]
+					},
+					{
+						"type": "object",
+						"required": [
+							"AssetType",
+							"ByteSize",
+							"FolderCount",
+							"HasImagePreview",
+							"Height",
+							"IsUnmanaged",
+							"Width"
+						],
+						"properties": {
+							"AllowedExtensions": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"AssetType": {
+								"type": "string",
+								"description": "The list of types of Asset",
+								"x-enumNames": [
+									"Binary",
+									"Code",
+									"Css",
+									"Json",
+									"Text",
+									"Xml",
+									"XsltStylesheet",
+									"Document",
+									"Image",
+									"Audio",
+									"Video",
+									"View",
+									"Html",
+									"Js",
+									"Dita"
+								],
+								"enum": [
+									"Binary",
+									"Code",
+									"Css",
+									"Json",
+									"Text",
+									"Xml",
+									"XsltStylesheet",
+									"Document",
+									"Image",
+									"Audio",
+									"Video",
+									"View",
+									"Html",
+									"Js",
+									"Dita"
+								]
+							},
+							"ByteSize": {
+								"type": "integer",
+								"format": "int64"
+							},
+							"Extension": {
+								"type": "string"
+							},
+							"FolderCount": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"HasImagePreview": {
+								"type": "boolean"
+							},
+							"Height": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"IsUnmanaged": {
+								"type": "boolean"
+							},
+							"MimeType": {
+								"type": "string"
+							},
+							"Width": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"Aliases": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "PATCH",
+		"endpoint": "/api/v1/assets/move",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_Rename",
+		"description": "POST /api/v1/assets/rename",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"request": {
+					"allOf": [
+						{
+							"type": "object",
+							"properties": {
+								"Id": {
+									"type": "string"
+								},
+								"Name": {
+									"type": "string"
+								}
+							}
+						},
+						{
+							"type": "object",
+							"required": [
+								"Id",
+								"Name"
+							],
+							"properties": {
+								"Id": {
+									"type": "string",
+									"minLength": 1
+								},
+								"Name": {
+									"type": "string",
+									"minLength": 1
+								}
+							}
+						}
+					]
+				}
+			},
+			"required": [
+				"request",
+				"request"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"Id": {
+															"type": "string"
+														},
+														"Name": {
+															"type": "string"
+														}
+													}
+												},
+												{
+													"type": "object"
+												}
+											]
+										},
+										{
+											"type": "object",
+											"x-abstract": true,
+											"required": [
+												"Created",
+												"LastModified",
+												"Archived"
+											],
+											"properties": {
+												"CreationUser": {
+													"type": "string"
+												},
+												"Created": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"LastModifiedUser": {
+													"type": "string"
+												},
+												"LastModified": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"EntityType": {
+													"type": "string"
+												},
+												"Archived": {
+													"type": "boolean"
+												}
+											}
+										}
+									]
+								},
+								{
+									"type": "object",
+									"required": [
+										"ChildrenCount",
+										"SiblingPosition"
+									],
+									"properties": {
+										"ParentId": {
+											"type": "string"
+										},
+										"ChildrenCount": {
+											"type": "integer",
+											"format": "int32"
+										},
+										"SiblingPosition": {
+											"type": "number",
+											"format": "double"
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "object",
+							"required": [
+								"Type",
+								"SecurityLevel",
+								"Version",
+								"CheckedOut",
+								"Icon",
+								"IsRegionRoot",
+								"CanParentRegionRoots",
+								"Favorite"
+							],
+							"properties": {
+								"LingualMaps": {
+									"type": "object",
+									"properties": {
+										"Master": {
+											"allOf": [
+												{
+													"type": "object",
+													"x-abstract": true,
+													"properties": {
+														"Id": {
+															"type": "string"
+														}
+													}
+												},
+												{
+													"type": "object",
+													"properties": {
+														"Locale": {
+															"type": "string"
+														}
+													}
+												}
+											]
+										},
+										"Clones": {
+											"type": "array",
+											"items": {
+												"$ref": "#/definitions/ContentItemLingualMapInformation",
+												"circular": true
+											}
+										}
+									}
+								},
+								"AssignedUserId": {
+									"type": "string"
+								},
+								"AssignedGroupId": {
+									"type": "string"
+								},
+								"AssignedUserName": {
+									"type": "string"
+								},
+								"AssignedGroupName": {
+									"type": "string"
+								},
+								"Type": {
+									"type": "string",
+									"description": "The types of content items",
+									"x-enumNames": [
+										"Page",
+										"Asset",
+										"AssetFolder",
+										"ContentAlias",
+										"Other"
+									],
+									"enum": [
+										"Page",
+										"Asset",
+										"AssetFolder",
+										"ContentAlias",
+										"Other"
+									]
+								},
+								"SecurityLevel": {
+									"type": "string",
+									"description": "The list of node-level permissions for Pages",
+									"x-enumNames": [
+										"NO_ACCESS",
+										"READ_ONLY",
+										"FULL_ACCESS"
+									],
+									"enum": [
+										"NO_ACCESS",
+										"READ_ONLY",
+										"FULL_ACCESS"
+									]
+								},
+								"SchemaId": {
+									"type": "string"
+								},
+								"SchemaName": {
+									"type": "string"
+								},
+								"SchemaDisplayName": {
+									"type": "string"
+								},
+								"Version": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"CheckedOut": {
+									"type": "boolean"
+								},
+								"Icon": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"SubType": {
+									"type": "string"
+								},
+								"SubTypeLabel": {
+									"type": "string"
+								},
+								"MarkedTargetIds": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"IsRegionRoot": {
+									"type": "boolean"
+								},
+								"Locale": {
+									"type": "string"
+								},
+								"CanParentRegionRoots": {
+									"type": "boolean"
+								},
+								"Favorite": {
+									"type": "boolean"
+								},
+								"Categorization": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"AssetType",
+						"ByteSize",
+						"FolderCount",
+						"HasImagePreview",
+						"Height",
+						"IsUnmanaged",
+						"Width"
+					],
+					"properties": {
+						"AllowedExtensions": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"AssetType": {
+							"type": "string",
+							"description": "The list of types of Asset",
+							"x-enumNames": [
+								"Binary",
+								"Code",
+								"Css",
+								"Json",
+								"Text",
+								"Xml",
+								"XsltStylesheet",
+								"Document",
+								"Image",
+								"Audio",
+								"Video",
+								"View",
+								"Html",
+								"Js",
+								"Dita"
+							],
+							"enum": [
+								"Binary",
+								"Code",
+								"Css",
+								"Json",
+								"Text",
+								"Xml",
+								"XsltStylesheet",
+								"Document",
+								"Image",
+								"Audio",
+								"Video",
+								"View",
+								"Html",
+								"Js",
+								"Dita"
+							]
+						},
+						"ByteSize": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"Extension": {
+							"type": "string"
+						},
+						"FolderCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"HasImagePreview": {
+							"type": "boolean"
+						},
+						"Height": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"IsUnmanaged": {
+							"type": "boolean"
+						},
+						"MimeType": {
+							"type": "string"
+						},
+						"Width": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"Aliases": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			]
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/assets/rename",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_SearchAssetItems",
+		"description": "GET /api/v1/assets/search",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"AssetSchemas": {
+					"type": "array",
+					"required": false,
+					"in": "query"
+				},
+				"EndDate": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"IncludeAssets": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				},
+				"IncludeDescendants": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				},
+				"IncludeFolders": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				},
+				"RootId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"SearchString": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"StartDate": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"TargetId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"SortField": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"SortOrder": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"Id": {
+																		"type": "string"
+																	},
+																	"Name": {
+																		"type": "string"
+																	}
+																}
+															},
+															{
+																"type": "object"
+															}
+														]
+													},
+													{
+														"type": "object",
+														"x-abstract": true,
+														"required": [
+															"Created",
+															"LastModified",
+															"Archived"
+														],
+														"properties": {
+															"CreationUser": {
+																"type": "string"
+															},
+															"Created": {
+																"type": "string",
+																"format": "date-time"
+															},
+															"LastModifiedUser": {
+																"type": "string"
+															},
+															"LastModified": {
+																"type": "string",
+																"format": "date-time"
+															},
+															"EntityType": {
+																"type": "string"
+															},
+															"Archived": {
+																"type": "boolean"
+															}
+														}
+													}
+												]
+											},
+											{
+												"type": "object",
+												"required": [
+													"ChildrenCount",
+													"SiblingPosition"
+												],
+												"properties": {
+													"ParentId": {
+														"type": "string"
+													},
+													"ChildrenCount": {
+														"type": "integer",
+														"format": "int32"
+													},
+													"SiblingPosition": {
+														"type": "number",
+														"format": "double"
+													}
+												}
+											}
+										]
+									},
+									{
+										"type": "object",
+										"required": [
+											"Type",
+											"SecurityLevel",
+											"Version",
+											"CheckedOut",
+											"Icon",
+											"IsRegionRoot",
+											"CanParentRegionRoots",
+											"Favorite"
+										],
+										"properties": {
+											"LingualMaps": {
+												"type": "object",
+												"properties": {
+													"Master": {
+														"allOf": [
+															{
+																"type": "object",
+																"x-abstract": true,
+																"properties": {
+																	"Id": {
+																		"type": "string"
+																	}
+																}
+															},
+															{
+																"type": "object",
+																"properties": {
+																	"Locale": {
+																		"type": "string"
+																	}
+																}
+															}
+														]
+													},
+													"Clones": {
+														"type": "array",
+														"items": {
+															"$ref": "#/definitions/ContentItemLingualMapInformation",
+															"circular": true
+														}
+													}
+												}
+											},
+											"AssignedUserId": {
+												"type": "string"
+											},
+											"AssignedGroupId": {
+												"type": "string"
+											},
+											"AssignedUserName": {
+												"type": "string"
+											},
+											"AssignedGroupName": {
+												"type": "string"
+											},
+											"Type": {
+												"type": "string",
+												"description": "The types of content items",
+												"x-enumNames": [
+													"Page",
+													"Asset",
+													"AssetFolder",
+													"ContentAlias",
+													"Other"
+												],
+												"enum": [
+													"Page",
+													"Asset",
+													"AssetFolder",
+													"ContentAlias",
+													"Other"
+												]
+											},
+											"SecurityLevel": {
+												"type": "string",
+												"description": "The list of node-level permissions for Pages",
+												"x-enumNames": [
+													"NO_ACCESS",
+													"READ_ONLY",
+													"FULL_ACCESS"
+												],
+												"enum": [
+													"NO_ACCESS",
+													"READ_ONLY",
+													"FULL_ACCESS"
+												]
+											},
+											"SchemaId": {
+												"type": "string"
+											},
+											"SchemaName": {
+												"type": "string"
+											},
+											"SchemaDisplayName": {
+												"type": "string"
+											},
+											"Version": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"CheckedOut": {
+												"type": "boolean"
+											},
+											"Icon": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"SubType": {
+												"type": "string"
+											},
+											"SubTypeLabel": {
+												"type": "string"
+											},
+											"MarkedTargetIds": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"IsRegionRoot": {
+												"type": "boolean"
+											},
+											"Locale": {
+												"type": "string"
+											},
+											"CanParentRegionRoots": {
+												"type": "boolean"
+											},
+											"Favorite": {
+												"type": "boolean"
+											},
+											"Categorization": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"required": [
+									"AssetType",
+									"ByteSize",
+									"FolderCount",
+									"HasImagePreview",
+									"Height",
+									"IsUnmanaged",
+									"Width"
+								],
+								"properties": {
+									"AllowedExtensions": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"AssetType": {
+										"type": "string",
+										"description": "The list of types of Asset",
+										"x-enumNames": [
+											"Binary",
+											"Code",
+											"Css",
+											"Json",
+											"Text",
+											"Xml",
+											"XsltStylesheet",
+											"Document",
+											"Image",
+											"Audio",
+											"Video",
+											"View",
+											"Html",
+											"Js",
+											"Dita"
+										],
+										"enum": [
+											"Binary",
+											"Code",
+											"Css",
+											"Json",
+											"Text",
+											"Xml",
+											"XsltStylesheet",
+											"Document",
+											"Image",
+											"Audio",
+											"Video",
+											"View",
+											"Html",
+											"Js",
+											"Dita"
+										]
+									},
+									"ByteSize": {
+										"type": "integer",
+										"format": "int64"
+									},
+									"Extension": {
+										"type": "string"
+									},
+									"FolderCount": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"HasImagePreview": {
+										"type": "boolean"
+									},
+									"Height": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"IsUnmanaged": {
+										"type": "boolean"
+									},
+									"MimeType": {
+										"type": "string"
+									},
+									"Width": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"Aliases": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						]
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/search",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_SearchUnmanagedAssetItems",
+		"description": "GET /api/v1/assets/search-unmanaged",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"AssetSchemas": {
+					"type": "array",
+					"required": false,
+					"in": "query"
+				},
+				"EndDate": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"IncludeAssets": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				},
+				"IncludeDescendants": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				},
+				"IncludeFolders": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				},
+				"RootId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"SearchString": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"StartDate": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"TargetId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"SortField": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"SortOrder": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"Id": {
+																		"type": "string"
+																	},
+																	"Name": {
+																		"type": "string"
+																	}
+																}
+															},
+															{
+																"type": "object"
+															}
+														]
+													},
+													{
+														"type": "object",
+														"x-abstract": true,
+														"required": [
+															"Created",
+															"LastModified",
+															"Archived"
+														],
+														"properties": {
+															"CreationUser": {
+																"type": "string"
+															},
+															"Created": {
+																"type": "string",
+																"format": "date-time"
+															},
+															"LastModifiedUser": {
+																"type": "string"
+															},
+															"LastModified": {
+																"type": "string",
+																"format": "date-time"
+															},
+															"EntityType": {
+																"type": "string"
+															},
+															"Archived": {
+																"type": "boolean"
+															}
+														}
+													}
+												]
+											},
+											{
+												"type": "object",
+												"required": [
+													"ChildrenCount",
+													"SiblingPosition"
+												],
+												"properties": {
+													"ParentId": {
+														"type": "string"
+													},
+													"ChildrenCount": {
+														"type": "integer",
+														"format": "int32"
+													},
+													"SiblingPosition": {
+														"type": "number",
+														"format": "double"
+													}
+												}
+											}
+										]
+									},
+									{
+										"type": "object",
+										"required": [
+											"Type",
+											"SecurityLevel",
+											"Version",
+											"CheckedOut",
+											"Icon",
+											"IsRegionRoot",
+											"CanParentRegionRoots",
+											"Favorite"
+										],
+										"properties": {
+											"LingualMaps": {
+												"type": "object",
+												"properties": {
+													"Master": {
+														"allOf": [
+															{
+																"type": "object",
+																"x-abstract": true,
+																"properties": {
+																	"Id": {
+																		"type": "string"
+																	}
+																}
+															},
+															{
+																"type": "object",
+																"properties": {
+																	"Locale": {
+																		"type": "string"
+																	}
+																}
+															}
+														]
+													},
+													"Clones": {
+														"type": "array",
+														"items": {
+															"$ref": "#/definitions/ContentItemLingualMapInformation",
+															"circular": true
+														}
+													}
+												}
+											},
+											"AssignedUserId": {
+												"type": "string"
+											},
+											"AssignedGroupId": {
+												"type": "string"
+											},
+											"AssignedUserName": {
+												"type": "string"
+											},
+											"AssignedGroupName": {
+												"type": "string"
+											},
+											"Type": {
+												"type": "string",
+												"description": "The types of content items",
+												"x-enumNames": [
+													"Page",
+													"Asset",
+													"AssetFolder",
+													"ContentAlias",
+													"Other"
+												],
+												"enum": [
+													"Page",
+													"Asset",
+													"AssetFolder",
+													"ContentAlias",
+													"Other"
+												]
+											},
+											"SecurityLevel": {
+												"type": "string",
+												"description": "The list of node-level permissions for Pages",
+												"x-enumNames": [
+													"NO_ACCESS",
+													"READ_ONLY",
+													"FULL_ACCESS"
+												],
+												"enum": [
+													"NO_ACCESS",
+													"READ_ONLY",
+													"FULL_ACCESS"
+												]
+											},
+											"SchemaId": {
+												"type": "string"
+											},
+											"SchemaName": {
+												"type": "string"
+											},
+											"SchemaDisplayName": {
+												"type": "string"
+											},
+											"Version": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"CheckedOut": {
+												"type": "boolean"
+											},
+											"Icon": {
+												"type": "integer",
+												"format": "int32"
+											},
+											"SubType": {
+												"type": "string"
+											},
+											"SubTypeLabel": {
+												"type": "string"
+											},
+											"MarkedTargetIds": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"IsRegionRoot": {
+												"type": "boolean"
+											},
+											"Locale": {
+												"type": "string"
+											},
+											"CanParentRegionRoots": {
+												"type": "boolean"
+											},
+											"Favorite": {
+												"type": "boolean"
+											},
+											"Categorization": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"required": [
+									"AssetType",
+									"ByteSize",
+									"FolderCount",
+									"HasImagePreview",
+									"Height",
+									"IsUnmanaged",
+									"Width"
+								],
+								"properties": {
+									"AllowedExtensions": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"AssetType": {
+										"type": "string",
+										"description": "The list of types of Asset",
+										"x-enumNames": [
+											"Binary",
+											"Code",
+											"Css",
+											"Json",
+											"Text",
+											"Xml",
+											"XsltStylesheet",
+											"Document",
+											"Image",
+											"Audio",
+											"Video",
+											"View",
+											"Html",
+											"Js",
+											"Dita"
+										],
+										"enum": [
+											"Binary",
+											"Code",
+											"Css",
+											"Json",
+											"Text",
+											"Xml",
+											"XsltStylesheet",
+											"Document",
+											"Image",
+											"Audio",
+											"Video",
+											"View",
+											"Html",
+											"Js",
+											"Dita"
+										]
+									},
+									"ByteSize": {
+										"type": "integer",
+										"format": "int64"
+									},
+									"Extension": {
+										"type": "string"
+									},
+									"FolderCount": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"HasImagePreview": {
+										"type": "boolean"
+									},
+									"Height": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"IsUnmanaged": {
+										"type": "boolean"
+									},
+									"MimeType": {
+										"type": "string"
+									},
+									"Width": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"Aliases": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						]
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/search-unmanaged",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_SetCategoryAssociations",
+		"description": "POST /api/v1/assets/asset/associations",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"contentId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"categoryIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"contentId",
+				"categoryIds",
+				"categoryIds"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"Id": {
+															"type": "string"
+														},
+														"Name": {
+															"type": "string"
+														}
+													}
+												},
+												{
+													"type": "object"
+												}
+											]
+										},
+										{
+											"type": "object",
+											"x-abstract": true,
+											"required": [
+												"Created",
+												"LastModified",
+												"Archived"
+											],
+											"properties": {
+												"CreationUser": {
+													"type": "string"
+												},
+												"Created": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"LastModifiedUser": {
+													"type": "string"
+												},
+												"LastModified": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"EntityType": {
+													"type": "string"
+												},
+												"Archived": {
+													"type": "boolean"
+												}
+											}
+										}
+									]
+								},
+								{
+									"type": "object",
+									"required": [
+										"ChildrenCount",
+										"SiblingPosition"
+									],
+									"properties": {
+										"ParentId": {
+											"type": "string"
+										},
+										"ChildrenCount": {
+											"type": "integer",
+											"format": "int32"
+										},
+										"SiblingPosition": {
+											"type": "number",
+											"format": "double"
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "object",
+							"required": [
+								"Type",
+								"SecurityLevel",
+								"Version",
+								"CheckedOut",
+								"Icon",
+								"IsRegionRoot",
+								"CanParentRegionRoots",
+								"Favorite"
+							],
+							"properties": {
+								"LingualMaps": {
+									"type": "object",
+									"properties": {
+										"Master": {
+											"allOf": [
+												{
+													"type": "object",
+													"x-abstract": true,
+													"properties": {
+														"Id": {
+															"type": "string"
+														}
+													}
+												},
+												{
+													"type": "object",
+													"properties": {
+														"Locale": {
+															"type": "string"
+														}
+													}
+												}
+											]
+										},
+										"Clones": {
+											"type": "array",
+											"items": {
+												"$ref": "#/definitions/ContentItemLingualMapInformation",
+												"circular": true
+											}
+										}
+									}
+								},
+								"AssignedUserId": {
+									"type": "string"
+								},
+								"AssignedGroupId": {
+									"type": "string"
+								},
+								"AssignedUserName": {
+									"type": "string"
+								},
+								"AssignedGroupName": {
+									"type": "string"
+								},
+								"Type": {
+									"type": "string",
+									"description": "The types of content items",
+									"x-enumNames": [
+										"Page",
+										"Asset",
+										"AssetFolder",
+										"ContentAlias",
+										"Other"
+									],
+									"enum": [
+										"Page",
+										"Asset",
+										"AssetFolder",
+										"ContentAlias",
+										"Other"
+									]
+								},
+								"SecurityLevel": {
+									"type": "string",
+									"description": "The list of node-level permissions for Pages",
+									"x-enumNames": [
+										"NO_ACCESS",
+										"READ_ONLY",
+										"FULL_ACCESS"
+									],
+									"enum": [
+										"NO_ACCESS",
+										"READ_ONLY",
+										"FULL_ACCESS"
+									]
+								},
+								"SchemaId": {
+									"type": "string"
+								},
+								"SchemaName": {
+									"type": "string"
+								},
+								"SchemaDisplayName": {
+									"type": "string"
+								},
+								"Version": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"CheckedOut": {
+									"type": "boolean"
+								},
+								"Icon": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"SubType": {
+									"type": "string"
+								},
+								"SubTypeLabel": {
+									"type": "string"
+								},
+								"MarkedTargetIds": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"IsRegionRoot": {
+									"type": "boolean"
+								},
+								"Locale": {
+									"type": "string"
+								},
+								"CanParentRegionRoots": {
+									"type": "boolean"
+								},
+								"Favorite": {
+									"type": "boolean"
+								},
+								"Categorization": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"AssetType",
+						"ByteSize",
+						"FolderCount",
+						"HasImagePreview",
+						"Height",
+						"IsUnmanaged",
+						"Width"
+					],
+					"properties": {
+						"AllowedExtensions": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"AssetType": {
+							"type": "string",
+							"description": "The list of types of Asset",
+							"x-enumNames": [
+								"Binary",
+								"Code",
+								"Css",
+								"Json",
+								"Text",
+								"Xml",
+								"XsltStylesheet",
+								"Document",
+								"Image",
+								"Audio",
+								"Video",
+								"View",
+								"Html",
+								"Js",
+								"Dita"
+							],
+							"enum": [
+								"Binary",
+								"Code",
+								"Css",
+								"Json",
+								"Text",
+								"Xml",
+								"XsltStylesheet",
+								"Document",
+								"Image",
+								"Audio",
+								"Video",
+								"View",
+								"Html",
+								"Js",
+								"Dita"
+							]
+						},
+						"ByteSize": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"Extension": {
+							"type": "string"
+						},
+						"FolderCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"HasImagePreview": {
+							"type": "boolean"
+						},
+						"Height": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"IsUnmanaged": {
+							"type": "boolean"
+						},
+						"MimeType": {
+							"type": "string"
+						},
+						"Width": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"Aliases": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			]
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/assets/asset/associations",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_TotalSize",
+		"description": "GET /api/v1/assets/total-size",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "integer",
+			"format": "int64"
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/total-size",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_UndoCheckOut",
+		"description": "POST /api/v1/assets/undo-checkout",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"request": {
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"type": "object",
+									"x-abstract": true,
+									"properties": {
+										"Id": {
+											"type": "string"
+										}
+									}
+								},
+								{
+									"type": "object",
+									"x-abstract": true,
+									"required": [
+										"Recursive",
+										"Id"
+									],
+									"properties": {
+										"Recursive": {
+											"type": "boolean"
+										},
+										"Id": {
+											"type": "string",
+											"minLength": 1
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "object"
+						}
+					]
+				}
+			},
+			"required": [
+				"request",
+				"request"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"Id": {
+															"type": "string"
+														},
+														"Name": {
+															"type": "string"
+														}
+													}
+												},
+												{
+													"type": "object"
+												}
+											]
+										},
+										{
+											"type": "object",
+											"x-abstract": true,
+											"required": [
+												"Created",
+												"LastModified",
+												"Archived"
+											],
+											"properties": {
+												"CreationUser": {
+													"type": "string"
+												},
+												"Created": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"LastModifiedUser": {
+													"type": "string"
+												},
+												"LastModified": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"EntityType": {
+													"type": "string"
+												},
+												"Archived": {
+													"type": "boolean"
+												}
+											}
+										}
+									]
+								},
+								{
+									"type": "object",
+									"required": [
+										"ChildrenCount",
+										"SiblingPosition"
+									],
+									"properties": {
+										"ParentId": {
+											"type": "string"
+										},
+										"ChildrenCount": {
+											"type": "integer",
+											"format": "int32"
+										},
+										"SiblingPosition": {
+											"type": "number",
+											"format": "double"
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "object",
+							"required": [
+								"Type",
+								"SecurityLevel",
+								"Version",
+								"CheckedOut",
+								"Icon",
+								"IsRegionRoot",
+								"CanParentRegionRoots",
+								"Favorite"
+							],
+							"properties": {
+								"LingualMaps": {
+									"type": "object",
+									"properties": {
+										"Master": {
+											"allOf": [
+												{
+													"type": "object",
+													"x-abstract": true,
+													"properties": {
+														"Id": {
+															"type": "string"
+														}
+													}
+												},
+												{
+													"type": "object",
+													"properties": {
+														"Locale": {
+															"type": "string"
+														}
+													}
+												}
+											]
+										},
+										"Clones": {
+											"type": "array",
+											"items": {
+												"$ref": "#/definitions/ContentItemLingualMapInformation",
+												"circular": true
+											}
+										}
+									}
+								},
+								"AssignedUserId": {
+									"type": "string"
+								},
+								"AssignedGroupId": {
+									"type": "string"
+								},
+								"AssignedUserName": {
+									"type": "string"
+								},
+								"AssignedGroupName": {
+									"type": "string"
+								},
+								"Type": {
+									"type": "string",
+									"description": "The types of content items",
+									"x-enumNames": [
+										"Page",
+										"Asset",
+										"AssetFolder",
+										"ContentAlias",
+										"Other"
+									],
+									"enum": [
+										"Page",
+										"Asset",
+										"AssetFolder",
+										"ContentAlias",
+										"Other"
+									]
+								},
+								"SecurityLevel": {
+									"type": "string",
+									"description": "The list of node-level permissions for Pages",
+									"x-enumNames": [
+										"NO_ACCESS",
+										"READ_ONLY",
+										"FULL_ACCESS"
+									],
+									"enum": [
+										"NO_ACCESS",
+										"READ_ONLY",
+										"FULL_ACCESS"
+									]
+								},
+								"SchemaId": {
+									"type": "string"
+								},
+								"SchemaName": {
+									"type": "string"
+								},
+								"SchemaDisplayName": {
+									"type": "string"
+								},
+								"Version": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"CheckedOut": {
+									"type": "boolean"
+								},
+								"Icon": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"SubType": {
+									"type": "string"
+								},
+								"SubTypeLabel": {
+									"type": "string"
+								},
+								"MarkedTargetIds": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"IsRegionRoot": {
+									"type": "boolean"
+								},
+								"Locale": {
+									"type": "string"
+								},
+								"CanParentRegionRoots": {
+									"type": "boolean"
+								},
+								"Favorite": {
+									"type": "boolean"
+								},
+								"Categorization": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"AssetType",
+						"ByteSize",
+						"FolderCount",
+						"HasImagePreview",
+						"Height",
+						"IsUnmanaged",
+						"Width"
+					],
+					"properties": {
+						"AllowedExtensions": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"AssetType": {
+							"type": "string",
+							"description": "The list of types of Asset",
+							"x-enumNames": [
+								"Binary",
+								"Code",
+								"Css",
+								"Json",
+								"Text",
+								"Xml",
+								"XsltStylesheet",
+								"Document",
+								"Image",
+								"Audio",
+								"Video",
+								"View",
+								"Html",
+								"Js",
+								"Dita"
+							],
+							"enum": [
+								"Binary",
+								"Code",
+								"Css",
+								"Json",
+								"Text",
+								"Xml",
+								"XsltStylesheet",
+								"Document",
+								"Image",
+								"Audio",
+								"Video",
+								"View",
+								"Html",
+								"Js",
+								"Dita"
+							]
+						},
+						"ByteSize": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"Extension": {
+							"type": "string"
+						},
+						"FolderCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"HasImagePreview": {
+							"type": "boolean"
+						},
+						"Height": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"IsUnmanaged": {
+							"type": "boolean"
+						},
+						"MimeType": {
+							"type": "string"
+						},
+						"Width": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"Aliases": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			]
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/assets/undo-checkout",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_Unzip",
+		"description": "POST /api/v1/assets/unzip",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"cleanFolder": {
+					"type": "boolean",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetId",
+				"cleanFolder"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"Result": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/assets/unzip",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_Upload",
+		"description": "POST /api/v1/assets/upload",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"file": {
+					"type": "file",
+					"required": true,
+					"in": "formData"
+				},
+				"assetname": {
+					"type": "string",
+					"required": false,
+					"in": "formData"
+				},
+				"contentid": {
+					"type": "string",
+					"required": false,
+					"in": "formData"
+				},
+				"parentfolder": {
+					"type": "string",
+					"required": true,
+					"in": "formData"
+				},
+				"existingassetupdateid": {
+					"type": "string",
+					"required": false,
+					"in": "formData"
+				},
+				"overrideschemaid": {
+					"type": "string",
+					"required": false,
+					"in": "formData"
+				},
+				"schemaId": {
+					"type": "string",
+					"required": false,
+					"in": "formData"
+				},
+				"followupupload": {
+					"type": "boolean",
+					"required": false,
+					"in": "formData"
+				},
+				"updateonconflicts": {
+					"type": "boolean",
+					"required": false,
+					"in": "formData"
+				},
+				"schemadefault": {
+					"type": "boolean",
+					"required": false,
+					"in": "formData"
+				},
+				"unpackzip": {
+					"type": "boolean",
+					"required": false,
+					"in": "formData"
+				},
+				"deleteexistingfolder": {
+					"type": "boolean",
+					"required": false,
+					"in": "formData"
+				},
+				"zipunpackhandleconflicts": {
+					"type": "integer",
+					"required": false,
+					"in": "formData"
+				},
+				"skipexistingassets": {
+					"type": "boolean",
+					"required": false,
+					"in": "formData"
+				}
+			},
+			"required": [
+				"file",
+				"parentfolder"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"FileSize",
+				"IsZipUnpack"
+			],
+			"properties": {
+				"AssetFolders": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"Assets": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"Errors": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"errorMsg": {
+								"type": "string"
+							},
+							"stacktrace": {
+								"type": "string"
+							},
+							"fileName": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"FileSize": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"IsZipUnpack": {
+					"type": "boolean"
+				},
+				"RootFolderId": {
+					"type": "string"
+				},
+				"NamingConflictAssetId": {
+					"type": "string"
+				},
+				"SchemasToChoose": {
+					"type": "object",
+					"properties": {
+						"SchemaChoices": {
+							"type": "array",
+							"items": {
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"Id": {
+												"type": "string"
+											},
+											"Name": {
+												"type": "string"
+											}
+										}
+									},
+									{
+										"type": "object",
+										"required": [
+											"icon"
+										],
+										"properties": {
+											"icon": {
+												"type": "integer",
+												"format": "int32"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/assets/upload",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_GetAssetDitaProperties",
+		"description": "GET /api/v1/assets/asset-dependency",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetId"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"Owners": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"properties": {
+									"Id": {
+										"type": "string"
+									},
+									"Name": {
+										"type": "string"
+									}
+								}
+							},
+							{
+								"type": "object",
+								"required": [
+									"Broken",
+									"Distance"
+								],
+								"properties": {
+									"DependencyType": {
+										"type": "string"
+									},
+									"RefType": {
+										"type": "string"
+									},
+									"Broken": {
+										"type": "boolean"
+									},
+									"Distance": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"PublishingTargetId": {
+										"type": "string"
+									},
+									"Path": {
+										"type": "array",
+										"items": {
+											"$ref": "#/definitions/NameIdPair",
+											"circular": true
+										}
+									}
+								}
+							}
+						]
+					}
+				},
+				"Dependents": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/AssetDependent",
+						"circular": true
+					}
+				},
+				"DitaInfo": {
+					"type": "object",
+					"properties": {
+						"OutputFormats": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"IsNormalization"
+								],
+								"properties": {
+									"Name": {
+										"type": "string"
+									},
+									"FormatString": {
+										"type": "string"
+									},
+									"IsNormalization": {
+										"type": "boolean"
+									}
+								}
+							}
+						},
+						"Ditavals": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/NameIdPair",
+								"circular": true
+							}
+						},
+						"AllOutputFormats": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/DitaPublishingOutputFormatInfo",
+								"circular": true
+							}
+						},
+						"AllDitavals": {
+							"type": "array",
+							"items": {
+								"allOf": [
+									{
+										"$ref": "#/definitions/NameIdPair",
+										"circular": true
+									},
+									{
+										"type": "object",
+										"properties": {
+											"Path": {
+												"type": "string"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/asset-dependency",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_GetAllAssetOwners",
+		"description": "GET /api/v1/assets/asset-owners-deep",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"type": "object",
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "object",
+						"required": [
+							"Broken",
+							"Distance"
+						],
+						"properties": {
+							"DependencyType": {
+								"type": "string"
+							},
+							"RefType": {
+								"type": "string"
+							},
+							"Broken": {
+								"type": "boolean"
+							},
+							"Distance": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"PublishingTargetId": {
+								"type": "string"
+							},
+							"Path": {
+								"type": "array",
+								"items": {
+									"$ref": "#/definitions/NameIdPair",
+									"circular": true
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/asset-owners-deep",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_GetAvailableKeyDefinitions",
+		"description": "GET /api/v1/assets/dita-key-defs",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"topMapId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"includeUnconfirmed": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"SourceId": {
+						"type": "string"
+					},
+					"Scope": {
+						"type": "string"
+					},
+					"Name": {
+						"type": "string"
+					},
+					"TargetId": {
+						"type": "string"
+					},
+					"TargetName": {
+						"type": "string"
+					},
+					"TargetArea": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/dita-key-defs",
+		"tags": [
+			"Assets"
+		]
+	}
+]

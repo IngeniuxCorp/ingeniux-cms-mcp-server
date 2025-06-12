@@ -1,0 +1,2742 @@
+[
+	{
+		"tool_name": "Publishing_DeleteRedirects",
+		"description": "DELETE /api/v1/publishing/redirects",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"redirectIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"redirectIds",
+				"redirectIds"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "boolean"
+			}
+		},
+		"method": "DELETE",
+		"endpoint": "/api/v1/publishing/redirects",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_SaveRedirect",
+		"description": "PUT /api/v1/publishing/redirect",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"allOf": [
+						{
+							"type": "object",
+							"x-abstract": true,
+							"properties": {
+								"Id": {
+									"type": "string"
+								}
+							}
+						},
+						{
+							"type": "object",
+							"required": [
+								"Temp"
+							],
+							"properties": {
+								"SelectedTgtIds": {
+									"type": "string"
+								},
+								"SelectedTgtNames": {
+									"type": "string"
+								},
+								"From": {
+									"type": "string"
+								},
+								"To": {
+									"type": "string"
+								},
+								"Notes": {
+									"type": "string"
+								},
+								"Temp": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				}
+			},
+			"required": [
+				"data",
+				"data"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"type": "object",
+					"x-abstract": true,
+					"properties": {
+						"Id": {
+							"type": "string"
+						}
+					}
+				},
+				{
+					"type": "object",
+					"required": [
+						"Temp"
+					],
+					"properties": {
+						"SelectedTgtIds": {
+							"type": "string"
+						},
+						"SelectedTgtNames": {
+							"type": "string"
+						},
+						"From": {
+							"type": "string"
+						},
+						"To": {
+							"type": "string"
+						},
+						"Notes": {
+							"type": "string"
+						},
+						"Temp": {
+							"type": "boolean"
+						}
+					}
+				}
+			]
+		},
+		"method": "PUT",
+		"endpoint": "/api/v1/publishing/redirect",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_DeleteRedirect",
+		"description": "DELETE /api/v1/publishing/redirect",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"redirectId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"redirectId"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "DELETE",
+		"endpoint": "/api/v1/publishing/redirect",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetPublishingTarget",
+		"description": "GET /api/v1/publishing/target",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"publishingTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"publishingTargetId"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								},
+								{
+									"type": "object"
+								}
+							]
+						},
+						{
+							"type": "object",
+							"x-abstract": true,
+							"required": [
+								"Created",
+								"LastModified",
+								"Archived"
+							],
+							"properties": {
+								"CreationUser": {
+									"type": "string"
+								},
+								"Created": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastModifiedUser": {
+									"type": "string"
+								},
+								"LastModified": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"EntityType": {
+									"type": "string"
+								},
+								"Archived": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"MarkedPageCount",
+						"MarkedAssetCount",
+						"LastPublished",
+						"LastAssetPublish",
+						"TransformOnPublish",
+						"MvcSupport",
+						"SkipXmpPublishling",
+						"SkipLingualMapPublishling",
+						"ReplicationEnabled",
+						"SimultaneousReplicationEnabled",
+						"ForceLowerCaseUrl",
+						"RedirectToCanonicalUrl",
+						"IncludeFolderNamesInUrlPath",
+						"NormalizeUrlSeparators",
+						"RemoveDiacriticsFromUrl",
+						"PreservePeriods",
+						"UseAliasUrls",
+						"EnableAnalytics"
+					],
+					"properties": {
+						"MarkedPageCount": {
+							"type": "number",
+							"format": "double"
+						},
+						"MarkedAssetCount": {
+							"type": "number",
+							"format": "double"
+						},
+						"LastPublished": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"LastAssetPublish": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"RootPageId": {
+							"type": "string"
+						},
+						"RootPageName": {
+							"type": "string"
+						},
+						"GlobalContentRootId": {
+							"type": "string"
+						},
+						"GlobalContentRootName": {
+							"type": "string"
+						},
+						"PublishFolder": {
+							"type": "string"
+						},
+						"TransformOnPublish": {
+							"type": "boolean"
+						},
+						"UserAgent": {
+							"type": "string"
+						},
+						"Site": {
+							"type": "string"
+						},
+						"ExternalPreviewUrl": {
+							"type": "string"
+						},
+						"IceFieldMarkupUpdateUrl": {
+							"type": "string"
+						},
+						"PresentationFormatterId": {
+							"type": "string"
+						},
+						"MvcSupport": {
+							"type": "boolean"
+						},
+						"SkipXmpPublishling": {
+							"type": "boolean"
+						},
+						"SkipLingualMapPublishling": {
+							"type": "boolean"
+						},
+						"ReplicationEnabled": {
+							"type": "boolean"
+						},
+						"SimultaneousReplicationEnabled": {
+							"type": "boolean"
+						},
+						"HomePageId": {
+							"type": "string"
+						},
+						"HomePageName": {
+							"type": "string"
+						},
+						"ErrorPageId": {
+							"type": "string"
+						},
+						"ErrorPageName": {
+							"type": "string"
+						},
+						"UrlExtension": {
+							"type": "string"
+						},
+						"UrlSeparator": {
+							"type": "string"
+						},
+						"BaseUrl": {
+							"type": "string"
+						},
+						"AnalyticsProvider": {
+							"type": "string"
+						},
+						"ForceLowerCaseUrl": {
+							"type": "boolean"
+						},
+						"RedirectToCanonicalUrl": {
+							"type": "boolean"
+						},
+						"IncludeFolderNamesInUrlPath": {
+							"type": "boolean"
+						},
+						"NormalizeUrlSeparators": {
+							"type": "boolean"
+						},
+						"RemoveDiacriticsFromUrl": {
+							"type": "boolean"
+						},
+						"PreservePeriods": {
+							"type": "boolean"
+						},
+						"UseAliasUrls": {
+							"type": "boolean"
+						},
+						"EnableAnalytics": {
+							"type": "boolean"
+						}
+					}
+				}
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/publishing/target",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_CreatePublishingTarget",
+		"description": "POST /api/v1/publishing/target",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"publishingTarget": {
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"Id": {
+													"type": "string"
+												},
+												"Name": {
+													"type": "string"
+												}
+											}
+										},
+										{
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"x-abstract": true,
+									"required": [
+										"Created",
+										"LastModified",
+										"Archived"
+									],
+									"properties": {
+										"CreationUser": {
+											"type": "string"
+										},
+										"Created": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"LastModifiedUser": {
+											"type": "string"
+										},
+										"LastModified": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"EntityType": {
+											"type": "string"
+										},
+										"Archived": {
+											"type": "boolean"
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "object",
+							"required": [
+								"MarkedPageCount",
+								"MarkedAssetCount",
+								"LastPublished",
+								"LastAssetPublish",
+								"TransformOnPublish",
+								"MvcSupport",
+								"SkipXmpPublishling",
+								"SkipLingualMapPublishling",
+								"ReplicationEnabled",
+								"SimultaneousReplicationEnabled",
+								"ForceLowerCaseUrl",
+								"RedirectToCanonicalUrl",
+								"IncludeFolderNamesInUrlPath",
+								"NormalizeUrlSeparators",
+								"RemoveDiacriticsFromUrl",
+								"PreservePeriods",
+								"UseAliasUrls",
+								"EnableAnalytics"
+							],
+							"properties": {
+								"MarkedPageCount": {
+									"type": "number",
+									"format": "double"
+								},
+								"MarkedAssetCount": {
+									"type": "number",
+									"format": "double"
+								},
+								"LastPublished": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastAssetPublish": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"RootPageId": {
+									"type": "string"
+								},
+								"RootPageName": {
+									"type": "string"
+								},
+								"GlobalContentRootId": {
+									"type": "string"
+								},
+								"GlobalContentRootName": {
+									"type": "string"
+								},
+								"PublishFolder": {
+									"type": "string"
+								},
+								"TransformOnPublish": {
+									"type": "boolean"
+								},
+								"UserAgent": {
+									"type": "string"
+								},
+								"Site": {
+									"type": "string"
+								},
+								"ExternalPreviewUrl": {
+									"type": "string"
+								},
+								"IceFieldMarkupUpdateUrl": {
+									"type": "string"
+								},
+								"PresentationFormatterId": {
+									"type": "string"
+								},
+								"MvcSupport": {
+									"type": "boolean"
+								},
+								"SkipXmpPublishling": {
+									"type": "boolean"
+								},
+								"SkipLingualMapPublishling": {
+									"type": "boolean"
+								},
+								"ReplicationEnabled": {
+									"type": "boolean"
+								},
+								"SimultaneousReplicationEnabled": {
+									"type": "boolean"
+								},
+								"HomePageId": {
+									"type": "string"
+								},
+								"HomePageName": {
+									"type": "string"
+								},
+								"ErrorPageId": {
+									"type": "string"
+								},
+								"ErrorPageName": {
+									"type": "string"
+								},
+								"UrlExtension": {
+									"type": "string"
+								},
+								"UrlSeparator": {
+									"type": "string"
+								},
+								"BaseUrl": {
+									"type": "string"
+								},
+								"AnalyticsProvider": {
+									"type": "string"
+								},
+								"ForceLowerCaseUrl": {
+									"type": "boolean"
+								},
+								"RedirectToCanonicalUrl": {
+									"type": "boolean"
+								},
+								"IncludeFolderNamesInUrlPath": {
+									"type": "boolean"
+								},
+								"NormalizeUrlSeparators": {
+									"type": "boolean"
+								},
+								"RemoveDiacriticsFromUrl": {
+									"type": "boolean"
+								},
+								"PreservePeriods": {
+									"type": "boolean"
+								},
+								"UseAliasUrls": {
+									"type": "boolean"
+								},
+								"EnableAnalytics": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				}
+			},
+			"required": [
+				"publishingTarget",
+				"publishingTarget"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								},
+								{
+									"type": "object"
+								}
+							]
+						},
+						{
+							"type": "object",
+							"x-abstract": true,
+							"required": [
+								"Created",
+								"LastModified",
+								"Archived"
+							],
+							"properties": {
+								"CreationUser": {
+									"type": "string"
+								},
+								"Created": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastModifiedUser": {
+									"type": "string"
+								},
+								"LastModified": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"EntityType": {
+									"type": "string"
+								},
+								"Archived": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"MarkedPageCount",
+						"MarkedAssetCount",
+						"LastPublished",
+						"LastAssetPublish",
+						"TransformOnPublish",
+						"MvcSupport",
+						"SkipXmpPublishling",
+						"SkipLingualMapPublishling",
+						"ReplicationEnabled",
+						"SimultaneousReplicationEnabled",
+						"ForceLowerCaseUrl",
+						"RedirectToCanonicalUrl",
+						"IncludeFolderNamesInUrlPath",
+						"NormalizeUrlSeparators",
+						"RemoveDiacriticsFromUrl",
+						"PreservePeriods",
+						"UseAliasUrls",
+						"EnableAnalytics"
+					],
+					"properties": {
+						"MarkedPageCount": {
+							"type": "number",
+							"format": "double"
+						},
+						"MarkedAssetCount": {
+							"type": "number",
+							"format": "double"
+						},
+						"LastPublished": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"LastAssetPublish": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"RootPageId": {
+							"type": "string"
+						},
+						"RootPageName": {
+							"type": "string"
+						},
+						"GlobalContentRootId": {
+							"type": "string"
+						},
+						"GlobalContentRootName": {
+							"type": "string"
+						},
+						"PublishFolder": {
+							"type": "string"
+						},
+						"TransformOnPublish": {
+							"type": "boolean"
+						},
+						"UserAgent": {
+							"type": "string"
+						},
+						"Site": {
+							"type": "string"
+						},
+						"ExternalPreviewUrl": {
+							"type": "string"
+						},
+						"IceFieldMarkupUpdateUrl": {
+							"type": "string"
+						},
+						"PresentationFormatterId": {
+							"type": "string"
+						},
+						"MvcSupport": {
+							"type": "boolean"
+						},
+						"SkipXmpPublishling": {
+							"type": "boolean"
+						},
+						"SkipLingualMapPublishling": {
+							"type": "boolean"
+						},
+						"ReplicationEnabled": {
+							"type": "boolean"
+						},
+						"SimultaneousReplicationEnabled": {
+							"type": "boolean"
+						},
+						"HomePageId": {
+							"type": "string"
+						},
+						"HomePageName": {
+							"type": "string"
+						},
+						"ErrorPageId": {
+							"type": "string"
+						},
+						"ErrorPageName": {
+							"type": "string"
+						},
+						"UrlExtension": {
+							"type": "string"
+						},
+						"UrlSeparator": {
+							"type": "string"
+						},
+						"BaseUrl": {
+							"type": "string"
+						},
+						"AnalyticsProvider": {
+							"type": "string"
+						},
+						"ForceLowerCaseUrl": {
+							"type": "boolean"
+						},
+						"RedirectToCanonicalUrl": {
+							"type": "boolean"
+						},
+						"IncludeFolderNamesInUrlPath": {
+							"type": "boolean"
+						},
+						"NormalizeUrlSeparators": {
+							"type": "boolean"
+						},
+						"RemoveDiacriticsFromUrl": {
+							"type": "boolean"
+						},
+						"PreservePeriods": {
+							"type": "boolean"
+						},
+						"UseAliasUrls": {
+							"type": "boolean"
+						},
+						"EnableAnalytics": {
+							"type": "boolean"
+						}
+					}
+				}
+			]
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/publishing/target",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_UpdatePublishingTarget",
+		"description": "PUT /api/v1/publishing/target",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"publishingTarget": {
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"Id": {
+													"type": "string"
+												},
+												"Name": {
+													"type": "string"
+												}
+											}
+										},
+										{
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"x-abstract": true,
+									"required": [
+										"Created",
+										"LastModified",
+										"Archived"
+									],
+									"properties": {
+										"CreationUser": {
+											"type": "string"
+										},
+										"Created": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"LastModifiedUser": {
+											"type": "string"
+										},
+										"LastModified": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"EntityType": {
+											"type": "string"
+										},
+										"Archived": {
+											"type": "boolean"
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "object",
+							"required": [
+								"MarkedPageCount",
+								"MarkedAssetCount",
+								"LastPublished",
+								"LastAssetPublish",
+								"TransformOnPublish",
+								"MvcSupport",
+								"SkipXmpPublishling",
+								"SkipLingualMapPublishling",
+								"ReplicationEnabled",
+								"SimultaneousReplicationEnabled",
+								"ForceLowerCaseUrl",
+								"RedirectToCanonicalUrl",
+								"IncludeFolderNamesInUrlPath",
+								"NormalizeUrlSeparators",
+								"RemoveDiacriticsFromUrl",
+								"PreservePeriods",
+								"UseAliasUrls",
+								"EnableAnalytics"
+							],
+							"properties": {
+								"MarkedPageCount": {
+									"type": "number",
+									"format": "double"
+								},
+								"MarkedAssetCount": {
+									"type": "number",
+									"format": "double"
+								},
+								"LastPublished": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastAssetPublish": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"RootPageId": {
+									"type": "string"
+								},
+								"RootPageName": {
+									"type": "string"
+								},
+								"GlobalContentRootId": {
+									"type": "string"
+								},
+								"GlobalContentRootName": {
+									"type": "string"
+								},
+								"PublishFolder": {
+									"type": "string"
+								},
+								"TransformOnPublish": {
+									"type": "boolean"
+								},
+								"UserAgent": {
+									"type": "string"
+								},
+								"Site": {
+									"type": "string"
+								},
+								"ExternalPreviewUrl": {
+									"type": "string"
+								},
+								"IceFieldMarkupUpdateUrl": {
+									"type": "string"
+								},
+								"PresentationFormatterId": {
+									"type": "string"
+								},
+								"MvcSupport": {
+									"type": "boolean"
+								},
+								"SkipXmpPublishling": {
+									"type": "boolean"
+								},
+								"SkipLingualMapPublishling": {
+									"type": "boolean"
+								},
+								"ReplicationEnabled": {
+									"type": "boolean"
+								},
+								"SimultaneousReplicationEnabled": {
+									"type": "boolean"
+								},
+								"HomePageId": {
+									"type": "string"
+								},
+								"HomePageName": {
+									"type": "string"
+								},
+								"ErrorPageId": {
+									"type": "string"
+								},
+								"ErrorPageName": {
+									"type": "string"
+								},
+								"UrlExtension": {
+									"type": "string"
+								},
+								"UrlSeparator": {
+									"type": "string"
+								},
+								"BaseUrl": {
+									"type": "string"
+								},
+								"AnalyticsProvider": {
+									"type": "string"
+								},
+								"ForceLowerCaseUrl": {
+									"type": "boolean"
+								},
+								"RedirectToCanonicalUrl": {
+									"type": "boolean"
+								},
+								"IncludeFolderNamesInUrlPath": {
+									"type": "boolean"
+								},
+								"NormalizeUrlSeparators": {
+									"type": "boolean"
+								},
+								"RemoveDiacriticsFromUrl": {
+									"type": "boolean"
+								},
+								"PreservePeriods": {
+									"type": "boolean"
+								},
+								"UseAliasUrls": {
+									"type": "boolean"
+								},
+								"EnableAnalytics": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				}
+			},
+			"required": [
+				"publishingTarget",
+				"publishingTarget"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								},
+								{
+									"type": "object"
+								}
+							]
+						},
+						{
+							"type": "object",
+							"x-abstract": true,
+							"required": [
+								"Created",
+								"LastModified",
+								"Archived"
+							],
+							"properties": {
+								"CreationUser": {
+									"type": "string"
+								},
+								"Created": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastModifiedUser": {
+									"type": "string"
+								},
+								"LastModified": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"EntityType": {
+									"type": "string"
+								},
+								"Archived": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"MarkedPageCount",
+						"MarkedAssetCount",
+						"LastPublished",
+						"LastAssetPublish",
+						"TransformOnPublish",
+						"MvcSupport",
+						"SkipXmpPublishling",
+						"SkipLingualMapPublishling",
+						"ReplicationEnabled",
+						"SimultaneousReplicationEnabled",
+						"ForceLowerCaseUrl",
+						"RedirectToCanonicalUrl",
+						"IncludeFolderNamesInUrlPath",
+						"NormalizeUrlSeparators",
+						"RemoveDiacriticsFromUrl",
+						"PreservePeriods",
+						"UseAliasUrls",
+						"EnableAnalytics"
+					],
+					"properties": {
+						"MarkedPageCount": {
+							"type": "number",
+							"format": "double"
+						},
+						"MarkedAssetCount": {
+							"type": "number",
+							"format": "double"
+						},
+						"LastPublished": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"LastAssetPublish": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"RootPageId": {
+							"type": "string"
+						},
+						"RootPageName": {
+							"type": "string"
+						},
+						"GlobalContentRootId": {
+							"type": "string"
+						},
+						"GlobalContentRootName": {
+							"type": "string"
+						},
+						"PublishFolder": {
+							"type": "string"
+						},
+						"TransformOnPublish": {
+							"type": "boolean"
+						},
+						"UserAgent": {
+							"type": "string"
+						},
+						"Site": {
+							"type": "string"
+						},
+						"ExternalPreviewUrl": {
+							"type": "string"
+						},
+						"IceFieldMarkupUpdateUrl": {
+							"type": "string"
+						},
+						"PresentationFormatterId": {
+							"type": "string"
+						},
+						"MvcSupport": {
+							"type": "boolean"
+						},
+						"SkipXmpPublishling": {
+							"type": "boolean"
+						},
+						"SkipLingualMapPublishling": {
+							"type": "boolean"
+						},
+						"ReplicationEnabled": {
+							"type": "boolean"
+						},
+						"SimultaneousReplicationEnabled": {
+							"type": "boolean"
+						},
+						"HomePageId": {
+							"type": "string"
+						},
+						"HomePageName": {
+							"type": "string"
+						},
+						"ErrorPageId": {
+							"type": "string"
+						},
+						"ErrorPageName": {
+							"type": "string"
+						},
+						"UrlExtension": {
+							"type": "string"
+						},
+						"UrlSeparator": {
+							"type": "string"
+						},
+						"BaseUrl": {
+							"type": "string"
+						},
+						"AnalyticsProvider": {
+							"type": "string"
+						},
+						"ForceLowerCaseUrl": {
+							"type": "boolean"
+						},
+						"RedirectToCanonicalUrl": {
+							"type": "boolean"
+						},
+						"IncludeFolderNamesInUrlPath": {
+							"type": "boolean"
+						},
+						"NormalizeUrlSeparators": {
+							"type": "boolean"
+						},
+						"RemoveDiacriticsFromUrl": {
+							"type": "boolean"
+						},
+						"PreservePeriods": {
+							"type": "boolean"
+						},
+						"UseAliasUrls": {
+							"type": "boolean"
+						},
+						"EnableAnalytics": {
+							"type": "boolean"
+						}
+					}
+				}
+			]
+		},
+		"method": "PUT",
+		"endpoint": "/api/v1/publishing/target",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetPublishingTargets",
+		"description": "GET /api/v1/publishing/targets",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"ProfileId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"OrderBy": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"type": "object",
+												"properties": {
+													"Id": {
+														"type": "string"
+													},
+													"Name": {
+														"type": "string"
+													}
+												}
+											},
+											{
+												"type": "object"
+											}
+										]
+									},
+									{
+										"type": "object",
+										"x-abstract": true,
+										"required": [
+											"Created",
+											"LastModified",
+											"Archived"
+										],
+										"properties": {
+											"CreationUser": {
+												"type": "string"
+											},
+											"Created": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"LastModifiedUser": {
+												"type": "string"
+											},
+											"LastModified": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"EntityType": {
+												"type": "string"
+											},
+											"Archived": {
+												"type": "boolean"
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"required": [
+									"MarkedPageCount",
+									"MarkedAssetCount",
+									"LastPublished",
+									"LastAssetPublish",
+									"TransformOnPublish",
+									"MvcSupport",
+									"SkipXmpPublishling",
+									"SkipLingualMapPublishling",
+									"ReplicationEnabled",
+									"SimultaneousReplicationEnabled",
+									"ForceLowerCaseUrl",
+									"RedirectToCanonicalUrl",
+									"IncludeFolderNamesInUrlPath",
+									"NormalizeUrlSeparators",
+									"RemoveDiacriticsFromUrl",
+									"PreservePeriods",
+									"UseAliasUrls",
+									"EnableAnalytics"
+								],
+								"properties": {
+									"MarkedPageCount": {
+										"type": "number",
+										"format": "double"
+									},
+									"MarkedAssetCount": {
+										"type": "number",
+										"format": "double"
+									},
+									"LastPublished": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"LastAssetPublish": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"RootPageId": {
+										"type": "string"
+									},
+									"RootPageName": {
+										"type": "string"
+									},
+									"GlobalContentRootId": {
+										"type": "string"
+									},
+									"GlobalContentRootName": {
+										"type": "string"
+									},
+									"PublishFolder": {
+										"type": "string"
+									},
+									"TransformOnPublish": {
+										"type": "boolean"
+									},
+									"UserAgent": {
+										"type": "string"
+									},
+									"Site": {
+										"type": "string"
+									},
+									"ExternalPreviewUrl": {
+										"type": "string"
+									},
+									"IceFieldMarkupUpdateUrl": {
+										"type": "string"
+									},
+									"PresentationFormatterId": {
+										"type": "string"
+									},
+									"MvcSupport": {
+										"type": "boolean"
+									},
+									"SkipXmpPublishling": {
+										"type": "boolean"
+									},
+									"SkipLingualMapPublishling": {
+										"type": "boolean"
+									},
+									"ReplicationEnabled": {
+										"type": "boolean"
+									},
+									"SimultaneousReplicationEnabled": {
+										"type": "boolean"
+									},
+									"HomePageId": {
+										"type": "string"
+									},
+									"HomePageName": {
+										"type": "string"
+									},
+									"ErrorPageId": {
+										"type": "string"
+									},
+									"ErrorPageName": {
+										"type": "string"
+									},
+									"UrlExtension": {
+										"type": "string"
+									},
+									"UrlSeparator": {
+										"type": "string"
+									},
+									"BaseUrl": {
+										"type": "string"
+									},
+									"AnalyticsProvider": {
+										"type": "string"
+									},
+									"ForceLowerCaseUrl": {
+										"type": "boolean"
+									},
+									"RedirectToCanonicalUrl": {
+										"type": "boolean"
+									},
+									"IncludeFolderNamesInUrlPath": {
+										"type": "boolean"
+									},
+									"NormalizeUrlSeparators": {
+										"type": "boolean"
+									},
+									"RemoveDiacriticsFromUrl": {
+										"type": "boolean"
+									},
+									"PreservePeriods": {
+										"type": "boolean"
+									},
+									"UseAliasUrls": {
+										"type": "boolean"
+									},
+									"EnableAnalytics": {
+										"type": "boolean"
+									}
+								}
+							}
+						]
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/publishing/targets",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetPublishingTargetGroups",
+		"description": "GET /api/v1/publishing/target/groups",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"publishingTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"publishingTargetId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"Id": {
+												"type": "string"
+											},
+											"Name": {
+												"type": "string"
+											}
+										}
+									},
+									{
+										"type": "object"
+									}
+								]
+							},
+							{
+								"type": "object",
+								"x-abstract": true,
+								"required": [
+									"Created",
+									"LastModified",
+									"Archived"
+								],
+								"properties": {
+									"CreationUser": {
+										"type": "string"
+									},
+									"Created": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"LastModifiedUser": {
+										"type": "string"
+									},
+									"LastModified": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"EntityType": {
+										"type": "string"
+									},
+									"Archived": {
+										"type": "boolean"
+									}
+								}
+							}
+						]
+					},
+					{
+						"type": "object",
+						"properties": {
+							"UserIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"GroupType": {
+								"type": "string"
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/publishing/target/groups",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_SetPublishingTargetGroups",
+		"description": "POST /api/v1/publishing/target/groups",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"publishingTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"userGroupIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"publishingTargetId",
+				"userGroupIds",
+				"userGroupIds"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"Id": {
+												"type": "string"
+											},
+											"Name": {
+												"type": "string"
+											}
+										}
+									},
+									{
+										"type": "object"
+									}
+								]
+							},
+							{
+								"type": "object",
+								"x-abstract": true,
+								"required": [
+									"Created",
+									"LastModified",
+									"Archived"
+								],
+								"properties": {
+									"CreationUser": {
+										"type": "string"
+									},
+									"Created": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"LastModifiedUser": {
+										"type": "string"
+									},
+									"LastModified": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"EntityType": {
+										"type": "string"
+									},
+									"Archived": {
+										"type": "boolean"
+									}
+								}
+							}
+						]
+					},
+					{
+						"type": "object",
+						"properties": {
+							"UserIds": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"GroupType": {
+								"type": "string"
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/publishing/target/groups",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetContentItemPublishedToTarget",
+		"description": "POST /api/v1/publishing/content-publish-history",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"publishingTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"contentItemIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"publishingTargetId",
+				"contentItemIds",
+				"contentItemIds"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"type": "object",
+						"x-abstract": true,
+						"properties": {
+							"Id": {
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "object",
+						"required": [
+							"Published",
+							"Marked"
+						],
+						"properties": {
+							"Published": {
+								"type": "boolean"
+							},
+							"Marked": {
+								"type": "boolean"
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/publishing/content-publish-history",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetUserAgents",
+		"description": "GET /api/v1/publishing/user-agents",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"Name": {
+						"type": "string"
+					},
+					"SearchString": {
+						"type": "string"
+					},
+					"ContentType": {
+						"type": "string"
+					},
+					"FileExtension": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/publishing/user-agents",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetSites",
+		"description": "GET /api/v1/publishing/sites",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"SearchString": {
+						"type": "string"
+					},
+					"SiteGroup": {
+						"type": "string"
+					},
+					"Name": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/publishing/sites",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetDitaDependencies",
+		"description": "POST /api/v1/publishing/gather-dependencies",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTargetIds": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"contentIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"pubTargetIds",
+				"contentIds",
+				"contentIds"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"AllNonDITAContent"
+			],
+			"properties": {
+				"Dependencies": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"type": "object",
+										"x-abstract": true,
+										"properties": {
+											"Id": {
+												"type": "string"
+											}
+										}
+									},
+									{
+										"type": "object",
+										"properties": {
+											"Name": {
+												"type": "string"
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"required": [
+									"IsMap",
+									"Level",
+									"Selected",
+									"Coverage"
+								],
+								"properties": {
+									"IsMap": {
+										"type": "boolean"
+									},
+									"OutputFormats": {
+										"type": "array",
+										"items": {
+											"allOf": [
+												{
+													"$ref": "#/definitions/ObjectWithName",
+													"circular": true
+												},
+												{
+													"type": "object",
+													"required": [
+														"IsNormalization"
+													],
+													"properties": {
+														"IsNormalization": {
+															"type": "boolean"
+														}
+													}
+												}
+											]
+										}
+									},
+									"Ditavals": {
+										"type": "array",
+										"items": {
+											"$ref": "#/definitions/ObjectWithName",
+											"circular": true
+										}
+									},
+									"Ditavalrefs": {
+										"type": "array",
+										"items": {
+											"$ref": "#/definitions/ObjectWithName",
+											"circular": true
+										}
+									},
+									"Level": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"Selected": {
+										"type": "boolean"
+									},
+									"Coverage": {
+										"type": "integer",
+										"format": "int32"
+									}
+								}
+							}
+						]
+					}
+				},
+				"DitaValChoices": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"properties": {
+									"Id": {
+										"type": "string"
+									},
+									"Name": {
+										"type": "string"
+									}
+								}
+							},
+							{
+								"type": "object",
+								"properties": {
+									"Path": {
+										"type": "string"
+									}
+								}
+							}
+						]
+					}
+				},
+				"FormatChoices": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/DitaPublishingFormat",
+						"circular": true
+					}
+				},
+				"AllNonDITAContent": {
+					"type": "boolean"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/publishing/gather-dependencies",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetDitaOutputFormats",
+		"description": "GET /api/v1/publishing/dita-output-formats",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"searchString": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"IsNormalization"
+				],
+				"properties": {
+					"Name": {
+						"type": "string"
+					},
+					"FormatString": {
+						"type": "string"
+					},
+					"IsNormalization": {
+						"type": "boolean"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/publishing/dita-output-formats",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetPostPublishContentProcessors",
+		"description": "GET /api/v1/publishing/content-processors",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTargetId"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"Processors": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"properties": {
+									"Id": {
+										"type": "string"
+									},
+									"Name": {
+										"type": "string"
+									}
+								}
+							},
+							{
+								"type": "object",
+								"required": [
+									"ContentProcessorType",
+									"ProcessTopMapsOnly",
+									"DraftOutput",
+									"OutOfOrder",
+									"Disabled",
+									"SkipDTDDenormalization"
+								],
+								"properties": {
+									"ContentProcessorType": {
+										"type": "string",
+										"description": "",
+										"x-enumNames": [
+											"Dita",
+											"Plugin"
+										],
+										"enum": [
+											"Dita",
+											"Plugin"
+										]
+									},
+									"ProcessTopMapsOnly": {
+										"type": "boolean"
+									},
+									"DraftOutput": {
+										"type": "boolean"
+									},
+									"TypeFullName": {
+										"type": "string"
+									},
+									"Fields": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"Name": {
+													"type": "string"
+												},
+												"Value": {},
+												"Type": {
+													"type": "string"
+												},
+												"Choices": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/NameIdPair",
+														"circular": true
+													}
+												},
+												"Label": {
+													"type": "string"
+												}
+											}
+										}
+									},
+									"RequiredPreviousProcessTypes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"OutOfOrder": {
+										"type": "boolean"
+									},
+									"DitaUrlMatchPartialString": {
+										"type": "string"
+									},
+									"DitaOutputFormats": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"IsNormalization"
+											],
+											"properties": {
+												"Name": {
+													"type": "string"
+												},
+												"FormatString": {
+													"type": "string"
+												},
+												"IsNormalization": {
+													"type": "boolean"
+												}
+											}
+										}
+									},
+									"DitaRenderingSchema": {
+										"$ref": "#/definitions/NameIdPair",
+										"circular": true
+									},
+									"Disabled": {
+										"type": "boolean"
+									},
+									"SkipDTDDenormalization": {
+										"type": "boolean"
+									}
+								}
+							}
+						]
+					}
+				},
+				"PluginProcessorTypes": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/definitions/NameIdPair",
+								"circular": true
+							},
+							{
+								"type": "object",
+								"properties": {
+									"Fields": {
+										"type": "array",
+										"items": {
+											"$ref": "#/definitions/PostProcessPluginField",
+											"circular": true
+										}
+									},
+									"RequiredPrevProcTypes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/publishing/content-processors",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_SetPostPublishContentProcessor",
+		"description": "POST /api/v1/publishing/content-processors",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"publishingTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"contentProcessors": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"properties": {
+									"Id": {
+										"type": "string"
+									},
+									"Name": {
+										"type": "string"
+									}
+								}
+							},
+							{
+								"type": "object",
+								"required": [
+									"ContentProcessorType",
+									"ProcessTopMapsOnly",
+									"DraftOutput",
+									"OutOfOrder",
+									"Disabled",
+									"SkipDTDDenormalization"
+								],
+								"properties": {
+									"ContentProcessorType": {
+										"type": "string",
+										"description": "",
+										"x-enumNames": [
+											"Dita",
+											"Plugin"
+										],
+										"enum": [
+											"Dita",
+											"Plugin"
+										]
+									},
+									"ProcessTopMapsOnly": {
+										"type": "boolean"
+									},
+									"DraftOutput": {
+										"type": "boolean"
+									},
+									"TypeFullName": {
+										"type": "string"
+									},
+									"Fields": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"Name": {
+													"type": "string"
+												},
+												"Value": {},
+												"Type": {
+													"type": "string"
+												},
+												"Choices": {
+													"type": "array",
+													"items": {
+														"$ref": "#/definitions/NameIdPair",
+														"circular": true
+													}
+												},
+												"Label": {
+													"type": "string"
+												}
+											}
+										}
+									},
+									"RequiredPreviousProcessTypes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"OutOfOrder": {
+										"type": "boolean"
+									},
+									"DitaUrlMatchPartialString": {
+										"type": "string"
+									},
+									"DitaOutputFormats": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"IsNormalization"
+											],
+											"properties": {
+												"Name": {
+													"type": "string"
+												},
+												"FormatString": {
+													"type": "string"
+												},
+												"IsNormalization": {
+													"type": "boolean"
+												}
+											}
+										}
+									},
+									"DitaRenderingSchema": {
+										"$ref": "#/definitions/NameIdPair",
+										"circular": true
+									},
+									"Disabled": {
+										"type": "boolean"
+									},
+									"SkipDTDDenormalization": {
+										"type": "boolean"
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			"required": [
+				"publishingTargetId",
+				"contentProcessors",
+				"contentProcessors"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"type": "object",
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "object",
+						"required": [
+							"ContentProcessorType",
+							"ProcessTopMapsOnly",
+							"DraftOutput",
+							"OutOfOrder",
+							"Disabled",
+							"SkipDTDDenormalization"
+						],
+						"properties": {
+							"ContentProcessorType": {
+								"type": "string",
+								"description": "",
+								"x-enumNames": [
+									"Dita",
+									"Plugin"
+								],
+								"enum": [
+									"Dita",
+									"Plugin"
+								]
+							},
+							"ProcessTopMapsOnly": {
+								"type": "boolean"
+							},
+							"DraftOutput": {
+								"type": "boolean"
+							},
+							"TypeFullName": {
+								"type": "string"
+							},
+							"Fields": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"Name": {
+											"type": "string"
+										},
+										"Value": {},
+										"Type": {
+											"type": "string"
+										},
+										"Choices": {
+											"type": "array",
+											"items": {
+												"$ref": "#/definitions/NameIdPair",
+												"circular": true
+											}
+										},
+										"Label": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"RequiredPreviousProcessTypes": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"OutOfOrder": {
+								"type": "boolean"
+							},
+							"DitaUrlMatchPartialString": {
+								"type": "string"
+							},
+							"DitaOutputFormats": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"required": [
+										"IsNormalization"
+									],
+									"properties": {
+										"Name": {
+											"type": "string"
+										},
+										"FormatString": {
+											"type": "string"
+										},
+										"IsNormalization": {
+											"type": "boolean"
+										}
+									}
+								}
+							},
+							"DitaRenderingSchema": {
+								"$ref": "#/definitions/NameIdPair",
+								"circular": true
+							},
+							"Disabled": {
+								"type": "boolean"
+							},
+							"SkipDTDDenormalization": {
+								"type": "boolean"
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/publishing/content-processors",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Publishing_GetContentProcessorLogs",
+		"description": "GET /api/v1/publishing/content-processor-logs",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"SortField": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"SortOrder": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"filter": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"DebugMode"
+			],
+			"properties": {
+				"Logs": {
+					"type": "object",
+					"required": [
+						"TotalResults",
+						"PageSize",
+						"NextIndex"
+					],
+					"properties": {
+						"Results": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"IsError",
+									"IsPreview"
+								],
+								"properties": {
+									"Path": {
+										"type": "string"
+									},
+									"PubTarget": {
+										"type": "string"
+									},
+									"Type": {
+										"type": "string"
+									},
+									"ContentId": {
+										"type": "string"
+									},
+									"ContentName": {
+										"type": "string"
+									},
+									"Format": {
+										"type": "string"
+									},
+									"Variables": {
+										"type": "string"
+									},
+									"Created": {
+										"type": "string"
+									},
+									"TempPath": {
+										"type": "string"
+									},
+									"IsError": {
+										"type": "boolean"
+									},
+									"IsPreview": {
+										"type": "boolean"
+									}
+								}
+							}
+						},
+						"TotalResults": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"PageSize": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"NextIndex": {
+							"type": "integer",
+							"format": "int32"
+						}
+					}
+				},
+				"DebugMode": {
+					"type": "boolean"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/publishing/content-processor-logs",
+		"tags": [
+			"Publishing"
+		]
+	},
+	{
+		"tool_name": "Reports_GetStats",
+		"description": "GET /api/v1/reports/stats",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"periodDataOnly": {
+					"type": "boolean",
+					"required": true,
+					"in": "query"
+				},
+				"begingDate": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"periodDataOnly",
+				"begingDate"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"general": {
+					"type": "object",
+					"required": [
+						"pagesCount",
+						"checkedoutPagesCount",
+						"usersCount",
+						"userGroupsCount",
+						"schemasCount",
+						"stylesheetsCount",
+						"pcrsCount",
+						"workflowsCount",
+						"pagesInWorkflowCount"
+					],
+					"properties": {
+						"siteVersion": {
+							"type": "string"
+						},
+						"pagesCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"checkedoutPagesCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"usersCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"userGroupsCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"schemasCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"stylesheetsCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"pcrsCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"workflowsCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"pagesInWorkflowCount": {
+							"type": "integer",
+							"format": "int32"
+						}
+					}
+				},
+				"period": {
+					"type": "object",
+					"required": [
+						"pagesCreated",
+						"pagesUpdated",
+						"percentageOfPagesUpdated",
+						"pagesPublished"
+					],
+					"properties": {
+						"pagesCreated": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"pagesUpdated": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"percentageOfPagesUpdated": {
+							"type": "number",
+							"format": "double"
+						},
+						"pagesPublished": {
+							"type": "integer",
+							"format": "int32"
+						}
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/reports/stats",
+		"tags": [
+			"Reports"
+		]
+	},
+	{
+		"tool_name": "Reports_GetScheduling",
+		"description": "GET /api/v1/reports/scheduling",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"count": {
+					"type": "integer",
+					"required": true,
+					"in": "query"
+				},
+				"workingLocale": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"count",
+				"workingLocale"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"occurrences": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"recipientsCount"
+						],
+						"properties": {
+							"id": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"time": {
+								"type": "string"
+							},
+							"recipientsCount": {
+								"type": "integer",
+								"format": "int32"
+							}
+						}
+					}
+				},
+				"schedulerState": {
+					"type": "object",
+					"required": [
+						"started"
+					],
+					"properties": {
+						"started": {
+							"type": "boolean"
+						},
+						"startTime": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/reports/scheduling",
+		"tags": [
+			"Reports"
+		]
+	},
+	{
+		"tool_name": "Reports_ToggleScheduler",
+		"description": "POST /api/v1/reports/toggle-scheduler",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"toStart": {
+					"type": "boolean",
+					"required": true,
+					"in": "query"
+				},
+				"workingLocale": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"toStart",
+				"workingLocale"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"started"
+			],
+			"properties": {
+				"started": {
+					"type": "boolean"
+				},
+				"startTime": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/reports/toggle-scheduler",
+		"tags": [
+			"Reports"
+		]
+	}
+]

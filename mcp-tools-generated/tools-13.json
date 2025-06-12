@@ -1,0 +1,1315 @@
+[
+	{
+		"tool_name": "Assets_DownloadAssetOwnersCsv",
+		"description": "GET /api/v1/assets/asset-owners-csv",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"all": {
+					"type": "boolean",
+					"required": true,
+					"in": "query"
+				},
+				"pubTargetId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"showAllPubTargets": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetId",
+				"all"
+			]
+		},
+		"output_schema": {
+			"type": "file"
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/asset-owners-csv",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_DownloadAssetDependentsCsv",
+		"description": "GET /api/v1/assets/asset-dependents-csv",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"all": {
+					"type": "boolean",
+					"required": true,
+					"in": "query"
+				},
+				"pubTargetId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"showAllPubTargets": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetId",
+				"all"
+			]
+		},
+		"output_schema": {
+			"type": "file"
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/asset-dependents-csv",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_GetAssetDITAScopes",
+		"description": "GET /api/v1/assets/ditamap-scopes",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"pubTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetId",
+				"pubTargetId"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"contexts": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"PublishingTargetId": {
+								"type": "string"
+							},
+							"PublishingTargetName": {
+								"type": "string"
+							},
+							"Ditavals": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"Scopes": {
+								"type": "array",
+								"items": {
+									"allOf": [
+										{
+											"$ref": "#/definitions/NameIdPair",
+											"circular": true
+										},
+										{
+											"type": "object",
+											"required": [
+												"DepsCount",
+												"IsCurrent",
+												"Distance"
+											],
+											"properties": {
+												"DepsCount": {
+													"type": "integer",
+													"format": "int32"
+												},
+												"Caches": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"DitavalId": {
+																"type": "string"
+															},
+															"PreviewTempPath": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"IsCurrent": {
+													"type": "boolean"
+												},
+												"Distance": {
+													"type": "integer",
+													"format": "int32"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/ditamap-scopes",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_GetAllAssetDependents",
+		"description": "GET /api/v1/assets/asset-dependents-deep",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"type": "object",
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					},
+					{
+						"type": "object",
+						"required": [
+							"Broken",
+							"Distance"
+						],
+						"properties": {
+							"DependencyType": {
+								"type": "string"
+							},
+							"RefType": {
+								"type": "string"
+							},
+							"Broken": {
+								"type": "boolean"
+							},
+							"Distance": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"PublishingTargetId": {
+								"type": "string"
+							},
+							"Path": {
+								"type": "array",
+								"items": {
+									"$ref": "#/definitions/NameIdPair",
+									"circular": true
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/assets/asset-dependents-deep",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_SetAssetOutputFormats",
+		"description": "PUT /api/v1/assets/asset-dita-output-formats",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"formats": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"assetId",
+				"formats",
+				"formats"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "PUT",
+		"endpoint": "/api/v1/assets/asset-dita-output-formats",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_SetAssetDitavals",
+		"description": "PUT /api/v1/assets/asset-ditavals",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"ditavalIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"assetId",
+				"ditavalIds",
+				"ditavalIds"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "PUT",
+		"endpoint": "/api/v1/assets/asset-ditavals",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_DeleteDitaPreviewCache",
+		"description": "DELETE /api/v1/assets/dita-preview-cache",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"pubTargetId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetId"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "DELETE",
+		"endpoint": "/api/v1/assets/dita-preview-cache",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Assets_GetOxygenAccessCredentials",
+		"description": "PUT /api/v1/assets/dita-oxygen-oauth-creds",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "PUT",
+		"endpoint": "/api/v1/assets/dita-oxygen-oauth-creds",
+		"tags": [
+			"Assets"
+		]
+	},
+	{
+		"tool_name": "Site_SearchContentItems",
+		"description": "GET /api/v1/site/content-item-search",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"SearchText": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"IncludeComponents": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				},
+				"IncludePages": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				},
+				"OrderByScore": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				},
+				"Types": {
+					"type": "array",
+					"required": false,
+					"in": "query"
+				},
+				"SubTypes": {
+					"type": "array",
+					"required": false,
+					"in": "query"
+				},
+				"IncludeContentPath": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				},
+				"IncludeRecycled": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				},
+				"IncludeAssetRoot": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				},
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"Id": {
+												"type": "string"
+											},
+											"Name": {
+												"type": "string"
+											}
+										}
+									},
+									{
+										"type": "object"
+									}
+								]
+							},
+							{
+								"type": "object",
+								"required": [
+									"CheckedOut",
+									"Icon",
+									"IsComponent",
+									"Type",
+									"LastModified",
+									"Created"
+								],
+								"properties": {
+									"Path": {
+										"type": "array",
+										"items": {
+											"allOf": [
+												{
+													"$ref": "#/definitions/NameIdPair",
+													"circular": true
+												},
+												{
+													"type": "object",
+													"required": [
+														"Icon"
+													],
+													"properties": {
+														"Icon": {
+															"type": "integer",
+															"format": "int32"
+														}
+													}
+												}
+											]
+										}
+									},
+									"ContentId": {
+										"type": "string"
+									},
+									"ParentId": {
+										"type": "string"
+									},
+									"Locale": {
+										"type": "string"
+									},
+									"RegionCode": {
+										"type": "string"
+									},
+									"AssignedUser": {
+										"type": "string"
+									},
+									"AssignedGroup": {
+										"type": "string"
+									},
+									"CheckedOut": {
+										"type": "boolean"
+									},
+									"Icon": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"IsComponent": {
+										"type": "boolean"
+									},
+									"Type": {
+										"type": "string",
+										"description": "The types of content items",
+										"x-enumNames": [
+											"Page",
+											"Asset",
+											"AssetFolder",
+											"ContentAlias",
+											"Other"
+										],
+										"enum": [
+											"Page",
+											"Asset",
+											"AssetFolder",
+											"ContentAlias",
+											"Other"
+										]
+									},
+									"LastModified": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"Created": {
+										"type": "string",
+										"format": "date-time"
+									}
+								}
+							}
+						]
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/site/content-item-search",
+		"tags": [
+			"Site"
+		]
+	},
+	{
+		"tool_name": "Site_GetTabModel",
+		"description": "GET /api/v1/site/tab-model",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"contentItemId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"contentItemId"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"type": "object",
+							"properties": {
+								"Id": {
+									"type": "string"
+								},
+								"Name": {
+									"type": "string"
+								}
+							}
+						},
+						{
+							"type": "object"
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"overviewTab",
+						"editTab",
+						"assetTab",
+						"assetFolderTab",
+						"assetEditTab",
+						"taxonomyTab",
+						"assetTaxonomyTab",
+						"previewTab",
+						"designTab",
+						"historyTab",
+						"assetHistoryTab",
+						"assetXmlTab",
+						"assetPreviewTab",
+						"xmlTab",
+						"propertiesTab",
+						"translateTab",
+						"analyticsTab",
+						"assetDitaTab"
+					],
+					"properties": {
+						"overviewTab": {
+							"type": "boolean"
+						},
+						"editTab": {
+							"type": "boolean"
+						},
+						"assetTab": {
+							"type": "boolean"
+						},
+						"assetFolderTab": {
+							"type": "boolean"
+						},
+						"assetEditTab": {
+							"type": "boolean"
+						},
+						"taxonomyTab": {
+							"type": "boolean"
+						},
+						"assetTaxonomyTab": {
+							"type": "boolean"
+						},
+						"previewTab": {
+							"type": "boolean"
+						},
+						"designTab": {
+							"type": "boolean"
+						},
+						"historyTab": {
+							"type": "boolean"
+						},
+						"assetHistoryTab": {
+							"type": "boolean"
+						},
+						"assetXmlTab": {
+							"type": "boolean"
+						},
+						"assetPreviewTab": {
+							"type": "boolean"
+						},
+						"xmlTab": {
+							"type": "boolean"
+						},
+						"propertiesTab": {
+							"type": "boolean"
+						},
+						"translateTab": {
+							"type": "boolean"
+						},
+						"analyticsTab": {
+							"type": "boolean"
+						},
+						"assetDitaTab": {
+							"type": "boolean"
+						},
+						"customTabs": {
+							"type": "array",
+							"items": {
+								"allOf": [
+									{
+										"type": "object",
+										"required": [
+											"isGlobal",
+											"appendPageId",
+											"appendAssetId",
+											"appendAssetFolderId"
+										],
+										"properties": {
+											"url": {
+												"type": "string"
+											},
+											"isGlobal": {
+												"type": "boolean"
+											},
+											"appendPageId": {
+												"type": "boolean"
+											},
+											"appendAssetId": {
+												"type": "boolean"
+											},
+											"appendAssetFolderId": {
+												"type": "boolean"
+											},
+											"resourceId": {
+												"type": "string"
+											},
+											"icon": {
+												"type": "string"
+											},
+											"iconClass": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"displayName": {
+												"type": "string"
+											}
+										}
+									},
+									{
+										"type": "object",
+										"required": [
+											"autoSelect",
+											"allowPinning",
+											"show"
+										],
+										"properties": {
+											"id": {
+												"type": "string"
+											},
+											"autoSelect": {
+												"type": "boolean"
+											},
+											"allowPinning": {
+												"type": "boolean"
+											},
+											"show": {
+												"type": "boolean"
+											},
+											"localeName": {
+												"type": "string"
+											},
+											"schemaIds": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"assetSchemaIds": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"pageIds": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"assetIds": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"assetFolderIds": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				}
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/site/tab-model",
+		"tags": [
+			"Site"
+		]
+	},
+	{
+		"tool_name": "Site_GenerateAssetRefernceReport",
+		"description": "POST /api/v1/site/generate-asset-reference-report",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"request": {
+					"type": "object",
+					"required": [
+						"IncludeChildren"
+					],
+					"properties": {
+						"RootPageId": {
+							"type": "string"
+						},
+						"AssetPath": {
+							"type": "string"
+						},
+						"IncludeChildren": {
+							"type": "boolean"
+						}
+					}
+				}
+			},
+			"required": [
+				"request",
+				"request"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"ReportId"
+			],
+			"properties": {
+				"ReportId": {
+					"type": "string",
+					"format": "guid"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/site/generate-asset-reference-report",
+		"tags": [
+			"Site"
+		]
+	},
+	{
+		"tool_name": "Site_GenerateBrokenLinkReport",
+		"description": "POST /api/v1/site/generate-broken-link-report",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"request": {
+					"type": "object",
+					"required": [
+						"IncludeChildren",
+						"ValidateExternalReferences"
+					],
+					"properties": {
+						"RootPageId": {
+							"type": "string"
+						},
+						"IncludeChildren": {
+							"type": "boolean"
+						},
+						"ValidateExternalReferences": {
+							"type": "boolean"
+						}
+					}
+				}
+			},
+			"required": [
+				"request",
+				"request"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"ReportId"
+			],
+			"properties": {
+				"ReportId": {
+					"type": "string",
+					"format": "guid"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/site/generate-broken-link-report",
+		"tags": [
+			"Site"
+		]
+	},
+	{
+		"tool_name": "Site_GenerateTextSearchReport",
+		"description": "POST /api/v1/site/generate-search-text-report",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"request": {
+					"type": "object",
+					"required": [
+						"SearchText",
+						"IgnoreCase",
+						"IncludeChildren"
+					],
+					"properties": {
+						"RootPageId": {
+							"type": "string"
+						},
+						"SearchText": {
+							"type": "string",
+							"minLength": 1
+						},
+						"IgnoreCase": {
+							"type": "boolean"
+						},
+						"IncludeChildren": {
+							"type": "boolean"
+						}
+					}
+				}
+			},
+			"required": [
+				"request",
+				"request"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"ReportId"
+			],
+			"properties": {
+				"ReportId": {
+					"type": "string",
+					"format": "guid"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/site/generate-search-text-report",
+		"tags": [
+			"Site"
+		]
+	},
+	{
+		"tool_name": "Site_GenerateAssetTextSearchReport",
+		"description": "POST /api/v1/site/generate-search-asset-text-report",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"request": {
+					"type": "object",
+					"required": [
+						"SearchText",
+						"IgnoreCase",
+						"IncludeChildren"
+					],
+					"properties": {
+						"RootPageId": {
+							"type": "string"
+						},
+						"SearchText": {
+							"type": "string",
+							"minLength": 1
+						},
+						"IgnoreCase": {
+							"type": "boolean"
+						},
+						"IncludeChildren": {
+							"type": "boolean"
+						}
+					}
+				}
+			},
+			"required": [
+				"request",
+				"request"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"ReportId"
+			],
+			"properties": {
+				"ReportId": {
+					"type": "string",
+					"format": "guid"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/site/generate-search-asset-text-report",
+		"tags": [
+			"Site"
+		]
+	},
+	{
+		"tool_name": "Site_GenerateUnusedAssetsReport",
+		"description": "POST /api/v1/site/generate-unused-assets-report",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"request": {
+					"type": "object",
+					"required": [
+						"RootAssetFolderId"
+					],
+					"properties": {
+						"RootAssetFolderId": {
+							"type": "string",
+							"minLength": 1
+						}
+					}
+				}
+			},
+			"required": [
+				"request",
+				"request"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"ReportId"
+			],
+			"properties": {
+				"ReportId": {
+					"type": "string",
+					"format": "guid"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/site/generate-unused-assets-report",
+		"tags": [
+			"Site"
+		]
+	},
+	{
+		"tool_name": "Site_GeneratePageReferenceReport",
+		"description": "POST /api/v1/site/generate-page-reference-report",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"request": {
+					"type": "object",
+					"required": [
+						"IncludeChildren"
+					],
+					"properties": {
+						"PageId": {
+							"type": "string"
+						},
+						"RootPageId": {
+							"type": "string"
+						},
+						"IncludeChildren": {
+							"type": "boolean"
+						}
+					}
+				}
+			},
+			"required": [
+				"request",
+				"request"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"ReportId"
+			],
+			"properties": {
+				"ReportId": {
+					"type": "string",
+					"format": "guid"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/site/generate-page-reference-report",
+		"tags": [
+			"Site"
+		]
+	},
+	{
+		"tool_name": "Site_GetReportStatus",
+		"description": "GET /api/v1/site/report/{sessionId}/status",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"sessionId": {
+					"type": "string",
+					"required": true,
+					"in": "path"
+				}
+			},
+			"required": [
+				"sessionId"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"Success",
+				"ProgressPercentage",
+				"Complete"
+			],
+			"properties": {
+				"Success": {
+					"type": "boolean"
+				},
+				"ProgressPercentage": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Complete": {
+					"type": "boolean"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/site/report/{sessionId}/status",
+		"tags": [
+			"Site"
+		]
+	},
+	{
+		"tool_name": "Site_GetReport",
+		"description": "GET /api/v1/site/report/{sessionId}",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"sessionId": {
+					"type": "string",
+					"required": true,
+					"in": "path"
+				}
+			},
+			"required": [
+				"sessionId"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": [
+					"IsCheckedIn",
+					"SearchType",
+					"CaseSensitive"
+				],
+				"properties": {
+					"Id": {
+						"type": "string"
+					},
+					"ContentName": {
+						"type": "string"
+					},
+					"ContentId": {
+						"type": "string"
+					},
+					"CreationUser": {
+						"type": "string"
+					},
+					"CreationUserEmail": {
+						"type": "string"
+					},
+					"CreatedDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"LastModifiedDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"Name": {
+						"type": "string"
+					},
+					"FoundValue": {
+						"type": "string"
+					},
+					"FullValue": {
+						"type": "string"
+					},
+					"TypeOfValue": {
+						"type": "string"
+					},
+					"IsCheckedIn": {
+						"type": "boolean"
+					},
+					"SearchText": {
+						"type": "string"
+					},
+					"SearchType": {
+						"type": "string",
+						"description": "",
+						"x-enumNames": [
+							"Asset",
+							"BrokenReferences",
+							"Text",
+							"UnusedAssets",
+							"Xid",
+							"Base",
+							"AssetText"
+						],
+						"enum": [
+							"Asset",
+							"BrokenReferences",
+							"Text",
+							"UnusedAssets",
+							"Xid",
+							"Base",
+							"AssetText"
+						]
+					},
+					"CaseSensitive": {
+						"type": "boolean"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/site/report/{sessionId}",
+		"tags": [
+			"Site"
+		]
+	},
+	{
+		"tool_name": "Site_CancelReport",
+		"description": "POST /api/v1/site/report/cancel",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"sessionId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"sessionId"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/site/report/cancel",
+		"tags": [
+			"Site"
+		]
+	},
+	{
+		"tool_name": "Site_ReplaceReportEntry",
+		"description": "POST /api/v1/site/report/replace-entry",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"request": {
+					"type": "object",
+					"properties": {
+						"SessionId": {
+							"type": "string"
+						},
+						"EntryIds": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"NewValue": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"required": [
+				"request",
+				"request"
+			]
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"format": "guid"
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/site/report/replace-entry",
+		"tags": [
+			"Site"
+		]
+	}
+]

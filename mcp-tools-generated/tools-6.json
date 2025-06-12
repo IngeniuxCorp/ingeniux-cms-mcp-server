@@ -1,0 +1,1918 @@
+[
+	{
+		"tool_name": "Dashboard_GetOnlineUsers",
+		"description": "GET /api/v1/dashboard/online-users",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"count": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"allOf": [
+					{
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"Id": {
+												"type": "string"
+											},
+											"Name": {
+												"type": "string"
+											}
+										}
+									},
+									{
+										"type": "object"
+									}
+								]
+							},
+							{
+								"type": "object",
+								"x-abstract": true,
+								"required": [
+									"Created",
+									"LastModified",
+									"Archived"
+								],
+								"properties": {
+									"CreationUser": {
+										"type": "string"
+									},
+									"Created": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"LastModifiedUser": {
+										"type": "string"
+									},
+									"LastModified": {
+										"type": "string",
+										"format": "date-time"
+									},
+									"EntityType": {
+										"type": "string"
+									},
+									"Archived": {
+										"type": "boolean"
+									}
+								}
+							}
+						]
+					},
+					{
+						"type": "object",
+						"required": [
+							"IsTaskUser",
+							"Disabled"
+						],
+						"properties": {
+							"UserId": {
+								"type": "string"
+							},
+							"IsTaskUser": {
+								"type": "boolean"
+							},
+							"Picture": {
+								"type": "string"
+							},
+							"Title": {
+								"type": "string"
+							},
+							"LastActive": {
+								"type": "string"
+							},
+							"Disabled": {
+								"type": "boolean"
+							}
+						}
+					}
+				]
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/dashboard/online-users",
+		"tags": [
+			"Dashboard"
+		]
+	},
+	{
+		"tool_name": "Dashboard_PostComment",
+		"description": "POST /api/v1/dashboard/comment",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"comment": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"comment"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"UserName": {
+					"type": "string"
+				},
+				"Content": {
+					"type": "string"
+				},
+				"Action": {
+					"type": "string"
+				},
+				"Thumbnail": {
+					"type": "string"
+				},
+				"Timeline": {
+					"type": "string"
+				},
+				"UserId": {
+					"type": "string"
+				}
+			}
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/dashboard/comment",
+		"tags": [
+			"Dashboard"
+		]
+	},
+	{
+		"tool_name": "Dashboard_GetActivityStream",
+		"description": "GET /api/v1/dashboard/activity-stream",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"count": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"UserName": {
+						"type": "string"
+					},
+					"Content": {
+						"type": "string"
+					},
+					"Action": {
+						"type": "string"
+					},
+					"Thumbnail": {
+						"type": "string"
+					},
+					"Timeline": {
+						"type": "string"
+					},
+					"UserId": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/dashboard/activity-stream",
+		"tags": [
+			"Dashboard"
+		]
+	},
+	{
+		"tool_name": "Dashboard_GetAnalyticTrafficData",
+		"description": "GET /api/v1/dashboard/analytic_traffic-data",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTgtId"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"type": "object",
+					"properties": {
+						"Id": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						}
+					}
+				},
+				{
+					"type": "object",
+					"properties": {
+						"Info": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"Value": {
+										"type": "string"
+									},
+									"Name": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"Error": {
+							"type": "string"
+						}
+					}
+				}
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/dashboard/analytic_traffic-data",
+		"tags": [
+			"Dashboard"
+		]
+	},
+	{
+		"tool_name": "Dashboard_GetAnalyticMediumData",
+		"description": "GET /api/v1/dashboard/analytic_medium-data",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"pubTgtId"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"type": "object",
+					"properties": {
+						"Id": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						}
+					}
+				},
+				{
+					"type": "object",
+					"properties": {
+						"PiePieces": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"Data"
+								],
+								"properties": {
+									"Label": {
+										"type": "string"
+									},
+									"Data": {
+										"type": "integer",
+										"format": "int32"
+									}
+								}
+							}
+						},
+						"Error": {
+							"type": "string"
+						}
+					}
+				}
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/dashboard/analytic_medium-data",
+		"tags": [
+			"Dashboard"
+		]
+	},
+	{
+		"tool_name": "Dashboard_GetProductionData",
+		"description": "GET /api/v1/dashboard/production-data",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"startDate": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				},
+				"endDate": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"labels": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"datasets": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"data": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "int32"
+								}
+							},
+							"label": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/dashboard/production-data",
+		"tags": [
+			"Dashboard"
+		]
+	},
+	{
+		"tool_name": "Entity_Get",
+		"description": "GET /api/v1/documents",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								},
+								{
+									"type": "object"
+								}
+							]
+						},
+						{
+							"type": "object",
+							"x-abstract": true,
+							"required": [
+								"Created",
+								"LastModified",
+								"Archived"
+							],
+							"properties": {
+								"CreationUser": {
+									"type": "string"
+								},
+								"Created": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastModifiedUser": {
+									"type": "string"
+								},
+								"LastModified": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"EntityType": {
+									"type": "string"
+								},
+								"Archived": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object"
+				}
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/documents",
+		"tags": [
+			"Entity"
+		]
+	},
+	{
+		"tool_name": "Entity_Archive",
+		"description": "PATCH /api/v1/documents/archive",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"entityId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"entityId"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								},
+								{
+									"type": "object"
+								}
+							]
+						},
+						{
+							"type": "object",
+							"x-abstract": true,
+							"required": [
+								"Created",
+								"LastModified",
+								"Archived"
+							],
+							"properties": {
+								"CreationUser": {
+									"type": "string"
+								},
+								"Created": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastModifiedUser": {
+									"type": "string"
+								},
+								"LastModified": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"EntityType": {
+									"type": "string"
+								},
+								"Archived": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object"
+				}
+			]
+		},
+		"method": "PATCH",
+		"endpoint": "/api/v1/documents/archive",
+		"tags": [
+			"Entity"
+		]
+	},
+	{
+		"tool_name": "Entity_UnArchive",
+		"description": "PATCH /api/v1/documents/unarchive",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"entityId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"entityId"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								},
+								{
+									"type": "object"
+								}
+							]
+						},
+						{
+							"type": "object",
+							"x-abstract": true,
+							"required": [
+								"Created",
+								"LastModified",
+								"Archived"
+							],
+							"properties": {
+								"CreationUser": {
+									"type": "string"
+								},
+								"Created": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastModifiedUser": {
+									"type": "string"
+								},
+								"LastModified": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"EntityType": {
+									"type": "string"
+								},
+								"Archived": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object"
+				}
+			]
+		},
+		"method": "PATCH",
+		"endpoint": "/api/v1/documents/unarchive",
+		"tags": [
+			"Entity"
+		]
+	},
+	{
+		"tool_name": "Themes_Get",
+		"description": "GET /api/v1/themes/theme",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								},
+								{
+									"type": "object"
+								}
+							]
+						},
+						{
+							"type": "object",
+							"x-abstract": true,
+							"required": [
+								"Created",
+								"LastModified",
+								"Archived"
+							],
+							"properties": {
+								"CreationUser": {
+									"type": "string"
+								},
+								"Created": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastModifiedUser": {
+									"type": "string"
+								},
+								"LastModified": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"EntityType": {
+									"type": "string"
+								},
+								"Archived": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"IsDefault",
+						"IsSystem",
+						"Draft",
+						"FontSize"
+					],
+					"properties": {
+						"IsDefault": {
+							"type": "boolean"
+						},
+						"IsSystem": {
+							"type": "boolean"
+						},
+						"Draft": {
+							"type": "boolean"
+						},
+						"Font": {
+							"type": "string"
+						},
+						"FontSize": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"Colors": {
+							"type": "array",
+							"items": {
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"type": "object",
+												"x-abstract": true,
+												"properties": {
+													"Id": {
+														"type": "string"
+													}
+												}
+											},
+											{
+												"type": "object",
+												"properties": {
+													"Name": {
+														"type": "string"
+													}
+												}
+											}
+										]
+									},
+									{
+										"type": "object",
+										"properties": {
+											"Color": {
+												"type": "string"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				}
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/themes/theme",
+		"tags": [
+			"Themes"
+		]
+	},
+	{
+		"tool_name": "Themes_Update",
+		"description": "PUT /api/v1/themes/theme",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"input": {
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"Id": {
+													"type": "string"
+												},
+												"Name": {
+													"type": "string"
+												}
+											}
+										},
+										{
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"x-abstract": true,
+									"required": [
+										"Created",
+										"LastModified",
+										"Archived"
+									],
+									"properties": {
+										"CreationUser": {
+											"type": "string"
+										},
+										"Created": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"LastModifiedUser": {
+											"type": "string"
+										},
+										"LastModified": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"EntityType": {
+											"type": "string"
+										},
+										"Archived": {
+											"type": "boolean"
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "object",
+							"required": [
+								"IsDefault",
+								"IsSystem",
+								"Draft",
+								"FontSize"
+							],
+							"properties": {
+								"IsDefault": {
+									"type": "boolean"
+								},
+								"IsSystem": {
+									"type": "boolean"
+								},
+								"Draft": {
+									"type": "boolean"
+								},
+								"Font": {
+									"type": "string"
+								},
+								"FontSize": {
+									"type": "integer",
+									"format": "int32"
+								},
+								"Colors": {
+									"type": "array",
+									"items": {
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"type": "object",
+														"x-abstract": true,
+														"properties": {
+															"Id": {
+																"type": "string"
+															}
+														}
+													},
+													{
+														"type": "object",
+														"properties": {
+															"Name": {
+																"type": "string"
+															}
+														}
+													}
+												]
+											},
+											{
+												"type": "object",
+												"properties": {
+													"Color": {
+														"type": "string"
+													}
+												}
+											}
+										]
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			"required": [
+				"input",
+				"input"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								},
+								{
+									"type": "object"
+								}
+							]
+						},
+						{
+							"type": "object",
+							"x-abstract": true,
+							"required": [
+								"Created",
+								"LastModified",
+								"Archived"
+							],
+							"properties": {
+								"CreationUser": {
+									"type": "string"
+								},
+								"Created": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastModifiedUser": {
+									"type": "string"
+								},
+								"LastModified": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"EntityType": {
+									"type": "string"
+								},
+								"Archived": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"IsDefault",
+						"IsSystem",
+						"Draft",
+						"FontSize"
+					],
+					"properties": {
+						"IsDefault": {
+							"type": "boolean"
+						},
+						"IsSystem": {
+							"type": "boolean"
+						},
+						"Draft": {
+							"type": "boolean"
+						},
+						"Font": {
+							"type": "string"
+						},
+						"FontSize": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"Colors": {
+							"type": "array",
+							"items": {
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"type": "object",
+												"x-abstract": true,
+												"properties": {
+													"Id": {
+														"type": "string"
+													}
+												}
+											},
+											{
+												"type": "object",
+												"properties": {
+													"Name": {
+														"type": "string"
+													}
+												}
+											}
+										]
+									},
+									{
+										"type": "object",
+										"properties": {
+											"Color": {
+												"type": "string"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				}
+			]
+		},
+		"method": "PUT",
+		"endpoint": "/api/v1/themes/theme",
+		"tags": [
+			"Themes"
+		]
+	},
+	{
+		"tool_name": "Themes_Delete",
+		"description": "DELETE /api/v1/themes/theme",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"type": "boolean"
+		},
+		"method": "DELETE",
+		"endpoint": "/api/v1/themes/theme",
+		"tags": [
+			"Themes"
+		]
+	},
+	{
+		"tool_name": "Themes_Less",
+		"description": "GET /api/v1/themes/less",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"download": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"type": "file"
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/themes/less",
+		"tags": [
+			"Themes"
+		]
+	},
+	{
+		"tool_name": "Themes_Scss",
+		"description": "GET /api/v1/themes/scss",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"download": {
+					"type": "boolean",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		"output_schema": {
+			"type": "file"
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/themes/scss",
+		"tags": [
+			"Themes"
+		]
+	},
+	{
+		"tool_name": "Themes_List",
+		"description": "GET /api/v1/themes",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"startIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"pageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"type": "object",
+												"properties": {
+													"Id": {
+														"type": "string"
+													},
+													"Name": {
+														"type": "string"
+													}
+												}
+											},
+											{
+												"type": "object"
+											}
+										]
+									},
+									{
+										"type": "object",
+										"x-abstract": true,
+										"required": [
+											"Created",
+											"LastModified",
+											"Archived"
+										],
+										"properties": {
+											"CreationUser": {
+												"type": "string"
+											},
+											"Created": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"LastModifiedUser": {
+												"type": "string"
+											},
+											"LastModified": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"EntityType": {
+												"type": "string"
+											},
+											"Archived": {
+												"type": "boolean"
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"required": [
+									"IsDefault",
+									"IsSystem",
+									"Draft",
+									"FontSize"
+								],
+								"properties": {
+									"IsDefault": {
+										"type": "boolean"
+									},
+									"IsSystem": {
+										"type": "boolean"
+									},
+									"Draft": {
+										"type": "boolean"
+									},
+									"Font": {
+										"type": "string"
+									},
+									"FontSize": {
+										"type": "integer",
+										"format": "int32"
+									},
+									"Colors": {
+										"type": "array",
+										"items": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"type": "object",
+															"x-abstract": true,
+															"properties": {
+																"Id": {
+																	"type": "string"
+																}
+															}
+														},
+														{
+															"type": "object",
+															"properties": {
+																"Name": {
+																	"type": "string"
+																}
+															}
+														}
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"Color": {
+															"type": "string"
+														}
+													}
+												}
+											]
+										}
+									}
+								}
+							}
+						]
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/themes",
+		"tags": [
+			"Themes"
+		]
+	},
+	{
+		"tool_name": "Themes_Create",
+		"description": "POST /api/v1/themes",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"name"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								},
+								{
+									"type": "object"
+								}
+							]
+						},
+						{
+							"type": "object",
+							"x-abstract": true,
+							"required": [
+								"Created",
+								"LastModified",
+								"Archived"
+							],
+							"properties": {
+								"CreationUser": {
+									"type": "string"
+								},
+								"Created": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastModifiedUser": {
+									"type": "string"
+								},
+								"LastModified": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"EntityType": {
+									"type": "string"
+								},
+								"Archived": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"IsDefault",
+						"IsSystem",
+						"Draft",
+						"FontSize"
+					],
+					"properties": {
+						"IsDefault": {
+							"type": "boolean"
+						},
+						"IsSystem": {
+							"type": "boolean"
+						},
+						"Draft": {
+							"type": "boolean"
+						},
+						"Font": {
+							"type": "string"
+						},
+						"FontSize": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"Colors": {
+							"type": "array",
+							"items": {
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"type": "object",
+												"x-abstract": true,
+												"properties": {
+													"Id": {
+														"type": "string"
+													}
+												}
+											},
+											{
+												"type": "object",
+												"properties": {
+													"Name": {
+														"type": "string"
+													}
+												}
+											}
+										]
+									},
+									{
+										"type": "object",
+										"properties": {
+											"Color": {
+												"type": "string"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				}
+			]
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/themes",
+		"tags": [
+			"Themes"
+		]
+	},
+	{
+		"tool_name": "Themes_SetDefault",
+		"description": "POST /api/v1/themes/default",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"themeId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"themeId"
+			]
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								},
+								{
+									"type": "object"
+								}
+							]
+						},
+						{
+							"type": "object",
+							"x-abstract": true,
+							"required": [
+								"Created",
+								"LastModified",
+								"Archived"
+							],
+							"properties": {
+								"CreationUser": {
+									"type": "string"
+								},
+								"Created": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastModifiedUser": {
+									"type": "string"
+								},
+								"LastModified": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"EntityType": {
+									"type": "string"
+								},
+								"Archived": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"IsDefault",
+						"IsSystem",
+						"Draft",
+						"FontSize"
+					],
+					"properties": {
+						"IsDefault": {
+							"type": "boolean"
+						},
+						"IsSystem": {
+							"type": "boolean"
+						},
+						"Draft": {
+							"type": "boolean"
+						},
+						"Font": {
+							"type": "string"
+						},
+						"FontSize": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"Colors": {
+							"type": "array",
+							"items": {
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"type": "object",
+												"x-abstract": true,
+												"properties": {
+													"Id": {
+														"type": "string"
+													}
+												}
+											},
+											{
+												"type": "object",
+												"properties": {
+													"Name": {
+														"type": "string"
+													}
+												}
+											}
+										]
+									},
+									{
+										"type": "object",
+										"properties": {
+											"Color": {
+												"type": "string"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				}
+			]
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/themes/default",
+		"tags": [
+			"Themes"
+		]
+	},
+	{
+		"tool_name": "Themes_Upload",
+		"description": "POST /api/v1/themes/upload",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								},
+								{
+									"type": "object"
+								}
+							]
+						},
+						{
+							"type": "object",
+							"x-abstract": true,
+							"required": [
+								"Created",
+								"LastModified",
+								"Archived"
+							],
+							"properties": {
+								"CreationUser": {
+									"type": "string"
+								},
+								"Created": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"LastModifiedUser": {
+									"type": "string"
+								},
+								"LastModified": {
+									"type": "string",
+									"format": "date-time"
+								},
+								"EntityType": {
+									"type": "string"
+								},
+								"Archived": {
+									"type": "boolean"
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"required": [
+						"IsDefault",
+						"IsSystem",
+						"Draft",
+						"FontSize"
+					],
+					"properties": {
+						"IsDefault": {
+							"type": "boolean"
+						},
+						"IsSystem": {
+							"type": "boolean"
+						},
+						"Draft": {
+							"type": "boolean"
+						},
+						"Font": {
+							"type": "string"
+						},
+						"FontSize": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"Colors": {
+							"type": "array",
+							"items": {
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"type": "object",
+												"x-abstract": true,
+												"properties": {
+													"Id": {
+														"type": "string"
+													}
+												}
+											},
+											{
+												"type": "object",
+												"properties": {
+													"Name": {
+														"type": "string"
+													}
+												}
+											}
+										]
+									},
+									{
+										"type": "object",
+										"properties": {
+											"Color": {
+												"type": "string"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				}
+			]
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/themes/upload",
+		"tags": [
+			"Themes"
+		]
+	},
+	{
+		"tool_name": "PCR_ListPCRInfo",
+		"description": "GET /api/v1/pcr/info",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"PageSize": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				},
+				"StartIndex": {
+					"type": "integer",
+					"required": false,
+					"in": "query"
+				}
+			}
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
+			],
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"SchemaIcon",
+							"ParentPageCount",
+							"UserCount",
+							"GroupCount"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"Description": {
+								"type": "string"
+							},
+							"SchemaName": {
+								"type": "string"
+							},
+							"SchemaId": {
+								"type": "string"
+							},
+							"SchemaIcon": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"CreatedById": {
+								"type": "string"
+							},
+							"CreatedByName": {
+								"type": "string"
+							},
+							"Users": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"Groups": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"ParentPageCount": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"UserCount": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"GroupCount": {
+								"type": "integer",
+								"format": "int32"
+							}
+						}
+					}
+				},
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/pcr/info",
+		"tags": [
+			"PCR"
+		]
+	},
+	{
+		"tool_name": "PCR_GetPCRInfo",
+		"description": "GET /api/v1/pcr",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"ruleId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				}
+			},
+			"required": [
+				"ruleId"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"required": [
+				"SchemaIcon",
+				"ParentPageCount",
+				"UserCount",
+				"GroupCount"
+			],
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"SchemaName": {
+					"type": "string"
+				},
+				"SchemaId": {
+					"type": "string"
+				},
+				"SchemaIcon": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"CreatedById": {
+					"type": "string"
+				},
+				"CreatedByName": {
+					"type": "string"
+				},
+				"Users": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"Groups": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"ParentPageCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"UserCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"GroupCount": {
+					"type": "integer",
+					"format": "int32"
+				}
+			}
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/pcr",
+		"tags": [
+			"PCR"
+		]
+	}
+]
