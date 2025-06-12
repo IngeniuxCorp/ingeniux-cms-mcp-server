@@ -5,6 +5,7 @@
 import { APIRequest, APIResponse, APIError, RateLimitInfo } from '../types/api-types.js';
 import { ServerConfig } from '../types/config-types.js';
 import { authMiddleware as defaultAuthMiddleware } from '../auth/auth-middleware.js';
+import { OAuthManager } from '../auth/oauth-manager.js';
 
 export class APIClient {
     private static instance: APIClient;
@@ -15,6 +16,9 @@ export class APIClient {
     private constructor(config: ServerConfig, authMiddleware?: typeof defaultAuthMiddleware) {
         this.config = config;
         this.authMiddleware = authMiddleware || defaultAuthMiddleware;
+
+        const oauthManager = OAuthManager.getInstance(config.oauth);
+        this.authMiddleware.initialize(oauthManager);
     }
 
     public static getInstance(config: ServerConfig, authMiddleware?: typeof defaultAuthMiddleware): APIClient {
@@ -147,7 +151,7 @@ export class APIClient {
         try {
             const baseUrl = this.config.cmsBaseUrl.replace(/\/$/, '');
             const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
-            const url = new URL(`${baseUrl}${cleanEndpoint}`);
+            const url = new URL(`${baseUrl}/v1${cleanEndpoint}`);
 
             if (params) {
                 Object.entries(params).forEach(([key, value]) => {
@@ -419,6 +423,7 @@ export class APIClient {
         try {
             // Check if user is authenticated
             const mcpRequest = { method: request.method, url: request.url };
+         
             const authenticatedMcpRequest = await this.authMiddleware.authenticate(mcpRequest);
 
             // Merge authentication headers with existing headers
