@@ -541,13 +541,6 @@ export class AuthMiddleware {
 	}
 }
 
-interface AuthValidationResult {
-	isValid: boolean;
-	token?: string;
-	requiresAuth?: boolean;
-	authUrl?: string;
-	error?: string;
-}
 
 // Export singleton instance
 export const authMiddleware = AuthMiddleware.getInstance();

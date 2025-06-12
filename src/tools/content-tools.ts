@@ -6,7 +6,6 @@ import { MCPTool, ToolResult } from '../types/mcp-types.js';
 import { APIClient } from '../api/api-client.js';
 import { errorHandler } from '../utils/error-handler.js';
 import { Validators } from '../utils/validators.js';
-import { authMiddleware } from '../auth/auth-middleware.js';
 
 export class ContentTools {
 	private apiClient: APIClient;
@@ -17,43 +16,43 @@ export class ContentTools {
 
 	/**
 	 * Wrap tool with authentication check
-	 */
-	private wrapToolWithAuth(tool: MCPTool): MCPTool {
-		return {
-			...tool,
-			handler: async (params: any): Promise<ToolResult> => {
-				try {
-					// Step 1: Validate authentication
-					const isAuthenticated = await authMiddleware.isAuthenticated();
+	//  */
+	// private wrapToolWithAuth(tool: MCPTool): MCPTool {
+	// 	return {
+	// 		...tool,
+	// 		handler: async (params: any): Promise<ToolResult> => {
+	// 			try {
+	// 				// Step 1: Validate authentication
+	// 				const isAuthenticated = await authMiddleware.isAuthenticated();
 					
-					if (!isAuthenticated) {
-						const authCode = await authMiddleware.getAuthCode();
-						return {
-							content: [{
-								type: 'text',
-								text: JSON.stringify({
-									error: 'Authentication required',
-									requiresAuth: true,
-									authCode: authCode,
-									message: 'Please complete OAuth authentication to use this tool'
-								}, null, 2)
-							}]
-						};
-					}
+	// 				if (!isAuthenticated) {
+	// 					const authCode = await authMiddleware.authenticate();
+	// 					return {
+	// 						content: [{
+	// 							type: 'text',
+	// 							text: JSON.stringify({
+	// 								error: 'Authentication required',
+	// 								requiresAuth: true,
+	// 								authCode: authCode,
+	// 								message: 'Please complete OAuth authentication to use this tool'
+	// 							}, null, 2)
+	// 						}]
+	// 					};
+	// 				}
 
-					// Step 2: Execute original tool
-					return await tool.handler(params);
+	// 				// Step 2: Execute original tool
+	// 				return await tool.handler(params);
 					
-				} catch (error) {
-					return errorHandler.createErrorResult(error, {
-						operation: 'authentication_wrapper',
-						toolName: tool.name,
-						timestamp: new Date()
-					});
-				}
-			}
-		};
-	}
+	// 			} catch (error) {
+	// 				return errorHandler.createErrorResult(error, {
+	// 					operation: 'authentication_wrapper',
+	// 					toolName: tool.name,
+	// 					timestamp: new Date()
+	// 				});
+	// 			}
+	// 		}
+	// 	};
+	// }
 
 	/**
 	 * Get all content management tools with authentication wrapper
@@ -70,7 +69,7 @@ export class ContentTools {
 		];
 
 		// Return only wrapped CMS tools
-		return cmsTools.map(tool => this.wrapToolWithAuth(tool));
+		return cmsTools;
 	}
 
 	/**

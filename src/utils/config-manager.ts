@@ -67,7 +67,7 @@ export class ConfigManager {
 				oauth: {
 					clientId: env.OAUTH_CLIENT_ID || '',
 					clientSecret: env.OAUTH_CLIENT_SECRET || '',
-					authorizationUrl: this.buildOAuthUrl(env.CMS_BASE_URL, 'authorize'),
+					authorizationUrl: this.buildOAuthUrl(env.CMS_BASE_URL, 'auth'),
 					tokenUrl: this.buildOAuthUrl(env.CMS_BASE_URL, 'token'),
 					redirectUri: env.OAUTH_REDIRECT_URI || 'http://localhost:3000/callback',
 					scopes: ['read', 'write']

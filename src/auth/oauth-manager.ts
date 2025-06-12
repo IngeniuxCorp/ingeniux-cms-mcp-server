@@ -118,7 +118,7 @@ export class OAuthManager {
 				method: 'GET',
 				headers: {
 					'Accept': 'application/json',
-					'User-Agent': 'Ingeniux-CMS-MCP-Server/1.0'
+                    "Content-Type": "application/x-www-form-urlencoded"
 				},
 				signal: AbortSignal.timeout(30000)
 			});
@@ -333,7 +333,10 @@ export class OAuthManager {
 			const params = new URLSearchParams({
 				response_type: 'code',
 				client_id: this.config.clientId,
-				redirect_uri: this.config.redirectUri
+				redirect_uri: this.config.redirectUri,
+				code_challenge: codeChallenge,
+				code_challenge_method: 'S256',
+				state: state
 			});
 
 			return `${this.config.authorizationUrl}?${params.toString()}`;
@@ -437,6 +440,18 @@ export class OAuthManager {
 	 */
 	public async getBearerToken(): Promise<TokenData> {
 		try {
+            const token = tokenStore.retrieve();
+            
+            if (!!token && token.accessToken) {
+                // If we already have a valid token, return it
+                if (tokenStore.isValid()) {
+                    return token;
+                } else {
+                    // If token is expired, clear it
+                    tokenStore.clear();
+                }
+            }
+
 			// Step 1: Get auth code from CMS
 			const code = await this.initiateFlow();
 	
