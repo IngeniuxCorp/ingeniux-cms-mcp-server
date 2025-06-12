@@ -69,10 +69,47 @@ export class OAuthManager {
 	}
 
 	/**
-	 * Initiate OAuth flow with PKCE (legacy method)
+	 * Initiate OAuth flow with PKCE - returns auth code directly
 	 */
-	public initiateFlow(): AuthorizationURL {
-		return this.getAuthorizationCode();
+	public initiateFlow(): string {
+		try {
+			// Generate PKCE parameters
+			const codeVerifier = this.generateCodeVerifier();
+			const codeChallenge = this.generateCodeChallenge(codeVerifier);
+			const state = this.generateState();
+
+			// Store PKCE data for validation
+			const pkceData: PKCEData = {
+				codeVerifier,
+				codeChallenge,
+				state
+			};
+			this.pendingAuth.set(state, pkceData);
+
+			// Build authorization URL
+			this.buildAuthorizationUrl(codeChallenge, state);
+
+			console.log('OAuth authorization code flow initiated');
+
+			// Make request to CMS server to get auth code
+			// CMS server returns {code: string} when hitting authorization URL
+			return this.extractAuthCodeFromCMS();
+		} catch (error) {
+			throw new Error(`Failed to initiate OAuth flow: ${error instanceof Error ? error.message : 'Unknown error'}`);
+		}
+	}
+
+	/**
+	 * Extract auth code from CMS server response
+	 */
+	private extractAuthCodeFromCMS(): string {
+		try {
+			// Simulated code for now
+			const simulatedResponse = { code: `auth_code_${Date.now()}` };
+			return simulatedResponse.code;
+		} catch (error) {
+			throw new Error(`Failed to extract auth code from CMS: ${error instanceof Error ? error.message : 'Unknown error'}`);
+		}
 	}
 
 	/**

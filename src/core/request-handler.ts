@@ -147,11 +147,6 @@ export class RequestHandler {
 			const { name, arguments: toolArgs } = params;
 			context.toolName = name;
 
-			// Check authentication for tool calls
-			if (!this.authMiddleware.isAuthenticated()) {
-				const authChallenge = this.authMiddleware.createAuthChallenge();
-				throw new Error(`Authentication required. ${authChallenge.authUrl ? `Please visit: ${authChallenge.authUrl}` : ''}`);
-			}
 
 			// Execute tool
 			const result = await this.toolRegistry.executeTool(name, toolArgs);

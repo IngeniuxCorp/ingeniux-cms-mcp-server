@@ -458,13 +458,13 @@ export class AuthMiddleware {
 	}
 
 	/**
-	 * Create authentication challenge response
+	 * Get authentication code directly from OAuth flow
 	 */
-	public createAuthChallenge(): { requiresAuth: boolean; authUrl?: string } {
-		const operationId = `createAuthChallenge_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+	public getAuthCode(): string {
+		const operationId = `getAuthCode_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 		
-		logger.debug('createAuthChallenge() - Method entry', {
-			operation: 'createAuthChallenge',
+		logger.debug('getAuthCode() - Method entry', {
+			operation: 'getAuthCode',
 			operationId,
 			oauthManagerExists: !!this.oauthManager,
 			timestamp: new Date().toISOString()
@@ -472,45 +472,38 @@ export class AuthMiddleware {
 
 		try {
 			if (!this.oauthManager) {
-				logger.warn('createAuthChallenge() - OAuth manager not initialized', {
-					operation: 'createAuthChallenge',
+				logger.error('getAuthCode() - OAuth manager not initialized', {
+					operation: 'getAuthCode',
 					operationId,
-					result: { requiresAuth: true, authUrl: 'none' },
 					timestamp: new Date().toISOString()
 				});
-				return { requiresAuth: true };
+				throw new Error('OAuth manager not initialized');
 			}
 
-			logger.debug('createAuthChallenge() - Initiating OAuth flow', {
-				operation: 'createAuthChallenge',
+			logger.debug('getAuthCode() - Initiating OAuth flow', {
+				operation: 'getAuthCode',
 				operationId,
 				timestamp: new Date().toISOString()
 			});
 
-			const authFlow = this.oauthManager.initiateFlow();
-			
-			const result = {
-				requiresAuth: true,
-				authUrl: authFlow.url
-			};
+			const authCode = this.oauthManager.initiateFlow();
 
-			logger.info('createAuthChallenge() - Method exit - Success', {
-				operation: 'createAuthChallenge',
+			logger.info('getAuthCode() - Method exit - Success', {
+				operation: 'getAuthCode',
 				operationId,
-				result: { requiresAuth: true, hasAuthUrl: !!authFlow.url, authUrl: authFlow.url },
+				hasAuthCode: !!authCode,
 				timestamp: new Date().toISOString()
 			});
 			
-			return result;
+			return authCode;
 		} catch (error) {
-			logger.error('createAuthChallenge() - Method exit - Error', {
-				operation: 'createAuthChallenge',
+			logger.error('getAuthCode() - Method exit - Error', {
+				operation: 'getAuthCode',
 				operationId,
-				result: { requiresAuth: true, authUrl: 'none' },
 				error: error instanceof Error ? error.message : 'Unknown error',
 				timestamp: new Date().toISOString()
 			});
-			return { requiresAuth: true };
+			throw new Error(`Failed to get auth code: ${error instanceof Error ? error.message : 'Unknown error'}`);
 		}
 	}
 

@@ -172,10 +172,10 @@ export class MCPServer {
 	 */
 	private async registerBasicTools(): Promise<void> {
 		try {
-			// Note: Auth tools (health_check, auth_status, initiate_oauth) are now
-			// registered via ContentTools to avoid duplication
+			// Note: Auth tools have been removed - authentication is now handled
+			// entirely through ContentTools.wrapToolWithAuth method
 			
-			logger.info('Basic tools registered (auth tools handled by ContentTools)');
+			logger.info('Basic tools registered (auth tools removed)');
 		} catch (error) {
 			throw new Error(`Basic tool registration failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
 		}

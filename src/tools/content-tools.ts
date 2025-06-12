@@ -7,7 +7,6 @@ import { APIClient } from '../api/api-client.js';
 import { errorHandler } from '../utils/error-handler.js';
 import { Validators } from '../utils/validators.js';
 import { authMiddleware } from '../auth/auth-middleware.js';
-import { AuthTools } from './auth-tools.js';
 
 export class ContentTools {
 	private apiClient: APIClient;
@@ -20,11 +19,6 @@ export class ContentTools {
 	 * Wrap tool with authentication check
 	 */
 	private wrapToolWithAuth(tool: MCPTool): MCPTool {
-		// Skip auth for initiate_oauth tool
-		if (tool.name === 'initiate_oauth') {
-			return tool;
-		}
-
 		return {
 			...tool,
 			handler: async (params: any): Promise<ToolResult> => {
@@ -33,14 +27,14 @@ export class ContentTools {
 					const isAuthenticated = await authMiddleware.isAuthenticated();
 					
 					if (!isAuthenticated) {
-						const authChallenge = authMiddleware.createAuthChallenge();
+						const authCode = authMiddleware.getAuthCode();
 						return {
 							content: [{
 								type: 'text',
 								text: JSON.stringify({
 									error: 'Authentication required',
 									requiresAuth: true,
-									authUrl: authChallenge.authUrl,
+									authCode: authCode,
 									message: 'Please complete OAuth authentication to use this tool'
 								}, null, 2)
 							}]
@@ -65,7 +59,6 @@ export class ContentTools {
 	 * Get all content management tools with authentication wrapper
 	 */
 	public getTools(): MCPTool[] {
-		const authTools = new AuthTools();
 		const cmsTools = [
 			this.createGetPageTool(),
 			this.createCreatePageTool(),
@@ -76,11 +69,8 @@ export class ContentTools {
 			this.createSearchContentTool()
 		];
 
-		// Combine auth tools (no wrapper needed) with wrapped CMS tools
-		return [
-			...authTools.getTools(),
-			...cmsTools.map(tool => this.wrapToolWithAuth(tool))
-		];
+		// Return only wrapped CMS tools
+		return cmsTools.map(tool => this.wrapToolWithAuth(tool));
 	}
 
 	/**
