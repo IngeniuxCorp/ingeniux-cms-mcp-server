@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Publishing_DeleteRedirects",
-		"description": "DELETE /publishing/redirects",
+		"description": "DELETE /api/v1/publishing/redirects",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -24,79 +24,24 @@
 			}
 		},
 		"method": "DELETE",
-		"endpoint": "/publishing/redirects",
+		"endpoint": "/api/v1/publishing/redirects",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_SaveRedirect",
-		"description": "PUT /publishing/redirect",
+		"description": "PUT /api/v1/publishing/redirect",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"data": {
-					"allOf": [
-						{
-							"type": "object",
-							"x-abstract": true,
-							"properties": {
-								"Id": {
-									"type": "string"
-								}
-							}
-						},
-						{
-							"type": "object",
-							"required": [
-								"Temp"
-							],
-							"properties": {
-								"SelectedTgtIds": {
-									"type": "string"
-								},
-								"SelectedTgtNames": {
-									"type": "string"
-								},
-								"From": {
-									"type": "string"
-								},
-								"To": {
-									"type": "string"
-								},
-								"Notes": {
-									"type": "string"
-								},
-								"Temp": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
-				}
-			},
-			"required": [
-				"data",
-				"data"
-			]
-		},
-		"output_schema": {
-			"allOf": [
-				{
 					"type": "object",
 					"x-abstract": true,
 					"properties": {
 						"Id": {
 							"type": "string"
-						}
-					}
-				},
-				{
-					"type": "object",
-					"required": [
-						"Temp"
-					],
-					"properties": {
+						},
 						"SelectedTgtIds": {
 							"type": "string"
 						},
@@ -115,19 +60,56 @@
 						"Temp": {
 							"type": "boolean"
 						}
-					}
+					},
+					"required": [
+						"Temp"
+					]
 				}
+			},
+			"required": [
+				"data",
+				"data"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"SelectedTgtIds": {
+					"type": "string"
+				},
+				"SelectedTgtNames": {
+					"type": "string"
+				},
+				"From": {
+					"type": "string"
+				},
+				"To": {
+					"type": "string"
+				},
+				"Notes": {
+					"type": "string"
+				},
+				"Temp": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"Temp"
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/publishing/redirect",
+		"endpoint": "/api/v1/publishing/redirect",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_DeleteRedirect",
-		"description": "DELETE /publishing/redirect",
+		"description": "DELETE /api/v1/publishing/redirect",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -145,14 +127,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/publishing/redirect",
+		"endpoint": "/api/v1/publishing/redirect",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetPublishingTarget",
-		"description": "GET /publishing/target",
+		"description": "GET /api/v1/publishing/target",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -167,489 +149,214 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"MarkedPageCount",
-						"MarkedAssetCount",
-						"LastPublished",
-						"LastAssetPublish",
-						"TransformOnPublish",
-						"MvcSupport",
-						"SkipXmpPublishling",
-						"SkipLingualMapPublishling",
-						"ReplicationEnabled",
-						"SimultaneousReplicationEnabled",
-						"ForceLowerCaseUrl",
-						"RedirectToCanonicalUrl",
-						"IncludeFolderNamesInUrlPath",
-						"NormalizeUrlSeparators",
-						"RemoveDiacriticsFromUrl",
-						"PreservePeriods",
-						"UseAliasUrls",
-						"EnableAnalytics"
-					],
-					"properties": {
-						"MarkedPageCount": {
-							"type": "number",
-							"format": "double"
-						},
-						"MarkedAssetCount": {
-							"type": "number",
-							"format": "double"
-						},
-						"LastPublished": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"LastAssetPublish": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"RootPageId": {
-							"type": "string"
-						},
-						"RootPageName": {
-							"type": "string"
-						},
-						"GlobalContentRootId": {
-							"type": "string"
-						},
-						"GlobalContentRootName": {
-							"type": "string"
-						},
-						"PublishFolder": {
-							"type": "string"
-						},
-						"TransformOnPublish": {
-							"type": "boolean"
-						},
-						"UserAgent": {
-							"type": "string"
-						},
-						"Site": {
-							"type": "string"
-						},
-						"ExternalPreviewUrl": {
-							"type": "string"
-						},
-						"IceFieldMarkupUpdateUrl": {
-							"type": "string"
-						},
-						"PresentationFormatterId": {
-							"type": "string"
-						},
-						"MvcSupport": {
-							"type": "boolean"
-						},
-						"SkipXmpPublishling": {
-							"type": "boolean"
-						},
-						"SkipLingualMapPublishling": {
-							"type": "boolean"
-						},
-						"ReplicationEnabled": {
-							"type": "boolean"
-						},
-						"SimultaneousReplicationEnabled": {
-							"type": "boolean"
-						},
-						"HomePageId": {
-							"type": "string"
-						},
-						"HomePageName": {
-							"type": "string"
-						},
-						"ErrorPageId": {
-							"type": "string"
-						},
-						"ErrorPageName": {
-							"type": "string"
-						},
-						"UrlExtension": {
-							"type": "string"
-						},
-						"UrlSeparator": {
-							"type": "string"
-						},
-						"BaseUrl": {
-							"type": "string"
-						},
-						"AnalyticsProvider": {
-							"type": "string"
-						},
-						"ForceLowerCaseUrl": {
-							"type": "boolean"
-						},
-						"RedirectToCanonicalUrl": {
-							"type": "boolean"
-						},
-						"IncludeFolderNamesInUrlPath": {
-							"type": "boolean"
-						},
-						"NormalizeUrlSeparators": {
-							"type": "boolean"
-						},
-						"RemoveDiacriticsFromUrl": {
-							"type": "boolean"
-						},
-						"PreservePeriods": {
-							"type": "boolean"
-						},
-						"UseAliasUrls": {
-							"type": "boolean"
-						},
-						"EnableAnalytics": {
-							"type": "boolean"
-						}
-					}
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"MarkedPageCount": {
+					"type": "number",
+					"format": "double"
+				},
+				"MarkedAssetCount": {
+					"type": "number",
+					"format": "double"
+				},
+				"LastPublished": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastAssetPublish": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"RootPageId": {
+					"type": "string"
+				},
+				"RootPageName": {
+					"type": "string"
+				},
+				"GlobalContentRootId": {
+					"type": "string"
+				},
+				"GlobalContentRootName": {
+					"type": "string"
+				},
+				"PublishFolder": {
+					"type": "string"
+				},
+				"TransformOnPublish": {
+					"type": "boolean"
+				},
+				"UserAgent": {
+					"type": "string"
+				},
+				"Site": {
+					"type": "string"
+				},
+				"ExternalPreviewUrl": {
+					"type": "string"
+				},
+				"IceFieldMarkupUpdateUrl": {
+					"type": "string"
+				},
+				"PresentationFormatterId": {
+					"type": "string"
+				},
+				"MvcSupport": {
+					"type": "boolean"
+				},
+				"SkipXmpPublishling": {
+					"type": "boolean"
+				},
+				"SkipLingualMapPublishling": {
+					"type": "boolean"
+				},
+				"ReplicationEnabled": {
+					"type": "boolean"
+				},
+				"SimultaneousReplicationEnabled": {
+					"type": "boolean"
+				},
+				"HomePageId": {
+					"type": "string"
+				},
+				"HomePageName": {
+					"type": "string"
+				},
+				"ErrorPageId": {
+					"type": "string"
+				},
+				"ErrorPageName": {
+					"type": "string"
+				},
+				"UrlExtension": {
+					"type": "string"
+				},
+				"UrlSeparator": {
+					"type": "string"
+				},
+				"BaseUrl": {
+					"type": "string"
+				},
+				"AnalyticsProvider": {
+					"type": "string"
+				},
+				"ForceLowerCaseUrl": {
+					"type": "boolean"
+				},
+				"RedirectToCanonicalUrl": {
+					"type": "boolean"
+				},
+				"IncludeFolderNamesInUrlPath": {
+					"type": "boolean"
+				},
+				"NormalizeUrlSeparators": {
+					"type": "boolean"
+				},
+				"RemoveDiacriticsFromUrl": {
+					"type": "boolean"
+				},
+				"PreservePeriods": {
+					"type": "boolean"
+				},
+				"UseAliasUrls": {
+					"type": "boolean"
+				},
+				"EnableAnalytics": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"MarkedPageCount",
+				"MarkedAssetCount",
+				"LastPublished",
+				"LastAssetPublish",
+				"TransformOnPublish",
+				"MvcSupport",
+				"SkipXmpPublishling",
+				"SkipLingualMapPublishling",
+				"ReplicationEnabled",
+				"SimultaneousReplicationEnabled",
+				"ForceLowerCaseUrl",
+				"RedirectToCanonicalUrl",
+				"IncludeFolderNamesInUrlPath",
+				"NormalizeUrlSeparators",
+				"RemoveDiacriticsFromUrl",
+				"PreservePeriods",
+				"UseAliasUrls",
+				"EnableAnalytics"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/publishing/target",
+		"endpoint": "/api/v1/publishing/target",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_CreatePublishingTarget",
-		"description": "POST /publishing/target",
+		"description": "POST /api/v1/publishing/target",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"publishingTarget": {
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"type": "object",
-											"properties": {
-												"Id": {
-													"type": "string"
-												},
-												"Name": {
-													"type": "string"
-												}
-											}
-										},
-										{
-											"type": "object"
-										}
-									]
-								},
-								{
-									"type": "object",
-									"x-abstract": true,
-									"required": [
-										"Created",
-										"LastModified",
-										"Archived"
-									],
-									"properties": {
-										"CreationUser": {
-											"type": "string"
-										},
-										"Created": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"LastModifiedUser": {
-											"type": "string"
-										},
-										"LastModified": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"EntityType": {
-											"type": "string"
-										},
-										"Archived": {
-											"type": "boolean"
-										}
-									}
-								}
-							]
-						},
-						{
-							"type": "object",
-							"required": [
-								"MarkedPageCount",
-								"MarkedAssetCount",
-								"LastPublished",
-								"LastAssetPublish",
-								"TransformOnPublish",
-								"MvcSupport",
-								"SkipXmpPublishling",
-								"SkipLingualMapPublishling",
-								"ReplicationEnabled",
-								"SimultaneousReplicationEnabled",
-								"ForceLowerCaseUrl",
-								"RedirectToCanonicalUrl",
-								"IncludeFolderNamesInUrlPath",
-								"NormalizeUrlSeparators",
-								"RemoveDiacriticsFromUrl",
-								"PreservePeriods",
-								"UseAliasUrls",
-								"EnableAnalytics"
-							],
-							"properties": {
-								"MarkedPageCount": {
-									"type": "number",
-									"format": "double"
-								},
-								"MarkedAssetCount": {
-									"type": "number",
-									"format": "double"
-								},
-								"LastPublished": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastAssetPublish": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"RootPageId": {
-									"type": "string"
-								},
-								"RootPageName": {
-									"type": "string"
-								},
-								"GlobalContentRootId": {
-									"type": "string"
-								},
-								"GlobalContentRootName": {
-									"type": "string"
-								},
-								"PublishFolder": {
-									"type": "string"
-								},
-								"TransformOnPublish": {
-									"type": "boolean"
-								},
-								"UserAgent": {
-									"type": "string"
-								},
-								"Site": {
-									"type": "string"
-								},
-								"ExternalPreviewUrl": {
-									"type": "string"
-								},
-								"IceFieldMarkupUpdateUrl": {
-									"type": "string"
-								},
-								"PresentationFormatterId": {
-									"type": "string"
-								},
-								"MvcSupport": {
-									"type": "boolean"
-								},
-								"SkipXmpPublishling": {
-									"type": "boolean"
-								},
-								"SkipLingualMapPublishling": {
-									"type": "boolean"
-								},
-								"ReplicationEnabled": {
-									"type": "boolean"
-								},
-								"SimultaneousReplicationEnabled": {
-									"type": "boolean"
-								},
-								"HomePageId": {
-									"type": "string"
-								},
-								"HomePageName": {
-									"type": "string"
-								},
-								"ErrorPageId": {
-									"type": "string"
-								},
-								"ErrorPageName": {
-									"type": "string"
-								},
-								"UrlExtension": {
-									"type": "string"
-								},
-								"UrlSeparator": {
-									"type": "string"
-								},
-								"BaseUrl": {
-									"type": "string"
-								},
-								"AnalyticsProvider": {
-									"type": "string"
-								},
-								"ForceLowerCaseUrl": {
-									"type": "boolean"
-								},
-								"RedirectToCanonicalUrl": {
-									"type": "boolean"
-								},
-								"IncludeFolderNamesInUrlPath": {
-									"type": "boolean"
-								},
-								"NormalizeUrlSeparators": {
-									"type": "boolean"
-								},
-								"RemoveDiacriticsFromUrl": {
-									"type": "boolean"
-								},
-								"PreservePeriods": {
-									"type": "boolean"
-								},
-								"UseAliasUrls": {
-									"type": "boolean"
-								},
-								"EnableAnalytics": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
-				}
-			},
-			"required": [
-				"publishingTarget",
-				"publishingTarget"
-			]
-		},
-		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
-				},
-				{
 					"type": "object",
-					"required": [
-						"MarkedPageCount",
-						"MarkedAssetCount",
-						"LastPublished",
-						"LastAssetPublish",
-						"TransformOnPublish",
-						"MvcSupport",
-						"SkipXmpPublishling",
-						"SkipLingualMapPublishling",
-						"ReplicationEnabled",
-						"SimultaneousReplicationEnabled",
-						"ForceLowerCaseUrl",
-						"RedirectToCanonicalUrl",
-						"IncludeFolderNamesInUrlPath",
-						"NormalizeUrlSeparators",
-						"RemoveDiacriticsFromUrl",
-						"PreservePeriods",
-						"UseAliasUrls",
-						"EnableAnalytics"
-					],
+					"x-abstract": true,
 					"properties": {
+						"Id": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						},
+						"CreationUser": {
+							"type": "string"
+						},
+						"Created": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"LastModifiedUser": {
+							"type": "string"
+						},
+						"LastModified": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"EntityType": {
+							"type": "string"
+						},
+						"Archived": {
+							"type": "boolean"
+						},
 						"MarkedPageCount": {
 							"type": "number",
 							"format": "double"
@@ -762,300 +469,246 @@
 						"EnableAnalytics": {
 							"type": "boolean"
 						}
-					}
+					},
+					"required": [
+						"Created",
+						"LastModified",
+						"Archived",
+						"MarkedPageCount",
+						"MarkedAssetCount",
+						"LastPublished",
+						"LastAssetPublish",
+						"TransformOnPublish",
+						"MvcSupport",
+						"SkipXmpPublishling",
+						"SkipLingualMapPublishling",
+						"ReplicationEnabled",
+						"SimultaneousReplicationEnabled",
+						"ForceLowerCaseUrl",
+						"RedirectToCanonicalUrl",
+						"IncludeFolderNamesInUrlPath",
+						"NormalizeUrlSeparators",
+						"RemoveDiacriticsFromUrl",
+						"PreservePeriods",
+						"UseAliasUrls",
+						"EnableAnalytics"
+					]
 				}
+			},
+			"required": [
+				"publishingTarget",
+				"publishingTarget"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"MarkedPageCount": {
+					"type": "number",
+					"format": "double"
+				},
+				"MarkedAssetCount": {
+					"type": "number",
+					"format": "double"
+				},
+				"LastPublished": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastAssetPublish": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"RootPageId": {
+					"type": "string"
+				},
+				"RootPageName": {
+					"type": "string"
+				},
+				"GlobalContentRootId": {
+					"type": "string"
+				},
+				"GlobalContentRootName": {
+					"type": "string"
+				},
+				"PublishFolder": {
+					"type": "string"
+				},
+				"TransformOnPublish": {
+					"type": "boolean"
+				},
+				"UserAgent": {
+					"type": "string"
+				},
+				"Site": {
+					"type": "string"
+				},
+				"ExternalPreviewUrl": {
+					"type": "string"
+				},
+				"IceFieldMarkupUpdateUrl": {
+					"type": "string"
+				},
+				"PresentationFormatterId": {
+					"type": "string"
+				},
+				"MvcSupport": {
+					"type": "boolean"
+				},
+				"SkipXmpPublishling": {
+					"type": "boolean"
+				},
+				"SkipLingualMapPublishling": {
+					"type": "boolean"
+				},
+				"ReplicationEnabled": {
+					"type": "boolean"
+				},
+				"SimultaneousReplicationEnabled": {
+					"type": "boolean"
+				},
+				"HomePageId": {
+					"type": "string"
+				},
+				"HomePageName": {
+					"type": "string"
+				},
+				"ErrorPageId": {
+					"type": "string"
+				},
+				"ErrorPageName": {
+					"type": "string"
+				},
+				"UrlExtension": {
+					"type": "string"
+				},
+				"UrlSeparator": {
+					"type": "string"
+				},
+				"BaseUrl": {
+					"type": "string"
+				},
+				"AnalyticsProvider": {
+					"type": "string"
+				},
+				"ForceLowerCaseUrl": {
+					"type": "boolean"
+				},
+				"RedirectToCanonicalUrl": {
+					"type": "boolean"
+				},
+				"IncludeFolderNamesInUrlPath": {
+					"type": "boolean"
+				},
+				"NormalizeUrlSeparators": {
+					"type": "boolean"
+				},
+				"RemoveDiacriticsFromUrl": {
+					"type": "boolean"
+				},
+				"PreservePeriods": {
+					"type": "boolean"
+				},
+				"UseAliasUrls": {
+					"type": "boolean"
+				},
+				"EnableAnalytics": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"MarkedPageCount",
+				"MarkedAssetCount",
+				"LastPublished",
+				"LastAssetPublish",
+				"TransformOnPublish",
+				"MvcSupport",
+				"SkipXmpPublishling",
+				"SkipLingualMapPublishling",
+				"ReplicationEnabled",
+				"SimultaneousReplicationEnabled",
+				"ForceLowerCaseUrl",
+				"RedirectToCanonicalUrl",
+				"IncludeFolderNamesInUrlPath",
+				"NormalizeUrlSeparators",
+				"RemoveDiacriticsFromUrl",
+				"PreservePeriods",
+				"UseAliasUrls",
+				"EnableAnalytics"
 			]
 		},
 		"method": "POST",
-		"endpoint": "/publishing/target",
+		"endpoint": "/api/v1/publishing/target",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_UpdatePublishingTarget",
-		"description": "PUT /publishing/target",
+		"description": "PUT /api/v1/publishing/target",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"publishingTarget": {
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"type": "object",
-											"properties": {
-												"Id": {
-													"type": "string"
-												},
-												"Name": {
-													"type": "string"
-												}
-											}
-										},
-										{
-											"type": "object"
-										}
-									]
-								},
-								{
-									"type": "object",
-									"x-abstract": true,
-									"required": [
-										"Created",
-										"LastModified",
-										"Archived"
-									],
-									"properties": {
-										"CreationUser": {
-											"type": "string"
-										},
-										"Created": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"LastModifiedUser": {
-											"type": "string"
-										},
-										"LastModified": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"EntityType": {
-											"type": "string"
-										},
-										"Archived": {
-											"type": "boolean"
-										}
-									}
-								}
-							]
-						},
-						{
-							"type": "object",
-							"required": [
-								"MarkedPageCount",
-								"MarkedAssetCount",
-								"LastPublished",
-								"LastAssetPublish",
-								"TransformOnPublish",
-								"MvcSupport",
-								"SkipXmpPublishling",
-								"SkipLingualMapPublishling",
-								"ReplicationEnabled",
-								"SimultaneousReplicationEnabled",
-								"ForceLowerCaseUrl",
-								"RedirectToCanonicalUrl",
-								"IncludeFolderNamesInUrlPath",
-								"NormalizeUrlSeparators",
-								"RemoveDiacriticsFromUrl",
-								"PreservePeriods",
-								"UseAliasUrls",
-								"EnableAnalytics"
-							],
-							"properties": {
-								"MarkedPageCount": {
-									"type": "number",
-									"format": "double"
-								},
-								"MarkedAssetCount": {
-									"type": "number",
-									"format": "double"
-								},
-								"LastPublished": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastAssetPublish": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"RootPageId": {
-									"type": "string"
-								},
-								"RootPageName": {
-									"type": "string"
-								},
-								"GlobalContentRootId": {
-									"type": "string"
-								},
-								"GlobalContentRootName": {
-									"type": "string"
-								},
-								"PublishFolder": {
-									"type": "string"
-								},
-								"TransformOnPublish": {
-									"type": "boolean"
-								},
-								"UserAgent": {
-									"type": "string"
-								},
-								"Site": {
-									"type": "string"
-								},
-								"ExternalPreviewUrl": {
-									"type": "string"
-								},
-								"IceFieldMarkupUpdateUrl": {
-									"type": "string"
-								},
-								"PresentationFormatterId": {
-									"type": "string"
-								},
-								"MvcSupport": {
-									"type": "boolean"
-								},
-								"SkipXmpPublishling": {
-									"type": "boolean"
-								},
-								"SkipLingualMapPublishling": {
-									"type": "boolean"
-								},
-								"ReplicationEnabled": {
-									"type": "boolean"
-								},
-								"SimultaneousReplicationEnabled": {
-									"type": "boolean"
-								},
-								"HomePageId": {
-									"type": "string"
-								},
-								"HomePageName": {
-									"type": "string"
-								},
-								"ErrorPageId": {
-									"type": "string"
-								},
-								"ErrorPageName": {
-									"type": "string"
-								},
-								"UrlExtension": {
-									"type": "string"
-								},
-								"UrlSeparator": {
-									"type": "string"
-								},
-								"BaseUrl": {
-									"type": "string"
-								},
-								"AnalyticsProvider": {
-									"type": "string"
-								},
-								"ForceLowerCaseUrl": {
-									"type": "boolean"
-								},
-								"RedirectToCanonicalUrl": {
-									"type": "boolean"
-								},
-								"IncludeFolderNamesInUrlPath": {
-									"type": "boolean"
-								},
-								"NormalizeUrlSeparators": {
-									"type": "boolean"
-								},
-								"RemoveDiacriticsFromUrl": {
-									"type": "boolean"
-								},
-								"PreservePeriods": {
-									"type": "boolean"
-								},
-								"UseAliasUrls": {
-									"type": "boolean"
-								},
-								"EnableAnalytics": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
-				}
-			},
-			"required": [
-				"publishingTarget",
-				"publishingTarget"
-			]
-		},
-		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
-				},
-				{
 					"type": "object",
-					"required": [
-						"MarkedPageCount",
-						"MarkedAssetCount",
-						"LastPublished",
-						"LastAssetPublish",
-						"TransformOnPublish",
-						"MvcSupport",
-						"SkipXmpPublishling",
-						"SkipLingualMapPublishling",
-						"ReplicationEnabled",
-						"SimultaneousReplicationEnabled",
-						"ForceLowerCaseUrl",
-						"RedirectToCanonicalUrl",
-						"IncludeFolderNamesInUrlPath",
-						"NormalizeUrlSeparators",
-						"RemoveDiacriticsFromUrl",
-						"PreservePeriods",
-						"UseAliasUrls",
-						"EnableAnalytics"
-					],
+					"x-abstract": true,
 					"properties": {
+						"Id": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						},
+						"CreationUser": {
+							"type": "string"
+						},
+						"Created": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"LastModifiedUser": {
+							"type": "string"
+						},
+						"LastModified": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"EntityType": {
+							"type": "string"
+						},
+						"Archived": {
+							"type": "boolean"
+						},
 						"MarkedPageCount": {
 							"type": "number",
 							"format": "double"
@@ -1168,19 +821,213 @@
 						"EnableAnalytics": {
 							"type": "boolean"
 						}
-					}
+					},
+					"required": [
+						"Created",
+						"LastModified",
+						"Archived",
+						"MarkedPageCount",
+						"MarkedAssetCount",
+						"LastPublished",
+						"LastAssetPublish",
+						"TransformOnPublish",
+						"MvcSupport",
+						"SkipXmpPublishling",
+						"SkipLingualMapPublishling",
+						"ReplicationEnabled",
+						"SimultaneousReplicationEnabled",
+						"ForceLowerCaseUrl",
+						"RedirectToCanonicalUrl",
+						"IncludeFolderNamesInUrlPath",
+						"NormalizeUrlSeparators",
+						"RemoveDiacriticsFromUrl",
+						"PreservePeriods",
+						"UseAliasUrls",
+						"EnableAnalytics"
+					]
 				}
+			},
+			"required": [
+				"publishingTarget",
+				"publishingTarget"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"MarkedPageCount": {
+					"type": "number",
+					"format": "double"
+				},
+				"MarkedAssetCount": {
+					"type": "number",
+					"format": "double"
+				},
+				"LastPublished": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastAssetPublish": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"RootPageId": {
+					"type": "string"
+				},
+				"RootPageName": {
+					"type": "string"
+				},
+				"GlobalContentRootId": {
+					"type": "string"
+				},
+				"GlobalContentRootName": {
+					"type": "string"
+				},
+				"PublishFolder": {
+					"type": "string"
+				},
+				"TransformOnPublish": {
+					"type": "boolean"
+				},
+				"UserAgent": {
+					"type": "string"
+				},
+				"Site": {
+					"type": "string"
+				},
+				"ExternalPreviewUrl": {
+					"type": "string"
+				},
+				"IceFieldMarkupUpdateUrl": {
+					"type": "string"
+				},
+				"PresentationFormatterId": {
+					"type": "string"
+				},
+				"MvcSupport": {
+					"type": "boolean"
+				},
+				"SkipXmpPublishling": {
+					"type": "boolean"
+				},
+				"SkipLingualMapPublishling": {
+					"type": "boolean"
+				},
+				"ReplicationEnabled": {
+					"type": "boolean"
+				},
+				"SimultaneousReplicationEnabled": {
+					"type": "boolean"
+				},
+				"HomePageId": {
+					"type": "string"
+				},
+				"HomePageName": {
+					"type": "string"
+				},
+				"ErrorPageId": {
+					"type": "string"
+				},
+				"ErrorPageName": {
+					"type": "string"
+				},
+				"UrlExtension": {
+					"type": "string"
+				},
+				"UrlSeparator": {
+					"type": "string"
+				},
+				"BaseUrl": {
+					"type": "string"
+				},
+				"AnalyticsProvider": {
+					"type": "string"
+				},
+				"ForceLowerCaseUrl": {
+					"type": "boolean"
+				},
+				"RedirectToCanonicalUrl": {
+					"type": "boolean"
+				},
+				"IncludeFolderNamesInUrlPath": {
+					"type": "boolean"
+				},
+				"NormalizeUrlSeparators": {
+					"type": "boolean"
+				},
+				"RemoveDiacriticsFromUrl": {
+					"type": "boolean"
+				},
+				"PreservePeriods": {
+					"type": "boolean"
+				},
+				"UseAliasUrls": {
+					"type": "boolean"
+				},
+				"EnableAnalytics": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"MarkedPageCount",
+				"MarkedAssetCount",
+				"LastPublished",
+				"LastAssetPublish",
+				"TransformOnPublish",
+				"MvcSupport",
+				"SkipXmpPublishling",
+				"SkipLingualMapPublishling",
+				"ReplicationEnabled",
+				"SimultaneousReplicationEnabled",
+				"ForceLowerCaseUrl",
+				"RedirectToCanonicalUrl",
+				"IncludeFolderNamesInUrlPath",
+				"NormalizeUrlSeparators",
+				"RemoveDiacriticsFromUrl",
+				"PreservePeriods",
+				"UseAliasUrls",
+				"EnableAnalytics"
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/publishing/target",
+		"endpoint": "/api/v1/publishing/target",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetPublishingTargets",
-		"description": "GET /publishing/targets",
+		"description": "GET /api/v1/publishing/targets",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1426,14 +1273,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/publishing/targets",
+		"endpoint": "/api/v1/publishing/targets",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetPublishingTargetGroups",
-		"description": "GET /publishing/target/groups",
+		"description": "GET /api/v1/publishing/target/groups",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1522,14 +1369,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/publishing/target/groups",
+		"endpoint": "/api/v1/publishing/target/groups",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_SetPublishingTargetGroups",
-		"description": "POST /publishing/target/groups",
+		"description": "POST /api/v1/publishing/target/groups",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1626,14 +1473,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/publishing/target/groups",
+		"endpoint": "/api/v1/publishing/target/groups",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetContentItemPublishedToTarget",
-		"description": "POST /publishing/content-publish-history",
+		"description": "POST /api/v1/publishing/content-publish-history",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1687,14 +1534,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/publishing/content-publish-history",
+		"endpoint": "/api/v1/publishing/content-publish-history",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetUserAgents",
-		"description": "GET /publishing/user-agents",
+		"description": "GET /api/v1/publishing/user-agents",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1720,14 +1567,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/publishing/user-agents",
+		"endpoint": "/api/v1/publishing/user-agents",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetSites",
-		"description": "GET /publishing/sites",
+		"description": "GET /api/v1/publishing/sites",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1750,14 +1597,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/publishing/sites",
+		"endpoint": "/api/v1/publishing/sites",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetDitaDependencies",
-		"description": "POST /publishing/gather-dependencies",
+		"description": "POST /api/v1/publishing/gather-dependencies",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1913,14 +1760,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/publishing/gather-dependencies",
+		"endpoint": "/api/v1/publishing/gather-dependencies",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetDitaOutputFormats",
-		"description": "GET /publishing/dita-output-formats",
+		"description": "GET /api/v1/publishing/dita-output-formats",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1952,14 +1799,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/publishing/dita-output-formats",
+		"endpoint": "/api/v1/publishing/dita-output-formats",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetPostPublishContentProcessors",
-		"description": "GET /publishing/content-processors",
+		"description": "GET /api/v1/publishing/content-processors",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2127,14 +1974,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/publishing/content-processors",
+		"endpoint": "/api/v1/publishing/content-processors",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_SetPostPublishContentProcessor",
-		"description": "POST /publishing/content-processors",
+		"description": "POST /api/v1/publishing/content-processors",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2389,14 +2236,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/publishing/content-processors",
+		"endpoint": "/api/v1/publishing/content-processors",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetContentProcessorLogs",
-		"description": "GET /publishing/content-processor-logs",
+		"description": "GET /api/v1/publishing/content-processor-logs",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2506,14 +2353,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/publishing/content-processor-logs",
+		"endpoint": "/api/v1/publishing/content-processor-logs",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Reports_GetStats",
-		"description": "GET /reports/stats",
+		"description": "GET /api/v1/reports/stats",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2621,14 +2468,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/reports/stats",
+		"endpoint": "/api/v1/reports/stats",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_GetScheduling",
-		"description": "GET /reports/scheduling",
+		"description": "GET /api/v1/reports/scheduling",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2692,14 +2539,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/reports/scheduling",
+		"endpoint": "/api/v1/reports/scheduling",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_ToggleScheduler",
-		"description": "POST /reports/toggle-scheduler",
+		"description": "POST /api/v1/reports/toggle-scheduler",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2734,7 +2581,7 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/reports/toggle-scheduler",
+		"endpoint": "/api/v1/reports/toggle-scheduler",
 		"tags": [
 			"Reports"
 		]

@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "InsiteSearch_GetBoostSchemas",
-		"description": "GET /insite-search/boost-schemas",
+		"description": "GET /api/v1/insite-search/boost-schemas",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -40,14 +40,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/insite-search/boost-schemas",
+		"endpoint": "/api/v1/insite-search/boost-schemas",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_SaveBoostSchemas",
-		"description": "POST /insite-search/boost-schemas",
+		"description": "POST /api/v1/insite-search/boost-schemas",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -91,14 +91,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/insite-search/boost-schemas",
+		"endpoint": "/api/v1/insite-search/boost-schemas",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_GetBoostFieldsForSchema",
-		"description": "GET /insite-search/boost-fields",
+		"description": "GET /api/v1/insite-search/boost-fields",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -147,14 +147,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/insite-search/boost-fields",
+		"endpoint": "/api/v1/insite-search/boost-fields",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_SaveBoostFieldsForSchema",
-		"description": "POST /insite-search/boost-fields",
+		"description": "POST /api/v1/insite-search/boost-fields",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -208,14 +208,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/insite-search/boost-fields",
+		"endpoint": "/api/v1/insite-search/boost-fields",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_GetBoostSiteWideFields",
-		"description": "GET /insite-search/sitewide-boost-fields",
+		"description": "GET /api/v1/insite-search/sitewide-boost-fields",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -258,14 +258,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/insite-search/sitewide-boost-fields",
+		"endpoint": "/api/v1/insite-search/sitewide-boost-fields",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_SaveSiteWideBoostFields",
-		"description": "POST /insite-search/site-wide-boost-fields",
+		"description": "POST /api/v1/insite-search/site-wide-boost-fields",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -313,14 +313,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/insite-search/site-wide-boost-fields",
+		"endpoint": "/api/v1/insite-search/site-wide-boost-fields",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_ApplyToTargets",
-		"description": "POST /insite-search/apply-to-target",
+		"description": "POST /api/v1/insite-search/apply-to-target",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -346,14 +346,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/insite-search/apply-to-target",
+		"endpoint": "/api/v1/insite-search/apply-to-target",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "L10N_GetLocalizationStats",
-		"description": "GET /L10N/stats",
+		"description": "GET /api/v1/L10N/stats",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -411,14 +411,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/L10N/stats",
+		"endpoint": "/api/v1/L10N/stats",
 		"tags": [
 			"L10N"
 		]
 	},
 	{
 		"tool_name": "L10N_GetPageSchemas",
-		"description": "GET /L10N/page-schemas",
+		"description": "GET /api/v1/L10N/page-schemas",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -485,14 +485,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/L10N/page-schemas",
+		"endpoint": "/api/v1/L10N/page-schemas",
 		"tags": [
 			"L10N"
 		]
 	},
 	{
 		"tool_name": "L10N_GetComponentSchemas",
-		"description": "GET /L10N/component-schemas",
+		"description": "GET /api/v1/L10N/component-schemas",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -559,14 +559,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/L10N/component-schemas",
+		"endpoint": "/api/v1/L10N/component-schemas",
 		"tags": [
 			"L10N"
 		]
 	},
 	{
 		"tool_name": "L10N_GetAssetSchemas",
-		"description": "GET /L10N/asset-schemas",
+		"description": "GET /api/v1/L10N/asset-schemas",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -633,14 +633,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/L10N/asset-schemas",
+		"endpoint": "/api/v1/L10N/asset-schemas",
 		"tags": [
 			"L10N"
 		]
 	},
 	{
 		"tool_name": "L10N_GetPCRs",
-		"description": "GET /L10N/pcrs",
+		"description": "GET /api/v1/L10N/pcrs",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -707,14 +707,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/L10N/pcrs",
+		"endpoint": "/api/v1/L10N/pcrs",
 		"tags": [
 			"L10N"
 		]
 	},
 	{
 		"tool_name": "L10N_GetWorkflowDefinitions",
-		"description": "GET /L10N/workflow-definitions",
+		"description": "GET /api/v1/L10N/workflow-definitions",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -781,14 +781,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/L10N/workflow-definitions",
+		"endpoint": "/api/v1/L10N/workflow-definitions",
 		"tags": [
 			"L10N"
 		]
 	},
 	{
 		"tool_name": "L10N_GetWorkstates",
-		"description": "GET /L10N/workstates",
+		"description": "GET /api/v1/L10N/workstates",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -855,14 +855,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/L10N/workstates",
+		"endpoint": "/api/v1/L10N/workstates",
 		"tags": [
 			"L10N"
 		]
 	},
 	{
 		"tool_name": "Logs_GetCMSLog",
-		"description": "GET /logs/cms",
+		"description": "GET /api/v1/logs/cms",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -884,67 +884,60 @@
 			}
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"type": "object",
-					"required": [
-						"TotalResults",
-						"PageSize",
-						"NextIndex"
-					],
-					"properties": {
-						"Results": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"LineNum"
-								],
-								"properties": {
-									"LineNum": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"Message": {
-										"type": "string"
-									},
-									"Type": {
-										"type": "string"
-									},
-									"Time": {
-										"type": "string"
-									}
-								}
+			"type": "object",
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"LineNum"
+						],
+						"properties": {
+							"LineNum": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"Message": {
+								"type": "string"
+							},
+							"Type": {
+								"type": "string"
+							},
+							"Time": {
+								"type": "string"
 							}
-						},
-						"TotalResults": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"PageSize": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"NextIndex": {
-							"type": "integer",
-							"format": "int32"
 						}
 					}
 				},
-				{
-					"type": "object"
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
 				}
+			},
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/logs/cms",
+		"endpoint": "/api/v1/logs/cms",
 		"tags": [
 			"Logs"
 		]
 	},
 	{
 		"tool_name": "Logs_GetCMSLogFile",
-		"description": "GET /logs/cms/file",
+		"description": "GET /api/v1/logs/cms/file",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -953,14 +946,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/logs/cms/file",
+		"endpoint": "/api/v1/logs/cms/file",
 		"tags": [
 			"Logs"
 		]
 	},
 	{
 		"tool_name": "Logs_GetCMSLogArchives",
-		"description": "GET /logs/cms/archive",
+		"description": "GET /api/v1/logs/cms/archive",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -969,14 +962,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/logs/cms/archive",
+		"endpoint": "/api/v1/logs/cms/archive",
 		"tags": [
 			"Logs"
 		]
 	},
 	{
 		"tool_name": "Notifications_GetContentFreeze",
-		"description": "GET /notifications/contentfreeze",
+		"description": "GET /api/v1/notifications/contentfreeze",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1002,14 +995,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/notifications/contentfreeze",
+		"endpoint": "/api/v1/notifications/contentfreeze",
 		"tags": [
 			"Notifications"
 		]
 	},
 	{
 		"tool_name": "Notifications_GetAlerts",
-		"description": "GET /notifications/alerts",
+		"description": "GET /api/v1/notifications/alerts",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1064,14 +1057,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/notifications/alerts",
+		"endpoint": "/api/v1/notifications/alerts",
 		"tags": [
 			"Notifications"
 		]
 	},
 	{
 		"tool_name": "Dashboard_GetOverview",
-		"description": "GET /dashboard/overview",
+		"description": "GET /api/v1/dashboard/overview",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1362,75 +1355,63 @@
 					"type": "object",
 					"properties": {
 						"Traffic": {
-							"allOf": [
-								{
-									"$ref": "#/definitions/NameIdPair",
-									"circular": true
-								},
-								{
-									"type": "object",
-									"properties": {
-										"Info": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"Value": {
-														"type": "string"
-													},
-													"Name": {
-														"type": "string"
-													}
-												}
+							"$ref": "#/definitions/NameIdPair",
+							"circular": true,
+							"type": "object",
+							"properties": {
+								"Info": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"Value": {
+												"type": "string"
+											},
+											"Name": {
+												"type": "string"
 											}
-										},
-										"Error": {
-											"type": "string"
 										}
 									}
+								},
+								"Error": {
+									"type": "string"
 								}
-							]
+							}
 						},
 						"Sources": {
-							"allOf": [
-								{
-									"$ref": "#/definitions/NameIdPair",
-									"circular": true
-								},
-								{
-									"type": "object",
-									"properties": {
-										"PiePieces": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"required": [
-													"Data"
-												],
-												"properties": {
-													"Label": {
-														"type": "string"
-													},
-													"Data": {
-														"type": "integer",
-														"format": "int32"
-													}
-												}
+							"$ref": "#/definitions/NameIdPair",
+							"circular": true,
+							"type": "object",
+							"properties": {
+								"PiePieces": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"required": [
+											"Data"
+										],
+										"properties": {
+											"Label": {
+												"type": "string"
+											},
+											"Data": {
+												"type": "integer",
+												"format": "int32"
 											}
-										},
-										"Error": {
-											"type": "string"
 										}
 									}
+								},
+								"Error": {
+									"type": "string"
 								}
-							]
+							}
 						}
 					}
 				}
 			}
 		},
 		"method": "GET",
-		"endpoint": "/dashboard/overview",
+		"endpoint": "/api/v1/dashboard/overview",
 		"tags": [
 			"Dashboard"
 		]

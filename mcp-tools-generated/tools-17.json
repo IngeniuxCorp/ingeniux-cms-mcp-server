@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Settings_GetServerVariables",
-		"description": "GET /settings/server-variables",
+		"description": "GET /api/v1/settings/server-variables",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -21,14 +21,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/settings/server-variables",
+		"endpoint": "/api/v1/settings/server-variables",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_ForceArchive",
-		"description": "POST /settings/force-archive",
+		"description": "POST /api/v1/settings/force-archive",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -46,14 +46,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/settings/force-archive",
+		"endpoint": "/api/v1/settings/force-archive",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveGroupProfileForPageTreeMenu",
-		"description": "DELETE /settings/page-tree-group",
+		"description": "DELETE /api/v1/settings/page-tree-group",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -68,49 +68,31 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"settingName": {
-									"type": "string"
-								}
-							}
-						},
-						{
-							"type": "object",
-							"properties": {
-								"groupId": {
-									"type": "string"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"properties": {
+				"settingName": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"removed"
-					],
-					"properties": {
-						"removed": {
-							"type": "boolean"
-						}
-					}
+				"groupId": {
+					"type": "string"
+				},
+				"removed": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"removed"
 			]
 		},
 		"method": "DELETE",
-		"endpoint": "/settings/page-tree-group",
+		"endpoint": "/api/v1/settings/page-tree-group",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveGroupProfileForAssetTreeMenu",
-		"description": "DELETE /settings/asset-tree-group",
+		"description": "DELETE /api/v1/settings/asset-tree-group",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -125,49 +107,31 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"settingName": {
-									"type": "string"
-								}
-							}
-						},
-						{
-							"type": "object",
-							"properties": {
-								"groupId": {
-									"type": "string"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"properties": {
+				"settingName": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"removed"
-					],
-					"properties": {
-						"removed": {
-							"type": "boolean"
-						}
-					}
+				"groupId": {
+					"type": "string"
+				},
+				"removed": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"removed"
 			]
 		},
 		"method": "DELETE",
-		"endpoint": "/settings/asset-tree-group",
+		"endpoint": "/api/v1/settings/asset-tree-group",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveTinyMceGroup",
-		"description": "DELETE /settings/tinymce-group",
+		"description": "DELETE /api/v1/settings/tinymce-group",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -188,49 +152,31 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"settingName": {
-									"type": "string"
-								}
-							}
-						},
-						{
-							"type": "object",
-							"properties": {
-								"groupId": {
-									"type": "string"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"properties": {
+				"settingName": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"removed"
-					],
-					"properties": {
-						"removed": {
-							"type": "boolean"
-						}
-					}
+				"groupId": {
+					"type": "string"
+				},
+				"removed": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"removed"
 			]
 		},
 		"method": "DELETE",
-		"endpoint": "/settings/tinymce-group",
+		"endpoint": "/api/v1/settings/tinymce-group",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveDictionary",
-		"description": "DELETE /settings/dictionary",
+		"description": "DELETE /api/v1/settings/dictionary",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -248,14 +194,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/settings/dictionary",
+		"endpoint": "/api/v1/settings/dictionary",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_CreateCustomLocale",
-		"description": "PUT /settings/custom-locale",
+		"description": "PUT /api/v1/settings/custom-locale",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -299,14 +245,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/settings/custom-locale",
+		"endpoint": "/api/v1/settings/custom-locale",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveCustomLocale",
-		"description": "DELETE /settings/custom-locale",
+		"description": "DELETE /api/v1/settings/custom-locale",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -324,14 +270,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/settings/custom-locale",
+		"endpoint": "/api/v1/settings/custom-locale",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetStats",
-		"description": "GET /taxonomy/statistics",
+		"description": "GET /api/v1/taxonomy/statistics",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -362,14 +308,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/taxonomy/statistics",
+		"endpoint": "/api/v1/taxonomy/statistics",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetCategories",
-		"description": "GET /taxonomy/categories",
+		"description": "GET /api/v1/taxonomy/categories",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -614,14 +560,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/taxonomy/categories",
+		"endpoint": "/api/v1/taxonomy/categories",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetRootCategories",
-		"description": "GET /taxonomy/root-categories",
+		"description": "GET /api/v1/taxonomy/root-categories",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -856,14 +802,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/taxonomy/root-categories",
+		"endpoint": "/api/v1/taxonomy/root-categories",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetChildren",
-		"description": "GET /taxonomy/category/children",
+		"description": "GET /api/v1/taxonomy/category/children",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1101,14 +1047,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/taxonomy/category/children",
+		"endpoint": "/api/v1/taxonomy/category/children",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetParent",
-		"description": "GET /taxonomy/category/parent",
+		"description": "GET /api/v1/taxonomy/category/parent",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1123,202 +1069,164 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"type": "object",
-											"properties": {
-												"Id": {
-													"type": "string"
-												},
-												"Name": {
-													"type": "string"
-												}
-											}
-										},
-										{
-											"type": "object"
-										}
-									]
-								},
-								{
-									"type": "object",
-									"x-abstract": true,
-									"required": [
-										"Created",
-										"LastModified",
-										"Archived"
-									],
-									"properties": {
-										"CreationUser": {
-											"type": "string"
-										},
-										"Created": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"LastModifiedUser": {
-											"type": "string"
-										},
-										"LastModified": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"EntityType": {
-											"type": "string"
-										},
-										"Archived": {
-											"type": "boolean"
-										}
-									}
-								}
-							]
-						},
-						{
-							"type": "object",
-							"required": [
-								"ChildrenCount",
-								"SiblingPosition"
-							],
-							"properties": {
-								"ParentId": {
-									"type": "string"
-								},
-								"ChildrenCount": {
-									"type": "integer",
-									"format": "int32"
-								},
-								"SiblingPosition": {
-									"type": "number",
-									"format": "double"
-								}
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"ChildrenCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"SiblingPosition": {
+					"type": "number",
+					"format": "double"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"TypeName": {
+					"type": "string"
+				},
+				"ExternalId": {
+					"type": "string"
+				},
+				"PageIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"AssetIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"Locale": {
+					"type": "string"
+				},
+				"Synonyms": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Locale": {
+								"type": "string"
+							},
+							"Value": {
+								"type": "string"
 							}
 						}
-					]
+					}
 				},
-				{
-					"type": "object",
-					"required": [
-						"SecurityLevel"
-					],
-					"properties": {
-						"Description": {
-							"type": "string"
-						},
-						"TypeName": {
-							"type": "string"
-						},
-						"ExternalId": {
-							"type": "string"
-						},
-						"PageIds": {
-							"type": "array",
-							"items": {
+				"SecurityLevel": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"GroupPermissions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"PermissionLevel"
+						],
+						"properties": {
+							"GroupId": {
 								"type": "string"
-							}
-						},
-						"AssetIds": {
-							"type": "array",
-							"items": {
+							},
+							"GroupName": {
 								"type": "string"
-							}
-						},
-						"Locale": {
-							"type": "string"
-						},
-						"Synonyms": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"Locale": {
-										"type": "string"
-									},
-									"Value": {
-										"type": "string"
-									}
-								}
-							}
-						},
-						"SecurityLevel": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"GroupPermissions": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"PermissionLevel"
+							},
+							"PermissionLevel": {
+								"type": "string",
+								"description": "The list of node-level permissions for Pages",
+								"x-enumNames": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
 								],
-								"properties": {
-									"GroupId": {
-										"type": "string"
-									},
-									"GroupName": {
-										"type": "string"
-									},
-									"PermissionLevel": {
-										"type": "string",
-										"description": "The list of node-level permissions for Pages",
-										"x-enumNames": [
-											"NO_ACCESS",
-											"READ_ONLY",
-											"FULL_ACCESS"
-										],
-										"enum": [
-											"NO_ACCESS",
-											"READ_ONLY",
-											"FULL_ACCESS"
-										]
-									}
-								}
+								"enum": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
+								]
 							}
-						},
-						"Translations": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"RequiresUpdate"
-								],
-								"properties": {
-									"Locale": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									},
-									"Description": {
-										"type": "string"
-									},
-									"TypeName": {
-										"type": "string"
-									},
-									"RequiresUpdate": {
-										"type": "boolean"
-									}
-								}
+						}
+					}
+				},
+				"Translations": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"RequiresUpdate"
+						],
+						"properties": {
+							"Locale": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"Description": {
+								"type": "string"
+							},
+							"TypeName": {
+								"type": "string"
+							},
+							"RequiresUpdate": {
+								"type": "boolean"
 							}
 						}
 					}
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"ChildrenCount",
+				"SiblingPosition",
+				"SecurityLevel"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/taxonomy/category/parent",
+		"endpoint": "/api/v1/taxonomy/category/parent",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetAncestors",
-		"description": "GET /taxonomy/category/ancestors",
+		"description": "GET /api/v1/taxonomy/category/ancestors",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1524,14 +1432,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/taxonomy/category/ancestors",
+		"endpoint": "/api/v1/taxonomy/category/ancestors",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetCategory",
-		"description": "GET /taxonomy/category",
+		"description": "GET /api/v1/taxonomy/category",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1546,202 +1454,164 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"type": "object",
-											"properties": {
-												"Id": {
-													"type": "string"
-												},
-												"Name": {
-													"type": "string"
-												}
-											}
-										},
-										{
-											"type": "object"
-										}
-									]
-								},
-								{
-									"type": "object",
-									"x-abstract": true,
-									"required": [
-										"Created",
-										"LastModified",
-										"Archived"
-									],
-									"properties": {
-										"CreationUser": {
-											"type": "string"
-										},
-										"Created": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"LastModifiedUser": {
-											"type": "string"
-										},
-										"LastModified": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"EntityType": {
-											"type": "string"
-										},
-										"Archived": {
-											"type": "boolean"
-										}
-									}
-								}
-							]
-						},
-						{
-							"type": "object",
-							"required": [
-								"ChildrenCount",
-								"SiblingPosition"
-							],
-							"properties": {
-								"ParentId": {
-									"type": "string"
-								},
-								"ChildrenCount": {
-									"type": "integer",
-									"format": "int32"
-								},
-								"SiblingPosition": {
-									"type": "number",
-									"format": "double"
-								}
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"ChildrenCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"SiblingPosition": {
+					"type": "number",
+					"format": "double"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"TypeName": {
+					"type": "string"
+				},
+				"ExternalId": {
+					"type": "string"
+				},
+				"PageIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"AssetIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"Locale": {
+					"type": "string"
+				},
+				"Synonyms": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Locale": {
+								"type": "string"
+							},
+							"Value": {
+								"type": "string"
 							}
 						}
-					]
+					}
 				},
-				{
-					"type": "object",
-					"required": [
-						"SecurityLevel"
-					],
-					"properties": {
-						"Description": {
-							"type": "string"
-						},
-						"TypeName": {
-							"type": "string"
-						},
-						"ExternalId": {
-							"type": "string"
-						},
-						"PageIds": {
-							"type": "array",
-							"items": {
+				"SecurityLevel": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"GroupPermissions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"PermissionLevel"
+						],
+						"properties": {
+							"GroupId": {
 								"type": "string"
-							}
-						},
-						"AssetIds": {
-							"type": "array",
-							"items": {
+							},
+							"GroupName": {
 								"type": "string"
-							}
-						},
-						"Locale": {
-							"type": "string"
-						},
-						"Synonyms": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"Locale": {
-										"type": "string"
-									},
-									"Value": {
-										"type": "string"
-									}
-								}
-							}
-						},
-						"SecurityLevel": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"GroupPermissions": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"PermissionLevel"
+							},
+							"PermissionLevel": {
+								"type": "string",
+								"description": "The list of node-level permissions for Pages",
+								"x-enumNames": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
 								],
-								"properties": {
-									"GroupId": {
-										"type": "string"
-									},
-									"GroupName": {
-										"type": "string"
-									},
-									"PermissionLevel": {
-										"type": "string",
-										"description": "The list of node-level permissions for Pages",
-										"x-enumNames": [
-											"NO_ACCESS",
-											"READ_ONLY",
-											"FULL_ACCESS"
-										],
-										"enum": [
-											"NO_ACCESS",
-											"READ_ONLY",
-											"FULL_ACCESS"
-										]
-									}
-								}
+								"enum": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
+								]
 							}
-						},
-						"Translations": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"RequiresUpdate"
-								],
-								"properties": {
-									"Locale": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									},
-									"Description": {
-										"type": "string"
-									},
-									"TypeName": {
-										"type": "string"
-									},
-									"RequiresUpdate": {
-										"type": "boolean"
-									}
-								}
+						}
+					}
+				},
+				"Translations": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"RequiresUpdate"
+						],
+						"properties": {
+							"Locale": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"Description": {
+								"type": "string"
+							},
+							"TypeName": {
+								"type": "string"
+							},
+							"RequiresUpdate": {
+								"type": "boolean"
 							}
 						}
 					}
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"ChildrenCount",
+				"SiblingPosition",
+				"SecurityLevel"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/taxonomy/category",
+		"endpoint": "/api/v1/taxonomy/category",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_CreateCategory",
-		"description": "POST /taxonomy/category",
+		"description": "POST /api/v1/taxonomy/category",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1766,90 +1636,208 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"type": "object",
-											"properties": {
-												"Id": {
-													"type": "string"
-												},
-												"Name": {
-													"type": "string"
-												}
-											}
-										},
-										{
-											"type": "object"
-										}
-									]
-								},
-								{
-									"type": "object",
-									"x-abstract": true,
-									"required": [
-										"Created",
-										"LastModified",
-										"Archived"
-									],
-									"properties": {
-										"CreationUser": {
-											"type": "string"
-										},
-										"Created": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"LastModifiedUser": {
-											"type": "string"
-										},
-										"LastModified": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"EntityType": {
-											"type": "string"
-										},
-										"Archived": {
-											"type": "boolean"
-										}
-									}
-								}
-							]
-						},
-						{
-							"type": "object",
-							"required": [
-								"ChildrenCount",
-								"SiblingPosition"
-							],
-							"properties": {
-								"ParentId": {
-									"type": "string"
-								},
-								"ChildrenCount": {
-									"type": "integer",
-									"format": "int32"
-								},
-								"SiblingPosition": {
-									"type": "number",
-									"format": "double"
-								}
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"ChildrenCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"SiblingPosition": {
+					"type": "number",
+					"format": "double"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"TypeName": {
+					"type": "string"
+				},
+				"ExternalId": {
+					"type": "string"
+				},
+				"PageIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"AssetIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"Locale": {
+					"type": "string"
+				},
+				"Synonyms": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Locale": {
+								"type": "string"
+							},
+							"Value": {
+								"type": "string"
 							}
 						}
-					]
+					}
 				},
-				{
+				"SecurityLevel": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"GroupPermissions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"PermissionLevel"
+						],
+						"properties": {
+							"GroupId": {
+								"type": "string"
+							},
+							"GroupName": {
+								"type": "string"
+							},
+							"PermissionLevel": {
+								"type": "string",
+								"description": "The list of node-level permissions for Pages",
+								"x-enumNames": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
+								],
+								"enum": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
+								]
+							}
+						}
+					}
+				},
+				"Translations": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"RequiresUpdate"
+						],
+						"properties": {
+							"Locale": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"Description": {
+								"type": "string"
+							},
+							"TypeName": {
+								"type": "string"
+							},
+							"RequiresUpdate": {
+								"type": "boolean"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"ChildrenCount",
+				"SiblingPosition",
+				"SecurityLevel"
+			]
+		},
+		"method": "POST",
+		"endpoint": "/api/v1/taxonomy/category",
+		"tags": [
+			"Taxonomy"
+		]
+	},
+	{
+		"tool_name": "Taxonomy_SaveCategory",
+		"description": "PUT /api/v1/taxonomy/category",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"input": {
 					"type": "object",
-					"required": [
-						"SecurityLevel"
-					],
+					"x-abstract": true,
 					"properties": {
+						"Id": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						},
+						"CreationUser": {
+							"type": "string"
+						},
+						"Created": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"LastModifiedUser": {
+							"type": "string"
+						},
+						"LastModified": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"EntityType": {
+							"type": "string"
+						},
+						"Archived": {
+							"type": "boolean"
+						},
+						"ParentId": {
+							"type": "string"
+						},
+						"ChildrenCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"SiblingPosition": {
+							"type": "number",
+							"format": "double"
+						},
 						"Description": {
 							"type": "string"
 						},
@@ -1949,208 +1937,14 @@
 								}
 							}
 						}
-					}
-				}
-			]
-		},
-		"method": "POST",
-		"endpoint": "/taxonomy/category",
-		"tags": [
-			"Taxonomy"
-		]
-	},
-	{
-		"tool_name": "Taxonomy_SaveCategory",
-		"description": "PUT /taxonomy/category",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"input": {
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"Id": {
-															"type": "string"
-														},
-														"Name": {
-															"type": "string"
-														}
-													}
-												},
-												{
-													"type": "object"
-												}
-											]
-										},
-										{
-											"type": "object",
-											"x-abstract": true,
-											"required": [
-												"Created",
-												"LastModified",
-												"Archived"
-											],
-											"properties": {
-												"CreationUser": {
-													"type": "string"
-												},
-												"Created": {
-													"type": "string",
-													"format": "date-time"
-												},
-												"LastModifiedUser": {
-													"type": "string"
-												},
-												"LastModified": {
-													"type": "string",
-													"format": "date-time"
-												},
-												"EntityType": {
-													"type": "string"
-												},
-												"Archived": {
-													"type": "boolean"
-												}
-											}
-										}
-									]
-								},
-								{
-									"type": "object",
-									"required": [
-										"ChildrenCount",
-										"SiblingPosition"
-									],
-									"properties": {
-										"ParentId": {
-											"type": "string"
-										},
-										"ChildrenCount": {
-											"type": "integer",
-											"format": "int32"
-										},
-										"SiblingPosition": {
-											"type": "number",
-											"format": "double"
-										}
-									}
-								}
-							]
-						},
-						{
-							"type": "object",
-							"required": [
-								"SecurityLevel"
-							],
-							"properties": {
-								"Description": {
-									"type": "string"
-								},
-								"TypeName": {
-									"type": "string"
-								},
-								"ExternalId": {
-									"type": "string"
-								},
-								"PageIds": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									}
-								},
-								"AssetIds": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									}
-								},
-								"Locale": {
-									"type": "string"
-								},
-								"Synonyms": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"Locale": {
-												"type": "string"
-											},
-											"Value": {
-												"type": "string"
-											}
-										}
-									}
-								},
-								"SecurityLevel": {
-									"type": "integer",
-									"format": "int32"
-								},
-								"GroupPermissions": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"required": [
-											"PermissionLevel"
-										],
-										"properties": {
-											"GroupId": {
-												"type": "string"
-											},
-											"GroupName": {
-												"type": "string"
-											},
-											"PermissionLevel": {
-												"type": "string",
-												"description": "The list of node-level permissions for Pages",
-												"x-enumNames": [
-													"NO_ACCESS",
-													"READ_ONLY",
-													"FULL_ACCESS"
-												],
-												"enum": [
-													"NO_ACCESS",
-													"READ_ONLY",
-													"FULL_ACCESS"
-												]
-											}
-										}
-									}
-								},
-								"Translations": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"required": [
-											"RequiresUpdate"
-										],
-										"properties": {
-											"Locale": {
-												"type": "string"
-											},
-											"Name": {
-												"type": "string"
-											},
-											"Description": {
-												"type": "string"
-											},
-											"TypeName": {
-												"type": "string"
-											},
-											"RequiresUpdate": {
-												"type": "boolean"
-											}
-										}
-									}
-								}
-							}
-						}
+					},
+					"required": [
+						"Created",
+						"LastModified",
+						"Archived",
+						"ChildrenCount",
+						"SiblingPosition",
+						"SecurityLevel"
 					]
 				}
 			},
@@ -2160,202 +1954,164 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"type": "object",
-											"properties": {
-												"Id": {
-													"type": "string"
-												},
-												"Name": {
-													"type": "string"
-												}
-											}
-										},
-										{
-											"type": "object"
-										}
-									]
-								},
-								{
-									"type": "object",
-									"x-abstract": true,
-									"required": [
-										"Created",
-										"LastModified",
-										"Archived"
-									],
-									"properties": {
-										"CreationUser": {
-											"type": "string"
-										},
-										"Created": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"LastModifiedUser": {
-											"type": "string"
-										},
-										"LastModified": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"EntityType": {
-											"type": "string"
-										},
-										"Archived": {
-											"type": "boolean"
-										}
-									}
-								}
-							]
-						},
-						{
-							"type": "object",
-							"required": [
-								"ChildrenCount",
-								"SiblingPosition"
-							],
-							"properties": {
-								"ParentId": {
-									"type": "string"
-								},
-								"ChildrenCount": {
-									"type": "integer",
-									"format": "int32"
-								},
-								"SiblingPosition": {
-									"type": "number",
-									"format": "double"
-								}
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"ChildrenCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"SiblingPosition": {
+					"type": "number",
+					"format": "double"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"TypeName": {
+					"type": "string"
+				},
+				"ExternalId": {
+					"type": "string"
+				},
+				"PageIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"AssetIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"Locale": {
+					"type": "string"
+				},
+				"Synonyms": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Locale": {
+								"type": "string"
+							},
+							"Value": {
+								"type": "string"
 							}
 						}
-					]
+					}
 				},
-				{
-					"type": "object",
-					"required": [
-						"SecurityLevel"
-					],
-					"properties": {
-						"Description": {
-							"type": "string"
-						},
-						"TypeName": {
-							"type": "string"
-						},
-						"ExternalId": {
-							"type": "string"
-						},
-						"PageIds": {
-							"type": "array",
-							"items": {
+				"SecurityLevel": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"GroupPermissions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"PermissionLevel"
+						],
+						"properties": {
+							"GroupId": {
 								"type": "string"
-							}
-						},
-						"AssetIds": {
-							"type": "array",
-							"items": {
+							},
+							"GroupName": {
 								"type": "string"
-							}
-						},
-						"Locale": {
-							"type": "string"
-						},
-						"Synonyms": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"Locale": {
-										"type": "string"
-									},
-									"Value": {
-										"type": "string"
-									}
-								}
-							}
-						},
-						"SecurityLevel": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"GroupPermissions": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"PermissionLevel"
+							},
+							"PermissionLevel": {
+								"type": "string",
+								"description": "The list of node-level permissions for Pages",
+								"x-enumNames": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
 								],
-								"properties": {
-									"GroupId": {
-										"type": "string"
-									},
-									"GroupName": {
-										"type": "string"
-									},
-									"PermissionLevel": {
-										"type": "string",
-										"description": "The list of node-level permissions for Pages",
-										"x-enumNames": [
-											"NO_ACCESS",
-											"READ_ONLY",
-											"FULL_ACCESS"
-										],
-										"enum": [
-											"NO_ACCESS",
-											"READ_ONLY",
-											"FULL_ACCESS"
-										]
-									}
-								}
+								"enum": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
+								]
 							}
-						},
-						"Translations": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"RequiresUpdate"
-								],
-								"properties": {
-									"Locale": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									},
-									"Description": {
-										"type": "string"
-									},
-									"TypeName": {
-										"type": "string"
-									},
-									"RequiresUpdate": {
-										"type": "boolean"
-									}
-								}
+						}
+					}
+				},
+				"Translations": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"RequiresUpdate"
+						],
+						"properties": {
+							"Locale": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"Description": {
+								"type": "string"
+							},
+							"TypeName": {
+								"type": "string"
+							},
+							"RequiresUpdate": {
+								"type": "boolean"
 							}
 						}
 					}
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"ChildrenCount",
+				"SiblingPosition",
+				"SecurityLevel"
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/taxonomy/category",
+		"endpoint": "/api/v1/taxonomy/category",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_DeleteCategory",
-		"description": "DELETE /taxonomy/category",
+		"description": "DELETE /api/v1/taxonomy/category",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2373,14 +2129,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/taxonomy/category",
+		"endpoint": "/api/v1/taxonomy/category",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetCategorySecurity",
-		"description": "GET /taxonomy/category/security",
+		"description": "GET /api/v1/taxonomy/category/security",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2395,32 +2151,79 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Name": {
-									"type": "string"
-								}
-							}
-						},
-						{
-							"type": "object"
-						}
-					]
+			"type": "object",
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
+				"Name": {
+					"type": "string"
+				},
+				"SecurityInherited": {
+					"type": "boolean"
+				},
+				"SecurityPermissions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"PermissionLevel"
+						],
+						"properties": {
+							"GroupId": {
+								"type": "string"
+							},
+							"GroupName": {
+								"type": "string"
+							},
+							"PermissionLevel": {
+								"type": "string",
+								"description": "The list of node-level permissions for Pages",
+								"x-enumNames": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
+								],
+								"enum": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
+								]
+							}
+						}
+					}
+				},
+				"SecurityLevel": {
+					"type": "integer",
+					"format": "int32"
+				}
+			},
+			"required": [
+				"SecurityInherited",
+				"SecurityLevel"
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/taxonomy/category/security",
+		"tags": [
+			"Taxonomy"
+		]
+	},
+	{
+		"tool_name": "Taxonomy_SetCategorySecurity",
+		"description": "PUT /api/v1/taxonomy/category/security",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"security": {
 					"type": "object",
-					"required": [
-						"SecurityInherited",
-						"SecurityLevel"
-					],
 					"properties": {
+						"Id": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						},
 						"SecurityInherited": {
 							"type": "boolean"
 						},
@@ -2459,89 +2262,10 @@
 							"type": "integer",
 							"format": "int32"
 						}
-					}
-				}
-			]
-		},
-		"method": "GET",
-		"endpoint": "/taxonomy/category/security",
-		"tags": [
-			"Taxonomy"
-		]
-	},
-	{
-		"tool_name": "Taxonomy_SetCategorySecurity",
-		"description": "PUT /taxonomy/category/security",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"security": {
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"required": [
-								"SecurityInherited",
-								"SecurityLevel"
-							],
-							"properties": {
-								"SecurityInherited": {
-									"type": "boolean"
-								},
-								"SecurityPermissions": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"required": [
-											"PermissionLevel"
-										],
-										"properties": {
-											"GroupId": {
-												"type": "string"
-											},
-											"GroupName": {
-												"type": "string"
-											},
-											"PermissionLevel": {
-												"type": "string",
-												"description": "The list of node-level permissions for Pages",
-												"x-enumNames": [
-													"NO_ACCESS",
-													"READ_ONLY",
-													"FULL_ACCESS"
-												],
-												"enum": [
-													"NO_ACCESS",
-													"READ_ONLY",
-													"FULL_ACCESS"
-												]
-											}
-										}
-									}
-								},
-								"SecurityLevel": {
-									"type": "integer",
-									"format": "int32"
-								}
-							}
-						}
+					},
+					"required": [
+						"SecurityInherited",
+						"SecurityLevel"
 					]
 				}
 			},
@@ -2551,76 +2275,60 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Name": {
-									"type": "string"
-								}
-							}
-						},
-						{
-							"type": "object"
-						}
-					]
+			"type": "object",
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"SecurityInherited",
-						"SecurityLevel"
-					],
-					"properties": {
-						"SecurityInherited": {
-							"type": "boolean"
-						},
-						"SecurityPermissions": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"PermissionLevel"
+				"Name": {
+					"type": "string"
+				},
+				"SecurityInherited": {
+					"type": "boolean"
+				},
+				"SecurityPermissions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"PermissionLevel"
+						],
+						"properties": {
+							"GroupId": {
+								"type": "string"
+							},
+							"GroupName": {
+								"type": "string"
+							},
+							"PermissionLevel": {
+								"type": "string",
+								"description": "The list of node-level permissions for Pages",
+								"x-enumNames": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
 								],
-								"properties": {
-									"GroupId": {
-										"type": "string"
-									},
-									"GroupName": {
-										"type": "string"
-									},
-									"PermissionLevel": {
-										"type": "string",
-										"description": "The list of node-level permissions for Pages",
-										"x-enumNames": [
-											"NO_ACCESS",
-											"READ_ONLY",
-											"FULL_ACCESS"
-										],
-										"enum": [
-											"NO_ACCESS",
-											"READ_ONLY",
-											"FULL_ACCESS"
-										]
-									}
-								}
+								"enum": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
+								]
 							}
-						},
-						"SecurityLevel": {
-							"type": "integer",
-							"format": "int32"
 						}
 					}
+				},
+				"SecurityLevel": {
+					"type": "integer",
+					"format": "int32"
 				}
+			},
+			"required": [
+				"SecurityInherited",
+				"SecurityLevel"
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/taxonomy/category/security",
+		"endpoint": "/api/v1/taxonomy/category/security",
 		"tags": [
 			"Taxonomy"
 		]

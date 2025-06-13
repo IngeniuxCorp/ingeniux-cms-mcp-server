@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Assets_DownloadAssetOwnersCsv",
-		"description": "GET /assets/asset-owners-csv",
+		"description": "GET /api/v1/assets/asset-owners-csv",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -35,14 +35,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/assets/asset-owners-csv",
+		"endpoint": "/api/v1/assets/asset-owners-csv",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_DownloadAssetDependentsCsv",
-		"description": "GET /assets/asset-dependents-csv",
+		"description": "GET /api/v1/assets/asset-dependents-csv",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -76,14 +76,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/assets/asset-dependents-csv",
+		"endpoint": "/api/v1/assets/asset-dependents-csv",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetAssetDITAScopes",
-		"description": "GET /assets/ditamap-scopes",
+		"description": "GET /api/v1/assets/ditamap-scopes",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -183,14 +183,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/assets/ditamap-scopes",
+		"endpoint": "/api/v1/assets/ditamap-scopes",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetAllAssetDependents",
-		"description": "GET /assets/asset-dependents-deep",
+		"description": "GET /api/v1/assets/asset-dependents-deep",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -255,14 +255,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/assets/asset-dependents-deep",
+		"endpoint": "/api/v1/assets/asset-dependents-deep",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_SetAssetOutputFormats",
-		"description": "PUT /assets/asset-dita-output-formats",
+		"description": "PUT /api/v1/assets/asset-dita-output-formats",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -288,14 +288,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/assets/asset-dita-output-formats",
+		"endpoint": "/api/v1/assets/asset-dita-output-formats",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_SetAssetDitavals",
-		"description": "PUT /assets/asset-ditavals",
+		"description": "PUT /api/v1/assets/asset-ditavals",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -321,14 +321,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/assets/asset-ditavals",
+		"endpoint": "/api/v1/assets/asset-ditavals",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_DeleteDitaPreviewCache",
-		"description": "DELETE /assets/dita-preview-cache",
+		"description": "DELETE /api/v1/assets/dita-preview-cache",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -351,14 +351,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/assets/dita-preview-cache",
+		"endpoint": "/api/v1/assets/dita-preview-cache",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetOxygenAccessCredentials",
-		"description": "PUT /assets/dita-oxygen-oauth-creds",
+		"description": "PUT /api/v1/assets/dita-oxygen-oauth-creds",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -375,14 +375,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/assets/dita-oxygen-oauth-creds",
+		"endpoint": "/api/v1/assets/dita-oxygen-oauth-creds",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Site_SearchContentItems",
-		"description": "GET /site/content-item-search",
+		"description": "GET /api/v1/site/content-item-search",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -581,14 +581,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/site/content-item-search",
+		"endpoint": "/api/v1/site/content-item-search",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_GetTabModel",
-		"description": "GET /site/tab-model",
+		"description": "GET /api/v1/site/tab-model",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -603,218 +603,202 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Name": {
-									"type": "string"
-								}
-							}
-						},
-						{
-							"type": "object"
-						}
-					]
+			"type": "object",
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"overviewTab",
-						"editTab",
-						"assetTab",
-						"assetFolderTab",
-						"assetEditTab",
-						"taxonomyTab",
-						"assetTaxonomyTab",
-						"previewTab",
-						"designTab",
-						"historyTab",
-						"assetHistoryTab",
-						"assetXmlTab",
-						"assetPreviewTab",
-						"xmlTab",
-						"propertiesTab",
-						"translateTab",
-						"analyticsTab",
-						"assetDitaTab"
-					],
-					"properties": {
-						"overviewTab": {
-							"type": "boolean"
-						},
-						"editTab": {
-							"type": "boolean"
-						},
-						"assetTab": {
-							"type": "boolean"
-						},
-						"assetFolderTab": {
-							"type": "boolean"
-						},
-						"assetEditTab": {
-							"type": "boolean"
-						},
-						"taxonomyTab": {
-							"type": "boolean"
-						},
-						"assetTaxonomyTab": {
-							"type": "boolean"
-						},
-						"previewTab": {
-							"type": "boolean"
-						},
-						"designTab": {
-							"type": "boolean"
-						},
-						"historyTab": {
-							"type": "boolean"
-						},
-						"assetHistoryTab": {
-							"type": "boolean"
-						},
-						"assetXmlTab": {
-							"type": "boolean"
-						},
-						"assetPreviewTab": {
-							"type": "boolean"
-						},
-						"xmlTab": {
-							"type": "boolean"
-						},
-						"propertiesTab": {
-							"type": "boolean"
-						},
-						"translateTab": {
-							"type": "boolean"
-						},
-						"analyticsTab": {
-							"type": "boolean"
-						},
-						"assetDitaTab": {
-							"type": "boolean"
-						},
-						"customTabs": {
-							"type": "array",
-							"items": {
-								"allOf": [
-									{
-										"type": "object",
-										"required": [
-											"isGlobal",
-											"appendPageId",
-											"appendAssetId",
-											"appendAssetFolderId"
-										],
-										"properties": {
-											"url": {
-												"type": "string"
-											},
-											"isGlobal": {
-												"type": "boolean"
-											},
-											"appendPageId": {
-												"type": "boolean"
-											},
-											"appendAssetId": {
-												"type": "boolean"
-											},
-											"appendAssetFolderId": {
-												"type": "boolean"
-											},
-											"resourceId": {
-												"type": "string"
-											},
-											"icon": {
-												"type": "string"
-											},
-											"iconClass": {
-												"type": "string"
-											},
-											"name": {
-												"type": "string"
-											},
-											"displayName": {
-												"type": "string"
-											}
+				"Name": {
+					"type": "string"
+				},
+				"overviewTab": {
+					"type": "boolean"
+				},
+				"editTab": {
+					"type": "boolean"
+				},
+				"assetTab": {
+					"type": "boolean"
+				},
+				"assetFolderTab": {
+					"type": "boolean"
+				},
+				"assetEditTab": {
+					"type": "boolean"
+				},
+				"taxonomyTab": {
+					"type": "boolean"
+				},
+				"assetTaxonomyTab": {
+					"type": "boolean"
+				},
+				"previewTab": {
+					"type": "boolean"
+				},
+				"designTab": {
+					"type": "boolean"
+				},
+				"historyTab": {
+					"type": "boolean"
+				},
+				"assetHistoryTab": {
+					"type": "boolean"
+				},
+				"assetXmlTab": {
+					"type": "boolean"
+				},
+				"assetPreviewTab": {
+					"type": "boolean"
+				},
+				"xmlTab": {
+					"type": "boolean"
+				},
+				"propertiesTab": {
+					"type": "boolean"
+				},
+				"translateTab": {
+					"type": "boolean"
+				},
+				"analyticsTab": {
+					"type": "boolean"
+				},
+				"assetDitaTab": {
+					"type": "boolean"
+				},
+				"customTabs": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"required": [
+									"isGlobal",
+									"appendPageId",
+									"appendAssetId",
+									"appendAssetFolderId"
+								],
+								"properties": {
+									"url": {
+										"type": "string"
+									},
+									"isGlobal": {
+										"type": "boolean"
+									},
+									"appendPageId": {
+										"type": "boolean"
+									},
+									"appendAssetId": {
+										"type": "boolean"
+									},
+									"appendAssetFolderId": {
+										"type": "boolean"
+									},
+									"resourceId": {
+										"type": "string"
+									},
+									"icon": {
+										"type": "string"
+									},
+									"iconClass": {
+										"type": "string"
+									},
+									"name": {
+										"type": "string"
+									},
+									"displayName": {
+										"type": "string"
+									}
+								}
+							},
+							{
+								"type": "object",
+								"required": [
+									"autoSelect",
+									"allowPinning",
+									"show"
+								],
+								"properties": {
+									"id": {
+										"type": "string"
+									},
+									"autoSelect": {
+										"type": "boolean"
+									},
+									"allowPinning": {
+										"type": "boolean"
+									},
+									"show": {
+										"type": "boolean"
+									},
+									"localeName": {
+										"type": "string"
+									},
+									"schemaIds": {
+										"type": "array",
+										"items": {
+											"type": "string"
 										}
 									},
-									{
-										"type": "object",
-										"required": [
-											"autoSelect",
-											"allowPinning",
-											"show"
-										],
-										"properties": {
-											"id": {
-												"type": "string"
-											},
-											"autoSelect": {
-												"type": "boolean"
-											},
-											"allowPinning": {
-												"type": "boolean"
-											},
-											"show": {
-												"type": "boolean"
-											},
-											"localeName": {
-												"type": "string"
-											},
-											"schemaIds": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"assetSchemaIds": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"pageIds": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"assetIds": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"assetFolderIds": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											}
+									"assetSchemaIds": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"pageIds": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"assetIds": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"assetFolderIds": {
+										"type": "array",
+										"items": {
+											"type": "string"
 										}
 									}
-								]
+								}
 							}
-						}
+						]
 					}
 				}
+			},
+			"required": [
+				"overviewTab",
+				"editTab",
+				"assetTab",
+				"assetFolderTab",
+				"assetEditTab",
+				"taxonomyTab",
+				"assetTaxonomyTab",
+				"previewTab",
+				"designTab",
+				"historyTab",
+				"assetHistoryTab",
+				"assetXmlTab",
+				"assetPreviewTab",
+				"xmlTab",
+				"propertiesTab",
+				"translateTab",
+				"analyticsTab",
+				"assetDitaTab"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/site/tab-model",
+		"endpoint": "/api/v1/site/tab-model",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_GenerateAssetRefernceReport",
-		"description": "POST /site/generate-asset-reference-report",
+		"description": "POST /api/v1/site/generate-asset-reference-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -854,14 +838,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/site/generate-asset-reference-report",
+		"endpoint": "/api/v1/site/generate-asset-reference-report",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_GenerateBrokenLinkReport",
-		"description": "POST /site/generate-broken-link-report",
+		"description": "POST /api/v1/site/generate-broken-link-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -902,14 +886,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/site/generate-broken-link-report",
+		"endpoint": "/api/v1/site/generate-broken-link-report",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_GenerateTextSearchReport",
-		"description": "POST /site/generate-search-text-report",
+		"description": "POST /api/v1/site/generate-search-text-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -955,14 +939,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/site/generate-search-text-report",
+		"endpoint": "/api/v1/site/generate-search-text-report",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_GenerateAssetTextSearchReport",
-		"description": "POST /site/generate-search-asset-text-report",
+		"description": "POST /api/v1/site/generate-search-asset-text-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1008,14 +992,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/site/generate-search-asset-text-report",
+		"endpoint": "/api/v1/site/generate-search-asset-text-report",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_GenerateUnusedAssetsReport",
-		"description": "POST /site/generate-unused-assets-report",
+		"description": "POST /api/v1/site/generate-unused-assets-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1050,14 +1034,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/site/generate-unused-assets-report",
+		"endpoint": "/api/v1/site/generate-unused-assets-report",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_GeneratePageReferenceReport",
-		"description": "POST /site/generate-page-reference-report",
+		"description": "POST /api/v1/site/generate-page-reference-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1097,14 +1081,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/site/generate-page-reference-report",
+		"endpoint": "/api/v1/site/generate-page-reference-report",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_GetReportStatus",
-		"description": "GET /site/report/{sessionId}/status",
+		"description": "GET /api/v1/site/report/{sessionId}/status",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1139,14 +1123,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/site/report/{sessionId}/status",
+		"endpoint": "/api/v1/site/report/{sessionId}/status",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_GetReport",
-		"description": "GET /site/report/{sessionId}",
+		"description": "GET /api/v1/site/report/{sessionId}",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1240,14 +1224,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/site/report/{sessionId}",
+		"endpoint": "/api/v1/site/report/{sessionId}",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_CancelReport",
-		"description": "POST /site/report/cancel",
+		"description": "POST /api/v1/site/report/cancel",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1265,14 +1249,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/site/report/cancel",
+		"endpoint": "/api/v1/site/report/cancel",
 		"tags": [
 			"Site"
 		]
 	},
 	{
 		"tool_name": "Site_ReplaceReportEntry",
-		"description": "POST /site/report/replace-entry",
+		"description": "POST /api/v1/site/report/replace-entry",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1307,7 +1291,7 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/site/report/replace-entry",
+		"endpoint": "/api/v1/site/report/replace-entry",
 		"tags": [
 			"Site"
 		]

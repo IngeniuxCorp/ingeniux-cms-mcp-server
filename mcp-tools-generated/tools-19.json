@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Accounts_Login",
-		"description": "POST /accounts/login",
+		"description": "POST /api/v1/accounts/login",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -61,14 +61,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/accounts/login",
+		"endpoint": "/api/v1/accounts/login",
 		"tags": [
 			"Accounts"
 		]
 	},
 	{
 		"tool_name": "Accounts_GetMembershipProviders",
-		"description": "GET /accounts/membership-providers",
+		"description": "GET /api/v1/accounts/membership-providers",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -107,14 +107,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/accounts/membership-providers",
+		"endpoint": "/api/v1/accounts/membership-providers",
 		"tags": [
 			"Accounts"
 		]
 	},
 	{
 		"tool_name": "Accounts_GetUserGroupSecurities",
-		"description": "GET /accounts/security-groups",
+		"description": "GET /api/v1/accounts/security-groups",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -174,14 +174,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/accounts/security-groups",
+		"endpoint": "/api/v1/accounts/security-groups",
 		"tags": [
 			"Accounts"
 		]
 	},
 	{
 		"tool_name": "Accounts_ResetPassword",
-		"description": "POST /accounts/users/reset-passwords",
+		"description": "POST /api/v1/accounts/users/reset-passwords",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -231,14 +231,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/accounts/users/reset-passwords",
+		"endpoint": "/api/v1/accounts/users/reset-passwords",
 		"tags": [
 			"Accounts"
 		]
 	},
 	{
 		"tool_name": "UserGroups_GetUserGroups",
-		"description": "GET /groups",
+		"description": "GET /api/v1/groups",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -351,14 +351,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/groups",
+		"endpoint": "/api/v1/groups",
 		"tags": [
 			"UserGroups"
 		]
 	},
 	{
 		"tool_name": "UserGroups_GetGroup",
-		"description": "GET /groups/group",
+		"description": "GET /api/v1/groups/group",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -373,85 +373,60 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"UserIds": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"GroupType": {
-							"type": "string"
-						}
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"UserIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
 					}
+				},
+				"GroupType": {
+					"type": "string"
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/groups/group",
+		"endpoint": "/api/v1/groups/group",
 		"tags": [
 			"UserGroups"
 		]
 	},
 	{
 		"tool_name": "UserGroups_CreateGroup",
-		"description": "PUT /groups/new-group",
+		"description": "PUT /api/v1/groups/new-group",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -466,85 +441,60 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"UserIds": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"GroupType": {
-							"type": "string"
-						}
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"UserIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
 					}
+				},
+				"GroupType": {
+					"type": "string"
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived"
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/groups/new-group",
+		"endpoint": "/api/v1/groups/new-group",
 		"tags": [
 			"UserGroups"
 		]
 	},
 	{
 		"tool_name": "UserGroups_Search",
-		"description": "GET /groups/search",
+		"description": "GET /api/v1/groups/search",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -667,14 +617,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/groups/search",
+		"endpoint": "/api/v1/groups/search",
 		"tags": [
 			"UserGroups"
 		]
 	},
 	{
 		"tool_name": "User_GetUsers",
-		"description": "GET /users",
+		"description": "GET /api/v1/users",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -805,14 +755,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/users",
+		"endpoint": "/api/v1/users",
 		"tags": [
 			"User"
 		]
 	},
 	{
 		"tool_name": "User_GetUser",
-		"description": "GET /users/user",
+		"description": "GET /api/v1/users/user",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -827,98 +777,71 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"IsTaskUser",
-						"Disabled"
-					],
-					"properties": {
-						"UserId": {
-							"type": "string"
-						},
-						"IsTaskUser": {
-							"type": "boolean"
-						},
-						"Picture": {
-							"type": "string"
-						},
-						"Title": {
-							"type": "string"
-						},
-						"LastActive": {
-							"type": "string"
-						},
-						"Disabled": {
-							"type": "boolean"
-						}
-					}
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"UserId": {
+					"type": "string"
+				},
+				"IsTaskUser": {
+					"type": "boolean"
+				},
+				"Picture": {
+					"type": "string"
+				},
+				"Title": {
+					"type": "string"
+				},
+				"LastActive": {
+					"type": "string"
+				},
+				"Disabled": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"IsTaskUser",
+				"Disabled"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/users/user",
+		"endpoint": "/api/v1/users/user",
 		"tags": [
 			"User"
 		]
 	},
 	{
 		"tool_name": "User_GetAssignments",
-		"description": "GET /users/assignments",
+		"description": "GET /api/v1/users/assignments",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1099,14 +1022,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/users/assignments",
+		"endpoint": "/api/v1/users/assignments",
 		"tags": [
 			"User"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetWorkflow",
-		"description": "GET /workflows/workflow",
+		"description": "GET /api/v1/workflows/workflow",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1121,117 +1044,90 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"Active",
-						"Locked",
-						"NoExecute"
-					],
-					"properties": {
-						"StateId": {
-							"type": "string"
-						},
-						"StateName": {
-							"type": "string"
-						},
-						"DefinitionId": {
-							"type": "string"
-						},
-						"DefinitionName": {
-							"type": "string"
-						},
-						"CurrentGroupId": {
-							"type": "string"
-						},
-						"CurrentGroupName": {
-							"type": "string"
-						},
-						"ContentId": {
-							"type": "string"
-						},
-						"ContentName": {
-							"type": "string"
-						},
-						"Comment": {
-							"type": "string"
-						},
-						"Active": {
-							"type": "boolean"
-						},
-						"Locked": {
-							"type": "boolean"
-						},
-						"NoExecute": {
-							"type": "boolean"
-						}
-					}
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"StateId": {
+					"type": "string"
+				},
+				"StateName": {
+					"type": "string"
+				},
+				"DefinitionId": {
+					"type": "string"
+				},
+				"DefinitionName": {
+					"type": "string"
+				},
+				"CurrentGroupId": {
+					"type": "string"
+				},
+				"CurrentGroupName": {
+					"type": "string"
+				},
+				"ContentId": {
+					"type": "string"
+				},
+				"ContentName": {
+					"type": "string"
+				},
+				"Comment": {
+					"type": "string"
+				},
+				"Active": {
+					"type": "boolean"
+				},
+				"Locked": {
+					"type": "boolean"
+				},
+				"NoExecute": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"Active",
+				"Locked",
+				"NoExecute"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/workflows/workflow",
+		"endpoint": "/api/v1/workflows/workflow",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetWorkflowByContentItem",
-		"description": "GET /workflows/by-content",
+		"description": "GET /api/v1/workflows/by-content",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1246,117 +1142,90 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"Active",
-						"Locked",
-						"NoExecute"
-					],
-					"properties": {
-						"StateId": {
-							"type": "string"
-						},
-						"StateName": {
-							"type": "string"
-						},
-						"DefinitionId": {
-							"type": "string"
-						},
-						"DefinitionName": {
-							"type": "string"
-						},
-						"CurrentGroupId": {
-							"type": "string"
-						},
-						"CurrentGroupName": {
-							"type": "string"
-						},
-						"ContentId": {
-							"type": "string"
-						},
-						"ContentName": {
-							"type": "string"
-						},
-						"Comment": {
-							"type": "string"
-						},
-						"Active": {
-							"type": "boolean"
-						},
-						"Locked": {
-							"type": "boolean"
-						},
-						"NoExecute": {
-							"type": "boolean"
-						}
-					}
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"StateId": {
+					"type": "string"
+				},
+				"StateName": {
+					"type": "string"
+				},
+				"DefinitionId": {
+					"type": "string"
+				},
+				"DefinitionName": {
+					"type": "string"
+				},
+				"CurrentGroupId": {
+					"type": "string"
+				},
+				"CurrentGroupName": {
+					"type": "string"
+				},
+				"ContentId": {
+					"type": "string"
+				},
+				"ContentName": {
+					"type": "string"
+				},
+				"Comment": {
+					"type": "string"
+				},
+				"Active": {
+					"type": "boolean"
+				},
+				"Locked": {
+					"type": "boolean"
+				},
+				"NoExecute": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"Active",
+				"Locked",
+				"NoExecute"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/workflows/by-content",
+		"endpoint": "/api/v1/workflows/by-content",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetWorkflowStates",
-		"description": "GET /workflows/content-work-state",
+		"description": "GET /api/v1/workflows/content-work-state",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1570,14 +1439,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/workflows/content-work-state",
+		"endpoint": "/api/v1/workflows/content-work-state",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetWorkstates",
-		"description": "GET /workflows/workstates",
+		"description": "GET /api/v1/workflows/workstates",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1695,14 +1564,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/workflows/workstates",
+		"endpoint": "/api/v1/workflows/workstates",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_ListWorkflowDefinitions",
-		"description": "GET /workflows/definitions",
+		"description": "GET /api/v1/workflows/definitions",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1825,14 +1694,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/workflows/definitions",
+		"endpoint": "/api/v1/workflows/definitions",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetWorkflowDefinitionDetail",
-		"description": "GET /workflows/definition-detail",
+		"description": "GET /api/v1/workflows/definition-detail",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1847,174 +1716,138 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"allOf": [
-										{
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"Desc": {
+					"type": "string"
+				},
+				"PagesCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"InitialGroupIsEmpty": {
+					"type": "boolean"
+				},
+				"Transitions": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/definitions/NameIdPair",
+								"circular": true
+							},
+							{
+								"type": "object",
+								"required": [
+									"IsDefault",
+									"IsInitial",
+									"AllowNextGroupToAdvance"
+								],
+								"properties": {
+									"Description": {
+										"type": "string"
+									},
+									"CurrentState": {
+										"type": "string"
+									},
+									"NextState": {
+										"type": "string"
+									},
+									"IsDefault": {
+										"type": "boolean"
+									},
+									"IsInitial": {
+										"type": "boolean"
+									},
+									"NextGroupId": {
+										"type": "string"
+									},
+									"NextGroupName": {
+										"type": "string"
+									},
+									"DefaultUser": {
+										"type": "string"
+									},
+									"AllowNextGroupToAdvance": {
+										"type": "boolean"
+									},
+									"Actions": {
+										"type": "array",
+										"items": {
 											"type": "object",
+											"required": [
+												"ActionTypeId"
+											],
 											"properties": {
 												"Id": {
 													"type": "string"
 												},
-												"Name": {
+												"Description": {
 													"type": "string"
-												}
-											}
-										},
-										{
-											"type": "object"
-										}
-									]
-								},
-								{
-									"type": "object",
-									"x-abstract": true,
-									"required": [
-										"Created",
-										"LastModified",
-										"Archived"
-									],
-									"properties": {
-										"CreationUser": {
-											"type": "string"
-										},
-										"Created": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"LastModifiedUser": {
-											"type": "string"
-										},
-										"LastModified": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"EntityType": {
-											"type": "string"
-										},
-										"Archived": {
-											"type": "boolean"
-										}
-									}
-								}
-							]
-						},
-						{
-							"type": "object",
-							"required": [
-								"PagesCount",
-								"InitialGroupIsEmpty"
-							],
-							"properties": {
-								"Desc": {
-									"type": "string"
-								},
-								"PagesCount": {
-									"type": "integer",
-									"format": "int32"
-								},
-								"InitialGroupIsEmpty": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"Transitions": {
-							"type": "array",
-							"items": {
-								"allOf": [
-									{
-										"$ref": "#/definitions/NameIdPair",
-										"circular": true
-									},
-									{
-										"type": "object",
-										"required": [
-											"IsDefault",
-											"IsInitial",
-											"AllowNextGroupToAdvance"
-										],
-										"properties": {
-											"Description": {
-												"type": "string"
-											},
-											"CurrentState": {
-												"type": "string"
-											},
-											"NextState": {
-												"type": "string"
-											},
-											"IsDefault": {
-												"type": "boolean"
-											},
-											"IsInitial": {
-												"type": "boolean"
-											},
-											"NextGroupId": {
-												"type": "string"
-											},
-											"NextGroupName": {
-												"type": "string"
-											},
-											"DefaultUser": {
-												"type": "string"
-											},
-											"AllowNextGroupToAdvance": {
-												"type": "boolean"
-											},
-											"Actions": {
-												"type": "array",
-												"items": {
+												},
+												"ActionTypeId": {
+													"type": "integer",
+													"format": "int32"
+												},
+												"Attributes": {
 													"type": "object",
-													"required": [
-														"ActionTypeId"
-													],
-													"properties": {
-														"Id": {
-															"type": "string"
-														},
-														"Description": {
-															"type": "string"
-														},
-														"ActionTypeId": {
-															"type": "integer",
-															"format": "int32"
-														},
-														"Attributes": {
-															"type": "object",
-															"additionalProperties": {
-																"type": "string"
-															}
-														}
+													"additionalProperties": {
+														"type": "string"
 													}
 												}
 											}
 										}
 									}
-								]
+								}
 							}
-						}
+						]
 					}
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"PagesCount",
+				"InitialGroupIsEmpty"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/workflows/definition-detail",
+		"endpoint": "/api/v1/workflows/definition-detail",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetWorkflowReport",
-		"description": "GET /workflows/report",
+		"description": "GET /api/v1/workflows/report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2103,356 +1936,140 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/workflows/report",
+		"endpoint": "/api/v1/workflows/report",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetDefaultTransition",
-		"description": "GET /workflows/default-transition",
+		"description": "GET /api/v1/workflows/default-transition",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"type": "object",
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string"
-						}
-					}
+			"type": "object",
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"IsDefault",
-						"IsInitial",
-						"AllowNextGroupToAdvance"
-					],
-					"properties": {
-						"Description": {
-							"type": "string"
-						},
-						"CurrentState": {
-							"type": "string"
-						},
-						"NextState": {
-							"type": "string"
-						},
-						"IsDefault": {
-							"type": "boolean"
-						},
-						"IsInitial": {
-							"type": "boolean"
-						},
-						"NextGroupId": {
-							"type": "string"
-						},
-						"NextGroupName": {
-							"type": "string"
-						},
-						"DefaultUser": {
-							"type": "string"
-						},
-						"AllowNextGroupToAdvance": {
-							"type": "boolean"
-						},
-						"Actions": {
-							"type": "array",
-							"items": {
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"CurrentState": {
+					"type": "string"
+				},
+				"NextState": {
+					"type": "string"
+				},
+				"IsDefault": {
+					"type": "boolean"
+				},
+				"IsInitial": {
+					"type": "boolean"
+				},
+				"NextGroupId": {
+					"type": "string"
+				},
+				"NextGroupName": {
+					"type": "string"
+				},
+				"DefaultUser": {
+					"type": "string"
+				},
+				"AllowNextGroupToAdvance": {
+					"type": "boolean"
+				},
+				"Actions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"ActionTypeId"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Description": {
+								"type": "string"
+							},
+							"ActionTypeId": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"Attributes": {
 								"type": "object",
-								"required": [
-									"ActionTypeId"
-								],
-								"properties": {
-									"Id": {
-										"type": "string"
-									},
-									"Description": {
-										"type": "string"
-									},
-									"ActionTypeId": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"Attributes": {
-										"type": "object",
-										"additionalProperties": {
-											"type": "string"
-										}
-									}
+								"additionalProperties": {
+									"type": "string"
 								}
 							}
 						}
 					}
 				}
+			},
+			"required": [
+				"IsDefault",
+				"IsInitial",
+				"AllowNextGroupToAdvance"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/workflows/default-transition",
+		"endpoint": "/api/v1/workflows/default-transition",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_SetWorkflowDefinitionDetails",
-		"description": "PUT /workflows/definition",
+		"description": "PUT /api/v1/workflows/definition",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"definition": {
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"Id": {
-															"type": "string"
-														},
-														"Name": {
-															"type": "string"
-														}
-													}
-												},
-												{
-													"type": "object"
-												}
-											]
-										},
-										{
-											"type": "object",
-											"x-abstract": true,
-											"required": [
-												"Created",
-												"LastModified",
-												"Archived"
-											],
-											"properties": {
-												"CreationUser": {
-													"type": "string"
-												},
-												"Created": {
-													"type": "string",
-													"format": "date-time"
-												},
-												"LastModifiedUser": {
-													"type": "string"
-												},
-												"LastModified": {
-													"type": "string",
-													"format": "date-time"
-												},
-												"EntityType": {
-													"type": "string"
-												},
-												"Archived": {
-													"type": "boolean"
-												}
-											}
-										}
-									]
-								},
-								{
-									"type": "object",
-									"required": [
-										"PagesCount",
-										"InitialGroupIsEmpty"
-									],
-									"properties": {
-										"Desc": {
-											"type": "string"
-										},
-										"PagesCount": {
-											"type": "integer",
-											"format": "int32"
-										},
-										"InitialGroupIsEmpty": {
-											"type": "boolean"
-										}
-									}
-								}
-							]
-						},
-						{
-							"type": "object",
-							"properties": {
-								"Transitions": {
-									"type": "array",
-									"items": {
-										"allOf": [
-											{
-												"$ref": "#/definitions/NameIdPair",
-												"circular": true
-											},
-											{
-												"type": "object",
-												"required": [
-													"IsDefault",
-													"IsInitial",
-													"AllowNextGroupToAdvance"
-												],
-												"properties": {
-													"Description": {
-														"type": "string"
-													},
-													"CurrentState": {
-														"type": "string"
-													},
-													"NextState": {
-														"type": "string"
-													},
-													"IsDefault": {
-														"type": "boolean"
-													},
-													"IsInitial": {
-														"type": "boolean"
-													},
-													"NextGroupId": {
-														"type": "string"
-													},
-													"NextGroupName": {
-														"type": "string"
-													},
-													"DefaultUser": {
-														"type": "string"
-													},
-													"AllowNextGroupToAdvance": {
-														"type": "boolean"
-													},
-													"Actions": {
-														"type": "array",
-														"items": {
-															"type": "object",
-															"required": [
-																"ActionTypeId"
-															],
-															"properties": {
-																"Id": {
-																	"type": "string"
-																},
-																"Description": {
-																	"type": "string"
-																},
-																"ActionTypeId": {
-																	"type": "integer",
-																	"format": "int32"
-																},
-																"Attributes": {
-																	"type": "object",
-																	"additionalProperties": {
-																		"type": "string"
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										]
-									}
-								}
-							}
-						}
-					]
-				}
-			},
-			"required": [
-				"definition",
-				"definition"
-			]
-		},
-		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"type": "object",
-											"properties": {
-												"Id": {
-													"type": "string"
-												},
-												"Name": {
-													"type": "string"
-												}
-											}
-										},
-										{
-											"type": "object"
-										}
-									]
-								},
-								{
-									"type": "object",
-									"x-abstract": true,
-									"required": [
-										"Created",
-										"LastModified",
-										"Archived"
-									],
-									"properties": {
-										"CreationUser": {
-											"type": "string"
-										},
-										"Created": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"LastModifiedUser": {
-											"type": "string"
-										},
-										"LastModified": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"EntityType": {
-											"type": "string"
-										},
-										"Archived": {
-											"type": "boolean"
-										}
-									}
-								}
-							]
-						},
-						{
-							"type": "object",
-							"required": [
-								"PagesCount",
-								"InitialGroupIsEmpty"
-							],
-							"properties": {
-								"Desc": {
-									"type": "string"
-								},
-								"PagesCount": {
-									"type": "integer",
-									"format": "int32"
-								},
-								"InitialGroupIsEmpty": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
-				},
-				{
 					"type": "object",
+					"x-abstract": true,
 					"properties": {
+						"Id": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						},
+						"CreationUser": {
+							"type": "string"
+						},
+						"Created": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"LastModifiedUser": {
+							"type": "string"
+						},
+						"LastModified": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"EntityType": {
+							"type": "string"
+						},
+						"Archived": {
+							"type": "boolean"
+						},
+						"Desc": {
+							"type": "string"
+						},
+						"PagesCount": {
+							"type": "integer",
+							"format": "int32"
+						},
+						"InitialGroupIsEmpty": {
+							"type": "boolean"
+						},
 						"Transitions": {
 							"type": "array",
 							"items": {
@@ -2528,12 +2145,147 @@
 								]
 							}
 						}
+					},
+					"required": [
+						"Created",
+						"LastModified",
+						"Archived",
+						"PagesCount",
+						"InitialGroupIsEmpty"
+					]
+				}
+			},
+			"required": [
+				"definition",
+				"definition"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"Desc": {
+					"type": "string"
+				},
+				"PagesCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"InitialGroupIsEmpty": {
+					"type": "boolean"
+				},
+				"Transitions": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/definitions/NameIdPair",
+								"circular": true
+							},
+							{
+								"type": "object",
+								"required": [
+									"IsDefault",
+									"IsInitial",
+									"AllowNextGroupToAdvance"
+								],
+								"properties": {
+									"Description": {
+										"type": "string"
+									},
+									"CurrentState": {
+										"type": "string"
+									},
+									"NextState": {
+										"type": "string"
+									},
+									"IsDefault": {
+										"type": "boolean"
+									},
+									"IsInitial": {
+										"type": "boolean"
+									},
+									"NextGroupId": {
+										"type": "string"
+									},
+									"NextGroupName": {
+										"type": "string"
+									},
+									"DefaultUser": {
+										"type": "string"
+									},
+									"AllowNextGroupToAdvance": {
+										"type": "boolean"
+									},
+									"Actions": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"ActionTypeId"
+											],
+											"properties": {
+												"Id": {
+													"type": "string"
+												},
+												"Description": {
+													"type": "string"
+												},
+												"ActionTypeId": {
+													"type": "integer",
+													"format": "int32"
+												},
+												"Attributes": {
+													"type": "object",
+													"additionalProperties": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						]
 					}
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"PagesCount",
+				"InitialGroupIsEmpty"
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/workflows/definition",
+		"endpoint": "/api/v1/workflows/definition",
 		"tags": [
 			"Workflow"
 		]

@@ -6,6 +6,7 @@ import { randomBytes, createHash } from 'crypto';
 import { OAuthConfig } from '../types/config-types.js';
 import { TokenData, OAuthTokenResponse } from '../types/api-types.js';
 import { tokenStore } from './token-store.js';
+import { toCamelCaseDeep } from '../utils/case-mapper.js';
 
 export interface PKCEData {
 	codeVerifier: string;
@@ -390,20 +391,22 @@ export class OAuthManager {
 	 */
 	private processTokenResponse(response: OAuthTokenResponse): TokenData {
 		try {
-			if (!response.access_token) {
+			const camelResponse = toCamelCaseDeep(response);
+
+			if (!camelResponse.accessToken) {
 				throw new Error('No access token in response');
 			}
 
 			// Calculate expiration time
-			const expiresIn = response.expires_in || 3600; // Default 1 hour
+			const expiresIn = camelResponse.expiresIn || 3600; // Default 1 hour
 			const expiresAt = new Date(Date.now() + (expiresIn * 1000));
 
 			return {
-				accessToken: response.access_token,
-				refreshToken: response.refresh_token || '',
+				accessToken: camelResponse.accessToken,
+				refreshToken: camelResponse.refreshToken || '',
 				expiresAt,
-				tokenType: response.token_type || 'Bearer',
-				scope: response.scope || undefined
+				tokenType: camelResponse.tokenType || 'Bearer',
+				scope: camelResponse.scope || undefined
 			};
 		} catch (error) {
 			throw new Error(`Failed to process token response: ${error instanceof Error ? error.message : 'Unknown error'}`);

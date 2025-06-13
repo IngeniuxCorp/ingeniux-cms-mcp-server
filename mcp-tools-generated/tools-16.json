@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Settings_GetOAuthIdentities",
-		"description": "GET /settings/access-tokens",
+		"description": "GET /api/v1/settings/access-tokens",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -30,14 +30,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/settings/access-tokens",
+		"endpoint": "/api/v1/settings/access-tokens",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_SetOAuthIdentities",
-		"description": "PUT /settings/access-tokens",
+		"description": "PUT /api/v1/settings/access-tokens",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -106,14 +106,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/settings/access-tokens",
+		"endpoint": "/api/v1/settings/access-tokens",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetGlobalVariables",
-		"description": "GET /settings/global-variables",
+		"description": "GET /api/v1/settings/global-variables",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -156,14 +156,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/settings/global-variables",
+		"endpoint": "/api/v1/settings/global-variables",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_SetGlobalVariables",
-		"description": "PUT /settings/global-variables",
+		"description": "PUT /api/v1/settings/global-variables",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -248,14 +248,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/settings/global-variables",
+		"endpoint": "/api/v1/settings/global-variables",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_DeployDitaOT",
-		"description": "PATCH /settings/deploy-dita-ot",
+		"description": "PATCH /api/v1/settings/deploy-dita-ot",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -279,14 +279,14 @@
 			"type": "string"
 		},
 		"method": "PATCH",
-		"endpoint": "/settings/deploy-dita-ot",
+		"endpoint": "/api/v1/settings/deploy-dita-ot",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveDitaOTDeployment",
-		"description": "DELETE /settings/remove-dita-ot",
+		"description": "DELETE /api/v1/settings/remove-dita-ot",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -295,14 +295,14 @@
 			"type": "string"
 		},
 		"method": "DELETE",
-		"endpoint": "/settings/remove-dita-ot",
+		"endpoint": "/api/v1/settings/remove-dita-ot",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveDitaOTPlugin",
-		"description": "DELETE /settings/remove-dita-ot-plugin",
+		"description": "DELETE /api/v1/settings/remove-dita-ot-plugin",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -320,14 +320,14 @@
 			"type": "string"
 		},
 		"method": "DELETE",
-		"endpoint": "/settings/remove-dita-ot-plugin",
+		"endpoint": "/api/v1/settings/remove-dita-ot-plugin",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RestoreDitaOTPlugin",
-		"description": "DELETE /settings/restore-dita-ot-plugin",
+		"description": "DELETE /api/v1/settings/restore-dita-ot-plugin",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -345,14 +345,14 @@
 			"type": "string"
 		},
 		"method": "DELETE",
-		"endpoint": "/settings/restore-dita-ot-plugin",
+		"endpoint": "/api/v1/settings/restore-dita-ot-plugin",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_UploadDitaOTPlugin",
-		"description": "POST /settings/add-dita-ot-plugin",
+		"description": "POST /api/v1/settings/add-dita-ot-plugin",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -361,14 +361,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/settings/add-dita-ot-plugin",
+		"endpoint": "/api/v1/settings/add-dita-ot-plugin",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_DeployCustomOT",
-		"description": "POST /settings/deploy-custom-ot",
+		"description": "POST /api/v1/settings/deploy-custom-ot",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -377,14 +377,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/settings/deploy-custom-ot",
+		"endpoint": "/api/v1/settings/deploy-custom-ot",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_ManipulateDitavals",
-		"description": "POST /settings/ditaval-manipulation",
+		"description": "POST /api/v1/settings/ditaval-manipulation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -438,14 +438,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/settings/ditaval-manipulation",
+		"endpoint": "/api/v1/settings/ditaval-manipulation",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetArchiveTypes",
-		"description": "GET /settings/archive-types",
+		"description": "GET /api/v1/settings/archive-types",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -465,14 +465,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/settings/archive-types",
+		"endpoint": "/api/v1/settings/archive-types",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetGroupsForTreeMenu",
-		"description": "GET /settings/page-tree-menu-groups",
+		"description": "GET /api/v1/settings/page-tree-menu-groups",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -512,14 +512,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/settings/page-tree-menu-groups",
+		"endpoint": "/api/v1/settings/page-tree-menu-groups",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetGroupsForAssetTreeMenu",
-		"description": "GET /settings/asset-tree-menu-groups",
+		"description": "GET /api/v1/settings/asset-tree-menu-groups",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -559,14 +559,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/settings/asset-tree-menu-groups",
+		"endpoint": "/api/v1/settings/asset-tree-menu-groups",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetPossiblePageTreeMenuItems",
-		"description": "GET /settings/page-tree-menu-items",
+		"description": "GET /api/v1/settings/page-tree-menu-items",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -586,14 +586,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/settings/page-tree-menu-items",
+		"endpoint": "/api/v1/settings/page-tree-menu-items",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetPossibleAssetTreeMenuItems",
-		"description": "GET /settings/asset-tree-menu-items",
+		"description": "GET /api/v1/settings/asset-tree-menu-items",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -613,14 +613,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/settings/asset-tree-menu-items",
+		"endpoint": "/api/v1/settings/asset-tree-menu-items",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetPossibleTinyMceItems",
-		"description": "GET /settings/tinymce-items",
+		"description": "GET /api/v1/settings/tinymce-items",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -655,14 +655,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/settings/tinymce-items",
+		"endpoint": "/api/v1/settings/tinymce-items",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetTimeZones",
-		"description": "GET /settings/timezones",
+		"description": "GET /api/v1/settings/timezones",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -682,14 +682,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/settings/timezones",
+		"endpoint": "/api/v1/settings/timezones",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetTinyMceGroups",
-		"description": "GET /settings/tinymce-groups",
+		"description": "GET /api/v1/settings/tinymce-groups",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -738,14 +738,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/settings/tinymce-groups",
+		"endpoint": "/api/v1/settings/tinymce-groups",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetPresentationsFormatters",
-		"description": "GET /settings/presentation-formatters",
+		"description": "GET /api/v1/settings/presentation-formatters",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -772,7 +772,7 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/settings/presentation-formatters",
+		"endpoint": "/api/v1/settings/presentation-formatters",
 		"tags": [
 			"Settings"
 		]

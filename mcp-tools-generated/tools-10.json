@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Reports_GetFolder",
-		"description": "GET /reports/folder",
+		"description": "GET /api/v1/reports/folder",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -56,14 +56,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/reports/folder",
+		"endpoint": "/api/v1/reports/folder",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_SaveFolder",
-		"description": "POST /reports/folder",
+		"description": "POST /api/v1/reports/folder",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -124,14 +124,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/reports/folder",
+		"endpoint": "/api/v1/reports/folder",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_GetReport",
-		"description": "GET /reports/report",
+		"description": "GET /api/v1/reports/report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -152,181 +152,172 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"type": "object",
-					"properties": {
-						"id": {
-							"type": "string"
-						},
-						"name": {
-							"type": "string"
-						},
-						"reportType": {
-							"type": "string"
-						},
-						"lastChangeUser": {
-							"type": "string"
-						},
-						"lastChangeTime": {
-							"type": "string"
-						},
-						"lastVisitTime": {
-							"type": "string"
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"reportType": {
+					"type": "string"
+				},
+				"lastChangeUser": {
+					"type": "string"
+				},
+				"lastChangeTime": {
+					"type": "string"
+				},
+				"lastVisitTime": {
+					"type": "string"
+				},
+				"lastVisitUser": {
+					"type": "string"
+				},
+				"query": {
+					"type": "string"
+				},
+				"involvedDocuments": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"parameters": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"label": {
+								"type": "string"
+							},
+							"type": {
+								"type": "string"
+							},
+							"defaultValue": {
+								"type": "string"
+							},
+							"options": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"label": {
+											"type": "string"
+										},
+										"value": {
+											"type": "string"
+										}
+									}
+								}
+							}
 						}
 					}
 				},
-				{
-					"type": "object",
-					"properties": {
-						"lastVisitUser": {
-							"type": "string"
-						},
-						"query": {
-							"type": "string"
-						},
-						"involvedDocuments": {
-							"type": "array",
-							"items": {
+				"schedules": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"recurNumber"
+						],
+						"properties": {
+							"id": {
 								"type": "string"
-							}
-						},
-						"parameters": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"id": {
-										"type": "string"
-									},
-									"name": {
-										"type": "string"
-									},
-									"label": {
-										"type": "string"
-									},
-									"type": {
-										"type": "string"
-									},
-									"defaultValue": {
-										"type": "string"
-									},
-									"options": {
-										"type": "array",
-										"items": {
-											"type": "object",
-											"properties": {
-												"label": {
-													"type": "string"
-												},
-												"value": {
-													"type": "string"
-												}
-											}
-										}
-									}
+							},
+							"locale": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"startTime": {
+								"type": "string"
+							},
+							"recurUnit": {
+								"type": "string"
+							},
+							"recurNumber": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"recipients": {
+								"type": "array",
+								"items": {
+									"type": "string"
 								}
-							}
-						},
-						"schedules": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"recurNumber"
-								],
-								"properties": {
-									"id": {
-										"type": "string"
-									},
-									"locale": {
-										"type": "string"
-									},
-									"name": {
-										"type": "string"
-									},
-									"startTime": {
-										"type": "string"
-									},
-									"recurUnit": {
-										"type": "string"
-									},
-									"recurNumber": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"recipients": {
-										"type": "array",
-										"items": {
+							},
+							"parameterValues": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"value": {
 											"type": "string"
 										}
-									},
-									"parameterValues": {
-										"type": "array",
-										"items": {
-											"type": "object",
-											"properties": {
-												"name": {
-													"type": "string"
-												},
-												"value": {
-													"type": "string"
-												}
-											}
-										}
 									}
 								}
 							}
-						},
-						"columns": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"width"
-								],
-								"properties": {
-									"id": {
-										"type": "string"
-									},
-									"locale": {
-										"type": "string"
-									},
-									"label": {
-										"type": "string"
-									},
-									"attributeName": {
-										"type": "string"
-									},
-									"dataType": {
-										"type": "string"
-									},
-									"width": {
-										"type": "integer",
-										"format": "int32"
-									}
-								}
-							}
-						},
-						"idColumnName": {
-							"type": "string"
-						},
-						"providerUrl": {
-							"type": "string"
 						}
 					}
+				},
+				"columns": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"width"
+						],
+						"properties": {
+							"id": {
+								"type": "string"
+							},
+							"locale": {
+								"type": "string"
+							},
+							"label": {
+								"type": "string"
+							},
+							"attributeName": {
+								"type": "string"
+							},
+							"dataType": {
+								"type": "string"
+							},
+							"width": {
+								"type": "integer",
+								"format": "int32"
+							}
+						}
+					}
+				},
+				"idColumnName": {
+					"type": "string"
+				},
+				"providerUrl": {
+					"type": "string"
 				}
-			]
+			}
 		},
 		"method": "GET",
-		"endpoint": "/reports/report",
+		"endpoint": "/api/v1/reports/report",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_GetColumns",
-		"description": "GET /reports/columns",
+		"description": "GET /api/v1/reports/columns",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -398,14 +389,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/reports/columns",
+		"endpoint": "/api/v1/reports/columns",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_GetSimpleReportResults",
-		"description": "GET /reports/simple-report",
+		"description": "GET /api/v1/reports/simple-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -437,75 +428,66 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/reports/simple-report",
+		"endpoint": "/api/v1/reports/simple-report",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_SaveSimpleReport",
-		"description": "PUT /reports/simple-report",
+		"description": "PUT /api/v1/reports/simple-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"reportInfo": {
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"reportId": {
-									"type": "string"
-								},
-								"involvedDocs": {
-									"type": "array",
-									"items": {
+					"type": "object",
+					"properties": {
+						"reportId": {
+							"type": "string"
+						},
+						"involvedDocs": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"query": {
+							"type": "string"
+						},
+						"parentFolderId": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						},
+						"columns": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"width"
+								],
+								"properties": {
+									"attributeName": {
 										"type": "string"
+									},
+									"label": {
+										"type": "string"
+									},
+									"dataType": {
+										"type": "string"
+									},
+									"width": {
+										"type": "integer",
+										"format": "int32"
 									}
-								},
-								"query": {
-									"type": "string"
 								}
 							}
 						},
-						{
-							"type": "object",
-							"properties": {
-								"parentFolderId": {
-									"type": "string"
-								},
-								"name": {
-									"type": "string"
-								},
-								"columns": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"required": [
-											"width"
-										],
-										"properties": {
-											"attributeName": {
-												"type": "string"
-											},
-											"label": {
-												"type": "string"
-											},
-											"dataType": {
-												"type": "string"
-											},
-											"width": {
-												"type": "integer",
-												"format": "int32"
-											}
-										}
-									}
-								},
-								"idColumnName": {
-									"type": "string"
-								}
-							}
+						"idColumnName": {
+							"type": "string"
 						}
-					]
+					}
 				},
 				"workingLocale": {
 					"type": "string",
@@ -523,14 +505,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/reports/simple-report",
+		"endpoint": "/api/v1/reports/simple-report",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_GetParameterizedReportResults",
-		"description": "POST /reports/parameterized-report",
+		"description": "POST /api/v1/reports/parameterized-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -578,110 +560,92 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/reports/parameterized-report",
+		"endpoint": "/api/v1/reports/parameterized-report",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_SaveParameterizedReport",
-		"description": "PUT /reports/parameterized-report",
+		"description": "PUT /api/v1/reports/parameterized-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"reportInfo": {
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"reportId": {
-											"type": "string"
-										},
-										"involvedDocs": {
-											"type": "array",
-											"items": {
-												"type": "string"
-											}
-										},
-										"query": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object",
-									"properties": {
-										"parentFolderId": {
-											"type": "string"
-										},
-										"name": {
-											"type": "string"
-										},
-										"columns": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"required": [
-													"width"
-												],
-												"properties": {
-													"attributeName": {
-														"type": "string"
-													},
-													"label": {
-														"type": "string"
-													},
-													"dataType": {
-														"type": "string"
-													},
-													"width": {
-														"type": "integer",
-														"format": "int32"
-													}
-												}
-											}
-										},
-										"idColumnName": {
-											"type": "string"
-										}
+					"type": "object",
+					"properties": {
+						"reportId": {
+							"type": "string"
+						},
+						"involvedDocs": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"query": {
+							"type": "string"
+						},
+						"parentFolderId": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						},
+						"columns": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"width"
+								],
+								"properties": {
+									"attributeName": {
+										"type": "string"
+									},
+									"label": {
+										"type": "string"
+									},
+									"dataType": {
+										"type": "string"
+									},
+									"width": {
+										"type": "integer",
+										"format": "int32"
 									}
 								}
-							]
+							}
 						},
-						{
-							"type": "object",
-							"properties": {
-								"parameters": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"name": {
-												"type": "string"
-											},
-											"label": {
-												"type": "string"
-											},
-											"type": {
-												"type": "string"
-											},
-											"defaultValue": {
-												"type": "string"
-											},
-											"options": {
-												"type": "array",
-												"items": {
-													"type": "object",
-													"properties": {
-														"label": {
-															"type": "string"
-														},
-														"value": {
-															"type": "string"
-														}
-													}
+						"idColumnName": {
+							"type": "string"
+						},
+						"parameters": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"label": {
+										"type": "string"
+									},
+									"type": {
+										"type": "string"
+									},
+									"defaultValue": {
+										"type": "string"
+									},
+									"options": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"label": {
+													"type": "string"
+												},
+												"value": {
+													"type": "string"
 												}
 											}
 										}
@@ -689,7 +653,7 @@
 								}
 							}
 						}
-					]
+					}
 				},
 				"workingLocale": {
 					"type": "string",
@@ -707,14 +671,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/reports/parameterized-report",
+		"endpoint": "/api/v1/reports/parameterized-report",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_SaveAdvancedReport",
-		"description": "PUT /reports/advanced-report",
+		"description": "PUT /api/v1/reports/advanced-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -748,14 +712,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/reports/advanced-report",
+		"endpoint": "/api/v1/reports/advanced-report",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_SaveReportSchedules",
-		"description": "PUT /reports/report-schedules",
+		"description": "PUT /api/v1/reports/report-schedules",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -839,14 +803,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/reports/report-schedules",
+		"endpoint": "/api/v1/reports/report-schedules",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Schemas_UploadSchema",
-		"description": "POST /schemas/upload",
+		"description": "POST /api/v1/schemas/upload",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -860,14 +824,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/schemas/upload",
+		"endpoint": "/api/v1/schemas/upload",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GenerateThumbnailFromPreview",
-		"description": "POST /schemas/generate-thumb-from-preview",
+		"description": "POST /api/v1/schemas/generate-thumb-from-preview",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -901,14 +865,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/schemas/generate-thumb-from-preview",
+		"endpoint": "/api/v1/schemas/generate-thumb-from-preview",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetComponentSchemaReferences",
-		"description": "GET /schemas/pages-by-comp-schema",
+		"description": "GET /api/v1/schemas/pages-by-comp-schema",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -974,14 +938,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/schemas/pages-by-comp-schema",
+		"endpoint": "/api/v1/schemas/pages-by-comp-schema",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetSchemas",
-		"description": "GET /schemas/schemas",
+		"description": "GET /api/v1/schemas/schemas",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1259,14 +1223,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/schemas/schemas",
+		"endpoint": "/api/v1/schemas/schemas",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetAssetSchemas",
-		"description": "GET /schemas/asset-schemas",
+		"description": "GET /api/v1/schemas/asset-schemas",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1544,14 +1508,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/schemas/asset-schemas",
+		"endpoint": "/api/v1/schemas/asset-schemas",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetAssetSchemasByTypes",
-		"description": "GET /schemas/asset-schemas-by-types",
+		"description": "GET /api/v1/schemas/asset-schemas-by-types",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1834,14 +1798,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/schemas/asset-schemas-by-types",
+		"endpoint": "/api/v1/schemas/asset-schemas-by-types",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetSchema",
-		"description": "GET /schemas/schema",
+		"description": "GET /api/v1/schemas/schema",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1856,250 +1820,223 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"IsAssetSchema",
-						"Draft",
-						"Icon",
-						"HasThumbnail",
-						"WorkflowRequired",
-						"Version",
-						"FieldsCount",
-						"IsComponentSchema",
-						"MapRequiredDitaval"
-					],
-					"properties": {
-						"FriendlyName": {
-							"type": "string"
-						},
-						"RootName": {
-							"type": "string"
-						},
-						"IsAssetSchema": {
-							"type": "boolean"
-						},
-						"Draft": {
-							"type": "boolean"
-						},
-						"Icon": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"HasThumbnail": {
-							"type": "boolean"
-						},
-						"ThumbnailId": {
-							"type": "string"
-						},
-						"ThumbnailRelativePath": {
-							"type": "string"
-						},
-						"WorkflowRequired": {
-							"type": "boolean"
-						},
-						"WorkflowDefinitionId": {
-							"type": "string"
-						},
-						"WorkflowDefinitionName": {
-							"type": "string"
-						},
-						"Version": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"FieldsCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"Fields": {
-							"type": "array",
-							"items": {
-								"allOf": [
-									{
-										"$ref": "#/definitions/NameIdPair",
-										"circular": true
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"FriendlyName": {
+					"type": "string"
+				},
+				"RootName": {
+					"type": "string"
+				},
+				"IsAssetSchema": {
+					"type": "boolean"
+				},
+				"Draft": {
+					"type": "boolean"
+				},
+				"Icon": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"HasThumbnail": {
+					"type": "boolean"
+				},
+				"ThumbnailId": {
+					"type": "string"
+				},
+				"ThumbnailRelativePath": {
+					"type": "string"
+				},
+				"WorkflowRequired": {
+					"type": "boolean"
+				},
+				"WorkflowDefinitionId": {
+					"type": "string"
+				},
+				"WorkflowDefinitionName": {
+					"type": "string"
+				},
+				"Version": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"FieldsCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Fields": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/definitions/NameIdPair",
+								"circular": true
+							},
+							{
+								"type": "object",
+								"required": [
+									"IsXpower",
+									"Type",
+									"Required",
+									"ReadOnly",
+									"Hidden"
+								],
+								"properties": {
+									"IsXpower": {
+										"type": "boolean"
 									},
-									{
-										"type": "object",
-										"required": [
-											"IsXpower",
-											"Type",
-											"Required",
-											"ReadOnly",
-											"Hidden"
+									"Type": {
+										"type": "string",
+										"description": "Represents the list of field types on a Page.",
+										"x-enumNames": [
+											"IGX_ATTRIBUTE",
+											"IGX_ELEMENT_TEXT",
+											"IGX_ELEMENT_CDATA",
+											"IGX_COMPONENT",
+											"IGX_LINK",
+											"IGX_INSERT",
+											"IGX_NAVIGATION",
+											"IGX_COM_EXECUTE",
+											"IGX_COBRAND",
+											"IGX_COBRAND_GROUP",
+											"IGX_JAVA_EXECUTE",
+											"IGX_SCRIPT",
+											"IGX_CONTAINER_NAVIGATION",
+											"IGX_BOOLEAN",
+											"IGX_PASSWORD",
+											"IGX_GROUP_START",
+											"IGX_GROUP_END",
+											"IGX_LIST",
+											"IGX_TAXONOMYNAVIGATION",
+											"IGX_REFERENCES",
+											"IGX_LINKSET",
+											"IGX_ENUMERATION",
+											"IGX_DATE",
+											"IGX_LOCAL_DATE",
+											"IGX_LOCAL_TIME",
+											"IGX_MULTI_SELECT",
+											"IGX_IMAGE",
+											"IGX_MEDIA",
+											"IGX_DOCUMENT",
+											"IGX_DYNAMIC_EXECUTE",
+											"IGX_ASSET",
+											"IGX_ASSETLINKSET",
+											"IGX_ASSETNAVIGATION",
+											"IGX_ASSETTAXONOMYNAVIGATION",
+											"IGX_XML",
+											"IGX_DEPENDENCYNAVIGATION"
 										],
-										"properties": {
-											"IsXpower": {
-												"type": "boolean"
-											},
-											"Type": {
-												"type": "string",
-												"description": "Represents the list of field types on a Page.",
-												"x-enumNames": [
-													"IGX_ATTRIBUTE",
-													"IGX_ELEMENT_TEXT",
-													"IGX_ELEMENT_CDATA",
-													"IGX_COMPONENT",
-													"IGX_LINK",
-													"IGX_INSERT",
-													"IGX_NAVIGATION",
-													"IGX_COM_EXECUTE",
-													"IGX_COBRAND",
-													"IGX_COBRAND_GROUP",
-													"IGX_JAVA_EXECUTE",
-													"IGX_SCRIPT",
-													"IGX_CONTAINER_NAVIGATION",
-													"IGX_BOOLEAN",
-													"IGX_PASSWORD",
-													"IGX_GROUP_START",
-													"IGX_GROUP_END",
-													"IGX_LIST",
-													"IGX_TAXONOMYNAVIGATION",
-													"IGX_REFERENCES",
-													"IGX_LINKSET",
-													"IGX_ENUMERATION",
-													"IGX_DATE",
-													"IGX_LOCAL_DATE",
-													"IGX_LOCAL_TIME",
-													"IGX_MULTI_SELECT",
-													"IGX_IMAGE",
-													"IGX_MEDIA",
-													"IGX_DOCUMENT",
-													"IGX_DYNAMIC_EXECUTE",
-													"IGX_ASSET",
-													"IGX_ASSETLINKSET",
-													"IGX_ASSETNAVIGATION",
-													"IGX_ASSETTAXONOMYNAVIGATION",
-													"IGX_XML",
-													"IGX_DEPENDENCYNAVIGATION"
-												],
-												"enum": [
-													"IGX_ATTRIBUTE",
-													"IGX_ELEMENT_TEXT",
-													"IGX_ELEMENT_CDATA",
-													"IGX_COMPONENT",
-													"IGX_LINK",
-													"IGX_INSERT",
-													"IGX_NAVIGATION",
-													"IGX_COM_EXECUTE",
-													"IGX_COBRAND",
-													"IGX_COBRAND_GROUP",
-													"IGX_JAVA_EXECUTE",
-													"IGX_SCRIPT",
-													"IGX_CONTAINER_NAVIGATION",
-													"IGX_BOOLEAN",
-													"IGX_PASSWORD",
-													"IGX_GROUP_START",
-													"IGX_GROUP_END",
-													"IGX_LIST",
-													"IGX_TAXONOMYNAVIGATION",
-													"IGX_REFERENCES",
-													"IGX_LINKSET",
-													"IGX_ENUMERATION",
-													"IGX_DATE",
-													"IGX_LOCAL_DATE",
-													"IGX_LOCAL_TIME",
-													"IGX_MULTI_SELECT",
-													"IGX_IMAGE",
-													"IGX_MEDIA",
-													"IGX_DOCUMENT",
-													"IGX_DYNAMIC_EXECUTE",
-													"IGX_ASSET",
-													"IGX_ASSETLINKSET",
-													"IGX_ASSETNAVIGATION",
-													"IGX_ASSETTAXONOMYNAVIGATION",
-													"IGX_XML",
-													"IGX_DEPENDENCYNAVIGATION"
-												]
-											},
-											"Required": {
-												"type": "boolean"
-											},
-											"ReadOnly": {
-												"type": "boolean"
-											},
-											"Hidden": {
-												"type": "boolean"
-											}
-										}
+										"enum": [
+											"IGX_ATTRIBUTE",
+											"IGX_ELEMENT_TEXT",
+											"IGX_ELEMENT_CDATA",
+											"IGX_COMPONENT",
+											"IGX_LINK",
+											"IGX_INSERT",
+											"IGX_NAVIGATION",
+											"IGX_COM_EXECUTE",
+											"IGX_COBRAND",
+											"IGX_COBRAND_GROUP",
+											"IGX_JAVA_EXECUTE",
+											"IGX_SCRIPT",
+											"IGX_CONTAINER_NAVIGATION",
+											"IGX_BOOLEAN",
+											"IGX_PASSWORD",
+											"IGX_GROUP_START",
+											"IGX_GROUP_END",
+											"IGX_LIST",
+											"IGX_TAXONOMYNAVIGATION",
+											"IGX_REFERENCES",
+											"IGX_LINKSET",
+											"IGX_ENUMERATION",
+											"IGX_DATE",
+											"IGX_LOCAL_DATE",
+											"IGX_LOCAL_TIME",
+											"IGX_MULTI_SELECT",
+											"IGX_IMAGE",
+											"IGX_MEDIA",
+											"IGX_DOCUMENT",
+											"IGX_DYNAMIC_EXECUTE",
+											"IGX_ASSET",
+											"IGX_ASSETLINKSET",
+											"IGX_ASSETNAVIGATION",
+											"IGX_ASSETTAXONOMYNAVIGATION",
+											"IGX_XML",
+											"IGX_DEPENDENCYNAVIGATION"
+										]
+									},
+									"Required": {
+										"type": "boolean"
+									},
+									"ReadOnly": {
+										"type": "boolean"
+									},
+									"Hidden": {
+										"type": "boolean"
 									}
-								]
+								}
 							}
-						},
-						"IsComponentSchema": {
-							"type": "boolean"
-						},
-						"MapRequiredDitaval": {
-							"type": "boolean"
-						}
+						]
 					}
+				},
+				"IsComponentSchema": {
+					"type": "boolean"
+				},
+				"MapRequiredDitaval": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"IsAssetSchema",
+				"Draft",
+				"Icon",
+				"HasThumbnail",
+				"WorkflowRequired",
+				"Version",
+				"FieldsCount",
+				"IsComponentSchema",
+				"MapRequiredDitaval"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/schemas/schema",
+		"endpoint": "/api/v1/schemas/schema",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetAssetSchema",
-		"description": "GET /schemas/asset-schema",
+		"description": "GET /api/v1/schemas/asset-schema",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2114,250 +2051,223 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"IsAssetSchema",
-						"Draft",
-						"Icon",
-						"HasThumbnail",
-						"WorkflowRequired",
-						"Version",
-						"FieldsCount",
-						"IsComponentSchema",
-						"MapRequiredDitaval"
-					],
-					"properties": {
-						"FriendlyName": {
-							"type": "string"
-						},
-						"RootName": {
-							"type": "string"
-						},
-						"IsAssetSchema": {
-							"type": "boolean"
-						},
-						"Draft": {
-							"type": "boolean"
-						},
-						"Icon": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"HasThumbnail": {
-							"type": "boolean"
-						},
-						"ThumbnailId": {
-							"type": "string"
-						},
-						"ThumbnailRelativePath": {
-							"type": "string"
-						},
-						"WorkflowRequired": {
-							"type": "boolean"
-						},
-						"WorkflowDefinitionId": {
-							"type": "string"
-						},
-						"WorkflowDefinitionName": {
-							"type": "string"
-						},
-						"Version": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"FieldsCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"Fields": {
-							"type": "array",
-							"items": {
-								"allOf": [
-									{
-										"$ref": "#/definitions/NameIdPair",
-										"circular": true
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"FriendlyName": {
+					"type": "string"
+				},
+				"RootName": {
+					"type": "string"
+				},
+				"IsAssetSchema": {
+					"type": "boolean"
+				},
+				"Draft": {
+					"type": "boolean"
+				},
+				"Icon": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"HasThumbnail": {
+					"type": "boolean"
+				},
+				"ThumbnailId": {
+					"type": "string"
+				},
+				"ThumbnailRelativePath": {
+					"type": "string"
+				},
+				"WorkflowRequired": {
+					"type": "boolean"
+				},
+				"WorkflowDefinitionId": {
+					"type": "string"
+				},
+				"WorkflowDefinitionName": {
+					"type": "string"
+				},
+				"Version": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"FieldsCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Fields": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/definitions/NameIdPair",
+								"circular": true
+							},
+							{
+								"type": "object",
+								"required": [
+									"IsXpower",
+									"Type",
+									"Required",
+									"ReadOnly",
+									"Hidden"
+								],
+								"properties": {
+									"IsXpower": {
+										"type": "boolean"
 									},
-									{
-										"type": "object",
-										"required": [
-											"IsXpower",
-											"Type",
-											"Required",
-											"ReadOnly",
-											"Hidden"
+									"Type": {
+										"type": "string",
+										"description": "Represents the list of field types on a Page.",
+										"x-enumNames": [
+											"IGX_ATTRIBUTE",
+											"IGX_ELEMENT_TEXT",
+											"IGX_ELEMENT_CDATA",
+											"IGX_COMPONENT",
+											"IGX_LINK",
+											"IGX_INSERT",
+											"IGX_NAVIGATION",
+											"IGX_COM_EXECUTE",
+											"IGX_COBRAND",
+											"IGX_COBRAND_GROUP",
+											"IGX_JAVA_EXECUTE",
+											"IGX_SCRIPT",
+											"IGX_CONTAINER_NAVIGATION",
+											"IGX_BOOLEAN",
+											"IGX_PASSWORD",
+											"IGX_GROUP_START",
+											"IGX_GROUP_END",
+											"IGX_LIST",
+											"IGX_TAXONOMYNAVIGATION",
+											"IGX_REFERENCES",
+											"IGX_LINKSET",
+											"IGX_ENUMERATION",
+											"IGX_DATE",
+											"IGX_LOCAL_DATE",
+											"IGX_LOCAL_TIME",
+											"IGX_MULTI_SELECT",
+											"IGX_IMAGE",
+											"IGX_MEDIA",
+											"IGX_DOCUMENT",
+											"IGX_DYNAMIC_EXECUTE",
+											"IGX_ASSET",
+											"IGX_ASSETLINKSET",
+											"IGX_ASSETNAVIGATION",
+											"IGX_ASSETTAXONOMYNAVIGATION",
+											"IGX_XML",
+											"IGX_DEPENDENCYNAVIGATION"
 										],
-										"properties": {
-											"IsXpower": {
-												"type": "boolean"
-											},
-											"Type": {
-												"type": "string",
-												"description": "Represents the list of field types on a Page.",
-												"x-enumNames": [
-													"IGX_ATTRIBUTE",
-													"IGX_ELEMENT_TEXT",
-													"IGX_ELEMENT_CDATA",
-													"IGX_COMPONENT",
-													"IGX_LINK",
-													"IGX_INSERT",
-													"IGX_NAVIGATION",
-													"IGX_COM_EXECUTE",
-													"IGX_COBRAND",
-													"IGX_COBRAND_GROUP",
-													"IGX_JAVA_EXECUTE",
-													"IGX_SCRIPT",
-													"IGX_CONTAINER_NAVIGATION",
-													"IGX_BOOLEAN",
-													"IGX_PASSWORD",
-													"IGX_GROUP_START",
-													"IGX_GROUP_END",
-													"IGX_LIST",
-													"IGX_TAXONOMYNAVIGATION",
-													"IGX_REFERENCES",
-													"IGX_LINKSET",
-													"IGX_ENUMERATION",
-													"IGX_DATE",
-													"IGX_LOCAL_DATE",
-													"IGX_LOCAL_TIME",
-													"IGX_MULTI_SELECT",
-													"IGX_IMAGE",
-													"IGX_MEDIA",
-													"IGX_DOCUMENT",
-													"IGX_DYNAMIC_EXECUTE",
-													"IGX_ASSET",
-													"IGX_ASSETLINKSET",
-													"IGX_ASSETNAVIGATION",
-													"IGX_ASSETTAXONOMYNAVIGATION",
-													"IGX_XML",
-													"IGX_DEPENDENCYNAVIGATION"
-												],
-												"enum": [
-													"IGX_ATTRIBUTE",
-													"IGX_ELEMENT_TEXT",
-													"IGX_ELEMENT_CDATA",
-													"IGX_COMPONENT",
-													"IGX_LINK",
-													"IGX_INSERT",
-													"IGX_NAVIGATION",
-													"IGX_COM_EXECUTE",
-													"IGX_COBRAND",
-													"IGX_COBRAND_GROUP",
-													"IGX_JAVA_EXECUTE",
-													"IGX_SCRIPT",
-													"IGX_CONTAINER_NAVIGATION",
-													"IGX_BOOLEAN",
-													"IGX_PASSWORD",
-													"IGX_GROUP_START",
-													"IGX_GROUP_END",
-													"IGX_LIST",
-													"IGX_TAXONOMYNAVIGATION",
-													"IGX_REFERENCES",
-													"IGX_LINKSET",
-													"IGX_ENUMERATION",
-													"IGX_DATE",
-													"IGX_LOCAL_DATE",
-													"IGX_LOCAL_TIME",
-													"IGX_MULTI_SELECT",
-													"IGX_IMAGE",
-													"IGX_MEDIA",
-													"IGX_DOCUMENT",
-													"IGX_DYNAMIC_EXECUTE",
-													"IGX_ASSET",
-													"IGX_ASSETLINKSET",
-													"IGX_ASSETNAVIGATION",
-													"IGX_ASSETTAXONOMYNAVIGATION",
-													"IGX_XML",
-													"IGX_DEPENDENCYNAVIGATION"
-												]
-											},
-											"Required": {
-												"type": "boolean"
-											},
-											"ReadOnly": {
-												"type": "boolean"
-											},
-											"Hidden": {
-												"type": "boolean"
-											}
-										}
+										"enum": [
+											"IGX_ATTRIBUTE",
+											"IGX_ELEMENT_TEXT",
+											"IGX_ELEMENT_CDATA",
+											"IGX_COMPONENT",
+											"IGX_LINK",
+											"IGX_INSERT",
+											"IGX_NAVIGATION",
+											"IGX_COM_EXECUTE",
+											"IGX_COBRAND",
+											"IGX_COBRAND_GROUP",
+											"IGX_JAVA_EXECUTE",
+											"IGX_SCRIPT",
+											"IGX_CONTAINER_NAVIGATION",
+											"IGX_BOOLEAN",
+											"IGX_PASSWORD",
+											"IGX_GROUP_START",
+											"IGX_GROUP_END",
+											"IGX_LIST",
+											"IGX_TAXONOMYNAVIGATION",
+											"IGX_REFERENCES",
+											"IGX_LINKSET",
+											"IGX_ENUMERATION",
+											"IGX_DATE",
+											"IGX_LOCAL_DATE",
+											"IGX_LOCAL_TIME",
+											"IGX_MULTI_SELECT",
+											"IGX_IMAGE",
+											"IGX_MEDIA",
+											"IGX_DOCUMENT",
+											"IGX_DYNAMIC_EXECUTE",
+											"IGX_ASSET",
+											"IGX_ASSETLINKSET",
+											"IGX_ASSETNAVIGATION",
+											"IGX_ASSETTAXONOMYNAVIGATION",
+											"IGX_XML",
+											"IGX_DEPENDENCYNAVIGATION"
+										]
+									},
+									"Required": {
+										"type": "boolean"
+									},
+									"ReadOnly": {
+										"type": "boolean"
+									},
+									"Hidden": {
+										"type": "boolean"
 									}
-								]
+								}
 							}
-						},
-						"IsComponentSchema": {
-							"type": "boolean"
-						},
-						"MapRequiredDitaval": {
-							"type": "boolean"
-						}
+						]
 					}
+				},
+				"IsComponentSchema": {
+					"type": "boolean"
+				},
+				"MapRequiredDitaval": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"IsAssetSchema",
+				"Draft",
+				"Icon",
+				"HasThumbnail",
+				"WorkflowRequired",
+				"Version",
+				"FieldsCount",
+				"IsComponentSchema",
+				"MapRequiredDitaval"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/schemas/asset-schema",
+		"endpoint": "/api/v1/schemas/asset-schema",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetPageOrAssetSchema",
-		"description": "GET /schemas/page-or-asset-schema",
+		"description": "GET /api/v1/schemas/page-or-asset-schema",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2384,250 +2294,223 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"IsAssetSchema",
-						"Draft",
-						"Icon",
-						"HasThumbnail",
-						"WorkflowRequired",
-						"Version",
-						"FieldsCount",
-						"IsComponentSchema",
-						"MapRequiredDitaval"
-					],
-					"properties": {
-						"FriendlyName": {
-							"type": "string"
-						},
-						"RootName": {
-							"type": "string"
-						},
-						"IsAssetSchema": {
-							"type": "boolean"
-						},
-						"Draft": {
-							"type": "boolean"
-						},
-						"Icon": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"HasThumbnail": {
-							"type": "boolean"
-						},
-						"ThumbnailId": {
-							"type": "string"
-						},
-						"ThumbnailRelativePath": {
-							"type": "string"
-						},
-						"WorkflowRequired": {
-							"type": "boolean"
-						},
-						"WorkflowDefinitionId": {
-							"type": "string"
-						},
-						"WorkflowDefinitionName": {
-							"type": "string"
-						},
-						"Version": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"FieldsCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"Fields": {
-							"type": "array",
-							"items": {
-								"allOf": [
-									{
-										"$ref": "#/definitions/NameIdPair",
-										"circular": true
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"FriendlyName": {
+					"type": "string"
+				},
+				"RootName": {
+					"type": "string"
+				},
+				"IsAssetSchema": {
+					"type": "boolean"
+				},
+				"Draft": {
+					"type": "boolean"
+				},
+				"Icon": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"HasThumbnail": {
+					"type": "boolean"
+				},
+				"ThumbnailId": {
+					"type": "string"
+				},
+				"ThumbnailRelativePath": {
+					"type": "string"
+				},
+				"WorkflowRequired": {
+					"type": "boolean"
+				},
+				"WorkflowDefinitionId": {
+					"type": "string"
+				},
+				"WorkflowDefinitionName": {
+					"type": "string"
+				},
+				"Version": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"FieldsCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Fields": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/definitions/NameIdPair",
+								"circular": true
+							},
+							{
+								"type": "object",
+								"required": [
+									"IsXpower",
+									"Type",
+									"Required",
+									"ReadOnly",
+									"Hidden"
+								],
+								"properties": {
+									"IsXpower": {
+										"type": "boolean"
 									},
-									{
-										"type": "object",
-										"required": [
-											"IsXpower",
-											"Type",
-											"Required",
-											"ReadOnly",
-											"Hidden"
+									"Type": {
+										"type": "string",
+										"description": "Represents the list of field types on a Page.",
+										"x-enumNames": [
+											"IGX_ATTRIBUTE",
+											"IGX_ELEMENT_TEXT",
+											"IGX_ELEMENT_CDATA",
+											"IGX_COMPONENT",
+											"IGX_LINK",
+											"IGX_INSERT",
+											"IGX_NAVIGATION",
+											"IGX_COM_EXECUTE",
+											"IGX_COBRAND",
+											"IGX_COBRAND_GROUP",
+											"IGX_JAVA_EXECUTE",
+											"IGX_SCRIPT",
+											"IGX_CONTAINER_NAVIGATION",
+											"IGX_BOOLEAN",
+											"IGX_PASSWORD",
+											"IGX_GROUP_START",
+											"IGX_GROUP_END",
+											"IGX_LIST",
+											"IGX_TAXONOMYNAVIGATION",
+											"IGX_REFERENCES",
+											"IGX_LINKSET",
+											"IGX_ENUMERATION",
+											"IGX_DATE",
+											"IGX_LOCAL_DATE",
+											"IGX_LOCAL_TIME",
+											"IGX_MULTI_SELECT",
+											"IGX_IMAGE",
+											"IGX_MEDIA",
+											"IGX_DOCUMENT",
+											"IGX_DYNAMIC_EXECUTE",
+											"IGX_ASSET",
+											"IGX_ASSETLINKSET",
+											"IGX_ASSETNAVIGATION",
+											"IGX_ASSETTAXONOMYNAVIGATION",
+											"IGX_XML",
+											"IGX_DEPENDENCYNAVIGATION"
 										],
-										"properties": {
-											"IsXpower": {
-												"type": "boolean"
-											},
-											"Type": {
-												"type": "string",
-												"description": "Represents the list of field types on a Page.",
-												"x-enumNames": [
-													"IGX_ATTRIBUTE",
-													"IGX_ELEMENT_TEXT",
-													"IGX_ELEMENT_CDATA",
-													"IGX_COMPONENT",
-													"IGX_LINK",
-													"IGX_INSERT",
-													"IGX_NAVIGATION",
-													"IGX_COM_EXECUTE",
-													"IGX_COBRAND",
-													"IGX_COBRAND_GROUP",
-													"IGX_JAVA_EXECUTE",
-													"IGX_SCRIPT",
-													"IGX_CONTAINER_NAVIGATION",
-													"IGX_BOOLEAN",
-													"IGX_PASSWORD",
-													"IGX_GROUP_START",
-													"IGX_GROUP_END",
-													"IGX_LIST",
-													"IGX_TAXONOMYNAVIGATION",
-													"IGX_REFERENCES",
-													"IGX_LINKSET",
-													"IGX_ENUMERATION",
-													"IGX_DATE",
-													"IGX_LOCAL_DATE",
-													"IGX_LOCAL_TIME",
-													"IGX_MULTI_SELECT",
-													"IGX_IMAGE",
-													"IGX_MEDIA",
-													"IGX_DOCUMENT",
-													"IGX_DYNAMIC_EXECUTE",
-													"IGX_ASSET",
-													"IGX_ASSETLINKSET",
-													"IGX_ASSETNAVIGATION",
-													"IGX_ASSETTAXONOMYNAVIGATION",
-													"IGX_XML",
-													"IGX_DEPENDENCYNAVIGATION"
-												],
-												"enum": [
-													"IGX_ATTRIBUTE",
-													"IGX_ELEMENT_TEXT",
-													"IGX_ELEMENT_CDATA",
-													"IGX_COMPONENT",
-													"IGX_LINK",
-													"IGX_INSERT",
-													"IGX_NAVIGATION",
-													"IGX_COM_EXECUTE",
-													"IGX_COBRAND",
-													"IGX_COBRAND_GROUP",
-													"IGX_JAVA_EXECUTE",
-													"IGX_SCRIPT",
-													"IGX_CONTAINER_NAVIGATION",
-													"IGX_BOOLEAN",
-													"IGX_PASSWORD",
-													"IGX_GROUP_START",
-													"IGX_GROUP_END",
-													"IGX_LIST",
-													"IGX_TAXONOMYNAVIGATION",
-													"IGX_REFERENCES",
-													"IGX_LINKSET",
-													"IGX_ENUMERATION",
-													"IGX_DATE",
-													"IGX_LOCAL_DATE",
-													"IGX_LOCAL_TIME",
-													"IGX_MULTI_SELECT",
-													"IGX_IMAGE",
-													"IGX_MEDIA",
-													"IGX_DOCUMENT",
-													"IGX_DYNAMIC_EXECUTE",
-													"IGX_ASSET",
-													"IGX_ASSETLINKSET",
-													"IGX_ASSETNAVIGATION",
-													"IGX_ASSETTAXONOMYNAVIGATION",
-													"IGX_XML",
-													"IGX_DEPENDENCYNAVIGATION"
-												]
-											},
-											"Required": {
-												"type": "boolean"
-											},
-											"ReadOnly": {
-												"type": "boolean"
-											},
-											"Hidden": {
-												"type": "boolean"
-											}
-										}
+										"enum": [
+											"IGX_ATTRIBUTE",
+											"IGX_ELEMENT_TEXT",
+											"IGX_ELEMENT_CDATA",
+											"IGX_COMPONENT",
+											"IGX_LINK",
+											"IGX_INSERT",
+											"IGX_NAVIGATION",
+											"IGX_COM_EXECUTE",
+											"IGX_COBRAND",
+											"IGX_COBRAND_GROUP",
+											"IGX_JAVA_EXECUTE",
+											"IGX_SCRIPT",
+											"IGX_CONTAINER_NAVIGATION",
+											"IGX_BOOLEAN",
+											"IGX_PASSWORD",
+											"IGX_GROUP_START",
+											"IGX_GROUP_END",
+											"IGX_LIST",
+											"IGX_TAXONOMYNAVIGATION",
+											"IGX_REFERENCES",
+											"IGX_LINKSET",
+											"IGX_ENUMERATION",
+											"IGX_DATE",
+											"IGX_LOCAL_DATE",
+											"IGX_LOCAL_TIME",
+											"IGX_MULTI_SELECT",
+											"IGX_IMAGE",
+											"IGX_MEDIA",
+											"IGX_DOCUMENT",
+											"IGX_DYNAMIC_EXECUTE",
+											"IGX_ASSET",
+											"IGX_ASSETLINKSET",
+											"IGX_ASSETNAVIGATION",
+											"IGX_ASSETTAXONOMYNAVIGATION",
+											"IGX_XML",
+											"IGX_DEPENDENCYNAVIGATION"
+										]
+									},
+									"Required": {
+										"type": "boolean"
+									},
+									"ReadOnly": {
+										"type": "boolean"
+									},
+									"Hidden": {
+										"type": "boolean"
 									}
-								]
+								}
 							}
-						},
-						"IsComponentSchema": {
-							"type": "boolean"
-						},
-						"MapRequiredDitaval": {
-							"type": "boolean"
-						}
+						]
 					}
+				},
+				"IsComponentSchema": {
+					"type": "boolean"
+				},
+				"MapRequiredDitaval": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"IsAssetSchema",
+				"Draft",
+				"Icon",
+				"HasThumbnail",
+				"WorkflowRequired",
+				"Version",
+				"FieldsCount",
+				"IsComponentSchema",
+				"MapRequiredDitaval"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/schemas/page-or-asset-schema",
+		"endpoint": "/api/v1/schemas/page-or-asset-schema",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_Search",
-		"description": "GET /schemas/search",
+		"description": "GET /api/v1/schemas/search",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2915,7 +2798,7 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/schemas/search",
+		"endpoint": "/api/v1/schemas/search",
 		"tags": [
 			"Schemas"
 		]

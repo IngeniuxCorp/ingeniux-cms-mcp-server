@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "DITA_GetDITASetupInfo",
-		"description": "GET /dita/setup-info",
+		"description": "GET /api/v1/dita/setup-info",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -149,14 +149,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/dita/setup-info",
+		"endpoint": "/api/v1/dita/setup-info",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAOutputFormats",
-		"description": "GET /dita/output-formats",
+		"description": "GET /api/v1/dita/output-formats",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -246,14 +246,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/dita/output-formats",
+		"endpoint": "/api/v1/dita/output-formats",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetOTCommonParams",
-		"description": "GET /dita/ot-params-common",
+		"description": "GET /api/v1/dita/ot-params-common",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -337,14 +337,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/dita/ot-params-common",
+		"endpoint": "/api/v1/dita/ot-params-common",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetOTAdvancedParams",
-		"description": "GET /dita/ot-params-advanced",
+		"description": "GET /api/v1/dita/ot-params-advanced",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -433,14 +433,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/dita/ot-params-advanced",
+		"endpoint": "/api/v1/dita/ot-params-advanced",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAVals",
-		"description": "GET /dita/ditavals",
+		"description": "GET /api/v1/dita/ditavals",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -511,14 +511,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/dita/ditavals",
+		"endpoint": "/api/v1/dita/ditavals",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAAliases",
-		"description": "GET /dita/aliases",
+		"description": "GET /api/v1/dita/aliases",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -588,14 +588,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/dita/aliases",
+		"endpoint": "/api/v1/dita/aliases",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_DeleteAliases",
-		"description": "DELETE /dita/aliases",
+		"description": "DELETE /api/v1/dita/aliases",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -624,14 +624,14 @@
 			}
 		},
 		"method": "DELETE",
-		"endpoint": "/dita/aliases",
+		"endpoint": "/api/v1/dita/aliases",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_UpdateAliases",
-		"description": "PATCH /dita/aliases",
+		"description": "PATCH /api/v1/dita/aliases",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -660,14 +660,14 @@
 			}
 		},
 		"method": "PATCH",
-		"endpoint": "/dita/aliases",
+		"endpoint": "/api/v1/dita/aliases",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_ViewDITAAlias",
-		"description": "GET /dita/viewalias",
+		"description": "GET /api/v1/dita/viewalias",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -682,92 +682,74 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Name": {
-									"type": "string"
-								}
-							}
-						},
-						{
-							"type": "object",
-							"properties": {
-								"icon": {
-									"type": "string"
-								},
-								"subIcon": {},
-								"decoratorIcon": {
-									"type": "string"
-								},
-								"children": {
-									"type": "array",
-									"items": {
-										"$ref": "#/definitions/DitaTreeNode",
-										"circular": true
-									}
-								}
-							}
-						}
-					]
+			"type": "object",
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"checkedIn",
-						"removed",
-						"isContainer"
-					],
-					"properties": {
-						"ancestorIds": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"checkedIn": {
-							"type": "boolean"
-						},
-						"user": {
-							"type": "string"
-						},
-						"markedTargets": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"removed": {
-							"type": "boolean"
-						},
-						"group": {
-							"type": "string"
-						},
-						"alias": {
-							"type": "string"
-						},
-						"isContainer": {
-							"type": "boolean"
-						}
+				"Name": {
+					"type": "string"
+				},
+				"icon": {
+					"type": "string"
+				},
+				"subIcon": {},
+				"decoratorIcon": {
+					"type": "string"
+				},
+				"children": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/DitaTreeNode",
+						"circular": true
 					}
+				},
+				"ancestorIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"checkedIn": {
+					"type": "boolean"
+				},
+				"user": {
+					"type": "string"
+				},
+				"markedTargets": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"removed": {
+					"type": "boolean"
+				},
+				"group": {
+					"type": "string"
+				},
+				"alias": {
+					"type": "string"
+				},
+				"isContainer": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"checkedIn",
+				"removed",
+				"isContainer"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/dita/viewalias",
+		"endpoint": "/api/v1/dita/viewalias",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAMaps",
-		"description": "POST /dita/ditamaps",
+		"description": "POST /api/v1/dita/ditamaps",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -842,146 +824,135 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"type": "object",
-					"required": [
-						"TotalResults",
-						"PageSize",
-						"NextIndex"
-					],
-					"properties": {
-						"Results": {
-							"type": "array",
-							"items": {
+			"type": "object",
+			"properties": {
+				"Results": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"id",
+							"checkedOut",
+							"currentVersionCoverage",
+							"notReadyToMark",
+							"removed"
+						],
+						"properties": {
+							"id": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"name": {
+								"type": "string"
+							},
+							"checkedOut": {
+								"type": "boolean"
+							},
+							"currentVersionCoverage": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"markedTargets": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"required": [
+										"Number",
+										"Coverage"
+									],
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										},
+										"Number": {
+											"type": "integer",
+											"format": "int32"
+										},
+										"Coverage": {
+											"type": "integer",
+											"format": "int32"
+										}
+									}
+								}
+							},
+							"lastPubTime": {
+								"type": "string"
+							},
+							"path": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"Id": {
+											"type": "string"
+										},
+										"Name": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"notReadyToMark": {
+								"type": "boolean"
+							},
+							"workstate": {
 								"type": "object",
-								"required": [
-									"id",
-									"checkedOut",
-									"currentVersionCoverage",
-									"notReadyToMark",
-									"removed"
-								],
 								"properties": {
-									"id": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"name": {
+									"workflow": {
 										"type": "string"
 									},
-									"checkedOut": {
-										"type": "boolean"
-									},
-									"currentVersionCoverage": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"markedTargets": {
-										"type": "array",
-										"items": {
-											"type": "object",
-											"required": [
-												"Number",
-												"Coverage"
-											],
-											"properties": {
-												"Id": {
-													"type": "string"
-												},
-												"Name": {
-													"type": "string"
-												},
-												"Number": {
-													"type": "integer",
-													"format": "int32"
-												},
-												"Coverage": {
-													"type": "integer",
-													"format": "int32"
-												}
-											}
-										}
-									},
-									"lastPubTime": {
-										"type": "string"
-									},
-									"path": {
-										"type": "array",
-										"items": {
-											"type": "object",
-											"properties": {
-												"Id": {
-													"type": "string"
-												},
-												"Name": {
-													"type": "string"
-												}
-											}
-										}
-									},
-									"notReadyToMark": {
-										"type": "boolean"
-									},
-									"workstate": {
-										"type": "object",
-										"properties": {
-											"workflow": {
-												"type": "string"
-											},
-											"state": {
-												"type": "string"
-											}
-										}
-									},
-									"removed": {
-										"type": "boolean"
-									},
-									"created": {
-										"type": "string"
-									},
-									"updated": {
+									"state": {
 										"type": "string"
 									}
 								}
+							},
+							"removed": {
+								"type": "boolean"
+							},
+							"created": {
+								"type": "string"
+							},
+							"updated": {
+								"type": "string"
 							}
-						},
-						"TotalResults": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"PageSize": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"NextIndex": {
-							"type": "integer",
-							"format": "int32"
 						}
 					}
 				},
-				{
-					"type": "object",
-					"required": [
-						"Tag"
-					],
-					"properties": {
-						"Tag": {
-							"type": "boolean"
-						}
-					}
+				"TotalResults": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PageSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"NextIndex": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Tag": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"TotalResults",
+				"PageSize",
+				"NextIndex",
+				"Tag"
 			]
 		},
 		"method": "POST",
-		"endpoint": "/dita/ditamaps",
+		"endpoint": "/api/v1/dita/ditamaps",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAMapTree",
-		"description": "GET /dita/ditamaptree",
+		"description": "GET /api/v1/dita/ditamaptree",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1001,92 +972,74 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Name": {
-									"type": "string"
-								}
-							}
-						},
-						{
-							"type": "object",
-							"properties": {
-								"icon": {
-									"type": "string"
-								},
-								"subIcon": {},
-								"decoratorIcon": {
-									"type": "string"
-								},
-								"children": {
-									"type": "array",
-									"items": {
-										"$ref": "#/definitions/DitaTreeNode",
-										"circular": true
-									}
-								}
-							}
-						}
-					]
+			"type": "object",
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"checkedIn",
-						"removed",
-						"isContainer"
-					],
-					"properties": {
-						"ancestorIds": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"checkedIn": {
-							"type": "boolean"
-						},
-						"user": {
-							"type": "string"
-						},
-						"markedTargets": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"removed": {
-							"type": "boolean"
-						},
-						"group": {
-							"type": "string"
-						},
-						"alias": {
-							"type": "string"
-						},
-						"isContainer": {
-							"type": "boolean"
-						}
+				"Name": {
+					"type": "string"
+				},
+				"icon": {
+					"type": "string"
+				},
+				"subIcon": {},
+				"decoratorIcon": {
+					"type": "string"
+				},
+				"children": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/DitaTreeNode",
+						"circular": true
 					}
+				},
+				"ancestorIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"checkedIn": {
+					"type": "boolean"
+				},
+				"user": {
+					"type": "string"
+				},
+				"markedTargets": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"removed": {
+					"type": "boolean"
+				},
+				"group": {
+					"type": "string"
+				},
+				"alias": {
+					"type": "string"
+				},
+				"isContainer": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"checkedIn",
+				"removed",
+				"isContainer"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/dita/ditamaptree",
+		"endpoint": "/api/v1/dita/ditamaptree",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAMapDetails",
-		"description": "GET /dita/ditamap-detail",
+		"description": "GET /api/v1/dita/ditamap-detail",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1106,139 +1059,128 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"name": {
+					"type": "string"
+				},
+				"checkedOut": {
+					"type": "boolean"
+				},
+				"currentVersionCoverage": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"markedTargets": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"Number",
+							"Coverage"
+						],
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"Number": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"Coverage": {
+								"type": "integer",
+								"format": "int32"
+							}
+						}
+					}
+				},
+				"lastPubTime": {
+					"type": "string"
+				},
+				"path": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Id": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"notReadyToMark": {
+					"type": "boolean"
+				},
+				"workstate": {
 					"type": "object",
-					"required": [
-						"id",
-						"checkedOut",
-						"currentVersionCoverage",
-						"notReadyToMark",
-						"removed"
-					],
 					"properties": {
-						"id": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"name": {
+						"workflow": {
 							"type": "string"
 						},
-						"checkedOut": {
-							"type": "boolean"
-						},
-						"currentVersionCoverage": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"markedTargets": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"Number",
-									"Coverage"
-								],
-								"properties": {
-									"Id": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									},
-									"Number": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"Coverage": {
-										"type": "integer",
-										"format": "int32"
-									}
-								}
-							}
-						},
-						"lastPubTime": {
-							"type": "string"
-						},
-						"path": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"Id": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									}
-								}
-							}
-						},
-						"notReadyToMark": {
-							"type": "boolean"
-						},
-						"workstate": {
-							"type": "object",
-							"properties": {
-								"workflow": {
-									"type": "string"
-								},
-								"state": {
-									"type": "string"
-								}
-							}
-						},
-						"removed": {
-							"type": "boolean"
-						},
-						"created": {
-							"type": "string"
-						},
-						"updated": {
+						"state": {
 							"type": "string"
 						}
 					}
 				},
-				{
-					"type": "object",
-					"required": [
-						"checkedOutToOthers"
-					],
-					"properties": {
-						"fields": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"label": {
-										"type": "string"
-									},
-									"value": {
-										"type": "string"
-									}
-								}
+				"removed": {
+					"type": "boolean"
+				},
+				"created": {
+					"type": "string"
+				},
+				"updated": {
+					"type": "string"
+				},
+				"fields": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"label": {
+								"type": "string"
+							},
+							"value": {
+								"type": "string"
 							}
-						},
-						"checkedOutToOthers": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"assignedUser": {
-							"type": "string"
 						}
 					}
+				},
+				"checkedOutToOthers": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"assignedUser": {
+					"type": "string"
 				}
+			},
+			"required": [
+				"id",
+				"checkedOut",
+				"currentVersionCoverage",
+				"notReadyToMark",
+				"removed",
+				"checkedOutToOthers"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/dita/ditamap-detail",
+		"endpoint": "/api/v1/dita/ditamap-detail",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_GetDITAMapDetailConfiguration",
-		"description": "GET /dita/ditamap-detail-config",
+		"description": "GET /api/v1/dita/ditamap-detail-config",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -1289,14 +1231,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/dita/ditamap-detail-config",
+		"endpoint": "/api/v1/dita/ditamap-detail-config",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_SetDITAMapDetailConfiguration",
-		"description": "PUT /dita/ditamap-detail-config",
+		"description": "PUT /api/v1/dita/ditamap-detail-config",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1361,14 +1303,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/dita/ditamap-detail-config",
+		"endpoint": "/api/v1/dita/ditamap-detail-config",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_PutSetting",
-		"description": "PUT /dita/setup-setting",
+		"description": "PUT /api/v1/dita/setup-setting",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1392,14 +1334,14 @@
 			"type": "string"
 		},
 		"method": "PUT",
-		"endpoint": "/dita/setup-setting",
+		"endpoint": "/api/v1/dita/setup-setting",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_SetNormalizationFormat",
-		"description": "PUT /dita/output-format-norm",
+		"description": "PUT /api/v1/dita/output-format-norm",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1423,14 +1365,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/dita/output-format-norm",
+		"endpoint": "/api/v1/dita/output-format-norm",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_SetStaticFormat",
-		"description": "PUT /dita/output-format-static",
+		"description": "PUT /api/v1/dita/output-format-static",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1458,14 +1400,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/dita/output-format-static",
+		"endpoint": "/api/v1/dita/output-format-static",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_SetLocalizedRenderSchema",
-		"description": "PUT /dita/localized-render-schema",
+		"description": "PUT /api/v1/dita/localized-render-schema",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1545,14 +1487,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/dita/localized-render-schema",
+		"endpoint": "/api/v1/dita/localized-render-schema",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_RemoveLocalizedRenderSchema",
-		"description": "DELETE /dita/remove-localized-render-schema",
+		"description": "DELETE /api/v1/dita/remove-localized-render-schema",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1603,95 +1545,19 @@
 			}
 		},
 		"method": "DELETE",
-		"endpoint": "/dita/remove-localized-render-schema",
+		"endpoint": "/api/v1/dita/remove-localized-render-schema",
 		"tags": [
 			"DITA"
 		]
 	},
 	{
 		"tool_name": "DITA_SetOTParamValue",
-		"description": "PUT /dita/ot-param",
+		"description": "PUT /api/v1/dita/ot-param",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"param": {
-					"allOf": [
-						{
-							"type": "object",
-							"required": [
-								"Type",
-								"IsCommonParam"
-							],
-							"properties": {
-								"Name": {
-									"type": "string"
-								},
-								"Description": {
-									"type": "string"
-								},
-								"Type": {
-									"type": "string",
-									"description": "The object types of parameters for DITA OT processing",
-									"x-enumNames": [
-										"String",
-										"Number",
-										"Enum",
-										"Bool"
-									],
-									"enum": [
-										"String",
-										"Number",
-										"Enum",
-										"Bool"
-									]
-								},
-								"DefaultValue": {
-									"type": "string"
-								},
-								"Choices": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									}
-								},
-								"BelongToFormats": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									}
-								},
-								"IsCommonParam": {
-									"type": "boolean"
-								}
-							}
-						},
-						{
-							"type": "object",
-							"properties": {
-								"Value": {
-									"type": "string"
-								},
-								"Instruction": {
-									"type": "string"
-								}
-							}
-						}
-					]
-				}
-			},
-			"required": [
-				"param",
-				"param"
-			]
-		},
-		"output_schema": {
-			"allOf": [
-				{
 					"type": "object",
-					"required": [
-						"Type",
-						"IsCommonParam"
-					],
 					"properties": {
 						"Name": {
 							"type": "string"
@@ -1732,24 +1598,82 @@
 						},
 						"IsCommonParam": {
 							"type": "boolean"
-						}
-					}
-				},
-				{
-					"type": "object",
-					"properties": {
+						},
 						"Value": {
 							"type": "string"
 						},
 						"Instruction": {
 							"type": "string"
 						}
-					}
+					},
+					"required": [
+						"Type",
+						"IsCommonParam"
+					]
 				}
+			},
+			"required": [
+				"param",
+				"param"
+			]
+		},
+		"output_schema": {
+			"type": "object",
+			"properties": {
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string",
+					"description": "The object types of parameters for DITA OT processing",
+					"x-enumNames": [
+						"String",
+						"Number",
+						"Enum",
+						"Bool"
+					],
+					"enum": [
+						"String",
+						"Number",
+						"Enum",
+						"Bool"
+					]
+				},
+				"DefaultValue": {
+					"type": "string"
+				},
+				"Choices": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"BelongToFormats": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"IsCommonParam": {
+					"type": "boolean"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"Instruction": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"Type",
+				"IsCommonParam"
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/dita/ot-param",
+		"endpoint": "/api/v1/dita/ot-param",
 		"tags": [
 			"DITA"
 		]

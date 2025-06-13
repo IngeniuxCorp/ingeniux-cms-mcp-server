@@ -4,6 +4,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
+import { flattenAllOfSchema } from './tool-sync/allof-flattener.js';
 
 type SwaggerEndpoint = {
 	method: string;
@@ -96,8 +97,8 @@ function endpointToToolDef(endpoint: SwaggerEndpoint): MCPToolDef {
 	return {
 		tool_name: toToolName(endpoint.operationId),
 		description: `${endpoint.method} ${endpoint.path}`,
-		input_schema: buildInputSchema(endpoint),
-		output_schema: buildOutputSchema(endpoint),
+		input_schema: flattenAllOfSchema(buildInputSchema(endpoint)),
+		output_schema: flattenAllOfSchema(buildOutputSchema(endpoint)),
 		method: endpoint.method,
 		endpoint: endpoint.path,
 		tags: endpoint.tags ?? []

@@ -5,6 +5,7 @@
 import { config } from 'dotenv';
 import { z } from 'zod';
 import { ServerConfig, ValidationResult, EnvironmentVariables } from '../types/config-types.js';
+import { toCamelCaseDeep } from './case-mapper.js';
 
 // Load environment variables
 config();
@@ -85,16 +86,19 @@ export class ConfigManager {
 				rateLimitRpm: parseInt(env.RATE_LIMIT_RPM || '100', 10)
 			};
 
-            console.log('Loaded configuration:', configData);
+			// If configData is loaded from a flattened schema, map to camelCase
+			const camelConfig = toCamelCaseDeep(configData);
 
-			// Validate configuration
-			const validation = this.validateConfig(configData);
-			if (!validation.isValid) {
-				throw new Error(`Configuration validation failed: ${validation.errors.join(', ')}`);
-			}
+            console.log('Loaded configuration:', camelConfig);
 
-			this.config = configData;
-			return this.config;
+   // Validate configuration
+   const validation = this.validateConfig(camelConfig);
+   if (!validation.isValid) {
+    throw new Error(`Configuration validation failed: ${validation.errors.join(', ')}`);
+   }
+
+   this.config = camelConfig;
+   return this.config;
 		} catch (error) {
 			throw new Error(`Failed to load configuration: ${error instanceof Error ? error.message : 'Unknown error'}`);
 		}

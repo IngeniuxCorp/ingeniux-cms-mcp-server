@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Dashboard_GetOnlineUsers",
-		"description": "GET /dashboard/online-users",
+		"description": "GET /api/v1/dashboard/online-users",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -100,14 +100,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/dashboard/online-users",
+		"endpoint": "/api/v1/dashboard/online-users",
 		"tags": [
 			"Dashboard"
 		]
 	},
 	{
 		"tool_name": "Dashboard_PostComment",
-		"description": "POST /dashboard/comment",
+		"description": "POST /api/v1/dashboard/comment",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -145,14 +145,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/dashboard/comment",
+		"endpoint": "/api/v1/dashboard/comment",
 		"tags": [
 			"Dashboard"
 		]
 	},
 	{
 		"tool_name": "Dashboard_GetActivityStream",
-		"description": "GET /dashboard/activity-stream",
+		"description": "GET /api/v1/dashboard/activity-stream",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -190,14 +190,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/dashboard/activity-stream",
+		"endpoint": "/api/v1/dashboard/activity-stream",
 		"tags": [
 			"Dashboard"
 		]
 	},
 	{
 		"tool_name": "Dashboard_GetAnalyticTrafficData",
-		"description": "GET /dashboard/analytic_traffic-data",
+		"description": "GET /api/v1/dashboard/analytic_traffic-data",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -212,51 +212,42 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"type": "object",
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string"
+			"type": "object",
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Info": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Value": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							}
 						}
 					}
 				},
-				{
-					"type": "object",
-					"properties": {
-						"Info": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"Value": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									}
-								}
-							}
-						},
-						"Error": {
-							"type": "string"
-						}
-					}
+				"Error": {
+					"type": "string"
 				}
-			]
+			}
 		},
 		"method": "GET",
-		"endpoint": "/dashboard/analytic_traffic-data",
+		"endpoint": "/api/v1/dashboard/analytic_traffic-data",
 		"tags": [
 			"Dashboard"
 		]
 	},
 	{
 		"tool_name": "Dashboard_GetAnalyticMediumData",
-		"description": "GET /dashboard/analytic_medium-data",
+		"description": "GET /api/v1/dashboard/analytic_medium-data",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -271,55 +262,46 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"type": "object",
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string"
+			"type": "object",
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"PiePieces": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"Data"
+						],
+						"properties": {
+							"Label": {
+								"type": "string"
+							},
+							"Data": {
+								"type": "integer",
+								"format": "int32"
+							}
 						}
 					}
 				},
-				{
-					"type": "object",
-					"properties": {
-						"PiePieces": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"Data"
-								],
-								"properties": {
-									"Label": {
-										"type": "string"
-									},
-									"Data": {
-										"type": "integer",
-										"format": "int32"
-									}
-								}
-							}
-						},
-						"Error": {
-							"type": "string"
-						}
-					}
+				"Error": {
+					"type": "string"
 				}
-			]
+			}
 		},
 		"method": "GET",
-		"endpoint": "/dashboard/analytic_medium-data",
+		"endpoint": "/api/v1/dashboard/analytic_medium-data",
 		"tags": [
 			"Dashboard"
 		]
 	},
 	{
 		"tool_name": "Dashboard_GetProductionData",
-		"description": "GET /dashboard/production-data",
+		"description": "GET /api/v1/dashboard/production-data",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -370,14 +352,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/dashboard/production-data",
+		"endpoint": "/api/v1/dashboard/production-data",
 		"tags": [
 			"Dashboard"
 		]
 	},
 	{
 		"tool_name": "Entity_Get",
-		"description": "GET /documents",
+		"description": "GET /api/v1/documents",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -392,74 +374,51 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object"
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived"
 			]
 		},
 		"method": "GET",
-		"endpoint": "/documents",
+		"endpoint": "/api/v1/documents",
 		"tags": [
 			"Entity"
 		]
 	},
 	{
 		"tool_name": "Entity_Archive",
-		"description": "PATCH /documents/archive",
+		"description": "PATCH /api/v1/documents/archive",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -474,74 +433,51 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object"
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived"
 			]
 		},
 		"method": "PATCH",
-		"endpoint": "/documents/archive",
+		"endpoint": "/api/v1/documents/archive",
 		"tags": [
 			"Entity"
 		]
 	},
 	{
 		"tool_name": "Entity_UnArchive",
-		"description": "PATCH /documents/unarchive",
+		"description": "PATCH /api/v1/documents/unarchive",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -556,74 +492,51 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object"
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived"
 			]
 		},
 		"method": "PATCH",
-		"endpoint": "/documents/unarchive",
+		"endpoint": "/api/v1/documents/unarchive",
 		"tags": [
 			"Entity"
 		]
 	},
 	{
 		"tool_name": "Themes_Get",
-		"description": "GET /themes/theme",
+		"description": "GET /api/v1/themes/theme",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -638,69 +551,140 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"IsDefault": {
+					"type": "boolean"
+				},
+				"IsSystem": {
+					"type": "boolean"
+				},
+				"Draft": {
+					"type": "boolean"
+				},
+				"Font": {
+					"type": "string"
+				},
+				"FontSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Colors": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"type": "object",
+										"x-abstract": true,
+										"properties": {
+											"Id": {
+												"type": "string"
+											}
+										}
+									},
+									{
+										"type": "object",
+										"properties": {
+											"Name": {
+												"type": "string"
+											}
 										}
 									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
+								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"Color": {
+										"type": "string"
+									}
 								}
 							}
-						}
-					]
-				},
-				{
+						]
+					}
+				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"IsDefault",
+				"IsSystem",
+				"Draft",
+				"FontSize"
+			]
+		},
+		"method": "GET",
+		"endpoint": "/api/v1/themes/theme",
+		"tags": [
+			"Themes"
+		]
+	},
+	{
+		"tool_name": "Themes_Update",
+		"description": "PUT /api/v1/themes/theme",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"input": {
 					"type": "object",
-					"required": [
-						"IsDefault",
-						"IsSystem",
-						"Draft",
-						"FontSize"
-					],
+					"x-abstract": true,
 					"properties": {
+						"Id": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						},
+						"CreationUser": {
+							"type": "string"
+						},
+						"Created": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"LastModifiedUser": {
+							"type": "string"
+						},
+						"LastModified": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"EntityType": {
+							"type": "string"
+						},
+						"Archived": {
+							"type": "boolean"
+						},
 						"IsDefault": {
 							"type": "boolean"
 						},
@@ -753,140 +737,15 @@
 								]
 							}
 						}
-					}
-				}
-			]
-		},
-		"method": "GET",
-		"endpoint": "/themes/theme",
-		"tags": [
-			"Themes"
-		]
-	},
-	{
-		"tool_name": "Themes_Update",
-		"description": "PUT /themes/theme",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"input": {
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"type": "object",
-											"properties": {
-												"Id": {
-													"type": "string"
-												},
-												"Name": {
-													"type": "string"
-												}
-											}
-										},
-										{
-											"type": "object"
-										}
-									]
-								},
-								{
-									"type": "object",
-									"x-abstract": true,
-									"required": [
-										"Created",
-										"LastModified",
-										"Archived"
-									],
-									"properties": {
-										"CreationUser": {
-											"type": "string"
-										},
-										"Created": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"LastModifiedUser": {
-											"type": "string"
-										},
-										"LastModified": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"EntityType": {
-											"type": "string"
-										},
-										"Archived": {
-											"type": "boolean"
-										}
-									}
-								}
-							]
-						},
-						{
-							"type": "object",
-							"required": [
-								"IsDefault",
-								"IsSystem",
-								"Draft",
-								"FontSize"
-							],
-							"properties": {
-								"IsDefault": {
-									"type": "boolean"
-								},
-								"IsSystem": {
-									"type": "boolean"
-								},
-								"Draft": {
-									"type": "boolean"
-								},
-								"Font": {
-									"type": "string"
-								},
-								"FontSize": {
-									"type": "integer",
-									"format": "int32"
-								},
-								"Colors": {
-									"type": "array",
-									"items": {
-										"allOf": [
-											{
-												"allOf": [
-													{
-														"type": "object",
-														"x-abstract": true,
-														"properties": {
-															"Id": {
-																"type": "string"
-															}
-														}
-													},
-													{
-														"type": "object",
-														"properties": {
-															"Name": {
-																"type": "string"
-															}
-														}
-													}
-												]
-											},
-											{
-												"type": "object",
-												"properties": {
-													"Color": {
-														"type": "string"
-													}
-												}
-											}
-										]
-									}
-								}
-							}
-						}
+					},
+					"required": [
+						"Created",
+						"LastModified",
+						"Archived",
+						"IsDefault",
+						"IsSystem",
+						"Draft",
+						"FontSize"
 					]
 				}
 			},
@@ -896,134 +755,107 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"IsDefault",
-						"IsSystem",
-						"Draft",
-						"FontSize"
-					],
-					"properties": {
-						"IsDefault": {
-							"type": "boolean"
-						},
-						"IsSystem": {
-							"type": "boolean"
-						},
-						"Draft": {
-							"type": "boolean"
-						},
-						"Font": {
-							"type": "string"
-						},
-						"FontSize": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"Colors": {
-							"type": "array",
-							"items": {
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"IsDefault": {
+					"type": "boolean"
+				},
+				"IsSystem": {
+					"type": "boolean"
+				},
+				"Draft": {
+					"type": "boolean"
+				},
+				"Font": {
+					"type": "string"
+				},
+				"FontSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Colors": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
 								"allOf": [
 									{
-										"allOf": [
-											{
-												"type": "object",
-												"x-abstract": true,
-												"properties": {
-													"Id": {
-														"type": "string"
-													}
-												}
-											},
-											{
-												"type": "object",
-												"properties": {
-													"Name": {
-														"type": "string"
-													}
-												}
+										"type": "object",
+										"x-abstract": true,
+										"properties": {
+											"Id": {
+												"type": "string"
 											}
-										]
+										}
 									},
 									{
 										"type": "object",
 										"properties": {
-											"Color": {
+											"Name": {
 												"type": "string"
 											}
 										}
 									}
 								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"Color": {
+										"type": "string"
+									}
+								}
 							}
-						}
+						]
 					}
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"IsDefault",
+				"IsSystem",
+				"Draft",
+				"FontSize"
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/themes/theme",
+		"endpoint": "/api/v1/themes/theme",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_Delete",
-		"description": "DELETE /themes/theme",
+		"description": "DELETE /api/v1/themes/theme",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1041,14 +873,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/themes/theme",
+		"endpoint": "/api/v1/themes/theme",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_Less",
-		"description": "GET /themes/less",
+		"description": "GET /api/v1/themes/less",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1071,14 +903,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/themes/less",
+		"endpoint": "/api/v1/themes/less",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_Scss",
-		"description": "GET /themes/scss",
+		"description": "GET /api/v1/themes/scss",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1101,14 +933,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/themes/scss",
+		"endpoint": "/api/v1/themes/scss",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_List",
-		"description": "GET /themes",
+		"description": "GET /api/v1/themes",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1270,14 +1102,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/themes",
+		"endpoint": "/api/v1/themes",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_Create",
-		"description": "POST /themes",
+		"description": "POST /api/v1/themes",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1292,134 +1124,107 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"IsDefault",
-						"IsSystem",
-						"Draft",
-						"FontSize"
-					],
-					"properties": {
-						"IsDefault": {
-							"type": "boolean"
-						},
-						"IsSystem": {
-							"type": "boolean"
-						},
-						"Draft": {
-							"type": "boolean"
-						},
-						"Font": {
-							"type": "string"
-						},
-						"FontSize": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"Colors": {
-							"type": "array",
-							"items": {
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"IsDefault": {
+					"type": "boolean"
+				},
+				"IsSystem": {
+					"type": "boolean"
+				},
+				"Draft": {
+					"type": "boolean"
+				},
+				"Font": {
+					"type": "string"
+				},
+				"FontSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Colors": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
 								"allOf": [
 									{
-										"allOf": [
-											{
-												"type": "object",
-												"x-abstract": true,
-												"properties": {
-													"Id": {
-														"type": "string"
-													}
-												}
-											},
-											{
-												"type": "object",
-												"properties": {
-													"Name": {
-														"type": "string"
-													}
-												}
+										"type": "object",
+										"x-abstract": true,
+										"properties": {
+											"Id": {
+												"type": "string"
 											}
-										]
+										}
 									},
 									{
 										"type": "object",
 										"properties": {
-											"Color": {
+											"Name": {
 												"type": "string"
 											}
 										}
 									}
 								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"Color": {
+										"type": "string"
+									}
+								}
 							}
-						}
+						]
 					}
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"IsDefault",
+				"IsSystem",
+				"Draft",
+				"FontSize"
 			]
 		},
 		"method": "POST",
-		"endpoint": "/themes",
+		"endpoint": "/api/v1/themes",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_SetDefault",
-		"description": "POST /themes/default",
+		"description": "POST /api/v1/themes/default",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1434,267 +1239,213 @@
 			]
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"IsDefault",
-						"IsSystem",
-						"Draft",
-						"FontSize"
-					],
-					"properties": {
-						"IsDefault": {
-							"type": "boolean"
-						},
-						"IsSystem": {
-							"type": "boolean"
-						},
-						"Draft": {
-							"type": "boolean"
-						},
-						"Font": {
-							"type": "string"
-						},
-						"FontSize": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"Colors": {
-							"type": "array",
-							"items": {
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"IsDefault": {
+					"type": "boolean"
+				},
+				"IsSystem": {
+					"type": "boolean"
+				},
+				"Draft": {
+					"type": "boolean"
+				},
+				"Font": {
+					"type": "string"
+				},
+				"FontSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Colors": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
 								"allOf": [
 									{
-										"allOf": [
-											{
-												"type": "object",
-												"x-abstract": true,
-												"properties": {
-													"Id": {
-														"type": "string"
-													}
-												}
-											},
-											{
-												"type": "object",
-												"properties": {
-													"Name": {
-														"type": "string"
-													}
-												}
+										"type": "object",
+										"x-abstract": true,
+										"properties": {
+											"Id": {
+												"type": "string"
 											}
-										]
+										}
 									},
 									{
 										"type": "object",
 										"properties": {
-											"Color": {
+											"Name": {
 												"type": "string"
 											}
 										}
 									}
 								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"Color": {
+										"type": "string"
+									}
+								}
 							}
-						}
+						]
 					}
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"IsDefault",
+				"IsSystem",
+				"Draft",
+				"FontSize"
 			]
 		},
 		"method": "POST",
-		"endpoint": "/themes/default",
+		"endpoint": "/api/v1/themes/default",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "Themes_Upload",
-		"description": "POST /themes/upload",
+		"description": "POST /api/v1/themes/upload",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"allOf": [
-				{
-					"allOf": [
-						{
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								},
-								{
-									"type": "object"
-								}
-							]
-						},
-						{
-							"type": "object",
-							"x-abstract": true,
-							"required": [
-								"Created",
-								"LastModified",
-								"Archived"
-							],
-							"properties": {
-								"CreationUser": {
-									"type": "string"
-								},
-								"Created": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"LastModifiedUser": {
-									"type": "string"
-								},
-								"LastModified": {
-									"type": "string",
-									"format": "date-time"
-								},
-								"EntityType": {
-									"type": "string"
-								},
-								"Archived": {
-									"type": "boolean"
-								}
-							}
-						}
-					]
+			"type": "object",
+			"x-abstract": true,
+			"properties": {
+				"Id": {
+					"type": "string"
 				},
-				{
-					"type": "object",
-					"required": [
-						"IsDefault",
-						"IsSystem",
-						"Draft",
-						"FontSize"
-					],
-					"properties": {
-						"IsDefault": {
-							"type": "boolean"
-						},
-						"IsSystem": {
-							"type": "boolean"
-						},
-						"Draft": {
-							"type": "boolean"
-						},
-						"Font": {
-							"type": "string"
-						},
-						"FontSize": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"Colors": {
-							"type": "array",
-							"items": {
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"IsDefault": {
+					"type": "boolean"
+				},
+				"IsSystem": {
+					"type": "boolean"
+				},
+				"Draft": {
+					"type": "boolean"
+				},
+				"Font": {
+					"type": "string"
+				},
+				"FontSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Colors": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
 								"allOf": [
 									{
-										"allOf": [
-											{
-												"type": "object",
-												"x-abstract": true,
-												"properties": {
-													"Id": {
-														"type": "string"
-													}
-												}
-											},
-											{
-												"type": "object",
-												"properties": {
-													"Name": {
-														"type": "string"
-													}
-												}
+										"type": "object",
+										"x-abstract": true,
+										"properties": {
+											"Id": {
+												"type": "string"
 											}
-										]
+										}
 									},
 									{
 										"type": "object",
 										"properties": {
-											"Color": {
+											"Name": {
 												"type": "string"
 											}
 										}
 									}
 								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"Color": {
+										"type": "string"
+									}
+								}
 							}
-						}
+						]
 					}
 				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"IsDefault",
+				"IsSystem",
+				"Draft",
+				"FontSize"
 			]
 		},
 		"method": "POST",
-		"endpoint": "/themes/upload",
+		"endpoint": "/api/v1/themes/upload",
 		"tags": [
 			"Themes"
 		]
 	},
 	{
 		"tool_name": "PCR_ListPCRInfo",
-		"description": "GET /pcr/info",
+		"description": "GET /api/v1/pcr/info",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1812,14 +1563,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/pcr/info",
+		"endpoint": "/api/v1/pcr/info",
 		"tags": [
 			"PCR"
 		]
 	},
 	{
 		"tool_name": "PCR_GetPCRInfo",
-		"description": "GET /pcr",
+		"description": "GET /api/v1/pcr",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1910,7 +1661,7 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/pcr",
+		"endpoint": "/api/v1/pcr",
 		"tags": [
 			"PCR"
 		]
