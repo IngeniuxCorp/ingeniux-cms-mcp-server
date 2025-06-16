@@ -145,7 +145,12 @@ export class MCPServer {
 					const result = await this.requestHandler.processRequest({
 						method: 'tools/list'
 					});
-					return result.result;
+					return {
+                        jsonrpc: '2.0',
+                        result: result.result,
+                        id: result.id,
+                        tools: toolRegistry.exportToolDefinitions()
+                    };
 				} catch (error) {
 					throw errorHandler.handleError(error);
 				}
@@ -161,7 +166,14 @@ export class MCPServer {
 							arguments: request.params.arguments
 						}
 					});
-					return result.result;
+					// return {
+                    //     jsonrpc: '2.0',
+                    //     result: result.result,
+                    //     id: result.id,
+                    //     tools: toolRegistry.exportToolDefinitions()
+                    // };
+
+                    return result.result;
 				} catch (error) {
 					throw errorHandler.handleError(error);
 				}
