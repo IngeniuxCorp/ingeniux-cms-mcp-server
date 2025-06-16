@@ -55,10 +55,12 @@ function buildToolHandler(def: MCPToolDef, apiClient: APIClient) {
 					resp = await apiClient.put(url, args);
 					break;
 				case 'DELETE':
-					resp = await apiClient.delete(url, args);
+					// For Swagger MCP tools, treat DELETE like GET: all params as query string
+					resp = await apiClient.request({ method: 'DELETE', url, params: args });
 					break;
 				case 'PATCH':
-					resp = await apiClient.patch(url, args);
+					// For Swagger MCP tools, treat PATCH like GET: all params as query string
+					resp = await apiClient.request({ method: 'PATCH', url, params: args });
 					break;
 				default:
 					throw new Error('Unsupported HTTP method: ' + method);
