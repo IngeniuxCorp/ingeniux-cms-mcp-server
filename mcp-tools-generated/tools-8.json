@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Preview_GetTaxonomyCategoriesByPage",
-		"description": "GET /api/v1/preview/taxonomy-by-page",
+		"description": "GET /preview/taxonomy-by-page",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -207,14 +207,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/taxonomy-by-page",
+		"endpoint": "/preview/taxonomy-by-page",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetTaxonomyCategoriesByAsset",
-		"description": "GET /api/v1/preview/taxonomy-by-asset",
+		"description": "GET /preview/taxonomy-by-asset",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -420,14 +420,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/taxonomy-by-asset",
+		"endpoint": "/preview/taxonomy-by-asset",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetTaxonomyCategoryDescendants",
-		"description": "GET /api/v1/preview/taxonomy-descendants",
+		"description": "GET /preview/taxonomy-descendants",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -491,14 +491,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/taxonomy-descendants",
+		"endpoint": "/preview/taxonomy-descendants",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetGlobalExports",
-		"description": "GET /api/v1/preview/global-exports",
+		"description": "GET /preview/global-exports",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -518,14 +518,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/global-exports",
+		"endpoint": "/preview/global-exports",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_StreamPageXml",
-		"description": "GET /api/v1/preview/stream/page-xml",
+		"description": "GET /preview/stream/page-xml",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -627,14 +627,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/stream/page-xml",
+		"endpoint": "/preview/stream/page-xml",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_StreamPageReferences",
-		"description": "GET /api/v1/preview/stream/page-references",
+		"description": "GET /preview/stream/page-references",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -685,14 +685,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/stream/page-references",
+		"endpoint": "/preview/stream/page-references",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_StreamAssetReferences",
-		"description": "GET /api/v1/preview/stream/asset-references",
+		"description": "GET /preview/stream/asset-references",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -755,14 +755,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/stream/asset-references",
+		"endpoint": "/preview/stream/asset-references",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_StreamTaxonomyCategories",
-		"description": "GET /api/v1/preview/stream/taxonomy",
+		"description": "GET /preview/stream/taxonomy",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -965,14 +965,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/stream/taxonomy",
+		"endpoint": "/preview/stream/taxonomy",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetPageForwardReferences",
-		"description": "GET /api/v1/preview/page-forward-references",
+		"description": "GET /preview/page-forward-references",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -995,14 +995,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/page-forward-references",
+		"endpoint": "/preview/page-forward-references",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetPageCrossReferences",
-		"description": "GET /api/v1/preview/page-cross-references",
+		"description": "GET /preview/page-cross-references",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1025,14 +1025,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/page-cross-references",
+		"endpoint": "/preview/page-cross-references",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetDitaAssetPreviewStatus",
-		"description": "GET /api/v1/preview/dita-asset-preview-status",
+		"description": "GET /preview/dita-asset-preview-status",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1093,14 +1093,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/dita-asset-preview-status",
+		"endpoint": "/preview/dita-asset-preview-status",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_StartGeneratingDitaAssetPreview",
-		"description": "POST /api/v1/preview/dita-asset-preview",
+		"description": "POST /preview/dita-asset-preview",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1161,14 +1161,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/preview/dita-asset-preview",
+		"endpoint": "/preview/dita-asset-preview",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_CancelDitaAssetPreview",
-		"description": "DELETE /api/v1/preview/dita-asset-preview",
+		"description": "DELETE /preview/dita-asset-preview",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1209,14 +1209,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/preview/dita-asset-preview",
+		"endpoint": "/preview/dita-asset-preview",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_DownloadLog",
-		"description": "GET /api/v1/preview/asset-dependents-csv",
+		"description": "GET /preview/asset-dependents-csv",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1234,14 +1234,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/asset-dependents-csv",
+		"endpoint": "/preview/asset-dependents-csv",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetPubPreviewTaskContentPage",
-		"description": "GET /api/v1/publishing/publish-preview-content",
+		"description": "GET /publishing/publish-preview-content",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1309,14 +1309,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/publish-preview-content",
+		"endpoint": "/publishing/publish-preview-content",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_PublishPreview",
-		"description": "POST /api/v1/publishing/publish-preview",
+		"description": "POST /publishing/publish-preview",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1399,14 +1399,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/publishing/publish-preview",
+		"endpoint": "/publishing/publish-preview",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetPublishingLogDetails",
-		"description": "GET /api/v1/publishing/log-detail",
+		"description": "GET /publishing/log-detail",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1562,14 +1562,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/log-detail",
+		"endpoint": "/publishing/log-detail",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetPublishingTargetPublishingSummary",
-		"description": "GET /api/v1/publishing/target-summary",
+		"description": "GET /publishing/target-summary",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1664,14 +1664,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/target-summary",
+		"endpoint": "/publishing/target-summary",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetCurrentTasks",
-		"description": "GET /api/v1/publishing/current-tasks",
+		"description": "GET /publishing/current-tasks",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -2051,14 +2051,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/current-tasks",
+		"endpoint": "/publishing/current-tasks",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_GetRedirects",
-		"description": "GET /api/v1/publishing/redirects",
+		"description": "GET /publishing/redirects",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2149,7 +2149,7 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/publishing/redirects",
+		"endpoint": "/publishing/redirects",
 		"tags": [
 			"Publishing"
 		]

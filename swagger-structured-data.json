@@ -2,7 +2,7 @@
   "summary": {
     "title": "Ingeniux CMS WebAPI",
     "totalEndpoints": 396,
-    "baseUrl": "/cxp4/api/v1",
+    "baseUrl": "/cxp4",
     "apiVersion": "10.6.378",
     "authenticationRequired": true,
     "securitySchemes": [
@@ -19,7 +19,7 @@
   "endpoints": [
     {
       "method": "GET",
-      "path": "/api/v1/analytics/site-overview",
+      "path": "/analytics/site-overview",
       "operationId": "Analytics_GetSiteOverview",
       "tags": [
         "Analytics"
@@ -113,7 +113,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/analytics/page-overview",
+      "path": "/analytics/page-overview",
       "operationId": "Analytics_GetPageOverview",
       "tags": [
         "Analytics"
@@ -219,7 +219,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/analytics/report",
+      "path": "/analytics/report",
       "operationId": "Analytics_GetReport",
       "tags": [
         "Analytics"
@@ -323,7 +323,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/analytics/google-analytic-authcode-flow",
+      "path": "/analytics/google-analytic-authcode-flow",
       "operationId": "Analytics_GoogleAuthCodeFlow",
       "tags": [
         "Analytics"
@@ -410,7 +410,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/analytics/google-analytic-property-confirm",
+      "path": "/analytics/google-analytic-property-confirm",
       "operationId": "Analytics_GoogleConfirmProperty",
       "tags": [
         "Analytics"
@@ -493,7 +493,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/analytics/google-analytic-revoke-token",
+      "path": "/analytics/google-analytic-revoke-token",
       "operationId": "Analytics_GoogleRevokeToken",
       "tags": [
         "Analytics"
@@ -564,7 +564,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/analytics/device-verification",
+      "path": "/analytics/device-verification",
       "operationId": "Analytics_GetDeviceVerificationResponse",
       "tags": [
         "Analytics"
@@ -643,7 +643,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/content-units/content-unit-preview-data",
+      "path": "/content-units/content-unit-preview-data",
       "operationId": "ContentUnits_GetContentUnitPreviewData",
       "tags": [
         "ContentUnits"
@@ -760,7 +760,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/content-units/get-comp-unit-instances",
+      "path": "/content-units/get-comp-unit-instances",
       "operationId": "ContentUnits_GetComponentUnitFragmentInstances",
       "tags": [
         "ContentUnits"
@@ -972,7 +972,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/content-units/get-comp-unit-content",
+      "path": "/content-units/get-comp-unit-content",
       "operationId": "ContentUnits_GetComponentUnitContent",
       "tags": [
         "ContentUnits"
@@ -1135,7 +1135,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/content-units/update-comp-unit-thumb",
+      "path": "/content-units/update-comp-unit-thumb",
       "operationId": "ContentUnits_UpdateComponentUnitThumbnail",
       "tags": [
         "ContentUnits"
@@ -1217,7 +1217,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/content-units/get-class-names-from-css",
+      "path": "/content-units/get-class-names-from-css",
       "operationId": "ContentUnits_GetClassNamesFromCss",
       "tags": [
         "ContentUnits"
@@ -1284,7 +1284,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/hooks",
+      "path": "/hooks",
       "operationId": "Hooks_GetCustomHooks",
       "tags": [
         "Hooks"
@@ -1353,7 +1353,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/hooks/macros",
+      "path": "/hooks/macros",
       "operationId": "Hooks_GetCustomMacros",
       "tags": [
         "Hooks"
@@ -1440,7 +1440,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/hooks/macros",
+      "path": "/hooks/macros",
       "operationId": "Hooks_ExecuteCustomMacro",
       "tags": [
         "Hooks"
@@ -1501,7 +1501,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dialogs/ice-comp-picker/get-ice-comp-types",
+      "path": "/dialogs/ice-comp-picker/get-ice-comp-types",
       "operationId": "IceComponentPicker_GetComponentSchemas",
       "tags": [
         "IceComponentPicker"
@@ -1533,7 +1533,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/dialogs/ice-comp-picker/get-trays",
+      "path": "/dialogs/ice-comp-picker/get-trays",
       "operationId": "IceComponentPicker_GetTrays",
       "tags": [
         "IceComponentPicker"
@@ -1742,7 +1742,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dialogs/ice-comp-picker/get-comp-thumb",
+      "path": "/dialogs/ice-comp-picker/get-comp-thumb",
       "operationId": "IceComponentPicker_GetComponentThumb",
       "tags": [
         "IceComponentPicker"
@@ -1775,7 +1775,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dialogs/ice-comp-picker/get-list-page",
+      "path": "/dialogs/ice-comp-picker/get-list-page",
       "operationId": "IceComponentPicker_GetListPage",
       "tags": [
         "IceComponentPicker"
@@ -1904,7 +1904,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dita/base",
+      "path": "/dita/base",
       "operationId": "DITA_GetDITABaseInfo",
       "tags": [
         "DITA"
@@ -1933,7 +1933,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dita/setup-info",
+      "path": "/dita/setup-info",
       "operationId": "DITA_GetDITASetupInfo",
       "tags": [
         "DITA"
@@ -2093,7 +2093,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dita/output-formats",
+      "path": "/dita/output-formats",
       "operationId": "DITA_GetDITAOutputFormats",
       "tags": [
         "DITA"
@@ -2195,7 +2195,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dita/ot-params-common",
+      "path": "/dita/ot-params-common",
       "operationId": "DITA_GetOTCommonParams",
       "tags": [
         "DITA"
@@ -2291,7 +2291,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dita/ot-params-advanced",
+      "path": "/dita/ot-params-advanced",
       "operationId": "DITA_GetOTAdvancedParams",
       "tags": [
         "DITA"
@@ -2392,7 +2392,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dita/ditavals",
+      "path": "/dita/ditavals",
       "operationId": "DITA_GetDITAVals",
       "tags": [
         "DITA"
@@ -2475,7 +2475,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dita/aliases",
+      "path": "/dita/aliases",
       "operationId": "DITA_GetDITAAliases",
       "tags": [
         "DITA"
@@ -2555,7 +2555,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/dita/aliases",
+      "path": "/dita/aliases",
       "operationId": "DITA_DeleteAliases",
       "tags": [
         "DITA"
@@ -2647,7 +2647,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/dita/aliases",
+      "path": "/dita/aliases",
       "operationId": "DITA_UpdateAliases",
       "tags": [
         "DITA"
@@ -2696,7 +2696,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dita/viewalias",
+      "path": "/dita/viewalias",
       "operationId": "DITA_ViewDITAAlias",
       "tags": [
         "DITA"
@@ -2799,7 +2799,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/dita/ditamaps",
+      "path": "/dita/ditamaps",
       "operationId": "DITA_GetDITAMaps",
       "tags": [
         "DITA"
@@ -3118,7 +3118,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dita/ditamaptree",
+      "path": "/dita/ditamaptree",
       "operationId": "DITA_GetDITAMapTree",
       "tags": [
         "DITA"
@@ -3255,7 +3255,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dita/ditamap-detail",
+      "path": "/dita/ditamap-detail",
       "operationId": "DITA_GetDITAMapDetails",
       "tags": [
         "DITA"
@@ -3502,7 +3502,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dita/ditamap-detail-config",
+      "path": "/dita/ditamap-detail-config",
       "operationId": "DITA_GetDITAMapDetailConfiguration",
       "tags": [
         "DITA"
@@ -3656,7 +3656,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/dita/ditamap-detail-config",
+      "path": "/dita/ditamap-detail-config",
       "operationId": "DITA_SetDITAMapDetailConfiguration",
       "tags": [
         "DITA"
@@ -3769,7 +3769,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/dita/setup-setting",
+      "path": "/dita/setup-setting",
       "operationId": "DITA_PutSetting",
       "tags": [
         "DITA"
@@ -3803,7 +3803,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/dita/output-format-norm",
+      "path": "/dita/output-format-norm",
       "operationId": "DITA_SetNormalizationFormat",
       "tags": [
         "DITA"
@@ -3837,7 +3837,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/dita/output-format-static",
+      "path": "/dita/output-format-static",
       "operationId": "DITA_SetStaticFormat",
       "tags": [
         "DITA"
@@ -3877,7 +3877,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/dita/localized-render-schema",
+      "path": "/dita/localized-render-schema",
       "operationId": "DITA_SetLocalizedRenderSchema",
       "tags": [
         "DITA"
@@ -3998,7 +3998,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/dita/remove-localized-render-schema",
+      "path": "/dita/remove-localized-render-schema",
       "operationId": "DITA_RemoveLocalizedRenderSchema",
       "tags": [
         "DITA"
@@ -4080,7 +4080,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/dita/ot-param",
+      "path": "/dita/ot-param",
       "operationId": "DITA_SetOTParamValue",
       "tags": [
         "DITA"
@@ -4330,7 +4330,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/dita/ot-params",
+      "path": "/dita/ot-params",
       "operationId": "DITA_AddOTParams",
       "tags": [
         "DITA"
@@ -4416,7 +4416,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/dita/ot-params",
+      "path": "/dita/ot-params",
       "operationId": "DITA_RemoveOTParams",
       "tags": [
         "DITA"
@@ -4502,7 +4502,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/dita/ditaval-manipulation",
+      "path": "/dita/ditaval-manipulation",
       "operationId": "DITA_ManipulateDITAVals",
       "tags": [
         "DITA"
@@ -4584,7 +4584,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/dita/remove-ditamap",
+      "path": "/dita/remove-ditamap",
       "operationId": "DITA_RemoveDitaMapCollection",
       "tags": [
         "DITA"
@@ -4640,7 +4640,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/dita/mark-ditamap",
+      "path": "/dita/mark-ditamap",
       "operationId": "DITA_MarkPublishDitaMapCollection",
       "tags": [
         "DITA"
@@ -4738,7 +4738,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/dita/checkout-ditamap",
+      "path": "/dita/checkout-ditamap",
       "operationId": "DITA_CheckoutDitaMapCollection",
       "tags": [
         "DITA"
@@ -4801,7 +4801,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/dita/checkin-ditamap",
+      "path": "/dita/checkin-ditamap",
       "operationId": "DITA_CheckInDitaMapCollection",
       "tags": [
         "DITA"
@@ -6474,7 +6474,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/dita/publish-ditamap",
+      "path": "/dita/publish-ditamap",
       "operationId": "DITA_PublishDITAMap",
       "tags": [
         "DITA"
@@ -6575,7 +6575,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dita/dita-maps-csv",
+      "path": "/dita/dita-maps-csv",
       "operationId": "DITA_DownloadDITAMapsCsv",
       "tags": [
         "DITA"
@@ -6687,7 +6687,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dita/download-ditamap",
+      "path": "/dita/download-ditamap",
       "operationId": "DITA_DownloadMap",
       "tags": [
         "DITA"
@@ -6749,7 +6749,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/configuration/help-text",
+      "path": "/configuration/help-text",
       "operationId": "Configuration_GetHelpText",
       "tags": [
         "Configuration"
@@ -6797,7 +6797,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/configuration/ai-help-text",
+      "path": "/configuration/ai-help-text",
       "operationId": "Configuration_GetAIHelpText",
       "tags": [
         "Configuration"
@@ -6845,7 +6845,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/configuration/help-text-by-content-item",
+      "path": "/configuration/help-text-by-content-item",
       "operationId": "Configuration_GetHelpTextByContentItem",
       "tags": [
         "Configuration"
@@ -6893,7 +6893,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/configuration/help-texts",
+      "path": "/configuration/help-texts",
       "operationId": "Configuration_GetAllHelpText",
       "tags": [
         "Configuration"
@@ -6937,7 +6937,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/configuration/pages/context-menu",
+      "path": "/configuration/pages/context-menu",
       "operationId": "Configuration_GetPageContextMenuConfiguration",
       "tags": [
         "Configuration"
@@ -6989,7 +6989,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/configuration/assets/context-menu",
+      "path": "/configuration/assets/context-menu",
       "operationId": "Configuration_GetAssetContextMenuConfiguration",
       "tags": [
         "Configuration"
@@ -7041,7 +7041,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/configuration/legacy-globals",
+      "path": "/configuration/legacy-globals",
       "operationId": "Configuration_GetLegacyGlobals",
       "tags": [
         "Configuration"
@@ -7527,7 +7527,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/configuration/flag",
+      "path": "/configuration/flag",
       "operationId": "Configuration_GetFlag",
       "tags": [
         "Configuration"
@@ -7555,7 +7555,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/configuration/global-custom-tabs",
+      "path": "/configuration/global-custom-tabs",
       "operationId": "Configuration_GetGlobalCustomTabs",
       "tags": [
         "Configuration"
@@ -7676,7 +7676,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/custom-settings",
+      "path": "/insite-search/custom-settings",
       "operationId": "InsiteSearch_GetCustomSettings",
       "tags": [
         "InsiteSearch"
@@ -7721,7 +7721,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/custom-settings",
+      "path": "/insite-search/custom-settings",
       "operationId": "InsiteSearch_SaveCustomSettings",
       "tags": [
         "InsiteSearch"
@@ -7781,7 +7781,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/batch-sizes",
+      "path": "/insite-search/batch-sizes",
       "operationId": "InsiteSearch_GetBatchSizes",
       "tags": [
         "InsiteSearch"
@@ -7839,7 +7839,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/batch-sizes",
+      "path": "/insite-search/batch-sizes",
       "operationId": "InsiteSearch_SaveBatchSizes",
       "tags": [
         "InsiteSearch"
@@ -7906,7 +7906,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/keymatches",
+      "path": "/insite-search/keymatches",
       "operationId": "InsiteSearch_GetKeymatches",
       "tags": [
         "InsiteSearch"
@@ -7951,7 +7951,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/keymatches",
+      "path": "/insite-search/keymatches",
       "operationId": "InsiteSearch_SaveKeymatches",
       "tags": [
         "InsiteSearch"
@@ -8012,7 +8012,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/import-csv",
+      "path": "/insite-search/import-csv",
       "operationId": "InsiteSearch_ImportCsv",
       "tags": [
         "InsiteSearch"
@@ -8033,7 +8033,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/synonyms",
+      "path": "/insite-search/synonyms",
       "operationId": "InsiteSearch_GetSynonyms",
       "tags": [
         "InsiteSearch"
@@ -8071,7 +8071,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/synonyms",
+      "path": "/insite-search/synonyms",
       "operationId": "InsiteSearch_SaveSynonyms",
       "tags": [
         "InsiteSearch"
@@ -8125,7 +8125,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/import-synonyms",
+      "path": "/insite-search/import-synonyms",
       "operationId": "InsiteSearch_ImportSynonyms",
       "tags": [
         "InsiteSearch"
@@ -8146,7 +8146,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/indexing-schemas",
+      "path": "/insite-search/indexing-schemas",
       "operationId": "InsiteSearch_GetIndexingSchemas",
       "tags": [
         "InsiteSearch"
@@ -8191,7 +8191,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/indexing-schemas",
+      "path": "/insite-search/indexing-schemas",
       "operationId": "InsiteSearch_SaveIndexingSchemas",
       "tags": [
         "InsiteSearch"
@@ -8251,7 +8251,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/indexing-schemas-only",
+      "path": "/insite-search/indexing-schemas-only",
       "operationId": "InsiteSearch_GetIndexingSchemasOnly",
       "tags": [
         "InsiteSearch"
@@ -8296,7 +8296,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/indexing-fields",
+      "path": "/insite-search/indexing-fields",
       "operationId": "InsiteSearch_GetIndexingFieldsForSchema",
       "tags": [
         "InsiteSearch"
@@ -8355,7 +8355,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/indexing-fields",
+      "path": "/insite-search/indexing-fields",
       "operationId": "InsiteSearch_SaveIndexingFields",
       "tags": [
         "InsiteSearch"
@@ -8429,7 +8429,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/sitewide-indexing-fields",
+      "path": "/insite-search/sitewide-indexing-fields",
       "operationId": "InsiteSearch_GetIndexingSiteWideFields",
       "tags": [
         "InsiteSearch"
@@ -8482,7 +8482,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/site-wide-indexing-fields",
+      "path": "/insite-search/site-wide-indexing-fields",
       "operationId": "InsiteSearch_SaveSiteWideIndexingFields",
       "tags": [
         "InsiteSearch"
@@ -8550,7 +8550,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/assetfolder-children",
+      "path": "/insite-search/assetfolder-children",
       "operationId": "InsiteSearch_GetAssetFolderChildren",
       "tags": [
         "InsiteSearch"
@@ -8595,7 +8595,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/indexed-asset-folders",
+      "path": "/insite-search/indexed-asset-folders",
       "operationId": "InsiteSearch_GetIndexedAssetFolders",
       "tags": [
         "InsiteSearch"
@@ -8659,7 +8659,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/asset-folders-detail",
+      "path": "/insite-search/asset-folders-detail",
       "operationId": "InsiteSearch_GetAssetFolderDetail",
       "tags": [
         "InsiteSearch"
@@ -8720,7 +8720,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/indexing-asset-folders",
+      "path": "/insite-search/indexing-asset-folders",
       "operationId": "InsiteSearch_SaveIndexingAssetFolders",
       "tags": [
         "InsiteSearch"
@@ -8799,7 +8799,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/boost-schemas",
+      "path": "/insite-search/boost-schemas",
       "operationId": "InsiteSearch_GetBoostSchemas",
       "tags": [
         "InsiteSearch"
@@ -8848,7 +8848,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/boost-schemas",
+      "path": "/insite-search/boost-schemas",
       "operationId": "InsiteSearch_SaveBoostSchemas",
       "tags": [
         "InsiteSearch"
@@ -8912,7 +8912,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/boost-fields",
+      "path": "/insite-search/boost-fields",
       "operationId": "InsiteSearch_GetBoostFieldsForSchema",
       "tags": [
         "InsiteSearch"
@@ -8971,7 +8971,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/boost-fields",
+      "path": "/insite-search/boost-fields",
       "operationId": "InsiteSearch_SaveBoostFieldsForSchema",
       "tags": [
         "InsiteSearch"
@@ -9045,7 +9045,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/insite-search/sitewide-boost-fields",
+      "path": "/insite-search/sitewide-boost-fields",
       "operationId": "InsiteSearch_GetBoostSiteWideFields",
       "tags": [
         "InsiteSearch"
@@ -9098,7 +9098,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/site-wide-boost-fields",
+      "path": "/insite-search/site-wide-boost-fields",
       "operationId": "InsiteSearch_SaveSiteWideBoostFields",
       "tags": [
         "InsiteSearch"
@@ -9166,7 +9166,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/insite-search/apply-to-target",
+      "path": "/insite-search/apply-to-target",
       "operationId": "InsiteSearch_ApplyToTargets",
       "tags": [
         "InsiteSearch"
@@ -9212,7 +9212,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/L10N/stats",
+      "path": "/L10N/stats",
       "operationId": "L10N_GetLocalizationStats",
       "tags": [
         "L10N"
@@ -9282,7 +9282,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/L10N/page-schemas",
+      "path": "/L10N/page-schemas",
       "operationId": "L10N_GetPageSchemas",
       "tags": [
         "L10N"
@@ -9363,7 +9363,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/L10N/component-schemas",
+      "path": "/L10N/component-schemas",
       "operationId": "L10N_GetComponentSchemas",
       "tags": [
         "L10N"
@@ -9444,7 +9444,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/L10N/asset-schemas",
+      "path": "/L10N/asset-schemas",
       "operationId": "L10N_GetAssetSchemas",
       "tags": [
         "L10N"
@@ -9525,7 +9525,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/L10N/pcrs",
+      "path": "/L10N/pcrs",
       "operationId": "L10N_GetPCRs",
       "tags": [
         "L10N"
@@ -9606,7 +9606,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/L10N/workflow-definitions",
+      "path": "/L10N/workflow-definitions",
       "operationId": "L10N_GetWorkflowDefinitions",
       "tags": [
         "L10N"
@@ -9687,7 +9687,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/L10N/workstates",
+      "path": "/L10N/workstates",
       "operationId": "L10N_GetWorkstates",
       "tags": [
         "L10N"
@@ -9768,7 +9768,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/logs/cms",
+      "path": "/logs/cms",
       "operationId": "Logs_GetCMSLog",
       "tags": [
         "Logs"
@@ -9858,7 +9858,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/logs/cms/file",
+      "path": "/logs/cms/file",
       "operationId": "Logs_GetCMSLogFile",
       "tags": [
         "Logs"
@@ -9879,7 +9879,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/logs/cms/archive",
+      "path": "/logs/cms/archive",
       "operationId": "Logs_GetCMSLogArchives",
       "tags": [
         "Logs"
@@ -9900,7 +9900,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/notifications/contentfreeze",
+      "path": "/notifications/contentfreeze",
       "operationId": "Notifications_GetContentFreeze",
       "tags": [
         "Notifications"
@@ -9938,7 +9938,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/notifications/alerts",
+      "path": "/notifications/alerts",
       "operationId": "Notifications_GetAlerts",
       "tags": [
         "Notifications"
@@ -10006,7 +10006,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dashboard/overview",
+      "path": "/dashboard/overview",
       "operationId": "Dashboard_GetOverview",
       "tags": [
         "Dashboard"
@@ -10377,7 +10377,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dashboard/online-users",
+      "path": "/dashboard/online-users",
       "operationId": "Dashboard_GetOnlineUsers",
       "tags": [
         "Dashboard"
@@ -10489,7 +10489,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/dashboard/comment",
+      "path": "/dashboard/comment",
       "operationId": "Dashboard_PostComment",
       "tags": [
         "Dashboard"
@@ -10537,7 +10537,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dashboard/activity-stream",
+      "path": "/dashboard/activity-stream",
       "operationId": "Dashboard_GetActivityStream",
       "tags": [
         "Dashboard"
@@ -10588,7 +10588,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dashboard/analytic_traffic-data",
+      "path": "/dashboard/analytic_traffic-data",
       "operationId": "Dashboard_GetAnalyticTrafficData",
       "tags": [
         "Dashboard"
@@ -10650,7 +10650,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dashboard/analytic_medium-data",
+      "path": "/dashboard/analytic_medium-data",
       "operationId": "Dashboard_GetAnalyticMediumData",
       "tags": [
         "Dashboard"
@@ -10716,7 +10716,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/dashboard/production-data",
+      "path": "/dashboard/production-data",
       "operationId": "Dashboard_GetProductionData",
       "tags": [
         "Dashboard"
@@ -10782,7 +10782,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/documents",
+      "path": "/documents",
       "operationId": "Entity_Get",
       "tags": [
         "Entity"
@@ -10867,7 +10867,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/documents/archive",
+      "path": "/documents/archive",
       "operationId": "Entity_Archive",
       "tags": [
         "Entity"
@@ -10952,7 +10952,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/documents/unarchive",
+      "path": "/documents/unarchive",
       "operationId": "Entity_UnArchive",
       "tags": [
         "Entity"
@@ -11037,7 +11037,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/themes/theme",
+      "path": "/themes/theme",
       "operationId": "Themes_Get",
       "tags": [
         "Themes"
@@ -11182,7 +11182,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/themes/theme",
+      "path": "/themes/theme",
       "operationId": "Themes_Update",
       "tags": [
         "Themes"
@@ -11453,7 +11453,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/themes/theme",
+      "path": "/themes/theme",
       "operationId": "Themes_Delete",
       "tags": [
         "Themes"
@@ -11481,7 +11481,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/themes/less",
+      "path": "/themes/less",
       "operationId": "Themes_Less",
       "tags": [
         "Themes"
@@ -11515,7 +11515,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/themes/scss",
+      "path": "/themes/scss",
       "operationId": "Themes_Scss",
       "tags": [
         "Themes"
@@ -11549,7 +11549,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/themes",
+      "path": "/themes",
       "operationId": "Themes_List",
       "tags": [
         "Themes"
@@ -11725,7 +11725,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/themes",
+      "path": "/themes",
       "operationId": "Themes_Create",
       "tags": [
         "Themes"
@@ -11870,7 +11870,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/themes/default",
+      "path": "/themes/default",
       "operationId": "Themes_SetDefault",
       "tags": [
         "Themes"
@@ -12015,7 +12015,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/themes/upload",
+      "path": "/themes/upload",
       "operationId": "Themes_Upload",
       "tags": [
         "Themes"
@@ -12153,7 +12153,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pcr/info",
+      "path": "/pcr/info",
       "operationId": "PCR_ListPCRInfo",
       "tags": [
         "PCR"
@@ -12285,7 +12285,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pcr",
+      "path": "/pcr",
       "operationId": "PCR_GetPCRInfo",
       "tags": [
         "PCR"
@@ -12386,7 +12386,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/pcr",
+      "path": "/pcr",
       "operationId": "PCR_CreatePCRInfo",
       "tags": [
         "PCR"
@@ -12556,7 +12556,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/pcr",
+      "path": "/pcr",
       "operationId": "PCR_SetPCRInfo",
       "tags": [
         "PCR"
@@ -12747,7 +12747,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/pcr",
+      "path": "/pcr",
       "operationId": "PCR_RemovePCRInfo",
       "tags": [
         "PCR"
@@ -12775,7 +12775,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pcr/parents",
+      "path": "/pcr/parents",
       "operationId": "PCR_GetPCRParents",
       "tags": [
         "PCR"
@@ -12866,7 +12866,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pcr/parentpages",
+      "path": "/pcr/parentpages",
       "operationId": "PCR_GetPCRParentPages",
       "tags": [
         "PCR"
@@ -13186,7 +13186,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pcr/childpages",
+      "path": "/pcr/childpages",
       "operationId": "PCR_GetPCRChildPages",
       "tags": [
         "PCR"
@@ -13485,7 +13485,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pcr/details",
+      "path": "/pcr/details",
       "operationId": "PCR_GetPCRDetails",
       "tags": [
         "PCR"
@@ -13612,7 +13612,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/page-xml",
+      "path": "/preview/page-xml",
       "operationId": "Preview_GetPageXml",
       "tags": [
         "Preview"
@@ -13728,7 +13728,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/page",
+      "path": "/preview/page",
       "operationId": "Preview_GetPage",
       "tags": [
         "Preview"
@@ -14039,7 +14039,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/page-descendants",
+      "path": "/preview/page-descendants",
       "operationId": "Preview_GetPageDescendants",
       "tags": [
         "Preview"
@@ -14115,7 +14115,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/page-map-by-path",
+      "path": "/preview/page-map-by-path",
       "operationId": "Preview_GetPageMapEntryByPath",
       "tags": [
         "Preview"
@@ -14293,7 +14293,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/page-map",
+      "path": "/preview/page-map",
       "operationId": "Preview_GetPageMapEntry",
       "tags": [
         "Preview"
@@ -14471,7 +14471,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/asset-map",
+      "path": "/preview/asset-map",
       "operationId": "Preview_GetAssetMapEntry",
       "tags": [
         "Preview"
@@ -14634,7 +14634,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/asset-descendants",
+      "path": "/preview/asset-descendants",
       "operationId": "Preview_GetAssetDescendants",
       "tags": [
         "Preview"
@@ -14722,7 +14722,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/asset-map-by-path",
+      "path": "/preview/asset-map-by-path",
       "operationId": "Preview_GetAssetMapEntryByPath",
       "tags": [
         "Preview"
@@ -14885,7 +14885,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/page-reference",
+      "path": "/preview/page-reference",
       "operationId": "Preview_GetPageReference",
       "tags": [
         "Preview"
@@ -14946,7 +14946,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/asset-reference",
+      "path": "/preview/asset-reference",
       "operationId": "Preview_GetAssetReference",
       "tags": [
         "Preview"
@@ -15019,7 +15019,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/asset-xmp",
+      "path": "/preview/asset-xmp",
       "operationId": "Preview_GetAssetXMP",
       "tags": [
         "Preview"
@@ -15059,7 +15059,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/asset-file",
+      "path": "/preview/asset-file",
       "operationId": "Preview_GetAssetFile",
       "tags": [
         "Preview"
@@ -15099,7 +15099,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/taxonomy",
+      "path": "/preview/taxonomy",
       "operationId": "Preview_GetTaxonomyCategory",
       "tags": [
         "Preview"
@@ -15312,7 +15312,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/taxonomy-by-page",
+      "path": "/preview/taxonomy-by-page",
       "operationId": "Preview_GetTaxonomyCategoriesByPage",
       "tags": [
         "Preview"
@@ -15528,7 +15528,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/taxonomy-by-asset",
+      "path": "/preview/taxonomy-by-asset",
       "operationId": "Preview_GetTaxonomyCategoriesByAsset",
       "tags": [
         "Preview"
@@ -15744,7 +15744,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/taxonomy-descendants",
+      "path": "/preview/taxonomy-descendants",
       "operationId": "Preview_GetTaxonomyCategoryDescendants",
       "tags": [
         "Preview"
@@ -15820,7 +15820,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/global-exports",
+      "path": "/preview/global-exports",
       "operationId": "Preview_GetGlobalExports",
       "tags": [
         "Preview"
@@ -15852,7 +15852,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/stream/page-xml",
+      "path": "/preview/stream/page-xml",
       "operationId": "Preview_StreamPageXml",
       "tags": [
         "Preview"
@@ -15965,7 +15965,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/stream/page-references",
+      "path": "/preview/stream/page-references",
       "operationId": "Preview_StreamPageReferences",
       "tags": [
         "Preview"
@@ -16029,7 +16029,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/stream/asset-references",
+      "path": "/preview/stream/asset-references",
       "operationId": "Preview_StreamAssetReferences",
       "tags": [
         "Preview"
@@ -16105,7 +16105,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/stream/taxonomy",
+      "path": "/preview/stream/taxonomy",
       "operationId": "Preview_StreamTaxonomyCategories",
       "tags": [
         "Preview"
@@ -16321,7 +16321,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/page-forward-references",
+      "path": "/preview/page-forward-references",
       "operationId": "Preview_GetPageForwardReferences",
       "tags": [
         "Preview"
@@ -16364,7 +16364,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/page-cross-references",
+      "path": "/preview/page-cross-references",
       "operationId": "Preview_GetPageCrossReferences",
       "tags": [
         "Preview"
@@ -16407,7 +16407,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/dita-asset-preview-status",
+      "path": "/preview/dita-asset-preview-status",
       "operationId": "Preview_GetDitaAssetPreviewStatus",
       "tags": [
         "Preview"
@@ -16479,7 +16479,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/preview/dita-asset-preview",
+      "path": "/preview/dita-asset-preview",
       "operationId": "Preview_StartGeneratingDitaAssetPreview",
       "tags": [
         "Preview"
@@ -16551,7 +16551,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/preview/dita-asset-preview",
+      "path": "/preview/dita-asset-preview",
       "operationId": "Preview_CancelDitaAssetPreview",
       "tags": [
         "Preview"
@@ -16603,7 +16603,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/preview/asset-dependents-csv",
+      "path": "/preview/asset-dependents-csv",
       "operationId": "Preview_DownloadLog",
       "tags": [
         "Preview"
@@ -16631,7 +16631,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/publish-preview-content",
+      "path": "/publishing/publish-preview-content",
       "operationId": "Publishing_GetPubPreviewTaskContentPage",
       "tags": [
         "Publishing"
@@ -16716,7 +16716,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/publishing/publish-preview",
+      "path": "/publishing/publish-preview",
       "operationId": "Publishing_PublishPreview",
       "tags": [
         "Publishing"
@@ -16809,7 +16809,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/log-detail",
+      "path": "/publishing/log-detail",
       "operationId": "Publishing_GetPublishingLogDetails",
       "tags": [
         "Publishing"
@@ -17002,7 +17002,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/target-summary",
+      "path": "/publishing/target-summary",
       "operationId": "Publishing_GetPublishingTargetPublishingSummary",
       "tags": [
         "Publishing"
@@ -17107,7 +17107,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/current-tasks",
+      "path": "/publishing/current-tasks",
       "operationId": "Publishing_GetCurrentTasks",
       "tags": [
         "Publishing"
@@ -17510,7 +17510,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/redirects",
+      "path": "/publishing/redirects",
       "operationId": "Publishing_GetRedirects",
       "tags": [
         "Publishing"
@@ -17617,7 +17617,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/publishing/redirects",
+      "path": "/publishing/redirects",
       "operationId": "Publishing_DeleteRedirects",
       "tags": [
         "Publishing"
@@ -17660,7 +17660,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/publishing/redirect",
+      "path": "/publishing/redirect",
       "operationId": "Publishing_SaveRedirect",
       "tags": [
         "Publishing"
@@ -17769,7 +17769,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/publishing/redirect",
+      "path": "/publishing/redirect",
       "operationId": "Publishing_DeleteRedirect",
       "tags": [
         "Publishing"
@@ -17797,7 +17797,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/target",
+      "path": "/publishing/target",
       "operationId": "Publishing_GetPublishingTarget",
       "tags": [
         "Publishing"
@@ -18016,7 +18016,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/publishing/target",
+      "path": "/publishing/target",
       "operationId": "Publishing_CreatePublishingTarget",
       "tags": [
         "Publishing"
@@ -18435,7 +18435,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/publishing/target",
+      "path": "/publishing/target",
       "operationId": "Publishing_UpdatePublishingTarget",
       "tags": [
         "Publishing"
@@ -18854,7 +18854,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/targets",
+      "path": "/publishing/targets",
       "operationId": "Publishing_GetPublishingTargets",
       "tags": [
         "Publishing"
@@ -19116,7 +19116,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/target/groups",
+      "path": "/publishing/target/groups",
       "operationId": "Publishing_GetPublishingTargetGroups",
       "tags": [
         "Publishing"
@@ -19215,7 +19215,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/publishing/target/groups",
+      "path": "/publishing/target/groups",
       "operationId": "Publishing_SetPublishingTargetGroups",
       "tags": [
         "Publishing"
@@ -19332,7 +19332,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/publishing/content-publish-history",
+      "path": "/publishing/content-publish-history",
       "operationId": "Publishing_GetContentItemPublishedToTarget",
       "tags": [
         "Publishing"
@@ -19406,7 +19406,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/user-agents",
+      "path": "/publishing/user-agents",
       "operationId": "Publishing_GetUserAgents",
       "tags": [
         "Publishing"
@@ -19444,7 +19444,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/sites",
+      "path": "/publishing/sites",
       "operationId": "Publishing_GetSites",
       "tags": [
         "Publishing"
@@ -19479,7 +19479,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/publishing/gather-dependencies",
+      "path": "/publishing/gather-dependencies",
       "operationId": "Publishing_GetDitaDependencies",
       "tags": [
         "Publishing"
@@ -19655,7 +19655,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/dita-output-formats",
+      "path": "/publishing/dita-output-formats",
       "operationId": "Publishing_GetDitaOutputFormats",
       "tags": [
         "Publishing"
@@ -19700,7 +19700,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/content-processors",
+      "path": "/publishing/content-processors",
       "operationId": "Publishing_GetPostPublishContentProcessors",
       "tags": [
         "Publishing"
@@ -19878,7 +19878,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/publishing/content-processors",
+      "path": "/publishing/content-processors",
       "operationId": "Publishing_SetPostPublishContentProcessor",
       "tags": [
         "Publishing"
@@ -20153,7 +20153,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/content-processor-logs",
+      "path": "/publishing/content-processor-logs",
       "operationId": "Publishing_GetContentProcessorLogs",
       "tags": [
         "Publishing"
@@ -20280,7 +20280,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/reports/stats",
+      "path": "/reports/stats",
       "operationId": "Reports_GetStats",
       "tags": [
         "Reports"
@@ -20398,7 +20398,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/reports/scheduling",
+      "path": "/reports/scheduling",
       "operationId": "Reports_GetScheduling",
       "tags": [
         "Reports"
@@ -20472,7 +20472,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/reports/toggle-scheduler",
+      "path": "/reports/toggle-scheduler",
       "operationId": "Reports_ToggleScheduler",
       "tags": [
         "Reports"
@@ -20517,7 +20517,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/reports/folder",
+      "path": "/reports/folder",
       "operationId": "Reports_GetFolder",
       "tags": [
         "Reports"
@@ -20582,7 +20582,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/reports/folder",
+      "path": "/reports/folder",
       "operationId": "Reports_SaveFolder",
       "tags": [
         "Reports"
@@ -20653,7 +20653,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/reports/report",
+      "path": "/reports/report",
       "operationId": "Reports_GetReport",
       "tags": [
         "Reports"
@@ -20851,7 +20851,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/reports/columns",
+      "path": "/reports/columns",
       "operationId": "Reports_GetColumns",
       "tags": [
         "Reports"
@@ -20933,7 +20933,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/reports/simple-report",
+      "path": "/reports/simple-report",
       "operationId": "Reports_GetSimpleReportResults",
       "tags": [
         "Reports"
@@ -20975,7 +20975,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/reports/simple-report",
+      "path": "/reports/simple-report",
       "operationId": "Reports_SaveSimpleReport",
       "tags": [
         "Reports"
@@ -21074,7 +21074,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/reports/parameterized-report",
+      "path": "/reports/parameterized-report",
       "operationId": "Reports_GetParameterizedReportResults",
       "tags": [
         "Reports"
@@ -21142,7 +21142,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/reports/parameterized-report",
+      "path": "/reports/parameterized-report",
       "operationId": "Reports_SaveParameterizedReport",
       "tags": [
         "Reports"
@@ -21284,7 +21284,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/reports/advanced-report",
+      "path": "/reports/advanced-report",
       "operationId": "Reports_SaveAdvancedReport",
       "tags": [
         "Reports"
@@ -21338,7 +21338,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/reports/report-schedules",
+      "path": "/reports/report-schedules",
       "operationId": "Reports_SaveReportSchedules",
       "tags": [
         "Reports"
@@ -21442,7 +21442,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/schemas/upload",
+      "path": "/schemas/upload",
       "operationId": "Schemas_UploadSchema",
       "tags": [
         "Schemas"
@@ -21468,7 +21468,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/schemas/generate-thumb-from-preview",
+      "path": "/schemas/generate-thumb-from-preview",
       "operationId": "Schemas_GenerateThumbnailFromPreview",
       "tags": [
         "Schemas"
@@ -21513,7 +21513,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/schemas/pages-by-comp-schema",
+      "path": "/schemas/pages-by-comp-schema",
       "operationId": "Schemas_GetComponentSchemaReferences",
       "tags": [
         "Schemas"
@@ -21592,7 +21592,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/schemas/schemas",
+      "path": "/schemas/schemas",
       "operationId": "Schemas_GetSchemas",
       "tags": [
         "Schemas"
@@ -21884,7 +21884,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/schemas/asset-schemas",
+      "path": "/schemas/asset-schemas",
       "operationId": "Schemas_GetAssetSchemas",
       "tags": [
         "Schemas"
@@ -22176,7 +22176,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/schemas/asset-schemas-by-types",
+      "path": "/schemas/asset-schemas-by-types",
       "operationId": "Schemas_GetAssetSchemasByTypes",
       "tags": [
         "Schemas"
@@ -22474,7 +22474,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/schemas/schema",
+      "path": "/schemas/schema",
       "operationId": "Schemas_GetSchema",
       "tags": [
         "Schemas"
@@ -22735,7 +22735,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/schemas/asset-schema",
+      "path": "/schemas/asset-schema",
       "operationId": "Schemas_GetAssetSchema",
       "tags": [
         "Schemas"
@@ -22996,7 +22996,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/schemas/page-or-asset-schema",
+      "path": "/schemas/page-or-asset-schema",
       "operationId": "Schemas_GetPageOrAssetSchema",
       "tags": [
         "Schemas"
@@ -23269,7 +23269,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/schemas/search",
+      "path": "/schemas/search",
       "operationId": "Schemas_Search",
       "tags": [
         "Schemas"
@@ -23573,7 +23573,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/schemas/search-asset-schemas",
+      "path": "/schemas/search-asset-schemas",
       "operationId": "Schemas_SearchAssetSchemas",
       "tags": [
         "Schemas"
@@ -23877,7 +23877,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/schemas/schema-usage",
+      "path": "/schemas/schema-usage",
       "operationId": "Schemas_GetSchemaUsage",
       "tags": [
         "Schemas"
@@ -24092,7 +24092,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/schemas/schema-sync-log",
+      "path": "/schemas/schema-sync-log",
       "operationId": "Schemas_GetSchemaUsageForSyncLogPaginated",
       "tags": [
         "Schemas"
@@ -24313,7 +24313,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/assets/asset/workflow/advance",
+      "path": "/assets/asset/workflow/advance",
       "operationId": "Assets_AdvanceWorkflow",
       "tags": [
         "Assets"
@@ -24368,7 +24368,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/assets/assign-to-group",
+      "path": "/assets/assign-to-group",
       "operationId": "Assets_AssignToGroup",
       "tags": [
         "Assets"
@@ -24422,7 +24422,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/assets/assign-to-user",
+      "path": "/assets/assign-to-user",
       "operationId": "Assets_AssignToUser",
       "tags": [
         "Assets"
@@ -24476,7 +24476,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/assets/checkin",
+      "path": "/assets/checkin",
       "operationId": "Assets_CheckIn",
       "tags": [
         "Assets"
@@ -24874,7 +24874,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/assets/checkout",
+      "path": "/assets/checkout",
       "operationId": "Assets_CheckOut",
       "tags": [
         "Assets"
@@ -25261,7 +25261,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/assets/copy",
+      "path": "/assets/copy",
       "operationId": "Assets_Copy",
       "tags": [
         "Assets"
@@ -25638,7 +25638,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/assets/asset-folder",
+      "path": "/assets/asset-folder",
       "operationId": "Assets_CreateAssetFolder",
       "tags": [
         "Assets"
@@ -26018,7 +26018,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/asset-aliases",
+      "path": "/assets/asset-aliases",
       "operationId": "Assets_CheckAssetAliases",
       "tags": [
         "Assets"
@@ -26047,7 +26047,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/assets",
+      "path": "/assets",
       "operationId": "Assets_DeleteAssetItems",
       "tags": [
         "Assets"
@@ -26101,7 +26101,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/asset/ancestors",
+      "path": "/assets/asset/ancestors",
       "operationId": "Assets_GetAncestors",
       "tags": [
         "Assets"
@@ -26455,7 +26455,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/asset",
+      "path": "/assets/asset",
       "operationId": "Assets_GetAsset",
       "tags": [
         "Assets"
@@ -26799,7 +26799,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/asset-by-path",
+      "path": "/assets/asset-by-path",
       "operationId": "Assets_GetAssetByPath",
       "tags": [
         "Assets"
@@ -27143,7 +27143,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/assets/asset/context",
+      "path": "/assets/asset/context",
       "operationId": "Assets_GetAssetContext",
       "tags": [
         "Assets"
@@ -27307,7 +27307,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/details",
+      "path": "/assets/details",
       "operationId": "Assets_GetAssetDetails",
       "tags": [
         "Assets"
@@ -27812,7 +27812,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/history",
+      "path": "/assets/history",
       "operationId": "Assets_GetAssetHistory",
       "tags": [
         "Assets"
@@ -27942,7 +27942,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/asset/children",
+      "path": "/assets/asset/children",
       "operationId": "Assets_GetChildren",
       "tags": [
         "Assets"
@@ -28323,7 +28323,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/file",
+      "path": "/assets/file",
       "operationId": "Assets_GetFileBinary",
       "tags": [
         "Assets"
@@ -28357,7 +28357,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/asset/descendant-targets",
+      "path": "/assets/asset/descendant-targets",
       "operationId": "Assets_GetFolderDescendantMarkings",
       "tags": [
         "Assets"
@@ -28388,7 +28388,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/recycle-folder",
+      "path": "/assets/recycle-folder",
       "operationId": "Assets_GetRecycleFolder",
       "tags": [
         "Assets"
@@ -28732,7 +28732,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/root",
+      "path": "/assets/root",
       "operationId": "Assets_GetRoot",
       "tags": [
         "Assets"
@@ -29076,7 +29076,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/root-folders",
+      "path": "/assets/root-folders",
       "operationId": "Assets_GetRootFolders",
       "tags": [
         "Assets"
@@ -29458,7 +29458,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/unmanaged",
+      "path": "/assets/unmanaged",
       "operationId": "Assets_GetUnmanagedAsset",
       "tags": [
         "Assets"
@@ -29802,7 +29802,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/unmanaged/children",
+      "path": "/assets/unmanaged/children",
       "operationId": "Assets_GetUnmanagedChildren",
       "tags": [
         "Assets"
@@ -30183,7 +30183,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/unmanaged/root-folders",
+      "path": "/assets/unmanaged/root-folders",
       "operationId": "Assets_GetUnmanagedRootFolders",
       "tags": [
         "Assets"
@@ -30565,7 +30565,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/dita-move-validation",
+      "path": "/assets/dita-move-validation",
       "operationId": "Assets_CheckDitaContentMovingOutOfDitaRoot",
       "tags": [
         "Assets"
@@ -30599,7 +30599,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/assets/move",
+      "path": "/assets/move",
       "operationId": "Assets_Move",
       "tags": [
         "Assets"
@@ -30970,7 +30970,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/assets/rename",
+      "path": "/assets/rename",
       "operationId": "Assets_Rename",
       "tags": [
         "Assets"
@@ -31352,7 +31352,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/search",
+      "path": "/assets/search",
       "operationId": "Assets_SearchAssetItems",
       "tags": [
         "Assets"
@@ -31793,7 +31793,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/search-unmanaged",
+      "path": "/assets/search-unmanaged",
       "operationId": "Assets_SearchUnmanagedAssetItems",
       "tags": [
         "Assets"
@@ -32234,7 +32234,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/assets/asset/associations",
+      "path": "/assets/asset/associations",
       "operationId": "Assets_SetCategoryAssociations",
       "tags": [
         "Assets"
@@ -32596,7 +32596,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/total-size",
+      "path": "/assets/total-size",
       "operationId": "Assets_TotalSize",
       "tags": [
         "Assets"
@@ -32618,7 +32618,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/assets/undo-checkout",
+      "path": "/assets/undo-checkout",
       "operationId": "Assets_UndoCheckOut",
       "tags": [
         "Assets"
@@ -33005,7 +33005,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/assets/unzip",
+      "path": "/assets/unzip",
       "operationId": "Assets_Unzip",
       "tags": [
         "Assets"
@@ -33044,7 +33044,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/assets/upload",
+      "path": "/assets/upload",
       "operationId": "Assets_Upload",
       "tags": [
         "Assets"
@@ -33239,7 +33239,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/asset-dependency",
+      "path": "/assets/asset-dependency",
       "operationId": "Assets_GetAssetDitaProperties",
       "tags": [
         "Assets"
@@ -33384,7 +33384,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/asset-owners-deep",
+      "path": "/assets/asset-owners-deep",
       "operationId": "Assets_GetAllAssetOwners",
       "tags": [
         "Assets"
@@ -33459,7 +33459,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/dita-key-defs",
+      "path": "/assets/dita-key-defs",
       "operationId": "Assets_GetAvailableKeyDefinitions",
       "tags": [
         "Assets"
@@ -33522,7 +33522,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/asset-owners-csv",
+      "path": "/assets/asset-owners-csv",
       "operationId": "Assets_DownloadAssetOwnersCsv",
       "tags": [
         "Assets"
@@ -33568,7 +33568,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/asset-dependents-csv",
+      "path": "/assets/asset-dependents-csv",
       "operationId": "Assets_DownloadAssetDependentsCsv",
       "tags": [
         "Assets"
@@ -33614,7 +33614,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/ditamap-scopes",
+      "path": "/assets/ditamap-scopes",
       "operationId": "Assets_GetAssetDITAScopes",
       "tags": [
         "Assets"
@@ -33724,7 +33724,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/assets/asset-dependents-deep",
+      "path": "/assets/asset-dependents-deep",
       "operationId": "Assets_GetAllAssetDependents",
       "tags": [
         "Assets"
@@ -33799,7 +33799,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/assets/asset-dita-output-formats",
+      "path": "/assets/asset-dita-output-formats",
       "operationId": "Assets_SetAssetOutputFormats",
       "tags": [
         "Assets"
@@ -33845,7 +33845,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/assets/asset-ditavals",
+      "path": "/assets/asset-ditavals",
       "operationId": "Assets_SetAssetDitavals",
       "tags": [
         "Assets"
@@ -33891,7 +33891,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/assets/dita-preview-cache",
+      "path": "/assets/dita-preview-cache",
       "operationId": "Assets_DeleteDitaPreviewCache",
       "tags": [
         "Assets"
@@ -33925,7 +33925,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/assets/dita-oxygen-oauth-creds",
+      "path": "/assets/dita-oxygen-oauth-creds",
       "operationId": "Assets_GetOxygenAccessCredentials",
       "tags": [
         "Assets"
@@ -33954,7 +33954,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/site/content-item-search",
+      "path": "/site/content-item-search",
       "operationId": "Site_SearchContentItems",
       "tags": [
         "Site"
@@ -34176,7 +34176,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/site/tab-model",
+      "path": "/site/tab-model",
       "operationId": "Site_GetTabModel",
       "tags": [
         "Site"
@@ -34405,7 +34405,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/site/generate-asset-reference-report",
+      "path": "/site/generate-asset-reference-report",
       "operationId": "Site_GenerateAssetRefernceReport",
       "tags": [
         "Site"
@@ -34465,7 +34465,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/site/generate-broken-link-report",
+      "path": "/site/generate-broken-link-report",
       "operationId": "Site_GenerateBrokenLinkReport",
       "tags": [
         "Site"
@@ -34526,7 +34526,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/site/generate-search-text-report",
+      "path": "/site/generate-search-text-report",
       "operationId": "Site_GenerateTextSearchReport",
       "tags": [
         "Site"
@@ -34592,7 +34592,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/site/generate-search-asset-text-report",
+      "path": "/site/generate-search-asset-text-report",
       "operationId": "Site_GenerateAssetTextSearchReport",
       "tags": [
         "Site"
@@ -34658,7 +34658,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/site/generate-unused-assets-report",
+      "path": "/site/generate-unused-assets-report",
       "operationId": "Site_GenerateUnusedAssetsReport",
       "tags": [
         "Site"
@@ -34713,7 +34713,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/site/generate-page-reference-report",
+      "path": "/site/generate-page-reference-report",
       "operationId": "Site_GeneratePageReferenceReport",
       "tags": [
         "Site"
@@ -34773,7 +34773,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/site/report/{sessionId}/status",
+      "path": "/site/report/{sessionId}/status",
       "operationId": "Site_GetReportStatus",
       "tags": [
         "Site"
@@ -34818,7 +34818,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/site/report/{sessionId}",
+      "path": "/site/report/{sessionId}",
       "operationId": "Site_GetReport",
       "tags": [
         "Site"
@@ -34922,7 +34922,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/site/report/cancel",
+      "path": "/site/report/cancel",
       "operationId": "Site_CancelReport",
       "tags": [
         "Site"
@@ -34950,7 +34950,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/site/report/replace-entry",
+      "path": "/site/report/replace-entry",
       "operationId": "Site_ReplaceReportEntry",
       "tags": [
         "Site"
@@ -35005,7 +35005,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/site/report/{sessionId}/file",
+      "path": "/site/report/{sessionId}/file",
       "operationId": "Site_DownloadReport",
       "tags": [
         "Site"
@@ -35033,7 +35033,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/site/ranked-search",
+      "path": "/site/ranked-search",
       "operationId": "Site_RankedSearch",
       "tags": [
         "Site"
@@ -35411,7 +35411,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/site/usage-summary",
+      "path": "/site/usage-summary",
       "operationId": "Site_GetContentItemUsageSummary",
       "tags": [
         "Site"
@@ -35448,7 +35448,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/site/usage-report",
+      "path": "/site/usage-report",
       "operationId": "Site_GetContentItemUsageReport",
       "tags": [
         "Site"
@@ -35554,7 +35554,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages",
+      "path": "/pages",
       "operationId": "Pages_GetPages",
       "tags": [
         "Pages"
@@ -35881,7 +35881,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages/root",
+      "path": "/pages/root",
       "operationId": "Pages_GetRoot",
       "tags": [
         "Pages"
@@ -36170,7 +36170,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages/recycle-folder",
+      "path": "/pages/recycle-folder",
       "operationId": "Pages_GetRecycleFolder",
       "tags": [
         "Pages"
@@ -36459,7 +36459,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages/page/children",
+      "path": "/pages/page/children",
       "operationId": "Pages_GetChildren",
       "tags": [
         "Pages"
@@ -36792,7 +36792,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages/page/descendants",
+      "path": "/pages/page/descendants",
       "operationId": "Pages_GetDescendants",
       "tags": [
         "Pages"
@@ -37125,7 +37125,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages/page/descendant-alias-count",
+      "path": "/pages/page/descendant-alias-count",
       "operationId": "Pages_GetDescendantAliasCount",
       "tags": [
         "Pages"
@@ -37166,7 +37166,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages/page/parent",
+      "path": "/pages/page/parent",
       "operationId": "Pages_GetParent",
       "tags": [
         "Pages"
@@ -37462,7 +37462,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages/page/ancestors",
+      "path": "/pages/page/ancestors",
       "operationId": "Pages_GetAncestors",
       "tags": [
         "Pages"
@@ -37761,7 +37761,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages/page",
+      "path": "/pages/page",
       "operationId": "Pages_GetPage",
       "tags": [
         "Pages"
@@ -38057,7 +38057,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/pages/page",
+      "path": "/pages/page",
       "operationId": "Pages_DeletePage",
       "tags": [
         "Pages"
@@ -38085,7 +38085,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages/page/details",
+      "path": "/pages/page/details",
       "operationId": "Pages_GetPageDetails",
       "tags": [
         "Pages"
@@ -38576,7 +38576,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/pages/page/context",
+      "path": "/pages/page/context",
       "operationId": "Pages_GetPageContext",
       "tags": [
         "Pages"
@@ -38716,7 +38716,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/pages/page/associations",
+      "path": "/pages/page/associations",
       "operationId": "Pages_SetCategoryAssociations",
       "tags": [
         "Pages"
@@ -39030,7 +39030,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages/by-category",
+      "path": "/pages/by-category",
       "operationId": "Pages_GetByCategory",
       "tags": [
         "Pages"
@@ -39363,7 +39363,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/pages/move",
+      "path": "/pages/move",
       "operationId": "Pages_Move",
       "tags": [
         "Pages"
@@ -39686,7 +39686,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/pages/copy",
+      "path": "/pages/copy",
       "operationId": "Pages_Copy",
       "tags": [
         "Pages"
@@ -40027,7 +40027,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/pages/rename",
+      "path": "/pages/rename",
       "operationId": "Pages_Rename",
       "tags": [
         "Pages"
@@ -40361,7 +40361,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/pages/checkin",
+      "path": "/pages/checkin",
       "operationId": "Pages_CheckIn",
       "tags": [
         "Pages"
@@ -40711,7 +40711,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/pages/checkout",
+      "path": "/pages/checkout",
       "operationId": "Pages_CheckOut",
       "tags": [
         "Pages"
@@ -41050,7 +41050,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/pages/page/pcr",
+      "path": "/pages/page/pcr",
       "operationId": "Pages_CreatePCRPage",
       "tags": [
         "Pages"
@@ -41379,7 +41379,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages/history",
+      "path": "/pages/history",
       "operationId": "Pages_GetPageHistory",
       "tags": [
         "Pages"
@@ -41509,7 +41509,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages/page/workflow/workstates",
+      "path": "/pages/page/workflow/workstates",
       "operationId": "Pages_GetWorkflowStates",
       "tags": [
         "Pages"
@@ -41733,7 +41733,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/pages/page/design/content-units",
+      "path": "/pages/page/design/content-units",
       "operationId": "Pages_GetContentUnits",
       "tags": [
         "Pages"
@@ -41951,7 +41951,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/pages/page/workflow/advance",
+      "path": "/pages/page/workflow/advance",
       "operationId": "Pages_AdvanceWorkflow",
       "tags": [
         "Pages"
@@ -42006,7 +42006,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/pages/dita-alias",
+      "path": "/pages/dita-alias",
       "operationId": "Pages_CreateDITAAlias",
       "tags": [
         "Pages"
@@ -42320,7 +42320,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/pages/dita-alias",
+      "path": "/pages/dita-alias",
       "operationId": "Pages_UpdateDITAAlias",
       "tags": [
         "Pages"
@@ -42625,7 +42625,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/setting",
+      "path": "/settings/setting",
       "operationId": "Settings_GetSetting",
       "tags": [
         "Settings"
@@ -42684,7 +42684,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/settings/setting",
+      "path": "/settings/setting",
       "operationId": "Settings_PutSetting",
       "tags": [
         "Settings"
@@ -42743,7 +42743,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/section",
+      "path": "/settings/section",
       "operationId": "Settings_GetSection",
       "tags": [
         "Settings"
@@ -42785,7 +42785,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/settings/section",
+      "path": "/settings/section",
       "operationId": "Settings_PutSection",
       "tags": [
         "Settings"
@@ -42856,7 +42856,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/settings/data",
+      "path": "/settings/data",
       "operationId": "Settings_GetData",
       "tags": [
         "Settings"
@@ -42912,7 +42912,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/settings/data",
+      "path": "/settings/data",
       "operationId": "Settings_SetData",
       "tags": [
         "Settings"
@@ -42974,7 +42974,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/custom-tabs",
+      "path": "/settings/custom-tabs",
       "operationId": "Settings_GetCustomTabs",
       "tags": [
         "Settings"
@@ -43095,7 +43095,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/settings/custom-tabs",
+      "path": "/settings/custom-tabs",
       "operationId": "Settings_SetCustomTabs",
       "tags": [
         "Settings"
@@ -43332,7 +43332,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/task-users",
+      "path": "/settings/task-users",
       "operationId": "Settings_GetTaskUsers",
       "tags": [
         "Settings"
@@ -43444,7 +43444,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/settings/reset-client-secret",
+      "path": "/settings/reset-client-secret",
       "operationId": "Settings_ResetClientSecret",
       "tags": [
         "Settings"
@@ -43501,7 +43501,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/access-tokens",
+      "path": "/settings/access-tokens",
       "operationId": "Settings_GetOAuthIdentities",
       "tags": [
         "Settings"
@@ -43542,7 +43542,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/settings/access-tokens",
+      "path": "/settings/access-tokens",
       "operationId": "Settings_SetOAuthIdentities",
       "tags": [
         "Settings"
@@ -43631,7 +43631,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/global-variables",
+      "path": "/settings/global-variables",
       "operationId": "Settings_GetGlobalVariables",
       "tags": [
         "Settings"
@@ -43686,7 +43686,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/settings/global-variables",
+      "path": "/settings/global-variables",
       "operationId": "Settings_SetGlobalVariables",
       "tags": [
         "Settings"
@@ -43791,7 +43791,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/settings/deploy-dita-ot",
+      "path": "/settings/deploy-dita-ot",
       "operationId": "Settings_DeployDitaOT",
       "tags": [
         "Settings"
@@ -43825,7 +43825,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/settings/remove-dita-ot",
+      "path": "/settings/remove-dita-ot",
       "operationId": "Settings_RemoveDitaOTDeployment",
       "tags": [
         "Settings"
@@ -43846,7 +43846,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/settings/remove-dita-ot-plugin",
+      "path": "/settings/remove-dita-ot-plugin",
       "operationId": "Settings_RemoveDitaOTPlugin",
       "tags": [
         "Settings"
@@ -43874,7 +43874,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/settings/restore-dita-ot-plugin",
+      "path": "/settings/restore-dita-ot-plugin",
       "operationId": "Settings_RestoreDitaOTPlugin",
       "tags": [
         "Settings"
@@ -43902,7 +43902,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/settings/add-dita-ot-plugin",
+      "path": "/settings/add-dita-ot-plugin",
       "operationId": "Settings_UploadDitaOTPlugin",
       "tags": [
         "Settings"
@@ -43923,7 +43923,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/settings/deploy-custom-ot",
+      "path": "/settings/deploy-custom-ot",
       "operationId": "Settings_DeployCustomOT",
       "tags": [
         "Settings"
@@ -43944,7 +43944,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/settings/ditaval-manipulation",
+      "path": "/settings/ditaval-manipulation",
       "operationId": "Settings_ManipulateDitavals",
       "tags": [
         "Settings"
@@ -44018,7 +44018,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/archive-types",
+      "path": "/settings/archive-types",
       "operationId": "Settings_GetArchiveTypes",
       "tags": [
         "Settings"
@@ -44050,7 +44050,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/page-tree-menu-groups",
+      "path": "/settings/page-tree-menu-groups",
       "operationId": "Settings_GetGroupsForTreeMenu",
       "tags": [
         "Settings"
@@ -44102,7 +44102,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/asset-tree-menu-groups",
+      "path": "/settings/asset-tree-menu-groups",
       "operationId": "Settings_GetGroupsForAssetTreeMenu",
       "tags": [
         "Settings"
@@ -44154,7 +44154,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/page-tree-menu-items",
+      "path": "/settings/page-tree-menu-items",
       "operationId": "Settings_GetPossiblePageTreeMenuItems",
       "tags": [
         "Settings"
@@ -44186,7 +44186,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/asset-tree-menu-items",
+      "path": "/settings/asset-tree-menu-items",
       "operationId": "Settings_GetPossibleAssetTreeMenuItems",
       "tags": [
         "Settings"
@@ -44218,7 +44218,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/tinymce-items",
+      "path": "/settings/tinymce-items",
       "operationId": "Settings_GetPossibleTinyMceItems",
       "tags": [
         "Settings"
@@ -44263,7 +44263,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/timezones",
+      "path": "/settings/timezones",
       "operationId": "Settings_GetTimeZones",
       "tags": [
         "Settings"
@@ -44295,7 +44295,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/tinymce-groups",
+      "path": "/settings/tinymce-groups",
       "operationId": "Settings_GetTinyMceGroups",
       "tags": [
         "Settings"
@@ -44354,7 +44354,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/presentation-formatters",
+      "path": "/settings/presentation-formatters",
       "operationId": "Settings_GetPresentationsFormatters",
       "tags": [
         "Settings"
@@ -44393,7 +44393,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/settings/server-variables",
+      "path": "/settings/server-variables",
       "operationId": "Settings_GetServerVariables",
       "tags": [
         "Settings"
@@ -44425,7 +44425,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/settings/force-archive",
+      "path": "/settings/force-archive",
       "operationId": "Settings_ForceArchive",
       "tags": [
         "Settings"
@@ -44453,7 +44453,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/settings/page-tree-group",
+      "path": "/settings/page-tree-group",
       "operationId": "Settings_RemoveGroupProfileForPageTreeMenu",
       "tags": [
         "Settings"
@@ -44513,7 +44513,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/settings/asset-tree-group",
+      "path": "/settings/asset-tree-group",
       "operationId": "Settings_RemoveGroupProfileForAssetTreeMenu",
       "tags": [
         "Settings"
@@ -44573,7 +44573,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/settings/tinymce-group",
+      "path": "/settings/tinymce-group",
       "operationId": "Settings_RemoveTinyMceGroup",
       "tags": [
         "Settings"
@@ -44639,7 +44639,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/settings/dictionary",
+      "path": "/settings/dictionary",
       "operationId": "Settings_RemoveDictionary",
       "tags": [
         "Settings"
@@ -44667,7 +44667,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/settings/custom-locale",
+      "path": "/settings/custom-locale",
       "operationId": "Settings_CreateCustomLocale",
       "tags": [
         "Settings"
@@ -44721,7 +44721,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/settings/custom-locale",
+      "path": "/settings/custom-locale",
       "operationId": "Settings_RemoveCustomLocale",
       "tags": [
         "Settings"
@@ -44749,7 +44749,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/taxonomy/statistics",
+      "path": "/taxonomy/statistics",
       "operationId": "Taxonomy_GetStats",
       "tags": [
         "Taxonomy"
@@ -44792,7 +44792,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/taxonomy/categories",
+      "path": "/taxonomy/categories",
       "operationId": "Taxonomy_GetCategories",
       "tags": [
         "Taxonomy"
@@ -45054,7 +45054,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/taxonomy/root-categories",
+      "path": "/taxonomy/root-categories",
       "operationId": "Taxonomy_GetRootCategories",
       "tags": [
         "Taxonomy"
@@ -45304,7 +45304,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/taxonomy/category/children",
+      "path": "/taxonomy/category/children",
       "operationId": "Taxonomy_GetChildren",
       "tags": [
         "Taxonomy"
@@ -45554,7 +45554,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/taxonomy/category/parent",
+      "path": "/taxonomy/category/parent",
       "operationId": "Taxonomy_GetParent",
       "tags": [
         "Taxonomy"
@@ -45767,7 +45767,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/taxonomy/category/ancestors",
+      "path": "/taxonomy/category/ancestors",
       "operationId": "Taxonomy_GetAncestors",
       "tags": [
         "Taxonomy"
@@ -45983,7 +45983,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/taxonomy/category",
+      "path": "/taxonomy/category",
       "operationId": "Taxonomy_GetCategory",
       "tags": [
         "Taxonomy"
@@ -46196,7 +46196,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/taxonomy/category",
+      "path": "/taxonomy/category",
       "operationId": "Taxonomy_CreateCategory",
       "tags": [
         "Taxonomy"
@@ -46421,7 +46421,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/taxonomy/category",
+      "path": "/taxonomy/category",
       "operationId": "Taxonomy_SaveCategory",
       "tags": [
         "Taxonomy"
@@ -46828,7 +46828,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/taxonomy/category",
+      "path": "/taxonomy/category",
       "operationId": "Taxonomy_DeleteCategory",
       "tags": [
         "Taxonomy"
@@ -46856,7 +46856,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/taxonomy/category/security",
+      "path": "/taxonomy/category/security",
       "operationId": "Taxonomy_GetCategorySecurity",
       "tags": [
         "Taxonomy"
@@ -46950,7 +46950,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/taxonomy/category/security",
+      "path": "/taxonomy/category/security",
       "operationId": "Taxonomy_SetCategorySecurity",
       "tags": [
         "Taxonomy"
@@ -47119,7 +47119,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/taxonomy/category/synonyms",
+      "path": "/taxonomy/category/synonyms",
       "operationId": "Taxonomy_SetCategorySynonyms",
       "tags": [
         "Taxonomy"
@@ -47364,7 +47364,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/taxonomy/category/rename",
+      "path": "/taxonomy/category/rename",
       "operationId": "Taxonomy_Rename",
       "tags": [
         "Taxonomy"
@@ -47583,7 +47583,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/taxonomy/category/move",
+      "path": "/taxonomy/category/move",
       "operationId": "Taxonomy_Move",
       "tags": [
         "Taxonomy"
@@ -47808,7 +47808,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/taxonomy/category/copy",
+      "path": "/taxonomy/category/copy",
       "operationId": "Taxonomy_Copy",
       "tags": [
         "Taxonomy"
@@ -48045,7 +48045,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/taxonomy/category/copy-associations",
+      "path": "/taxonomy/category/copy-associations",
       "operationId": "Taxonomy_CopyAssociations",
       "tags": [
         "Taxonomy"
@@ -48082,7 +48082,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/taxonomy/category/associations",
+      "path": "/taxonomy/category/associations",
       "operationId": "Taxonomy_GetAssociations",
       "tags": [
         "Taxonomy"
@@ -48379,7 +48379,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/taxonomy/category/associations",
+      "path": "/taxonomy/category/associations",
       "operationId": "Taxonomy_DeleteAssociations",
       "tags": [
         "Taxonomy"
@@ -48610,7 +48610,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/taxonomy/category/associations",
+      "path": "/taxonomy/category/associations",
       "operationId": "Taxonomy_AddAssociations",
       "tags": [
         "Taxonomy"
@@ -48841,7 +48841,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/taxonomy/category/association",
+      "path": "/taxonomy/category/association",
       "operationId": "Taxonomy_DeleteAssociation",
       "tags": [
         "Taxonomy"
@@ -49060,7 +49060,7 @@
     },
     {
       "method": "PATCH",
-      "path": "/api/v1/taxonomy/category/association",
+      "path": "/taxonomy/category/association",
       "operationId": "Taxonomy_AddAssociation",
       "tags": [
         "Taxonomy"
@@ -49279,7 +49279,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/taxonomy/category/content-associations",
+      "path": "/taxonomy/category/content-associations",
       "operationId": "Taxonomy_SetCategoryAssociations",
       "tags": [
         "Taxonomy"
@@ -49545,7 +49545,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/taxonomy/categories-with-path",
+      "path": "/taxonomy/categories-with-path",
       "operationId": "Taxonomy_GetCategoriesWithPath",
       "tags": [
         "Taxonomy"
@@ -49785,7 +49785,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/taxonomy/category/has-association",
+      "path": "/taxonomy/category/has-association",
       "operationId": "Taxonomy_CategoryHasAssociations",
       "tags": [
         "Taxonomy"
@@ -49819,7 +49819,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/taxonomy/category/associated-descendants",
+      "path": "/taxonomy/category/associated-descendants",
       "operationId": "Taxonomy_CategoriesWithAssociations",
       "tags": [
         "Taxonomy"
@@ -50053,7 +50053,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/taxonomy/quick-search",
+      "path": "/taxonomy/quick-search",
       "operationId": "Taxonomy_QuickSearch",
       "tags": [
         "Taxonomy"
@@ -50281,7 +50281,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/test/error",
+      "path": "/test/error",
       "operationId": "Test_Get",
       "tags": [
         "Test"
@@ -50315,7 +50315,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/test/locale",
+      "path": "/test/locale",
       "operationId": "Test_GetCurrentLocale",
       "tags": [
         "Test"
@@ -50336,7 +50336,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/test/progress",
+      "path": "/test/progress",
       "operationId": "Test_GetProgress",
       "tags": [
         "Test"
@@ -50364,7 +50364,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/test/claims",
+      "path": "/test/claims",
       "operationId": "Test_GetClaims",
       "tags": [
         "Test"
@@ -50385,7 +50385,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/test/admin-perm-test",
+      "path": "/test/admin-perm-test",
       "operationId": "Test_GetPermissionTest",
       "tags": [
         "Test"
@@ -50406,7 +50406,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/accounts/login",
+      "path": "/accounts/login",
       "operationId": "Accounts_Login",
       "tags": [
         "Accounts"
@@ -50486,7 +50486,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/accounts/membership-providers",
+      "path": "/accounts/membership-providers",
       "operationId": "Accounts_GetMembershipProviders",
       "tags": [
         "Accounts"
@@ -50537,7 +50537,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/accounts/security-groups",
+      "path": "/accounts/security-groups",
       "operationId": "Accounts_GetUserGroupSecurities",
       "tags": [
         "Accounts"
@@ -50611,7 +50611,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/accounts/users/reset-passwords",
+      "path": "/accounts/users/reset-passwords",
       "operationId": "Accounts_ResetPassword",
       "tags": [
         "Accounts"
@@ -50681,7 +50681,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/groups",
+      "path": "/groups",
       "operationId": "UserGroups_GetUserGroups",
       "tags": [
         "UserGroups"
@@ -50808,7 +50808,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/groups/group",
+      "path": "/groups/group",
       "operationId": "UserGroups_GetGroup",
       "tags": [
         "UserGroups"
@@ -50904,7 +50904,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/groups/new-group",
+      "path": "/groups/new-group",
       "operationId": "UserGroups_CreateGroup",
       "tags": [
         "UserGroups"
@@ -51000,7 +51000,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/groups/search",
+      "path": "/groups/search",
       "operationId": "UserGroups_Search",
       "tags": [
         "UserGroups"
@@ -51139,7 +51139,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/users",
+      "path": "/users",
       "operationId": "User_GetUsers",
       "tags": [
         "User"
@@ -51285,7 +51285,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/users/user",
+      "path": "/users/user",
       "operationId": "User_GetUser",
       "tags": [
         "User"
@@ -51394,7 +51394,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/users/assignments",
+      "path": "/users/assignments",
       "operationId": "User_GetAssignments",
       "tags": [
         "User"
@@ -51600,7 +51600,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/workflows/workflow",
+      "path": "/workflows/workflow",
       "operationId": "Workflow_GetWorkflow",
       "tags": [
         "Workflow"
@@ -51728,7 +51728,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/workflows/by-content",
+      "path": "/workflows/by-content",
       "operationId": "Workflow_GetWorkflowByContentItem",
       "tags": [
         "Workflow"
@@ -51856,7 +51856,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/workflows/content-work-state",
+      "path": "/workflows/content-work-state",
       "operationId": "Workflow_GetWorkflowStates",
       "tags": [
         "Workflow"
@@ -52080,7 +52080,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/workflows/workstates",
+      "path": "/workflows/workstates",
       "operationId": "Workflow_GetWorkstates",
       "tags": [
         "Workflow"
@@ -52212,7 +52212,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/workflows/definitions",
+      "path": "/workflows/definitions",
       "operationId": "Workflow_ListWorkflowDefinitions",
       "tags": [
         "Workflow"
@@ -52350,7 +52350,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/workflows/definition-detail",
+      "path": "/workflows/definition-detail",
       "operationId": "Workflow_GetWorkflowDefinitionDetail",
       "tags": [
         "Workflow"
@@ -52535,7 +52535,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/workflows/report",
+      "path": "/workflows/report",
       "operationId": "Workflow_GetWorkflowReport",
       "tags": [
         "Workflow"
@@ -52641,7 +52641,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/workflows/default-transition",
+      "path": "/workflows/default-transition",
       "operationId": "Workflow_GetDefaultTransition",
       "tags": [
         "Workflow"
@@ -52738,7 +52738,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/workflows/definition",
+      "path": "/workflows/definition",
       "operationId": "Workflow_SetWorkflowDefinitionDetails",
       "tags": [
         "Workflow"
@@ -53089,7 +53089,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/workflows/definition",
+      "path": "/workflows/definition",
       "operationId": "Workflow_DeleteWorkflowDefinition",
       "tags": [
         "Workflow"
@@ -53135,7 +53135,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/workflows/workstate",
+      "path": "/workflows/workstate",
       "operationId": "Workflow_SaveWorkstate",
       "tags": [
         "Workflow"
@@ -53318,7 +53318,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/workflows/workstate",
+      "path": "/workflows/workstate",
       "operationId": "Workflow_CreateWorkstate",
       "tags": [
         "Workflow"
@@ -53501,7 +53501,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/workflows/workstate",
+      "path": "/workflows/workstate",
       "operationId": "Workflow_DeleteWorkstate",
       "tags": [
         "Workflow"
@@ -53562,7 +53562,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/workflows/prepare-template",
+      "path": "/workflows/prepare-template",
       "operationId": "Workflow_PrepareTemplate",
       "tags": [
         "Workflow"
@@ -53746,7 +53746,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/replication/target",
+      "path": "/publishing/replication/target",
       "operationId": "Replication_ReplicationTarget",
       "tags": [
         "Replication"
@@ -54065,7 +54065,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/publishing/replication/target",
+      "path": "/publishing/replication/target",
       "operationId": "Replication_CreateReplicationTarget",
       "tags": [
         "Replication"
@@ -54672,7 +54672,7 @@
     },
     {
       "method": "PUT",
-      "path": "/api/v1/publishing/replication/target",
+      "path": "/publishing/replication/target",
       "operationId": "Replication_UpdateReplicationTarget",
       "tags": [
         "Replication"
@@ -55279,7 +55279,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/api/v1/publishing/replication/target",
+      "path": "/publishing/replication/target",
       "operationId": "Replication_DeleteReplicationTarget",
       "tags": [
         "Replication"
@@ -55306,7 +55306,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/replication/aws-region-endpoints",
+      "path": "/publishing/replication/aws-region-endpoints",
       "operationId": "Replication_GetAwsRegionEndpoints",
       "tags": [
         "Replication"
@@ -55338,7 +55338,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/replication/target/log-detail",
+      "path": "/publishing/replication/target/log-detail",
       "operationId": "Replication_GetReplicationLogDetails",
       "tags": [
         "Replication"
@@ -55441,7 +55441,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/replication/target-types",
+      "path": "/publishing/replication/target-types",
       "operationId": "Replication_GetReplicationTargetTypes",
       "tags": [
         "Replication"
@@ -55473,7 +55473,7 @@
     },
     {
       "method": "GET",
-      "path": "/api/v1/publishing/replication/targets",
+      "path": "/publishing/replication/targets",
       "operationId": "Replication_ReplicationTargets",
       "tags": [
         "Replication"
@@ -55789,7 +55789,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/publishing/replication/targets",
+      "path": "/publishing/replication/targets",
       "operationId": "Replication_SetReplicationTargets",
       "tags": [
         "Replication"
@@ -56408,7 +56408,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/publishing/replication/upload-cert",
+      "path": "/publishing/replication/upload-cert",
       "operationId": "Replication_UploadCertificate",
       "tags": [
         "Replication"
@@ -56429,7 +56429,7 @@
     },
     {
       "method": "POST",
-      "path": "/api/v1/publishing/replication/upload-private-key",
+      "path": "/publishing/replication/upload-private-key",
       "operationId": "Replication_UploadPrivateKey",
       "tags": [
         "Replication"

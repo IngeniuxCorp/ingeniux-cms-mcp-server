@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Pages_Rename",
-		"description": "POST /api/v1/pages/rename",
+		"description": "POST /pages/rename",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -242,14 +242,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/pages/rename",
+		"endpoint": "/pages/rename",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_CheckIn",
-		"description": "POST /api/v1/pages/checkin",
+		"description": "POST /pages/checkin",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -499,14 +499,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/pages/checkin",
+		"endpoint": "/pages/checkin",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_CheckOut",
-		"description": "POST /api/v1/pages/checkout",
+		"description": "POST /pages/checkout",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -747,14 +747,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/pages/checkout",
+		"endpoint": "/pages/checkout",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_CreatePCRPage",
-		"description": "POST /api/v1/pages/page/pcr",
+		"description": "POST /pages/page/pcr",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1005,14 +1005,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/pages/page/pcr",
+		"endpoint": "/pages/page/pcr",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetPageHistory",
-		"description": "GET /api/v1/pages/history",
+		"description": "GET /pages/history",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1127,14 +1127,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages/history",
+		"endpoint": "/pages/history",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetWorkflowStates",
-		"description": "GET /api/v1/pages/page/workflow/workstates",
+		"description": "GET /pages/page/workflow/workstates",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1348,14 +1348,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages/page/workflow/workstates",
+		"endpoint": "/pages/page/workflow/workstates",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_GetContentUnits",
-		"description": "GET /api/v1/pages/page/design/content-units",
+		"description": "GET /pages/page/design/content-units",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1563,14 +1563,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pages/page/design/content-units",
+		"endpoint": "/pages/page/design/content-units",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_AdvanceWorkflow",
-		"description": "POST /api/v1/pages/page/workflow/advance",
+		"description": "POST /pages/page/workflow/advance",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1605,14 +1605,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/pages/page/workflow/advance",
+		"endpoint": "/pages/page/workflow/advance",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_CreateDITAAlias",
-		"description": "PUT /api/v1/pages/dita-alias",
+		"description": "PUT /pages/dita-alias",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1856,14 +1856,14 @@
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/pages/dita-alias",
+		"endpoint": "/pages/dita-alias",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Pages_UpdateDITAAlias",
-		"description": "PATCH /api/v1/pages/dita-alias",
+		"description": "PATCH /pages/dita-alias",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2157,14 +2157,14 @@
 			}
 		},
 		"method": "PATCH",
-		"endpoint": "/api/v1/pages/dita-alias",
+		"endpoint": "/pages/dita-alias",
 		"tags": [
 			"Pages"
 		]
 	},
 	{
 		"tool_name": "Settings_GetSetting",
-		"description": "GET /api/v1/settings/setting",
+		"description": "GET /settings/setting",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2203,14 +2203,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/settings/setting",
+		"endpoint": "/settings/setting",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_PutSetting",
-		"description": "PUT /api/v1/settings/setting",
+		"description": "PUT /settings/setting",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2249,14 +2249,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/settings/setting",
+		"endpoint": "/settings/setting",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetSection",
-		"description": "GET /api/v1/settings/section",
+		"description": "GET /settings/section",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2288,14 +2288,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/settings/section",
+		"endpoint": "/settings/section",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_PutSection",
-		"description": "PUT /api/v1/settings/section",
+		"description": "PUT /settings/section",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2346,14 +2346,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/settings/section",
+		"endpoint": "/settings/section",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetData",
-		"description": "POST /api/v1/settings/data",
+		"description": "POST /settings/data",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2389,14 +2389,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/settings/data",
+		"endpoint": "/settings/data",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_SetData",
-		"description": "PUT /api/v1/settings/data",
+		"description": "PUT /settings/data",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2438,14 +2438,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/settings/data",
+		"endpoint": "/settings/data",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetCustomTabs",
-		"description": "GET /api/v1/settings/custom-tabs",
+		"description": "GET /settings/custom-tabs",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -2554,14 +2554,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/settings/custom-tabs",
+		"endpoint": "/settings/custom-tabs",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_SetCustomTabs",
-		"description": "PUT /api/v1/settings/custom-tabs",
+		"description": "PUT /settings/custom-tabs",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2778,14 +2778,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/settings/custom-tabs",
+		"endpoint": "/settings/custom-tabs",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetTaskUsers",
-		"description": "GET /api/v1/settings/task-users",
+		"description": "GET /settings/task-users",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2887,14 +2887,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/settings/task-users",
+		"endpoint": "/settings/task-users",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_ResetClientSecret",
-		"description": "POST /api/v1/settings/reset-client-secret",
+		"description": "POST /settings/reset-client-secret",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2932,7 +2932,7 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/settings/reset-client-secret",
+		"endpoint": "/settings/reset-client-secret",
 		"tags": [
 			"Settings"
 		]

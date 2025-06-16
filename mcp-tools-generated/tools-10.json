@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Reports_GetFolder",
-		"description": "GET /api/v1/reports/folder",
+		"description": "GET /reports/folder",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -56,14 +56,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/reports/folder",
+		"endpoint": "/reports/folder",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_SaveFolder",
-		"description": "POST /api/v1/reports/folder",
+		"description": "POST /reports/folder",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -124,14 +124,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/reports/folder",
+		"endpoint": "/reports/folder",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_GetReport",
-		"description": "GET /api/v1/reports/report",
+		"description": "GET /reports/report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -310,14 +310,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/reports/report",
+		"endpoint": "/reports/report",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_GetColumns",
-		"description": "GET /api/v1/reports/columns",
+		"description": "GET /reports/columns",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -389,14 +389,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/reports/columns",
+		"endpoint": "/reports/columns",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_GetSimpleReportResults",
-		"description": "GET /api/v1/reports/simple-report",
+		"description": "GET /reports/simple-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -428,14 +428,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/reports/simple-report",
+		"endpoint": "/reports/simple-report",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_SaveSimpleReport",
-		"description": "PUT /api/v1/reports/simple-report",
+		"description": "PUT /reports/simple-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -505,14 +505,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/reports/simple-report",
+		"endpoint": "/reports/simple-report",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_GetParameterizedReportResults",
-		"description": "POST /api/v1/reports/parameterized-report",
+		"description": "POST /reports/parameterized-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -560,14 +560,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/reports/parameterized-report",
+		"endpoint": "/reports/parameterized-report",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_SaveParameterizedReport",
-		"description": "PUT /api/v1/reports/parameterized-report",
+		"description": "PUT /reports/parameterized-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -671,14 +671,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/reports/parameterized-report",
+		"endpoint": "/reports/parameterized-report",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_SaveAdvancedReport",
-		"description": "PUT /api/v1/reports/advanced-report",
+		"description": "PUT /reports/advanced-report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -712,14 +712,14 @@
 			"type": "boolean"
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/reports/advanced-report",
+		"endpoint": "/reports/advanced-report",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Reports_SaveReportSchedules",
-		"description": "PUT /api/v1/reports/report-schedules",
+		"description": "PUT /reports/report-schedules",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -803,14 +803,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/reports/report-schedules",
+		"endpoint": "/reports/report-schedules",
 		"tags": [
 			"Reports"
 		]
 	},
 	{
 		"tool_name": "Schemas_UploadSchema",
-		"description": "POST /api/v1/schemas/upload",
+		"description": "POST /schemas/upload",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -824,14 +824,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/schemas/upload",
+		"endpoint": "/schemas/upload",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GenerateThumbnailFromPreview",
-		"description": "POST /api/v1/schemas/generate-thumb-from-preview",
+		"description": "POST /schemas/generate-thumb-from-preview",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -865,14 +865,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/schemas/generate-thumb-from-preview",
+		"endpoint": "/schemas/generate-thumb-from-preview",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetComponentSchemaReferences",
-		"description": "GET /api/v1/schemas/pages-by-comp-schema",
+		"description": "GET /schemas/pages-by-comp-schema",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -938,14 +938,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/schemas/pages-by-comp-schema",
+		"endpoint": "/schemas/pages-by-comp-schema",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetSchemas",
-		"description": "GET /api/v1/schemas/schemas",
+		"description": "GET /schemas/schemas",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1223,14 +1223,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/schemas/schemas",
+		"endpoint": "/schemas/schemas",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetAssetSchemas",
-		"description": "GET /api/v1/schemas/asset-schemas",
+		"description": "GET /schemas/asset-schemas",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1508,14 +1508,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/schemas/asset-schemas",
+		"endpoint": "/schemas/asset-schemas",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetAssetSchemasByTypes",
-		"description": "GET /api/v1/schemas/asset-schemas-by-types",
+		"description": "GET /schemas/asset-schemas-by-types",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1798,14 +1798,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/schemas/asset-schemas-by-types",
+		"endpoint": "/schemas/asset-schemas-by-types",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetSchema",
-		"description": "GET /api/v1/schemas/schema",
+		"description": "GET /schemas/schema",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2029,14 +2029,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/schemas/schema",
+		"endpoint": "/schemas/schema",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetAssetSchema",
-		"description": "GET /api/v1/schemas/asset-schema",
+		"description": "GET /schemas/asset-schema",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2260,14 +2260,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/schemas/asset-schema",
+		"endpoint": "/schemas/asset-schema",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_GetPageOrAssetSchema",
-		"description": "GET /api/v1/schemas/page-or-asset-schema",
+		"description": "GET /schemas/page-or-asset-schema",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2503,14 +2503,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/schemas/page-or-asset-schema",
+		"endpoint": "/schemas/page-or-asset-schema",
 		"tags": [
 			"Schemas"
 		]
 	},
 	{
 		"tool_name": "Schemas_Search",
-		"description": "GET /api/v1/schemas/search",
+		"description": "GET /schemas/search",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2798,7 +2798,7 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/schemas/search",
+		"endpoint": "/schemas/search",
 		"tags": [
 			"Schemas"
 		]

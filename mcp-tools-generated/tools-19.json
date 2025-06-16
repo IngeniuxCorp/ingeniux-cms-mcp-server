@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Accounts_Login",
-		"description": "POST /api/v1/accounts/login",
+		"description": "POST /accounts/login",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -61,14 +61,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/accounts/login",
+		"endpoint": "/accounts/login",
 		"tags": [
 			"Accounts"
 		]
 	},
 	{
 		"tool_name": "Accounts_GetMembershipProviders",
-		"description": "GET /api/v1/accounts/membership-providers",
+		"description": "GET /accounts/membership-providers",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -107,14 +107,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/accounts/membership-providers",
+		"endpoint": "/accounts/membership-providers",
 		"tags": [
 			"Accounts"
 		]
 	},
 	{
 		"tool_name": "Accounts_GetUserGroupSecurities",
-		"description": "GET /api/v1/accounts/security-groups",
+		"description": "GET /accounts/security-groups",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -174,14 +174,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/accounts/security-groups",
+		"endpoint": "/accounts/security-groups",
 		"tags": [
 			"Accounts"
 		]
 	},
 	{
 		"tool_name": "Accounts_ResetPassword",
-		"description": "POST /api/v1/accounts/users/reset-passwords",
+		"description": "POST /accounts/users/reset-passwords",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -231,14 +231,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/accounts/users/reset-passwords",
+		"endpoint": "/accounts/users/reset-passwords",
 		"tags": [
 			"Accounts"
 		]
 	},
 	{
 		"tool_name": "UserGroups_GetUserGroups",
-		"description": "GET /api/v1/groups",
+		"description": "GET /groups",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -351,14 +351,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/groups",
+		"endpoint": "/groups",
 		"tags": [
 			"UserGroups"
 		]
 	},
 	{
 		"tool_name": "UserGroups_GetGroup",
-		"description": "GET /api/v1/groups/group",
+		"description": "GET /groups/group",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -419,14 +419,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/groups/group",
+		"endpoint": "/groups/group",
 		"tags": [
 			"UserGroups"
 		]
 	},
 	{
 		"tool_name": "UserGroups_CreateGroup",
-		"description": "PUT /api/v1/groups/new-group",
+		"description": "PUT /groups/new-group",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -487,14 +487,14 @@
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/groups/new-group",
+		"endpoint": "/groups/new-group",
 		"tags": [
 			"UserGroups"
 		]
 	},
 	{
 		"tool_name": "UserGroups_Search",
-		"description": "GET /api/v1/groups/search",
+		"description": "GET /groups/search",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -617,14 +617,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/groups/search",
+		"endpoint": "/groups/search",
 		"tags": [
 			"UserGroups"
 		]
 	},
 	{
 		"tool_name": "User_GetUsers",
-		"description": "GET /api/v1/users",
+		"description": "GET /users",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -755,14 +755,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/users",
+		"endpoint": "/users",
 		"tags": [
 			"User"
 		]
 	},
 	{
 		"tool_name": "User_GetUser",
-		"description": "GET /api/v1/users/user",
+		"description": "GET /users/user",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -834,14 +834,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/users/user",
+		"endpoint": "/users/user",
 		"tags": [
 			"User"
 		]
 	},
 	{
 		"tool_name": "User_GetAssignments",
-		"description": "GET /api/v1/users/assignments",
+		"description": "GET /users/assignments",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1022,14 +1022,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/users/assignments",
+		"endpoint": "/users/assignments",
 		"tags": [
 			"User"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetWorkflow",
-		"description": "GET /api/v1/workflows/workflow",
+		"description": "GET /workflows/workflow",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1120,14 +1120,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/workflows/workflow",
+		"endpoint": "/workflows/workflow",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetWorkflowByContentItem",
-		"description": "GET /api/v1/workflows/by-content",
+		"description": "GET /workflows/by-content",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1218,14 +1218,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/workflows/by-content",
+		"endpoint": "/workflows/by-content",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetWorkflowStates",
-		"description": "GET /api/v1/workflows/content-work-state",
+		"description": "GET /workflows/content-work-state",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1439,14 +1439,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/workflows/content-work-state",
+		"endpoint": "/workflows/content-work-state",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetWorkstates",
-		"description": "GET /api/v1/workflows/workstates",
+		"description": "GET /workflows/workstates",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1564,14 +1564,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/workflows/workstates",
+		"endpoint": "/workflows/workstates",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_ListWorkflowDefinitions",
-		"description": "GET /api/v1/workflows/definitions",
+		"description": "GET /workflows/definitions",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1694,14 +1694,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/workflows/definitions",
+		"endpoint": "/workflows/definitions",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetWorkflowDefinitionDetail",
-		"description": "GET /api/v1/workflows/definition-detail",
+		"description": "GET /workflows/definition-detail",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1840,14 +1840,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/workflows/definition-detail",
+		"endpoint": "/workflows/definition-detail",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetWorkflowReport",
-		"description": "GET /api/v1/workflows/report",
+		"description": "GET /workflows/report",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1936,14 +1936,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/workflows/report",
+		"endpoint": "/workflows/report",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_GetDefaultTransition",
-		"description": "GET /api/v1/workflows/default-transition",
+		"description": "GET /workflows/default-transition",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -2019,14 +2019,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/workflows/default-transition",
+		"endpoint": "/workflows/default-transition",
 		"tags": [
 			"Workflow"
 		]
 	},
 	{
 		"tool_name": "Workflow_SetWorkflowDefinitionDetails",
-		"description": "PUT /api/v1/workflows/definition",
+		"description": "PUT /workflows/definition",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2285,7 +2285,7 @@
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/workflows/definition",
+		"endpoint": "/workflows/definition",
 		"tags": [
 			"Workflow"
 		]

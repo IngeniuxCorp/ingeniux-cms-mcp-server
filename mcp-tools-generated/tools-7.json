@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "PCR_CreatePCRInfo",
-		"description": "POST /api/v1/pcr",
+		"description": "POST /pcr",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -151,14 +151,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/pcr",
+		"endpoint": "/pcr",
 		"tags": [
 			"PCR"
 		]
 	},
 	{
 		"tool_name": "PCR_SetPCRInfo",
-		"description": "PUT /api/v1/pcr",
+		"description": "PUT /pcr",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -329,14 +329,14 @@
 			}
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/pcr",
+		"endpoint": "/pcr",
 		"tags": [
 			"PCR"
 		]
 	},
 	{
 		"tool_name": "PCR_RemovePCRInfo",
-		"description": "DELETE /api/v1/pcr",
+		"description": "DELETE /pcr",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -354,14 +354,14 @@
 			"type": "boolean"
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/pcr",
+		"endpoint": "/pcr",
 		"tags": [
 			"PCR"
 		]
 	},
 	{
 		"tool_name": "PCR_GetPCRParents",
-		"description": "GET /api/v1/pcr/parents",
+		"description": "GET /pcr/parents",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -437,14 +437,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pcr/parents",
+		"endpoint": "/pcr/parents",
 		"tags": [
 			"PCR"
 		]
 	},
 	{
 		"tool_name": "PCR_GetPCRParentPages",
-		"description": "GET /api/v1/pcr/parentpages",
+		"description": "GET /pcr/parentpages",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -753,14 +753,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pcr/parentpages",
+		"endpoint": "/pcr/parentpages",
 		"tags": [
 			"PCR"
 		]
 	},
 	{
 		"tool_name": "PCR_GetPCRChildPages",
-		"description": "GET /api/v1/pcr/childpages",
+		"description": "GET /pcr/childpages",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1049,14 +1049,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pcr/childpages",
+		"endpoint": "/pcr/childpages",
 		"tags": [
 			"PCR"
 		]
 	},
 	{
 		"tool_name": "PCR_GetPCRDetails",
-		"description": "GET /api/v1/pcr/details",
+		"description": "GET /pcr/details",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1164,14 +1164,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/pcr/details",
+		"endpoint": "/pcr/details",
 		"tags": [
 			"PCR"
 		]
 	},
 	{
 		"tool_name": "Preview_GetPageXml",
-		"description": "GET /api/v1/preview/page-xml",
+		"description": "GET /preview/page-xml",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1248,14 +1248,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/page-xml",
+		"endpoint": "/preview/page-xml",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetPage",
-		"description": "GET /api/v1/preview/page",
+		"description": "GET /preview/page",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1489,14 +1489,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/page",
+		"endpoint": "/preview/page",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetPageDescendants",
-		"description": "GET /api/v1/preview/page-descendants",
+		"description": "GET /preview/page-descendants",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1560,14 +1560,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/page-descendants",
+		"endpoint": "/preview/page-descendants",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetPageMapEntryByPath",
-		"description": "GET /api/v1/preview/page-map-by-path",
+		"description": "GET /preview/page-map-by-path",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1698,14 +1698,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/page-map-by-path",
+		"endpoint": "/preview/page-map-by-path",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetPageMapEntry",
-		"description": "GET /api/v1/preview/page-map",
+		"description": "GET /preview/page-map",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1836,14 +1836,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/page-map",
+		"endpoint": "/preview/page-map",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetAssetMapEntry",
-		"description": "GET /api/v1/preview/asset-map",
+		"description": "GET /preview/asset-map",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1959,14 +1959,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/asset-map",
+		"endpoint": "/preview/asset-map",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetAssetDescendants",
-		"description": "GET /api/v1/preview/asset-descendants",
+		"description": "GET /preview/asset-descendants",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2042,14 +2042,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/asset-descendants",
+		"endpoint": "/preview/asset-descendants",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetAssetMapEntryByPath",
-		"description": "GET /api/v1/preview/asset-map-by-path",
+		"description": "GET /preview/asset-map-by-path",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2165,14 +2165,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/asset-map-by-path",
+		"endpoint": "/preview/asset-map-by-path",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetPageReference",
-		"description": "GET /api/v1/preview/page-reference",
+		"description": "GET /preview/page-reference",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2214,14 +2214,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/page-reference",
+		"endpoint": "/preview/page-reference",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetAssetReference",
-		"description": "GET /api/v1/preview/asset-reference",
+		"description": "GET /preview/asset-reference",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2266,14 +2266,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/asset-reference",
+		"endpoint": "/preview/asset-reference",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetAssetXMP",
-		"description": "GET /api/v1/preview/asset-xmp",
+		"description": "GET /preview/asset-xmp",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2301,14 +2301,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/asset-xmp",
+		"endpoint": "/preview/asset-xmp",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetAssetFile",
-		"description": "GET /api/v1/preview/asset-file",
+		"description": "GET /preview/asset-file",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2336,14 +2336,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/asset-file",
+		"endpoint": "/preview/asset-file",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_GetTaxonomyCategory",
-		"description": "GET /api/v1/preview/taxonomy",
+		"description": "GET /preview/taxonomy",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2508,7 +2508,7 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/preview/taxonomy",
+		"endpoint": "/preview/taxonomy",
 		"tags": [
 			"Preview"
 		]

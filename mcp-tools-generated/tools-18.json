@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Taxonomy_SetCategorySynonyms",
-		"description": "PUT /api/v1/taxonomy/category/synonyms",
+		"description": "PUT /taxonomy/category/synonyms",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -188,14 +188,14 @@
 			]
 		},
 		"method": "PUT",
-		"endpoint": "/api/v1/taxonomy/category/synonyms",
+		"endpoint": "/taxonomy/category/synonyms",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_Rename",
-		"description": "PATCH /api/v1/taxonomy/category/rename",
+		"description": "PATCH /taxonomy/category/rename",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -366,14 +366,14 @@
 			]
 		},
 		"method": "PATCH",
-		"endpoint": "/api/v1/taxonomy/category/rename",
+		"endpoint": "/taxonomy/category/rename",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_Move",
-		"description": "PATCH /api/v1/taxonomy/category/move",
+		"description": "PATCH /taxonomy/category/move",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -549,14 +549,14 @@
 			]
 		},
 		"method": "PATCH",
-		"endpoint": "/api/v1/taxonomy/category/move",
+		"endpoint": "/taxonomy/category/move",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_Copy",
-		"description": "PATCH /api/v1/taxonomy/category/copy",
+		"description": "PATCH /taxonomy/category/copy",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -742,14 +742,14 @@
 			]
 		},
 		"method": "PATCH",
-		"endpoint": "/api/v1/taxonomy/category/copy",
+		"endpoint": "/taxonomy/category/copy",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_CopyAssociations",
-		"description": "PATCH /api/v1/taxonomy/category/copy-associations",
+		"description": "PATCH /taxonomy/category/copy-associations",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -776,14 +776,14 @@
 			}
 		},
 		"method": "PATCH",
-		"endpoint": "/api/v1/taxonomy/category/copy-associations",
+		"endpoint": "/taxonomy/category/copy-associations",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetAssociations",
-		"description": "GET /api/v1/taxonomy/category/associations",
+		"description": "GET /taxonomy/category/associations",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1063,14 +1063,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/taxonomy/category/associations",
+		"endpoint": "/taxonomy/category/associations",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_DeleteAssociations",
-		"description": "DELETE /api/v1/taxonomy/category/associations",
+		"description": "DELETE /taxonomy/category/associations",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1243,14 +1243,14 @@
 			]
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/taxonomy/category/associations",
+		"endpoint": "/taxonomy/category/associations",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_AddAssociations",
-		"description": "PATCH /api/v1/taxonomy/category/associations",
+		"description": "PATCH /taxonomy/category/associations",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1423,14 +1423,14 @@
 			]
 		},
 		"method": "PATCH",
-		"endpoint": "/api/v1/taxonomy/category/associations",
+		"endpoint": "/taxonomy/category/associations",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_DeleteAssociation",
-		"description": "DELETE /api/v1/taxonomy/category/association",
+		"description": "DELETE /taxonomy/category/association",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1601,14 +1601,14 @@
 			]
 		},
 		"method": "DELETE",
-		"endpoint": "/api/v1/taxonomy/category/association",
+		"endpoint": "/taxonomy/category/association",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_AddAssociation",
-		"description": "PATCH /api/v1/taxonomy/category/association",
+		"description": "PATCH /taxonomy/category/association",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1779,14 +1779,14 @@
 			]
 		},
 		"method": "PATCH",
-		"endpoint": "/api/v1/taxonomy/category/association",
+		"endpoint": "/taxonomy/category/association",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_SetCategoryAssociations",
-		"description": "POST /api/v1/taxonomy/category/content-associations",
+		"description": "POST /taxonomy/category/content-associations",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1985,14 +1985,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/taxonomy/category/content-associations",
+		"endpoint": "/taxonomy/category/content-associations",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_GetCategoriesWithPath",
-		"description": "POST /api/v1/taxonomy/categories-with-path",
+		"description": "POST /taxonomy/categories-with-path",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2212,14 +2212,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/taxonomy/categories-with-path",
+		"endpoint": "/taxonomy/categories-with-path",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_CategoryHasAssociations",
-		"description": "GET /api/v1/taxonomy/category/has-association",
+		"description": "GET /taxonomy/category/has-association",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2242,14 +2242,14 @@
 			"type": "boolean"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/taxonomy/category/has-association",
+		"endpoint": "/taxonomy/category/has-association",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_CategoriesWithAssociations",
-		"description": "GET /api/v1/taxonomy/category/associated-descendants",
+		"description": "GET /taxonomy/category/associated-descendants",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2472,14 +2472,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/taxonomy/category/associated-descendants",
+		"endpoint": "/taxonomy/category/associated-descendants",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Taxonomy_QuickSearch",
-		"description": "GET /api/v1/taxonomy/quick-search",
+		"description": "GET /taxonomy/quick-search",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2697,14 +2697,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/taxonomy/quick-search",
+		"endpoint": "/taxonomy/quick-search",
 		"tags": [
 			"Taxonomy"
 		]
 	},
 	{
 		"tool_name": "Test_Get",
-		"description": "GET /api/v1/test/error",
+		"description": "GET /test/error",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2727,14 +2727,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/test/error",
+		"endpoint": "/test/error",
 		"tags": [
 			"Test"
 		]
 	},
 	{
 		"tool_name": "Test_GetCurrentLocale",
-		"description": "GET /api/v1/test/locale",
+		"description": "GET /test/locale",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -2743,14 +2743,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/test/locale",
+		"endpoint": "/test/locale",
 		"tags": [
 			"Test"
 		]
 	},
 	{
 		"tool_name": "Test_GetProgress",
-		"description": "POST /api/v1/test/progress",
+		"description": "POST /test/progress",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2768,14 +2768,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/test/progress",
+		"endpoint": "/test/progress",
 		"tags": [
 			"Test"
 		]
 	},
 	{
 		"tool_name": "Test_GetClaims",
-		"description": "GET /api/v1/test/claims",
+		"description": "GET /test/claims",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -2784,14 +2784,14 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/test/claims",
+		"endpoint": "/test/claims",
 		"tags": [
 			"Test"
 		]
 	},
 	{
 		"tool_name": "Test_GetPermissionTest",
-		"description": "GET /api/v1/test/admin-perm-test",
+		"description": "GET /test/admin-perm-test",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -2800,7 +2800,7 @@
 			"type": "file"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/test/admin-perm-test",
+		"endpoint": "/test/admin-perm-test",
 		"tags": [
 			"Test"
 		]

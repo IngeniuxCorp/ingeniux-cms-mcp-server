@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "InsiteSearch_SaveCustomSettings",
-		"description": "POST /api/v1/insite-search/custom-settings",
+		"description": "POST /insite-search/custom-settings",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -41,14 +41,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/insite-search/custom-settings",
+		"endpoint": "/insite-search/custom-settings",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_GetBatchSizes",
-		"description": "GET /api/v1/insite-search/batch-sizes",
+		"description": "GET /insite-search/batch-sizes",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -96,14 +96,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/insite-search/batch-sizes",
+		"endpoint": "/insite-search/batch-sizes",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_SaveBatchSizes",
-		"description": "POST /api/v1/insite-search/batch-sizes",
+		"description": "POST /insite-search/batch-sizes",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -150,14 +150,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/insite-search/batch-sizes",
+		"endpoint": "/insite-search/batch-sizes",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_GetKeymatches",
-		"description": "GET /api/v1/insite-search/keymatches",
+		"description": "GET /insite-search/keymatches",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -190,14 +190,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/insite-search/keymatches",
+		"endpoint": "/insite-search/keymatches",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_SaveKeymatches",
-		"description": "POST /api/v1/insite-search/keymatches",
+		"description": "POST /insite-search/keymatches",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -238,14 +238,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/insite-search/keymatches",
+		"endpoint": "/insite-search/keymatches",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_ImportCsv",
-		"description": "POST /api/v1/insite-search/import-csv",
+		"description": "POST /insite-search/import-csv",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -254,14 +254,14 @@
 			"type": "file"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/insite-search/import-csv",
+		"endpoint": "/insite-search/import-csv",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_GetSynonyms",
-		"description": "GET /api/v1/insite-search/synonyms",
+		"description": "GET /insite-search/synonyms",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -287,14 +287,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/insite-search/synonyms",
+		"endpoint": "/insite-search/synonyms",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_SaveSynonyms",
-		"description": "POST /api/v1/insite-search/synonyms",
+		"description": "POST /insite-search/synonyms",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -328,14 +328,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/insite-search/synonyms",
+		"endpoint": "/insite-search/synonyms",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_ImportSynonyms",
-		"description": "POST /api/v1/insite-search/import-synonyms",
+		"description": "POST /insite-search/import-synonyms",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -344,14 +344,14 @@
 			"type": "file"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/insite-search/import-synonyms",
+		"endpoint": "/insite-search/import-synonyms",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_GetIndexingSchemas",
-		"description": "GET /api/v1/insite-search/indexing-schemas",
+		"description": "GET /insite-search/indexing-schemas",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -386,14 +386,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/insite-search/indexing-schemas",
+		"endpoint": "/insite-search/indexing-schemas",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_SaveIndexingSchemas",
-		"description": "POST /api/v1/insite-search/indexing-schemas",
+		"description": "POST /insite-search/indexing-schemas",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -433,14 +433,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/insite-search/indexing-schemas",
+		"endpoint": "/insite-search/indexing-schemas",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_GetIndexingSchemasOnly",
-		"description": "GET /api/v1/insite-search/indexing-schemas-only",
+		"description": "GET /insite-search/indexing-schemas-only",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -475,14 +475,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/insite-search/indexing-schemas-only",
+		"endpoint": "/insite-search/indexing-schemas-only",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_GetIndexingFieldsForSchema",
-		"description": "GET /api/v1/insite-search/indexing-fields",
+		"description": "GET /insite-search/indexing-fields",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -531,14 +531,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/insite-search/indexing-fields",
+		"endpoint": "/insite-search/indexing-fields",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_SaveIndexingFields",
-		"description": "POST /api/v1/insite-search/indexing-fields",
+		"description": "POST /insite-search/indexing-fields",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -592,14 +592,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/insite-search/indexing-fields",
+		"endpoint": "/insite-search/indexing-fields",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_GetIndexingSiteWideFields",
-		"description": "GET /api/v1/insite-search/sitewide-indexing-fields",
+		"description": "GET /insite-search/sitewide-indexing-fields",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -642,14 +642,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/insite-search/sitewide-indexing-fields",
+		"endpoint": "/insite-search/sitewide-indexing-fields",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_SaveSiteWideIndexingFields",
-		"description": "POST /api/v1/insite-search/site-wide-indexing-fields",
+		"description": "POST /insite-search/site-wide-indexing-fields",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -697,14 +697,14 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/insite-search/site-wide-indexing-fields",
+		"endpoint": "/insite-search/site-wide-indexing-fields",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_GetAssetFolderChildren",
-		"description": "GET /api/v1/insite-search/assetfolder-children",
+		"description": "GET /insite-search/assetfolder-children",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -739,14 +739,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/insite-search/assetfolder-children",
+		"endpoint": "/insite-search/assetfolder-children",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_GetIndexedAssetFolders",
-		"description": "GET /api/v1/insite-search/indexed-asset-folders",
+		"description": "GET /insite-search/indexed-asset-folders",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -800,14 +800,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/insite-search/indexed-asset-folders",
+		"endpoint": "/insite-search/indexed-asset-folders",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_GetAssetFolderDetail",
-		"description": "GET /api/v1/insite-search/asset-folders-detail",
+		"description": "GET /insite-search/asset-folders-detail",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -847,14 +847,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/insite-search/asset-folders-detail",
+		"endpoint": "/insite-search/asset-folders-detail",
 		"tags": [
 			"InsiteSearch"
 		]
 	},
 	{
 		"tool_name": "InsiteSearch_SaveIndexingAssetFolders",
-		"description": "POST /api/v1/insite-search/indexing-asset-folders",
+		"description": "POST /insite-search/indexing-asset-folders",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -913,7 +913,7 @@
 			"type": "boolean"
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/insite-search/indexing-asset-folders",
+		"endpoint": "/insite-search/indexing-asset-folders",
 		"tags": [
 			"InsiteSearch"
 		]

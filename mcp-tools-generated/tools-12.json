@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Assets_GetFolderDescendantMarkings",
-		"description": "GET /api/v1/assets/asset/descendant-targets",
+		"description": "GET /assets/asset/descendant-targets",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -22,14 +22,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/asset/descendant-targets",
+		"endpoint": "/assets/asset/descendant-targets",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetRecycleFolder",
-		"description": "GET /api/v1/assets/recycle-folder",
+		"description": "GET /assets/recycle-folder",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -296,14 +296,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/recycle-folder",
+		"endpoint": "/assets/recycle-folder",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetRoot",
-		"description": "GET /api/v1/assets/root",
+		"description": "GET /assets/root",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -570,14 +570,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/root",
+		"endpoint": "/assets/root",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetRootFolders",
-		"description": "GET /api/v1/assets/root-folders",
+		"description": "GET /assets/root-folders",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -945,14 +945,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/root-folders",
+		"endpoint": "/assets/root-folders",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetUnmanagedAsset",
-		"description": "GET /api/v1/assets/unmanaged",
+		"description": "GET /assets/unmanaged",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1228,14 +1228,14 @@
 			]
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/unmanaged",
+		"endpoint": "/assets/unmanaged",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetUnmanagedChildren",
-		"description": "GET /api/v1/assets/unmanaged/children",
+		"description": "GET /assets/unmanaged/children",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1604,14 +1604,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/unmanaged/children",
+		"endpoint": "/assets/unmanaged/children",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetUnmanagedRootFolders",
-		"description": "GET /api/v1/assets/unmanaged/root-folders",
+		"description": "GET /assets/unmanaged/root-folders",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1979,14 +1979,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/unmanaged/root-folders",
+		"endpoint": "/assets/unmanaged/root-folders",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_CheckDitaContentMovingOutOfDitaRoot",
-		"description": "GET /api/v1/assets/dita-move-validation",
+		"description": "GET /assets/dita-move-validation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2010,14 +2010,14 @@
 			"type": "boolean"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/dita-move-validation",
+		"endpoint": "/assets/dita-move-validation",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_Move",
-		"description": "PATCH /api/v1/assets/move",
+		"description": "PATCH /assets/move",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2367,14 +2367,14 @@
 			}
 		},
 		"method": "PATCH",
-		"endpoint": "/api/v1/assets/move",
+		"endpoint": "/assets/move",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_Rename",
-		"description": "POST /api/v1/assets/rename",
+		"description": "POST /assets/rename",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2663,14 +2663,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/assets/rename",
+		"endpoint": "/assets/rename",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_SearchAssetItems",
-		"description": "GET /api/v1/assets/search",
+		"description": "GET /assets/search",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -3086,14 +3086,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/search",
+		"endpoint": "/assets/search",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_SearchUnmanagedAssetItems",
-		"description": "GET /api/v1/assets/search-unmanaged",
+		"description": "GET /assets/search-unmanaged",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -3509,14 +3509,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/search-unmanaged",
+		"endpoint": "/assets/search-unmanaged",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_SetCategoryAssociations",
-		"description": "POST /api/v1/assets/asset/associations",
+		"description": "POST /assets/asset/associations",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -3800,14 +3800,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/assets/asset/associations",
+		"endpoint": "/assets/asset/associations",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_TotalSize",
-		"description": "GET /api/v1/assets/total-size",
+		"description": "GET /assets/total-size",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
@@ -3817,14 +3817,14 @@
 			"format": "int64"
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/total-size",
+		"endpoint": "/assets/total-size",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_UndoCheckOut",
-		"description": "POST /api/v1/assets/undo-checkout",
+		"description": "POST /assets/undo-checkout",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4113,14 +4113,14 @@
 			]
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/assets/undo-checkout",
+		"endpoint": "/assets/undo-checkout",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_Unzip",
-		"description": "POST /api/v1/assets/unzip",
+		"description": "POST /assets/unzip",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4149,14 +4149,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/assets/unzip",
+		"endpoint": "/assets/unzip",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_Upload",
-		"description": "POST /api/v1/assets/upload",
+		"description": "POST /assets/upload",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4323,14 +4323,14 @@
 			}
 		},
 		"method": "POST",
-		"endpoint": "/api/v1/assets/upload",
+		"endpoint": "/assets/upload",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetAssetDitaProperties",
-		"description": "GET /api/v1/assets/asset-dependency",
+		"description": "GET /assets/asset-dependency",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4465,14 +4465,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/asset-dependency",
+		"endpoint": "/assets/asset-dependency",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetAllAssetOwners",
-		"description": "GET /api/v1/assets/asset-owners-deep",
+		"description": "GET /assets/asset-owners-deep",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4537,14 +4537,14 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/asset-owners-deep",
+		"endpoint": "/assets/asset-owners-deep",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetAvailableKeyDefinitions",
-		"description": "GET /api/v1/assets/dita-key-defs",
+		"description": "GET /assets/dita-key-defs",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4595,7 +4595,7 @@
 			}
 		},
 		"method": "GET",
-		"endpoint": "/api/v1/assets/dita-key-defs",
+		"endpoint": "/assets/dita-key-defs",
 		"tags": [
 			"Assets"
 		]

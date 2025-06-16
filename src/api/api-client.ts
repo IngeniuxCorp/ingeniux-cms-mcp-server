@@ -6,6 +6,7 @@ import { APIRequest, APIResponse, APIError, RateLimitInfo } from '../types/api-t
 import { ServerConfig } from '../types/config-types.js';
 import { authMiddleware as defaultAuthMiddleware } from '../auth/auth-middleware.js';
 import { OAuthManager } from '../auth/oauth-manager.js';
+import { logger } from '../utils/logger.js';
 
 export class APIClient {
     private static instance: APIClient;
@@ -161,7 +162,14 @@ export class APIClient {
                 });
             }
 
-            return url.toString();
+            const urlStr = url.toString();
+            if (urlStr.length > 2000) {
+                console.warn(`Warning: URL length exceeds 2000 characters (${urlStr.length})`);
+            }
+
+            logger.info(`Built URL: ${urlStr}`);
+
+            return urlStr;
         } catch (error) {
             throw new Error(`Invalid URL: ${error instanceof Error ? error.message : 'Unknown error'}`);
         }
