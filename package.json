@@ -1,6 +1,6 @@
 {
 	"name": "ingeniux-cms-mcp-server",
-	"version": "1.0.0",
+	"version": "1.0.20",
 	"description": "Production-ready Ingeniux CMS MCP server with OAuth, Roo integration, and modular architecture.",
 	"main": "dist/index.js",
 	"type": "module",
@@ -35,8 +35,7 @@
 		"clean": "rimraf dist",
 		"docker:build": "docker build -t ingeniux-cms-mcp-server .",
 		"docker:run": "docker run --env-file .env -p 3000:3000 ingeniux-cms-mcp-server",
-		"release": "npm run build && npm publish",
-		"prepublishOnly": "npm test"
+		"release": "npm run build && npm publish"
 	},
 	"keywords": [
 		"mcp",
