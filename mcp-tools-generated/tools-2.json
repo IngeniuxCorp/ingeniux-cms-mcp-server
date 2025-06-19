@@ -1,531 +1,102 @@
 [
 	{
 		"tool_name": "DITA_GetDITASetupInfo",
-		"description": "GET /dita/setup-info",
+		"description": "Retrieves the setup information of DITA system on the CMS, including major DITA settings and OT setup and OT plugins information.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"skipPeerScopeRefsConversion",
-				"otTimeout",
-				"otTempFoldersToKeep",
-				"otPreviewTempFoldersToKeep",
-				"allowOxygenInvoke"
-			],
-			"properties": {
-				"ditaRoot": {
-					"type": "object",
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string"
-						}
-					}
-				},
-				"ditaDtdRoot": {
-					"$ref": "#/definitions/NameIdPair",
-					"circular": true
-				},
-				"skipPeerScopeRefsConversion": {
-					"type": "boolean"
-				},
-				"otTimeout": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"otTempFoldersToKeep": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"otPreviewTempFoldersToKeep": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"plugins": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"isSystemPlugin"
-						],
-						"properties": {
-							"formatString": {
-								"type": "string"
-							},
-							"id": {
-								"type": "string"
-							},
-							"location": {
-								"type": "string"
-							},
-							"isSystemPlugin": {
-								"type": "boolean"
-							},
-							"suggestedName": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"ot": {
-					"type": "object",
-					"required": [
-						"isCustomOT"
-					],
-					"properties": {
-						"error": {
-							"type": "string"
-						},
-						"version": {
-							"type": "string"
-						},
-						"versionChoices": {
-							"type": "object",
-							"properties": {
-								"earliestPreReleaseVersion": {
-									"type": "string"
-								},
-								"releases": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"version": {
-												"type": "string"
-											},
-											"title": {
-												"type": "string"
-											},
-											"downloadUrl": {
-												"type": "string"
-											},
-											"releaseNotesUrl": {
-												"type": "string"
-											}
-										}
-									}
-								}
-							}
-						},
-						"plugins": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"isSystemPlugin"
-								],
-								"properties": {
-									"formatString": {
-										"type": "string"
-									},
-									"id": {
-										"type": "string"
-									},
-									"location": {
-										"type": "string"
-									},
-									"isSystemPlugin": {
-										"type": "boolean"
-									},
-									"suggestedName": {
-										"type": "string"
-									}
-								}
-							}
-						},
-						"isCustomOT": {
-							"type": "boolean"
-						}
-					}
-				},
-				"allowOxygenInvoke": {
-					"type": "boolean"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dita/setup-info",
+		"method": "get",
+		"endpoint": "/api/v1/dita/setup-info",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Retrieves the setup information of DITA system on the CMS, including major DITA settings and OT setup and OT plugins information."
 	},
 	{
 		"tool_name": "DITA_GetDITAOutputFormats",
-		"description": "GET /dita/output-formats",
+		"description": "Retrieves all available output formats for DITA OT processing.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"HasOT"
-			],
-			"properties": {
-				"NormFormat": {
-					"type": "object",
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string"
-						}
-					}
-				},
-				"OutputFormats": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"$ref": "#/definitions/NameIdPair",
-								"circular": true
-							},
-							{
-								"type": "object",
-								"required": [
-									"Selected",
-									"IsNorm"
-								],
-								"properties": {
-									"Selected": {
-										"type": "boolean"
-									},
-									"IsNorm": {
-										"type": "boolean"
-									},
-									"Label": {
-										"type": "string"
-									}
-								}
-							}
-						]
-					}
-				},
-				"HasOT": {
-					"type": "boolean"
-				},
-				"RenderSchema": {
-					"$ref": "#/definitions/NameIdPair",
-					"circular": true
-				},
-				"LocalizedRenderSchemas": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"Locale": {
-								"type": "object",
-								"properties": {
-									"Locale": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									},
-									"EnglishName": {
-										"type": "string"
-									},
-									"BaseLocale": {
-										"type": "string"
-									}
-								}
-							},
-							"Schema": {
-								"$ref": "#/definitions/NameIdPair",
-								"circular": true
-							}
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dita/output-formats",
+		"method": "get",
+		"endpoint": "/api/v1/dita/output-formats",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Retrieves all available output formats for DITA OT processing.",
+		"endpoint_description": "If exclusive OT is deployed on CMS, the listing will be from the plugins currently included in exclusive OT; If exclusive OT is not deployed, \n            but CMS relies on OT installed on the server by server admin, the listing will be manually added entry by entry by CMS admin."
 	},
 	{
 		"tool_name": "DITA_GetOTCommonParams",
-		"description": "GET /dita/ot-params-common",
+		"description": "Retrieves a list of parameters commonly used by OT processing",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"Name": {
-						"type": "string"
-					},
-					"Parameters": {
-						"type": "array",
-						"items": {
-							"allOf": [
-								{
-									"type": "object",
-									"required": [
-										"Type",
-										"IsCommonParam"
-									],
-									"properties": {
-										"Name": {
-											"type": "string"
-										},
-										"Description": {
-											"type": "string"
-										},
-										"Type": {
-											"type": "string",
-											"description": "The object types of parameters for DITA OT processing",
-											"x-enumNames": [
-												"String",
-												"Number",
-												"Enum",
-												"Bool"
-											],
-											"enum": [
-												"String",
-												"Number",
-												"Enum",
-												"Bool"
-											]
-										},
-										"DefaultValue": {
-											"type": "string"
-										},
-										"Choices": {
-											"type": "array",
-											"items": {
-												"type": "string"
-											}
-										},
-										"BelongToFormats": {
-											"type": "array",
-											"items": {
-												"type": "string"
-											}
-										},
-										"IsCommonParam": {
-											"type": "boolean"
-										}
-									}
-								},
-								{
-									"type": "object",
-									"properties": {
-										"Value": {
-											"type": "string"
-										},
-										"Instruction": {
-											"type": "string"
-										}
-									}
-								}
-							]
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dita/ot-params-common",
+		"method": "get",
+		"endpoint": "/api/v1/dita/ot-params-common",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Retrieves a list of parameters commonly used by OT processing"
 	},
 	{
 		"tool_name": "DITA_GetOTAdvancedParams",
-		"description": "GET /dita/ot-params-advanced",
+		"description": "Retrieves the complete listing of allowed parameters for OT processing, together with\ncurrently added parameters for OT processing.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"AllParamsCount"
-			],
-			"properties": {
-				"AdvancedParams": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"required": [
-									"Type",
-									"IsCommonParam"
-								],
-								"properties": {
-									"Name": {
-										"type": "string"
-									},
-									"Description": {
-										"type": "string"
-									},
-									"Type": {
-										"type": "string",
-										"description": "The object types of parameters for DITA OT processing",
-										"x-enumNames": [
-											"String",
-											"Number",
-											"Enum",
-											"Bool"
-										],
-										"enum": [
-											"String",
-											"Number",
-											"Enum",
-											"Bool"
-										]
-									},
-									"DefaultValue": {
-										"type": "string"
-									},
-									"Choices": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									},
-									"BelongToFormats": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									},
-									"IsCommonParam": {
-										"type": "boolean"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"properties": {
-									"Value": {
-										"type": "string"
-									}
-								}
-							}
-						]
-					}
-				},
-				"AdvancedParamChoices": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/OTParameter",
-						"circular": true
-					}
-				},
-				"AllParamsCount": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dita/ot-params-advanced",
+		"method": "get",
+		"endpoint": "/api/v1/dita/ot-params-advanced",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Retrieves the complete listing of allowed parameters for OT processing, together with\ncurrently added parameters for OT processing.",
+		"endpoint_description": "This listing will include all commonly used parameters, if commonly used parameters are saved first."
 	},
 	{
 		"tool_name": "DITA_GetDITAVals",
-		"description": "GET /dita/ditavals",
+		"description": "Retrieves all available DITAVal candidates within CMS",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"id",
-					"refCount",
-					"notReadyToMark"
-				],
-				"properties": {
-					"id": {
-						"type": "integer",
-						"format": "int32"
-					},
-					"name": {
-						"type": "string"
-					},
-					"markedTargets": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"required": [
-								"Number"
-							],
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Name": {
-									"type": "string"
-								},
-								"Number": {
-									"type": "integer",
-									"format": "int32"
-								}
-							}
-						}
-					},
-					"lastPubTime": {
-						"type": "string"
-					},
-					"refCount": {
-						"type": "integer",
-						"format": "int32"
-					},
-					"path": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Name": {
-									"type": "string"
-								}
-							}
-						}
-					},
-					"notReadyToMark": {
-						"type": "boolean"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dita/ditavals",
+		"method": "get",
+		"endpoint": "/api/v1/dita/ditavals",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Retrieves all available DITAVal candidates within CMS"
 	},
 	{
 		"tool_name": "DITA_GetDITAAliases",
-		"description": "GET /dita/aliases",
+		"description": "Retrieves a list of DITA Aliases for specified Asset",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"assetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The Id of the Asset to retrieve Aliases for"
 				}
 			},
 			"required": [
@@ -533,148 +104,84 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"AutoUpdateEnabled"
-			],
-			"properties": {
-				"AutoUpdateEnabled": {
-					"type": "boolean"
-				},
-				"entries": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"Id",
-							"UpdateDue",
-							"DependentsUpdateDue",
-							"CanDelete"
-						],
-						"properties": {
-							"Id": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"Name": {
-								"type": "string"
-							},
-							"Path": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								}
-							},
-							"UpdateDue": {
-								"type": "boolean"
-							},
-							"DependentsUpdateDue": {
-								"type": "boolean"
-							},
-							"CanDelete": {
-								"type": "boolean"
-							}
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dita/aliases",
+		"method": "get",
+		"endpoint": "/api/v1/dita/aliases",
 		"tags": [
 			"DITA"
-		]
-	},
-	{
-		"tool_name": "DITA_DeleteAliases",
-		"description": "DELETE /dita/aliases",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"assetId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
-				},
-				"aliasIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
-			},
-			"required": [
-				"assetId",
-				"aliasIds",
-				"aliasIds"
-			]
-		},
-		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "string"
-			}
-		},
-		"method": "DELETE",
-		"endpoint": "/dita/aliases",
-		"tags": [
-			"DITA"
-		]
+		],
+		"summary": "Retrieves a list of DITA Aliases for specified Asset"
 	},
 	{
 		"tool_name": "DITA_UpdateAliases",
-		"description": "PATCH /dita/aliases",
+		"description": "Updates Aliases for specified Asset, with or without updating scope",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"assetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"aliasIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"in": "query",
+					"description": "The id of the Asset to update Aliases for"
 				}
 			},
 			"required": [
 				"assetId",
-				"aliasIds",
 				"aliasIds"
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "string"
-			}
+			"type": "object"
 		},
-		"method": "PATCH",
-		"endpoint": "/dita/aliases",
+		"method": "patch",
+		"endpoint": "/api/v1/dita/aliases",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Updates Aliases for specified Asset, with or without updating scope",
+		"endpoint_description": "If \"Aliases Auto Update\" is enabled in CMS configuration, this operation will not be necessary at all. Updates will be automatically \ncarried out in CSAPI level\n\"aliasIds\" parameter is optional. When not provided, all Aliases for the Asset will be updated"
+	},
+	{
+		"tool_name": "DITA_DeleteAliases",
+		"description": "Deletes Aliases for specified Assets, either specific list of Aliases, or all Aliases",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query",
+					"description": "Id of the Asset to delete Aliases for"
+				}
+			},
+			"required": [
+				"assetId",
+				"aliasIds"
+			]
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "delete",
+		"endpoint": "/api/v1/dita/aliases",
+		"tags": [
+			"DITA"
+		],
+		"summary": "Deletes Aliases for specified Assets, either specific list of Aliases, or all Aliases",
+		"endpoint_description": "Only root Aliases (Aliases reside under a Page, not under another Alias) are allowed to be deleted. \n            ArgumentException will be thrown if to delete non-root Aliases."
 	},
 	{
 		"tool_name": "DITA_ViewDITAAlias",
-		"description": "GET /dita/viewalias",
+		"description": "Retrieves the complete tree structure for specified DITA Alias",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"aliasId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Id of the DITA Alias to retrieve structure for"
 				}
 			},
 			"required": [
@@ -682,135 +189,56 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"icon": {
-					"type": "string"
-				},
-				"subIcon": {},
-				"decoratorIcon": {
-					"type": "string"
-				},
-				"children": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/DitaTreeNode",
-						"circular": true
-					}
-				},
-				"ancestorIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"checkedIn": {
-					"type": "boolean"
-				},
-				"user": {
-					"type": "string"
-				},
-				"markedTargets": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"removed": {
-					"type": "boolean"
-				},
-				"group": {
-					"type": "string"
-				},
-				"alias": {
-					"type": "string"
-				},
-				"isContainer": {
-					"type": "boolean"
-				}
-			},
-			"required": [
-				"checkedIn",
-				"removed",
-				"isContainer"
-			]
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dita/viewalias",
+		"method": "get",
+		"endpoint": "/api/v1/dita/viewalias",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Retrieves the complete tree structure for specified DITA Alias"
 	},
 	{
 		"tool_name": "DITA_GetDITAMaps",
-		"description": "POST /dita/ditamaps",
+		"description": "Retrieves DITA Maps within specified range, with specific sorting and filtering, and possibly applying advanced search",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"start": {
 					"type": "integer",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Starting index with sort applied"
 				},
 				"end": {
 					"type": "integer",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Ending index with sort applied"
 				},
 				"sortField": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Field to sort on"
 				},
 				"sortDescending": {
 					"type": "boolean",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Whether to sort descending"
 				},
 				"filter": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"advancedSearch": {
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"id": {
-							"type": "string"
-						},
-						"path": {
-							"type": "string"
-						},
-						"workstate": {
-							"type": "string"
-						},
-						"start": {
-							"type": "string"
-						},
-						"end": {
-							"type": "string"
-						},
-						"logic": {
-							"type": "string"
-						},
-						"dateType": {
-							"type": "string"
-						}
-					}
+					"in": "query",
+					"description": "Text for filtering, filtering only applies to \"Name\" and \"Path\" of DITA Map assets"
 				},
 				"includeRemoved": {
 					"type": "boolean",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Whether to included DITA Map Assets in recycle folder"
 				}
 			},
 			"required": [
@@ -818,153 +246,37 @@
 				"end",
 				"sortField",
 				"sortDescending",
-				"filter",
-				"advancedSearch",
-				"advancedSearch"
+				"filter"
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"id",
-							"checkedOut",
-							"currentVersionCoverage",
-							"notReadyToMark",
-							"removed"
-						],
-						"properties": {
-							"id": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"name": {
-								"type": "string"
-							},
-							"checkedOut": {
-								"type": "boolean"
-							},
-							"currentVersionCoverage": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"markedTargets": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"required": [
-										"Number",
-										"Coverage"
-									],
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										},
-										"Number": {
-											"type": "integer",
-											"format": "int32"
-										},
-										"Coverage": {
-											"type": "integer",
-											"format": "int32"
-										}
-									}
-								}
-							},
-							"lastPubTime": {
-								"type": "string"
-							},
-							"path": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								}
-							},
-							"notReadyToMark": {
-								"type": "boolean"
-							},
-							"workstate": {
-								"type": "object",
-								"properties": {
-									"workflow": {
-										"type": "string"
-									},
-									"state": {
-										"type": "string"
-									}
-								}
-							},
-							"removed": {
-								"type": "boolean"
-							},
-							"created": {
-								"type": "string"
-							},
-							"updated": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Tag": {
-					"type": "boolean"
-				}
-			},
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex",
-				"Tag"
-			]
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/dita/ditamaps",
+		"method": "post",
+		"endpoint": "/api/v1/dita/ditamaps",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Retrieves DITA Maps within specified range, with specific sorting and filtering, and possibly applying advanced search",
+		"endpoint_description": "When \"advancedSearch\" parameter is provided, \"filter\" parameter is ignored"
 	},
 	{
 		"tool_name": "DITA_GetDITAMapTree",
-		"description": "GET /dita/ditamaptree",
+		"description": "Retrieves the tree structure of a DITA Map, with all descendant nodes included",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"mapId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Id of the DITA Map to retrieve"
 				},
 				"pubTarget": {
 					"type": "string",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Publishing Target Id, or null if Current Version"
 				}
 			},
 			"required": [
@@ -972,86 +284,32 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"icon": {
-					"type": "string"
-				},
-				"subIcon": {},
-				"decoratorIcon": {
-					"type": "string"
-				},
-				"children": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/DitaTreeNode",
-						"circular": true
-					}
-				},
-				"ancestorIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"checkedIn": {
-					"type": "boolean"
-				},
-				"user": {
-					"type": "string"
-				},
-				"markedTargets": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"removed": {
-					"type": "boolean"
-				},
-				"group": {
-					"type": "string"
-				},
-				"alias": {
-					"type": "string"
-				},
-				"isContainer": {
-					"type": "boolean"
-				}
-			},
-			"required": [
-				"checkedIn",
-				"removed",
-				"isContainer"
-			]
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dita/ditamaptree",
+		"method": "get",
+		"endpoint": "/api/v1/dita/ditamaptree",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Retrieves the tree structure of a DITA Map, with all descendant nodes included"
 	},
 	{
 		"tool_name": "DITA_GetDITAMapDetails",
-		"description": "GET /dita/ditamap-detail",
+		"description": "Retrieves details of a DITA Map, that includes both default fields and custom fields",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"mapId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Id of the DITA Map to retrieve details for"
 				},
 				"pubTarget": {
 					"type": "string",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Publishing Target Id or null if Current Version"
 				}
 			},
 			"required": [
@@ -1059,270 +317,76 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"id": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"name": {
-					"type": "string"
-				},
-				"checkedOut": {
-					"type": "boolean"
-				},
-				"currentVersionCoverage": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"markedTargets": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"Number",
-							"Coverage"
-						],
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							},
-							"Number": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"Coverage": {
-								"type": "integer",
-								"format": "int32"
-							}
-						}
-					}
-				},
-				"lastPubTime": {
-					"type": "string"
-				},
-				"path": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"notReadyToMark": {
-					"type": "boolean"
-				},
-				"workstate": {
-					"type": "object",
-					"properties": {
-						"workflow": {
-							"type": "string"
-						},
-						"state": {
-							"type": "string"
-						}
-					}
-				},
-				"removed": {
-					"type": "boolean"
-				},
-				"created": {
-					"type": "string"
-				},
-				"updated": {
-					"type": "string"
-				},
-				"fields": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"label": {
-								"type": "string"
-							},
-							"value": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"checkedOutToOthers": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"assignedUser": {
-					"type": "string"
-				}
-			},
-			"required": [
-				"id",
-				"checkedOut",
-				"currentVersionCoverage",
-				"notReadyToMark",
-				"removed",
-				"checkedOutToOthers"
-			]
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dita/ditamap-detail",
+		"method": "get",
+		"endpoint": "/api/v1/dita/ditamap-detail",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Retrieves details of a DITA Map, that includes both default fields and custom fields"
 	},
 	{
 		"tool_name": "DITA_GetDITAMapDetailConfiguration",
-		"description": "GET /dita/ditamap-detail-config",
+		"description": "Retrieves the DITA Map detail configuration information",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"required": [
-							"source"
-						],
-						"properties": {
-							"nameOrId": {
-								"type": "string"
-							},
-							"source": {
-								"type": "integer",
-								"format": "int32"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"required": [
-							"selected"
-						],
-						"properties": {
-							"label": {
-								"type": "string"
-							},
-							"baseLabel": {
-								"type": "string"
-							},
-							"globalLabelOverride": {
-								"type": "string"
-							},
-							"userLabelOverride": {
-								"type": "string"
-							},
-							"selected": {
-								"type": "boolean"
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dita/ditamap-detail-config",
+		"method": "get",
+		"endpoint": "/api/v1/dita/ditamap-detail-config",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Retrieves the DITA Map detail configuration information"
 	},
 	{
 		"tool_name": "DITA_SetDITAMapDetailConfiguration",
-		"description": "PUT /dita/ditamap-detail-config",
+		"description": "Updates the DITA Map details configuration",
 		"input_schema": {
 			"type": "object",
 			"properties": {
-				"fields": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"required": [
-									"source"
-								],
-								"properties": {
-									"nameOrId": {
-										"type": "string"
-									},
-									"source": {
-										"type": "integer",
-										"format": "int32"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"selected"
-								],
-								"properties": {
-									"label": {
-										"type": "string"
-									},
-									"baseLabel": {
-										"type": "string"
-									},
-									"globalLabelOverride": {
-										"type": "string"
-									},
-									"userLabelOverride": {
-										"type": "string"
-									},
-									"selected": {
-										"type": "boolean"
-									}
-								}
-							}
-						]
-					}
-				},
 				"saveGlobally": {
 					"type": "boolean",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "When set to true, will become the base configuration for all users, \n            that haven't customized their own fields configuration yet"
 				}
 			},
 			"required": [
-				"fields",
-				"saveGlobally",
-				"fields"
+				"saveGlobally"
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/dita/ditamap-detail-config",
+		"method": "put",
+		"endpoint": "/api/v1/dita/ditamap-detail-config",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Updates the DITA Map details configuration"
 	},
 	{
 		"tool_name": "DITA_PutSetting",
-		"description": "PUT /dita/setup-setting",
+		"description": "Updates a single setting for DITA system",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"settingName": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Name of the setting to update"
 				},
 				"settingValue": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Value of the setting to update"
 				}
 			},
 			"required": [
@@ -1331,29 +395,32 @@
 			]
 		},
 		"output_schema": {
-			"type": "string"
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/dita/setup-setting",
+		"method": "put",
+		"endpoint": "/api/v1/dita/setup-setting",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Updates a single setting for DITA system"
 	},
 	{
 		"tool_name": "DITA_SetNormalizationFormat",
-		"description": "PUT /dita/output-format-norm",
+		"description": "Updates normalization format settings",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"formatString": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The string for DITA-OT normalization output format (transformation) parameter"
 				},
 				"name": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Display name of the normalization format"
 				}
 			},
 			"required": [
@@ -1362,34 +429,38 @@
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/dita/output-format-norm",
+		"method": "put",
+		"endpoint": "/api/v1/dita/output-format-norm",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Updates normalization format settings"
 	},
 	{
 		"tool_name": "DITA_SetStaticFormat",
-		"description": "PUT /dita/output-format-static",
+		"description": "Updates the choice of a static DITA-OT output format",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"formatString": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The string for DITA-OT static output format (transformation) parameter. e.g. \"pdf2\""
 				},
 				"name": {
 					"type": "string",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Display name of the static output format"
 				},
 				"selected": {
 					"type": "boolean",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Determines whether this static format is included as a DITA post-processing output format during publish"
 				}
 			},
 			"required": [
@@ -1397,111 +468,43 @@
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/dita/output-format-static",
+		"method": "put",
+		"endpoint": "/api/v1/dita/output-format-static",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Updates the choice of a static DITA-OT output format"
 	},
 	{
 		"tool_name": "DITA_SetLocalizedRenderSchema",
-		"description": "PUT /dita/localized-render-schema",
+		"description": "Adds or updates a localized rendering schema for DITA",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"schema": {
-					"type": "object",
-					"properties": {
-						"Locale": {
-							"type": "object",
-							"properties": {
-								"Locale": {
-									"type": "string"
-								},
-								"Name": {
-									"type": "string"
-								},
-								"EnglishName": {
-									"type": "string"
-								},
-								"BaseLocale": {
-									"type": "string"
-								}
-							}
-						},
-						"Schema": {
-							"type": "object",
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Name": {
-									"type": "string"
-								}
-							}
-						}
-					}
-				}
-			},
-			"required": [
-				"schema",
-				"schema"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"Locale": {
-						"type": "object",
-						"properties": {
-							"Locale": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							},
-							"EnglishName": {
-								"type": "string"
-							},
-							"BaseLocale": {
-								"type": "string"
-							}
-						}
-					},
-					"Schema": {
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/dita/localized-render-schema",
+		"method": "put",
+		"endpoint": "/api/v1/dita/localized-render-schema",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Adds or updates a localized rendering schema for DITA"
 	},
 	{
 		"tool_name": "DITA_RemoveLocalizedRenderSchema",
-		"description": "DELETE /dita/remove-localized-render-schema",
+		"description": "Removes a single localized rendering schema for DITA",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"locale": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The locale of the schema to remove"
 				}
 			},
 			"required": [
@@ -1509,173 +512,31 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"Locale": {
-						"type": "object",
-						"properties": {
-							"Locale": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							},
-							"EnglishName": {
-								"type": "string"
-							},
-							"BaseLocale": {
-								"type": "string"
-							}
-						}
-					},
-					"Schema": {
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "DELETE",
-		"endpoint": "/dita/remove-localized-render-schema",
+		"method": "delete",
+		"endpoint": "/api/v1/dita/remove-localized-render-schema",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Removes a single localized rendering schema for DITA"
 	},
 	{
 		"tool_name": "DITA_SetOTParamValue",
-		"description": "PUT /dita/ot-param",
+		"description": "Adds or updates a parameter value for DITA-OT transformation during publish",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"param": {
-					"type": "object",
-					"properties": {
-						"Name": {
-							"type": "string"
-						},
-						"Description": {
-							"type": "string"
-						},
-						"Type": {
-							"type": "string",
-							"description": "The object types of parameters for DITA OT processing",
-							"x-enumNames": [
-								"String",
-								"Number",
-								"Enum",
-								"Bool"
-							],
-							"enum": [
-								"String",
-								"Number",
-								"Enum",
-								"Bool"
-							]
-						},
-						"DefaultValue": {
-							"type": "string"
-						},
-						"Choices": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"BelongToFormats": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"IsCommonParam": {
-							"type": "boolean"
-						},
-						"Value": {
-							"type": "string"
-						},
-						"Instruction": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"Type",
-						"IsCommonParam"
-					]
-				}
-			},
-			"required": [
-				"param",
-				"param"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Name": {
-					"type": "string"
-				},
-				"Description": {
-					"type": "string"
-				},
-				"Type": {
-					"type": "string",
-					"description": "The object types of parameters for DITA OT processing",
-					"x-enumNames": [
-						"String",
-						"Number",
-						"Enum",
-						"Bool"
-					],
-					"enum": [
-						"String",
-						"Number",
-						"Enum",
-						"Bool"
-					]
-				},
-				"DefaultValue": {
-					"type": "string"
-				},
-				"Choices": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"BelongToFormats": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"IsCommonParam": {
-					"type": "boolean"
-				},
-				"Value": {
-					"type": "string"
-				},
-				"Instruction": {
-					"type": "string"
-				}
-			},
-			"required": [
-				"Type",
-				"IsCommonParam"
-			]
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/dita/ot-param",
+		"method": "put",
+		"endpoint": "/api/v1/dita/ot-param",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Adds or updates a parameter value for DITA-OT transformation during publish",
+		"endpoint_description": "This parameter doesn't need to exist in the system already. If not exists, it will be added.\n            If the parameter value is empty string, this parameter will be removed from system.\n            Also, if the parameter impacts normalization output, then all Preview Cache will be cleared for all DITA Assets."
 	}
 ]

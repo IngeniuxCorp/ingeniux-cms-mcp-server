@@ -1,261 +1,73 @@
 [
 	{
 		"tool_name": "Settings_GetOAuthIdentities",
-		"description": "GET /settings/access-tokens",
+		"description": "Returns the OAuth identities for this CMS instance, as an array of OAuthIdentityInfo objects.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"userId": {
-						"type": "string"
-					},
-					"clientId": {
-						"type": "string"
-					},
-					"note": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/settings/access-tokens",
+		"method": "get",
+		"endpoint": "/api/v1/settings/access-tokens",
 		"tags": [
 			"Settings"
-		]
+		],
+		"summary": "Returns the OAuth identities for this CMS instance, as an array of OAuthIdentityInfo objects."
 	},
 	{
 		"tool_name": "Settings_SetOAuthIdentities",
-		"description": "PUT /settings/access-tokens",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"input": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"id": {
-								"type": "string"
-							},
-							"name": {
-								"type": "string"
-							},
-							"userId": {
-								"type": "string"
-							},
-							"clientId": {
-								"type": "string"
-							},
-							"note": {
-								"type": "string"
-							}
-						}
-					}
-				}
-			},
-			"required": [
-				"input",
-				"input"
-			]
-		},
-		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"properties": {
-							"id": {
-								"type": "string"
-							},
-							"name": {
-								"type": "string"
-							},
-							"userId": {
-								"type": "string"
-							},
-							"clientId": {
-								"type": "string"
-							},
-							"note": {
-								"type": "string"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"properties": {
-							"clientSecret": {
-								"type": "string"
-							}
-						}
-					}
-				]
-			}
-		},
-		"method": "PUT",
-		"endpoint": "/settings/access-tokens",
-		"tags": [
-			"Settings"
-		]
-	},
-	{
-		"tool_name": "Settings_GetGlobalVariables",
-		"description": "GET /settings/global-variables",
+		"description": "Sets the OAuth identities for this CMS instance.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"XPathQuery"
-				],
-				"properties": {
-					"Name": {
-						"type": "string"
-					},
-					"GlobalValue": {
-						"type": "string"
-					},
-					"XPathQuery": {
-						"type": "boolean"
-					},
-					"VariableType": {
-						"type": "string"
-					},
-					"PubTargetOverrides": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"Value": {
-									"type": "string"
-								},
-								"PubTargetId": {
-									"type": "string"
-								}
-							}
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/settings/global-variables",
+		"method": "put",
+		"endpoint": "/api/v1/settings/access-tokens",
+		"tags": [
+			"Settings"
+		],
+		"summary": "Sets the OAuth identities for this CMS instance."
+	},
+	{
+		"tool_name": "Settings_GetGlobalVariables",
+		"description": "Settings get operation",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "get",
+		"endpoint": "/api/v1/settings/global-variables",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_SetGlobalVariables",
-		"description": "PUT /settings/global-variables",
+		"description": "Settings put operation",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"input": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"XPathQuery"
-						],
-						"properties": {
-							"Name": {
-								"type": "string"
-							},
-							"GlobalValue": {
-								"type": "string"
-							},
-							"XPathQuery": {
-								"type": "boolean"
-							},
-							"VariableType": {
-								"type": "string"
-							},
-							"PubTargetOverrides": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"Value": {
-											"type": "string"
-										},
-										"PubTargetId": {
-											"type": "string"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			},
-			"required": [
-				"input",
-				"input"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"XPathQuery"
-				],
-				"properties": {
-					"Name": {
-						"type": "string"
-					},
-					"GlobalValue": {
-						"type": "string"
-					},
-					"XPathQuery": {
-						"type": "boolean"
-					},
-					"VariableType": {
-						"type": "string"
-					},
-					"PubTargetOverrides": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"Value": {
-									"type": "string"
-								},
-								"PubTargetId": {
-									"type": "string"
-								}
-							}
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/settings/global-variables",
+		"method": "put",
+		"endpoint": "/api/v1/settings/global-variables",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_DeployDitaOT",
-		"description": "PATCH /settings/deploy-dita-ot",
+		"description": "Settings patch operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -276,33 +88,33 @@
 			]
 		},
 		"output_schema": {
-			"type": "string"
+			"type": "object"
 		},
-		"method": "PATCH",
-		"endpoint": "/settings/deploy-dita-ot",
+		"method": "patch",
+		"endpoint": "/api/v1/settings/deploy-dita-ot",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveDitaOTDeployment",
-		"description": "DELETE /settings/remove-dita-ot",
+		"description": "Settings delete operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "string"
+			"type": "object"
 		},
-		"method": "DELETE",
-		"endpoint": "/settings/remove-dita-ot",
+		"method": "delete",
+		"endpoint": "/api/v1/settings/remove-dita-ot",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RemoveDitaOTPlugin",
-		"description": "DELETE /settings/remove-dita-ot-plugin",
+		"description": "Settings delete operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -317,17 +129,17 @@
 			]
 		},
 		"output_schema": {
-			"type": "string"
+			"type": "object"
 		},
-		"method": "DELETE",
-		"endpoint": "/settings/remove-dita-ot-plugin",
+		"method": "delete",
+		"endpoint": "/api/v1/settings/remove-dita-ot-plugin",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_RestoreDitaOTPlugin",
-		"description": "DELETE /settings/restore-dita-ot-plugin",
+		"description": "Settings delete operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -342,285 +154,145 @@
 			]
 		},
 		"output_schema": {
-			"type": "string"
+			"type": "object"
 		},
-		"method": "DELETE",
-		"endpoint": "/settings/restore-dita-ot-plugin",
+		"method": "delete",
+		"endpoint": "/api/v1/settings/restore-dita-ot-plugin",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_UploadDitaOTPlugin",
-		"description": "POST /settings/add-dita-ot-plugin",
+		"description": "Settings post operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/settings/add-dita-ot-plugin",
+		"method": "post",
+		"endpoint": "/api/v1/settings/add-dita-ot-plugin",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_DeployCustomOT",
-		"description": "POST /settings/deploy-custom-ot",
+		"description": "Settings post operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/settings/deploy-custom-ot",
+		"method": "post",
+		"endpoint": "/api/v1/settings/deploy-custom-ot",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_ManipulateDitavals",
-		"description": "POST /settings/ditaval-manipulation",
+		"description": "Settings post operation",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"operation": {
-					"type": "object",
-					"required": [
-						"Remove",
-						"Restore"
-					],
-					"properties": {
-						"DitavalAssetIds": {
-							"type": "array",
-							"items": {
-								"type": "integer",
-								"format": "int32"
-							}
-						},
-						"PubMarking": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"MarkedVersion"
-								],
-								"properties": {
-									"PubTargetId": {
-										"type": "string"
-									},
-									"MarkedVersion": {
-										"type": "integer",
-										"format": "int32"
-									}
-								}
-							}
-						},
-						"Remove": {
-							"type": "boolean"
-						},
-						"Restore": {
-							"type": "boolean"
-						}
-					}
-				}
-			},
-			"required": [
-				"operation",
-				"operation"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/settings/ditaval-manipulation",
+		"method": "post",
+		"endpoint": "/api/v1/settings/ditaval-manipulation",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetArchiveTypes",
-		"description": "GET /settings/archive-types",
+		"description": "Settings get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"Id": {
-						"type": "string"
-					},
-					"Name": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/settings/archive-types",
+		"method": "get",
+		"endpoint": "/api/v1/settings/archive-types",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetGroupsForTreeMenu",
-		"description": "GET /settings/page-tree-menu-groups",
+		"description": "Settings get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"active",
-					"_checked"
-				],
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"groupId": {
-						"type": "string"
-					},
-					"userRights": {
-						"type": "array",
-						"items": {
-							"type": "integer",
-							"format": "int32"
-						}
-					},
-					"active": {
-						"type": "boolean"
-					},
-					"_checked": {
-						"type": "boolean"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/settings/page-tree-menu-groups",
+		"method": "get",
+		"endpoint": "/api/v1/settings/page-tree-menu-groups",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetGroupsForAssetTreeMenu",
-		"description": "GET /settings/asset-tree-menu-groups",
+		"description": "Settings get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"active",
-					"_checked"
-				],
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"groupId": {
-						"type": "string"
-					},
-					"userRights": {
-						"type": "array",
-						"items": {
-							"type": "integer",
-							"format": "int32"
-						}
-					},
-					"active": {
-						"type": "boolean"
-					},
-					"_checked": {
-						"type": "boolean"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/settings/asset-tree-menu-groups",
+		"method": "get",
+		"endpoint": "/api/v1/settings/asset-tree-menu-groups",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetPossiblePageTreeMenuItems",
-		"description": "GET /settings/page-tree-menu-items",
+		"description": "Settings get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"Id": {
-						"type": "string"
-					},
-					"Name": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/settings/page-tree-menu-items",
+		"method": "get",
+		"endpoint": "/api/v1/settings/page-tree-menu-items",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetPossibleAssetTreeMenuItems",
-		"description": "GET /settings/asset-tree-menu-items",
+		"description": "Settings get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"Id": {
-						"type": "string"
-					},
-					"Name": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/settings/asset-tree-menu-items",
+		"method": "get",
+		"endpoint": "/api/v1/settings/asset-tree-menu-items",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetPossibleTinyMceItems",
-		"description": "GET /settings/tinymce-items",
+		"description": "Settings get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -635,61 +307,33 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"value": {
-						"type": "string"
-					},
-					"type": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/settings/tinymce-items",
+		"method": "get",
+		"endpoint": "/api/v1/settings/tinymce-items",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetTimeZones",
-		"description": "GET /settings/timezones",
+		"description": "Settings get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"Id": {
-						"type": "string"
-					},
-					"Name": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/settings/timezones",
+		"method": "get",
+		"endpoint": "/api/v1/settings/timezones",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetTinyMceGroups",
-		"description": "GET /settings/tinymce-groups",
+		"description": "Settings get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -704,75 +348,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"active",
-					"_checked"
-				],
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"groupId": {
-						"type": "string"
-					},
-					"userRights": {
-						"type": "array",
-						"items": {
-							"type": "integer",
-							"format": "int32"
-						}
-					},
-					"active": {
-						"type": "boolean"
-					},
-					"_checked": {
-						"type": "boolean"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/settings/tinymce-groups",
+		"method": "get",
+		"endpoint": "/api/v1/settings/tinymce-groups",
 		"tags": [
 			"Settings"
 		]
 	},
 	{
 		"tool_name": "Settings_GetPresentationsFormatters",
-		"description": "GET /settings/presentation-formatters",
+		"description": "Settings get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					},
-					{
-						"type": "object"
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/settings/presentation-formatters",
+		"method": "get",
+		"endpoint": "/api/v1/settings/presentation-formatters",
 		"tags": [
 			"Settings"
 		]

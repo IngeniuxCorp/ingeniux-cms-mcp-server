@@ -44,8 +44,8 @@ async function main(): Promise<void> {
 
 		logger.info('MCP server is running and ready to accept connections');
 	} catch (error) {
-		logger.error('Failed to start MCP server', { 
-			error: error instanceof Error ? error.message : 'Unknown error' 
+		logger.error('Failed to start MCP server', {
+			error: error instanceof Error ? error.message : 'Unknown error'
 		});
 		process.exit(1);
 	}
@@ -60,21 +60,21 @@ async function shutdown(): Promise<void> {
 		logger.info('Server shutdown completed');
 		process.exit(0);
 	} catch (error) {
-		logger.error('Error during shutdown', { 
-			error: error instanceof Error ? error.message : 'Unknown error' 
+		logger.error('Error during shutdown', {
+			error: error instanceof Error ? error.message : 'Unknown error'
 		});
 		process.exit(1);
 	}
 }
 
-const metaUrl = import.meta.url;
-const argUrl = `file:///${process.argv[1]}`.replace(/\\/g, '/'); // Normalize path for Windows compatibility
-// Start the server if this file is run directly
-if (metaUrl === argUrl) {
-	main().catch((error) => {
-		console.error('Fatal error:', error);
-		process.exit(1);
-	});
-}
+// const metaUrl = import.meta.url;
+// const argUrl = `file:///${process.argv[1]}`.replace(/\\/g, '/'); // Normalize path for Windows compatibility
+// // Start the server if this file is run directly
+// if (metaUrl === argUrl) {
+main().catch((error) => {
+	console.error('Fatal error:', error);
+	process.exit(1);
+});
+// }
 
 export { mcpServer };

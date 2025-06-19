@@ -1,61 +1,42 @@
 [
 	{
 		"tool_name": "InsiteSearch_SaveCustomSettings",
-		"description": "POST /insite-search/custom-settings",
+		"description": "Saves custom settings for a publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"data": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"Name": {
-								"type": "string"
-							},
-							"Value": {
-								"type": "string"
-							},
-							"PublishingTargetIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							}
-						}
-					}
+					"in": "query",
+					"description": "The publishing target associated with the custom settings to save."
 				}
 			},
 			"required": [
-				"pubTgtId",
-				"data",
-				"data"
+				"pubTgtId"
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/insite-search/custom-settings",
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/custom-settings",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Saves custom settings for a publishing target."
 	},
 	{
 		"tool_name": "InsiteSearch_GetBatchSizes",
-		"description": "GET /insite-search/batch-sizes",
+		"description": "Retrieves the batch sizes for InSite Search configuration (i.e., the number of allowed items per indexing batch for pages or assets).",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"isAsset": {
 					"type": "boolean",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Specifies whether to return asset batch size."
 				}
 			},
 			"required": [
@@ -63,302 +44,162 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"DefaultBatchSize"
-			],
-			"properties": {
-				"TargetSettings": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"BatchSize"
-						],
-						"properties": {
-							"PubTargetId": {
-								"type": "string"
-							},
-							"PubTargetName": {
-								"type": "string"
-							},
-							"BatchSize": {
-								"type": "integer",
-								"format": "int32"
-							}
-						}
-					}
-				},
-				"DefaultBatchSize": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/insite-search/batch-sizes",
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/batch-sizes",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Retrieves the batch sizes for InSite Search configuration (i.e., the number of allowed items per indexing batch for pages or assets)."
 	},
 	{
 		"tool_name": "InsiteSearch_SaveBatchSizes",
-		"description": "POST /insite-search/batch-sizes",
+		"description": "Saves batch sizes for InSite Search configuration.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"isAsset": {
 					"type": "boolean",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Whether batch size is for assets."
 				},
 				"defaultSize": {
 					"type": "integer",
 					"required": true,
-					"in": "query"
-				},
-				"data": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"BatchSize"
-						],
-						"properties": {
-							"PubTargetId": {
-								"type": "string"
-							},
-							"PubTargetName": {
-								"type": "string"
-							},
-							"BatchSize": {
-								"type": "integer",
-								"format": "int32"
-							}
-						}
-					}
+					"in": "query",
+					"description": "Size when not otherwise specified."
 				}
 			},
 			"required": [
 				"isAsset",
-				"defaultSize",
-				"data",
-				"data"
+				"defaultSize"
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/insite-search/batch-sizes",
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/batch-sizes",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Saves batch sizes for InSite Search configuration."
 	},
 	{
 		"tool_name": "InsiteSearch_GetKeymatches",
-		"description": "GET /insite-search/keymatches",
+		"description": "Retrieves key matches for InSite Search configuration.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"KeyMatchType"
-				],
-				"properties": {
-					"Key": {
-						"type": "string"
-					},
-					"KeyMatchType": {
-						"type": "integer",
-						"format": "int32"
-					},
-					"Url": {
-						"type": "string"
-					},
-					"Title": {
-						"type": "string"
-					},
-					"Abstract": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/insite-search/keymatches",
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/keymatches",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Retrieves key matches for InSite Search configuration."
 	},
 	{
 		"tool_name": "InsiteSearch_SaveKeymatches",
-		"description": "POST /insite-search/keymatches",
+		"description": "Saves key matches for InSite Search configuration.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"data": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"KeyMatchType"
-						],
-						"properties": {
-							"Key": {
-								"type": "string"
-							},
-							"KeyMatchType": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"Url": {
-								"type": "string"
-							},
-							"Title": {
-								"type": "string"
-							},
-							"Abstract": {
-								"type": "string"
-							}
-						}
-					}
-				}
-			},
-			"required": [
-				"data",
-				"data"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/insite-search/keymatches",
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/keymatches",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Saves key matches for InSite Search configuration."
 	},
 	{
 		"tool_name": "InsiteSearch_ImportCsv",
-		"description": "POST /insite-search/import-csv",
+		"description": "Imports key matches from CSV file.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "file"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/insite-search/import-csv",
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/import-csv",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Imports key matches from CSV file."
 	},
 	{
 		"tool_name": "InsiteSearch_GetSynonyms",
-		"description": "GET /insite-search/synonyms",
+		"description": "Retrieves configured synonyms in InSite Search.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"LeadWord": {
-						"type": "string"
-					},
-					"Words": {
-						"type": "array",
-						"items": {
-							"type": "string"
-						}
-					},
-					"Type": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/insite-search/synonyms",
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/synonyms",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Retrieves configured synonyms in InSite Search."
 	},
 	{
 		"tool_name": "InsiteSearch_SaveSynonyms",
-		"description": "POST /insite-search/synonyms",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"data": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"LeadWord": {
-								"type": "string"
-							},
-							"Words": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"Type": {
-								"type": "string"
-							}
-						}
-					}
-				}
-			},
-			"required": [
-				"data",
-				"data"
-			]
-		},
-		"output_schema": {
-			"type": "boolean"
-		},
-		"method": "POST",
-		"endpoint": "/insite-search/synonyms",
-		"tags": [
-			"InsiteSearch"
-		]
-	},
-	{
-		"tool_name": "InsiteSearch_ImportSynonyms",
-		"description": "POST /insite-search/import-synonyms",
+		"description": "Saves synonyms for InSite Search configuration.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "file"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/insite-search/import-synonyms",
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/synonyms",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Saves synonyms for InSite Search configuration."
+	},
+	{
+		"tool_name": "InsiteSearch_ImportSynonyms",
+		"description": "Imports synonyms from an uploaded XML file.",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/import-synonyms",
+		"tags": [
+			"InsiteSearch"
+		],
+		"summary": "Imports synonyms from an uploaded XML file."
 	},
 	{
 		"tool_name": "InsiteSearch_GetIndexingSchemas",
-		"description": "GET /insite-search/indexing-schemas",
+		"description": "Retrieves the indexing schemas configured for a publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The publishing target ID."
 				}
 			},
 			"required": [
@@ -366,88 +207,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"Indexed"
-				],
-				"properties": {
-					"Id": {
-						"type": "string"
-					},
-					"FriendlyName": {
-						"type": "string"
-					},
-					"Indexed": {
-						"type": "boolean"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/insite-search/indexing-schemas",
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/indexing-schemas",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Retrieves the indexing schemas configured for a publishing target."
 	},
 	{
 		"tool_name": "InsiteSearch_SaveIndexingSchemas",
-		"description": "POST /insite-search/indexing-schemas",
+		"description": "Saves indexing schemas for a publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"data": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"Indexed"
-						],
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"FriendlyName": {
-								"type": "string"
-							},
-							"Indexed": {
-								"type": "boolean"
-							}
-						}
-					}
-				}
-			},
-			"required": [
-				"pubTgtId",
-				"data",
-				"data"
-			]
-		},
-		"output_schema": {
-			"type": "boolean"
-		},
-		"method": "POST",
-		"endpoint": "/insite-search/indexing-schemas",
-		"tags": [
-			"InsiteSearch"
-		]
-	},
-	{
-		"tool_name": "InsiteSearch_GetIndexingSchemasOnly",
-		"description": "GET /insite-search/indexing-schemas-only",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"pubTgtId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The publishing target ID."
 				}
 			},
 			"required": [
@@ -455,46 +234,59 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"Indexed"
-				],
-				"properties": {
-					"Id": {
-						"type": "string"
-					},
-					"FriendlyName": {
-						"type": "string"
-					},
-					"Indexed": {
-						"type": "boolean"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/insite-search/indexing-schemas-only",
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/indexing-schemas",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Saves indexing schemas for a publishing target."
 	},
 	{
-		"tool_name": "InsiteSearch_GetIndexingFieldsForSchema",
-		"description": "GET /insite-search/indexing-fields",
+		"tool_name": "InsiteSearch_GetIndexingSchemasOnly",
+		"description": "Retrieves only the indexing schemas returned for a given publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The ID of the publishing target."
+				}
+			},
+			"required": [
+				"pubTgtId"
+			]
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/indexing-schemas-only",
+		"tags": [
+			"InsiteSearch"
+		],
+		"summary": "Retrieves only the indexing schemas returned for a given publishing target."
+	},
+	{
+		"tool_name": "InsiteSearch_GetIndexingFieldsForSchema",
+		"description": "Retrieves the indexing fields configured for a given publishing target and schema.",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query",
+					"description": "The publishing target ID."
 				},
 				"schemaId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The schema ID."
 				}
 			},
 			"required": [
@@ -503,110 +295,60 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"Indexed",
-					"Boost"
-				],
-				"properties": {
-					"FieldLabel": {
-						"type": "string"
-					},
-					"FieldName": {
-						"type": "string"
-					},
-					"Indexed": {
-						"type": "boolean"
-					},
-					"Boost": {
-						"type": "number",
-						"format": "double"
-					},
-					"Type": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/insite-search/indexing-fields",
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/indexing-fields",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Retrieves the indexing fields configured for a given publishing target and schema."
 	},
 	{
 		"tool_name": "InsiteSearch_SaveIndexingFields",
-		"description": "POST /insite-search/indexing-fields",
+		"description": "Saves indexing fields for a given publishing target and schema ID.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The publishing target ID."
 				},
 				"schemaId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"data": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"Indexed",
-							"Boost"
-						],
-						"properties": {
-							"FieldLabel": {
-								"type": "string"
-							},
-							"FieldName": {
-								"type": "string"
-							},
-							"Indexed": {
-								"type": "boolean"
-							},
-							"Boost": {
-								"type": "number",
-								"format": "double"
-							},
-							"Type": {
-								"type": "string"
-							}
-						}
-					}
+					"in": "query",
+					"description": "The schema ID."
 				}
 			},
 			"required": [
 				"pubTgtId",
-				"schemaId",
-				"data",
-				"data"
+				"schemaId"
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/insite-search/indexing-fields",
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/indexing-fields",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Saves indexing fields for a given publishing target and schema ID."
 	},
 	{
 		"tool_name": "InsiteSearch_GetIndexingSiteWideFields",
-		"description": "GET /insite-search/sitewide-indexing-fields",
+		"description": "Retrieves the indexing fields configured for a given publishing target sitewide (i.e., regardless of schema).",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The publishing target ID."
 				}
 			},
 			"required": [
@@ -614,146 +356,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"Indexed",
-					"Boost"
-				],
-				"properties": {
-					"FieldLabel": {
-						"type": "string"
-					},
-					"FieldName": {
-						"type": "string"
-					},
-					"Indexed": {
-						"type": "boolean"
-					},
-					"Boost": {
-						"type": "number",
-						"format": "double"
-					},
-					"Type": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/insite-search/sitewide-indexing-fields",
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/sitewide-indexing-fields",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Retrieves the indexing fields configured for a given publishing target sitewide (i.e., regardless of schema)."
 	},
 	{
 		"tool_name": "InsiteSearch_SaveSiteWideIndexingFields",
-		"description": "POST /insite-search/site-wide-indexing-fields",
+		"description": "Saves the site-wide indexing fields for a given publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"data": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"Indexed",
-							"Boost"
-						],
-						"properties": {
-							"FieldLabel": {
-								"type": "string"
-							},
-							"FieldName": {
-								"type": "string"
-							},
-							"Indexed": {
-								"type": "boolean"
-							},
-							"Boost": {
-								"type": "number",
-								"format": "double"
-							},
-							"Type": {
-								"type": "string"
-							}
-						}
-					}
-				}
-			},
-			"required": [
-				"pubTgtId",
-				"data",
-				"data"
-			]
-		},
-		"output_schema": {
-			"type": "boolean"
-		},
-		"method": "POST",
-		"endpoint": "/insite-search/site-wide-indexing-fields",
-		"tags": [
-			"InsiteSearch"
-		]
-	},
-	{
-		"tool_name": "InsiteSearch_GetAssetFolderChildren",
-		"description": "GET /insite-search/assetfolder-children",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"assetFolderId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
-				}
-			},
-			"required": [
-				"assetFolderId"
-			]
-		},
-		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"IsFolder"
-				],
-				"properties": {
-					"Id": {
-						"type": "string"
-					},
-					"Name": {
-						"type": "string"
-					},
-					"IsFolder": {
-						"type": "boolean"
-					}
-				}
-			}
-		},
-		"method": "GET",
-		"endpoint": "/insite-search/assetfolder-children",
-		"tags": [
-			"InsiteSearch"
-		]
-	},
-	{
-		"tool_name": "InsiteSearch_GetIndexedAssetFolders",
-		"description": "GET /insite-search/indexed-asset-folders",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"pubTgtId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The publishing target ID."
 				}
 			},
 			"required": [
@@ -761,60 +383,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"required": [
-							"IsFolder"
-						],
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							},
-							"IsFolder": {
-								"type": "boolean"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"required": [
-							"DescedantFolders"
-						],
-						"properties": {
-							"Path": {
-								"type": "string"
-							},
-							"DescedantFolders": {
-								"type": "integer",
-								"format": "int32"
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/insite-search/indexed-asset-folders",
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/site-wide-indexing-fields",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Saves the site-wide indexing fields for a given publishing target."
 	},
 	{
-		"tool_name": "InsiteSearch_GetAssetFolderDetail",
-		"description": "GET /insite-search/asset-folders-detail",
+		"tool_name": "InsiteSearch_GetAssetFolderChildren",
+		"description": "Retrieves the asset folder child information for a given asset folder ID.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"assetFolderId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The asset folder ID."
 				}
 			},
 			"required": [
@@ -822,100 +410,94 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"IsFolder": {
-					"type": "boolean"
-				},
-				"Path": {
-					"type": "string"
-				},
-				"DescedantFolders": {
-					"type": "integer",
-					"format": "int32"
-				}
-			},
-			"required": [
-				"IsFolder",
-				"DescedantFolders"
-			]
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/insite-search/asset-folders-detail",
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/assetfolder-children",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Retrieves the asset folder child information for a given asset folder ID."
 	},
 	{
-		"tool_name": "InsiteSearch_SaveIndexingAssetFolders",
-		"description": "POST /insite-search/indexing-asset-folders",
+		"tool_name": "InsiteSearch_GetIndexedAssetFolders",
+		"description": "Retrieves indexed asset folders configured for a given publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"data": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"required": [
-									"IsFolder"
-								],
-								"properties": {
-									"Id": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									},
-									"IsFolder": {
-										"type": "boolean"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"DescedantFolders"
-								],
-								"properties": {
-									"Path": {
-										"type": "string"
-									},
-									"DescedantFolders": {
-										"type": "integer",
-										"format": "int32"
-									}
-								}
-							}
-						]
-					}
+					"in": "query",
+					"description": "The publishing target ID."
 				}
 			},
 			"required": [
-				"pubTgtId",
-				"data",
-				"data"
+				"pubTgtId"
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/insite-search/indexing-asset-folders",
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/indexed-asset-folders",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Retrieves indexed asset folders configured for a given publishing target."
+	},
+	{
+		"tool_name": "InsiteSearch_GetAssetFolderDetail",
+		"description": "Retrieves the asset folder indexing data for a given asset folder.",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetFolderId": {
+					"type": "string",
+					"required": true,
+					"in": "query",
+					"description": "The asset folder ID."
+				}
+			},
+			"required": [
+				"assetFolderId"
+			]
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/asset-folders-detail",
+		"tags": [
+			"InsiteSearch"
+		],
+		"summary": "Retrieves the asset folder indexing data for a given asset folder."
+	},
+	{
+		"tool_name": "InsiteSearch_SaveIndexingAssetFolders",
+		"description": "Retrieves indexing configuration for asset folders, for a particular publishing target.",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"pubTgtId": {
+					"type": "string",
+					"required": true,
+					"in": "query",
+					"description": "The publishing target ID."
+				}
+			},
+			"required": [
+				"pubTgtId"
+			]
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/indexing-asset-folders",
+		"tags": [
+			"InsiteSearch"
+		],
+		"summary": "Retrieves indexing configuration for asset folders, for a particular publishing target."
 	}
 ]

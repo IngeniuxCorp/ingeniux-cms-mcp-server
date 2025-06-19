@@ -7,6 +7,7 @@ import { AuthMiddleware } from '../auth/auth-middleware.js';
 import { ToolRegistry } from './tool-registry.js';
 import { errorHandler } from '../utils/error-handler.js';
 import { Validators } from '../utils/validators.js';
+import { logger } from '../utils/logger.js';
 
 export class RequestHandler {
 	private static instance: RequestHandler;
@@ -127,6 +128,8 @@ export class RequestHandler {
 	private async handleToolsList(): Promise<any> {
 		try {
 			const tools = this.toolRegistry.exportToolDefinitions();
+
+            logger.info(`Get tool list ${tools.map(t => t.name).join(', ')}`);
 			
 			return {
 				tools

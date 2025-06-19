@@ -1,434 +1,74 @@
 [
 	{
 		"tool_name": "DITA_AddOTParams",
-		"description": "PUT /dita/ot-params",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"otParams": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"Type",
-							"IsCommonParam"
-						],
-						"properties": {
-							"Name": {
-								"type": "string"
-							},
-							"Description": {
-								"type": "string"
-							},
-							"Type": {
-								"type": "string",
-								"description": "The object types of parameters for DITA OT processing",
-								"x-enumNames": [
-									"String",
-									"Number",
-									"Enum",
-									"Bool"
-								],
-								"enum": [
-									"String",
-									"Number",
-									"Enum",
-									"Bool"
-								]
-							},
-							"DefaultValue": {
-								"type": "string"
-							},
-							"Choices": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"BelongToFormats": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"IsCommonParam": {
-								"type": "boolean"
-							}
-						}
-					}
-				}
-			},
-			"required": [
-				"otParams",
-				"otParams"
-			]
-		},
-		"output_schema": {
-			"type": "boolean"
-		},
-		"method": "PUT",
-		"endpoint": "/dita/ot-params",
-		"tags": [
-			"DITA"
-		]
-	},
-	{
-		"tool_name": "DITA_RemoveOTParams",
-		"description": "DELETE /dita/ot-params",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"otParams": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"Type",
-							"IsCommonParam"
-						],
-						"properties": {
-							"Name": {
-								"type": "string"
-							},
-							"Description": {
-								"type": "string"
-							},
-							"Type": {
-								"type": "string",
-								"description": "The object types of parameters for DITA OT processing",
-								"x-enumNames": [
-									"String",
-									"Number",
-									"Enum",
-									"Bool"
-								],
-								"enum": [
-									"String",
-									"Number",
-									"Enum",
-									"Bool"
-								]
-							},
-							"DefaultValue": {
-								"type": "string"
-							},
-							"Choices": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"BelongToFormats": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"IsCommonParam": {
-								"type": "boolean"
-							}
-						}
-					}
-				}
-			},
-			"required": [
-				"otParams",
-				"otParams"
-			]
-		},
-		"output_schema": {
-			"type": "boolean"
-		},
-		"method": "DELETE",
-		"endpoint": "/dita/ot-params",
-		"tags": [
-			"DITA"
-		]
-	},
-	{
-		"tool_name": "DITA_ManipulateDITAVals",
-		"description": "PATCH /dita/ditaval-manipulation",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"operation": {
-					"type": "object",
-					"required": [
-						"DitavalAssetId",
-						"Action"
-					],
-					"properties": {
-						"DitavalAssetId": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"DitavalAssetPath": {
-							"type": "string"
-						},
-						"PubMarking": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"MarkedVersion"
-								],
-								"properties": {
-									"PubTargetId": {
-										"type": "string"
-									},
-									"MarkedVersion": {
-										"type": "integer",
-										"format": "int32"
-									}
-								}
-							}
-						},
-						"Action": {
-							"type": "string",
-							"description": "",
-							"x-enumNames": [
-								"Remove",
-								"Restore",
-								"SetPubMarking"
-							],
-							"enum": [
-								"Remove",
-								"Restore",
-								"SetPubMarking"
-							]
-						}
-					}
-				}
-			},
-			"required": [
-				"operation",
-				"operation"
-			]
-		},
-		"output_schema": {
-			"type": "boolean"
-		},
-		"method": "PATCH",
-		"endpoint": "/dita/ditaval-manipulation",
-		"tags": [
-			"DITA"
-		]
-	},
-	{
-		"tool_name": "DITA_RemoveDitaMapCollection",
-		"description": "DELETE /dita/remove-ditamap",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"mapId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
-				}
-			},
-			"required": [
-				"mapId"
-			]
-		},
-		"output_schema": {
-			"type": "boolean"
-		},
-		"method": "DELETE",
-		"endpoint": "/dita/remove-ditamap",
-		"tags": [
-			"DITA"
-		]
-	},
-	{
-		"tool_name": "DITA_MarkPublishDitaMapCollection",
-		"description": "PUT /dita/mark-ditamap",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"mapId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
-				},
-				"marking": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"Number"
-						],
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							},
-							"Number": {
-								"type": "integer",
-								"format": "int32"
-							}
-						}
-					}
-				}
-			},
-			"required": [
-				"mapId",
-				"marking",
-				"marking"
-			]
-		},
-		"output_schema": {
-			"type": "boolean"
-		},
-		"method": "PUT",
-		"endpoint": "/dita/mark-ditamap",
-		"tags": [
-			"DITA"
-		]
-	},
-	{
-		"tool_name": "DITA_CheckoutDitaMapCollection",
-		"description": "POST /dita/checkout-ditamap",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"mapId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
-				}
-			},
-			"required": [
-				"mapId"
-			]
-		},
-		"output_schema": {
-			"type": "boolean"
-		},
-		"method": "POST",
-		"endpoint": "/dita/checkout-ditamap",
-		"tags": [
-			"DITA"
-		]
-	},
-	{
-		"tool_name": "DITA_CheckInDitaMapCollection",
-		"description": "POST /dita/checkin-ditamap",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"mapId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
-				},
-				"pubTgtIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
-			},
-			"required": [
-				"mapId",
-				"pubTgtIds",
-				"pubTgtIds"
-			]
-		},
-		"output_schema": {
-			"type": "boolean"
-		},
-		"method": "POST",
-		"endpoint": "/dita/checkin-ditamap",
-		"tags": [
-			"DITA"
-		]
-	},
-	{
-		"tool_name": "DITA_PublishDITAMap",
-		"description": "POST /dita/publish-ditamap",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"ditaPubParams": {
-					"type": "object",
-					"required": [
-						"replicate"
-					],
-					"properties": {
-						"mapId": {
-							"type": "string"
-						},
-						"pubTgtIds": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"replicate": {
-							"type": "boolean"
-						},
-						"formats": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"ditavals": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						}
-					}
-				}
-			},
-			"required": [
-				"ditaPubParams",
-				"ditaPubParams"
-			]
-		},
-		"output_schema": {
-			"type": "boolean"
-		},
-		"method": "POST",
-		"endpoint": "/dita/publish-ditamap",
-		"tags": [
-			"DITA"
-		]
-	},
-	{
-		"tool_name": "DITA_DownloadDITAMapsCsv",
-		"description": "GET /dita/dita-maps-csv",
+		"description": "Adds or updates a collection of DITA-OT parameters",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "file"
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dita/dita-maps-csv",
+		"method": "put",
+		"endpoint": "/api/v1/dita/ot-params",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Adds or updates a collection of DITA-OT parameters",
+		"endpoint_description": "Parameters specified not yet exist in system will be automatically added.\nInvalid parameters are ignored instead of causing errors.\nAlso, if any of the parameters impacts normalization output, all Preview Cache will be cleared for all DITA Assets."
 	},
 	{
-		"tool_name": "DITA_DownloadMap",
-		"description": "GET /dita/download-ditamap",
+		"tool_name": "DITA_RemoveOTParams",
+		"description": "Removes a collection of DITA-OT parameters from system.",
+		"input_schema": {
+			"type": "object",
+			"properties": {},
+			"required": [
+				"otParams"
+			]
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "delete",
+		"endpoint": "/api/v1/dita/ot-params",
+		"tags": [
+			"DITA"
+		],
+		"summary": "Removes a collection of DITA-OT parameters from system.",
+		"endpoint_description": "Invalid parameters according OT specs are simply ignored.\nAlso, if any of the parameters to remove impacts normalization output, all Preview Cache will be cleared for all DITA Assets."
+	},
+	{
+		"tool_name": "DITA_ManipulateDITAVals",
+		"description": "Performs various operations on a DITAVal Asset, including removing, restoring, and changing publish marking.",
+		"input_schema": {
+			"type": "object",
+			"properties": {},
+			"required": [
+				"operation"
+			]
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "patch",
+		"endpoint": "/api/v1/dita/ditaval-manipulation",
+		"tags": [
+			"DITA"
+		],
+		"summary": "Performs various operations on a DITAVal Asset, including removing, restoring, and changing publish marking."
+	},
+	{
+		"tool_name": "DITA_RemoveDitaMapCollection",
+		"description": "Removes a DITA Map and all of its dependents",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"mapId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"publishingTargetId": {
-					"type": "string",
-					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Id of the root DITA Map to remove"
 				}
 			},
 			"required": [
@@ -436,24 +76,177 @@
 			]
 		},
 		"output_schema": {
-			"type": "file"
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dita/download-ditamap",
+		"method": "delete",
+		"endpoint": "/api/v1/dita/remove-ditamap",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Removes a DITA Map and all of its dependents",
+		"endpoint_description": "Caution: This is an operation on a collection of Assets, not just the Map Asset itself.\nIf the DITA Map Assets are not in recycle folder, this removal is not permanent. \nAssets in the Map will be moved to recycle folder. \nHowever, any of the Assets already in recycle folder will be permanently removed."
+	},
+	{
+		"tool_name": "DITA_MarkPublishDitaMapCollection",
+		"description": "Changes publish marking on the entire collection of DITA Map Assets",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"mapId": {
+					"type": "string",
+					"required": true,
+					"in": "query",
+					"description": "Id of the root DITA Map Asset"
+				}
+			},
+			"required": [
+				"mapId"
+			]
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "put",
+		"endpoint": "/api/v1/dita/mark-ditamap",
+		"tags": [
+			"DITA"
+		],
+		"summary": "Changes publish marking on the entire collection of DITA Map Assets",
+		"endpoint_description": "Operation will fail with 500 error, if any of the Assets are not ready to mark for publish. Specifically, when they were never checked in before."
+	},
+	{
+		"tool_name": "DITA_CheckoutDitaMapCollection",
+		"description": "Checks out an entire DITA Map Asset collection",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"mapId": {
+					"type": "string",
+					"required": true,
+					"in": "query",
+					"description": "Id of the root DITA Map Asset"
+				}
+			},
+			"required": [
+				"mapId"
+			]
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "post",
+		"endpoint": "/api/v1/dita/checkout-ditamap",
+		"tags": [
+			"DITA"
+		],
+		"summary": "Checks out an entire DITA Map Asset collection",
+		"endpoint_description": "Any already checked out Assets will remain checked out and assign to current user. Unless user doesn't have the permission to take\n            over other user's content, or Asset in workflow and current user is not a member of the workflow's current group"
+	},
+	{
+		"tool_name": "DITA_CheckInDitaMapCollection",
+		"description": "Checks in an entire DITA Map Asset collection",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"mapId": {
+					"type": "string",
+					"required": true,
+					"in": "query",
+					"description": "Id of the root DITA Map Asset"
+				}
+			},
+			"required": [
+				"mapId"
+			]
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "post",
+		"endpoint": "/api/v1/dita/checkin-ditamap",
+		"tags": [
+			"DITA"
+		],
+		"summary": "Checks in an entire DITA Map Asset collection"
+	},
+	{
+		"tool_name": "DITA_PublishDITAMap",
+		"description": "Publishes an entire collection of DITA Map Assets",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "post",
+		"endpoint": "/api/v1/dita/publish-ditamap",
+		"tags": [
+			"DITA"
+		],
+		"summary": "Publishes an entire collection of DITA Map Assets"
+	},
+	{
+		"tool_name": "DITA_DownloadDITAMapsCsv",
+		"description": "Downloads the listing of DITA Maps, together with all details included as columns, in CSV format",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "get",
+		"endpoint": "/api/v1/dita/dita-maps-csv",
+		"tags": [
+			"DITA"
+		],
+		"summary": "Downloads the listing of DITA Maps, together with all details included as columns, in CSV format"
+	},
+	{
+		"tool_name": "DITA_DownloadMap",
+		"description": "Downloads a DITA Map Assets collection in zip format. The paths of every file within the zip file uses their original Asset Path, starting from the DITA root folder.",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"mapId": {
+					"type": "string",
+					"required": true,
+					"in": "query",
+					"description": "The Id of the DITA Map download"
+				},
+				"publishingTargetId": {
+					"type": "string",
+					"required": false,
+					"in": "query",
+					"description": "Publishing Target Id to download"
+				}
+			},
+			"required": [
+				"mapId"
+			]
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "get",
+		"endpoint": "/api/v1/dita/download-ditamap",
+		"tags": [
+			"DITA"
+		],
+		"summary": "Downloads a DITA Map Assets collection in zip format. The paths of every file within the zip file uses their original Asset Path, starting from the DITA root folder."
 	},
 	{
 		"tool_name": "Configuration_GetHelpText",
-		"description": "GET /configuration/help-text",
+		"description": "Retrieves the help text for a given schema.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"schemaId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Schema ID"
 				}
 			},
 			"required": [
@@ -461,44 +254,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"schemaId": {
-					"type": "string"
-				},
-				"schemaName": {
-					"type": "string"
-				},
-				"attributes": {
-					"type": "object",
-					"additionalProperties": {
-						"type": "string"
-					}
-				},
-				"elements": {
-					"type": "object",
-					"additionalProperties": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/configuration/help-text",
+		"method": "get",
+		"endpoint": "/api/v1/configuration/help-text",
 		"tags": [
 			"Configuration"
-		]
+		],
+		"summary": "Retrieves the help text for a given schema."
 	},
 	{
 		"tool_name": "Configuration_GetAIHelpText",
-		"description": "GET /configuration/ai-help-text",
+		"description": "Retrieves the AI help text for a given schema.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"schemaId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Schema ID"
 				}
 			},
 			"required": [
@@ -506,44 +281,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"schemaId": {
-					"type": "string"
-				},
-				"schemaName": {
-					"type": "string"
-				},
-				"attributes": {
-					"type": "object",
-					"additionalProperties": {
-						"type": "string"
-					}
-				},
-				"elements": {
-					"type": "object",
-					"additionalProperties": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/configuration/ai-help-text",
+		"method": "get",
+		"endpoint": "/api/v1/configuration/ai-help-text",
 		"tags": [
 			"Configuration"
-		]
+		],
+		"summary": "Retrieves the AI help text for a given schema."
 	},
 	{
 		"tool_name": "Configuration_GetHelpTextByContentItem",
-		"description": "GET /configuration/help-text-by-content-item",
+		"description": "Retrieves the help text for a content item.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"contentItemId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The content item ID."
 				}
 			},
 			"required": [
@@ -551,651 +308,86 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"schemaId": {
-					"type": "string"
-				},
-				"schemaName": {
-					"type": "string"
-				},
-				"attributes": {
-					"type": "object",
-					"additionalProperties": {
-						"type": "string"
-					}
-				},
-				"elements": {
-					"type": "object",
-					"additionalProperties": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/configuration/help-text-by-content-item",
+		"method": "get",
+		"endpoint": "/api/v1/configuration/help-text-by-content-item",
 		"tags": [
 			"Configuration"
-		]
+		],
+		"summary": "Retrieves the help text for a content item."
 	},
 	{
 		"tool_name": "Configuration_GetAllHelpText",
-		"description": "GET /configuration/help-texts",
+		"description": "Retrives all schema help texts.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"schemaId": {
-						"type": "string"
-					},
-					"schemaName": {
-						"type": "string"
-					},
-					"attributes": {
-						"type": "object",
-						"additionalProperties": {
-							"type": "string"
-						}
-					},
-					"elements": {
-						"type": "object",
-						"additionalProperties": {
-							"type": "string"
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/configuration/help-texts",
+		"method": "get",
+		"endpoint": "/api/v1/configuration/help-texts",
 		"tags": [
 			"Configuration"
-		]
+		],
+		"summary": "Retrives all schema help texts."
 	},
 	{
 		"tool_name": "Configuration_GetPageContextMenuConfiguration",
-		"description": "GET /configuration/pages/context-menu",
+		"description": "Retrieves the configuration for the CMS page context menu used in the CMS Site Tree.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"IsDisplayed",
-					"IsSeparator"
-				],
-				"properties": {
-					"Name": {
-						"type": "string"
-					},
-					"Caption": {
-						"type": "string"
-					},
-					"Icon": {
-						"type": "string"
-					},
-					"IsDisplayed": {
-						"type": "boolean"
-					},
-					"IsSeparator": {
-						"type": "boolean"
-					},
-					"Children": {
-						"type": "array",
-						"items": {
-							"$ref": "#/definitions/ContextMenuItemModel",
-							"circular": true
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/configuration/pages/context-menu",
+		"method": "get",
+		"endpoint": "/api/v1/configuration/pages/context-menu",
 		"tags": [
 			"Configuration"
-		]
+		],
+		"summary": "Retrieves the configuration for the CMS page context menu used in the CMS Site Tree."
 	},
 	{
 		"tool_name": "Configuration_GetAssetContextMenuConfiguration",
-		"description": "GET /configuration/assets/context-menu",
+		"description": "Retrieves the configuration for the CMS asset context menu used in the CMS Asset Tree.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"IsDisplayed",
-					"IsSeparator"
-				],
-				"properties": {
-					"Name": {
-						"type": "string"
-					},
-					"Caption": {
-						"type": "string"
-					},
-					"Icon": {
-						"type": "string"
-					},
-					"IsDisplayed": {
-						"type": "boolean"
-					},
-					"IsSeparator": {
-						"type": "boolean"
-					},
-					"Children": {
-						"type": "array",
-						"items": {
-							"$ref": "#/definitions/ContextMenuItemModel",
-							"circular": true
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/configuration/assets/context-menu",
+		"method": "get",
+		"endpoint": "/api/v1/configuration/assets/context-menu",
 		"tags": [
 			"Configuration"
-		]
+		],
+		"summary": "Retrieves the configuration for the CMS asset context menu used in the CMS Asset Tree."
 	},
 	{
 		"tool_name": "Configuration_GetLegacyGlobals",
-		"description": "GET /configuration/legacy-globals",
+		"description": "Retrieves legacy globals for backwards compatibility.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"enableWorldView",
-				"currentUserCanAdmin",
-				"currentUserHaveAccessToAnyAdminPanel",
-				"autoSave",
-				"inContextEditEnabled",
-				"siteStatusDialogDelay",
-				"tinymceMatchPreviewCss",
-				"messagingDebug",
-				"showUtilityTree",
-				"disabledLocalExports",
-				"autoShowPath",
-				"requireCheckinComments",
-				"showCommentModalOnCheckin",
-				"autoUpdateAliases",
-				"autoExpandMoreNodes",
-				"bypassMultiActionCheck"
-			],
-			"properties": {
-				"rootPath": {
-					"type": "string"
-				},
-				"applicationName": {
-					"type": "string"
-				},
-				"authToken": {
-					"type": "string"
-				},
-				"enableWorldView": {
-					"type": "boolean"
-				},
-				"currentUserCanAdmin": {
-					"type": "boolean"
-				},
-				"currentUserHaveAccessToAnyAdminPanel": {
-					"type": "boolean"
-				},
-				"currentUserRights": {
-					"type": "array",
-					"items": {
-						"type": "integer",
-						"format": "int32"
-					}
-				},
-				"currentUserId": {
-					"type": "string"
-				},
-				"currentUserName": {
-					"type": "string"
-				},
-				"currentUserGroups": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"id": {
-								"type": "string"
-							},
-							"name": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"currentUserMembershipProvider": {
-					"type": "string"
-				},
-				"currentUserThumbnail": {
-					"type": "string"
-				},
-				"publishingTargets": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"$ref": "#/definitions/IdNamePair",
-								"circular": true
-							},
-							{
-								"type": "object",
-								"required": [
-									"structuredUrlEnabled",
-									"dynamicPublish",
-									"mfo",
-									"replicationEnabled",
-									"analyticsEnabled",
-									"canPreviewDita"
-								],
-								"properties": {
-									"rootPageId": {
-										"type": "string"
-									},
-									"structuredUrlEnabled": {
-										"type": "boolean"
-									},
-									"previewUrl": {
-										"type": "string"
-									},
-									"dynamicPublish": {
-										"type": "boolean"
-									},
-									"mfo": {
-										"type": "boolean"
-									},
-									"replicationEnabled": {
-										"type": "boolean"
-									},
-									"analyticsEnabled": {
-										"type": "boolean"
-									},
-									"canPreviewDita": {
-										"type": "boolean"
-									}
-								}
-							}
-						]
-					}
-				},
-				"autoSave": {
-					"type": "boolean"
-				},
-				"inContextEditEnabled": {
-					"type": "boolean"
-				},
-				"iceHiliteColor": {
-					"type": "string"
-				},
-				"iceInvokeColor": {
-					"type": "string"
-				},
-				"localeList": {
-					"type": "object",
-					"additionalProperties": {
-						"$ref": "#/definitions/IgxLocale"
-					}
-				},
-				"contentLocalesChoices": {
-					"type": "string"
-				},
-				"languageChoices": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"locale": {
-								"type": "string"
-							},
-							"name": {
-								"type": "string"
-							},
-							"flag": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"languageRootIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"siteStatusDialogDelay": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"timezones": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"name": {
-								"type": "string"
-							},
-							"offset": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"serverUrl": {
-					"type": "string"
-				},
-				"authorHelpUrl": {
-					"type": "string"
-				},
-				"adminHelpUrl": {
-					"type": "string"
-				},
-				"recycleFolderId": {
-					"type": "string"
-				},
-				"assetRecycleFolderId": {
-					"type": "string"
-				},
-				"requestedPageId": {
-					"type": "string"
-				},
-				"contentStoreProps": {
-					"type": "string"
-				},
-				"tinymceConfig": {
-					"type": "object",
-					"required": [
-						"supportHtml5",
-						"supportHtml5CustomDataAttributes",
-						"verify_html",
-						"relative_urls",
-						"convert_urls",
-						"use_native_selects",
-						"apply_source_formatting",
-						"fix_list_elements",
-						"strict_loading_mode",
-						"convert_fonts_to_spans",
-						"auto_reset_designmode",
-						"importcss_append"
-					],
-					"properties": {
-						"supportHtml5": {
-							"type": "boolean"
-						},
-						"supportHtml5CustomDataAttributes": {
-							"type": "boolean"
-						},
-						"theme_igx_buttons1": {
-							"type": "string"
-						},
-						"plugins": {
-							"type": "string"
-						},
-						"table_class_list": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"title": {
-										"type": "string"
-									},
-									"value": {
-										"type": "string"
-									}
-								}
-							}
-						},
-						"link_class_list": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/TitleValuePair",
-								"circular": true
-							}
-						},
-						"image_class_list": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/TitleValuePair",
-								"circular": true
-							}
-						},
-						"block_formats": {
-							"type": "string"
-						},
-						"block_formats_list": {
-							"type": "object",
-							"properties": {
-								"title": {
-									"type": "string"
-								},
-								"items": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"title": {
-												"type": "string"
-											},
-											"format": {
-												"type": "string"
-											}
-										}
-									}
-								}
-							}
-						},
-						"heading_formats_list": {
-							"$ref": "#/definitions/StyleFormats",
-							"circular": true
-						},
-						"inline_formats_list": {
-							"$ref": "#/definitions/StyleFormats",
-							"circular": true
-						},
-						"style_formats": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/StyleFormats",
-								"circular": true
-							}
-						},
-						"font_formats": {
-							"type": "string"
-						},
-						"fontsize_formats": {
-							"type": "string"
-						},
-						"table_row_class_list": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/TitleValuePair",
-								"circular": true
-							}
-						},
-						"table_cell_class_list": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/TitleValuePair",
-								"circular": true
-							}
-						},
-						"content_css": {
-							"type": "string"
-						},
-						"mode": {
-							"type": "string"
-						},
-						"entity_encoding": {
-							"type": "string"
-						},
-						"theme": {
-							"type": "string"
-						},
-						"schema": {
-							"type": "string"
-						},
-						"verify_html": {
-							"type": "boolean"
-						},
-						"valid_elements": {
-							"type": "string"
-						},
-						"extended_valid_elements": {
-							"type": "string"
-						},
-						"invalid_elements": {
-							"type": "string"
-						},
-						"custom_elements": {
-							"type": "string"
-						},
-						"valid_children": {
-							"type": "string"
-						},
-						"width": {
-							"type": "string"
-						},
-						"height": {
-							"type": "string"
-						},
-						"file_browser_callback": {
-							"type": "string"
-						},
-						"relative_urls": {
-							"type": "boolean"
-						},
-						"convert_urls": {
-							"type": "boolean"
-						},
-						"document_base_url": {
-							"type": "string"
-						},
-						"forced_root_block": {
-							"type": "string"
-						},
-						"dialog_type": {
-							"type": "string"
-						},
-						"use_native_selects": {
-							"type": "boolean"
-						},
-						"apply_source_formatting": {
-							"type": "boolean"
-						},
-						"fix_list_elements": {
-							"type": "boolean"
-						},
-						"strict_loading_mode": {
-							"type": "boolean"
-						},
-						"convert_fonts_to_spans": {
-							"type": "boolean"
-						},
-						"font_size_style_values": {
-							"type": "string"
-						},
-						"spellchecker_languages": {
-							"type": "string"
-						},
-						"spellchecker_rpc_url": {
-							"type": "string"
-						},
-						"auto_reset_designmode": {
-							"type": "boolean"
-						},
-						"config_json": {
-							"type": "string"
-						},
-						"importcss_append": {
-							"type": "boolean"
-						}
-					}
-				},
-				"tinymceMatchPreviewCss": {
-					"type": "boolean"
-				},
-				"messagingDebug": {
-					"type": "boolean"
-				},
-				"assetTypes": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"assetSchemaVersionControlTypes": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"iconClasses": {
-					"type": "object",
-					"additionalProperties": {
-						"type": "string"
-					}
-				},
-				"showUtilityTree": {
-					"type": "boolean"
-				},
-				"playNotificationSound": {
-					"type": "string"
-				},
-				"defaultEditFormView": {
-					"type": "string"
-				},
-				"disabledLocalExports": {
-					"type": "boolean"
-				},
-				"autoShowPath": {
-					"type": "boolean"
-				},
-				"requireCheckinComments": {
-					"type": "boolean"
-				},
-				"showCommentModalOnCheckin": {
-					"type": "boolean"
-				},
-				"autoUpdateAliases": {
-					"type": "boolean"
-				},
-				"autoExpandMoreNodes": {
-					"type": "boolean"
-				},
-				"bypassMultiActionCheck": {
-					"type": "boolean"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/configuration/legacy-globals",
+		"method": "get",
+		"endpoint": "/api/v1/configuration/legacy-globals",
 		"tags": [
 			"Configuration"
-		]
+		],
+		"summary": "Retrieves legacy globals for backwards compatibility."
 	},
 	{
 		"tool_name": "Configuration_GetFlag",
-		"description": "GET /configuration/flag",
+		"description": "Retrieves the flag image for a given locale.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1210,167 +402,54 @@
 			]
 		},
 		"output_schema": {
-			"type": "file"
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/configuration/flag",
+		"method": "get",
+		"endpoint": "/api/v1/configuration/flag",
 		"tags": [
 			"Configuration"
-		]
+		],
+		"summary": "Retrieves the flag image for a given locale."
 	},
 	{
 		"tool_name": "Configuration_GetGlobalCustomTabs",
-		"description": "GET /configuration/global-custom-tabs",
+		"description": "Retrieves the list of global custom tabs.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"required": [
-							"isGlobal",
-							"appendPageId",
-							"appendAssetId",
-							"appendAssetFolderId"
-						],
-						"properties": {
-							"url": {
-								"type": "string"
-							},
-							"isGlobal": {
-								"type": "boolean"
-							},
-							"appendPageId": {
-								"type": "boolean"
-							},
-							"appendAssetId": {
-								"type": "boolean"
-							},
-							"appendAssetFolderId": {
-								"type": "boolean"
-							},
-							"resourceId": {
-								"type": "string"
-							},
-							"icon": {
-								"type": "string"
-							},
-							"iconClass": {
-								"type": "string"
-							},
-							"name": {
-								"type": "string"
-							},
-							"displayName": {
-								"type": "string"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"required": [
-							"autoSelect",
-							"allowPinning",
-							"show"
-						],
-						"properties": {
-							"id": {
-								"type": "string"
-							},
-							"autoSelect": {
-								"type": "boolean"
-							},
-							"allowPinning": {
-								"type": "boolean"
-							},
-							"show": {
-								"type": "boolean"
-							},
-							"localeName": {
-								"type": "string"
-							},
-							"schemaIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"assetSchemaIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"pageIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"assetIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"assetFolderIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/configuration/global-custom-tabs",
+		"method": "get",
+		"endpoint": "/api/v1/configuration/global-custom-tabs",
 		"tags": [
 			"Configuration"
-		]
+		],
+		"summary": "Retrieves the list of global custom tabs."
 	},
 	{
 		"tool_name": "InsiteSearch_GetCustomSettings",
-		"description": "GET /insite-search/custom-settings",
+		"description": "Retrieves the search custom settings.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "The publishing target associated with the custom settings."
 				}
 			}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"Name": {
-						"type": "string"
-					},
-					"Value": {
-						"type": "string"
-					},
-					"PublishingTargetIds": {
-						"type": "array",
-						"items": {
-							"type": "string"
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/insite-search/custom-settings",
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/custom-settings",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Retrieves the search custom settings."
 	}
 ]

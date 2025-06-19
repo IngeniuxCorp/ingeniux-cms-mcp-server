@@ -1,7 +1,7 @@
 [
 	{
 		"tool_name": "Assets_DownloadAssetOwnersCsv",
-		"description": "GET /assets/asset-owners-csv",
+		"description": "Assets get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -32,17 +32,17 @@
 			]
 		},
 		"output_schema": {
-			"type": "file"
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/asset-owners-csv",
+		"method": "get",
+		"endpoint": "/api/v1/assets/asset-owners-csv",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_DownloadAssetDependentsCsv",
-		"description": "GET /assets/asset-dependents-csv",
+		"description": "Assets get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -73,29 +73,31 @@
 			]
 		},
 		"output_schema": {
-			"type": "file"
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/asset-dependents-csv",
+		"method": "get",
+		"endpoint": "/api/v1/assets/asset-dependents-csv",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetAssetDITAScopes",
-		"description": "GET /assets/ditamap-scopes",
+		"description": "Gets the scopes in which a DITA asset can be previewed, including all of the ditamap owners and ditavals available.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"assetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Id of the Asset to retrieve scopes for"
 				},
 				"pubTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The Id of the publishing target to use for DITA normalization."
 				}
 			},
 			"required": [
@@ -104,100 +106,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"contexts": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"PublishingTargetId": {
-								"type": "string"
-							},
-							"PublishingTargetName": {
-								"type": "string"
-							},
-							"Ditavals": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"Id": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										}
-									}
-								}
-							},
-							"Scopes": {
-								"type": "array",
-								"items": {
-									"allOf": [
-										{
-											"$ref": "#/definitions/NameIdPair",
-											"circular": true
-										},
-										{
-											"type": "object",
-											"required": [
-												"DepsCount",
-												"IsCurrent",
-												"Distance"
-											],
-											"properties": {
-												"DepsCount": {
-													"type": "integer",
-													"format": "int32"
-												},
-												"Caches": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"DitavalId": {
-																"type": "string"
-															},
-															"PreviewTempPath": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"IsCurrent": {
-													"type": "boolean"
-												},
-												"Distance": {
-													"type": "integer",
-													"format": "int32"
-												}
-											}
-										}
-									]
-								}
-							}
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/ditamap-scopes",
+		"method": "get",
+		"endpoint": "/api/v1/assets/ditamap-scopes",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Gets the scopes in which a DITA asset can be previewed, including all of the ditamap owners and ditavals available."
 	},
 	{
 		"tool_name": "Assets_GetAllAssetDependents",
-		"description": "GET /assets/asset-dependents-deep",
+		"description": "Gets the dita content dependents for a given asset (dita assets that this asset references).",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"assetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Id of the asset to get dependents for."
 				}
 			},
 			"required": [
@@ -205,142 +133,89 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"required": [
-							"Broken",
-							"Distance"
-						],
-						"properties": {
-							"DependencyType": {
-								"type": "string"
-							},
-							"RefType": {
-								"type": "string"
-							},
-							"Broken": {
-								"type": "boolean"
-							},
-							"Distance": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"PublishingTargetId": {
-								"type": "string"
-							},
-							"Path": {
-								"type": "array",
-								"items": {
-									"$ref": "#/definitions/NameIdPair",
-									"circular": true
-								}
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/asset-dependents-deep",
+		"method": "get",
+		"endpoint": "/api/v1/assets/asset-dependents-deep",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Gets the dita content dependents for a given asset (dita assets that this asset references).",
+		"endpoint_description": "This method returns both direct and indirect dependents.\nIn order to only retrieve direct dependents use String)."
 	},
 	{
 		"tool_name": "Assets_SetAssetOutputFormats",
-		"description": "PUT /assets/asset-dita-output-formats",
+		"description": "Sets the DITA publishing output formats for a given DITA Asset.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"assetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"formats": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"in": "query",
+					"description": "ID of the DITA Asset whose output formats to set"
 				}
 			},
 			"required": [
-				"assetId",
-				"formats",
-				"formats"
+				"assetId"
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/assets/asset-dita-output-formats",
+		"method": "put",
+		"endpoint": "/api/v1/assets/asset-dita-output-formats",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Sets the DITA publishing output formats for a given DITA Asset.",
+		"endpoint_description": "Throws an exception if the specified asset cannot be found."
 	},
 	{
 		"tool_name": "Assets_SetAssetDitavals",
-		"description": "PUT /assets/asset-ditavals",
+		"description": "Sets the ditavals to use for a given DITA Asset.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"assetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"ditavalIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"in": "query",
+					"description": "Id of the DITA Asset whose ditavals to set"
 				}
 			},
 			"required": [
-				"assetId",
-				"ditavalIds",
-				"ditavalIds"
+				"assetId"
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/assets/asset-ditavals",
+		"method": "put",
+		"endpoint": "/api/v1/assets/asset-ditavals",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Sets the ditavals to use for a given DITA Asset.",
+		"endpoint_description": "Throws an exception if the specified asset cannot be found."
 	},
 	{
 		"tool_name": "Assets_DeleteDitaPreviewCache",
-		"description": "DELETE /assets/dita-preview-cache",
+		"description": "Delete the DITA preview cache to given asset and publishing target",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"assetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Id of the the asset to delete preview cache for"
 				},
 				"pubTargetId": {
 					"type": "string",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Id of the publishing target to delete preview cache on for the asset"
 				}
 			},
 			"required": [
@@ -348,41 +223,34 @@
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "DELETE",
-		"endpoint": "/assets/dita-preview-cache",
+		"method": "delete",
+		"endpoint": "/api/v1/assets/dita-preview-cache",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Delete the DITA preview cache to given asset and publishing target"
 	},
 	{
 		"tool_name": "Assets_GetOxygenAccessCredentials",
-		"description": "PUT /assets/dita-oxygen-oauth-creds",
+		"description": "Assets put operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/assets/dita-oxygen-oauth-creds",
+		"method": "put",
+		"endpoint": "/api/v1/assets/dita-oxygen-oauth-creds",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Site_SearchContentItems",
-		"description": "GET /site/content-item-search",
+		"description": "Retrieves a list of content items given a set of search parameters.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -444,158 +312,27 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"type": "object",
-										"properties": {
-											"Id": {
-												"type": "string"
-											},
-											"Name": {
-												"type": "string"
-											}
-										}
-									},
-									{
-										"type": "object"
-									}
-								]
-							},
-							{
-								"type": "object",
-								"required": [
-									"CheckedOut",
-									"Icon",
-									"IsComponent",
-									"Type",
-									"LastModified",
-									"Created"
-								],
-								"properties": {
-									"Path": {
-										"type": "array",
-										"items": {
-											"allOf": [
-												{
-													"$ref": "#/definitions/NameIdPair",
-													"circular": true
-												},
-												{
-													"type": "object",
-													"required": [
-														"Icon"
-													],
-													"properties": {
-														"Icon": {
-															"type": "integer",
-															"format": "int32"
-														}
-													}
-												}
-											]
-										}
-									},
-									"ContentId": {
-										"type": "string"
-									},
-									"ParentId": {
-										"type": "string"
-									},
-									"Locale": {
-										"type": "string"
-									},
-									"RegionCode": {
-										"type": "string"
-									},
-									"AssignedUser": {
-										"type": "string"
-									},
-									"AssignedGroup": {
-										"type": "string"
-									},
-									"CheckedOut": {
-										"type": "boolean"
-									},
-									"Icon": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"IsComponent": {
-										"type": "boolean"
-									},
-									"Type": {
-										"type": "string",
-										"description": "The types of content items",
-										"x-enumNames": [
-											"Page",
-											"Asset",
-											"AssetFolder",
-											"ContentAlias",
-											"Other"
-										],
-										"enum": [
-											"Page",
-											"Asset",
-											"AssetFolder",
-											"ContentAlias",
-											"Other"
-										]
-									},
-									"LastModified": {
-										"type": "string",
-										"format": "date-time"
-									},
-									"Created": {
-										"type": "string",
-										"format": "date-time"
-									}
-								}
-							}
-						]
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/site/content-item-search",
+		"method": "get",
+		"endpoint": "/api/v1/site/content-item-search",
 		"tags": [
 			"Site"
-		]
+		],
+		"summary": "Retrieves a list of content items given a set of search parameters.",
+		"endpoint_description": "If the request.SearchText is not an page or asset Id an empty list will be returned."
 	},
 	{
 		"tool_name": "Site_GetTabModel",
-		"description": "GET /site/tab-model",
+		"description": "Gets the TabDataModel indicating which tabs should be active/displayed for a given Content Item.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"contentItemId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Id of the Content Item to get tab data for."
 				}
 			},
 			"required": [
@@ -603,499 +340,128 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"overviewTab": {
-					"type": "boolean"
-				},
-				"editTab": {
-					"type": "boolean"
-				},
-				"assetTab": {
-					"type": "boolean"
-				},
-				"assetFolderTab": {
-					"type": "boolean"
-				},
-				"assetEditTab": {
-					"type": "boolean"
-				},
-				"taxonomyTab": {
-					"type": "boolean"
-				},
-				"assetTaxonomyTab": {
-					"type": "boolean"
-				},
-				"previewTab": {
-					"type": "boolean"
-				},
-				"designTab": {
-					"type": "boolean"
-				},
-				"historyTab": {
-					"type": "boolean"
-				},
-				"assetHistoryTab": {
-					"type": "boolean"
-				},
-				"assetXmlTab": {
-					"type": "boolean"
-				},
-				"assetPreviewTab": {
-					"type": "boolean"
-				},
-				"xmlTab": {
-					"type": "boolean"
-				},
-				"propertiesTab": {
-					"type": "boolean"
-				},
-				"translateTab": {
-					"type": "boolean"
-				},
-				"analyticsTab": {
-					"type": "boolean"
-				},
-				"assetDitaTab": {
-					"type": "boolean"
-				},
-				"customTabs": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"required": [
-									"isGlobal",
-									"appendPageId",
-									"appendAssetId",
-									"appendAssetFolderId"
-								],
-								"properties": {
-									"url": {
-										"type": "string"
-									},
-									"isGlobal": {
-										"type": "boolean"
-									},
-									"appendPageId": {
-										"type": "boolean"
-									},
-									"appendAssetId": {
-										"type": "boolean"
-									},
-									"appendAssetFolderId": {
-										"type": "boolean"
-									},
-									"resourceId": {
-										"type": "string"
-									},
-									"icon": {
-										"type": "string"
-									},
-									"iconClass": {
-										"type": "string"
-									},
-									"name": {
-										"type": "string"
-									},
-									"displayName": {
-										"type": "string"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"autoSelect",
-									"allowPinning",
-									"show"
-								],
-								"properties": {
-									"id": {
-										"type": "string"
-									},
-									"autoSelect": {
-										"type": "boolean"
-									},
-									"allowPinning": {
-										"type": "boolean"
-									},
-									"show": {
-										"type": "boolean"
-									},
-									"localeName": {
-										"type": "string"
-									},
-									"schemaIds": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									},
-									"assetSchemaIds": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									},
-									"pageIds": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									},
-									"assetIds": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									},
-									"assetFolderIds": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									}
-								}
-							}
-						]
-					}
-				}
-			},
-			"required": [
-				"overviewTab",
-				"editTab",
-				"assetTab",
-				"assetFolderTab",
-				"assetEditTab",
-				"taxonomyTab",
-				"assetTaxonomyTab",
-				"previewTab",
-				"designTab",
-				"historyTab",
-				"assetHistoryTab",
-				"assetXmlTab",
-				"assetPreviewTab",
-				"xmlTab",
-				"propertiesTab",
-				"translateTab",
-				"analyticsTab",
-				"assetDitaTab"
-			]
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/site/tab-model",
+		"method": "get",
+		"endpoint": "/api/v1/site/tab-model",
 		"tags": [
 			"Site"
-		]
+		],
+		"summary": "Gets the TabDataModel indicating which tabs should be active/displayed for a given Content Item."
 	},
 	{
 		"tool_name": "Site_GenerateAssetRefernceReport",
-		"description": "POST /site/generate-asset-reference-report",
+		"description": "Creates a report containing information on all Pages that reference the Asset specified in the request.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"request": {
-					"type": "object",
-					"required": [
-						"IncludeChildren"
-					],
-					"properties": {
-						"RootPageId": {
-							"type": "string"
-						},
-						"AssetPath": {
-							"type": "string"
-						},
-						"IncludeChildren": {
-							"type": "boolean"
-						}
-					}
-				}
-			},
-			"required": [
-				"request",
-				"request"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"ReportId"
-			],
-			"properties": {
-				"ReportId": {
-					"type": "string",
-					"format": "guid"
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/site/generate-asset-reference-report",
+		"method": "post",
+		"endpoint": "/api/v1/site/generate-asset-reference-report",
 		"tags": [
 			"Site"
-		]
+		],
+		"summary": "Creates a report containing information on all Pages that reference the Asset specified in the request."
 	},
 	{
 		"tool_name": "Site_GenerateBrokenLinkReport",
-		"description": "POST /site/generate-broken-link-report",
+		"description": "Creates a report containing information on all Pages and Components that contain broken links.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"request": {
-					"type": "object",
-					"required": [
-						"IncludeChildren",
-						"ValidateExternalReferences"
-					],
-					"properties": {
-						"RootPageId": {
-							"type": "string"
-						},
-						"IncludeChildren": {
-							"type": "boolean"
-						},
-						"ValidateExternalReferences": {
-							"type": "boolean"
-						}
-					}
-				}
-			},
-			"required": [
-				"request",
-				"request"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"ReportId"
-			],
-			"properties": {
-				"ReportId": {
-					"type": "string",
-					"format": "guid"
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/site/generate-broken-link-report",
+		"method": "post",
+		"endpoint": "/api/v1/site/generate-broken-link-report",
 		"tags": [
 			"Site"
-		]
+		],
+		"summary": "Creates a report containing information on all Pages and Components that contain broken links."
 	},
 	{
 		"tool_name": "Site_GenerateTextSearchReport",
-		"description": "POST /site/generate-search-text-report",
+		"description": "Creates a report containing information on all Pages that contain the text specified in the request.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"request": {
-					"type": "object",
-					"required": [
-						"SearchText",
-						"IgnoreCase",
-						"IncludeChildren"
-					],
-					"properties": {
-						"RootPageId": {
-							"type": "string"
-						},
-						"SearchText": {
-							"type": "string",
-							"minLength": 1
-						},
-						"IgnoreCase": {
-							"type": "boolean"
-						},
-						"IncludeChildren": {
-							"type": "boolean"
-						}
-					}
-				}
-			},
-			"required": [
-				"request",
-				"request"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"ReportId"
-			],
-			"properties": {
-				"ReportId": {
-					"type": "string",
-					"format": "guid"
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/site/generate-search-text-report",
+		"method": "post",
+		"endpoint": "/api/v1/site/generate-search-text-report",
 		"tags": [
 			"Site"
-		]
+		],
+		"summary": "Creates a report containing information on all Pages that contain the text specified in the request."
 	},
 	{
 		"tool_name": "Site_GenerateAssetTextSearchReport",
-		"description": "POST /site/generate-search-asset-text-report",
+		"description": "Creates a report containing information on all Assets that have text content contains the text specified in the request.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"request": {
-					"type": "object",
-					"required": [
-						"SearchText",
-						"IgnoreCase",
-						"IncludeChildren"
-					],
-					"properties": {
-						"RootPageId": {
-							"type": "string"
-						},
-						"SearchText": {
-							"type": "string",
-							"minLength": 1
-						},
-						"IgnoreCase": {
-							"type": "boolean"
-						},
-						"IncludeChildren": {
-							"type": "boolean"
-						}
-					}
-				}
-			},
-			"required": [
-				"request",
-				"request"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"ReportId"
-			],
-			"properties": {
-				"ReportId": {
-					"type": "string",
-					"format": "guid"
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/site/generate-search-asset-text-report",
+		"method": "post",
+		"endpoint": "/api/v1/site/generate-search-asset-text-report",
 		"tags": [
 			"Site"
-		]
+		],
+		"summary": "Creates a report containing information on all Assets that have text content contains the text specified in the request."
 	},
 	{
 		"tool_name": "Site_GenerateUnusedAssetsReport",
-		"description": "POST /site/generate-unused-assets-report",
+		"description": "Creates a report containing information on all unused Assets in a specified Asset Folder.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"request": {
-					"type": "object",
-					"required": [
-						"RootAssetFolderId"
-					],
-					"properties": {
-						"RootAssetFolderId": {
-							"type": "string",
-							"minLength": 1
-						}
-					}
-				}
-			},
-			"required": [
-				"request",
-				"request"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"ReportId"
-			],
-			"properties": {
-				"ReportId": {
-					"type": "string",
-					"format": "guid"
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/site/generate-unused-assets-report",
+		"method": "post",
+		"endpoint": "/api/v1/site/generate-unused-assets-report",
 		"tags": [
 			"Site"
-		]
+		],
+		"summary": "Creates a report containing information on all unused Assets in a specified Asset Folder."
 	},
 	{
 		"tool_name": "Site_GeneratePageReferenceReport",
-		"description": "POST /site/generate-page-reference-report",
+		"description": "Creates a report containing information on all Pages that reference the Page or Component specified in the request.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"request": {
-					"type": "object",
-					"required": [
-						"IncludeChildren"
-					],
-					"properties": {
-						"PageId": {
-							"type": "string"
-						},
-						"RootPageId": {
-							"type": "string"
-						},
-						"IncludeChildren": {
-							"type": "boolean"
-						}
-					}
-				}
-			},
-			"required": [
-				"request",
-				"request"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"ReportId"
-			],
-			"properties": {
-				"ReportId": {
-					"type": "string",
-					"format": "guid"
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/site/generate-page-reference-report",
+		"method": "post",
+		"endpoint": "/api/v1/site/generate-page-reference-report",
 		"tags": [
 			"Site"
-		]
+		],
+		"summary": "Creates a report containing information on all Pages that reference the Page or Component specified in the request."
 	},
 	{
 		"tool_name": "Site_GetReportStatus",
-		"description": "GET /site/report/{sessionId}/status",
+		"description": "Get the status of a search report given its search session Id.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"sessionId": {
 					"type": "string",
 					"required": true,
-					"in": "path"
+					"in": "path",
+					"description": "The Id for the report whose status to retrieve."
 				}
 			},
 			"required": [
@@ -1103,41 +469,27 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"Success",
-				"ProgressPercentage",
-				"Complete"
-			],
-			"properties": {
-				"Success": {
-					"type": "boolean"
-				},
-				"ProgressPercentage": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Complete": {
-					"type": "boolean"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/site/report/{sessionId}/status",
+		"method": "get",
+		"endpoint": "/api/v1/site/report/{sessionId}/status",
 		"tags": [
 			"Site"
-		]
+		],
+		"summary": "Get the status of a search report given its search session Id.",
+		"endpoint_description": "The sessionId is the ReportId from the SearchReportModel returned by the report generation API call."
 	},
 	{
 		"tool_name": "Site_GetReport",
-		"description": "GET /site/report/{sessionId}",
+		"description": "Get a search report given its search session Id.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"sessionId": {
 					"type": "string",
 					"required": true,
-					"in": "path"
+					"in": "path",
+					"description": "The Id for the report to retrieve."
 				}
 			},
 			"required": [
@@ -1145,100 +497,27 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"IsCheckedIn",
-					"SearchType",
-					"CaseSensitive"
-				],
-				"properties": {
-					"Id": {
-						"type": "string"
-					},
-					"ContentName": {
-						"type": "string"
-					},
-					"ContentId": {
-						"type": "string"
-					},
-					"CreationUser": {
-						"type": "string"
-					},
-					"CreationUserEmail": {
-						"type": "string"
-					},
-					"CreatedDate": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"LastModifiedDate": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"Name": {
-						"type": "string"
-					},
-					"FoundValue": {
-						"type": "string"
-					},
-					"FullValue": {
-						"type": "string"
-					},
-					"TypeOfValue": {
-						"type": "string"
-					},
-					"IsCheckedIn": {
-						"type": "boolean"
-					},
-					"SearchText": {
-						"type": "string"
-					},
-					"SearchType": {
-						"type": "string",
-						"description": "",
-						"x-enumNames": [
-							"Asset",
-							"BrokenReferences",
-							"Text",
-							"UnusedAssets",
-							"Xid",
-							"Base",
-							"AssetText"
-						],
-						"enum": [
-							"Asset",
-							"BrokenReferences",
-							"Text",
-							"UnusedAssets",
-							"Xid",
-							"Base",
-							"AssetText"
-						]
-					},
-					"CaseSensitive": {
-						"type": "boolean"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/site/report/{sessionId}",
+		"method": "get",
+		"endpoint": "/api/v1/site/report/{sessionId}",
 		"tags": [
 			"Site"
-		]
+		],
+		"summary": "Get a search report given its search session Id.",
+		"endpoint_description": "The sessionId is the ReportId from the SearchReportModel returned by the report generation API call."
 	},
 	{
 		"tool_name": "Site_CancelReport",
-		"description": "POST /site/report/cancel",
+		"description": "Cancel a search given its search session Id.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"sessionId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The Id of the search to cancel."
 				}
 			},
 			"required": [
@@ -1246,54 +525,32 @@
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/site/report/cancel",
+		"method": "post",
+		"endpoint": "/api/v1/site/report/cancel",
 		"tags": [
 			"Site"
-		]
+		],
+		"summary": "Cancel a search given its search session Id.",
+		"endpoint_description": "The sessionId is the ReportId from the SearchReportModel returned by the report generation API call."
 	},
 	{
 		"tool_name": "Site_ReplaceReportEntry",
-		"description": "POST /site/report/replace-entry",
+		"description": "Fix/Replace the values searched for in the specified Pages or Components with a new value.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"request": {
-					"type": "object",
-					"properties": {
-						"SessionId": {
-							"type": "string"
-						},
-						"EntryIds": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"NewValue": {
-							"type": "string"
-						}
-					}
-				}
-			},
-			"required": [
-				"request",
-				"request"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "string",
-				"format": "guid"
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/site/report/replace-entry",
+		"method": "post",
+		"endpoint": "/api/v1/site/report/replace-entry",
 		"tags": [
 			"Site"
-		]
+		],
+		"summary": "Fix/Replace the values searched for in the specified Pages or Components with a new value.",
+		"endpoint_description": "The request.SessionId is the ReportId from the SearchReportModel returned by the report generation API call."
 	}
 ]

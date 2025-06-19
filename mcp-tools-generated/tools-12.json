@@ -1,14 +1,15 @@
 [
 	{
 		"tool_name": "Assets_GetFolderDescendantMarkings",
-		"description": "GET /assets/asset/descendant-targets",
+		"description": "Gets a collection of publishing target IDs marked for the specified Asset Folder's children.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"id": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "ID of the asset folder whose children to get marked targets for."
 				}
 			},
 			"required": [
@@ -16,568 +17,54 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "string"
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/asset/descendant-targets",
+		"method": "get",
+		"endpoint": "/api/v1/assets/asset/descendant-targets",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Gets a collection of publishing target IDs marked for the specified Asset Folder's children."
 	},
 	{
 		"tool_name": "Assets_GetRecycleFolder",
-		"description": "GET /assets/recycle-folder",
+		"description": "Retrieves the site's Recycle Asset Folder.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"EntityType": {
-					"type": "string"
-				},
-				"Archived": {
-					"type": "boolean"
-				},
-				"ParentId": {
-					"type": "string"
-				},
-				"ChildrenCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"SiblingPosition": {
-					"type": "number",
-					"format": "double"
-				},
-				"LingualMaps": {
-					"type": "object",
-					"properties": {
-						"Master": {
-							"type": "object",
-							"x-abstract": true,
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Locale": {
-									"type": "string"
-								}
-							}
-						},
-						"Clones": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/ContentItemLingualMapInformation",
-								"circular": true
-							}
-						}
-					}
-				},
-				"AssignedUserId": {
-					"type": "string"
-				},
-				"AssignedGroupId": {
-					"type": "string"
-				},
-				"AssignedUserName": {
-					"type": "string"
-				},
-				"AssignedGroupName": {
-					"type": "string"
-				},
-				"Type": {
-					"type": "string",
-					"description": "The types of content items",
-					"x-enumNames": [
-						"Page",
-						"Asset",
-						"AssetFolder",
-						"ContentAlias",
-						"Other"
-					],
-					"enum": [
-						"Page",
-						"Asset",
-						"AssetFolder",
-						"ContentAlias",
-						"Other"
-					]
-				},
-				"SecurityLevel": {
-					"type": "string",
-					"description": "The list of node-level permissions for Pages",
-					"x-enumNames": [
-						"NO_ACCESS",
-						"READ_ONLY",
-						"FULL_ACCESS"
-					],
-					"enum": [
-						"NO_ACCESS",
-						"READ_ONLY",
-						"FULL_ACCESS"
-					]
-				},
-				"SchemaId": {
-					"type": "string"
-				},
-				"SchemaName": {
-					"type": "string"
-				},
-				"SchemaDisplayName": {
-					"type": "string"
-				},
-				"Version": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"CheckedOut": {
-					"type": "boolean"
-				},
-				"Icon": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"SubType": {
-					"type": "string"
-				},
-				"SubTypeLabel": {
-					"type": "string"
-				},
-				"MarkedTargetIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"IsRegionRoot": {
-					"type": "boolean"
-				},
-				"Locale": {
-					"type": "string"
-				},
-				"CanParentRegionRoots": {
-					"type": "boolean"
-				},
-				"Favorite": {
-					"type": "boolean"
-				},
-				"Categorization": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"AllowedExtensions": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"AssetType": {
-					"type": "string",
-					"description": "The list of types of Asset",
-					"x-enumNames": [
-						"Binary",
-						"Code",
-						"Css",
-						"Json",
-						"Text",
-						"Xml",
-						"XsltStylesheet",
-						"Document",
-						"Image",
-						"Audio",
-						"Video",
-						"View",
-						"Html",
-						"Js",
-						"Dita"
-					],
-					"enum": [
-						"Binary",
-						"Code",
-						"Css",
-						"Json",
-						"Text",
-						"Xml",
-						"XsltStylesheet",
-						"Document",
-						"Image",
-						"Audio",
-						"Video",
-						"View",
-						"Html",
-						"Js",
-						"Dita"
-					]
-				},
-				"ByteSize": {
-					"type": "integer",
-					"format": "int64"
-				},
-				"Extension": {
-					"type": "string"
-				},
-				"FolderCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"HasImagePreview": {
-					"type": "boolean"
-				},
-				"Height": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"IsUnmanaged": {
-					"type": "boolean"
-				},
-				"MimeType": {
-					"type": "string"
-				},
-				"Width": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Aliases": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
-			},
-			"required": [
-				"Created",
-				"LastModified",
-				"Archived",
-				"ChildrenCount",
-				"SiblingPosition",
-				"Type",
-				"SecurityLevel",
-				"Version",
-				"CheckedOut",
-				"Icon",
-				"IsRegionRoot",
-				"CanParentRegionRoots",
-				"Favorite",
-				"AssetType",
-				"ByteSize",
-				"FolderCount",
-				"HasImagePreview",
-				"Height",
-				"IsUnmanaged",
-				"Width"
-			]
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/recycle-folder",
+		"method": "get",
+		"endpoint": "/api/v1/assets/recycle-folder",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Retrieves the site's Recycle Asset Folder.",
+		"endpoint_description": "This method is triggered by a GET call to endpoint: api/assets/recycle-folder."
 	},
 	{
 		"tool_name": "Assets_GetRoot",
-		"description": "GET /assets/root",
+		"description": "Retrieves a collection of the Asset Folders at the top level of the asset tree.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"EntityType": {
-					"type": "string"
-				},
-				"Archived": {
-					"type": "boolean"
-				},
-				"ParentId": {
-					"type": "string"
-				},
-				"ChildrenCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"SiblingPosition": {
-					"type": "number",
-					"format": "double"
-				},
-				"LingualMaps": {
-					"type": "object",
-					"properties": {
-						"Master": {
-							"type": "object",
-							"x-abstract": true,
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Locale": {
-									"type": "string"
-								}
-							}
-						},
-						"Clones": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/ContentItemLingualMapInformation",
-								"circular": true
-							}
-						}
-					}
-				},
-				"AssignedUserId": {
-					"type": "string"
-				},
-				"AssignedGroupId": {
-					"type": "string"
-				},
-				"AssignedUserName": {
-					"type": "string"
-				},
-				"AssignedGroupName": {
-					"type": "string"
-				},
-				"Type": {
-					"type": "string",
-					"description": "The types of content items",
-					"x-enumNames": [
-						"Page",
-						"Asset",
-						"AssetFolder",
-						"ContentAlias",
-						"Other"
-					],
-					"enum": [
-						"Page",
-						"Asset",
-						"AssetFolder",
-						"ContentAlias",
-						"Other"
-					]
-				},
-				"SecurityLevel": {
-					"type": "string",
-					"description": "The list of node-level permissions for Pages",
-					"x-enumNames": [
-						"NO_ACCESS",
-						"READ_ONLY",
-						"FULL_ACCESS"
-					],
-					"enum": [
-						"NO_ACCESS",
-						"READ_ONLY",
-						"FULL_ACCESS"
-					]
-				},
-				"SchemaId": {
-					"type": "string"
-				},
-				"SchemaName": {
-					"type": "string"
-				},
-				"SchemaDisplayName": {
-					"type": "string"
-				},
-				"Version": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"CheckedOut": {
-					"type": "boolean"
-				},
-				"Icon": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"SubType": {
-					"type": "string"
-				},
-				"SubTypeLabel": {
-					"type": "string"
-				},
-				"MarkedTargetIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"IsRegionRoot": {
-					"type": "boolean"
-				},
-				"Locale": {
-					"type": "string"
-				},
-				"CanParentRegionRoots": {
-					"type": "boolean"
-				},
-				"Favorite": {
-					"type": "boolean"
-				},
-				"Categorization": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"AllowedExtensions": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"AssetType": {
-					"type": "string",
-					"description": "The list of types of Asset",
-					"x-enumNames": [
-						"Binary",
-						"Code",
-						"Css",
-						"Json",
-						"Text",
-						"Xml",
-						"XsltStylesheet",
-						"Document",
-						"Image",
-						"Audio",
-						"Video",
-						"View",
-						"Html",
-						"Js",
-						"Dita"
-					],
-					"enum": [
-						"Binary",
-						"Code",
-						"Css",
-						"Json",
-						"Text",
-						"Xml",
-						"XsltStylesheet",
-						"Document",
-						"Image",
-						"Audio",
-						"Video",
-						"View",
-						"Html",
-						"Js",
-						"Dita"
-					]
-				},
-				"ByteSize": {
-					"type": "integer",
-					"format": "int64"
-				},
-				"Extension": {
-					"type": "string"
-				},
-				"FolderCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"HasImagePreview": {
-					"type": "boolean"
-				},
-				"Height": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"IsUnmanaged": {
-					"type": "boolean"
-				},
-				"MimeType": {
-					"type": "string"
-				},
-				"Width": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Aliases": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
-			},
-			"required": [
-				"Created",
-				"LastModified",
-				"Archived",
-				"ChildrenCount",
-				"SiblingPosition",
-				"Type",
-				"SecurityLevel",
-				"Version",
-				"CheckedOut",
-				"Icon",
-				"IsRegionRoot",
-				"CanParentRegionRoots",
-				"Favorite",
-				"AssetType",
-				"ByteSize",
-				"FolderCount",
-				"HasImagePreview",
-				"Height",
-				"IsUnmanaged",
-				"Width"
-			]
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/root",
+		"method": "get",
+		"endpoint": "/api/v1/assets/root",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Retrieves a collection of the Asset Folders at the top level of the asset tree.",
+		"endpoint_description": "This method is triggered by a GET call to endpoint: api/assets/root."
 	},
 	{
 		"tool_name": "Assets_GetRootFolders",
-		"description": "GET /assets/root-folders",
+		"description": "Assets get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -594,372 +81,25 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"allOf": [
-											{
-												"allOf": [
-													{
-														"allOf": [
-															{
-																"allOf": [
-																	{
-																		"type": "object",
-																		"properties": {
-																			"Id": {
-																				"type": "string"
-																			},
-																			"Name": {
-																				"type": "string"
-																			}
-																		}
-																	},
-																	{
-																		"type": "object"
-																	}
-																]
-															},
-															{
-																"type": "object",
-																"x-abstract": true,
-																"required": [
-																	"Created",
-																	"LastModified",
-																	"Archived"
-																],
-																"properties": {
-																	"CreationUser": {
-																		"type": "string"
-																	},
-																	"Created": {
-																		"type": "string",
-																		"format": "date-time"
-																	},
-																	"LastModifiedUser": {
-																		"type": "string"
-																	},
-																	"LastModified": {
-																		"type": "string",
-																		"format": "date-time"
-																	},
-																	"EntityType": {
-																		"type": "string"
-																	},
-																	"Archived": {
-																		"type": "boolean"
-																	}
-																}
-															}
-														]
-													},
-													{
-														"type": "object",
-														"required": [
-															"ChildrenCount",
-															"SiblingPosition"
-														],
-														"properties": {
-															"ParentId": {
-																"type": "string"
-															},
-															"ChildrenCount": {
-																"type": "integer",
-																"format": "int32"
-															},
-															"SiblingPosition": {
-																"type": "number",
-																"format": "double"
-															}
-														}
-													}
-												]
-											},
-											{
-												"type": "object",
-												"required": [
-													"Type",
-													"SecurityLevel",
-													"Version",
-													"CheckedOut",
-													"Icon",
-													"IsRegionRoot",
-													"CanParentRegionRoots",
-													"Favorite"
-												],
-												"properties": {
-													"LingualMaps": {
-														"type": "object",
-														"properties": {
-															"Master": {
-																"allOf": [
-																	{
-																		"type": "object",
-																		"x-abstract": true,
-																		"properties": {
-																			"Id": {
-																				"type": "string"
-																			}
-																		}
-																	},
-																	{
-																		"type": "object",
-																		"properties": {
-																			"Locale": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																]
-															},
-															"Clones": {
-																"type": "array",
-																"items": {
-																	"$ref": "#/definitions/ContentItemLingualMapInformation",
-																	"circular": true
-																}
-															}
-														}
-													},
-													"AssignedUserId": {
-														"type": "string"
-													},
-													"AssignedGroupId": {
-														"type": "string"
-													},
-													"AssignedUserName": {
-														"type": "string"
-													},
-													"AssignedGroupName": {
-														"type": "string"
-													},
-													"Type": {
-														"type": "string",
-														"description": "The types of content items",
-														"x-enumNames": [
-															"Page",
-															"Asset",
-															"AssetFolder",
-															"ContentAlias",
-															"Other"
-														],
-														"enum": [
-															"Page",
-															"Asset",
-															"AssetFolder",
-															"ContentAlias",
-															"Other"
-														]
-													},
-													"SecurityLevel": {
-														"type": "string",
-														"description": "The list of node-level permissions for Pages",
-														"x-enumNames": [
-															"NO_ACCESS",
-															"READ_ONLY",
-															"FULL_ACCESS"
-														],
-														"enum": [
-															"NO_ACCESS",
-															"READ_ONLY",
-															"FULL_ACCESS"
-														]
-													},
-													"SchemaId": {
-														"type": "string"
-													},
-													"SchemaName": {
-														"type": "string"
-													},
-													"SchemaDisplayName": {
-														"type": "string"
-													},
-													"Version": {
-														"type": "integer",
-														"format": "int32"
-													},
-													"CheckedOut": {
-														"type": "boolean"
-													},
-													"Icon": {
-														"type": "integer",
-														"format": "int32"
-													},
-													"SubType": {
-														"type": "string"
-													},
-													"SubTypeLabel": {
-														"type": "string"
-													},
-													"MarkedTargetIds": {
-														"type": "array",
-														"items": {
-															"type": "string"
-														}
-													},
-													"IsRegionRoot": {
-														"type": "boolean"
-													},
-													"Locale": {
-														"type": "string"
-													},
-													"CanParentRegionRoots": {
-														"type": "boolean"
-													},
-													"Favorite": {
-														"type": "boolean"
-													},
-													"Categorization": {
-														"type": "array",
-														"items": {
-															"type": "string"
-														}
-													}
-												}
-											}
-										]
-									},
-									{
-										"type": "object",
-										"required": [
-											"AssetType",
-											"ByteSize",
-											"FolderCount",
-											"HasImagePreview",
-											"Height",
-											"IsUnmanaged",
-											"Width"
-										],
-										"properties": {
-											"AllowedExtensions": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"AssetType": {
-												"type": "string",
-												"description": "The list of types of Asset",
-												"x-enumNames": [
-													"Binary",
-													"Code",
-													"Css",
-													"Json",
-													"Text",
-													"Xml",
-													"XsltStylesheet",
-													"Document",
-													"Image",
-													"Audio",
-													"Video",
-													"View",
-													"Html",
-													"Js",
-													"Dita"
-												],
-												"enum": [
-													"Binary",
-													"Code",
-													"Css",
-													"Json",
-													"Text",
-													"Xml",
-													"XsltStylesheet",
-													"Document",
-													"Image",
-													"Audio",
-													"Video",
-													"View",
-													"Html",
-													"Js",
-													"Dita"
-												]
-											},
-											"ByteSize": {
-												"type": "integer",
-												"format": "int64"
-											},
-											"Extension": {
-												"type": "string"
-											},
-											"FolderCount": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"HasImagePreview": {
-												"type": "boolean"
-											},
-											"Height": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"IsUnmanaged": {
-												"type": "boolean"
-											},
-											"MimeType": {
-												"type": "string"
-											},
-											"Width": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"Aliases": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object"
-							}
-						]
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/root-folders",
+		"method": "get",
+		"endpoint": "/api/v1/assets/root-folders",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetUnmanagedAsset",
-		"description": "GET /assets/unmanaged",
+		"description": "Retrieves an unamanged Asset or Asset Folder, by its id.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"id": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Id of the unmanaged asset or asset folder"
 				}
 			},
 			"required": [
@@ -967,292 +107,38 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"EntityType": {
-					"type": "string"
-				},
-				"Archived": {
-					"type": "boolean"
-				},
-				"ParentId": {
-					"type": "string"
-				},
-				"ChildrenCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"SiblingPosition": {
-					"type": "number",
-					"format": "double"
-				},
-				"LingualMaps": {
-					"type": "object",
-					"properties": {
-						"Master": {
-							"type": "object",
-							"x-abstract": true,
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Locale": {
-									"type": "string"
-								}
-							}
-						},
-						"Clones": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/ContentItemLingualMapInformation",
-								"circular": true
-							}
-						}
-					}
-				},
-				"AssignedUserId": {
-					"type": "string"
-				},
-				"AssignedGroupId": {
-					"type": "string"
-				},
-				"AssignedUserName": {
-					"type": "string"
-				},
-				"AssignedGroupName": {
-					"type": "string"
-				},
-				"Type": {
-					"type": "string",
-					"description": "The types of content items",
-					"x-enumNames": [
-						"Page",
-						"Asset",
-						"AssetFolder",
-						"ContentAlias",
-						"Other"
-					],
-					"enum": [
-						"Page",
-						"Asset",
-						"AssetFolder",
-						"ContentAlias",
-						"Other"
-					]
-				},
-				"SecurityLevel": {
-					"type": "string",
-					"description": "The list of node-level permissions for Pages",
-					"x-enumNames": [
-						"NO_ACCESS",
-						"READ_ONLY",
-						"FULL_ACCESS"
-					],
-					"enum": [
-						"NO_ACCESS",
-						"READ_ONLY",
-						"FULL_ACCESS"
-					]
-				},
-				"SchemaId": {
-					"type": "string"
-				},
-				"SchemaName": {
-					"type": "string"
-				},
-				"SchemaDisplayName": {
-					"type": "string"
-				},
-				"Version": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"CheckedOut": {
-					"type": "boolean"
-				},
-				"Icon": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"SubType": {
-					"type": "string"
-				},
-				"SubTypeLabel": {
-					"type": "string"
-				},
-				"MarkedTargetIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"IsRegionRoot": {
-					"type": "boolean"
-				},
-				"Locale": {
-					"type": "string"
-				},
-				"CanParentRegionRoots": {
-					"type": "boolean"
-				},
-				"Favorite": {
-					"type": "boolean"
-				},
-				"Categorization": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"AllowedExtensions": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"AssetType": {
-					"type": "string",
-					"description": "The list of types of Asset",
-					"x-enumNames": [
-						"Binary",
-						"Code",
-						"Css",
-						"Json",
-						"Text",
-						"Xml",
-						"XsltStylesheet",
-						"Document",
-						"Image",
-						"Audio",
-						"Video",
-						"View",
-						"Html",
-						"Js",
-						"Dita"
-					],
-					"enum": [
-						"Binary",
-						"Code",
-						"Css",
-						"Json",
-						"Text",
-						"Xml",
-						"XsltStylesheet",
-						"Document",
-						"Image",
-						"Audio",
-						"Video",
-						"View",
-						"Html",
-						"Js",
-						"Dita"
-					]
-				},
-				"ByteSize": {
-					"type": "integer",
-					"format": "int64"
-				},
-				"Extension": {
-					"type": "string"
-				},
-				"FolderCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"HasImagePreview": {
-					"type": "boolean"
-				},
-				"Height": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"IsUnmanaged": {
-					"type": "boolean"
-				},
-				"MimeType": {
-					"type": "string"
-				},
-				"Width": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Aliases": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
-			},
-			"required": [
-				"Created",
-				"LastModified",
-				"Archived",
-				"ChildrenCount",
-				"SiblingPosition",
-				"Type",
-				"SecurityLevel",
-				"Version",
-				"CheckedOut",
-				"Icon",
-				"IsRegionRoot",
-				"CanParentRegionRoots",
-				"Favorite",
-				"AssetType",
-				"ByteSize",
-				"FolderCount",
-				"HasImagePreview",
-				"Height",
-				"IsUnmanaged",
-				"Width"
-			]
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/unmanaged",
+		"method": "get",
+		"endpoint": "/api/v1/assets/unmanaged",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Retrieves an unamanged Asset or Asset Folder, by its id."
 	},
 	{
 		"tool_name": "Assets_GetUnmanagedChildren",
-		"description": "GET /assets/unmanaged/children",
+		"description": "Retrieves a collection of unmanaged Assets and Asset Folders, given a parent folder Id.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"id": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Id of the asset folder whose unmanaged child asset items to retrieve"
 				},
 				"startIndex": {
 					"type": "integer",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Starting index of entries. If not provided, starts from the first entry."
 				},
 				"pageSize": {
 					"type": "integer",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Number of entries to return. If not provided, returns all entries."
 				}
 			},
 			"required": [
@@ -1260,733 +146,50 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"allOf": [
-											{
-												"allOf": [
-													{
-														"allOf": [
-															{
-																"type": "object",
-																"properties": {
-																	"Id": {
-																		"type": "string"
-																	},
-																	"Name": {
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"type": "object"
-															}
-														]
-													},
-													{
-														"type": "object",
-														"x-abstract": true,
-														"required": [
-															"Created",
-															"LastModified",
-															"Archived"
-														],
-														"properties": {
-															"CreationUser": {
-																"type": "string"
-															},
-															"Created": {
-																"type": "string",
-																"format": "date-time"
-															},
-															"LastModifiedUser": {
-																"type": "string"
-															},
-															"LastModified": {
-																"type": "string",
-																"format": "date-time"
-															},
-															"EntityType": {
-																"type": "string"
-															},
-															"Archived": {
-																"type": "boolean"
-															}
-														}
-													}
-												]
-											},
-											{
-												"type": "object",
-												"required": [
-													"ChildrenCount",
-													"SiblingPosition"
-												],
-												"properties": {
-													"ParentId": {
-														"type": "string"
-													},
-													"ChildrenCount": {
-														"type": "integer",
-														"format": "int32"
-													},
-													"SiblingPosition": {
-														"type": "number",
-														"format": "double"
-													}
-												}
-											}
-										]
-									},
-									{
-										"type": "object",
-										"required": [
-											"Type",
-											"SecurityLevel",
-											"Version",
-											"CheckedOut",
-											"Icon",
-											"IsRegionRoot",
-											"CanParentRegionRoots",
-											"Favorite"
-										],
-										"properties": {
-											"LingualMaps": {
-												"type": "object",
-												"properties": {
-													"Master": {
-														"allOf": [
-															{
-																"type": "object",
-																"x-abstract": true,
-																"properties": {
-																	"Id": {
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"type": "object",
-																"properties": {
-																	"Locale": {
-																		"type": "string"
-																	}
-																}
-															}
-														]
-													},
-													"Clones": {
-														"type": "array",
-														"items": {
-															"$ref": "#/definitions/ContentItemLingualMapInformation",
-															"circular": true
-														}
-													}
-												}
-											},
-											"AssignedUserId": {
-												"type": "string"
-											},
-											"AssignedGroupId": {
-												"type": "string"
-											},
-											"AssignedUserName": {
-												"type": "string"
-											},
-											"AssignedGroupName": {
-												"type": "string"
-											},
-											"Type": {
-												"type": "string",
-												"description": "The types of content items",
-												"x-enumNames": [
-													"Page",
-													"Asset",
-													"AssetFolder",
-													"ContentAlias",
-													"Other"
-												],
-												"enum": [
-													"Page",
-													"Asset",
-													"AssetFolder",
-													"ContentAlias",
-													"Other"
-												]
-											},
-											"SecurityLevel": {
-												"type": "string",
-												"description": "The list of node-level permissions for Pages",
-												"x-enumNames": [
-													"NO_ACCESS",
-													"READ_ONLY",
-													"FULL_ACCESS"
-												],
-												"enum": [
-													"NO_ACCESS",
-													"READ_ONLY",
-													"FULL_ACCESS"
-												]
-											},
-											"SchemaId": {
-												"type": "string"
-											},
-											"SchemaName": {
-												"type": "string"
-											},
-											"SchemaDisplayName": {
-												"type": "string"
-											},
-											"Version": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"CheckedOut": {
-												"type": "boolean"
-											},
-											"Icon": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"SubType": {
-												"type": "string"
-											},
-											"SubTypeLabel": {
-												"type": "string"
-											},
-											"MarkedTargetIds": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"IsRegionRoot": {
-												"type": "boolean"
-											},
-											"Locale": {
-												"type": "string"
-											},
-											"CanParentRegionRoots": {
-												"type": "boolean"
-											},
-											"Favorite": {
-												"type": "boolean"
-											},
-											"Categorization": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object",
-								"required": [
-									"AssetType",
-									"ByteSize",
-									"FolderCount",
-									"HasImagePreview",
-									"Height",
-									"IsUnmanaged",
-									"Width"
-								],
-								"properties": {
-									"AllowedExtensions": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									},
-									"AssetType": {
-										"type": "string",
-										"description": "The list of types of Asset",
-										"x-enumNames": [
-											"Binary",
-											"Code",
-											"Css",
-											"Json",
-											"Text",
-											"Xml",
-											"XsltStylesheet",
-											"Document",
-											"Image",
-											"Audio",
-											"Video",
-											"View",
-											"Html",
-											"Js",
-											"Dita"
-										],
-										"enum": [
-											"Binary",
-											"Code",
-											"Css",
-											"Json",
-											"Text",
-											"Xml",
-											"XsltStylesheet",
-											"Document",
-											"Image",
-											"Audio",
-											"Video",
-											"View",
-											"Html",
-											"Js",
-											"Dita"
-										]
-									},
-									"ByteSize": {
-										"type": "integer",
-										"format": "int64"
-									},
-									"Extension": {
-										"type": "string"
-									},
-									"FolderCount": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"HasImagePreview": {
-										"type": "boolean"
-									},
-									"Height": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"IsUnmanaged": {
-										"type": "boolean"
-									},
-									"MimeType": {
-										"type": "string"
-									},
-									"Width": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"Aliases": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									}
-								}
-							}
-						]
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/unmanaged/children",
+		"method": "get",
+		"endpoint": "/api/v1/assets/unmanaged/children",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Retrieves a collection of unmanaged Assets and Asset Folders, given a parent folder Id.",
+		"endpoint_description": "Returns an empty collection if no unmanaged child assets are found"
 	},
 	{
 		"tool_name": "Assets_GetUnmanagedRootFolders",
-		"description": "GET /assets/unmanaged/root-folders",
+		"description": "Retrieve all root unmanaged asset folders./&gt;",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"startIndex": {
 					"type": "integer",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Starting index of entries. If not provided, starts from the first entry."
 				},
 				"pageSize": {
 					"type": "integer",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Number of entries to return. If not provided, returns all entries."
 				}
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"allOf": [
-											{
-												"allOf": [
-													{
-														"allOf": [
-															{
-																"allOf": [
-																	{
-																		"type": "object",
-																		"properties": {
-																			"Id": {
-																				"type": "string"
-																			},
-																			"Name": {
-																				"type": "string"
-																			}
-																		}
-																	},
-																	{
-																		"type": "object"
-																	}
-																]
-															},
-															{
-																"type": "object",
-																"x-abstract": true,
-																"required": [
-																	"Created",
-																	"LastModified",
-																	"Archived"
-																],
-																"properties": {
-																	"CreationUser": {
-																		"type": "string"
-																	},
-																	"Created": {
-																		"type": "string",
-																		"format": "date-time"
-																	},
-																	"LastModifiedUser": {
-																		"type": "string"
-																	},
-																	"LastModified": {
-																		"type": "string",
-																		"format": "date-time"
-																	},
-																	"EntityType": {
-																		"type": "string"
-																	},
-																	"Archived": {
-																		"type": "boolean"
-																	}
-																}
-															}
-														]
-													},
-													{
-														"type": "object",
-														"required": [
-															"ChildrenCount",
-															"SiblingPosition"
-														],
-														"properties": {
-															"ParentId": {
-																"type": "string"
-															},
-															"ChildrenCount": {
-																"type": "integer",
-																"format": "int32"
-															},
-															"SiblingPosition": {
-																"type": "number",
-																"format": "double"
-															}
-														}
-													}
-												]
-											},
-											{
-												"type": "object",
-												"required": [
-													"Type",
-													"SecurityLevel",
-													"Version",
-													"CheckedOut",
-													"Icon",
-													"IsRegionRoot",
-													"CanParentRegionRoots",
-													"Favorite"
-												],
-												"properties": {
-													"LingualMaps": {
-														"type": "object",
-														"properties": {
-															"Master": {
-																"allOf": [
-																	{
-																		"type": "object",
-																		"x-abstract": true,
-																		"properties": {
-																			"Id": {
-																				"type": "string"
-																			}
-																		}
-																	},
-																	{
-																		"type": "object",
-																		"properties": {
-																			"Locale": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																]
-															},
-															"Clones": {
-																"type": "array",
-																"items": {
-																	"$ref": "#/definitions/ContentItemLingualMapInformation",
-																	"circular": true
-																}
-															}
-														}
-													},
-													"AssignedUserId": {
-														"type": "string"
-													},
-													"AssignedGroupId": {
-														"type": "string"
-													},
-													"AssignedUserName": {
-														"type": "string"
-													},
-													"AssignedGroupName": {
-														"type": "string"
-													},
-													"Type": {
-														"type": "string",
-														"description": "The types of content items",
-														"x-enumNames": [
-															"Page",
-															"Asset",
-															"AssetFolder",
-															"ContentAlias",
-															"Other"
-														],
-														"enum": [
-															"Page",
-															"Asset",
-															"AssetFolder",
-															"ContentAlias",
-															"Other"
-														]
-													},
-													"SecurityLevel": {
-														"type": "string",
-														"description": "The list of node-level permissions for Pages",
-														"x-enumNames": [
-															"NO_ACCESS",
-															"READ_ONLY",
-															"FULL_ACCESS"
-														],
-														"enum": [
-															"NO_ACCESS",
-															"READ_ONLY",
-															"FULL_ACCESS"
-														]
-													},
-													"SchemaId": {
-														"type": "string"
-													},
-													"SchemaName": {
-														"type": "string"
-													},
-													"SchemaDisplayName": {
-														"type": "string"
-													},
-													"Version": {
-														"type": "integer",
-														"format": "int32"
-													},
-													"CheckedOut": {
-														"type": "boolean"
-													},
-													"Icon": {
-														"type": "integer",
-														"format": "int32"
-													},
-													"SubType": {
-														"type": "string"
-													},
-													"SubTypeLabel": {
-														"type": "string"
-													},
-													"MarkedTargetIds": {
-														"type": "array",
-														"items": {
-															"type": "string"
-														}
-													},
-													"IsRegionRoot": {
-														"type": "boolean"
-													},
-													"Locale": {
-														"type": "string"
-													},
-													"CanParentRegionRoots": {
-														"type": "boolean"
-													},
-													"Favorite": {
-														"type": "boolean"
-													},
-													"Categorization": {
-														"type": "array",
-														"items": {
-															"type": "string"
-														}
-													}
-												}
-											}
-										]
-									},
-									{
-										"type": "object",
-										"required": [
-											"AssetType",
-											"ByteSize",
-											"FolderCount",
-											"HasImagePreview",
-											"Height",
-											"IsUnmanaged",
-											"Width"
-										],
-										"properties": {
-											"AllowedExtensions": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"AssetType": {
-												"type": "string",
-												"description": "The list of types of Asset",
-												"x-enumNames": [
-													"Binary",
-													"Code",
-													"Css",
-													"Json",
-													"Text",
-													"Xml",
-													"XsltStylesheet",
-													"Document",
-													"Image",
-													"Audio",
-													"Video",
-													"View",
-													"Html",
-													"Js",
-													"Dita"
-												],
-												"enum": [
-													"Binary",
-													"Code",
-													"Css",
-													"Json",
-													"Text",
-													"Xml",
-													"XsltStylesheet",
-													"Document",
-													"Image",
-													"Audio",
-													"Video",
-													"View",
-													"Html",
-													"Js",
-													"Dita"
-												]
-											},
-											"ByteSize": {
-												"type": "integer",
-												"format": "int64"
-											},
-											"Extension": {
-												"type": "string"
-											},
-											"FolderCount": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"HasImagePreview": {
-												"type": "boolean"
-											},
-											"Height": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"IsUnmanaged": {
-												"type": "boolean"
-											},
-											"MimeType": {
-												"type": "string"
-											},
-											"Width": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"Aliases": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object"
-							}
-						]
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/unmanaged/root-folders",
+		"method": "get",
+		"endpoint": "/api/v1/assets/unmanaged/root-folders",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Retrieve all root unmanaged asset folders./&gt;",
+		"endpoint_description": "Root folders are direct child folders of UnmanagedAssetLocation."
 	},
 	{
 		"tool_name": "Assets_CheckDitaContentMovingOutOfDitaRoot",
-		"description": "GET /assets/dita-move-validation",
+		"description": "Assets get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2007,670 +210,68 @@
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/dita-move-validation",
+		"method": "get",
+		"endpoint": "/api/v1/assets/dita-move-validation",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_Move",
-		"description": "PATCH /assets/move",
+		"description": "Moves an Asset or Asset Folder from its current location to a new target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
-				"srcIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
 				"tgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The Id of  the new parent Asset Folder into which the asset will be moved."
 				},
 				"overwriteSameName": {
 					"type": "boolean",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Whether to replace an existing Asset of the same name with the newly created asset."
 				}
 			},
 			"required": [
 				"srcIds",
-				"tgtId",
-				"srcIds"
+				"tgtId"
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"allOf": [
-											{
-												"allOf": [
-													{
-														"type": "object",
-														"properties": {
-															"Id": {
-																"type": "string"
-															},
-															"Name": {
-																"type": "string"
-															}
-														}
-													},
-													{
-														"type": "object"
-													}
-												]
-											},
-											{
-												"type": "object",
-												"x-abstract": true,
-												"required": [
-													"Created",
-													"LastModified",
-													"Archived"
-												],
-												"properties": {
-													"CreationUser": {
-														"type": "string"
-													},
-													"Created": {
-														"type": "string",
-														"format": "date-time"
-													},
-													"LastModifiedUser": {
-														"type": "string"
-													},
-													"LastModified": {
-														"type": "string",
-														"format": "date-time"
-													},
-													"EntityType": {
-														"type": "string"
-													},
-													"Archived": {
-														"type": "boolean"
-													}
-												}
-											}
-										]
-									},
-									{
-										"type": "object",
-										"required": [
-											"ChildrenCount",
-											"SiblingPosition"
-										],
-										"properties": {
-											"ParentId": {
-												"type": "string"
-											},
-											"ChildrenCount": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"SiblingPosition": {
-												"type": "number",
-												"format": "double"
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object",
-								"required": [
-									"Type",
-									"SecurityLevel",
-									"Version",
-									"CheckedOut",
-									"Icon",
-									"IsRegionRoot",
-									"CanParentRegionRoots",
-									"Favorite"
-								],
-								"properties": {
-									"LingualMaps": {
-										"type": "object",
-										"properties": {
-											"Master": {
-												"allOf": [
-													{
-														"type": "object",
-														"x-abstract": true,
-														"properties": {
-															"Id": {
-																"type": "string"
-															}
-														}
-													},
-													{
-														"type": "object",
-														"properties": {
-															"Locale": {
-																"type": "string"
-															}
-														}
-													}
-												]
-											},
-											"Clones": {
-												"type": "array",
-												"items": {
-													"$ref": "#/definitions/ContentItemLingualMapInformation",
-													"circular": true
-												}
-											}
-										}
-									},
-									"AssignedUserId": {
-										"type": "string"
-									},
-									"AssignedGroupId": {
-										"type": "string"
-									},
-									"AssignedUserName": {
-										"type": "string"
-									},
-									"AssignedGroupName": {
-										"type": "string"
-									},
-									"Type": {
-										"type": "string",
-										"description": "The types of content items",
-										"x-enumNames": [
-											"Page",
-											"Asset",
-											"AssetFolder",
-											"ContentAlias",
-											"Other"
-										],
-										"enum": [
-											"Page",
-											"Asset",
-											"AssetFolder",
-											"ContentAlias",
-											"Other"
-										]
-									},
-									"SecurityLevel": {
-										"type": "string",
-										"description": "The list of node-level permissions for Pages",
-										"x-enumNames": [
-											"NO_ACCESS",
-											"READ_ONLY",
-											"FULL_ACCESS"
-										],
-										"enum": [
-											"NO_ACCESS",
-											"READ_ONLY",
-											"FULL_ACCESS"
-										]
-									},
-									"SchemaId": {
-										"type": "string"
-									},
-									"SchemaName": {
-										"type": "string"
-									},
-									"SchemaDisplayName": {
-										"type": "string"
-									},
-									"Version": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"CheckedOut": {
-										"type": "boolean"
-									},
-									"Icon": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"SubType": {
-										"type": "string"
-									},
-									"SubTypeLabel": {
-										"type": "string"
-									},
-									"MarkedTargetIds": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									},
-									"IsRegionRoot": {
-										"type": "boolean"
-									},
-									"Locale": {
-										"type": "string"
-									},
-									"CanParentRegionRoots": {
-										"type": "boolean"
-									},
-									"Favorite": {
-										"type": "boolean"
-									},
-									"Categorization": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									}
-								}
-							}
-						]
-					},
-					{
-						"type": "object",
-						"required": [
-							"AssetType",
-							"ByteSize",
-							"FolderCount",
-							"HasImagePreview",
-							"Height",
-							"IsUnmanaged",
-							"Width"
-						],
-						"properties": {
-							"AllowedExtensions": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"AssetType": {
-								"type": "string",
-								"description": "The list of types of Asset",
-								"x-enumNames": [
-									"Binary",
-									"Code",
-									"Css",
-									"Json",
-									"Text",
-									"Xml",
-									"XsltStylesheet",
-									"Document",
-									"Image",
-									"Audio",
-									"Video",
-									"View",
-									"Html",
-									"Js",
-									"Dita"
-								],
-								"enum": [
-									"Binary",
-									"Code",
-									"Css",
-									"Json",
-									"Text",
-									"Xml",
-									"XsltStylesheet",
-									"Document",
-									"Image",
-									"Audio",
-									"Video",
-									"View",
-									"Html",
-									"Js",
-									"Dita"
-								]
-							},
-							"ByteSize": {
-								"type": "integer",
-								"format": "int64"
-							},
-							"Extension": {
-								"type": "string"
-							},
-							"FolderCount": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"HasImagePreview": {
-								"type": "boolean"
-							},
-							"Height": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"IsUnmanaged": {
-								"type": "boolean"
-							},
-							"MimeType": {
-								"type": "string"
-							},
-							"Width": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"Aliases": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "PATCH",
-		"endpoint": "/assets/move",
+		"method": "patch",
+		"endpoint": "/api/v1/assets/move",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Moves an Asset or Asset Folder from its current location to a new target."
 	},
 	{
 		"tool_name": "Assets_Rename",
-		"description": "POST /assets/rename",
+		"description": "Rename a Asset or Asset Folder.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"request": {
-					"type": "object",
-					"properties": {
-						"Id": {
-							"type": "string",
-							"minLength": 1
-						},
-						"Name": {
-							"type": "string",
-							"minLength": 1
-						}
-					},
-					"required": [
-						"Id",
-						"Name"
-					]
-				}
-			},
-			"required": [
-				"request",
-				"request"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"EntityType": {
-					"type": "string"
-				},
-				"Archived": {
-					"type": "boolean"
-				},
-				"ParentId": {
-					"type": "string"
-				},
-				"ChildrenCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"SiblingPosition": {
-					"type": "number",
-					"format": "double"
-				},
-				"LingualMaps": {
-					"type": "object",
-					"properties": {
-						"Master": {
-							"type": "object",
-							"x-abstract": true,
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Locale": {
-									"type": "string"
-								}
-							}
-						},
-						"Clones": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/ContentItemLingualMapInformation",
-								"circular": true
-							}
-						}
-					}
-				},
-				"AssignedUserId": {
-					"type": "string"
-				},
-				"AssignedGroupId": {
-					"type": "string"
-				},
-				"AssignedUserName": {
-					"type": "string"
-				},
-				"AssignedGroupName": {
-					"type": "string"
-				},
-				"Type": {
-					"type": "string",
-					"description": "The types of content items",
-					"x-enumNames": [
-						"Page",
-						"Asset",
-						"AssetFolder",
-						"ContentAlias",
-						"Other"
-					],
-					"enum": [
-						"Page",
-						"Asset",
-						"AssetFolder",
-						"ContentAlias",
-						"Other"
-					]
-				},
-				"SecurityLevel": {
-					"type": "string",
-					"description": "The list of node-level permissions for Pages",
-					"x-enumNames": [
-						"NO_ACCESS",
-						"READ_ONLY",
-						"FULL_ACCESS"
-					],
-					"enum": [
-						"NO_ACCESS",
-						"READ_ONLY",
-						"FULL_ACCESS"
-					]
-				},
-				"SchemaId": {
-					"type": "string"
-				},
-				"SchemaName": {
-					"type": "string"
-				},
-				"SchemaDisplayName": {
-					"type": "string"
-				},
-				"Version": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"CheckedOut": {
-					"type": "boolean"
-				},
-				"Icon": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"SubType": {
-					"type": "string"
-				},
-				"SubTypeLabel": {
-					"type": "string"
-				},
-				"MarkedTargetIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"IsRegionRoot": {
-					"type": "boolean"
-				},
-				"Locale": {
-					"type": "string"
-				},
-				"CanParentRegionRoots": {
-					"type": "boolean"
-				},
-				"Favorite": {
-					"type": "boolean"
-				},
-				"Categorization": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"AllowedExtensions": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"AssetType": {
-					"type": "string",
-					"description": "The list of types of Asset",
-					"x-enumNames": [
-						"Binary",
-						"Code",
-						"Css",
-						"Json",
-						"Text",
-						"Xml",
-						"XsltStylesheet",
-						"Document",
-						"Image",
-						"Audio",
-						"Video",
-						"View",
-						"Html",
-						"Js",
-						"Dita"
-					],
-					"enum": [
-						"Binary",
-						"Code",
-						"Css",
-						"Json",
-						"Text",
-						"Xml",
-						"XsltStylesheet",
-						"Document",
-						"Image",
-						"Audio",
-						"Video",
-						"View",
-						"Html",
-						"Js",
-						"Dita"
-					]
-				},
-				"ByteSize": {
-					"type": "integer",
-					"format": "int64"
-				},
-				"Extension": {
-					"type": "string"
-				},
-				"FolderCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"HasImagePreview": {
-					"type": "boolean"
-				},
-				"Height": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"IsUnmanaged": {
-					"type": "boolean"
-				},
-				"MimeType": {
-					"type": "string"
-				},
-				"Width": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Aliases": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
-			},
-			"required": [
-				"Created",
-				"LastModified",
-				"Archived",
-				"ChildrenCount",
-				"SiblingPosition",
-				"Type",
-				"SecurityLevel",
-				"Version",
-				"CheckedOut",
-				"Icon",
-				"IsRegionRoot",
-				"CanParentRegionRoots",
-				"Favorite",
-				"AssetType",
-				"ByteSize",
-				"FolderCount",
-				"HasImagePreview",
-				"Height",
-				"IsUnmanaged",
-				"Width"
-			]
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/assets/rename",
+		"method": "post",
+		"endpoint": "/api/v1/assets/rename",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Rename a Asset or Asset Folder."
 	},
 	{
 		"tool_name": "Assets_SearchAssetItems",
-		"description": "GET /assets/search",
+		"description": "Return a collection of Assets or Asset Folders\nthat match the search terms in the provided request.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2742,358 +343,19 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"allOf": [
-											{
-												"allOf": [
-													{
-														"allOf": [
-															{
-																"type": "object",
-																"properties": {
-																	"Id": {
-																		"type": "string"
-																	},
-																	"Name": {
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"type": "object"
-															}
-														]
-													},
-													{
-														"type": "object",
-														"x-abstract": true,
-														"required": [
-															"Created",
-															"LastModified",
-															"Archived"
-														],
-														"properties": {
-															"CreationUser": {
-																"type": "string"
-															},
-															"Created": {
-																"type": "string",
-																"format": "date-time"
-															},
-															"LastModifiedUser": {
-																"type": "string"
-															},
-															"LastModified": {
-																"type": "string",
-																"format": "date-time"
-															},
-															"EntityType": {
-																"type": "string"
-															},
-															"Archived": {
-																"type": "boolean"
-															}
-														}
-													}
-												]
-											},
-											{
-												"type": "object",
-												"required": [
-													"ChildrenCount",
-													"SiblingPosition"
-												],
-												"properties": {
-													"ParentId": {
-														"type": "string"
-													},
-													"ChildrenCount": {
-														"type": "integer",
-														"format": "int32"
-													},
-													"SiblingPosition": {
-														"type": "number",
-														"format": "double"
-													}
-												}
-											}
-										]
-									},
-									{
-										"type": "object",
-										"required": [
-											"Type",
-											"SecurityLevel",
-											"Version",
-											"CheckedOut",
-											"Icon",
-											"IsRegionRoot",
-											"CanParentRegionRoots",
-											"Favorite"
-										],
-										"properties": {
-											"LingualMaps": {
-												"type": "object",
-												"properties": {
-													"Master": {
-														"allOf": [
-															{
-																"type": "object",
-																"x-abstract": true,
-																"properties": {
-																	"Id": {
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"type": "object",
-																"properties": {
-																	"Locale": {
-																		"type": "string"
-																	}
-																}
-															}
-														]
-													},
-													"Clones": {
-														"type": "array",
-														"items": {
-															"$ref": "#/definitions/ContentItemLingualMapInformation",
-															"circular": true
-														}
-													}
-												}
-											},
-											"AssignedUserId": {
-												"type": "string"
-											},
-											"AssignedGroupId": {
-												"type": "string"
-											},
-											"AssignedUserName": {
-												"type": "string"
-											},
-											"AssignedGroupName": {
-												"type": "string"
-											},
-											"Type": {
-												"type": "string",
-												"description": "The types of content items",
-												"x-enumNames": [
-													"Page",
-													"Asset",
-													"AssetFolder",
-													"ContentAlias",
-													"Other"
-												],
-												"enum": [
-													"Page",
-													"Asset",
-													"AssetFolder",
-													"ContentAlias",
-													"Other"
-												]
-											},
-											"SecurityLevel": {
-												"type": "string",
-												"description": "The list of node-level permissions for Pages",
-												"x-enumNames": [
-													"NO_ACCESS",
-													"READ_ONLY",
-													"FULL_ACCESS"
-												],
-												"enum": [
-													"NO_ACCESS",
-													"READ_ONLY",
-													"FULL_ACCESS"
-												]
-											},
-											"SchemaId": {
-												"type": "string"
-											},
-											"SchemaName": {
-												"type": "string"
-											},
-											"SchemaDisplayName": {
-												"type": "string"
-											},
-											"Version": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"CheckedOut": {
-												"type": "boolean"
-											},
-											"Icon": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"SubType": {
-												"type": "string"
-											},
-											"SubTypeLabel": {
-												"type": "string"
-											},
-											"MarkedTargetIds": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"IsRegionRoot": {
-												"type": "boolean"
-											},
-											"Locale": {
-												"type": "string"
-											},
-											"CanParentRegionRoots": {
-												"type": "boolean"
-											},
-											"Favorite": {
-												"type": "boolean"
-											},
-											"Categorization": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object",
-								"required": [
-									"AssetType",
-									"ByteSize",
-									"FolderCount",
-									"HasImagePreview",
-									"Height",
-									"IsUnmanaged",
-									"Width"
-								],
-								"properties": {
-									"AllowedExtensions": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									},
-									"AssetType": {
-										"type": "string",
-										"description": "The list of types of Asset",
-										"x-enumNames": [
-											"Binary",
-											"Code",
-											"Css",
-											"Json",
-											"Text",
-											"Xml",
-											"XsltStylesheet",
-											"Document",
-											"Image",
-											"Audio",
-											"Video",
-											"View",
-											"Html",
-											"Js",
-											"Dita"
-										],
-										"enum": [
-											"Binary",
-											"Code",
-											"Css",
-											"Json",
-											"Text",
-											"Xml",
-											"XsltStylesheet",
-											"Document",
-											"Image",
-											"Audio",
-											"Video",
-											"View",
-											"Html",
-											"Js",
-											"Dita"
-										]
-									},
-									"ByteSize": {
-										"type": "integer",
-										"format": "int64"
-									},
-									"Extension": {
-										"type": "string"
-									},
-									"FolderCount": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"HasImagePreview": {
-										"type": "boolean"
-									},
-									"Height": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"IsUnmanaged": {
-										"type": "boolean"
-									},
-									"MimeType": {
-										"type": "string"
-									},
-									"Width": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"Aliases": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									}
-								}
-							}
-						]
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/search",
+		"method": "get",
+		"endpoint": "/api/v1/assets/search",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Return a collection of Assets or Asset Folders\nthat match the search terms in the provided request.",
+		"endpoint_description": "If no assets or asset folders are found matching the search conditions then an empty collection will be returned.\nIf a RootId is provided for the search and that Id is for an unmanaged asset folder, AssetSearchParams) will be automatically called."
 	},
 	{
 		"tool_name": "Assets_SearchUnmanagedAssetItems",
-		"description": "GET /assets/search-unmanaged",
+		"description": "Return a collection of unmanaged Assets or Asset Folders\nthat match the search terms in the provided request.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -3165,974 +427,97 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"allOf": [
-											{
-												"allOf": [
-													{
-														"allOf": [
-															{
-																"type": "object",
-																"properties": {
-																	"Id": {
-																		"type": "string"
-																	},
-																	"Name": {
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"type": "object"
-															}
-														]
-													},
-													{
-														"type": "object",
-														"x-abstract": true,
-														"required": [
-															"Created",
-															"LastModified",
-															"Archived"
-														],
-														"properties": {
-															"CreationUser": {
-																"type": "string"
-															},
-															"Created": {
-																"type": "string",
-																"format": "date-time"
-															},
-															"LastModifiedUser": {
-																"type": "string"
-															},
-															"LastModified": {
-																"type": "string",
-																"format": "date-time"
-															},
-															"EntityType": {
-																"type": "string"
-															},
-															"Archived": {
-																"type": "boolean"
-															}
-														}
-													}
-												]
-											},
-											{
-												"type": "object",
-												"required": [
-													"ChildrenCount",
-													"SiblingPosition"
-												],
-												"properties": {
-													"ParentId": {
-														"type": "string"
-													},
-													"ChildrenCount": {
-														"type": "integer",
-														"format": "int32"
-													},
-													"SiblingPosition": {
-														"type": "number",
-														"format": "double"
-													}
-												}
-											}
-										]
-									},
-									{
-										"type": "object",
-										"required": [
-											"Type",
-											"SecurityLevel",
-											"Version",
-											"CheckedOut",
-											"Icon",
-											"IsRegionRoot",
-											"CanParentRegionRoots",
-											"Favorite"
-										],
-										"properties": {
-											"LingualMaps": {
-												"type": "object",
-												"properties": {
-													"Master": {
-														"allOf": [
-															{
-																"type": "object",
-																"x-abstract": true,
-																"properties": {
-																	"Id": {
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"type": "object",
-																"properties": {
-																	"Locale": {
-																		"type": "string"
-																	}
-																}
-															}
-														]
-													},
-													"Clones": {
-														"type": "array",
-														"items": {
-															"$ref": "#/definitions/ContentItemLingualMapInformation",
-															"circular": true
-														}
-													}
-												}
-											},
-											"AssignedUserId": {
-												"type": "string"
-											},
-											"AssignedGroupId": {
-												"type": "string"
-											},
-											"AssignedUserName": {
-												"type": "string"
-											},
-											"AssignedGroupName": {
-												"type": "string"
-											},
-											"Type": {
-												"type": "string",
-												"description": "The types of content items",
-												"x-enumNames": [
-													"Page",
-													"Asset",
-													"AssetFolder",
-													"ContentAlias",
-													"Other"
-												],
-												"enum": [
-													"Page",
-													"Asset",
-													"AssetFolder",
-													"ContentAlias",
-													"Other"
-												]
-											},
-											"SecurityLevel": {
-												"type": "string",
-												"description": "The list of node-level permissions for Pages",
-												"x-enumNames": [
-													"NO_ACCESS",
-													"READ_ONLY",
-													"FULL_ACCESS"
-												],
-												"enum": [
-													"NO_ACCESS",
-													"READ_ONLY",
-													"FULL_ACCESS"
-												]
-											},
-											"SchemaId": {
-												"type": "string"
-											},
-											"SchemaName": {
-												"type": "string"
-											},
-											"SchemaDisplayName": {
-												"type": "string"
-											},
-											"Version": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"CheckedOut": {
-												"type": "boolean"
-											},
-											"Icon": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"SubType": {
-												"type": "string"
-											},
-											"SubTypeLabel": {
-												"type": "string"
-											},
-											"MarkedTargetIds": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"IsRegionRoot": {
-												"type": "boolean"
-											},
-											"Locale": {
-												"type": "string"
-											},
-											"CanParentRegionRoots": {
-												"type": "boolean"
-											},
-											"Favorite": {
-												"type": "boolean"
-											},
-											"Categorization": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object",
-								"required": [
-									"AssetType",
-									"ByteSize",
-									"FolderCount",
-									"HasImagePreview",
-									"Height",
-									"IsUnmanaged",
-									"Width"
-								],
-								"properties": {
-									"AllowedExtensions": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									},
-									"AssetType": {
-										"type": "string",
-										"description": "The list of types of Asset",
-										"x-enumNames": [
-											"Binary",
-											"Code",
-											"Css",
-											"Json",
-											"Text",
-											"Xml",
-											"XsltStylesheet",
-											"Document",
-											"Image",
-											"Audio",
-											"Video",
-											"View",
-											"Html",
-											"Js",
-											"Dita"
-										],
-										"enum": [
-											"Binary",
-											"Code",
-											"Css",
-											"Json",
-											"Text",
-											"Xml",
-											"XsltStylesheet",
-											"Document",
-											"Image",
-											"Audio",
-											"Video",
-											"View",
-											"Html",
-											"Js",
-											"Dita"
-										]
-									},
-									"ByteSize": {
-										"type": "integer",
-										"format": "int64"
-									},
-									"Extension": {
-										"type": "string"
-									},
-									"FolderCount": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"HasImagePreview": {
-										"type": "boolean"
-									},
-									"Height": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"IsUnmanaged": {
-										"type": "boolean"
-									},
-									"MimeType": {
-										"type": "string"
-									},
-									"Width": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"Aliases": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									}
-								}
-							}
-						]
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/search-unmanaged",
+		"method": "get",
+		"endpoint": "/api/v1/assets/search-unmanaged",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Return a collection of unmanaged Assets or Asset Folders\nthat match the search terms in the provided request.",
+		"endpoint_description": "If no assets or asset folders are found matching the search conditions then an empty collection will be returned.\nThe request must include a RootId specifying an unmanaged asset folder, or an exception will be thrown."
 	},
 	{
 		"tool_name": "Assets_SetCategoryAssociations",
-		"description": "POST /assets/asset/associations",
+		"description": "Updates the category associations for the provided Assets or Asset Folders.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"contentId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"categoryIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"in": "query",
+					"description": "The Id of the asset item whose category associations to update."
 				}
 			},
 			"required": [
-				"contentId",
-				"categoryIds",
-				"categoryIds"
+				"contentId"
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"EntityType": {
-					"type": "string"
-				},
-				"Archived": {
-					"type": "boolean"
-				},
-				"ParentId": {
-					"type": "string"
-				},
-				"ChildrenCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"SiblingPosition": {
-					"type": "number",
-					"format": "double"
-				},
-				"LingualMaps": {
-					"type": "object",
-					"properties": {
-						"Master": {
-							"type": "object",
-							"x-abstract": true,
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Locale": {
-									"type": "string"
-								}
-							}
-						},
-						"Clones": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/ContentItemLingualMapInformation",
-								"circular": true
-							}
-						}
-					}
-				},
-				"AssignedUserId": {
-					"type": "string"
-				},
-				"AssignedGroupId": {
-					"type": "string"
-				},
-				"AssignedUserName": {
-					"type": "string"
-				},
-				"AssignedGroupName": {
-					"type": "string"
-				},
-				"Type": {
-					"type": "string",
-					"description": "The types of content items",
-					"x-enumNames": [
-						"Page",
-						"Asset",
-						"AssetFolder",
-						"ContentAlias",
-						"Other"
-					],
-					"enum": [
-						"Page",
-						"Asset",
-						"AssetFolder",
-						"ContentAlias",
-						"Other"
-					]
-				},
-				"SecurityLevel": {
-					"type": "string",
-					"description": "The list of node-level permissions for Pages",
-					"x-enumNames": [
-						"NO_ACCESS",
-						"READ_ONLY",
-						"FULL_ACCESS"
-					],
-					"enum": [
-						"NO_ACCESS",
-						"READ_ONLY",
-						"FULL_ACCESS"
-					]
-				},
-				"SchemaId": {
-					"type": "string"
-				},
-				"SchemaName": {
-					"type": "string"
-				},
-				"SchemaDisplayName": {
-					"type": "string"
-				},
-				"Version": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"CheckedOut": {
-					"type": "boolean"
-				},
-				"Icon": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"SubType": {
-					"type": "string"
-				},
-				"SubTypeLabel": {
-					"type": "string"
-				},
-				"MarkedTargetIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"IsRegionRoot": {
-					"type": "boolean"
-				},
-				"Locale": {
-					"type": "string"
-				},
-				"CanParentRegionRoots": {
-					"type": "boolean"
-				},
-				"Favorite": {
-					"type": "boolean"
-				},
-				"Categorization": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"AllowedExtensions": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"AssetType": {
-					"type": "string",
-					"description": "The list of types of Asset",
-					"x-enumNames": [
-						"Binary",
-						"Code",
-						"Css",
-						"Json",
-						"Text",
-						"Xml",
-						"XsltStylesheet",
-						"Document",
-						"Image",
-						"Audio",
-						"Video",
-						"View",
-						"Html",
-						"Js",
-						"Dita"
-					],
-					"enum": [
-						"Binary",
-						"Code",
-						"Css",
-						"Json",
-						"Text",
-						"Xml",
-						"XsltStylesheet",
-						"Document",
-						"Image",
-						"Audio",
-						"Video",
-						"View",
-						"Html",
-						"Js",
-						"Dita"
-					]
-				},
-				"ByteSize": {
-					"type": "integer",
-					"format": "int64"
-				},
-				"Extension": {
-					"type": "string"
-				},
-				"FolderCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"HasImagePreview": {
-					"type": "boolean"
-				},
-				"Height": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"IsUnmanaged": {
-					"type": "boolean"
-				},
-				"MimeType": {
-					"type": "string"
-				},
-				"Width": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Aliases": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
-			},
-			"required": [
-				"Created",
-				"LastModified",
-				"Archived",
-				"ChildrenCount",
-				"SiblingPosition",
-				"Type",
-				"SecurityLevel",
-				"Version",
-				"CheckedOut",
-				"Icon",
-				"IsRegionRoot",
-				"CanParentRegionRoots",
-				"Favorite",
-				"AssetType",
-				"ByteSize",
-				"FolderCount",
-				"HasImagePreview",
-				"Height",
-				"IsUnmanaged",
-				"Width"
-			]
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/assets/asset/associations",
+		"method": "post",
+		"endpoint": "/api/v1/assets/asset/associations",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Updates the category associations for the provided Assets or Asset Folders.",
+		"endpoint_description": "The provided categoryIds should contain all categories that should remain associated with the asset item\nafter the update. Any categories previously associated with the asset item not included will be removed and any categories\nincluded but not previously associated will be added."
 	},
 	{
 		"tool_name": "Assets_TotalSize",
-		"description": "GET /assets/total-size",
+		"description": "Gets the total combined byte size of all files in the Assets folder of the xml directory.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "integer",
-			"format": "int64"
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/total-size",
+		"method": "get",
+		"endpoint": "/api/v1/assets/total-size",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Gets the total combined byte size of all files in the Assets folder of the xml directory.",
+		"endpoint_description": "If the xml \"Assets\" folder does not exist, 0 will be returned."
 	},
 	{
 		"tool_name": "Assets_UndoCheckOut",
-		"description": "POST /assets/undo-checkout",
+		"description": "Revert the asset to the state it was in before being checked out.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"request": {
-					"type": "object",
-					"x-abstract": true,
-					"properties": {
-						"Id": {
-							"type": "string",
-							"minLength": 1
-						},
-						"Recursive": {
-							"type": "boolean"
-						}
-					},
-					"required": [
-						"Recursive",
-						"Id"
-					]
-				}
-			},
-			"required": [
-				"request",
-				"request"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"EntityType": {
-					"type": "string"
-				},
-				"Archived": {
-					"type": "boolean"
-				},
-				"ParentId": {
-					"type": "string"
-				},
-				"ChildrenCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"SiblingPosition": {
-					"type": "number",
-					"format": "double"
-				},
-				"LingualMaps": {
-					"type": "object",
-					"properties": {
-						"Master": {
-							"type": "object",
-							"x-abstract": true,
-							"properties": {
-								"Id": {
-									"type": "string"
-								},
-								"Locale": {
-									"type": "string"
-								}
-							}
-						},
-						"Clones": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/ContentItemLingualMapInformation",
-								"circular": true
-							}
-						}
-					}
-				},
-				"AssignedUserId": {
-					"type": "string"
-				},
-				"AssignedGroupId": {
-					"type": "string"
-				},
-				"AssignedUserName": {
-					"type": "string"
-				},
-				"AssignedGroupName": {
-					"type": "string"
-				},
-				"Type": {
-					"type": "string",
-					"description": "The types of content items",
-					"x-enumNames": [
-						"Page",
-						"Asset",
-						"AssetFolder",
-						"ContentAlias",
-						"Other"
-					],
-					"enum": [
-						"Page",
-						"Asset",
-						"AssetFolder",
-						"ContentAlias",
-						"Other"
-					]
-				},
-				"SecurityLevel": {
-					"type": "string",
-					"description": "The list of node-level permissions for Pages",
-					"x-enumNames": [
-						"NO_ACCESS",
-						"READ_ONLY",
-						"FULL_ACCESS"
-					],
-					"enum": [
-						"NO_ACCESS",
-						"READ_ONLY",
-						"FULL_ACCESS"
-					]
-				},
-				"SchemaId": {
-					"type": "string"
-				},
-				"SchemaName": {
-					"type": "string"
-				},
-				"SchemaDisplayName": {
-					"type": "string"
-				},
-				"Version": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"CheckedOut": {
-					"type": "boolean"
-				},
-				"Icon": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"SubType": {
-					"type": "string"
-				},
-				"SubTypeLabel": {
-					"type": "string"
-				},
-				"MarkedTargetIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"IsRegionRoot": {
-					"type": "boolean"
-				},
-				"Locale": {
-					"type": "string"
-				},
-				"CanParentRegionRoots": {
-					"type": "boolean"
-				},
-				"Favorite": {
-					"type": "boolean"
-				},
-				"Categorization": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"AllowedExtensions": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"AssetType": {
-					"type": "string",
-					"description": "The list of types of Asset",
-					"x-enumNames": [
-						"Binary",
-						"Code",
-						"Css",
-						"Json",
-						"Text",
-						"Xml",
-						"XsltStylesheet",
-						"Document",
-						"Image",
-						"Audio",
-						"Video",
-						"View",
-						"Html",
-						"Js",
-						"Dita"
-					],
-					"enum": [
-						"Binary",
-						"Code",
-						"Css",
-						"Json",
-						"Text",
-						"Xml",
-						"XsltStylesheet",
-						"Document",
-						"Image",
-						"Audio",
-						"Video",
-						"View",
-						"Html",
-						"Js",
-						"Dita"
-					]
-				},
-				"ByteSize": {
-					"type": "integer",
-					"format": "int64"
-				},
-				"Extension": {
-					"type": "string"
-				},
-				"FolderCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"HasImagePreview": {
-					"type": "boolean"
-				},
-				"Height": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"IsUnmanaged": {
-					"type": "boolean"
-				},
-				"MimeType": {
-					"type": "string"
-				},
-				"Width": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Aliases": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
-			},
-			"required": [
-				"Created",
-				"LastModified",
-				"Archived",
-				"ChildrenCount",
-				"SiblingPosition",
-				"Type",
-				"SecurityLevel",
-				"Version",
-				"CheckedOut",
-				"Icon",
-				"IsRegionRoot",
-				"CanParentRegionRoots",
-				"Favorite",
-				"AssetType",
-				"ByteSize",
-				"FolderCount",
-				"HasImagePreview",
-				"Height",
-				"IsUnmanaged",
-				"Width"
-			]
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/assets/undo-checkout",
+		"method": "post",
+		"endpoint": "/api/v1/assets/undo-checkout",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Revert the asset to the state it was in before being checked out.",
+		"endpoint_description": "This will lose any information uploaded and not checked in.\nNote: Permission conflicts will cause a 400 error."
 	},
 	{
 		"tool_name": "Assets_Unzip",
-		"description": "POST /assets/unzip",
+		"description": "Unzips an Asset into a new folder under the asset's parent directory.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"assetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Id of the Asset to unzip."
 				},
 				"cleanFolder": {
 					"type": "boolean",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "If true, folders found in the parent directory with a matching name as the zipped asset will be deleted\n            and a new folder will be created for the unzipped asset."
 				}
 			},
 			"required": [
@@ -4141,29 +526,27 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Result": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/assets/unzip",
+		"method": "post",
+		"endpoint": "/api/v1/assets/unzip",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Unzips an Asset into a new folder under the asset's parent directory.",
+		"endpoint_description": "If cleanFolder is false and a folder already exists with the same name as the asset under the parent directory, no new folder will be created."
 	},
 	{
 		"tool_name": "Assets_Upload",
-		"description": "POST /assets/upload",
+		"description": "Upload new assets to the CMS.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"file": {
 					"type": "file",
 					"required": true,
-					"in": "formData"
+					"in": "formData",
+					"description": "Asset file to be uploaded."
 				},
 				"assetname": {
 					"type": "string",
@@ -4208,27 +591,32 @@
 				"schemadefault": {
 					"type": "boolean",
 					"required": false,
-					"in": "formData"
+					"in": "formData",
+					"description": "If false, must specify 'overrideschemaid'."
 				},
 				"unpackzip": {
 					"type": "boolean",
 					"required": false,
-					"in": "formData"
+					"in": "formData",
+					"description": "Set 'true' when uploading a .zip file to be unpacked into its containing assets."
 				},
 				"deleteexistingfolder": {
 					"type": "boolean",
 					"required": false,
-					"in": "formData"
+					"in": "formData",
+					"description": "For use only with 'unpackzip' option. Deletes already-existing asset folder with same name as .zip, along with all its contents, and creates new asset folder with unpacked .zip contents inside."
 				},
 				"zipunpackhandleconflicts": {
 					"type": "integer",
 					"required": false,
-					"in": "formData"
+					"in": "formData",
+					"description": "For use only with 'unpackzip' option. Handling conflicts with existing assets in folder."
 				},
 				"skipexistingassets": {
 					"type": "boolean",
 					"required": false,
-					"in": "formData"
+					"in": "formData",
+					"description": "For use only with 'unpackzip' option."
 				}
 			},
 			"required": [
@@ -4237,100 +625,18 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"FileSize",
-				"IsZipUnpack"
-			],
-			"properties": {
-				"AssetFolders": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"Assets": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
-				"Errors": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"errorMsg": {
-								"type": "string"
-							},
-							"stacktrace": {
-								"type": "string"
-							},
-							"fileName": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"FileSize": {
-					"type": "integer",
-					"format": "int64"
-				},
-				"IsZipUnpack": {
-					"type": "boolean"
-				},
-				"RootFolderId": {
-					"type": "string"
-				},
-				"NamingConflictAssetId": {
-					"type": "string"
-				},
-				"SchemasToChoose": {
-					"type": "object",
-					"properties": {
-						"SchemaChoices": {
-							"type": "array",
-							"items": {
-								"allOf": [
-									{
-										"type": "object",
-										"properties": {
-											"Id": {
-												"type": "string"
-											},
-											"Name": {
-												"type": "string"
-											}
-										}
-									},
-									{
-										"type": "object",
-										"required": [
-											"icon"
-										],
-										"properties": {
-											"icon": {
-												"type": "integer",
-												"format": "int32"
-											}
-										}
-									}
-								]
-							}
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/assets/upload",
+		"method": "post",
+		"endpoint": "/api/v1/assets/upload",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Upload new assets to the CMS."
 	},
 	{
 		"tool_name": "Assets_GetAssetDitaProperties",
-		"description": "GET /assets/asset-dependency",
+		"description": "Assets get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4345,141 +651,25 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Owners": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"properties": {
-									"Id": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"Broken",
-									"Distance"
-								],
-								"properties": {
-									"DependencyType": {
-										"type": "string"
-									},
-									"RefType": {
-										"type": "string"
-									},
-									"Broken": {
-										"type": "boolean"
-									},
-									"Distance": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"PublishingTargetId": {
-										"type": "string"
-									},
-									"Path": {
-										"type": "array",
-										"items": {
-											"$ref": "#/definitions/NameIdPair",
-											"circular": true
-										}
-									}
-								}
-							}
-						]
-					}
-				},
-				"Dependents": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/AssetDependent",
-						"circular": true
-					}
-				},
-				"DitaInfo": {
-					"type": "object",
-					"properties": {
-						"OutputFormats": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"IsNormalization"
-								],
-								"properties": {
-									"Name": {
-										"type": "string"
-									},
-									"FormatString": {
-										"type": "string"
-									},
-									"IsNormalization": {
-										"type": "boolean"
-									}
-								}
-							}
-						},
-						"Ditavals": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/NameIdPair",
-								"circular": true
-							}
-						},
-						"AllOutputFormats": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/DitaPublishingOutputFormatInfo",
-								"circular": true
-							}
-						},
-						"AllDitavals": {
-							"type": "array",
-							"items": {
-								"allOf": [
-									{
-										"$ref": "#/definitions/NameIdPair",
-										"circular": true
-									},
-									{
-										"type": "object",
-										"properties": {
-											"Path": {
-												"type": "string"
-											}
-										}
-									}
-								]
-							}
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/asset-dependency",
+		"method": "get",
+		"endpoint": "/api/v1/assets/asset-dependency",
 		"tags": [
 			"Assets"
 		]
 	},
 	{
 		"tool_name": "Assets_GetAllAssetOwners",
-		"description": "GET /assets/asset-owners-deep",
+		"description": "Gets the dita content owners for a given asset (dita assets that reference this asset).",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"assetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Id of the asset to get owners for."
 				}
 			},
 			"required": [
@@ -4487,64 +677,19 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"required": [
-							"Broken",
-							"Distance"
-						],
-						"properties": {
-							"DependencyType": {
-								"type": "string"
-							},
-							"RefType": {
-								"type": "string"
-							},
-							"Broken": {
-								"type": "boolean"
-							},
-							"Distance": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"PublishingTargetId": {
-								"type": "string"
-							},
-							"Path": {
-								"type": "array",
-								"items": {
-									"$ref": "#/definitions/NameIdPair",
-									"circular": true
-								}
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/asset-owners-deep",
+		"method": "get",
+		"endpoint": "/api/v1/assets/asset-owners-deep",
 		"tags": [
 			"Assets"
-		]
+		],
+		"summary": "Gets the dita content owners for a given asset (dita assets that reference this asset).",
+		"endpoint_description": "This method returns both direct and indirect owners.\nIn order to only retrieve direct owners use IUserSession)."
 	},
 	{
 		"tool_name": "Assets_GetAvailableKeyDefinitions",
-		"description": "GET /assets/dita-key-defs",
+		"description": "Assets get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -4569,33 +714,10 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"SourceId": {
-						"type": "string"
-					},
-					"Scope": {
-						"type": "string"
-					},
-					"Name": {
-						"type": "string"
-					},
-					"TargetId": {
-						"type": "string"
-					},
-					"TargetName": {
-						"type": "string"
-					},
-					"TargetArea": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/assets/dita-key-defs",
+		"method": "get",
+		"endpoint": "/api/v1/assets/dita-key-defs",
 		"tags": [
 			"Assets"
 		]

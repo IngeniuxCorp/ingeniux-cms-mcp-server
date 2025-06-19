@@ -1,14 +1,15 @@
 [
 	{
 		"tool_name": "InsiteSearch_GetBoostSchemas",
-		"description": "GET /insite-search/boost-schemas",
+		"description": "Retrieves the schema search boosts configured for a given publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The publishing target ID."
 				}
 			},
 			"required": [
@@ -16,101 +17,59 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"Boost"
-				],
-				"properties": {
-					"Id": {
-						"type": "string"
-					},
-					"FriendlyName": {
-						"type": "string"
-					},
-					"RootName": {
-						"type": "string"
-					},
-					"Boost": {
-						"type": "number",
-						"format": "double"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/insite-search/boost-schemas",
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/boost-schemas",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Retrieves the schema search boosts configured for a given publishing target."
 	},
 	{
 		"tool_name": "InsiteSearch_SaveBoostSchemas",
-		"description": "POST /insite-search/boost-schemas",
+		"description": "Saves schema search boosts for a particular publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"data": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"Boost"
-						],
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"FriendlyName": {
-								"type": "string"
-							},
-							"RootName": {
-								"type": "string"
-							},
-							"Boost": {
-								"type": "number",
-								"format": "double"
-							}
-						}
-					}
+					"in": "query",
+					"description": "The publishing target ID."
 				}
 			},
 			"required": [
-				"pubTgtId",
-				"data",
-				"data"
+				"pubTgtId"
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/insite-search/boost-schemas",
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/boost-schemas",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Saves schema search boosts for a particular publishing target."
 	},
 	{
 		"tool_name": "InsiteSearch_GetBoostFieldsForSchema",
-		"description": "GET /insite-search/boost-fields",
+		"description": "Retrieves the field boost values for a given publishing target and schema.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The publishing target ID."
 				},
 				"schemaId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The schema ID."
 				}
 			},
 			"required": [
@@ -119,110 +78,60 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"Indexed",
-					"Boost"
-				],
-				"properties": {
-					"FieldLabel": {
-						"type": "string"
-					},
-					"FieldName": {
-						"type": "string"
-					},
-					"Indexed": {
-						"type": "boolean"
-					},
-					"Boost": {
-						"type": "number",
-						"format": "double"
-					},
-					"Type": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/insite-search/boost-fields",
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/boost-fields",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Retrieves the field boost values for a given publishing target and schema."
 	},
 	{
 		"tool_name": "InsiteSearch_SaveBoostFieldsForSchema",
-		"description": "POST /insite-search/boost-fields",
+		"description": "Saves field search boost values for a given publishing target and schema.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The publishing target ID."
 				},
 				"schemaId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"data": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"Indexed",
-							"Boost"
-						],
-						"properties": {
-							"FieldLabel": {
-								"type": "string"
-							},
-							"FieldName": {
-								"type": "string"
-							},
-							"Indexed": {
-								"type": "boolean"
-							},
-							"Boost": {
-								"type": "number",
-								"format": "double"
-							},
-							"Type": {
-								"type": "string"
-							}
-						}
-					}
+					"in": "query",
+					"description": "The schema ID."
 				}
 			},
 			"required": [
 				"pubTgtId",
-				"schemaId",
-				"data",
-				"data"
+				"schemaId"
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/insite-search/boost-fields",
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/boost-fields",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Saves field search boost values for a given publishing target and schema."
 	},
 	{
 		"tool_name": "InsiteSearch_GetBoostSiteWideFields",
-		"description": "GET /insite-search/sitewide-boost-fields",
+		"description": "Retrieves the configured site-wide field search boost values for a given publishing target\n(i.e., regardless of schema).",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The publishing target ID."
 				}
 			},
 			"required": [
@@ -230,195 +139,89 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"Indexed",
-					"Boost"
-				],
-				"properties": {
-					"FieldLabel": {
-						"type": "string"
-					},
-					"FieldName": {
-						"type": "string"
-					},
-					"Indexed": {
-						"type": "boolean"
-					},
-					"Boost": {
-						"type": "number",
-						"format": "double"
-					},
-					"Type": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/insite-search/sitewide-boost-fields",
+		"method": "get",
+		"endpoint": "/api/v1/insite-search/sitewide-boost-fields",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Retrieves the configured site-wide field search boost values for a given publishing target\n(i.e., regardless of schema)."
 	},
 	{
 		"tool_name": "InsiteSearch_SaveSiteWideBoostFields",
-		"description": "POST /insite-search/site-wide-boost-fields",
+		"description": "Saves site-wide field search boost values for a given publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"data": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"Indexed",
-							"Boost"
-						],
-						"properties": {
-							"FieldLabel": {
-								"type": "string"
-							},
-							"FieldName": {
-								"type": "string"
-							},
-							"Indexed": {
-								"type": "boolean"
-							},
-							"Boost": {
-								"type": "number",
-								"format": "double"
-							},
-							"Type": {
-								"type": "string"
-							}
-						}
-					}
+					"in": "query",
+					"description": "The publishing target ID."
 				}
 			},
 			"required": [
-				"pubTgtId",
-				"data",
-				"data"
+				"pubTgtId"
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/insite-search/site-wide-boost-fields",
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/site-wide-boost-fields",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Saves site-wide field search boost values for a given publishing target."
 	},
 	{
 		"tool_name": "InsiteSearch_ApplyToTargets",
-		"description": "POST /insite-search/apply-to-target",
+		"description": "Applies the InSite Search settings for a given publishing target to a list of other publishing targets.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"curPubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"pubTgtIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"in": "query",
+					"description": "The current publishing target which is the source of the settings."
 				}
 			},
 			"required": [
-				"curPubTgtId",
-				"pubTgtIds",
-				"pubTgtIds"
+				"curPubTgtId"
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/insite-search/apply-to-target",
+		"method": "post",
+		"endpoint": "/api/v1/insite-search/apply-to-target",
 		"tags": [
 			"InsiteSearch"
-		]
+		],
+		"summary": "Applies the InSite Search settings for a given publishing target to a list of other publishing targets."
 	},
 	{
 		"tool_name": "L10N_GetLocalizationStats",
-		"description": "GET /L10N/stats",
+		"description": "Retrieves the summary of Site Definitions Localization on the Ingeniux CMS site",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"IsStats"
-			],
-			"properties": {
-				"PageSchemas": {
-					"type": "object",
-					"required": [
-						"Done",
-						"All",
-						"Percent"
-					],
-					"properties": {
-						"Done": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"All": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"Percent": {
-							"type": "integer",
-							"format": "int32"
-						}
-					}
-				},
-				"ComponentSchemas": {
-					"$ref": "#/definitions/SiteDefinitionItemLocalizationStats",
-					"circular": true
-				},
-				"PCRs": {
-					"$ref": "#/definitions/SiteDefinitionItemLocalizationStats",
-					"circular": true
-				},
-				"WorkflowDefinitions": {
-					"$ref": "#/definitions/SiteDefinitionItemLocalizationStats",
-					"circular": true
-				},
-				"WorkflowStates": {
-					"$ref": "#/definitions/SiteDefinitionItemLocalizationStats",
-					"circular": true
-				},
-				"LastUpdateDate": {
-					"type": "string"
-				},
-				"IsStats": {
-					"type": "boolean"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/L10N/stats",
+		"method": "get",
+		"endpoint": "/api/v1/L10N/stats",
 		"tags": [
 			"L10N"
-		]
+		],
+		"summary": "Retrieves the summary of Site Definitions Localization on the Ingeniux CMS site"
 	},
 	{
 		"tool_name": "L10N_GetPageSchemas",
-		"description": "GET /L10N/page-schemas",
+		"description": "Retrieves localization on all Page Schemas of the site. The name on each entry is localized name if localization exists",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -435,64 +238,18 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"IsTranslated",
-							"IsIncomplete",
-							"IsOutDated"
-						],
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							},
-							"IsTranslated": {
-								"type": "boolean"
-							},
-							"IsIncomplete": {
-								"type": "boolean"
-							},
-							"IsOutDated": {
-								"type": "boolean"
-							}
-						}
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/L10N/page-schemas",
+		"method": "get",
+		"endpoint": "/api/v1/L10N/page-schemas",
 		"tags": [
 			"L10N"
-		]
+		],
+		"summary": "Retrieves localization on all Page Schemas of the site. The name on each entry is localized name if localization exists"
 	},
 	{
 		"tool_name": "L10N_GetComponentSchemas",
-		"description": "GET /L10N/component-schemas",
+		"description": "Retrieves localization on all Component Schemas of the site. The name on each entry is localized name if localization exists",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -509,64 +266,18 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"IsTranslated",
-							"IsIncomplete",
-							"IsOutDated"
-						],
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							},
-							"IsTranslated": {
-								"type": "boolean"
-							},
-							"IsIncomplete": {
-								"type": "boolean"
-							},
-							"IsOutDated": {
-								"type": "boolean"
-							}
-						}
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/L10N/component-schemas",
+		"method": "get",
+		"endpoint": "/api/v1/L10N/component-schemas",
 		"tags": [
 			"L10N"
-		]
+		],
+		"summary": "Retrieves localization on all Component Schemas of the site. The name on each entry is localized name if localization exists"
 	},
 	{
 		"tool_name": "L10N_GetAssetSchemas",
-		"description": "GET /L10N/asset-schemas",
+		"description": "Retrieves localization on all Asset Schemas of the site. The name on each entry is localized name if localization exists",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -583,64 +294,18 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"IsTranslated",
-							"IsIncomplete",
-							"IsOutDated"
-						],
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							},
-							"IsTranslated": {
-								"type": "boolean"
-							},
-							"IsIncomplete": {
-								"type": "boolean"
-							},
-							"IsOutDated": {
-								"type": "boolean"
-							}
-						}
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/L10N/asset-schemas",
+		"method": "get",
+		"endpoint": "/api/v1/L10N/asset-schemas",
 		"tags": [
 			"L10N"
-		]
+		],
+		"summary": "Retrieves localization on all Asset Schemas of the site. The name on each entry is localized name if localization exists"
 	},
 	{
 		"tool_name": "L10N_GetPCRs",
-		"description": "GET /L10N/pcrs",
+		"description": "Retrieves localization on all Page Creation Rules on the site. The name of each entry is localized name if localization exists",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -657,64 +322,18 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"IsTranslated",
-							"IsIncomplete",
-							"IsOutDated"
-						],
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							},
-							"IsTranslated": {
-								"type": "boolean"
-							},
-							"IsIncomplete": {
-								"type": "boolean"
-							},
-							"IsOutDated": {
-								"type": "boolean"
-							}
-						}
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/L10N/pcrs",
+		"method": "get",
+		"endpoint": "/api/v1/L10N/pcrs",
 		"tags": [
 			"L10N"
-		]
+		],
+		"summary": "Retrieves localization on all Page Creation Rules on the site. The name of each entry is localized name if localization exists"
 	},
 	{
 		"tool_name": "L10N_GetWorkflowDefinitions",
-		"description": "GET /L10N/workflow-definitions",
+		"description": "Retrieves all Workflow Definitions on the site. The name of each entry is localized name if localization exists",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -731,64 +350,18 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"IsTranslated",
-							"IsIncomplete",
-							"IsOutDated"
-						],
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							},
-							"IsTranslated": {
-								"type": "boolean"
-							},
-							"IsIncomplete": {
-								"type": "boolean"
-							},
-							"IsOutDated": {
-								"type": "boolean"
-							}
-						}
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/L10N/workflow-definitions",
+		"method": "get",
+		"endpoint": "/api/v1/L10N/workflow-definitions",
 		"tags": [
 			"L10N"
-		]
+		],
+		"summary": "Retrieves all Workflow Definitions on the site. The name of each entry is localized name if localization exists"
 	},
 	{
 		"tool_name": "L10N_GetWorkstates",
-		"description": "GET /L10N/workstates",
+		"description": "Retrieves all Workstates on the site. The name of each entry is localized name if localization exists",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -805,64 +378,18 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"IsTranslated",
-							"IsIncomplete",
-							"IsOutDated"
-						],
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							},
-							"IsTranslated": {
-								"type": "boolean"
-							},
-							"IsIncomplete": {
-								"type": "boolean"
-							},
-							"IsOutDated": {
-								"type": "boolean"
-							}
-						}
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/L10N/workstates",
+		"method": "get",
+		"endpoint": "/api/v1/L10N/workstates",
 		"tags": [
 			"L10N"
-		]
+		],
+		"summary": "Retrieves all Workstates on the site. The name of each entry is localized name if localization exists"
 	},
 	{
 		"tool_name": "Logs_GetCMSLog",
-		"description": "GET /logs/cms",
+		"description": "Retrieves CMS log entries.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -884,536 +411,105 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"LineNum"
-						],
-						"properties": {
-							"LineNum": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"Message": {
-								"type": "string"
-							},
-							"Type": {
-								"type": "string"
-							},
-							"Time": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			},
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			]
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/logs/cms",
+		"method": "get",
+		"endpoint": "/api/v1/logs/cms",
 		"tags": [
 			"Logs"
-		]
+		],
+		"summary": "Retrieves CMS log entries."
 	},
 	{
 		"tool_name": "Logs_GetCMSLogFile",
-		"description": "GET /logs/cms/file",
+		"description": "Downloads the CMS design-time log file.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "file"
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/logs/cms/file",
+		"method": "get",
+		"endpoint": "/api/v1/logs/cms/file",
 		"tags": [
 			"Logs"
-		]
+		],
+		"summary": "Downloads the CMS design-time log file."
 	},
 	{
 		"tool_name": "Logs_GetCMSLogArchives",
-		"description": "GET /logs/cms/archive",
+		"description": "Retrieves the archived design-time log files as a zip file.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "file"
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/logs/cms/archive",
+		"method": "get",
+		"endpoint": "/api/v1/logs/cms/archive",
 		"tags": [
 			"Logs"
-		]
+		],
+		"summary": "Retrieves the archived design-time log files as a zip file."
 	},
 	{
 		"tool_name": "Notifications_GetContentFreeze",
-		"description": "GET /notifications/contentfreeze",
+		"description": "Retrieves the Content Freeze State",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"AllowMe"
-			],
-			"properties": {
-				"StartTime": {
-					"type": "string"
-				},
-				"EndTime": {
-					"type": "string"
-				},
-				"AllowMe": {
-					"type": "boolean"
-				},
-				"Message": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/notifications/contentfreeze",
+		"method": "get",
+		"endpoint": "/api/v1/notifications/contentfreeze",
 		"tags": [
 			"Notifications"
-		]
+		],
+		"summary": "Retrieves the Content Freeze State"
 	},
 	{
 		"tool_name": "Notifications_GetAlerts",
-		"description": "GET /notifications/alerts",
+		"description": "Retrieves System and Database Alerts",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"all": {
 					"type": "boolean",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "If False (default), only returns Severity level \"Warning\" and \"Error\""
 				}
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"systemAlerts": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"CreatedAt",
-							"Observed"
-						],
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Title": {
-								"type": "string"
-							},
-							"CreatedAt": {
-								"type": "string",
-								"format": "date-time"
-							},
-							"Observed": {
-								"type": "boolean"
-							},
-							"Message": {
-								"type": "string"
-							},
-							"Severity": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"dbAlerts": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/AlertModel",
-						"circular": true
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/notifications/alerts",
+		"method": "get",
+		"endpoint": "/api/v1/notifications/alerts",
 		"tags": [
 			"Notifications"
-		]
+		],
+		"summary": "Retrieves System and Database Alerts"
 	},
 	{
 		"tool_name": "Dashboard_GetOverview",
-		"description": "GET /dashboard/overview",
+		"description": "Overview of User, Page and Publishing statistics",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"InProgressTotal"
-			],
-			"properties": {
-				"UserStats": {
-					"type": "object",
-					"properties": {
-						"LastLogin": {
-							"type": "string"
-						},
-						"LastPageWorkedOnName": {
-							"type": "string"
-						},
-						"LastPageWorkedOnId": {
-							"type": "string"
-						},
-						"LastPageWorkedOn": {
-							"type": "string"
-						},
-						"LastPublishTime": {
-							"type": "string"
-						},
-						"PagesCheckedOut": {
-							"type": "string"
-						},
-						"DashboardOptions": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"Value",
-									"Order"
-								],
-								"properties": {
-									"Id": {
-										"type": "string"
-									},
-									"Value": {
-										"type": "boolean"
-									},
-									"Order": {
-										"type": "integer",
-										"format": "int32"
-									}
-								}
-							}
-						}
-					}
-				},
-				"PageCreationRules": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"properties": {
-									"Id": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"Icon"
-								],
-								"properties": {
-									"Schema": {
-										"type": "string"
-									},
-									"Icon": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"ThumbUrl": {
-										"type": "string"
-									},
-									"Description": {
-										"type": "string"
-									},
-									"Author": {
-										"type": "string"
-									}
-								}
-							}
-						]
-					}
-				},
-				"InProgress": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"$ref": "#/definitions/NameIdPair",
-								"circular": true
-							},
-							{
-								"type": "object",
-								"required": [
-									"Icon"
-								],
-								"properties": {
-									"Icon": {
-										"type": "integer",
-										"format": "int32"
-									}
-								}
-							}
-						]
-					}
-				},
-				"InProgressTotal": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"ActiveUsers": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"$ref": "#/definitions/NameIdPair",
-								"circular": true
-							},
-							{
-								"type": "object",
-								"required": [
-									"AssignedPageCount"
-								],
-								"properties": {
-									"Email": {
-										"type": "string"
-									},
-									"LastLogin": {
-										"type": "string"
-									},
-									"AssignedPageCount": {
-										"type": "integer",
-										"format": "int32"
-									}
-								}
-							}
-						]
-					}
-				},
-				"PublishStats": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"type": "object",
-										"x-abstract": true,
-										"properties": {
-											"Id": {
-												"type": "string"
-											}
-										}
-									},
-									{
-										"type": "object",
-										"properties": {
-											"Name": {
-												"type": "string"
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object",
-								"properties": {
-									"Value": {
-										"type": "string"
-									},
-									"LastPubDate": {
-										"type": "string"
-									}
-								}
-							}
-						]
-					}
-				},
-				"CMSStatistics": {
-					"type": "object",
-					"properties": {
-						"Statistics": {
-							"type": "object",
-							"required": [
-								"TotalPageCount",
-								"TotalAssetCount",
-								"TotalUsers"
-							],
-							"properties": {
-								"TotalPageCount": {
-									"type": "integer",
-									"format": "int32"
-								},
-								"TotalAssetCount": {
-									"type": "integer",
-									"format": "int32"
-								},
-								"TotalUsers": {
-									"type": "integer",
-									"format": "int32"
-								},
-								"DatabaseBuild": {
-									"type": "string"
-								},
-								"SiteVersion": {
-									"type": "string"
-								},
-								"ContentVersion": {
-									"type": "string"
-								}
-							}
-						},
-						"SiteName": {
-							"type": "string"
-						}
-					}
-				},
-				"Preferences": {
-					"type": "object",
-					"properties": {
-						"WatchedPages": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/OverviewPageInformation",
-								"circular": true
-							}
-						},
-						"WatchedAssetItems": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/OverviewPageInformation",
-								"circular": true
-							}
-						},
-						"RecentPages": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/OverviewPageInformation",
-								"circular": true
-							}
-						},
-						"RecentAssetItems": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/OverviewPageInformation",
-								"circular": true
-							}
-						},
-						"Error": {
-							"type": "string"
-						}
-					}
-				},
-				"PubTargets": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/NameIdPair",
-						"circular": true
-					}
-				},
-				"Analytics": {
-					"type": "object",
-					"properties": {
-						"Targets": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/NameIdPair",
-								"circular": true
-							}
-						}
-					}
-				},
-				"AnalyticsInitial": {
-					"type": "object",
-					"properties": {
-						"Traffic": {
-							"$ref": "#/definitions/NameIdPair",
-							"circular": true,
-							"type": "object",
-							"properties": {
-								"Info": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"Value": {
-												"type": "string"
-											},
-											"Name": {
-												"type": "string"
-											}
-										}
-									}
-								},
-								"Error": {
-									"type": "string"
-								}
-							}
-						},
-						"Sources": {
-							"$ref": "#/definitions/NameIdPair",
-							"circular": true,
-							"type": "object",
-							"properties": {
-								"PiePieces": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"required": [
-											"Data"
-										],
-										"properties": {
-											"Label": {
-												"type": "string"
-											},
-											"Data": {
-												"type": "integer",
-												"format": "int32"
-											}
-										}
-									}
-								},
-								"Error": {
-									"type": "string"
-								}
-							}
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dashboard/overview",
+		"method": "get",
+		"endpoint": "/api/v1/dashboard/overview",
 		"tags": [
 			"Dashboard"
-		]
+		],
+		"summary": "Overview of User, Page and Publishing statistics"
 	}
 ]

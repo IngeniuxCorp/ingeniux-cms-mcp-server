@@ -1,14 +1,15 @@
 [
 	{
 		"tool_name": "Preview_GetTaxonomyCategoriesByPage",
-		"description": "GET /preview/taxonomy-by-page",
+		"description": "Retrieves taxonomy categories for a Page by Page ID.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"id": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Page ID."
 				}
 			},
 			"required": [
@@ -16,212 +17,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"allOf": [
-											{
-												"type": "object",
-												"properties": {
-													"Id": {
-														"type": "string"
-													},
-													"Name": {
-														"type": "string"
-													}
-												}
-											},
-											{
-												"type": "object"
-											}
-										]
-									},
-									{
-										"type": "object",
-										"x-abstract": true,
-										"required": [
-											"Created",
-											"LastModified",
-											"Archived"
-										],
-										"properties": {
-											"CreationUser": {
-												"type": "string"
-											},
-											"Created": {
-												"type": "string",
-												"format": "date-time"
-											},
-											"LastModifiedUser": {
-												"type": "string"
-											},
-											"LastModified": {
-												"type": "string",
-												"format": "date-time"
-											},
-											"EntityType": {
-												"type": "string"
-											},
-											"Archived": {
-												"type": "boolean"
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object",
-								"required": [
-									"ChildrenCount",
-									"SiblingPosition"
-								],
-								"properties": {
-									"ParentId": {
-										"type": "string"
-									},
-									"ChildrenCount": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"SiblingPosition": {
-										"type": "number",
-										"format": "double"
-									}
-								}
-							}
-						]
-					},
-					{
-						"type": "object",
-						"required": [
-							"SecurityLevel"
-						],
-						"properties": {
-							"Description": {
-								"type": "string"
-							},
-							"TypeName": {
-								"type": "string"
-							},
-							"ExternalId": {
-								"type": "string"
-							},
-							"PageIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"AssetIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"Locale": {
-								"type": "string"
-							},
-							"Synonyms": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"Locale": {
-											"type": "string"
-										},
-										"Value": {
-											"type": "string"
-										}
-									}
-								}
-							},
-							"SecurityLevel": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"GroupPermissions": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"required": [
-										"PermissionLevel"
-									],
-									"properties": {
-										"GroupId": {
-											"type": "string"
-										},
-										"GroupName": {
-											"type": "string"
-										},
-										"PermissionLevel": {
-											"type": "string",
-											"description": "The list of node-level permissions for Pages",
-											"x-enumNames": [
-												"NO_ACCESS",
-												"READ_ONLY",
-												"FULL_ACCESS"
-											],
-											"enum": [
-												"NO_ACCESS",
-												"READ_ONLY",
-												"FULL_ACCESS"
-											]
-										}
-									}
-								}
-							},
-							"Translations": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"required": [
-										"RequiresUpdate"
-									],
-									"properties": {
-										"Locale": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										},
-										"Description": {
-											"type": "string"
-										},
-										"TypeName": {
-											"type": "string"
-										},
-										"RequiresUpdate": {
-											"type": "boolean"
-										}
-									}
-								}
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/preview/taxonomy-by-page",
+		"method": "get",
+		"endpoint": "/api/v1/preview/taxonomy-by-page",
 		"tags": [
 			"Preview"
-		]
+		],
+		"summary": "Retrieves taxonomy categories for a Page by Page ID."
 	},
 	{
 		"tool_name": "Preview_GetTaxonomyCategoriesByAsset",
-		"description": "GET /preview/taxonomy-by-asset",
+		"description": "Retrieves taxonomy categories for an asset by asset ID.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"id": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Asset ID"
 				}
 			},
 			"required": [
@@ -229,222 +44,38 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"allOf": [
-											{
-												"type": "object",
-												"properties": {
-													"Id": {
-														"type": "string"
-													},
-													"Name": {
-														"type": "string"
-													}
-												}
-											},
-											{
-												"type": "object"
-											}
-										]
-									},
-									{
-										"type": "object",
-										"x-abstract": true,
-										"required": [
-											"Created",
-											"LastModified",
-											"Archived"
-										],
-										"properties": {
-											"CreationUser": {
-												"type": "string"
-											},
-											"Created": {
-												"type": "string",
-												"format": "date-time"
-											},
-											"LastModifiedUser": {
-												"type": "string"
-											},
-											"LastModified": {
-												"type": "string",
-												"format": "date-time"
-											},
-											"EntityType": {
-												"type": "string"
-											},
-											"Archived": {
-												"type": "boolean"
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object",
-								"required": [
-									"ChildrenCount",
-									"SiblingPosition"
-								],
-								"properties": {
-									"ParentId": {
-										"type": "string"
-									},
-									"ChildrenCount": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"SiblingPosition": {
-										"type": "number",
-										"format": "double"
-									}
-								}
-							}
-						]
-					},
-					{
-						"type": "object",
-						"required": [
-							"SecurityLevel"
-						],
-						"properties": {
-							"Description": {
-								"type": "string"
-							},
-							"TypeName": {
-								"type": "string"
-							},
-							"ExternalId": {
-								"type": "string"
-							},
-							"PageIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"AssetIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"Locale": {
-								"type": "string"
-							},
-							"Synonyms": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"Locale": {
-											"type": "string"
-										},
-										"Value": {
-											"type": "string"
-										}
-									}
-								}
-							},
-							"SecurityLevel": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"GroupPermissions": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"required": [
-										"PermissionLevel"
-									],
-									"properties": {
-										"GroupId": {
-											"type": "string"
-										},
-										"GroupName": {
-											"type": "string"
-										},
-										"PermissionLevel": {
-											"type": "string",
-											"description": "The list of node-level permissions for Pages",
-											"x-enumNames": [
-												"NO_ACCESS",
-												"READ_ONLY",
-												"FULL_ACCESS"
-											],
-											"enum": [
-												"NO_ACCESS",
-												"READ_ONLY",
-												"FULL_ACCESS"
-											]
-										}
-									}
-								}
-							},
-							"Translations": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"required": [
-										"RequiresUpdate"
-									],
-									"properties": {
-										"Locale": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										},
-										"Description": {
-											"type": "string"
-										},
-										"TypeName": {
-											"type": "string"
-										},
-										"RequiresUpdate": {
-											"type": "boolean"
-										}
-									}
-								}
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/preview/taxonomy-by-asset",
+		"method": "get",
+		"endpoint": "/api/v1/preview/taxonomy-by-asset",
 		"tags": [
 			"Preview"
-		]
+		],
+		"summary": "Retrieves taxonomy categories for an asset by asset ID."
 	},
 	{
 		"tool_name": "Preview_GetTaxonomyCategoryDescendants",
-		"description": "GET /preview/taxonomy-descendants",
+		"description": "Retrieves taxonomy categories for content item descendants.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"id": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Content item ID"
 				},
 				"depth": {
 					"type": "integer",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Depth to which to recurse"
 				},
 				"maxCount": {
 					"type": "integer",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Max number of results to return (default = -1, no max)"
 				}
 			},
 			"required": [
@@ -452,92 +83,49 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"required": [
-							"SiblingPosition"
-						],
-						"properties": {
-							"ParentId": {
-								"type": "string"
-							},
-							"SiblingPosition": {
-								"type": "number",
-								"format": "double"
-							},
-							"CheckedOutName": {
-								"type": "string"
-							},
-							"CheckedInName": {
-								"type": "string"
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/preview/taxonomy-descendants",
+		"method": "get",
+		"endpoint": "/api/v1/preview/taxonomy-descendants",
 		"tags": [
 			"Preview"
-		]
+		],
+		"summary": "Retrieves taxonomy categories for content item descendants."
 	},
 	{
 		"tool_name": "Preview_GetGlobalExports",
-		"description": "GET /preview/global-exports",
+		"description": "Retrieves global exports for the preview.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"Name": {
-						"type": "string"
-					},
-					"Query": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/preview/global-exports",
+		"method": "get",
+		"endpoint": "/api/v1/preview/global-exports",
 		"tags": [
 			"Preview"
-		]
+		],
+		"summary": "Retrieves global exports for the preview."
 	},
 	{
 		"tool_name": "Preview_StreamPageXml",
-		"description": "GET /preview/stream/page-xml",
+		"description": "Retrieves page XML for a specified publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Publishing Target ID"
 				},
 				"count": {
 					"type": "integer",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Number of results to return (default = -1, no limit)"
 				}
 			},
 			"required": [
@@ -545,494 +133,130 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"type": "object",
-										"properties": {
-											"Id": {
-												"type": "string"
-											},
-											"Name": {
-												"type": "string"
-											}
-										}
-									},
-									{
-										"type": "object"
-									}
-								]
-							},
-							{
-								"type": "object",
-								"x-abstract": true,
-								"required": [
-									"Created",
-									"LastModified",
-									"Archived"
-								],
-								"properties": {
-									"CreationUser": {
-										"type": "string"
-									},
-									"Created": {
-										"type": "string",
-										"format": "date-time"
-									},
-									"LastModifiedUser": {
-										"type": "string"
-									},
-									"LastModified": {
-										"type": "string",
-										"format": "date-time"
-									},
-									"EntityType": {
-										"type": "string"
-									},
-									"Archived": {
-										"type": "boolean"
-									}
-								}
-							}
-						]
-					},
-					{
-						"type": "object",
-						"required": [
-							"Version",
-							"CheckedOut"
-						],
-						"properties": {
-							"Content": {
-								"type": "string"
-							},
-							"PageId": {
-								"type": "string"
-							},
-							"Version": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"CheckedOut": {
-								"type": "boolean"
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/preview/stream/page-xml",
+		"method": "get",
+		"endpoint": "/api/v1/preview/stream/page-xml",
 		"tags": [
 			"Preview"
-		]
+		],
+		"summary": "Retrieves page XML for a specified publishing target."
 	},
 	{
 		"tool_name": "Preview_StreamPageReferences",
-		"description": "GET /preview/stream/page-references",
+		"description": "Streams Page references.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"count": {
 					"type": "integer",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Number of results to return (default = -1, no limit)"
 				}
 			}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"required": [
-							"SiblingPosition"
-						],
-						"properties": {
-							"ParentId": {
-								"type": "string"
-							},
-							"SiblingPosition": {
-								"type": "number",
-								"format": "double"
-							},
-							"CheckedOutName": {
-								"type": "string"
-							},
-							"CheckedInName": {
-								"type": "string"
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/preview/stream/page-references",
+		"method": "get",
+		"endpoint": "/api/v1/preview/stream/page-references",
 		"tags": [
 			"Preview"
-		]
+		],
+		"summary": "Streams Page references."
 	},
 	{
 		"tool_name": "Preview_StreamAssetReferences",
-		"description": "GET /preview/stream/asset-references",
+		"description": "Streams Asset references.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"count": {
 					"type": "integer",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Number of results to return (default = -1, no limit)"
 				}
 			}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"allOf": [
-							{
-								"type": "object",
-								"properties": {
-									"Id": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"SiblingPosition"
-								],
-								"properties": {
-									"ParentId": {
-										"type": "string"
-									},
-									"SiblingPosition": {
-										"type": "number",
-										"format": "double"
-									},
-									"CheckedOutName": {
-										"type": "string"
-									},
-									"CheckedInName": {
-										"type": "string"
-									}
-								}
-							}
-						]
-					},
-					{
-						"type": "object",
-						"properties": {
-							"Extension": {
-								"type": "string"
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/preview/stream/asset-references",
+		"method": "get",
+		"endpoint": "/api/v1/preview/stream/asset-references",
 		"tags": [
 			"Preview"
-		]
+		],
+		"summary": "Streams Asset references."
 	},
 	{
 		"tool_name": "Preview_StreamTaxonomyCategories",
-		"description": "GET /preview/stream/taxonomy",
+		"description": "Streams taxonomy categories.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"count": {
 					"type": "integer",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Number of results to return (default = -1, no limit)"
 				}
 			}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"allOf": [
-											{
-												"type": "object",
-												"properties": {
-													"Id": {
-														"type": "string"
-													},
-													"Name": {
-														"type": "string"
-													}
-												}
-											},
-											{
-												"type": "object"
-											}
-										]
-									},
-									{
-										"type": "object",
-										"x-abstract": true,
-										"required": [
-											"Created",
-											"LastModified",
-											"Archived"
-										],
-										"properties": {
-											"CreationUser": {
-												"type": "string"
-											},
-											"Created": {
-												"type": "string",
-												"format": "date-time"
-											},
-											"LastModifiedUser": {
-												"type": "string"
-											},
-											"LastModified": {
-												"type": "string",
-												"format": "date-time"
-											},
-											"EntityType": {
-												"type": "string"
-											},
-											"Archived": {
-												"type": "boolean"
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object",
-								"required": [
-									"ChildrenCount",
-									"SiblingPosition"
-								],
-								"properties": {
-									"ParentId": {
-										"type": "string"
-									},
-									"ChildrenCount": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"SiblingPosition": {
-										"type": "number",
-										"format": "double"
-									}
-								}
-							}
-						]
-					},
-					{
-						"type": "object",
-						"required": [
-							"SecurityLevel"
-						],
-						"properties": {
-							"Description": {
-								"type": "string"
-							},
-							"TypeName": {
-								"type": "string"
-							},
-							"ExternalId": {
-								"type": "string"
-							},
-							"PageIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"AssetIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"Locale": {
-								"type": "string"
-							},
-							"Synonyms": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"Locale": {
-											"type": "string"
-										},
-										"Value": {
-											"type": "string"
-										}
-									}
-								}
-							},
-							"SecurityLevel": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"GroupPermissions": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"required": [
-										"PermissionLevel"
-									],
-									"properties": {
-										"GroupId": {
-											"type": "string"
-										},
-										"GroupName": {
-											"type": "string"
-										},
-										"PermissionLevel": {
-											"type": "string",
-											"description": "The list of node-level permissions for Pages",
-											"x-enumNames": [
-												"NO_ACCESS",
-												"READ_ONLY",
-												"FULL_ACCESS"
-											],
-											"enum": [
-												"NO_ACCESS",
-												"READ_ONLY",
-												"FULL_ACCESS"
-											]
-										}
-									}
-								}
-							},
-							"Translations": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"required": [
-										"RequiresUpdate"
-									],
-									"properties": {
-										"Locale": {
-											"type": "string"
-										},
-										"Name": {
-											"type": "string"
-										},
-										"Description": {
-											"type": "string"
-										},
-										"TypeName": {
-											"type": "string"
-										},
-										"RequiresUpdate": {
-											"type": "boolean"
-										}
-									}
-								}
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/preview/stream/taxonomy",
+		"method": "get",
+		"endpoint": "/api/v1/preview/stream/taxonomy",
 		"tags": [
 			"Preview"
-		]
+		],
+		"summary": "Streams taxonomy categories."
 	},
 	{
 		"tool_name": "Preview_GetPageForwardReferences",
-		"description": "GET /preview/page-forward-references",
+		"description": "Retrieves forward references for a list of page IDs.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"ids": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
-			},
+			"properties": {},
 			"required": [
-				"ids",
 				"ids"
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "string"
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/preview/page-forward-references",
+		"method": "get",
+		"endpoint": "/api/v1/preview/page-forward-references",
 		"tags": [
 			"Preview"
-		]
+		],
+		"summary": "Retrieves forward references for a list of page IDs."
 	},
 	{
 		"tool_name": "Preview_GetPageCrossReferences",
-		"description": "GET /preview/page-cross-references",
+		"description": "Retrieves cross references for a list of Page IDs.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"ids": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
-			},
+			"properties": {},
 			"required": [
-				"ids",
 				"ids"
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "string"
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/preview/page-cross-references",
+		"method": "get",
+		"endpoint": "/api/v1/preview/page-cross-references",
 		"tags": [
 			"Preview"
-		]
+		],
+		"summary": "Retrieves cross references for a list of Page IDs."
 	},
 	{
 		"tool_name": "Preview_GetDitaAssetPreviewStatus",
-		"description": "GET /preview/dita-asset-preview-status",
+		"description": "Preview get operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1070,105 +294,17 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"Running"
-			],
-			"properties": {
-				"Running": {
-					"type": "boolean"
-				},
-				"NormalizedTempFilePath": {
-					"type": "string"
-				},
-				"DitaRenderingXsltId": {
-					"type": "string"
-				},
-				"LogPath": {
-					"type": "string"
-				},
-				"TaskId": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/preview/dita-asset-preview-status",
-		"tags": [
-			"Preview"
-		]
-	},
-	{
-		"tool_name": "Preview_StartGeneratingDitaAssetPreview",
-		"description": "POST /preview/dita-asset-preview",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"assetId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
-				},
-				"mapId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
-				},
-				"ditavalId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
-				},
-				"ditaNormPubTargetId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
-				},
-				"pubTargetId": {
-					"type": "string",
-					"required": false,
-					"in": "query"
-				}
-			},
-			"required": [
-				"assetId",
-				"mapId",
-				"ditavalId",
-				"ditaNormPubTargetId"
-			]
-		},
-		"output_schema": {
-			"type": "object",
-			"required": [
-				"Running"
-			],
-			"properties": {
-				"Running": {
-					"type": "boolean"
-				},
-				"NormalizedTempFilePath": {
-					"type": "string"
-				},
-				"DitaRenderingXsltId": {
-					"type": "string"
-				},
-				"LogPath": {
-					"type": "string"
-				},
-				"TaskId": {
-					"type": "string"
-				}
-			}
-		},
-		"method": "POST",
-		"endpoint": "/preview/dita-asset-preview",
+		"method": "get",
+		"endpoint": "/api/v1/preview/dita-asset-preview-status",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_CancelDitaAssetPreview",
-		"description": "DELETE /preview/dita-asset-preview",
+		"description": "Preview delete operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1206,24 +342,73 @@
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "DELETE",
-		"endpoint": "/preview/dita-asset-preview",
+		"method": "delete",
+		"endpoint": "/api/v1/preview/dita-asset-preview",
+		"tags": [
+			"Preview"
+		]
+	},
+	{
+		"tool_name": "Preview_StartGeneratingDitaAssetPreview",
+		"description": "Preview post operation",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"assetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"mapId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"ditavalId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"ditaNormPubTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query"
+				},
+				"pubTargetId": {
+					"type": "string",
+					"required": false,
+					"in": "query"
+				}
+			},
+			"required": [
+				"assetId",
+				"mapId",
+				"ditavalId",
+				"ditaNormPubTargetId"
+			]
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "post",
+		"endpoint": "/api/v1/preview/dita-asset-preview",
 		"tags": [
 			"Preview"
 		]
 	},
 	{
 		"tool_name": "Preview_DownloadLog",
-		"description": "GET /preview/asset-dependents-csv",
+		"description": "Retrieves logs for a log path.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"logPath": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Log path"
 				}
 			},
 			"required": [
@@ -1231,17 +416,18 @@
 			]
 		},
 		"output_schema": {
-			"type": "file"
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/preview/asset-dependents-csv",
+		"method": "get",
+		"endpoint": "/api/v1/preview/asset-dependents-csv",
 		"tags": [
 			"Preview"
-		]
+		],
+		"summary": "Retrieves logs for a log path."
 	},
 	{
 		"tool_name": "Publishing_GetPubPreviewTaskContentPage",
-		"description": "GET /publishing/publish-preview-content",
+		"description": "Retrieves the publish preview for given assets.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1273,77 +459,50 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Version": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/publish-preview-content",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/publish-preview-content",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves the publish preview for given assets."
 	},
 	{
 		"tool_name": "Publishing_PublishPreview",
-		"description": "POST /publishing/publish-preview",
+		"description": "Retrieves the publish preview for given content item and publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"contentItemId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Content item ID"
 				},
 				"publishingTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Publishing target ID"
 				},
 				"incremental": {
 					"type": "boolean",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Specifies whether to perform an incremental publish"
 				},
 				"includeChildren": {
 					"type": "boolean",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Specifies whether to include content item children"
 				},
 				"sitePublish": {
 					"type": "boolean",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Specifies whether to do a sitewide publish"
 				}
 			},
 			"required": [
@@ -1355,65 +514,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"IsFullPublish",
-				"SitePublish",
-				"IncludeChildren",
-				"PagesCount",
-				"AssetsCount"
-			],
-			"properties": {
-				"TaskId": {
-					"type": "string"
-				},
-				"IsFullPublish": {
-					"type": "boolean"
-				},
-				"SitePublish": {
-					"type": "boolean"
-				},
-				"PublishingTargetName": {
-					"type": "string"
-				},
-				"SubmitTime": {
-					"type": "string"
-				},
-				"SubmitUserId": {
-					"type": "string"
-				},
-				"RootPageId": {
-					"type": "string"
-				},
-				"IncludeChildren": {
-					"type": "boolean"
-				},
-				"PagesCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"AssetsCount": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/publishing/publish-preview",
+		"method": "post",
+		"endpoint": "/api/v1/publishing/publish-preview",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves the publish preview for given content item and publishing target."
 	},
 	{
 		"tool_name": "Publishing_GetPublishingLogDetails",
-		"description": "GET /publishing/log-detail",
+		"description": "Retrieves details for a publishing log.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"id": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Publishing log ID"
 				}
 			},
 			"required": [
@@ -1421,162 +541,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"EntityType": {
-					"type": "string"
-				},
-				"Archived": {
-					"type": "boolean"
-				},
-				"Error": {
-					"type": "string"
-				},
-				"PublishingTargetId": {
-					"type": "string"
-				},
-				"PublishingTargetName": {
-					"type": "string"
-				},
-				"PublishingTaskId": {
-					"type": "string"
-				},
-				"StartTime": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"SubmitTime": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"UserID": {
-					"type": "string"
-				},
-				"UserName": {
-					"type": "string"
-				},
-				"Incremental": {
-					"type": "boolean"
-				},
-				"ForcedIncremental": {
-					"type": "boolean"
-				},
-				"TotalTimeSeconds": {
-					"type": "number",
-					"format": "double"
-				},
-				"FailedItemsCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"AveragePagePublishMillis": {
-					"type": "number",
-					"format": "double"
-				},
-				"TotalPagesPublished": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"AverageAssetPublishMillis": {
-					"type": "number",
-					"format": "double"
-				},
-				"TotalAssetsPublished": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Entries": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"Success"
-						],
-						"properties": {
-							"PageID": {
-								"type": "string"
-							},
-							"Error": {
-								"type": "string"
-							},
-							"Success": {
-								"type": "boolean"
-							},
-							"SuccessMessage": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"CompletionTime": {
-					"type": "string"
-				},
-				"ReplicationsToPerform": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"ReplicationCompletionTime": {
-					"type": "string"
-				},
-				"ReplicationStoppingError": {
-					"type": "boolean"
-				}
-			},
-			"required": [
-				"Created",
-				"LastModified",
-				"Archived",
-				"StartTime",
-				"SubmitTime",
-				"Incremental",
-				"ForcedIncremental",
-				"TotalTimeSeconds",
-				"FailedItemsCount",
-				"AveragePagePublishMillis",
-				"TotalPagesPublished",
-				"AverageAssetPublishMillis",
-				"TotalAssetsPublished",
-				"ReplicationsToPerform",
-				"ReplicationStoppingError"
-			]
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/log-detail",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/log-detail",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves details for a publishing log."
 	},
 	{
 		"tool_name": "Publishing_GetPublishingTargetPublishingSummary",
-		"description": "GET /publishing/target-summary",
+		"description": "Retrieves a log summary for a Publishing Target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"publishingTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Publishing Target ID"
 				}
 			},
 			"required": [
@@ -1584,481 +568,35 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"numRows"
-			],
-			"properties": {
-				"identifier": {
-					"type": "string"
-				},
-				"numRows": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"label": {
-					"type": "string"
-				},
-				"items": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"FileName": {
-								"type": "string"
-							},
-							"PublishingTargetID": {
-								"type": "string"
-							},
-							"PublishTime": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"Full": {
-					"type": "object",
-					"required": [
-						"TotalPublishCount",
-						"AvgPublishTime",
-						"AvgPublishPages",
-						"AvgPublishAssets"
-					],
-					"properties": {
-						"TotalPublishCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"AvgPublishTime": {
-							"type": "number",
-							"format": "double"
-						},
-						"AvgPublishPages": {
-							"type": "number",
-							"format": "double"
-						},
-						"AvgPublishAssets": {
-							"type": "number",
-							"format": "double"
-						}
-					}
-				},
-				"Incremental": {
-					"$ref": "#/definitions/PublishingLogSummaryValues",
-					"circular": true
-				},
-				"repTargets": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/target-summary",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/target-summary",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves a log summary for a Publishing Target."
 	},
 	{
 		"tool_name": "Publishing_GetCurrentTasks",
-		"description": "GET /publishing/current-tasks",
+		"description": "Polls and lists currently running publishing tasks.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"PendingItemsCount"
-			],
-			"properties": {
-				"PendingItemsCount": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Publishing": {
-					"type": "object",
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string"
-						},
-						"PubTargetName": {
-							"type": "string"
-						},
-						"RootPageId": {
-							"type": "string"
-						},
-						"IsFullPublish": {
-							"type": "boolean"
-						},
-						"SubmitTime": {
-							"type": "string"
-						},
-						"SubmitUserId": {
-							"type": "string"
-						},
-						"EstimatedStartTime": {
-							"type": "string"
-						},
-						"PagesCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"Pages": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"WaitingForSync": {
-							"type": "boolean"
-						},
-						"StartTime": {
-							"type": "string"
-						},
-						"TasksCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"CurrentStatus": {
-							"type": "string"
-						},
-						"PercentCompleted": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"EstimatedEndTime": {
-							"type": "string"
-						},
-						"AverageMilliSecondsPerPage": {
-							"type": "number",
-							"format": "double"
-						},
-						"AveragePagesPerSecond": {
-							"type": "number",
-							"format": "double"
-						},
-						"PagesPublished": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"Inactive": {
-							"type": "boolean"
-						},
-						"Errors": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"TaskId": {
-										"type": "string"
-									},
-									"ErrorMessage": {
-										"type": "string"
-									}
-								}
-							}
-						},
-						"UpdateTime": {
-							"type": "string"
-						}
-					},
-					"required": [
-						"IsFullPublish",
-						"PagesCount",
-						"WaitingForSync",
-						"TasksCount",
-						"PercentCompleted",
-						"AverageMilliSecondsPerPage",
-						"AveragePagesPerSecond",
-						"PagesPublished",
-						"Inactive"
-					]
-				},
-				"Replications": {
-					"type": "object",
-					"properties": {
-						"Tasks": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"Percentage",
-									"IsSimultaneous"
-								],
-								"properties": {
-									"Sessions": {
-										"type": "array",
-										"items": {
-											"type": "object",
-											"required": [
-												"Started",
-												"Percentage",
-												"Completed",
-												"Cancelled",
-												"Error",
-												"DetectingChanges"
-											],
-											"properties": {
-												"Id": {
-													"type": "string"
-												},
-												"ReplicationTargetId": {
-													"type": "string"
-												},
-												"ReplicationTargetName": {
-													"type": "string"
-												},
-												"StartTime": {
-													"type": "string"
-												},
-												"Started": {
-													"type": "boolean"
-												},
-												"Percentage": {
-													"type": "integer",
-													"format": "int32"
-												},
-												"Completed": {
-													"type": "boolean"
-												},
-												"Cancelled": {
-													"type": "boolean"
-												},
-												"Error": {
-													"type": "boolean"
-												},
-												"DetectingChanges": {
-													"type": "boolean"
-												}
-											}
-										}
-									},
-									"PublishingTargetId": {
-										"type": "string"
-									},
-									"PublishingTargetName": {
-										"type": "string"
-									},
-									"SubmitUserId": {
-										"type": "string"
-									},
-									"SubmitUserName": {
-										"type": "string"
-									},
-									"StartTime": {
-										"type": "string"
-									},
-									"Percentage": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"EstimatedEndTime": {
-										"type": "string"
-									},
-									"IsSimultaneous": {
-										"type": "boolean"
-									}
-								}
-							}
-						}
-					}
-				},
-				"RecentCompletedPublishes": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"allOf": [
-											{
-												"type": "object",
-												"properties": {
-													"Id": {
-														"type": "string"
-													},
-													"Name": {
-														"type": "string"
-													}
-												}
-											},
-											{
-												"type": "object"
-											}
-										]
-									},
-									{
-										"type": "object",
-										"x-abstract": true,
-										"required": [
-											"Created",
-											"LastModified",
-											"Archived"
-										],
-										"properties": {
-											"CreationUser": {
-												"type": "string"
-											},
-											"Created": {
-												"type": "string",
-												"format": "date-time"
-											},
-											"LastModifiedUser": {
-												"type": "string"
-											},
-											"LastModified": {
-												"type": "string",
-												"format": "date-time"
-											},
-											"EntityType": {
-												"type": "string"
-											},
-											"Archived": {
-												"type": "boolean"
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object",
-								"required": [
-									"StartTime",
-									"SubmitTime",
-									"Incremental",
-									"ForcedIncremental",
-									"TotalTimeSeconds",
-									"FailedItemsCount",
-									"AveragePagePublishMillis",
-									"TotalPagesPublished",
-									"AverageAssetPublishMillis",
-									"TotalAssetsPublished",
-									"ReplicationsToPerform",
-									"ReplicationStoppingError"
-								],
-								"properties": {
-									"Error": {
-										"type": "string"
-									},
-									"PublishingTargetId": {
-										"type": "string"
-									},
-									"PublishingTargetName": {
-										"type": "string"
-									},
-									"PublishingTaskId": {
-										"type": "string"
-									},
-									"StartTime": {
-										"type": "string",
-										"format": "date-time"
-									},
-									"SubmitTime": {
-										"type": "string",
-										"format": "date-time"
-									},
-									"UserID": {
-										"type": "string"
-									},
-									"UserName": {
-										"type": "string"
-									},
-									"Incremental": {
-										"type": "boolean"
-									},
-									"ForcedIncremental": {
-										"type": "boolean"
-									},
-									"TotalTimeSeconds": {
-										"type": "number",
-										"format": "double"
-									},
-									"FailedItemsCount": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"AveragePagePublishMillis": {
-										"type": "number",
-										"format": "double"
-									},
-									"TotalPagesPublished": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"AverageAssetPublishMillis": {
-										"type": "number",
-										"format": "double"
-									},
-									"TotalAssetsPublished": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"Entries": {
-										"type": "array",
-										"items": {
-											"type": "object",
-											"required": [
-												"Success"
-											],
-											"properties": {
-												"PageID": {
-													"type": "string"
-												},
-												"Error": {
-													"type": "string"
-												},
-												"Success": {
-													"type": "boolean"
-												},
-												"SuccessMessage": {
-													"type": "string"
-												}
-											}
-										}
-									},
-									"CompletionTime": {
-										"type": "string"
-									},
-									"ReplicationsToPerform": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"ReplicationCompletionTime": {
-										"type": "string"
-									},
-									"ReplicationStoppingError": {
-										"type": "boolean"
-									}
-								}
-							}
-						]
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/current-tasks",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/current-tasks",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Polls and lists currently running publishing tasks."
 	},
 	{
 		"tool_name": "Publishing_GetRedirects",
-		"description": "GET /publishing/redirects",
+		"description": "Retrieves redirects.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -2085,73 +623,13 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"x-abstract": true,
-								"properties": {
-									"Id": {
-										"type": "string"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"Temp"
-								],
-								"properties": {
-									"SelectedTgtIds": {
-										"type": "string"
-									},
-									"SelectedTgtNames": {
-										"type": "string"
-									},
-									"From": {
-										"type": "string"
-									},
-									"To": {
-										"type": "string"
-									},
-									"Notes": {
-										"type": "string"
-									},
-									"Temp": {
-										"type": "boolean"
-									}
-								}
-							}
-						]
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/redirects",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/redirects",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves redirects."
 	}
 ]

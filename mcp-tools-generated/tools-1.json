@@ -1,24 +1,27 @@
 [
 	{
 		"tool_name": "Analytics_GetSiteOverview",
-		"description": "GET /analytics/site-overview",
+		"description": "Gets the site analytics summary for the connected analytics property.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "ID of the Publishing Target\n            to retrieve analytics data for."
 				},
 				"startDate": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The start date for the report range in 'year-month-day' string format"
 				},
 				"endDate": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The end date for the report range in 'year-month-day' string format"
 				}
 			},
 			"required": [
@@ -28,83 +31,33 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"NotInitialized"
-			],
-			"properties": {
-				"NotInitialized": {
-					"type": "boolean"
-				},
-				"Data": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"required": [
-									"Value"
-								],
-								"properties": {
-									"Name": {
-										"type": "string"
-									},
-									"Link": {
-										"type": "string"
-									},
-									"Value": {
-										"type": "integer",
-										"format": "int64"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"properties": {
-									"OverviewValue": {
-										"type": "string"
-									},
-									"GraphImage": {
-										"type": "string"
-									},
-									"ChartData": {
-										"type": "array",
-										"items": {
-											"type": "number",
-											"format": "double"
-										}
-									}
-								}
-							}
-						]
-					}
-				},
-				"ProviderName": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/analytics/site-overview",
+		"method": "get",
+		"endpoint": "/api/v1/analytics/site-overview",
 		"tags": [
 			"Analytics"
-		]
+		],
+		"summary": "Gets the site analytics summary for the connected analytics property.",
+		"endpoint_description": "Contains data on page views and visits."
 	},
 	{
 		"tool_name": "Analytics_GetPageOverview",
-		"description": "GET /analytics/page-overview",
+		"description": "Get the page analytics summary for the connected analytics property.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pageId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "ID of the Page to retrieve analytics data for"
 				},
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "ID of the Publishing Target\n            to retrieve analytics data for"
 				},
 				"startDate": {
 					"type": "string",
@@ -125,61 +78,50 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"NotInitialized"
-			],
-			"properties": {
-				"NotInitialized": {
-					"type": "boolean"
-				},
-				"LiveUrl": {
-					"type": "string"
-				},
-				"PageId": {
-					"type": "string"
-				},
-				"ProviderName": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/analytics/page-overview",
+		"method": "get",
+		"endpoint": "/api/v1/analytics/page-overview",
 		"tags": [
 			"Analytics"
-		]
+		],
+		"summary": "Get the page analytics summary for the connected analytics property."
 	},
 	{
 		"tool_name": "Analytics_GetReport",
-		"description": "GET /analytics/report",
+		"description": "Gets a specified Report.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTgtId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "ID of the Publishing Target\n            to retrieve analytics data for"
 				},
 				"reportTypeFullName": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Name of the report type (ex: \"Ingeniux.Analytics.PageViews\")"
 				},
 				"pageId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "ID of the Page to retrieve analytics data for"
 				},
 				"startDate": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The start date for the report range in 'year-month-day' string format"
 				},
 				"endDate": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The end date for the report range in 'year-month-day' string format"
 				}
 			},
 			"required": [
@@ -191,86 +133,38 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Chart": {
-					"type": "object",
-					"properties": {
-						"datasets": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"data": {
-										"type": "array",
-										"items": {
-											"type": "integer",
-											"format": "int32"
-										}
-									},
-									"label": {
-										"type": "string"
-									}
-								}
-							}
-						},
-						"labels": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"Table": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"Value"
-						],
-						"properties": {
-							"Name": {
-								"type": "string"
-							},
-							"Link": {
-								"type": "string"
-							},
-							"Value": {
-								"type": "integer",
-								"format": "int64"
-							}
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/analytics/report",
+		"method": "get",
+		"endpoint": "/api/v1/analytics/report",
 		"tags": [
 			"Analytics"
-		]
+		],
+		"summary": "Gets a specified Report."
 	},
 	{
 		"tool_name": "Analytics_GoogleAuthCodeFlow",
-		"description": "POST /analytics/google-analytic-authcode-flow",
+		"description": "Retrieves property and client access token information for a Google Analytics account once the user has\nauthorized CMS access to their analytics information through Google's pop up verification window.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubtgt": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "ID of the Publishing Target\n            to retrieve analytics account data for"
 				},
 				"deviceCode": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Code used to uniquely identity the \"device\" (CMS browser window)\n            that is running the app requesting authorization. This code is returned by the initial call\n            to generate a device code (created when the Google auth pop up window is displayed to the user)."
 				},
 				"interval": {
 					"type": "integer",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The length of time, in seconds, to wait between polling requests."
 				}
 			},
 			"required": [
@@ -280,53 +174,39 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Properties": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"AccessToken": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/analytics/google-analytic-authcode-flow",
+		"method": "post",
+		"endpoint": "/api/v1/analytics/google-analytic-authcode-flow",
 		"tags": [
 			"Analytics"
-		]
+		],
+		"summary": "Retrieves property and client access token information for a Google Analytics account once the user has\nauthorized CMS access to their analytics information through Google's pop up verification window.",
+		"endpoint_description": "This is called after a device code is generated (String)) and the Google popup window has\n            prompted the user to authorize access. This will continue polling Google servers until the\n            the user has responded to the authorization request."
 	},
 	{
 		"tool_name": "Analytics_GoogleConfirmProperty",
-		"description": "POST /analytics/google-analytic-property-confirm",
+		"description": "Sets the Google Analytics property for the provided Publishing Target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubtgt": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "ID of the Publishing Target\n            to connect a Google Analytics property to"
 				},
 				"propertyId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "ID of the Google Analytics property to set in string format"
 				},
 				"propertyName": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Name of the Google Analytics property to set"
 				}
 			},
 			"required": [
@@ -336,24 +216,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/analytics/google-analytic-property-confirm",
+		"method": "post",
+		"endpoint": "/api/v1/analytics/google-analytic-property-confirm",
 		"tags": [
 			"Analytics"
-		]
+		],
+		"summary": "Sets the Google Analytics property for the provided Publishing Target."
 	},
 	{
 		"tool_name": "Analytics_GoogleRevokeToken",
-		"description": "POST /analytics/google-analytic-revoke-token",
+		"description": "Revokes access to the Google Analytics account configured for the provided Publishing Target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubtgt": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "ID of the Publishing Target\n            to remove Google Analytics access for"
 				}
 			},
 			"required": [
@@ -361,24 +243,27 @@
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/analytics/google-analytic-revoke-token",
+		"method": "post",
+		"endpoint": "/api/v1/analytics/google-analytic-revoke-token",
 		"tags": [
 			"Analytics"
-		]
+		],
+		"summary": "Revokes access to the Google Analytics account configured for the provided Publishing Target.",
+		"endpoint_description": "This merely deletes the Google Analytics access token from the Publishing Target's\nanalytics settings, which will prevent the CMS from knowing how to access the analytics account.\nThe CMS will still show up as authorized in the Google Analytics Acount \"Third-party apps with account\naccess\" security settings. In order completely revoke access the user with the connected analytics account\nwill need to navigate to their account security page and manage their third-party access settings."
 	},
 	{
 		"tool_name": "Analytics_GetDeviceVerificationResponse",
-		"description": "POST /analytics/device-verification",
+		"description": "Requests a device code from Google Analytics servers and prompts the authorization pop-up window\nthat will ask the user to authorize access to their analytics data.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubtgt": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "ID of the Publishing Target\n            to configure Google Analytics access for"
 				}
 			},
 			"required": [
@@ -386,47 +271,27 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"expires_in",
-				"interval"
-			],
-			"properties": {
-				"device_code": {
-					"type": "string"
-				},
-				"expires_in": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"interval": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"user_code": {
-					"type": "string"
-				},
-				"verification_url": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/analytics/device-verification",
+		"method": "post",
+		"endpoint": "/api/v1/analytics/device-verification",
 		"tags": [
 			"Analytics"
-		]
+		],
+		"summary": "Requests a device code from Google Analytics servers and prompts the authorization pop-up window\nthat will ask the user to authorize access to their analytics data.",
+		"endpoint_description": "This is the first step in Googles Limited-Input OAuth flow."
 	},
 	{
 		"tool_name": "ContentUnits_GetContentUnitPreviewData",
-		"description": "GET /content-units/content-unit-preview-data",
+		"description": "Retrieves the relevant data for previewing a Content Unit.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"cuId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "ID of the Content Unit whose preview information to retrieve."
 				}
 			},
 			"required": [
@@ -434,61 +299,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"ID": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"DssViewPath": {
-					"type": "string"
-				},
-				"AssetViewId": {
-					"type": "string"
-				},
-				"AssetViewCode": {
-					"type": "string"
-				},
-				"AssetViewCodeEsc": {
-					"type": "string"
-				},
-				"Finalized": {
-					"type": "boolean"
-				},
-				"CanEditView": {
-					"type": "boolean"
-				},
-				"UseExistingView": {
-					"type": "boolean"
-				},
-				"Thumbnail": {
-					"type": "string"
-				}
-			},
-			"required": [
-				"Finalized",
-				"CanEditView",
-				"UseExistingView"
-			]
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/content-units/content-unit-preview-data",
+		"method": "get",
+		"endpoint": "/api/v1/content-units/content-unit-preview-data",
 		"tags": [
 			"ContentUnits"
-		]
+		],
+		"summary": "Retrieves the relevant data for previewing a Content Unit."
 	},
 	{
 		"tool_name": "ContentUnits_GetComponentUnitFragmentInstances",
-		"description": "GET /content-units/get-comp-unit-instances",
+		"description": "Gets all instances of the specified Component Content Unit.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"compUnitId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The ID for the Component Content Unit\n            to retrieve instances of."
 				}
 			},
 			"required": [
@@ -496,208 +326,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"allOf": [
-							{
-								"type": "object",
-								"required": [
-									"IsComponentUnit",
-									"Reusable",
-									"HasView"
-								],
-								"properties": {
-									"Id": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									},
-									"IconName": {
-										"type": "string"
-									},
-									"ThumbnailPath": {
-										"type": "string"
-									},
-									"ElementName": {
-										"type": "string"
-									},
-									"TemplateName": {
-										"type": "string"
-									},
-									"IsComponentUnit": {
-										"type": "boolean"
-									},
-									"Reusable": {
-										"type": "boolean"
-									},
-									"HasView": {
-										"type": "boolean"
-									},
-									"AllowedSchemas": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									},
-									"ComponentSchemaId": {
-										"type": "string"
-									},
-									"ComponentSchemaName": {
-										"type": "string"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"HasInstances"
-								],
-								"properties": {
-									"ElementData": {
-										"allOf": [
-											{
-												"type": "object",
-												"required": [
-													"nodePosition",
-													"contentUnitField"
-												],
-												"properties": {
-													"nodeName": {
-														"type": "string"
-													},
-													"nodePosition": {
-														"type": "integer",
-														"format": "int32"
-													},
-													"attributes": {
-														"type": "object",
-														"additionalProperties": {
-															"type": "string"
-														}
-													},
-													"deletedAttributes": {
-														"type": "object",
-														"additionalProperties": {
-															"type": "string"
-														}
-													},
-													"childSchemaName": {
-														"type": "string"
-													},
-													"childSchemaFriendlyName": {
-														"type": "string"
-													},
-													"childSchemaId": {
-														"type": "string"
-													},
-													"childName": {
-														"type": "string"
-													},
-													"childParentId": {
-														"type": "string"
-													},
-													"pageBuilderTemplateName": {
-														"type": "string"
-													},
-													"contentUnitField": {
-														"type": "boolean"
-													},
-													"extendedObject": {
-														"type": "string"
-													}
-												}
-											},
-											{
-												"type": "object",
-												"required": [
-													"disabled",
-													"ignoreEmbedding"
-												],
-												"properties": {
-													"childElementType": {
-														"type": "string"
-													},
-													"nodeValue": {
-														"type": "string"
-													},
-													"childElements": {
-														"type": "array",
-														"items": {
-															"$ref": "#/definitions/PageElementData",
-															"circular": true
-														}
-													},
-													"disabled": {
-														"type": "boolean"
-													},
-													"uniqueId": {
-														"type": "string"
-													},
-													"ignoreEmbedding": {
-														"type": "boolean"
-													}
-												}
-											}
-										]
-									},
-									"ElementId": {
-										"type": "string"
-									},
-									"ElementXml": {
-										"type": "string"
-									},
-									"FieldLabel": {
-										"type": "string"
-									},
-									"FieldType": {
-										"type": "string"
-									},
-									"ElementSchemaType": {
-										"type": "string"
-									},
-									"HasInstances": {
-										"type": "boolean"
-									}
-								}
-							}
-						]
-					},
-					{
-						"type": "object",
-						"properties": {
-							"ComponentId": {
-								"type": "string"
-							},
-							"ChildLayoutContainerId": {
-								"type": "string"
-							},
-							"VersionId": {
-								"type": "string"
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/content-units/get-comp-unit-instances",
+		"method": "get",
+		"endpoint": "/api/v1/content-units/get-comp-unit-instances",
 		"tags": [
 			"ContentUnits"
-		]
+		],
+		"summary": "Gets all instances of the specified Component Content Unit."
 	},
 	{
 		"tool_name": "ContentUnits_GetComponentUnitContent",
-		"description": "GET /content-units/get-comp-unit-content",
+		"description": "Gets the content for a specified Component Content Unit",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"compUnitId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The ID for the Component Content Unit"
 				}
 			},
 			"required": [
@@ -705,110 +353,32 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"model": {
-					"type": "object",
-					"properties": {
-						"nodeName": {
-							"type": "string"
-						},
-						"nodePosition": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"attributes": {
-							"type": "object",
-							"additionalProperties": {
-								"type": "string"
-							}
-						},
-						"deletedAttributes": {
-							"type": "object",
-							"additionalProperties": {
-								"type": "string"
-							}
-						},
-						"childSchemaName": {
-							"type": "string"
-						},
-						"childSchemaFriendlyName": {
-							"type": "string"
-						},
-						"childSchemaId": {
-							"type": "string"
-						},
-						"childName": {
-							"type": "string"
-						},
-						"childParentId": {
-							"type": "string"
-						},
-						"pageBuilderTemplateName": {
-							"type": "string"
-						},
-						"contentUnitField": {
-							"type": "boolean"
-						},
-						"extendedObject": {
-							"type": "string"
-						},
-						"childElementType": {
-							"type": "string"
-						},
-						"nodeValue": {
-							"type": "string"
-						},
-						"childElements": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/PageElementData",
-								"circular": true
-							}
-						},
-						"disabled": {
-							"type": "boolean"
-						},
-						"uniqueId": {
-							"type": "string"
-						},
-						"ignoreEmbedding": {
-							"type": "boolean"
-						}
-					},
-					"required": [
-						"nodePosition",
-						"contentUnitField",
-						"disabled",
-						"ignoreEmbedding"
-					]
-				},
-				"markup": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/content-units/get-comp-unit-content",
+		"method": "get",
+		"endpoint": "/api/v1/content-units/get-comp-unit-content",
 		"tags": [
 			"ContentUnits"
-		]
+		],
+		"summary": "Gets the content for a specified Component Content Unit"
 	},
 	{
 		"tool_name": "ContentUnits_UpdateComponentUnitThumbnail",
-		"description": "PUT /content-units/update-comp-unit-thumb",
+		"description": "Updates the thumbnail for the specified Content Unit",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"tempAssetUrl": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The temp location to retrieve the new asset thumbnail from"
 				},
 				"contentUnitId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The ID of the Content Unit whose\n            thumbnail to set"
 				}
 			},
 			"required": [
@@ -817,143 +387,79 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Result": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/content-units/update-comp-unit-thumb",
+		"method": "put",
+		"endpoint": "/api/v1/content-units/update-comp-unit-thumb",
 		"tags": [
 			"ContentUnits"
-		]
+		],
+		"summary": "Updates the thumbnail for the specified Content Unit"
 	},
 	{
 		"tool_name": "ContentUnits_GetClassNamesFromCss",
-		"description": "POST /content-units/get-class-names-from-css",
+		"description": "Gets the names of all the css classes applicable to a Page Builder column or row.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"input": {
-					"type": "object",
-					"required": [
-						"count"
-					],
-					"properties": {
-						"filterText": {
-							"type": "string"
-						},
-						"stylesheetRefs": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"stylesheetContents": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"previewUrl": {
-							"type": "string"
-						},
-						"count": {
-							"type": "integer",
-							"format": "int32"
-						}
-					}
-				}
-			},
-			"required": [
-				"input",
-				"input"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "string"
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/content-units/get-class-names-from-css",
+		"method": "post",
+		"endpoint": "/api/v1/content-units/get-class-names-from-css",
 		"tags": [
 			"ContentUnits"
-		]
+		],
+		"summary": "Gets the names of all the css classes applicable to a Page Builder column or row."
 	},
 	{
 		"tool_name": "Hooks_GetCustomHooks",
-		"description": "GET /hooks",
+		"description": "Gets the contents of the CustomHooks.cs file.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Result": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/hooks",
+		"method": "get",
+		"endpoint": "/api/v1/hooks",
 		"tags": [
 			"Hooks"
-		]
+		],
+		"summary": "Gets the contents of the CustomHooks.cs file.",
+		"endpoint_description": "Custom hooks are code that is automatically executed on certain CMS events, like page creation."
 	},
 	{
 		"tool_name": "Hooks_GetCustomMacros",
-		"description": "GET /hooks/macros",
+		"description": "Gets all the custom macro methods.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"properties": {
-							"Description": {
-								"type": "string"
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/hooks/macros",
+		"method": "get",
+		"endpoint": "/api/v1/hooks/macros",
 		"tags": [
 			"Hooks"
-		]
+		],
+		"summary": "Gets all the custom macro methods.",
+		"endpoint_description": "Custom macros are standalone code can be manually executed."
 	},
 	{
 		"tool_name": "Hooks_ExecuteCustomMacro",
-		"description": "POST /hooks/macros",
+		"description": "Executes the specified custom macro.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"id": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "The ID of the macro to execute"
 				}
 			},
 			"required": [
@@ -961,247 +467,61 @@
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/hooks/macros",
+		"method": "post",
+		"endpoint": "/api/v1/hooks/macros",
 		"tags": [
 			"Hooks"
-		]
+		],
+		"summary": "Executes the specified custom macro."
 	},
 	{
 		"tool_name": "IceComponentPicker_GetComponentSchemas",
-		"description": "GET /dialogs/ice-comp-picker/get-ice-comp-types",
+		"description": "Gets all the component content unit schemas",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"Key": {
-						"type": "string"
-					},
-					"Value": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dialogs/ice-comp-picker/get-ice-comp-types",
+		"method": "get",
+		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-ice-comp-types",
 		"tags": [
 			"IceComponentPicker"
-		]
+		],
+		"summary": "Gets all the component content unit schemas"
 	},
 	{
 		"tool_name": "IceComponentPicker_GetTrays",
-		"description": "POST /dialogs/ice-comp-picker/get-trays",
+		"description": "Gets all the trays for the In Context Edit view.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"parameters": {
-					"type": "object",
-					"required": [
-						"start",
-						"end",
-						"includeCus",
-						"includeComps",
-						"includeSeparators",
-						"divideRatio"
-					],
-					"properties": {
-						"start": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"end": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"type": {
-							"type": "string"
-						},
-						"name": {
-							"type": "string"
-						},
-						"language": {
-							"type": "string"
-						},
-						"includeCus": {
-							"type": "boolean"
-						},
-						"includeComps": {
-							"type": "boolean"
-						},
-						"includeSeparators": {
-							"type": "boolean"
-						},
-						"divideRatio": {
-							"type": "number",
-							"format": "double"
-						}
-					}
-				}
-			},
-			"required": [
-				"parameters",
-				"parameters"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalCount"
-			],
-			"properties": {
-				"ItemsInRange": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"IsSeparator",
-							"IsContentUnit"
-						],
-						"properties": {
-							"ElementData": {
-								"allOf": [
-									{
-										"type": "object",
-										"required": [
-											"nodePosition",
-											"contentUnitField"
-										],
-										"properties": {
-											"nodeName": {
-												"type": "string"
-											},
-											"nodePosition": {
-												"type": "integer",
-												"format": "int32"
-											},
-											"attributes": {
-												"type": "object",
-												"additionalProperties": {
-													"type": "string"
-												}
-											},
-											"deletedAttributes": {
-												"type": "object",
-												"additionalProperties": {
-													"type": "string"
-												}
-											},
-											"childSchemaName": {
-												"type": "string"
-											},
-											"childSchemaFriendlyName": {
-												"type": "string"
-											},
-											"childSchemaId": {
-												"type": "string"
-											},
-											"childName": {
-												"type": "string"
-											},
-											"childParentId": {
-												"type": "string"
-											},
-											"pageBuilderTemplateName": {
-												"type": "string"
-											},
-											"contentUnitField": {
-												"type": "boolean"
-											},
-											"extendedObject": {
-												"type": "string"
-											}
-										}
-									},
-									{
-										"type": "object",
-										"required": [
-											"disabled",
-											"ignoreEmbedding"
-										],
-										"properties": {
-											"childElementType": {
-												"type": "string"
-											},
-											"nodeValue": {
-												"type": "string"
-											},
-											"childElements": {
-												"type": "array",
-												"items": {
-													"$ref": "#/definitions/PageElementData",
-													"circular": true
-												}
-											},
-											"disabled": {
-												"type": "boolean"
-											},
-											"uniqueId": {
-												"type": "string"
-											},
-											"ignoreEmbedding": {
-												"type": "boolean"
-											}
-										}
-									}
-								]
-							},
-							"IsSeparator": {
-								"type": "boolean"
-							},
-							"Label": {
-								"type": "string"
-							},
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							},
-							"SchemaName": {
-								"type": "string"
-							},
-							"Locale": {
-								"type": "string"
-							},
-							"IsContentUnit": {
-								"type": "boolean"
-							},
-							"Thumb": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"TotalCount": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/dialogs/ice-comp-picker/get-trays",
+		"method": "post",
+		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-trays",
 		"tags": [
 			"IceComponentPicker"
-		]
+		],
+		"summary": "Gets all the trays for the In Context Edit view.",
+		"endpoint_description": "The resulting trays will contain separators and titles for the\ntrays list as well as content units\n(unless the parameters indicate otherwise)."
 	},
 	{
 		"tool_name": "IceComponentPicker_GetComponentThumb",
-		"description": "GET /dialogs/ice-comp-picker/get-comp-thumb",
+		"description": "Gets a preview thumbnail file path for the specified\ncontent unit or IPage.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"id": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "ID of the content unit\n            or page to get a thumbnail for"
 				}
 			},
 			"required": [
@@ -1209,64 +529,68 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Result": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dialogs/ice-comp-picker/get-comp-thumb",
+		"method": "get",
+		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-comp-thumb",
 		"tags": [
 			"IceComponentPicker"
-		]
+		],
+		"summary": "Gets a preview thumbnail file path for the specified\ncontent unit or IPage."
 	},
 	{
 		"tool_name": "IceComponentPicker_GetListPage",
-		"description": "GET /dialogs/ice-comp-picker/get-list-page",
+		"description": "Gets a list of components fitting provided search\nparameters for embedded component initialization.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"start": {
 					"type": "integer",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Start index for component retrieval"
 				},
 				"count": {
 					"type": "integer",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Number of components to retrieve"
 				},
 				"sort": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Field to sort the retrieved components on"
 				},
 				"type": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Schema type of the components to retrieve"
 				},
 				"name": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Name of the component to search for"
 				},
 				"language": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Locale of the components to retrieve,\n            if null or empty, components of any locale will be returned"
 				},
 				"includeCus": {
 					"type": "boolean",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Whether to include content units"
 				},
 				"includeComps": {
 					"type": "boolean",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Whether to include component content units"
 				}
 			},
 			"required": [
@@ -1281,95 +605,30 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"numRows"
-			],
-			"properties": {
-				"identifier": {
-					"type": "string"
-				},
-				"label": {
-					"type": "string"
-				},
-				"numRows": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"items": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"type": "object",
-										"properties": {
-											"name": {
-												"type": "string"
-											}
-										}
-									},
-									{
-										"type": "object",
-										"properties": {
-											"id": {
-												"type": "string"
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object",
-								"required": [
-									"isCu"
-								],
-								"properties": {
-									"type": {
-										"type": "string"
-									},
-									"locale": {
-										"type": "string"
-									},
-									"isCu": {
-										"type": "boolean"
-									}
-								}
-							}
-						]
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dialogs/ice-comp-picker/get-list-page",
+		"method": "get",
+		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-list-page",
 		"tags": [
 			"IceComponentPicker"
-		]
+		],
+		"summary": "Gets a list of components fitting provided search\nparameters for embedded component initialization."
 	},
 	{
 		"tool_name": "DITA_GetDITABaseInfo",
-		"description": "GET /dita/base",
+		"description": "Retrieves the prerequisite information on whether DITA system can be setup on CMS",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"JavaNotFound"
-			],
-			"properties": {
-				"JavaNotFound": {
-					"type": "boolean"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/dita/base",
+		"method": "get",
+		"endpoint": "/api/v1/dita/base",
 		"tags": [
 			"DITA"
-		]
+		],
+		"summary": "Retrieves the prerequisite information on whether DITA system can be setup on CMS"
 	}
 ]

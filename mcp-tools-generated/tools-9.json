@@ -1,122 +1,52 @@
 [
 	{
 		"tool_name": "Publishing_DeleteRedirects",
-		"description": "DELETE /publishing/redirects",
+		"description": "Deletes redirects by their IDs.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"redirectIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
-			},
+			"properties": {},
 			"required": [
-				"redirectIds",
 				"redirectIds"
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "boolean"
-			}
+			"type": "object"
 		},
-		"method": "DELETE",
-		"endpoint": "/publishing/redirects",
+		"method": "delete",
+		"endpoint": "/api/v1/publishing/redirects",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Deletes redirects by their IDs."
 	},
 	{
 		"tool_name": "Publishing_SaveRedirect",
-		"description": "PUT /publishing/redirect",
+		"description": "Saves a redirect.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"data": {
-					"type": "object",
-					"x-abstract": true,
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"SelectedTgtIds": {
-							"type": "string"
-						},
-						"SelectedTgtNames": {
-							"type": "string"
-						},
-						"From": {
-							"type": "string"
-						},
-						"To": {
-							"type": "string"
-						},
-						"Notes": {
-							"type": "string"
-						},
-						"Temp": {
-							"type": "boolean"
-						}
-					},
-					"required": [
-						"Temp"
-					]
-				}
-			},
-			"required": [
-				"data",
-				"data"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"SelectedTgtIds": {
-					"type": "string"
-				},
-				"SelectedTgtNames": {
-					"type": "string"
-				},
-				"From": {
-					"type": "string"
-				},
-				"To": {
-					"type": "string"
-				},
-				"Notes": {
-					"type": "string"
-				},
-				"Temp": {
-					"type": "boolean"
-				}
-			},
-			"required": [
-				"Temp"
-			]
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/publishing/redirect",
+		"method": "put",
+		"endpoint": "/api/v1/publishing/redirect",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Saves a redirect."
 	},
 	{
 		"tool_name": "Publishing_DeleteRedirect",
-		"description": "DELETE /publishing/redirect",
+		"description": "Deletes a single redirect by ID.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"redirectId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Redirect ID"
 				}
 			},
 			"required": [
@@ -124,24 +54,26 @@
 			]
 		},
 		"output_schema": {
-			"type": "boolean"
+			"type": "object"
 		},
-		"method": "DELETE",
-		"endpoint": "/publishing/redirect",
+		"method": "delete",
+		"endpoint": "/api/v1/publishing/redirect",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Deletes a single redirect by ID."
 	},
 	{
 		"tool_name": "Publishing_GetPublishingTarget",
-		"description": "GET /publishing/target",
+		"description": "Retrieves a publishing target by ID.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"publishingTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Publishing target ID"
 				}
 			},
 			"required": [
@@ -149,885 +81,51 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"EntityType": {
-					"type": "string"
-				},
-				"Archived": {
-					"type": "boolean"
-				},
-				"MarkedPageCount": {
-					"type": "number",
-					"format": "double"
-				},
-				"MarkedAssetCount": {
-					"type": "number",
-					"format": "double"
-				},
-				"LastPublished": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastAssetPublish": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"RootPageId": {
-					"type": "string"
-				},
-				"RootPageName": {
-					"type": "string"
-				},
-				"GlobalContentRootId": {
-					"type": "string"
-				},
-				"GlobalContentRootName": {
-					"type": "string"
-				},
-				"PublishFolder": {
-					"type": "string"
-				},
-				"TransformOnPublish": {
-					"type": "boolean"
-				},
-				"UserAgent": {
-					"type": "string"
-				},
-				"Site": {
-					"type": "string"
-				},
-				"ExternalPreviewUrl": {
-					"type": "string"
-				},
-				"IceFieldMarkupUpdateUrl": {
-					"type": "string"
-				},
-				"PresentationFormatterId": {
-					"type": "string"
-				},
-				"MvcSupport": {
-					"type": "boolean"
-				},
-				"SkipXmpPublishling": {
-					"type": "boolean"
-				},
-				"SkipLingualMapPublishling": {
-					"type": "boolean"
-				},
-				"ReplicationEnabled": {
-					"type": "boolean"
-				},
-				"SimultaneousReplicationEnabled": {
-					"type": "boolean"
-				},
-				"HomePageId": {
-					"type": "string"
-				},
-				"HomePageName": {
-					"type": "string"
-				},
-				"ErrorPageId": {
-					"type": "string"
-				},
-				"ErrorPageName": {
-					"type": "string"
-				},
-				"UrlExtension": {
-					"type": "string"
-				},
-				"UrlSeparator": {
-					"type": "string"
-				},
-				"BaseUrl": {
-					"type": "string"
-				},
-				"AnalyticsProvider": {
-					"type": "string"
-				},
-				"ForceLowerCaseUrl": {
-					"type": "boolean"
-				},
-				"RedirectToCanonicalUrl": {
-					"type": "boolean"
-				},
-				"IncludeFolderNamesInUrlPath": {
-					"type": "boolean"
-				},
-				"NormalizeUrlSeparators": {
-					"type": "boolean"
-				},
-				"RemoveDiacriticsFromUrl": {
-					"type": "boolean"
-				},
-				"PreservePeriods": {
-					"type": "boolean"
-				},
-				"UseAliasUrls": {
-					"type": "boolean"
-				},
-				"EnableAnalytics": {
-					"type": "boolean"
-				}
-			},
-			"required": [
-				"Created",
-				"LastModified",
-				"Archived",
-				"MarkedPageCount",
-				"MarkedAssetCount",
-				"LastPublished",
-				"LastAssetPublish",
-				"TransformOnPublish",
-				"MvcSupport",
-				"SkipXmpPublishling",
-				"SkipLingualMapPublishling",
-				"ReplicationEnabled",
-				"SimultaneousReplicationEnabled",
-				"ForceLowerCaseUrl",
-				"RedirectToCanonicalUrl",
-				"IncludeFolderNamesInUrlPath",
-				"NormalizeUrlSeparators",
-				"RemoveDiacriticsFromUrl",
-				"PreservePeriods",
-				"UseAliasUrls",
-				"EnableAnalytics"
-			]
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/target",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/target",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves a publishing target by ID."
 	},
 	{
 		"tool_name": "Publishing_CreatePublishingTarget",
-		"description": "POST /publishing/target",
+		"description": "Publishing post operation",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"publishingTarget": {
-					"type": "object",
-					"x-abstract": true,
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string"
-						},
-						"CreationUser": {
-							"type": "string"
-						},
-						"Created": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"LastModifiedUser": {
-							"type": "string"
-						},
-						"LastModified": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"EntityType": {
-							"type": "string"
-						},
-						"Archived": {
-							"type": "boolean"
-						},
-						"MarkedPageCount": {
-							"type": "number",
-							"format": "double"
-						},
-						"MarkedAssetCount": {
-							"type": "number",
-							"format": "double"
-						},
-						"LastPublished": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"LastAssetPublish": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"RootPageId": {
-							"type": "string"
-						},
-						"RootPageName": {
-							"type": "string"
-						},
-						"GlobalContentRootId": {
-							"type": "string"
-						},
-						"GlobalContentRootName": {
-							"type": "string"
-						},
-						"PublishFolder": {
-							"type": "string"
-						},
-						"TransformOnPublish": {
-							"type": "boolean"
-						},
-						"UserAgent": {
-							"type": "string"
-						},
-						"Site": {
-							"type": "string"
-						},
-						"ExternalPreviewUrl": {
-							"type": "string"
-						},
-						"IceFieldMarkupUpdateUrl": {
-							"type": "string"
-						},
-						"PresentationFormatterId": {
-							"type": "string"
-						},
-						"MvcSupport": {
-							"type": "boolean"
-						},
-						"SkipXmpPublishling": {
-							"type": "boolean"
-						},
-						"SkipLingualMapPublishling": {
-							"type": "boolean"
-						},
-						"ReplicationEnabled": {
-							"type": "boolean"
-						},
-						"SimultaneousReplicationEnabled": {
-							"type": "boolean"
-						},
-						"HomePageId": {
-							"type": "string"
-						},
-						"HomePageName": {
-							"type": "string"
-						},
-						"ErrorPageId": {
-							"type": "string"
-						},
-						"ErrorPageName": {
-							"type": "string"
-						},
-						"UrlExtension": {
-							"type": "string"
-						},
-						"UrlSeparator": {
-							"type": "string"
-						},
-						"BaseUrl": {
-							"type": "string"
-						},
-						"AnalyticsProvider": {
-							"type": "string"
-						},
-						"ForceLowerCaseUrl": {
-							"type": "boolean"
-						},
-						"RedirectToCanonicalUrl": {
-							"type": "boolean"
-						},
-						"IncludeFolderNamesInUrlPath": {
-							"type": "boolean"
-						},
-						"NormalizeUrlSeparators": {
-							"type": "boolean"
-						},
-						"RemoveDiacriticsFromUrl": {
-							"type": "boolean"
-						},
-						"PreservePeriods": {
-							"type": "boolean"
-						},
-						"UseAliasUrls": {
-							"type": "boolean"
-						},
-						"EnableAnalytics": {
-							"type": "boolean"
-						}
-					},
-					"required": [
-						"Created",
-						"LastModified",
-						"Archived",
-						"MarkedPageCount",
-						"MarkedAssetCount",
-						"LastPublished",
-						"LastAssetPublish",
-						"TransformOnPublish",
-						"MvcSupport",
-						"SkipXmpPublishling",
-						"SkipLingualMapPublishling",
-						"ReplicationEnabled",
-						"SimultaneousReplicationEnabled",
-						"ForceLowerCaseUrl",
-						"RedirectToCanonicalUrl",
-						"IncludeFolderNamesInUrlPath",
-						"NormalizeUrlSeparators",
-						"RemoveDiacriticsFromUrl",
-						"PreservePeriods",
-						"UseAliasUrls",
-						"EnableAnalytics"
-					]
-				}
-			},
-			"required": [
-				"publishingTarget",
-				"publishingTarget"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"EntityType": {
-					"type": "string"
-				},
-				"Archived": {
-					"type": "boolean"
-				},
-				"MarkedPageCount": {
-					"type": "number",
-					"format": "double"
-				},
-				"MarkedAssetCount": {
-					"type": "number",
-					"format": "double"
-				},
-				"LastPublished": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastAssetPublish": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"RootPageId": {
-					"type": "string"
-				},
-				"RootPageName": {
-					"type": "string"
-				},
-				"GlobalContentRootId": {
-					"type": "string"
-				},
-				"GlobalContentRootName": {
-					"type": "string"
-				},
-				"PublishFolder": {
-					"type": "string"
-				},
-				"TransformOnPublish": {
-					"type": "boolean"
-				},
-				"UserAgent": {
-					"type": "string"
-				},
-				"Site": {
-					"type": "string"
-				},
-				"ExternalPreviewUrl": {
-					"type": "string"
-				},
-				"IceFieldMarkupUpdateUrl": {
-					"type": "string"
-				},
-				"PresentationFormatterId": {
-					"type": "string"
-				},
-				"MvcSupport": {
-					"type": "boolean"
-				},
-				"SkipXmpPublishling": {
-					"type": "boolean"
-				},
-				"SkipLingualMapPublishling": {
-					"type": "boolean"
-				},
-				"ReplicationEnabled": {
-					"type": "boolean"
-				},
-				"SimultaneousReplicationEnabled": {
-					"type": "boolean"
-				},
-				"HomePageId": {
-					"type": "string"
-				},
-				"HomePageName": {
-					"type": "string"
-				},
-				"ErrorPageId": {
-					"type": "string"
-				},
-				"ErrorPageName": {
-					"type": "string"
-				},
-				"UrlExtension": {
-					"type": "string"
-				},
-				"UrlSeparator": {
-					"type": "string"
-				},
-				"BaseUrl": {
-					"type": "string"
-				},
-				"AnalyticsProvider": {
-					"type": "string"
-				},
-				"ForceLowerCaseUrl": {
-					"type": "boolean"
-				},
-				"RedirectToCanonicalUrl": {
-					"type": "boolean"
-				},
-				"IncludeFolderNamesInUrlPath": {
-					"type": "boolean"
-				},
-				"NormalizeUrlSeparators": {
-					"type": "boolean"
-				},
-				"RemoveDiacriticsFromUrl": {
-					"type": "boolean"
-				},
-				"PreservePeriods": {
-					"type": "boolean"
-				},
-				"UseAliasUrls": {
-					"type": "boolean"
-				},
-				"EnableAnalytics": {
-					"type": "boolean"
-				}
-			},
-			"required": [
-				"Created",
-				"LastModified",
-				"Archived",
-				"MarkedPageCount",
-				"MarkedAssetCount",
-				"LastPublished",
-				"LastAssetPublish",
-				"TransformOnPublish",
-				"MvcSupport",
-				"SkipXmpPublishling",
-				"SkipLingualMapPublishling",
-				"ReplicationEnabled",
-				"SimultaneousReplicationEnabled",
-				"ForceLowerCaseUrl",
-				"RedirectToCanonicalUrl",
-				"IncludeFolderNamesInUrlPath",
-				"NormalizeUrlSeparators",
-				"RemoveDiacriticsFromUrl",
-				"PreservePeriods",
-				"UseAliasUrls",
-				"EnableAnalytics"
-			]
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/publishing/target",
+		"method": "post",
+		"endpoint": "/api/v1/publishing/target",
 		"tags": [
 			"Publishing"
 		]
 	},
 	{
 		"tool_name": "Publishing_UpdatePublishingTarget",
-		"description": "PUT /publishing/target",
+		"description": "Updates a publishing target.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"publishingTarget": {
-					"type": "object",
-					"x-abstract": true,
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string"
-						},
-						"CreationUser": {
-							"type": "string"
-						},
-						"Created": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"LastModifiedUser": {
-							"type": "string"
-						},
-						"LastModified": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"EntityType": {
-							"type": "string"
-						},
-						"Archived": {
-							"type": "boolean"
-						},
-						"MarkedPageCount": {
-							"type": "number",
-							"format": "double"
-						},
-						"MarkedAssetCount": {
-							"type": "number",
-							"format": "double"
-						},
-						"LastPublished": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"LastAssetPublish": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"RootPageId": {
-							"type": "string"
-						},
-						"RootPageName": {
-							"type": "string"
-						},
-						"GlobalContentRootId": {
-							"type": "string"
-						},
-						"GlobalContentRootName": {
-							"type": "string"
-						},
-						"PublishFolder": {
-							"type": "string"
-						},
-						"TransformOnPublish": {
-							"type": "boolean"
-						},
-						"UserAgent": {
-							"type": "string"
-						},
-						"Site": {
-							"type": "string"
-						},
-						"ExternalPreviewUrl": {
-							"type": "string"
-						},
-						"IceFieldMarkupUpdateUrl": {
-							"type": "string"
-						},
-						"PresentationFormatterId": {
-							"type": "string"
-						},
-						"MvcSupport": {
-							"type": "boolean"
-						},
-						"SkipXmpPublishling": {
-							"type": "boolean"
-						},
-						"SkipLingualMapPublishling": {
-							"type": "boolean"
-						},
-						"ReplicationEnabled": {
-							"type": "boolean"
-						},
-						"SimultaneousReplicationEnabled": {
-							"type": "boolean"
-						},
-						"HomePageId": {
-							"type": "string"
-						},
-						"HomePageName": {
-							"type": "string"
-						},
-						"ErrorPageId": {
-							"type": "string"
-						},
-						"ErrorPageName": {
-							"type": "string"
-						},
-						"UrlExtension": {
-							"type": "string"
-						},
-						"UrlSeparator": {
-							"type": "string"
-						},
-						"BaseUrl": {
-							"type": "string"
-						},
-						"AnalyticsProvider": {
-							"type": "string"
-						},
-						"ForceLowerCaseUrl": {
-							"type": "boolean"
-						},
-						"RedirectToCanonicalUrl": {
-							"type": "boolean"
-						},
-						"IncludeFolderNamesInUrlPath": {
-							"type": "boolean"
-						},
-						"NormalizeUrlSeparators": {
-							"type": "boolean"
-						},
-						"RemoveDiacriticsFromUrl": {
-							"type": "boolean"
-						},
-						"PreservePeriods": {
-							"type": "boolean"
-						},
-						"UseAliasUrls": {
-							"type": "boolean"
-						},
-						"EnableAnalytics": {
-							"type": "boolean"
-						}
-					},
-					"required": [
-						"Created",
-						"LastModified",
-						"Archived",
-						"MarkedPageCount",
-						"MarkedAssetCount",
-						"LastPublished",
-						"LastAssetPublish",
-						"TransformOnPublish",
-						"MvcSupport",
-						"SkipXmpPublishling",
-						"SkipLingualMapPublishling",
-						"ReplicationEnabled",
-						"SimultaneousReplicationEnabled",
-						"ForceLowerCaseUrl",
-						"RedirectToCanonicalUrl",
-						"IncludeFolderNamesInUrlPath",
-						"NormalizeUrlSeparators",
-						"RemoveDiacriticsFromUrl",
-						"PreservePeriods",
-						"UseAliasUrls",
-						"EnableAnalytics"
-					]
-				}
-			},
-			"required": [
-				"publishingTarget",
-				"publishingTarget"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"EntityType": {
-					"type": "string"
-				},
-				"Archived": {
-					"type": "boolean"
-				},
-				"MarkedPageCount": {
-					"type": "number",
-					"format": "double"
-				},
-				"MarkedAssetCount": {
-					"type": "number",
-					"format": "double"
-				},
-				"LastPublished": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastAssetPublish": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"RootPageId": {
-					"type": "string"
-				},
-				"RootPageName": {
-					"type": "string"
-				},
-				"GlobalContentRootId": {
-					"type": "string"
-				},
-				"GlobalContentRootName": {
-					"type": "string"
-				},
-				"PublishFolder": {
-					"type": "string"
-				},
-				"TransformOnPublish": {
-					"type": "boolean"
-				},
-				"UserAgent": {
-					"type": "string"
-				},
-				"Site": {
-					"type": "string"
-				},
-				"ExternalPreviewUrl": {
-					"type": "string"
-				},
-				"IceFieldMarkupUpdateUrl": {
-					"type": "string"
-				},
-				"PresentationFormatterId": {
-					"type": "string"
-				},
-				"MvcSupport": {
-					"type": "boolean"
-				},
-				"SkipXmpPublishling": {
-					"type": "boolean"
-				},
-				"SkipLingualMapPublishling": {
-					"type": "boolean"
-				},
-				"ReplicationEnabled": {
-					"type": "boolean"
-				},
-				"SimultaneousReplicationEnabled": {
-					"type": "boolean"
-				},
-				"HomePageId": {
-					"type": "string"
-				},
-				"HomePageName": {
-					"type": "string"
-				},
-				"ErrorPageId": {
-					"type": "string"
-				},
-				"ErrorPageName": {
-					"type": "string"
-				},
-				"UrlExtension": {
-					"type": "string"
-				},
-				"UrlSeparator": {
-					"type": "string"
-				},
-				"BaseUrl": {
-					"type": "string"
-				},
-				"AnalyticsProvider": {
-					"type": "string"
-				},
-				"ForceLowerCaseUrl": {
-					"type": "boolean"
-				},
-				"RedirectToCanonicalUrl": {
-					"type": "boolean"
-				},
-				"IncludeFolderNamesInUrlPath": {
-					"type": "boolean"
-				},
-				"NormalizeUrlSeparators": {
-					"type": "boolean"
-				},
-				"RemoveDiacriticsFromUrl": {
-					"type": "boolean"
-				},
-				"PreservePeriods": {
-					"type": "boolean"
-				},
-				"UseAliasUrls": {
-					"type": "boolean"
-				},
-				"EnableAnalytics": {
-					"type": "boolean"
-				}
-			},
-			"required": [
-				"Created",
-				"LastModified",
-				"Archived",
-				"MarkedPageCount",
-				"MarkedAssetCount",
-				"LastPublished",
-				"LastAssetPublish",
-				"TransformOnPublish",
-				"MvcSupport",
-				"SkipXmpPublishling",
-				"SkipLingualMapPublishling",
-				"ReplicationEnabled",
-				"SimultaneousReplicationEnabled",
-				"ForceLowerCaseUrl",
-				"RedirectToCanonicalUrl",
-				"IncludeFolderNamesInUrlPath",
-				"NormalizeUrlSeparators",
-				"RemoveDiacriticsFromUrl",
-				"PreservePeriods",
-				"UseAliasUrls",
-				"EnableAnalytics"
-			]
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/publishing/target",
+		"method": "put",
+		"endpoint": "/api/v1/publishing/target",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Updates a publishing target."
 	},
 	{
 		"tool_name": "Publishing_GetPublishingTargets",
-		"description": "GET /publishing/targets",
+		"description": "Retrieves publishing targets specified in a query.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
@@ -1054,240 +152,26 @@
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"TotalResults",
-				"PageSize",
-				"NextIndex"
-			],
-			"properties": {
-				"Results": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"allOf": [
-											{
-												"type": "object",
-												"properties": {
-													"Id": {
-														"type": "string"
-													},
-													"Name": {
-														"type": "string"
-													}
-												}
-											},
-											{
-												"type": "object"
-											}
-										]
-									},
-									{
-										"type": "object",
-										"x-abstract": true,
-										"required": [
-											"Created",
-											"LastModified",
-											"Archived"
-										],
-										"properties": {
-											"CreationUser": {
-												"type": "string"
-											},
-											"Created": {
-												"type": "string",
-												"format": "date-time"
-											},
-											"LastModifiedUser": {
-												"type": "string"
-											},
-											"LastModified": {
-												"type": "string",
-												"format": "date-time"
-											},
-											"EntityType": {
-												"type": "string"
-											},
-											"Archived": {
-												"type": "boolean"
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object",
-								"required": [
-									"MarkedPageCount",
-									"MarkedAssetCount",
-									"LastPublished",
-									"LastAssetPublish",
-									"TransformOnPublish",
-									"MvcSupport",
-									"SkipXmpPublishling",
-									"SkipLingualMapPublishling",
-									"ReplicationEnabled",
-									"SimultaneousReplicationEnabled",
-									"ForceLowerCaseUrl",
-									"RedirectToCanonicalUrl",
-									"IncludeFolderNamesInUrlPath",
-									"NormalizeUrlSeparators",
-									"RemoveDiacriticsFromUrl",
-									"PreservePeriods",
-									"UseAliasUrls",
-									"EnableAnalytics"
-								],
-								"properties": {
-									"MarkedPageCount": {
-										"type": "number",
-										"format": "double"
-									},
-									"MarkedAssetCount": {
-										"type": "number",
-										"format": "double"
-									},
-									"LastPublished": {
-										"type": "string",
-										"format": "date-time"
-									},
-									"LastAssetPublish": {
-										"type": "string",
-										"format": "date-time"
-									},
-									"RootPageId": {
-										"type": "string"
-									},
-									"RootPageName": {
-										"type": "string"
-									},
-									"GlobalContentRootId": {
-										"type": "string"
-									},
-									"GlobalContentRootName": {
-										"type": "string"
-									},
-									"PublishFolder": {
-										"type": "string"
-									},
-									"TransformOnPublish": {
-										"type": "boolean"
-									},
-									"UserAgent": {
-										"type": "string"
-									},
-									"Site": {
-										"type": "string"
-									},
-									"ExternalPreviewUrl": {
-										"type": "string"
-									},
-									"IceFieldMarkupUpdateUrl": {
-										"type": "string"
-									},
-									"PresentationFormatterId": {
-										"type": "string"
-									},
-									"MvcSupport": {
-										"type": "boolean"
-									},
-									"SkipXmpPublishling": {
-										"type": "boolean"
-									},
-									"SkipLingualMapPublishling": {
-										"type": "boolean"
-									},
-									"ReplicationEnabled": {
-										"type": "boolean"
-									},
-									"SimultaneousReplicationEnabled": {
-										"type": "boolean"
-									},
-									"HomePageId": {
-										"type": "string"
-									},
-									"HomePageName": {
-										"type": "string"
-									},
-									"ErrorPageId": {
-										"type": "string"
-									},
-									"ErrorPageName": {
-										"type": "string"
-									},
-									"UrlExtension": {
-										"type": "string"
-									},
-									"UrlSeparator": {
-										"type": "string"
-									},
-									"BaseUrl": {
-										"type": "string"
-									},
-									"AnalyticsProvider": {
-										"type": "string"
-									},
-									"ForceLowerCaseUrl": {
-										"type": "boolean"
-									},
-									"RedirectToCanonicalUrl": {
-										"type": "boolean"
-									},
-									"IncludeFolderNamesInUrlPath": {
-										"type": "boolean"
-									},
-									"NormalizeUrlSeparators": {
-										"type": "boolean"
-									},
-									"RemoveDiacriticsFromUrl": {
-										"type": "boolean"
-									},
-									"PreservePeriods": {
-										"type": "boolean"
-									},
-									"UseAliasUrls": {
-										"type": "boolean"
-									},
-									"EnableAnalytics": {
-										"type": "boolean"
-									}
-								}
-							}
-						]
-					}
-				},
-				"TotalResults": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PageSize": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"NextIndex": {
-					"type": "integer",
-					"format": "int32"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/targets",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/targets",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves publishing targets specified in a query."
 	},
 	{
-		"tool_name": "Publishing_GetPublishingTargetGroups",
-		"description": "GET /publishing/target/groups",
+		"tool_name": "Publishing_SetPublishingTargetGroups",
+		"description": "Saves groups for a publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"publishingTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Publishing target ID"
 				}
 			},
 			"required": [
@@ -1295,525 +179,165 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"type": "object",
-										"properties": {
-											"Id": {
-												"type": "string"
-											},
-											"Name": {
-												"type": "string"
-											}
-										}
-									},
-									{
-										"type": "object"
-									}
-								]
-							},
-							{
-								"type": "object",
-								"x-abstract": true,
-								"required": [
-									"Created",
-									"LastModified",
-									"Archived"
-								],
-								"properties": {
-									"CreationUser": {
-										"type": "string"
-									},
-									"Created": {
-										"type": "string",
-										"format": "date-time"
-									},
-									"LastModifiedUser": {
-										"type": "string"
-									},
-									"LastModified": {
-										"type": "string",
-										"format": "date-time"
-									},
-									"EntityType": {
-										"type": "string"
-									},
-									"Archived": {
-										"type": "boolean"
-									}
-								}
-							}
-						]
-					},
-					{
-						"type": "object",
-						"properties": {
-							"UserIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"GroupType": {
-								"type": "string"
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/target/groups",
+		"method": "post",
+		"endpoint": "/api/v1/publishing/target/groups",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Saves groups for a publishing target."
 	},
 	{
-		"tool_name": "Publishing_SetPublishingTargetGroups",
-		"description": "POST /publishing/target/groups",
+		"tool_name": "Publishing_GetPublishingTargetGroups",
+		"description": "Retrieves configured groups for a publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"publishingTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"userGroupIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"in": "query",
+					"description": "Publishing Target ID"
 				}
 			},
 			"required": [
-				"publishingTargetId",
-				"userGroupIds",
-				"userGroupIds"
+				"publishingTargetId"
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"type": "object",
-										"properties": {
-											"Id": {
-												"type": "string"
-											},
-											"Name": {
-												"type": "string"
-											}
-										}
-									},
-									{
-										"type": "object"
-									}
-								]
-							},
-							{
-								"type": "object",
-								"x-abstract": true,
-								"required": [
-									"Created",
-									"LastModified",
-									"Archived"
-								],
-								"properties": {
-									"CreationUser": {
-										"type": "string"
-									},
-									"Created": {
-										"type": "string",
-										"format": "date-time"
-									},
-									"LastModifiedUser": {
-										"type": "string"
-									},
-									"LastModified": {
-										"type": "string",
-										"format": "date-time"
-									},
-									"EntityType": {
-										"type": "string"
-									},
-									"Archived": {
-										"type": "boolean"
-									}
-								}
-							}
-						]
-					},
-					{
-						"type": "object",
-						"properties": {
-							"UserIds": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"GroupType": {
-								"type": "string"
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/publishing/target/groups",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/target/groups",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves configured groups for a publishing target."
 	},
 	{
 		"tool_name": "Publishing_GetContentItemPublishedToTarget",
-		"description": "POST /publishing/content-publish-history",
+		"description": "Retrieves publish status for a given publishing target and list of content items.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"publishingTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"contentItemIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"in": "query",
+					"description": "Publishing target ID"
 				}
 			},
 			"required": [
-				"publishingTargetId",
-				"contentItemIds",
-				"contentItemIds"
+				"publishingTargetId"
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"x-abstract": true,
-						"properties": {
-							"Id": {
-								"type": "string"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"required": [
-							"Published",
-							"Marked"
-						],
-						"properties": {
-							"Published": {
-								"type": "boolean"
-							},
-							"Marked": {
-								"type": "boolean"
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/publishing/content-publish-history",
+		"method": "post",
+		"endpoint": "/api/v1/publishing/content-publish-history",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves publish status for a given publishing target and list of content items."
 	},
 	{
 		"tool_name": "Publishing_GetUserAgents",
-		"description": "GET /publishing/user-agents",
+		"description": "Retrieves user agents for a publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"Name": {
-						"type": "string"
-					},
-					"SearchString": {
-						"type": "string"
-					},
-					"ContentType": {
-						"type": "string"
-					},
-					"FileExtension": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/user-agents",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/user-agents",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves user agents for a publishing target."
 	},
 	{
 		"tool_name": "Publishing_GetSites",
-		"description": "GET /publishing/sites",
+		"description": "Retrieves CMS sites.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"SearchString": {
-						"type": "string"
-					},
-					"SiteGroup": {
-						"type": "string"
-					},
-					"Name": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/sites",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/sites",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves CMS sites."
 	},
 	{
 		"tool_name": "Publishing_GetDitaDependencies",
-		"description": "POST /publishing/gather-dependencies",
+		"description": "Retrieves DITA dependencies for publishing.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTargetIds": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"contentIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"in": "query",
+					"description": "Publishing Target IDs"
 				}
 			},
 			"required": [
-				"pubTargetIds",
-				"contentIds",
-				"contentIds"
+				"pubTargetIds"
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"AllNonDITAContent"
-			],
-			"properties": {
-				"Dependencies": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"allOf": [
-									{
-										"type": "object",
-										"x-abstract": true,
-										"properties": {
-											"Id": {
-												"type": "string"
-											}
-										}
-									},
-									{
-										"type": "object",
-										"properties": {
-											"Name": {
-												"type": "string"
-											}
-										}
-									}
-								]
-							},
-							{
-								"type": "object",
-								"required": [
-									"IsMap",
-									"Level",
-									"Selected",
-									"Coverage"
-								],
-								"properties": {
-									"IsMap": {
-										"type": "boolean"
-									},
-									"OutputFormats": {
-										"type": "array",
-										"items": {
-											"allOf": [
-												{
-													"$ref": "#/definitions/ObjectWithName",
-													"circular": true
-												},
-												{
-													"type": "object",
-													"required": [
-														"IsNormalization"
-													],
-													"properties": {
-														"IsNormalization": {
-															"type": "boolean"
-														}
-													}
-												}
-											]
-										}
-									},
-									"Ditavals": {
-										"type": "array",
-										"items": {
-											"$ref": "#/definitions/ObjectWithName",
-											"circular": true
-										}
-									},
-									"Ditavalrefs": {
-										"type": "array",
-										"items": {
-											"$ref": "#/definitions/ObjectWithName",
-											"circular": true
-										}
-									},
-									"Level": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"Selected": {
-										"type": "boolean"
-									},
-									"Coverage": {
-										"type": "integer",
-										"format": "int32"
-									}
-								}
-							}
-						]
-					}
-				},
-				"DitaValChoices": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"properties": {
-									"Id": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"properties": {
-									"Path": {
-										"type": "string"
-									}
-								}
-							}
-						]
-					}
-				},
-				"FormatChoices": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/DitaPublishingFormat",
-						"circular": true
-					}
-				},
-				"AllNonDITAContent": {
-					"type": "boolean"
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/publishing/gather-dependencies",
+		"method": "post",
+		"endpoint": "/api/v1/publishing/gather-dependencies",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves DITA dependencies for publishing."
 	},
 	{
 		"tool_name": "Publishing_GetDitaOutputFormats",
-		"description": "GET /publishing/dita-output-formats",
+		"description": "Retrieves output formats for DITA publishing from a search string.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"searchString": {
 					"type": "string",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Filter string for output formats"
 				}
 			}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"required": [
-					"IsNormalization"
-				],
-				"properties": {
-					"Name": {
-						"type": "string"
-					},
-					"FormatString": {
-						"type": "string"
-					},
-					"IsNormalization": {
-						"type": "boolean"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/dita-output-formats",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/dita-output-formats",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves output formats for DITA publishing from a search string."
 	},
 	{
 		"tool_name": "Publishing_GetPostPublishContentProcessors",
-		"description": "GET /publishing/content-processors",
+		"description": "Retrieves post-publish content processors for a publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"pubTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Publishing target ID"
 				}
 			},
 			"required": [
@@ -1821,558 +345,107 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Processors": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"properties": {
-									"Id": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"ContentProcessorType",
-									"ProcessTopMapsOnly",
-									"DraftOutput",
-									"OutOfOrder",
-									"Disabled",
-									"SkipDTDDenormalization"
-								],
-								"properties": {
-									"ContentProcessorType": {
-										"type": "string",
-										"description": "",
-										"x-enumNames": [
-											"Dita",
-											"Plugin"
-										],
-										"enum": [
-											"Dita",
-											"Plugin"
-										]
-									},
-									"ProcessTopMapsOnly": {
-										"type": "boolean"
-									},
-									"DraftOutput": {
-										"type": "boolean"
-									},
-									"TypeFullName": {
-										"type": "string"
-									},
-									"Fields": {
-										"type": "array",
-										"items": {
-											"type": "object",
-											"properties": {
-												"Name": {
-													"type": "string"
-												},
-												"Value": {},
-												"Type": {
-													"type": "string"
-												},
-												"Choices": {
-													"type": "array",
-													"items": {
-														"$ref": "#/definitions/NameIdPair",
-														"circular": true
-													}
-												},
-												"Label": {
-													"type": "string"
-												}
-											}
-										}
-									},
-									"RequiredPreviousProcessTypes": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									},
-									"OutOfOrder": {
-										"type": "boolean"
-									},
-									"DitaUrlMatchPartialString": {
-										"type": "string"
-									},
-									"DitaOutputFormats": {
-										"type": "array",
-										"items": {
-											"type": "object",
-											"required": [
-												"IsNormalization"
-											],
-											"properties": {
-												"Name": {
-													"type": "string"
-												},
-												"FormatString": {
-													"type": "string"
-												},
-												"IsNormalization": {
-													"type": "boolean"
-												}
-											}
-										}
-									},
-									"DitaRenderingSchema": {
-										"$ref": "#/definitions/NameIdPair",
-										"circular": true
-									},
-									"Disabled": {
-										"type": "boolean"
-									},
-									"SkipDTDDenormalization": {
-										"type": "boolean"
-									}
-								}
-							}
-						]
-					}
-				},
-				"PluginProcessorTypes": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"$ref": "#/definitions/NameIdPair",
-								"circular": true
-							},
-							{
-								"type": "object",
-								"properties": {
-									"Fields": {
-										"type": "array",
-										"items": {
-											"$ref": "#/definitions/PostProcessPluginField",
-											"circular": true
-										}
-									},
-									"RequiredPrevProcTypes": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									}
-								}
-							}
-						]
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/content-processors",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/content-processors",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves post-publish content processors for a publishing target."
 	},
 	{
 		"tool_name": "Publishing_SetPostPublishContentProcessor",
-		"description": "POST /publishing/content-processors",
+		"description": "Saves post-publish content processors for a given publishing target",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"publishingTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"contentProcessors": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"properties": {
-									"Id": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"ContentProcessorType",
-									"ProcessTopMapsOnly",
-									"DraftOutput",
-									"OutOfOrder",
-									"Disabled",
-									"SkipDTDDenormalization"
-								],
-								"properties": {
-									"ContentProcessorType": {
-										"type": "string",
-										"description": "",
-										"x-enumNames": [
-											"Dita",
-											"Plugin"
-										],
-										"enum": [
-											"Dita",
-											"Plugin"
-										]
-									},
-									"ProcessTopMapsOnly": {
-										"type": "boolean"
-									},
-									"DraftOutput": {
-										"type": "boolean"
-									},
-									"TypeFullName": {
-										"type": "string"
-									},
-									"Fields": {
-										"type": "array",
-										"items": {
-											"type": "object",
-											"properties": {
-												"Name": {
-													"type": "string"
-												},
-												"Value": {},
-												"Type": {
-													"type": "string"
-												},
-												"Choices": {
-													"type": "array",
-													"items": {
-														"$ref": "#/definitions/NameIdPair",
-														"circular": true
-													}
-												},
-												"Label": {
-													"type": "string"
-												}
-											}
-										}
-									},
-									"RequiredPreviousProcessTypes": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										}
-									},
-									"OutOfOrder": {
-										"type": "boolean"
-									},
-									"DitaUrlMatchPartialString": {
-										"type": "string"
-									},
-									"DitaOutputFormats": {
-										"type": "array",
-										"items": {
-											"type": "object",
-											"required": [
-												"IsNormalization"
-											],
-											"properties": {
-												"Name": {
-													"type": "string"
-												},
-												"FormatString": {
-													"type": "string"
-												},
-												"IsNormalization": {
-													"type": "boolean"
-												}
-											}
-										}
-									},
-									"DitaRenderingSchema": {
-										"$ref": "#/definitions/NameIdPair",
-										"circular": true
-									},
-									"Disabled": {
-										"type": "boolean"
-									},
-									"SkipDTDDenormalization": {
-										"type": "boolean"
-									}
-								}
-							}
-						]
-					}
+					"in": "query",
+					"description": "Publishing Target ID"
 				}
 			},
 			"required": [
-				"publishingTargetId",
-				"contentProcessors",
-				"contentProcessors"
+				"publishingTargetId"
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"required": [
-							"ContentProcessorType",
-							"ProcessTopMapsOnly",
-							"DraftOutput",
-							"OutOfOrder",
-							"Disabled",
-							"SkipDTDDenormalization"
-						],
-						"properties": {
-							"ContentProcessorType": {
-								"type": "string",
-								"description": "",
-								"x-enumNames": [
-									"Dita",
-									"Plugin"
-								],
-								"enum": [
-									"Dita",
-									"Plugin"
-								]
-							},
-							"ProcessTopMapsOnly": {
-								"type": "boolean"
-							},
-							"DraftOutput": {
-								"type": "boolean"
-							},
-							"TypeFullName": {
-								"type": "string"
-							},
-							"Fields": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"Name": {
-											"type": "string"
-										},
-										"Value": {},
-										"Type": {
-											"type": "string"
-										},
-										"Choices": {
-											"type": "array",
-											"items": {
-												"$ref": "#/definitions/NameIdPair",
-												"circular": true
-											}
-										},
-										"Label": {
-											"type": "string"
-										}
-									}
-								}
-							},
-							"RequiredPreviousProcessTypes": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"OutOfOrder": {
-								"type": "boolean"
-							},
-							"DitaUrlMatchPartialString": {
-								"type": "string"
-							},
-							"DitaOutputFormats": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"required": [
-										"IsNormalization"
-									],
-									"properties": {
-										"Name": {
-											"type": "string"
-										},
-										"FormatString": {
-											"type": "string"
-										},
-										"IsNormalization": {
-											"type": "boolean"
-										}
-									}
-								}
-							},
-							"DitaRenderingSchema": {
-								"$ref": "#/definitions/NameIdPair",
-								"circular": true
-							},
-							"Disabled": {
-								"type": "boolean"
-							},
-							"SkipDTDDenormalization": {
-								"type": "boolean"
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/publishing/content-processors",
+		"method": "post",
+		"endpoint": "/api/v1/publishing/content-processors",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Saves post-publish content processors for a given publishing target"
 	},
 	{
 		"tool_name": "Publishing_GetContentProcessorLogs",
-		"description": "GET /publishing/content-processor-logs",
+		"description": "Retrieves the logs for DITA content processors.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"StartIndex": {
 					"type": "integer",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Start index"
 				},
 				"PageSize": {
 					"type": "integer",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Page size"
 				},
 				"SortField": {
 					"type": "string",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Sort field"
 				},
 				"SortOrder": {
 					"type": "string",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Ascending or descending"
 				},
 				"filter": {
 					"type": "string",
 					"required": false,
-					"in": "query"
+					"in": "query",
+					"description": "Filter"
 				}
 			}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"DebugMode"
-			],
-			"properties": {
-				"Logs": {
-					"type": "object",
-					"required": [
-						"TotalResults",
-						"PageSize",
-						"NextIndex"
-					],
-					"properties": {
-						"Results": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"required": [
-									"IsError",
-									"IsPreview"
-								],
-								"properties": {
-									"Path": {
-										"type": "string"
-									},
-									"PubTarget": {
-										"type": "string"
-									},
-									"Type": {
-										"type": "string"
-									},
-									"ContentId": {
-										"type": "string"
-									},
-									"ContentName": {
-										"type": "string"
-									},
-									"Format": {
-										"type": "string"
-									},
-									"Variables": {
-										"type": "string"
-									},
-									"Created": {
-										"type": "string"
-									},
-									"TempPath": {
-										"type": "string"
-									},
-									"IsError": {
-										"type": "boolean"
-									},
-									"IsPreview": {
-										"type": "boolean"
-									}
-								}
-							}
-						},
-						"TotalResults": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"PageSize": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"NextIndex": {
-							"type": "integer",
-							"format": "int32"
-						}
-					}
-				},
-				"DebugMode": {
-					"type": "boolean"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/content-processor-logs",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/content-processor-logs",
 		"tags": [
 			"Publishing"
-		]
+		],
+		"summary": "Retrieves the logs for DITA content processors."
 	},
 	{
 		"tool_name": "Reports_GetStats",
-		"description": "GET /reports/stats",
+		"description": "Retrieves general CMS statistics.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"periodDataOnly": {
 					"type": "boolean",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Specify that data is only to be returned within a period"
 				},
 				"begingDate": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Date at which to begin statistics collection"
 				}
 			},
 			"required": [
@@ -2381,113 +454,32 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"general": {
-					"type": "object",
-					"required": [
-						"pagesCount",
-						"checkedoutPagesCount",
-						"usersCount",
-						"userGroupsCount",
-						"schemasCount",
-						"stylesheetsCount",
-						"pcrsCount",
-						"workflowsCount",
-						"pagesInWorkflowCount"
-					],
-					"properties": {
-						"siteVersion": {
-							"type": "string"
-						},
-						"pagesCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"checkedoutPagesCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"usersCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"userGroupsCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"schemasCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"stylesheetsCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"pcrsCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"workflowsCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"pagesInWorkflowCount": {
-							"type": "integer",
-							"format": "int32"
-						}
-					}
-				},
-				"period": {
-					"type": "object",
-					"required": [
-						"pagesCreated",
-						"pagesUpdated",
-						"percentageOfPagesUpdated",
-						"pagesPublished"
-					],
-					"properties": {
-						"pagesCreated": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"pagesUpdated": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"percentageOfPagesUpdated": {
-							"type": "number",
-							"format": "double"
-						},
-						"pagesPublished": {
-							"type": "integer",
-							"format": "int32"
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/reports/stats",
+		"method": "get",
+		"endpoint": "/api/v1/reports/stats",
 		"tags": [
 			"Reports"
-		]
+		],
+		"summary": "Retrieves general CMS statistics."
 	},
 	{
 		"tool_name": "Reports_GetScheduling",
-		"description": "GET /reports/scheduling",
+		"description": "Retrieves report scheduling information.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"count": {
 					"type": "integer",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Number of upcoming reports to return information on"
 				},
 				"workingLocale": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Locale by which to filter reports"
 				}
 			},
 			"required": [
@@ -2496,69 +488,32 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"occurrences": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"required": [
-							"recipientsCount"
-						],
-						"properties": {
-							"id": {
-								"type": "string"
-							},
-							"name": {
-								"type": "string"
-							},
-							"time": {
-								"type": "string"
-							},
-							"recipientsCount": {
-								"type": "integer",
-								"format": "int32"
-							}
-						}
-					}
-				},
-				"schedulerState": {
-					"type": "object",
-					"required": [
-						"started"
-					],
-					"properties": {
-						"started": {
-							"type": "boolean"
-						},
-						"startTime": {
-							"type": "string"
-						}
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/reports/scheduling",
+		"method": "get",
+		"endpoint": "/api/v1/reports/scheduling",
 		"tags": [
 			"Reports"
-		]
+		],
+		"summary": "Retrieves report scheduling information."
 	},
 	{
 		"tool_name": "Reports_ToggleScheduler",
-		"description": "POST /reports/toggle-scheduler",
+		"description": "Toggles report scheduler on/off.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"toStart": {
 					"type": "boolean",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Specifies whether to start or stop the report scheduler"
 				},
 				"workingLocale": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Reports locale"
 				}
 			},
 			"required": [
@@ -2567,23 +522,13 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"started"
-			],
-			"properties": {
-				"started": {
-					"type": "boolean"
-				},
-				"startTime": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/reports/toggle-scheduler",
+		"method": "post",
+		"endpoint": "/api/v1/reports/toggle-scheduler",
 		"tags": [
 			"Reports"
-		]
+		],
+		"summary": "Toggles report scheduler on/off."
 	}
 ]

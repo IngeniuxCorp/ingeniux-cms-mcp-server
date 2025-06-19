@@ -1,14 +1,15 @@
 [
 	{
 		"tool_name": "Workflow_DeleteWorkflowDefinition",
-		"description": "DELETE /workflows/definition",
+		"description": "Deletes a workflow definition.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"definitionId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Workflow definition ID"
 				}
 			},
 			"required": [
@@ -16,1897 +17,120 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Error": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "DELETE",
-		"endpoint": "/workflows/definition",
+		"method": "delete",
+		"endpoint": "/api/v1/workflows/definition",
 		"tags": [
 			"Workflow"
-		]
-	},
-	{
-		"tool_name": "Workflow_SaveWorkstate",
-		"description": "POST /workflows/workstate",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"state": {
-					"type": "object",
-					"x-abstract": true,
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string"
-						},
-						"CreationUser": {
-							"type": "string"
-						},
-						"Created": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"LastModifiedUser": {
-							"type": "string"
-						},
-						"LastModified": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"EntityType": {
-							"type": "string"
-						},
-						"Archived": {
-							"type": "boolean"
-						},
-						"Description": {
-							"type": "string"
-						},
-						"Active": {
-							"type": "boolean"
-						},
-						"Icon": {
-							"type": "integer",
-							"format": "int32"
-						}
-					},
-					"required": [
-						"Created",
-						"LastModified",
-						"Archived",
-						"Active",
-						"Icon"
-					]
-				}
-			},
-			"required": [
-				"state",
-				"state"
-			]
-		},
-		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"EntityType": {
-					"type": "string"
-				},
-				"Archived": {
-					"type": "boolean"
-				},
-				"Description": {
-					"type": "string"
-				},
-				"Active": {
-					"type": "boolean"
-				},
-				"Icon": {
-					"type": "integer",
-					"format": "int32"
-				}
-			},
-			"required": [
-				"Created",
-				"LastModified",
-				"Archived",
-				"Active",
-				"Icon"
-			]
-		},
-		"method": "POST",
-		"endpoint": "/workflows/workstate",
-		"tags": [
-			"Workflow"
-		]
+		],
+		"summary": "Deletes a workflow definition."
 	},
 	{
 		"tool_name": "Workflow_CreateWorkstate",
-		"description": "PUT /workflows/workstate",
+		"description": "Creates a new workstate.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"newState": {
-					"type": "object",
-					"x-abstract": true,
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string"
-						},
-						"CreationUser": {
-							"type": "string"
-						},
-						"Created": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"LastModifiedUser": {
-							"type": "string"
-						},
-						"LastModified": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"EntityType": {
-							"type": "string"
-						},
-						"Archived": {
-							"type": "boolean"
-						},
-						"Description": {
-							"type": "string"
-						},
-						"Active": {
-							"type": "boolean"
-						},
-						"Icon": {
-							"type": "integer",
-							"format": "int32"
-						}
-					},
-					"required": [
-						"Created",
-						"LastModified",
-						"Archived",
-						"Active",
-						"Icon"
-					]
-				}
-			},
-			"required": [
-				"newState",
-				"newState"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"x-abstract": true,
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"EntityType": {
-					"type": "string"
-				},
-				"Archived": {
-					"type": "boolean"
-				},
-				"Description": {
-					"type": "string"
-				},
-				"Active": {
-					"type": "boolean"
-				},
-				"Icon": {
-					"type": "integer",
-					"format": "int32"
-				}
-			},
-			"required": [
-				"Created",
-				"LastModified",
-				"Archived",
-				"Active",
-				"Icon"
-			]
+			"type": "object"
 		},
-		"method": "PUT",
-		"endpoint": "/workflows/workstate",
+		"method": "put",
+		"endpoint": "/api/v1/workflows/workstate",
 		"tags": [
 			"Workflow"
-		]
+		],
+		"summary": "Creates a new workstate."
+	},
+	{
+		"tool_name": "Workflow_SaveWorkstate",
+		"description": "Saves a workstate with an updated model (including workstate ID).",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "post",
+		"endpoint": "/api/v1/workflows/workstate",
+		"tags": [
+			"Workflow"
+		],
+		"summary": "Saves a workstate with an updated model (including workstate ID)."
 	},
 	{
 		"tool_name": "Workflow_DeleteWorkstate",
-		"description": "DELETE /workflows/workstate",
+		"description": "Deletes a list of workstates, specified by their IDs.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"workstateIds": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
-			},
+			"properties": {},
 			"required": [
-				"workstateIds",
 				"workstateIds"
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"x-abstract": true,
-						"properties": {
-							"Id": {
-								"type": "string"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"properties": {
-							"Error": {
-								"type": "string"
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "DELETE",
-		"endpoint": "/workflows/workstate",
+		"method": "delete",
+		"endpoint": "/api/v1/workflows/workstate",
 		"tags": [
 			"Workflow"
-		]
+		],
+		"summary": "Deletes a list of workstates, specified by their IDs."
 	},
 	{
 		"tool_name": "Workflow_PrepareTemplate",
-		"description": "POST /workflows/prepare-template",
+		"description": "Prepares a workflow template.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"data": {
-					"type": "object",
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string"
-						},
-						"NewDescription": {
-							"type": "string"
-						},
-						"WorkflowStateNames": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						}
-					}
-				}
-			},
-			"required": [
-				"data",
-				"data"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"Success"
-			],
-			"properties": {
-				"Success": {
-					"type": "boolean"
-				},
-				"Definition": {
-					"type": "object",
-					"x-abstract": true,
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string"
-						},
-						"CreationUser": {
-							"type": "string"
-						},
-						"Created": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"LastModifiedUser": {
-							"type": "string"
-						},
-						"LastModified": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"EntityType": {
-							"type": "string"
-						},
-						"Archived": {
-							"type": "boolean"
-						},
-						"Desc": {
-							"type": "string"
-						},
-						"PagesCount": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"InitialGroupIsEmpty": {
-							"type": "boolean"
-						}
-					},
-					"required": [
-						"Created",
-						"LastModified",
-						"Archived",
-						"PagesCount",
-						"InitialGroupIsEmpty"
-					]
-				},
-				"WorkflowStates": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"$ref": "#/definitions/EntityBaseModel",
-								"circular": true
-							},
-							{
-								"type": "object",
-								"required": [
-									"Active",
-									"Icon"
-								],
-								"properties": {
-									"Description": {
-										"type": "string"
-									},
-									"Active": {
-										"type": "boolean"
-									},
-									"Icon": {
-										"type": "integer",
-										"format": "int32"
-									}
-								}
-							}
-						]
-					}
-				},
-				"AllWorkflowStates": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/WorkstateModel",
-						"circular": true
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/workflows/prepare-template",
+		"method": "post",
+		"endpoint": "/api/v1/workflows/prepare-template",
 		"tags": [
 			"Workflow"
-		]
-	},
-	{
-		"tool_name": "Replication_ReplicationTarget",
-		"description": "GET /publishing/replication/target",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"replicationTargetId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
-				},
-				"publishingTargetId": {
-					"type": "string",
-					"required": true,
-					"in": "query"
-				}
-			},
-			"required": [
-				"replicationTargetId",
-				"publishingTargetId"
-			]
-		},
-		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string",
-					"minLength": 1
-				},
-				"TargetLocation": {
-					"type": "string"
-				},
-				"UseImpersonation": {
-					"type": "boolean"
-				},
-				"ImpersonateUsername": {
-					"type": "string"
-				},
-				"ImpersonateUserDomain": {
-					"type": "string"
-				},
-				"ImpersonatePassword": {
-					"type": "string"
-				},
-				"TargetAddress": {
-					"type": "string"
-				},
-				"Port": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Username": {
-					"type": "string"
-				},
-				"Password": {
-					"type": "string"
-				},
-				"RootPath": {
-					"type": "string"
-				},
-				"CompressedTransfer": {
-					"type": "boolean"
-				},
-				"Passive": {
-					"type": "boolean"
-				},
-				"AuthenticateWithPrivateKey": {
-					"type": "boolean"
-				},
-				"KeyLocation": {
-					"type": "string"
-				},
-				"SFTPAuthenticationType": {
-					"type": "string",
-					"description": "",
-					"x-enumNames": [
-						"UsernamePassword",
-						"PrivateKey",
-						"PrivateKeyWithPassword"
-					],
-					"enum": [
-						"UsernamePassword",
-						"PrivateKey",
-						"PrivateKeyWithPassword"
-					]
-				},
-				"AuthenticateWithCertificate": {
-					"type": "boolean"
-				},
-				"ImplicitEncryption": {
-					"type": "boolean"
-				},
-				"AllowPrivateCertificates": {
-					"type": "boolean"
-				},
-				"ConnectionString": {
-					"type": "string"
-				},
-				"Container": {
-					"type": "string"
-				},
-				"RegionEndpointSystemName": {
-					"type": "string"
-				},
-				"Bucket": {
-					"type": "string"
-				},
-				"AccessKey": {
-					"type": "string"
-				},
-				"SecretKey": {
-					"type": "string"
-				},
-				"SavedSecretKey": {
-					"type": "boolean"
-				},
-				"AuthType": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"IAMAttachedRoleARN": {
-					"type": "string"
-				},
-				"IAMRoleAnywhereARN": {
-					"type": "string"
-				},
-				"TrustAnchorARN": {
-					"type": "string"
-				},
-				"IAMProfileARN": {
-					"type": "string"
-				},
-				"CertificateLocation": {
-					"type": "string"
-				},
-				"PrivateKeyLocation": {
-					"type": "string"
-				},
-				"CommandLineOverrides": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"Disabled": {
-					"type": "boolean"
-				},
-				"UseWriteThrough": {
-					"type": "boolean"
-				},
-				"UseCommands": {
-					"type": "boolean"
-				},
-				"ReplicationTargetType": {
-					"type": "string",
-					"description": "",
-					"x-enumNames": [
-						"File",
-						"FTP",
-						"SFTP",
-						"FTPS",
-						"Azure",
-						"AWS",
-						"Robo"
-					],
-					"enum": [
-						"File",
-						"FTP",
-						"SFTP",
-						"FTPS",
-						"Azure",
-						"AWS",
-						"Robo"
-					]
-				},
-				"PublishingTargetId": {
-					"type": "string",
-					"minLength": 1
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Description": {
-					"type": "string"
-				},
-				"PublishingTargetDirectory": {
-					"type": "string"
-				},
-				"PreReplicationCommand": {
-					"type": "string"
-				},
-				"PostReplicationCommand": {
-					"type": "string"
-				},
-				"PreReplicationCommandTimeout": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PostReplicationCommandTimeout": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"ExemptLocations": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"x-abstract": true,
-								"required": [
-									"ExemptAllFiles",
-									"ExemptDescendantDirectories"
-								],
-								"properties": {
-									"RelativePath": {
-										"type": "string"
-									},
-									"ExemptAllFiles": {
-										"type": "boolean"
-									},
-									"ExemptDescendantDirectories": {
-										"type": "boolean"
-									},
-									"SearchPatterns": {
-										"type": "string"
-									}
-								}
-							},
-							{
-								"type": "object"
-							}
-						]
-					}
-				},
-				"AdditionalLocations": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"TargetRelativePath": {
-								"type": "string"
-							},
-							"SourceFullPath": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"CleanupExemptLocations": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"$ref": "#/definitions/ReplicationExemptionBaseModel",
-								"circular": true
-							},
-							{
-								"type": "object"
-							}
-						]
-					}
-				}
-			},
-			"required": [
-				"UseImpersonation",
-				"Port",
-				"CompressedTransfer",
-				"Passive",
-				"AuthenticateWithPrivateKey",
-				"SFTPAuthenticationType",
-				"AuthenticateWithCertificate",
-				"ImplicitEncryption",
-				"AllowPrivateCertificates",
-				"SavedSecretKey",
-				"AuthType",
-				"Created",
-				"LastModified",
-				"Disabled",
-				"UseWriteThrough",
-				"UseCommands",
-				"ReplicationTargetType",
-				"Name",
-				"PublishingTargetId",
-				"PreReplicationCommandTimeout",
-				"PostReplicationCommandTimeout"
-			]
-		},
-		"method": "GET",
-		"endpoint": "/publishing/replication/target",
-		"tags": [
-			"Replication"
-		]
+		],
+		"summary": "Prepares a workflow template."
 	},
 	{
 		"tool_name": "Replication_CreateReplicationTarget",
-		"description": "POST /publishing/replication/target",
+		"description": "Creates a replication target.",
 		"input_schema": {
 			"type": "object",
-			"properties": {
-				"replicationTarget": {
-					"type": "object",
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string",
-							"minLength": 1
-						},
-						"TargetLocation": {
-							"type": "string"
-						},
-						"UseImpersonation": {
-							"type": "boolean"
-						},
-						"ImpersonateUsername": {
-							"type": "string"
-						},
-						"ImpersonateUserDomain": {
-							"type": "string"
-						},
-						"ImpersonatePassword": {
-							"type": "string"
-						},
-						"TargetAddress": {
-							"type": "string"
-						},
-						"Port": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"Username": {
-							"type": "string"
-						},
-						"Password": {
-							"type": "string"
-						},
-						"RootPath": {
-							"type": "string"
-						},
-						"CompressedTransfer": {
-							"type": "boolean"
-						},
-						"Passive": {
-							"type": "boolean"
-						},
-						"AuthenticateWithPrivateKey": {
-							"type": "boolean"
-						},
-						"KeyLocation": {
-							"type": "string"
-						},
-						"SFTPAuthenticationType": {
-							"type": "string",
-							"description": "",
-							"x-enumNames": [
-								"UsernamePassword",
-								"PrivateKey",
-								"PrivateKeyWithPassword"
-							],
-							"enum": [
-								"UsernamePassword",
-								"PrivateKey",
-								"PrivateKeyWithPassword"
-							]
-						},
-						"AuthenticateWithCertificate": {
-							"type": "boolean"
-						},
-						"ImplicitEncryption": {
-							"type": "boolean"
-						},
-						"AllowPrivateCertificates": {
-							"type": "boolean"
-						},
-						"ConnectionString": {
-							"type": "string"
-						},
-						"Container": {
-							"type": "string"
-						},
-						"RegionEndpointSystemName": {
-							"type": "string"
-						},
-						"Bucket": {
-							"type": "string"
-						},
-						"AccessKey": {
-							"type": "string"
-						},
-						"SecretKey": {
-							"type": "string"
-						},
-						"SavedSecretKey": {
-							"type": "boolean"
-						},
-						"AuthType": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"IAMAttachedRoleARN": {
-							"type": "string"
-						},
-						"IAMRoleAnywhereARN": {
-							"type": "string"
-						},
-						"TrustAnchorARN": {
-							"type": "string"
-						},
-						"IAMProfileARN": {
-							"type": "string"
-						},
-						"CertificateLocation": {
-							"type": "string"
-						},
-						"PrivateKeyLocation": {
-							"type": "string"
-						},
-						"CommandLineOverrides": {
-							"type": "string"
-						},
-						"Created": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"LastModified": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"Disabled": {
-							"type": "boolean"
-						},
-						"UseWriteThrough": {
-							"type": "boolean"
-						},
-						"UseCommands": {
-							"type": "boolean"
-						},
-						"ReplicationTargetType": {
-							"type": "string",
-							"description": "",
-							"x-enumNames": [
-								"File",
-								"FTP",
-								"SFTP",
-								"FTPS",
-								"Azure",
-								"AWS",
-								"Robo"
-							],
-							"enum": [
-								"File",
-								"FTP",
-								"SFTP",
-								"FTPS",
-								"Azure",
-								"AWS",
-								"Robo"
-							]
-						},
-						"PublishingTargetId": {
-							"type": "string",
-							"minLength": 1
-						},
-						"LastModifiedUser": {
-							"type": "string"
-						},
-						"CreationUser": {
-							"type": "string"
-						},
-						"Description": {
-							"type": "string"
-						},
-						"PublishingTargetDirectory": {
-							"type": "string"
-						},
-						"PreReplicationCommand": {
-							"type": "string"
-						},
-						"PostReplicationCommand": {
-							"type": "string"
-						},
-						"PreReplicationCommandTimeout": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"PostReplicationCommandTimeout": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"ExemptLocations": {
-							"type": "array",
-							"items": {
-								"allOf": [
-									{
-										"type": "object",
-										"x-abstract": true,
-										"required": [
-											"ExemptAllFiles",
-											"ExemptDescendantDirectories"
-										],
-										"properties": {
-											"RelativePath": {
-												"type": "string"
-											},
-											"ExemptAllFiles": {
-												"type": "boolean"
-											},
-											"ExemptDescendantDirectories": {
-												"type": "boolean"
-											},
-											"SearchPatterns": {
-												"type": "string"
-											}
-										}
-									},
-									{
-										"type": "object"
-									}
-								]
-							}
-						},
-						"AdditionalLocations": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"TargetRelativePath": {
-										"type": "string"
-									},
-									"SourceFullPath": {
-										"type": "string"
-									}
-								}
-							}
-						},
-						"CleanupExemptLocations": {
-							"type": "array",
-							"items": {
-								"allOf": [
-									{
-										"$ref": "#/definitions/ReplicationExemptionBaseModel",
-										"circular": true
-									},
-									{
-										"type": "object"
-									}
-								]
-							}
-						}
-					},
-					"required": [
-						"UseImpersonation",
-						"Port",
-						"CompressedTransfer",
-						"Passive",
-						"AuthenticateWithPrivateKey",
-						"SFTPAuthenticationType",
-						"AuthenticateWithCertificate",
-						"ImplicitEncryption",
-						"AllowPrivateCertificates",
-						"SavedSecretKey",
-						"AuthType",
-						"Created",
-						"LastModified",
-						"Disabled",
-						"UseWriteThrough",
-						"UseCommands",
-						"ReplicationTargetType",
-						"Name",
-						"PublishingTargetId",
-						"PreReplicationCommandTimeout",
-						"PostReplicationCommandTimeout"
-					]
-				}
-			},
-			"required": [
-				"replicationTarget",
-				"replicationTarget"
-			]
+			"properties": {}
 		},
 		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string",
-					"minLength": 1
-				},
-				"TargetLocation": {
-					"type": "string"
-				},
-				"UseImpersonation": {
-					"type": "boolean"
-				},
-				"ImpersonateUsername": {
-					"type": "string"
-				},
-				"ImpersonateUserDomain": {
-					"type": "string"
-				},
-				"ImpersonatePassword": {
-					"type": "string"
-				},
-				"TargetAddress": {
-					"type": "string"
-				},
-				"Port": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Username": {
-					"type": "string"
-				},
-				"Password": {
-					"type": "string"
-				},
-				"RootPath": {
-					"type": "string"
-				},
-				"CompressedTransfer": {
-					"type": "boolean"
-				},
-				"Passive": {
-					"type": "boolean"
-				},
-				"AuthenticateWithPrivateKey": {
-					"type": "boolean"
-				},
-				"KeyLocation": {
-					"type": "string"
-				},
-				"SFTPAuthenticationType": {
-					"type": "string",
-					"description": "",
-					"x-enumNames": [
-						"UsernamePassword",
-						"PrivateKey",
-						"PrivateKeyWithPassword"
-					],
-					"enum": [
-						"UsernamePassword",
-						"PrivateKey",
-						"PrivateKeyWithPassword"
-					]
-				},
-				"AuthenticateWithCertificate": {
-					"type": "boolean"
-				},
-				"ImplicitEncryption": {
-					"type": "boolean"
-				},
-				"AllowPrivateCertificates": {
-					"type": "boolean"
-				},
-				"ConnectionString": {
-					"type": "string"
-				},
-				"Container": {
-					"type": "string"
-				},
-				"RegionEndpointSystemName": {
-					"type": "string"
-				},
-				"Bucket": {
-					"type": "string"
-				},
-				"AccessKey": {
-					"type": "string"
-				},
-				"SecretKey": {
-					"type": "string"
-				},
-				"SavedSecretKey": {
-					"type": "boolean"
-				},
-				"AuthType": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"IAMAttachedRoleARN": {
-					"type": "string"
-				},
-				"IAMRoleAnywhereARN": {
-					"type": "string"
-				},
-				"TrustAnchorARN": {
-					"type": "string"
-				},
-				"IAMProfileARN": {
-					"type": "string"
-				},
-				"CertificateLocation": {
-					"type": "string"
-				},
-				"PrivateKeyLocation": {
-					"type": "string"
-				},
-				"CommandLineOverrides": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"Disabled": {
-					"type": "boolean"
-				},
-				"UseWriteThrough": {
-					"type": "boolean"
-				},
-				"UseCommands": {
-					"type": "boolean"
-				},
-				"ReplicationTargetType": {
-					"type": "string",
-					"description": "",
-					"x-enumNames": [
-						"File",
-						"FTP",
-						"SFTP",
-						"FTPS",
-						"Azure",
-						"AWS",
-						"Robo"
-					],
-					"enum": [
-						"File",
-						"FTP",
-						"SFTP",
-						"FTPS",
-						"Azure",
-						"AWS",
-						"Robo"
-					]
-				},
-				"PublishingTargetId": {
-					"type": "string",
-					"minLength": 1
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Description": {
-					"type": "string"
-				},
-				"PublishingTargetDirectory": {
-					"type": "string"
-				},
-				"PreReplicationCommand": {
-					"type": "string"
-				},
-				"PostReplicationCommand": {
-					"type": "string"
-				},
-				"PreReplicationCommandTimeout": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PostReplicationCommandTimeout": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"ExemptLocations": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"x-abstract": true,
-								"required": [
-									"ExemptAllFiles",
-									"ExemptDescendantDirectories"
-								],
-								"properties": {
-									"RelativePath": {
-										"type": "string"
-									},
-									"ExemptAllFiles": {
-										"type": "boolean"
-									},
-									"ExemptDescendantDirectories": {
-										"type": "boolean"
-									},
-									"SearchPatterns": {
-										"type": "string"
-									}
-								}
-							},
-							{
-								"type": "object"
-							}
-						]
-					}
-				},
-				"AdditionalLocations": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"TargetRelativePath": {
-								"type": "string"
-							},
-							"SourceFullPath": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"CleanupExemptLocations": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"$ref": "#/definitions/ReplicationExemptionBaseModel",
-								"circular": true
-							},
-							{
-								"type": "object"
-							}
-						]
-					}
-				}
-			},
-			"required": [
-				"UseImpersonation",
-				"Port",
-				"CompressedTransfer",
-				"Passive",
-				"AuthenticateWithPrivateKey",
-				"SFTPAuthenticationType",
-				"AuthenticateWithCertificate",
-				"ImplicitEncryption",
-				"AllowPrivateCertificates",
-				"SavedSecretKey",
-				"AuthType",
-				"Created",
-				"LastModified",
-				"Disabled",
-				"UseWriteThrough",
-				"UseCommands",
-				"ReplicationTargetType",
-				"Name",
-				"PublishingTargetId",
-				"PreReplicationCommandTimeout",
-				"PostReplicationCommandTimeout"
-			]
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/publishing/replication/target",
+		"method": "post",
+		"endpoint": "/api/v1/publishing/replication/target",
 		"tags": [
 			"Replication"
-		]
-	},
-	{
-		"tool_name": "Replication_UpdateReplicationTarget",
-		"description": "PUT /publishing/replication/target",
-		"input_schema": {
-			"type": "object",
-			"properties": {
-				"replicationTarget": {
-					"type": "object",
-					"properties": {
-						"Id": {
-							"type": "string"
-						},
-						"Name": {
-							"type": "string",
-							"minLength": 1
-						},
-						"TargetLocation": {
-							"type": "string"
-						},
-						"UseImpersonation": {
-							"type": "boolean"
-						},
-						"ImpersonateUsername": {
-							"type": "string"
-						},
-						"ImpersonateUserDomain": {
-							"type": "string"
-						},
-						"ImpersonatePassword": {
-							"type": "string"
-						},
-						"TargetAddress": {
-							"type": "string"
-						},
-						"Port": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"Username": {
-							"type": "string"
-						},
-						"Password": {
-							"type": "string"
-						},
-						"RootPath": {
-							"type": "string"
-						},
-						"CompressedTransfer": {
-							"type": "boolean"
-						},
-						"Passive": {
-							"type": "boolean"
-						},
-						"AuthenticateWithPrivateKey": {
-							"type": "boolean"
-						},
-						"KeyLocation": {
-							"type": "string"
-						},
-						"SFTPAuthenticationType": {
-							"type": "string",
-							"description": "",
-							"x-enumNames": [
-								"UsernamePassword",
-								"PrivateKey",
-								"PrivateKeyWithPassword"
-							],
-							"enum": [
-								"UsernamePassword",
-								"PrivateKey",
-								"PrivateKeyWithPassword"
-							]
-						},
-						"AuthenticateWithCertificate": {
-							"type": "boolean"
-						},
-						"ImplicitEncryption": {
-							"type": "boolean"
-						},
-						"AllowPrivateCertificates": {
-							"type": "boolean"
-						},
-						"ConnectionString": {
-							"type": "string"
-						},
-						"Container": {
-							"type": "string"
-						},
-						"RegionEndpointSystemName": {
-							"type": "string"
-						},
-						"Bucket": {
-							"type": "string"
-						},
-						"AccessKey": {
-							"type": "string"
-						},
-						"SecretKey": {
-							"type": "string"
-						},
-						"SavedSecretKey": {
-							"type": "boolean"
-						},
-						"AuthType": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"IAMAttachedRoleARN": {
-							"type": "string"
-						},
-						"IAMRoleAnywhereARN": {
-							"type": "string"
-						},
-						"TrustAnchorARN": {
-							"type": "string"
-						},
-						"IAMProfileARN": {
-							"type": "string"
-						},
-						"CertificateLocation": {
-							"type": "string"
-						},
-						"PrivateKeyLocation": {
-							"type": "string"
-						},
-						"CommandLineOverrides": {
-							"type": "string"
-						},
-						"Created": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"LastModified": {
-							"type": "string",
-							"format": "date-time"
-						},
-						"Disabled": {
-							"type": "boolean"
-						},
-						"UseWriteThrough": {
-							"type": "boolean"
-						},
-						"UseCommands": {
-							"type": "boolean"
-						},
-						"ReplicationTargetType": {
-							"type": "string",
-							"description": "",
-							"x-enumNames": [
-								"File",
-								"FTP",
-								"SFTP",
-								"FTPS",
-								"Azure",
-								"AWS",
-								"Robo"
-							],
-							"enum": [
-								"File",
-								"FTP",
-								"SFTP",
-								"FTPS",
-								"Azure",
-								"AWS",
-								"Robo"
-							]
-						},
-						"PublishingTargetId": {
-							"type": "string",
-							"minLength": 1
-						},
-						"LastModifiedUser": {
-							"type": "string"
-						},
-						"CreationUser": {
-							"type": "string"
-						},
-						"Description": {
-							"type": "string"
-						},
-						"PublishingTargetDirectory": {
-							"type": "string"
-						},
-						"PreReplicationCommand": {
-							"type": "string"
-						},
-						"PostReplicationCommand": {
-							"type": "string"
-						},
-						"PreReplicationCommandTimeout": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"PostReplicationCommandTimeout": {
-							"type": "integer",
-							"format": "int32"
-						},
-						"ExemptLocations": {
-							"type": "array",
-							"items": {
-								"allOf": [
-									{
-										"type": "object",
-										"x-abstract": true,
-										"required": [
-											"ExemptAllFiles",
-											"ExemptDescendantDirectories"
-										],
-										"properties": {
-											"RelativePath": {
-												"type": "string"
-											},
-											"ExemptAllFiles": {
-												"type": "boolean"
-											},
-											"ExemptDescendantDirectories": {
-												"type": "boolean"
-											},
-											"SearchPatterns": {
-												"type": "string"
-											}
-										}
-									},
-									{
-										"type": "object"
-									}
-								]
-							}
-						},
-						"AdditionalLocations": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"TargetRelativePath": {
-										"type": "string"
-									},
-									"SourceFullPath": {
-										"type": "string"
-									}
-								}
-							}
-						},
-						"CleanupExemptLocations": {
-							"type": "array",
-							"items": {
-								"allOf": [
-									{
-										"$ref": "#/definitions/ReplicationExemptionBaseModel",
-										"circular": true
-									},
-									{
-										"type": "object"
-									}
-								]
-							}
-						}
-					},
-					"required": [
-						"UseImpersonation",
-						"Port",
-						"CompressedTransfer",
-						"Passive",
-						"AuthenticateWithPrivateKey",
-						"SFTPAuthenticationType",
-						"AuthenticateWithCertificate",
-						"ImplicitEncryption",
-						"AllowPrivateCertificates",
-						"SavedSecretKey",
-						"AuthType",
-						"Created",
-						"LastModified",
-						"Disabled",
-						"UseWriteThrough",
-						"UseCommands",
-						"ReplicationTargetType",
-						"Name",
-						"PublishingTargetId",
-						"PreReplicationCommandTimeout",
-						"PostReplicationCommandTimeout"
-					]
-				}
-			},
-			"required": [
-				"replicationTarget",
-				"replicationTarget"
-			]
-		},
-		"output_schema": {
-			"type": "object",
-			"properties": {
-				"Id": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string",
-					"minLength": 1
-				},
-				"TargetLocation": {
-					"type": "string"
-				},
-				"UseImpersonation": {
-					"type": "boolean"
-				},
-				"ImpersonateUsername": {
-					"type": "string"
-				},
-				"ImpersonateUserDomain": {
-					"type": "string"
-				},
-				"ImpersonatePassword": {
-					"type": "string"
-				},
-				"TargetAddress": {
-					"type": "string"
-				},
-				"Port": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Username": {
-					"type": "string"
-				},
-				"Password": {
-					"type": "string"
-				},
-				"RootPath": {
-					"type": "string"
-				},
-				"CompressedTransfer": {
-					"type": "boolean"
-				},
-				"Passive": {
-					"type": "boolean"
-				},
-				"AuthenticateWithPrivateKey": {
-					"type": "boolean"
-				},
-				"KeyLocation": {
-					"type": "string"
-				},
-				"SFTPAuthenticationType": {
-					"type": "string",
-					"description": "",
-					"x-enumNames": [
-						"UsernamePassword",
-						"PrivateKey",
-						"PrivateKeyWithPassword"
-					],
-					"enum": [
-						"UsernamePassword",
-						"PrivateKey",
-						"PrivateKeyWithPassword"
-					]
-				},
-				"AuthenticateWithCertificate": {
-					"type": "boolean"
-				},
-				"ImplicitEncryption": {
-					"type": "boolean"
-				},
-				"AllowPrivateCertificates": {
-					"type": "boolean"
-				},
-				"ConnectionString": {
-					"type": "string"
-				},
-				"Container": {
-					"type": "string"
-				},
-				"RegionEndpointSystemName": {
-					"type": "string"
-				},
-				"Bucket": {
-					"type": "string"
-				},
-				"AccessKey": {
-					"type": "string"
-				},
-				"SecretKey": {
-					"type": "string"
-				},
-				"SavedSecretKey": {
-					"type": "boolean"
-				},
-				"AuthType": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"IAMAttachedRoleARN": {
-					"type": "string"
-				},
-				"IAMRoleAnywhereARN": {
-					"type": "string"
-				},
-				"TrustAnchorARN": {
-					"type": "string"
-				},
-				"IAMProfileARN": {
-					"type": "string"
-				},
-				"CertificateLocation": {
-					"type": "string"
-				},
-				"PrivateKeyLocation": {
-					"type": "string"
-				},
-				"CommandLineOverrides": {
-					"type": "string"
-				},
-				"Created": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"LastModified": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"Disabled": {
-					"type": "boolean"
-				},
-				"UseWriteThrough": {
-					"type": "boolean"
-				},
-				"UseCommands": {
-					"type": "boolean"
-				},
-				"ReplicationTargetType": {
-					"type": "string",
-					"description": "",
-					"x-enumNames": [
-						"File",
-						"FTP",
-						"SFTP",
-						"FTPS",
-						"Azure",
-						"AWS",
-						"Robo"
-					],
-					"enum": [
-						"File",
-						"FTP",
-						"SFTP",
-						"FTPS",
-						"Azure",
-						"AWS",
-						"Robo"
-					]
-				},
-				"PublishingTargetId": {
-					"type": "string",
-					"minLength": 1
-				},
-				"LastModifiedUser": {
-					"type": "string"
-				},
-				"CreationUser": {
-					"type": "string"
-				},
-				"Description": {
-					"type": "string"
-				},
-				"PublishingTargetDirectory": {
-					"type": "string"
-				},
-				"PreReplicationCommand": {
-					"type": "string"
-				},
-				"PostReplicationCommand": {
-					"type": "string"
-				},
-				"PreReplicationCommandTimeout": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"PostReplicationCommandTimeout": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"ExemptLocations": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"x-abstract": true,
-								"required": [
-									"ExemptAllFiles",
-									"ExemptDescendantDirectories"
-								],
-								"properties": {
-									"RelativePath": {
-										"type": "string"
-									},
-									"ExemptAllFiles": {
-										"type": "boolean"
-									},
-									"ExemptDescendantDirectories": {
-										"type": "boolean"
-									},
-									"SearchPatterns": {
-										"type": "string"
-									}
-								}
-							},
-							{
-								"type": "object"
-							}
-						]
-					}
-				},
-				"AdditionalLocations": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"TargetRelativePath": {
-								"type": "string"
-							},
-							"SourceFullPath": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"CleanupExemptLocations": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"$ref": "#/definitions/ReplicationExemptionBaseModel",
-								"circular": true
-							},
-							{
-								"type": "object"
-							}
-						]
-					}
-				}
-			},
-			"required": [
-				"UseImpersonation",
-				"Port",
-				"CompressedTransfer",
-				"Passive",
-				"AuthenticateWithPrivateKey",
-				"SFTPAuthenticationType",
-				"AuthenticateWithCertificate",
-				"ImplicitEncryption",
-				"AllowPrivateCertificates",
-				"SavedSecretKey",
-				"AuthType",
-				"Created",
-				"LastModified",
-				"Disabled",
-				"UseWriteThrough",
-				"UseCommands",
-				"ReplicationTargetType",
-				"Name",
-				"PublishingTargetId",
-				"PreReplicationCommandTimeout",
-				"PostReplicationCommandTimeout"
-			]
-		},
-		"method": "PUT",
-		"endpoint": "/publishing/replication/target",
-		"tags": [
-			"Replication"
-		]
+		],
+		"summary": "Creates a replication target."
 	},
 	{
 		"tool_name": "Replication_DeleteReplicationTarget",
-		"description": "DELETE /publishing/replication/target",
+		"description": "Deletes a replication target from association with a specified publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"replicationTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Replication target ID"
 				},
 				"publishingTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Publishing target ID"
 				}
 			},
 			"required": [
@@ -1917,49 +141,92 @@
 		"output_schema": {
 			"type": "object"
 		},
-		"method": "DELETE",
-		"endpoint": "/publishing/replication/target",
+		"method": "delete",
+		"endpoint": "/api/v1/publishing/replication/target",
 		"tags": [
 			"Replication"
-		]
+		],
+		"summary": "Deletes a replication target from association with a specified publishing target."
 	},
 	{
-		"tool_name": "Replication_GetAwsRegionEndpoints",
-		"description": "GET /publishing/replication/aws-region-endpoints",
-		"input_schema": {
-			"type": "object",
-			"properties": {}
-		},
-		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"DisplayName": {
-						"type": "string"
-					},
-					"SystemName": {
-						"type": "string"
-					}
-				}
-			}
-		},
-		"method": "GET",
-		"endpoint": "/publishing/replication/aws-region-endpoints",
-		"tags": [
-			"Replication"
-		]
-	},
-	{
-		"tool_name": "Replication_GetReplicationLogDetails",
-		"description": "GET /publishing/replication/target/log-detail",
+		"tool_name": "Replication_ReplicationTarget",
+		"description": "Retrieves a replication target associated with a given publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"replicationTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Replication target ID"
+				},
+				"publishingTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query",
+					"description": "Publishing target ID"
+				}
+			},
+			"required": [
+				"replicationTargetId",
+				"publishingTargetId"
+			]
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "get",
+		"endpoint": "/api/v1/publishing/replication/target",
+		"tags": [
+			"Replication"
+		],
+		"summary": "Retrieves a replication target associated with a given publishing target."
+	},
+	{
+		"tool_name": "Replication_UpdateReplicationTarget",
+		"description": "Updates a replication target.",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "put",
+		"endpoint": "/api/v1/publishing/replication/target",
+		"tags": [
+			"Replication"
+		],
+		"summary": "Updates a replication target."
+	},
+	{
+		"tool_name": "Replication_GetAwsRegionEndpoints",
+		"description": "Retrieves the AWS region endpoints available for replication.",
+		"input_schema": {
+			"type": "object",
+			"properties": {}
+		},
+		"output_schema": {
+			"type": "object"
+		},
+		"method": "get",
+		"endpoint": "/api/v1/publishing/replication/aws-region-endpoints",
+		"tags": [
+			"Replication"
+		],
+		"summary": "Retrieves the AWS region endpoints available for replication."
+	},
+	{
+		"tool_name": "Replication_GetReplicationLogDetails",
+		"description": "Retrieves the log details for a specified replication target.",
+		"input_schema": {
+			"type": "object",
+			"properties": {
+				"replicationTargetId": {
+					"type": "string",
+					"required": true,
+					"in": "query",
+					"description": "Replication target ID"
 				}
 			},
 			"required": [
@@ -1967,126 +234,43 @@
 			]
 		},
 		"output_schema": {
-			"type": "object",
-			"required": [
-				"StartTime",
-				"TotalTimeSeconds",
-				"CancelledByUser",
-				"Replicated",
-				"Removed",
-				"Skipped"
-			],
-			"properties": {
-				"PublishingTargetID": {
-					"type": "string"
-				},
-				"ReplicationTargetID": {
-					"type": "string"
-				},
-				"StartTime": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"TotalTimeSeconds": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"CancelledByUser": {
-					"type": "boolean"
-				},
-				"Replicated": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Removed": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"Skipped": {
-					"type": "integer",
-					"format": "int32"
-				},
-				"ReplicatedItems": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"Path": {
-								"type": "string"
-							},
-							"ChangeType": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"SkippedItems": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"$ref": "#/definitions/ReplicationItem",
-								"circular": true
-							},
-							{
-								"type": "object",
-								"properties": {
-									"Reason": {
-										"type": "string"
-									}
-								}
-							}
-						]
-					}
-				},
-				"StoppingError": {
-					"type": "string"
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/replication/target/log-detail",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/replication/target/log-detail",
 		"tags": [
 			"Replication"
-		]
+		],
+		"summary": "Retrieves the log details for a specified replication target."
 	},
 	{
 		"tool_name": "Replication_GetReplicationTargetTypes",
-		"description": "GET /publishing/replication/target-types",
+		"description": "Retrieves the available replication target types.",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"Name": {
-						"type": "string"
-					},
-					"Type": {
-						"type": "string"
-					}
-				}
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/replication/target-types",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/replication/target-types",
 		"tags": [
 			"Replication"
-		]
+		],
+		"summary": "Retrieves the available replication target types."
 	},
 	{
 		"tool_name": "Replication_ReplicationTargets",
-		"description": "GET /publishing/replication/targets",
+		"description": "Retrieves all replication targets configured for a specified publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"publishingTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
+					"in": "query",
+					"description": "Publishing target ID"
 				}
 			},
 			"required": [
@@ -2094,936 +278,70 @@
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"required": [
-							"UseImpersonation",
-							"Port",
-							"CompressedTransfer",
-							"Passive",
-							"AuthenticateWithPrivateKey",
-							"SFTPAuthenticationType",
-							"AuthenticateWithCertificate",
-							"ImplicitEncryption",
-							"AllowPrivateCertificates",
-							"SavedSecretKey",
-							"AuthType",
-							"Created",
-							"LastModified",
-							"Disabled",
-							"UseWriteThrough",
-							"UseCommands",
-							"ReplicationTargetType",
-							"Name",
-							"PublishingTargetId",
-							"PreReplicationCommandTimeout",
-							"PostReplicationCommandTimeout"
-						],
-						"properties": {
-							"TargetLocation": {
-								"type": "string"
-							},
-							"UseImpersonation": {
-								"type": "boolean"
-							},
-							"ImpersonateUsername": {
-								"type": "string"
-							},
-							"ImpersonateUserDomain": {
-								"type": "string"
-							},
-							"ImpersonatePassword": {
-								"type": "string"
-							},
-							"TargetAddress": {
-								"type": "string"
-							},
-							"Port": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"Username": {
-								"type": "string"
-							},
-							"Password": {
-								"type": "string"
-							},
-							"RootPath": {
-								"type": "string"
-							},
-							"CompressedTransfer": {
-								"type": "boolean"
-							},
-							"Passive": {
-								"type": "boolean"
-							},
-							"AuthenticateWithPrivateKey": {
-								"type": "boolean"
-							},
-							"KeyLocation": {
-								"type": "string"
-							},
-							"SFTPAuthenticationType": {
-								"type": "string",
-								"description": "",
-								"x-enumNames": [
-									"UsernamePassword",
-									"PrivateKey",
-									"PrivateKeyWithPassword"
-								],
-								"enum": [
-									"UsernamePassword",
-									"PrivateKey",
-									"PrivateKeyWithPassword"
-								]
-							},
-							"AuthenticateWithCertificate": {
-								"type": "boolean"
-							},
-							"ImplicitEncryption": {
-								"type": "boolean"
-							},
-							"AllowPrivateCertificates": {
-								"type": "boolean"
-							},
-							"ConnectionString": {
-								"type": "string"
-							},
-							"Container": {
-								"type": "string"
-							},
-							"RegionEndpointSystemName": {
-								"type": "string"
-							},
-							"Bucket": {
-								"type": "string"
-							},
-							"AccessKey": {
-								"type": "string"
-							},
-							"SecretKey": {
-								"type": "string"
-							},
-							"SavedSecretKey": {
-								"type": "boolean"
-							},
-							"AuthType": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"IAMAttachedRoleARN": {
-								"type": "string"
-							},
-							"IAMRoleAnywhereARN": {
-								"type": "string"
-							},
-							"TrustAnchorARN": {
-								"type": "string"
-							},
-							"IAMProfileARN": {
-								"type": "string"
-							},
-							"CertificateLocation": {
-								"type": "string"
-							},
-							"PrivateKeyLocation": {
-								"type": "string"
-							},
-							"CommandLineOverrides": {
-								"type": "string"
-							},
-							"Created": {
-								"type": "string",
-								"format": "date-time"
-							},
-							"LastModified": {
-								"type": "string",
-								"format": "date-time"
-							},
-							"Disabled": {
-								"type": "boolean"
-							},
-							"UseWriteThrough": {
-								"type": "boolean"
-							},
-							"UseCommands": {
-								"type": "boolean"
-							},
-							"ReplicationTargetType": {
-								"type": "string",
-								"description": "",
-								"x-enumNames": [
-									"File",
-									"FTP",
-									"SFTP",
-									"FTPS",
-									"Azure",
-									"AWS",
-									"Robo"
-								],
-								"enum": [
-									"File",
-									"FTP",
-									"SFTP",
-									"FTPS",
-									"Azure",
-									"AWS",
-									"Robo"
-								]
-							},
-							"Name": {
-								"type": "string",
-								"minLength": 1
-							},
-							"PublishingTargetId": {
-								"type": "string",
-								"minLength": 1
-							},
-							"LastModifiedUser": {
-								"type": "string"
-							},
-							"CreationUser": {
-								"type": "string"
-							},
-							"Description": {
-								"type": "string"
-							},
-							"PublishingTargetDirectory": {
-								"type": "string"
-							},
-							"PreReplicationCommand": {
-								"type": "string"
-							},
-							"PostReplicationCommand": {
-								"type": "string"
-							},
-							"PreReplicationCommandTimeout": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"PostReplicationCommandTimeout": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"ExemptLocations": {
-								"type": "array",
-								"items": {
-									"allOf": [
-										{
-											"type": "object",
-											"x-abstract": true,
-											"required": [
-												"ExemptAllFiles",
-												"ExemptDescendantDirectories"
-											],
-											"properties": {
-												"RelativePath": {
-													"type": "string"
-												},
-												"ExemptAllFiles": {
-													"type": "boolean"
-												},
-												"ExemptDescendantDirectories": {
-													"type": "boolean"
-												},
-												"SearchPatterns": {
-													"type": "string"
-												}
-											}
-										},
-										{
-											"type": "object"
-										}
-									]
-								}
-							},
-							"AdditionalLocations": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"TargetRelativePath": {
-											"type": "string"
-										},
-										"SourceFullPath": {
-											"type": "string"
-										}
-									}
-								}
-							},
-							"CleanupExemptLocations": {
-								"type": "array",
-								"items": {
-									"allOf": [
-										{
-											"$ref": "#/definitions/ReplicationExemptionBaseModel",
-											"circular": true
-										},
-										{
-											"type": "object"
-										}
-									]
-								}
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "GET",
-		"endpoint": "/publishing/replication/targets",
+		"method": "get",
+		"endpoint": "/api/v1/publishing/replication/targets",
 		"tags": [
 			"Replication"
-		]
+		],
+		"summary": "Retrieves all replication targets configured for a specified publishing target."
 	},
 	{
 		"tool_name": "Replication_SetReplicationTargets",
-		"description": "POST /publishing/replication/targets",
+		"description": "Saves and/or updates replication targets for a specified publishing target.",
 		"input_schema": {
 			"type": "object",
 			"properties": {
 				"publishingTargetId": {
 					"type": "string",
 					"required": true,
-					"in": "query"
-				},
-				"replicationTargets": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{
-								"type": "object",
-								"properties": {
-									"Id": {
-										"type": "string"
-									},
-									"Name": {
-										"type": "string"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"UseImpersonation",
-									"Port",
-									"CompressedTransfer",
-									"Passive",
-									"AuthenticateWithPrivateKey",
-									"SFTPAuthenticationType",
-									"AuthenticateWithCertificate",
-									"ImplicitEncryption",
-									"AllowPrivateCertificates",
-									"SavedSecretKey",
-									"AuthType",
-									"Created",
-									"LastModified",
-									"Disabled",
-									"UseWriteThrough",
-									"UseCommands",
-									"ReplicationTargetType",
-									"Name",
-									"PublishingTargetId",
-									"PreReplicationCommandTimeout",
-									"PostReplicationCommandTimeout"
-								],
-								"properties": {
-									"TargetLocation": {
-										"type": "string"
-									},
-									"UseImpersonation": {
-										"type": "boolean"
-									},
-									"ImpersonateUsername": {
-										"type": "string"
-									},
-									"ImpersonateUserDomain": {
-										"type": "string"
-									},
-									"ImpersonatePassword": {
-										"type": "string"
-									},
-									"TargetAddress": {
-										"type": "string"
-									},
-									"Port": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"Username": {
-										"type": "string"
-									},
-									"Password": {
-										"type": "string"
-									},
-									"RootPath": {
-										"type": "string"
-									},
-									"CompressedTransfer": {
-										"type": "boolean"
-									},
-									"Passive": {
-										"type": "boolean"
-									},
-									"AuthenticateWithPrivateKey": {
-										"type": "boolean"
-									},
-									"KeyLocation": {
-										"type": "string"
-									},
-									"SFTPAuthenticationType": {
-										"type": "string",
-										"description": "",
-										"x-enumNames": [
-											"UsernamePassword",
-											"PrivateKey",
-											"PrivateKeyWithPassword"
-										],
-										"enum": [
-											"UsernamePassword",
-											"PrivateKey",
-											"PrivateKeyWithPassword"
-										]
-									},
-									"AuthenticateWithCertificate": {
-										"type": "boolean"
-									},
-									"ImplicitEncryption": {
-										"type": "boolean"
-									},
-									"AllowPrivateCertificates": {
-										"type": "boolean"
-									},
-									"ConnectionString": {
-										"type": "string"
-									},
-									"Container": {
-										"type": "string"
-									},
-									"RegionEndpointSystemName": {
-										"type": "string"
-									},
-									"Bucket": {
-										"type": "string"
-									},
-									"AccessKey": {
-										"type": "string"
-									},
-									"SecretKey": {
-										"type": "string"
-									},
-									"SavedSecretKey": {
-										"type": "boolean"
-									},
-									"AuthType": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"IAMAttachedRoleARN": {
-										"type": "string"
-									},
-									"IAMRoleAnywhereARN": {
-										"type": "string"
-									},
-									"TrustAnchorARN": {
-										"type": "string"
-									},
-									"IAMProfileARN": {
-										"type": "string"
-									},
-									"CertificateLocation": {
-										"type": "string"
-									},
-									"PrivateKeyLocation": {
-										"type": "string"
-									},
-									"CommandLineOverrides": {
-										"type": "string"
-									},
-									"Created": {
-										"type": "string",
-										"format": "date-time"
-									},
-									"LastModified": {
-										"type": "string",
-										"format": "date-time"
-									},
-									"Disabled": {
-										"type": "boolean"
-									},
-									"UseWriteThrough": {
-										"type": "boolean"
-									},
-									"UseCommands": {
-										"type": "boolean"
-									},
-									"ReplicationTargetType": {
-										"type": "string",
-										"description": "",
-										"x-enumNames": [
-											"File",
-											"FTP",
-											"SFTP",
-											"FTPS",
-											"Azure",
-											"AWS",
-											"Robo"
-										],
-										"enum": [
-											"File",
-											"FTP",
-											"SFTP",
-											"FTPS",
-											"Azure",
-											"AWS",
-											"Robo"
-										]
-									},
-									"Name": {
-										"type": "string",
-										"minLength": 1
-									},
-									"PublishingTargetId": {
-										"type": "string",
-										"minLength": 1
-									},
-									"LastModifiedUser": {
-										"type": "string"
-									},
-									"CreationUser": {
-										"type": "string"
-									},
-									"Description": {
-										"type": "string"
-									},
-									"PublishingTargetDirectory": {
-										"type": "string"
-									},
-									"PreReplicationCommand": {
-										"type": "string"
-									},
-									"PostReplicationCommand": {
-										"type": "string"
-									},
-									"PreReplicationCommandTimeout": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"PostReplicationCommandTimeout": {
-										"type": "integer",
-										"format": "int32"
-									},
-									"ExemptLocations": {
-										"type": "array",
-										"items": {
-											"allOf": [
-												{
-													"type": "object",
-													"x-abstract": true,
-													"required": [
-														"ExemptAllFiles",
-														"ExemptDescendantDirectories"
-													],
-													"properties": {
-														"RelativePath": {
-															"type": "string"
-														},
-														"ExemptAllFiles": {
-															"type": "boolean"
-														},
-														"ExemptDescendantDirectories": {
-															"type": "boolean"
-														},
-														"SearchPatterns": {
-															"type": "string"
-														}
-													}
-												},
-												{
-													"type": "object"
-												}
-											]
-										}
-									},
-									"AdditionalLocations": {
-										"type": "array",
-										"items": {
-											"type": "object",
-											"properties": {
-												"TargetRelativePath": {
-													"type": "string"
-												},
-												"SourceFullPath": {
-													"type": "string"
-												}
-											}
-										}
-									},
-									"CleanupExemptLocations": {
-										"type": "array",
-										"items": {
-											"allOf": [
-												{
-													"$ref": "#/definitions/ReplicationExemptionBaseModel",
-													"circular": true
-												},
-												{
-													"type": "object"
-												}
-											]
-										}
-									}
-								}
-							}
-						]
-					}
+					"in": "query",
+					"description": "Publishing target ID"
 				}
 			},
 			"required": [
-				"publishingTargetId",
-				"replicationTargets",
-				"replicationTargets"
+				"publishingTargetId"
 			]
 		},
 		"output_schema": {
-			"type": "array",
-			"items": {
-				"allOf": [
-					{
-						"type": "object",
-						"properties": {
-							"Id": {
-								"type": "string"
-							},
-							"Name": {
-								"type": "string"
-							}
-						}
-					},
-					{
-						"type": "object",
-						"required": [
-							"UseImpersonation",
-							"Port",
-							"CompressedTransfer",
-							"Passive",
-							"AuthenticateWithPrivateKey",
-							"SFTPAuthenticationType",
-							"AuthenticateWithCertificate",
-							"ImplicitEncryption",
-							"AllowPrivateCertificates",
-							"SavedSecretKey",
-							"AuthType",
-							"Created",
-							"LastModified",
-							"Disabled",
-							"UseWriteThrough",
-							"UseCommands",
-							"ReplicationTargetType",
-							"Name",
-							"PublishingTargetId",
-							"PreReplicationCommandTimeout",
-							"PostReplicationCommandTimeout"
-						],
-						"properties": {
-							"TargetLocation": {
-								"type": "string"
-							},
-							"UseImpersonation": {
-								"type": "boolean"
-							},
-							"ImpersonateUsername": {
-								"type": "string"
-							},
-							"ImpersonateUserDomain": {
-								"type": "string"
-							},
-							"ImpersonatePassword": {
-								"type": "string"
-							},
-							"TargetAddress": {
-								"type": "string"
-							},
-							"Port": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"Username": {
-								"type": "string"
-							},
-							"Password": {
-								"type": "string"
-							},
-							"RootPath": {
-								"type": "string"
-							},
-							"CompressedTransfer": {
-								"type": "boolean"
-							},
-							"Passive": {
-								"type": "boolean"
-							},
-							"AuthenticateWithPrivateKey": {
-								"type": "boolean"
-							},
-							"KeyLocation": {
-								"type": "string"
-							},
-							"SFTPAuthenticationType": {
-								"type": "string",
-								"description": "",
-								"x-enumNames": [
-									"UsernamePassword",
-									"PrivateKey",
-									"PrivateKeyWithPassword"
-								],
-								"enum": [
-									"UsernamePassword",
-									"PrivateKey",
-									"PrivateKeyWithPassword"
-								]
-							},
-							"AuthenticateWithCertificate": {
-								"type": "boolean"
-							},
-							"ImplicitEncryption": {
-								"type": "boolean"
-							},
-							"AllowPrivateCertificates": {
-								"type": "boolean"
-							},
-							"ConnectionString": {
-								"type": "string"
-							},
-							"Container": {
-								"type": "string"
-							},
-							"RegionEndpointSystemName": {
-								"type": "string"
-							},
-							"Bucket": {
-								"type": "string"
-							},
-							"AccessKey": {
-								"type": "string"
-							},
-							"SecretKey": {
-								"type": "string"
-							},
-							"SavedSecretKey": {
-								"type": "boolean"
-							},
-							"AuthType": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"IAMAttachedRoleARN": {
-								"type": "string"
-							},
-							"IAMRoleAnywhereARN": {
-								"type": "string"
-							},
-							"TrustAnchorARN": {
-								"type": "string"
-							},
-							"IAMProfileARN": {
-								"type": "string"
-							},
-							"CertificateLocation": {
-								"type": "string"
-							},
-							"PrivateKeyLocation": {
-								"type": "string"
-							},
-							"CommandLineOverrides": {
-								"type": "string"
-							},
-							"Created": {
-								"type": "string",
-								"format": "date-time"
-							},
-							"LastModified": {
-								"type": "string",
-								"format": "date-time"
-							},
-							"Disabled": {
-								"type": "boolean"
-							},
-							"UseWriteThrough": {
-								"type": "boolean"
-							},
-							"UseCommands": {
-								"type": "boolean"
-							},
-							"ReplicationTargetType": {
-								"type": "string",
-								"description": "",
-								"x-enumNames": [
-									"File",
-									"FTP",
-									"SFTP",
-									"FTPS",
-									"Azure",
-									"AWS",
-									"Robo"
-								],
-								"enum": [
-									"File",
-									"FTP",
-									"SFTP",
-									"FTPS",
-									"Azure",
-									"AWS",
-									"Robo"
-								]
-							},
-							"Name": {
-								"type": "string",
-								"minLength": 1
-							},
-							"PublishingTargetId": {
-								"type": "string",
-								"minLength": 1
-							},
-							"LastModifiedUser": {
-								"type": "string"
-							},
-							"CreationUser": {
-								"type": "string"
-							},
-							"Description": {
-								"type": "string"
-							},
-							"PublishingTargetDirectory": {
-								"type": "string"
-							},
-							"PreReplicationCommand": {
-								"type": "string"
-							},
-							"PostReplicationCommand": {
-								"type": "string"
-							},
-							"PreReplicationCommandTimeout": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"PostReplicationCommandTimeout": {
-								"type": "integer",
-								"format": "int32"
-							},
-							"ExemptLocations": {
-								"type": "array",
-								"items": {
-									"allOf": [
-										{
-											"type": "object",
-											"x-abstract": true,
-											"required": [
-												"ExemptAllFiles",
-												"ExemptDescendantDirectories"
-											],
-											"properties": {
-												"RelativePath": {
-													"type": "string"
-												},
-												"ExemptAllFiles": {
-													"type": "boolean"
-												},
-												"ExemptDescendantDirectories": {
-													"type": "boolean"
-												},
-												"SearchPatterns": {
-													"type": "string"
-												}
-											}
-										},
-										{
-											"type": "object"
-										}
-									]
-								}
-							},
-							"AdditionalLocations": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"TargetRelativePath": {
-											"type": "string"
-										},
-										"SourceFullPath": {
-											"type": "string"
-										}
-									}
-								}
-							},
-							"CleanupExemptLocations": {
-								"type": "array",
-								"items": {
-									"allOf": [
-										{
-											"$ref": "#/definitions/ReplicationExemptionBaseModel",
-											"circular": true
-										},
-										{
-											"type": "object"
-										}
-									]
-								}
-							}
-						}
-					}
-				]
-			}
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/publishing/replication/targets",
+		"method": "post",
+		"endpoint": "/api/v1/publishing/replication/targets",
 		"tags": [
 			"Replication"
-		]
+		],
+		"summary": "Saves and/or updates replication targets for a specified publishing target."
 	},
 	{
 		"tool_name": "Replication_UploadCertificate",
-		"description": "POST /publishing/replication/upload-cert",
+		"description": "Replication post operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "string"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/publishing/replication/upload-cert",
+		"method": "post",
+		"endpoint": "/api/v1/publishing/replication/upload-cert",
 		"tags": [
 			"Replication"
 		]
 	},
 	{
 		"tool_name": "Replication_UploadPrivateKey",
-		"description": "POST /publishing/replication/upload-private-key",
+		"description": "Replication post operation",
 		"input_schema": {
 			"type": "object",
 			"properties": {}
 		},
 		"output_schema": {
-			"type": "string"
+			"type": "object"
 		},
-		"method": "POST",
-		"endpoint": "/publishing/replication/upload-private-key",
+		"method": "post",
+		"endpoint": "/api/v1/publishing/replication/upload-private-key",
 		"tags": [
 			"Replication"
 		]

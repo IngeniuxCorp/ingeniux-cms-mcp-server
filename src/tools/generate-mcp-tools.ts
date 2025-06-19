@@ -1,15 +1,18 @@
-// Script to auto-generate MCP tool definitions from swagger-structured-data.json
+// Merged Orchestrator + Generator: Generate MCP tool definitions from def/swagger.json (in-memory, no intermediate file)
 // Each file < 500 lines, tabs only, robust error handling, no secrets
 
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { flattenAllOfSchema } from './tool-sync/allof-flattener.js';
+import { enrichDescription } from './enrichment/description-enricher';
 
 type SwaggerEndpoint = {
 	method: string;
 	path: string;
 	operationId: string;
+	summary?: string;
+	description?: string;
 	tags?: string[];
 	parameters?: any[];
 	requestSchemas?: any[];
@@ -19,6 +22,8 @@ type SwaggerEndpoint = {
 type MCPToolDef = {
 	tool_name: string;
 	description: string;
+	summary?: string;
+	endpoint_description?: string;
 	input_schema: any;
 	output_schema: any;
 	method: string;
@@ -29,7 +34,7 @@ type MCPToolDef = {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const SWAGGER_PATH = path.resolve(__dirname, '../../swagger-structured-data.json');
+const SWAGGER_PATH = path.resolve(__dirname, '../../def/swagger.json');
 const OUT_DIR = path.resolve(__dirname, '../../mcp-tools-generated');
 
 function safeReadJSON(filePath: string): any | null {
@@ -52,15 +57,18 @@ function toToolName(operationId: string) {
 
 function paramToSchema(param: any) {
 	if (!param) return {};
-	const { name, type, required, in: paramIn, schema } = param;
-	if (schema) return { [name]: schema };
-	return {
-		[name]: {
-			type: type || 'string',
-			required: !!required,
-			in: paramIn || 'query'
-		}
-	};
+	const { name, type, required, in: paramIn, description } = param;
+	if (paramIn !== 'body') {
+		return {
+			[name]: {
+				type: type || 'string',
+				required: !!required,
+				in: paramIn || 'query',
+				description: description || undefined
+			}
+		};
+	}
+	return {};
 }
 
 function buildInputSchema(endpoint: SwaggerEndpoint) {
@@ -68,21 +76,52 @@ function buildInputSchema(endpoint: SwaggerEndpoint) {
 	const reqSchemas = endpoint.requestSchemas || [];
 	const properties: any = {};
 	const required: string[] = [];
+	let hasBodyParam = false;
+	let bodySchema: any = null;
+
 	for (const p of params) {
+		if (p.in === 'body' && (endpoint.method === 'post' || endpoint.method === 'put' || endpoint.method === 'POST' || endpoint.method === 'PUT')) {
+			hasBodyParam = true;
+			if (p.schema) {
+				bodySchema = p.schema;
+			}
+			continue;
+		}
 		const sch = paramToSchema(p);
 		Object.assign(properties, sch);
 		if (p.required) required.push(p.name);
 	}
+
+	if (hasBodyParam && bodySchema) {
+		if (bodySchema.allOf) {
+			for (const sub of bodySchema.allOf) {
+				if (sub.properties) {
+					Object.assign(properties, sub.properties);
+					if (Array.isArray(sub.required)) {
+						for (const r of sub.required) required.push(r);
+					}
+				}
+			}
+		}
+		if (bodySchema.properties) {
+			Object.assign(properties, bodySchema.properties);
+			if (Array.isArray(bodySchema.required)) {
+				for (const r of bodySchema.required) required.push(r);
+			}
+		}
+	}
+
 	for (const s of reqSchemas) {
 		if (s.name && s.schema) {
 			properties[s.name] = s.schema;
 			if (s.required) required.push(s.name);
 		}
 	}
+
 	return {
 		type: 'object',
 		properties,
-		required: required.length ? required : undefined
+		required: required.length ? Array.from(new Set(required)) : undefined
 	};
 }
 
@@ -90,19 +129,71 @@ function buildOutputSchema(endpoint: SwaggerEndpoint) {
 	const respSchemas = endpoint.responseSchemas || [];
 	if (!respSchemas.length) return { type: 'object' };
 	const main = respSchemas.find(r => r.code === '200') || respSchemas[0];
-	return main && main.schema ? main.schema : { type: 'object' };
+	if (main && main.schema) {
+		if (main.description) {
+			return {
+				...main.schema,
+				description: main.description
+			};
+		}
+		return main.schema;
+	}
+	return { type: 'object' };
 }
 
 function endpointToToolDef(endpoint: SwaggerEndpoint): MCPToolDef {
-	return {
+	const toolDef: MCPToolDef = {
 		tool_name: toToolName(endpoint.operationId),
-		description: `${endpoint.method} ${endpoint.path}`,
+		description: enrichDescription(endpoint),
 		input_schema: flattenAllOfSchema(buildInputSchema(endpoint)),
 		output_schema: flattenAllOfSchema(buildOutputSchema(endpoint)),
 		method: endpoint.method,
 		endpoint: endpoint.path,
 		tags: endpoint.tags ?? []
 	};
+
+	if (endpoint.summary) {
+		toolDef.summary = endpoint.summary;
+	}
+	if (endpoint.description) {
+		toolDef.endpoint_description = endpoint.description;
+	}
+
+	return toolDef;
+}
+
+// Convert OpenAPI (swagger.json) to array of endpoint objects
+function convertSwaggerToStructuredData(swagger: any): SwaggerEndpoint[] {
+	const endpoints: SwaggerEndpoint[] = [];
+	for (const [path, pathObj] of Object.entries(swagger.paths || {})) {
+		for (const [method, opRaw] of Object.entries(pathObj as any)) {
+			const op = opRaw as any;
+			if (!op || typeof op !== 'object') continue;
+			endpoints.push({
+				method,
+				path,
+				operationId: op.operationId,
+				summary: op.summary,
+				description: op.description,
+				tags: op.tags,
+				parameters: op.parameters,
+				requestSchemas: op.requestBody ? [{
+					name: 'body',
+					in: 'body',
+					required: op.requestBody.required,
+					schema: op.requestBody.content?.['application/json']?.schema
+				}] : [],
+				responseSchemas: op.responses
+					? Object.entries(op.responses).map(([code, resp]: any) => ({
+						code,
+						schema: resp?.content?.['application/json']?.schema,
+						description: resp?.description
+					}))
+					: []
+			});
+		}
+	}
+	return endpoints;
 }
 
 function splitChunks<T>(arr: T[], maxPerChunk: number): T[][] {
@@ -117,11 +208,11 @@ function main() {
 	try {
 		ensureDir(OUT_DIR);
 		const swagger = safeReadJSON(SWAGGER_PATH);
-		if (!swagger || !Array.isArray(swagger.endpoints)) {
-			console.error('Invalid swagger-structured-data.json');
+		if (!swagger || !swagger.paths) {
+			console.error('Invalid def/swagger.json');
 			return;
 		}
-		const endpoints: SwaggerEndpoint[] = swagger.endpoints;
+		const endpoints: SwaggerEndpoint[] = convertSwaggerToStructuredData(swagger);
 		const toolDefs: MCPToolDef[] = [];
 		for (const ep of endpoints) {
 			if (!ep.operationId || !ep.method || !ep.path) continue;
@@ -131,7 +222,6 @@ function main() {
 				console.error('Failed to process endpoint:', ep.operationId, e);
 			}
 		}
-		// Split into files < 500 lines (estimate 20 tools per file)
 		const chunkSize = 20;
 		const chunks = splitChunks(toolDefs, chunkSize);
 		chunks.forEach((chunk, idx) => {
