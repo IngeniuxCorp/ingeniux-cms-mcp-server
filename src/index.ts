@@ -2,6 +2,7 @@
  * Entry point for Ingeniux CMS MCP Server
  */
 
+import 'dotenv/config';
 import { mcpServer } from './core/mcp-server.js';
 import { configManager } from './utils/config-manager.js';
 import { logger } from './utils/logger.js';
@@ -11,6 +12,7 @@ import { logger } from './utils/logger.js';
  */
 async function main(): Promise<void> {
 	try {
+
 		// Check required environment variables
 		const envCheck = configManager.checkRequiredEnvVars();
 		if (!envCheck.isValid) {
