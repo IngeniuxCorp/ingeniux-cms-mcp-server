@@ -21,7 +21,6 @@ import { RequestHandler } from './request-handler.js';
 import { authMiddleware } from '../auth/auth-middleware.js';
 import { OAuthManager } from '../auth/oauth-manager.js';
 import { APIClient } from '../api/api-client.js';
-import { ContentTools } from '../tools/content-tools.js';
 import { getSwaggerMcpTools } from '../tools/swagger-mcp-tools.js';
 
 const MCP_TOOLS_GEN_DIR = path.resolve(__dirname, '../../mcp-tools-generated');
@@ -225,12 +224,6 @@ export class MCPServer {
 				throw new Error('API client not initialized');
 			}
 
-			const contentTools = new ContentTools(this.apiClient);
-			const tools = contentTools.getTools();
-
-			// Register ContentTools
-			const result = toolRegistry.registerToolsSafe(tools, false);
-
 			// Register Swagger-generated MCP tools
 			const swaggerTools = getSwaggerMcpTools(this.apiClient);
 			const swaggerResult = toolRegistry.registerToolsSafe(swaggerTools, false);
@@ -238,18 +231,12 @@ export class MCPServer {
             console.log(`Registered ${swaggerTools.length} Swagger MCP tools`, swaggerTools, swaggerResult);
 
 			// Log registration results
-			if (result.registered.length > 0) {
-				logger.info(`Registered ${result.registered.length} content management tools: ${result.registered.join(', ')}`);
-			}
+
 			if (swaggerResult.registered.length > 0) {
 				logger.info(`Registered ${swaggerResult.registered.length} Swagger MCP tools: ${swaggerResult.registered.join(', ')}`);
 			}
-			if (result.skipped.length > 0 || swaggerResult.skipped.length > 0) {
-				logger.warn(
-					`Skipped duplicate tools: ${[...result.skipped, ...swaggerResult.skipped].join(', ')}`
-				);
-			}
-			const allErrors = [...result.errors, ...swaggerResult.errors];
+
+			const allErrors = [...swaggerResult.errors];
 			if (allErrors.length > 0) {
 				logger.error(`Failed to register ${allErrors.length} tools: ${allErrors.join('; ')}`);
 				throw new Error(`Some tools failed to register: ${allErrors.join('; ')}`);
