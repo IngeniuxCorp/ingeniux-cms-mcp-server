@@ -1,6 +1,6 @@
 {
 	"name": "ingeniux-cms-mcp-server",
-	"version": "1.0.23",
+	"version": "1.0.24",
 	"description": "Production-ready Ingeniux CMS MCP server with OAuth, Roo integration, and modular architecture.",
 	"main": "dist/index.js",
 	"type": "module",
@@ -13,7 +13,7 @@
 	"files": [
 		"dist",
 		"docs",
-        "mcp-tools-generated",
+		"mcp-tools-generated",
 		"install.sh",
 		"install.ps1",
 		"Dockerfile",
