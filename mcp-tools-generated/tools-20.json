@@ -31,7 +31,51 @@
 		"description": "Creates a new workstate.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Active": {
+					"type": "boolean"
+				},
+				"Icon": {
+					"type": "integer",
+					"format": "int32"
+				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"Active",
+				"Icon"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -48,7 +92,51 @@
 		"description": "Saves a workstate with an updated model (including workstate ID).",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Active": {
+					"type": "boolean"
+				},
+				"Icon": {
+					"type": "integer",
+					"format": "int32"
+				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"Active",
+				"Icon"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -85,7 +173,23 @@
 		"description": "Prepares a workflow template.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"NewDescription": {
+					"type": "string"
+				},
+				"WorkflowStateNames": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
 		},
 		"output_schema": {
 			"type": "object"
@@ -102,7 +206,305 @@
 		"description": "Creates a replication target.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string",
+					"minLength": 1
+				},
+				"TargetLocation": {
+					"type": "string"
+				},
+				"UseImpersonation": {
+					"type": "boolean"
+				},
+				"ImpersonateUsername": {
+					"type": "string"
+				},
+				"ImpersonateUserDomain": {
+					"type": "string"
+				},
+				"ImpersonatePassword": {
+					"type": "string"
+				},
+				"TargetAddress": {
+					"type": "string"
+				},
+				"Port": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Username": {
+					"type": "string"
+				},
+				"Password": {
+					"type": "string"
+				},
+				"RootPath": {
+					"type": "string"
+				},
+				"CompressedTransfer": {
+					"type": "boolean"
+				},
+				"Passive": {
+					"type": "boolean"
+				},
+				"AuthenticateWithPrivateKey": {
+					"type": "boolean"
+				},
+				"KeyLocation": {
+					"type": "string"
+				},
+				"SFTPAuthenticationType": {
+					"type": "string",
+					"description": "",
+					"x-enumNames": [
+						"UsernamePassword",
+						"PrivateKey",
+						"PrivateKeyWithPassword"
+					],
+					"enum": [
+						"UsernamePassword",
+						"PrivateKey",
+						"PrivateKeyWithPassword"
+					]
+				},
+				"AuthenticateWithCertificate": {
+					"type": "boolean"
+				},
+				"ImplicitEncryption": {
+					"type": "boolean"
+				},
+				"AllowPrivateCertificates": {
+					"type": "boolean"
+				},
+				"ConnectionString": {
+					"type": "string"
+				},
+				"Container": {
+					"type": "string"
+				},
+				"RegionEndpointSystemName": {
+					"type": "string"
+				},
+				"Bucket": {
+					"type": "string"
+				},
+				"AccessKey": {
+					"type": "string"
+				},
+				"SecretKey": {
+					"type": "string"
+				},
+				"SavedSecretKey": {
+					"type": "boolean"
+				},
+				"AuthType": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"IAMAttachedRoleARN": {
+					"type": "string"
+				},
+				"IAMRoleAnywhereARN": {
+					"type": "string"
+				},
+				"TrustAnchorARN": {
+					"type": "string"
+				},
+				"IAMProfileARN": {
+					"type": "string"
+				},
+				"CertificateLocation": {
+					"type": "string"
+				},
+				"PrivateKeyLocation": {
+					"type": "string"
+				},
+				"CommandLineOverrides": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"Disabled": {
+					"type": "boolean"
+				},
+				"UseWriteThrough": {
+					"type": "boolean"
+				},
+				"UseCommands": {
+					"type": "boolean"
+				},
+				"ReplicationTargetType": {
+					"type": "string",
+					"description": "",
+					"x-enumNames": [
+						"File",
+						"FTP",
+						"SFTP",
+						"FTPS",
+						"Azure",
+						"AWS",
+						"Robo"
+					],
+					"enum": [
+						"File",
+						"FTP",
+						"SFTP",
+						"FTPS",
+						"Azure",
+						"AWS",
+						"Robo"
+					]
+				},
+				"PublishingTargetId": {
+					"type": "string",
+					"minLength": 1
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"PublishingTargetDirectory": {
+					"type": "string"
+				},
+				"PreReplicationCommand": {
+					"type": "string"
+				},
+				"PostReplicationCommand": {
+					"type": "string"
+				},
+				"PreReplicationCommandTimeout": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PostReplicationCommandTimeout": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"ExemptLocations": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"x-abstract": true,
+								"required": [
+									"ExemptAllFiles",
+									"ExemptDescendantDirectories"
+								],
+								"properties": {
+									"RelativePath": {
+										"type": "string",
+										"description": "The relative path to the Publishing Target's Folder."
+									},
+									"ExemptAllFiles": {
+										"type": "boolean"
+									},
+									"ExemptDescendantDirectories": {
+										"type": "boolean"
+									},
+									"SearchPatterns": {
+										"type": "string",
+										"description": "Gets and sets the search patterns for exempt files. Only effective when ExemptAllFiles is false.",
+										"example": "Search patterns comply to the file search pattern specification from Windows Explorer. Here are a few examples:\n\n*.css\n\n\nt*.js\n\n\n*_target.xml|t*.js"
+									}
+								}
+							},
+							{
+								"type": "object"
+							}
+						]
+					}
+				},
+				"AdditionalLocations": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"TargetRelativePath": {
+								"type": "string",
+								"description": "Gets and sets the relative location to the replication destination."
+							},
+							"SourceFullPath": {
+								"type": "string",
+								"description": "Gets and sets the full path of the directory to be copied. This location can be on the local server drives or an network location that is accessible by a Network Services account on the server."
+							}
+						}
+					}
+				},
+				"CleanupExemptLocations": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"x-abstract": true,
+								"required": [
+									"ExemptAllFiles",
+									"ExemptDescendantDirectories"
+								],
+								"properties": {
+									"RelativePath": {
+										"type": "string",
+										"description": "The relative path to the Publishing Target's Folder."
+									},
+									"ExemptAllFiles": {
+										"type": "boolean"
+									},
+									"ExemptDescendantDirectories": {
+										"type": "boolean"
+									},
+									"SearchPatterns": {
+										"type": "string",
+										"description": "Gets and sets the search patterns for exempt files. Only effective when ExemptAllFiles is false.",
+										"example": "Search patterns comply to the file search pattern specification from Windows Explorer. Here are a few examples:\n\n*.css\n\n\nt*.js\n\n\n*_target.xml|t*.js"
+									}
+								}
+							},
+							{
+								"type": "object"
+							}
+						]
+					}
+				}
+			},
+			"required": [
+				"UseImpersonation",
+				"Port",
+				"CompressedTransfer",
+				"Passive",
+				"AuthenticateWithPrivateKey",
+				"SFTPAuthenticationType",
+				"AuthenticateWithCertificate",
+				"ImplicitEncryption",
+				"AllowPrivateCertificates",
+				"SavedSecretKey",
+				"AuthType",
+				"Created",
+				"LastModified",
+				"Disabled",
+				"UseWriteThrough",
+				"UseCommands",
+				"ReplicationTargetType",
+				"Name",
+				"PublishingTargetId",
+				"PreReplicationCommandTimeout",
+				"PostReplicationCommandTimeout"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -187,7 +589,305 @@
 		"description": "Updates a replication target.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string",
+					"minLength": 1
+				},
+				"TargetLocation": {
+					"type": "string"
+				},
+				"UseImpersonation": {
+					"type": "boolean"
+				},
+				"ImpersonateUsername": {
+					"type": "string"
+				},
+				"ImpersonateUserDomain": {
+					"type": "string"
+				},
+				"ImpersonatePassword": {
+					"type": "string"
+				},
+				"TargetAddress": {
+					"type": "string"
+				},
+				"Port": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Username": {
+					"type": "string"
+				},
+				"Password": {
+					"type": "string"
+				},
+				"RootPath": {
+					"type": "string"
+				},
+				"CompressedTransfer": {
+					"type": "boolean"
+				},
+				"Passive": {
+					"type": "boolean"
+				},
+				"AuthenticateWithPrivateKey": {
+					"type": "boolean"
+				},
+				"KeyLocation": {
+					"type": "string"
+				},
+				"SFTPAuthenticationType": {
+					"type": "string",
+					"description": "",
+					"x-enumNames": [
+						"UsernamePassword",
+						"PrivateKey",
+						"PrivateKeyWithPassword"
+					],
+					"enum": [
+						"UsernamePassword",
+						"PrivateKey",
+						"PrivateKeyWithPassword"
+					]
+				},
+				"AuthenticateWithCertificate": {
+					"type": "boolean"
+				},
+				"ImplicitEncryption": {
+					"type": "boolean"
+				},
+				"AllowPrivateCertificates": {
+					"type": "boolean"
+				},
+				"ConnectionString": {
+					"type": "string"
+				},
+				"Container": {
+					"type": "string"
+				},
+				"RegionEndpointSystemName": {
+					"type": "string"
+				},
+				"Bucket": {
+					"type": "string"
+				},
+				"AccessKey": {
+					"type": "string"
+				},
+				"SecretKey": {
+					"type": "string"
+				},
+				"SavedSecretKey": {
+					"type": "boolean"
+				},
+				"AuthType": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"IAMAttachedRoleARN": {
+					"type": "string"
+				},
+				"IAMRoleAnywhereARN": {
+					"type": "string"
+				},
+				"TrustAnchorARN": {
+					"type": "string"
+				},
+				"IAMProfileARN": {
+					"type": "string"
+				},
+				"CertificateLocation": {
+					"type": "string"
+				},
+				"PrivateKeyLocation": {
+					"type": "string"
+				},
+				"CommandLineOverrides": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"Disabled": {
+					"type": "boolean"
+				},
+				"UseWriteThrough": {
+					"type": "boolean"
+				},
+				"UseCommands": {
+					"type": "boolean"
+				},
+				"ReplicationTargetType": {
+					"type": "string",
+					"description": "",
+					"x-enumNames": [
+						"File",
+						"FTP",
+						"SFTP",
+						"FTPS",
+						"Azure",
+						"AWS",
+						"Robo"
+					],
+					"enum": [
+						"File",
+						"FTP",
+						"SFTP",
+						"FTPS",
+						"Azure",
+						"AWS",
+						"Robo"
+					]
+				},
+				"PublishingTargetId": {
+					"type": "string",
+					"minLength": 1
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"PublishingTargetDirectory": {
+					"type": "string"
+				},
+				"PreReplicationCommand": {
+					"type": "string"
+				},
+				"PostReplicationCommand": {
+					"type": "string"
+				},
+				"PreReplicationCommandTimeout": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"PostReplicationCommandTimeout": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"ExemptLocations": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"x-abstract": true,
+								"required": [
+									"ExemptAllFiles",
+									"ExemptDescendantDirectories"
+								],
+								"properties": {
+									"RelativePath": {
+										"type": "string",
+										"description": "The relative path to the Publishing Target's Folder."
+									},
+									"ExemptAllFiles": {
+										"type": "boolean"
+									},
+									"ExemptDescendantDirectories": {
+										"type": "boolean"
+									},
+									"SearchPatterns": {
+										"type": "string",
+										"description": "Gets and sets the search patterns for exempt files. Only effective when ExemptAllFiles is false.",
+										"example": "Search patterns comply to the file search pattern specification from Windows Explorer. Here are a few examples:\n\n*.css\n\n\nt*.js\n\n\n*_target.xml|t*.js"
+									}
+								}
+							},
+							{
+								"type": "object"
+							}
+						]
+					}
+				},
+				"AdditionalLocations": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"TargetRelativePath": {
+								"type": "string",
+								"description": "Gets and sets the relative location to the replication destination."
+							},
+							"SourceFullPath": {
+								"type": "string",
+								"description": "Gets and sets the full path of the directory to be copied. This location can be on the local server drives or an network location that is accessible by a Network Services account on the server."
+							}
+						}
+					}
+				},
+				"CleanupExemptLocations": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"x-abstract": true,
+								"required": [
+									"ExemptAllFiles",
+									"ExemptDescendantDirectories"
+								],
+								"properties": {
+									"RelativePath": {
+										"type": "string",
+										"description": "The relative path to the Publishing Target's Folder."
+									},
+									"ExemptAllFiles": {
+										"type": "boolean"
+									},
+									"ExemptDescendantDirectories": {
+										"type": "boolean"
+									},
+									"SearchPatterns": {
+										"type": "string",
+										"description": "Gets and sets the search patterns for exempt files. Only effective when ExemptAllFiles is false.",
+										"example": "Search patterns comply to the file search pattern specification from Windows Explorer. Here are a few examples:\n\n*.css\n\n\nt*.js\n\n\n*_target.xml|t*.js"
+									}
+								}
+							},
+							{
+								"type": "object"
+							}
+						]
+					}
+				}
+			},
+			"required": [
+				"UseImpersonation",
+				"Port",
+				"CompressedTransfer",
+				"Passive",
+				"AuthenticateWithPrivateKey",
+				"SFTPAuthenticationType",
+				"AuthenticateWithCertificate",
+				"ImplicitEncryption",
+				"AllowPrivateCertificates",
+				"SavedSecretKey",
+				"AuthType",
+				"Created",
+				"LastModified",
+				"Disabled",
+				"UseWriteThrough",
+				"UseCommands",
+				"ReplicationTargetType",
+				"Name",
+				"PublishingTargetId",
+				"PreReplicationCommandTimeout",
+				"PostReplicationCommandTimeout"
+			]
 		},
 		"output_schema": {
 			"type": "object"

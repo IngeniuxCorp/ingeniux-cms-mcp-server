@@ -354,7 +354,20 @@
 		"description": "Creates a report containing information on all Pages that reference the Asset specified in the request.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"RootPageId": {
+					"type": "string"
+				},
+				"AssetPath": {
+					"type": "string"
+				},
+				"IncludeChildren": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"IncludeChildren"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -371,7 +384,21 @@
 		"description": "Creates a report containing information on all Pages and Components that contain broken links.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"RootPageId": {
+					"type": "string"
+				},
+				"IncludeChildren": {
+					"type": "boolean"
+				},
+				"ValidateExternalReferences": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"IncludeChildren",
+				"ValidateExternalReferences"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -388,7 +415,26 @@
 		"description": "Creates a report containing information on all Pages that contain the text specified in the request.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"RootPageId": {
+					"type": "string"
+				},
+				"SearchText": {
+					"type": "string",
+					"minLength": 1
+				},
+				"IgnoreCase": {
+					"type": "boolean"
+				},
+				"IncludeChildren": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"SearchText",
+				"IgnoreCase",
+				"IncludeChildren"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -405,7 +451,26 @@
 		"description": "Creates a report containing information on all Assets that have text content contains the text specified in the request.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"RootPageId": {
+					"type": "string"
+				},
+				"SearchText": {
+					"type": "string",
+					"minLength": 1
+				},
+				"IgnoreCase": {
+					"type": "boolean"
+				},
+				"IncludeChildren": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"SearchText",
+				"IgnoreCase",
+				"IncludeChildren"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -422,7 +487,15 @@
 		"description": "Creates a report containing information on all unused Assets in a specified Asset Folder.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"RootAssetFolderId": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			"required": [
+				"RootAssetFolderId"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -439,7 +512,20 @@
 		"description": "Creates a report containing information on all Pages that reference the Page or Component specified in the request.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"PageId": {
+					"type": "string"
+				},
+				"RootPageId": {
+					"type": "string"
+				},
+				"IncludeChildren": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"IncludeChildren"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -540,7 +626,20 @@
 		"description": "Fix/Replace the values searched for in the specified Pages or Components with a new value.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"SessionId": {
+					"type": "string"
+				},
+				"EntryIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"NewValue": {
+					"type": "string"
+				}
+			}
 		},
 		"output_schema": {
 			"type": "object"

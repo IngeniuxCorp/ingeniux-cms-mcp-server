@@ -4,7 +4,20 @@
 		"description": "Renames a specified Page or Component.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string",
+					"minLength": 1
+				},
+				"Name": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			"required": [
+				"Id",
+				"Name"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -21,7 +34,28 @@
 		"description": "Check in the Page specified in the request.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string",
+					"minLength": 1
+				},
+				"Recursive": {
+					"type": "boolean"
+				},
+				"PublishingTargetIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"Comment": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"Recursive",
+				"Id"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -39,7 +73,19 @@
 		"description": "Check out the Page specified in the request.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string",
+					"minLength": 1
+				},
+				"Recursive": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"Recursive",
+				"Id"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -57,7 +103,30 @@
 		"description": "Creates a new Page based on a Page Creation Rule.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"PCRId": {
+					"type": "string",
+					"minLength": 1
+				},
+				"Name": {
+					"type": "string",
+					"minLength": 1
+				},
+				"ParentPageId": {
+					"type": "string"
+				},
+				"SkipWorkflow": {
+					"type": "boolean"
+				},
+				"AssignToUserId": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"PCRId",
+				"Name",
+				"SkipWorkflow"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -171,7 +240,24 @@
 		"description": "Moves a Page's Workflow to the next state.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"ContentId": {
+					"type": "string",
+					"minLength": 1
+				},
+				"TransitionId": {
+					"type": "string"
+				},
+				"Comments": {
+					"type": "string"
+				},
+				"AssignToUserId": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"ContentId"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -280,7 +366,17 @@
 		"description": "Sets the value of a specified Setting.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Section": {
+					"type": "string"
+				},
+				"Setting": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				}
+			}
 		},
 		"output_schema": {
 			"type": "object"
@@ -353,7 +449,14 @@
 		"description": "Get Settings information given a settings context and ID (Ex: context: \"{\"customTab\":\"CustomTabSettings/Analytics\"}\", id: \"customtabsdisplay\")",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"context": {
+					"type": "string"
+				}
+			}
 		},
 		"output_schema": {
 			"type": "object"
@@ -371,7 +474,17 @@
 		"description": "Set Settings information given a settings context, data to set, and setting section ID\n(Ex: context: \"{\"customTab\":\"CustomTabSettings/Analytics\"}\", data: \"{\"autoSelect\":true,\"alllowPinning\":false,\"disable\":false}\", id: \"customtabsdisplay\")",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"data": {
+					"type": "string"
+				},
+				"context": {
+					"type": "string"
+				}
+			}
 		},
 		"output_schema": {
 			"type": "object"

@@ -4,7 +4,23 @@
 		"description": "Logs in a user.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Username": {
+					"type": "string"
+				},
+				"Password": {
+					"type": "string"
+				},
+				"Provider": {
+					"type": "string"
+				},
+				"Persist": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"Persist"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -583,7 +599,133 @@
 		"description": "Saves workflow definition details.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"Desc": {
+					"type": "string"
+				},
+				"PagesCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"InitialGroupIsEmpty": {
+					"type": "boolean"
+				},
+				"Transitions": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"type": "object",
+								"properties": {
+									"Id": {
+										"type": "string"
+									},
+									"Name": {
+										"type": "string"
+									}
+								}
+							},
+							{
+								"type": "object",
+								"required": [
+									"IsDefault",
+									"IsInitial",
+									"AllowNextGroupToAdvance"
+								],
+								"properties": {
+									"Description": {
+										"type": "string"
+									},
+									"CurrentState": {
+										"type": "string"
+									},
+									"NextState": {
+										"type": "string"
+									},
+									"IsDefault": {
+										"type": "boolean"
+									},
+									"IsInitial": {
+										"type": "boolean"
+									},
+									"NextGroupId": {
+										"type": "string"
+									},
+									"NextGroupName": {
+										"type": "string"
+									},
+									"DefaultUser": {
+										"type": "string"
+									},
+									"AllowNextGroupToAdvance": {
+										"type": "boolean"
+									},
+									"Actions": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"ActionTypeId"
+											],
+											"properties": {
+												"Id": {
+													"type": "string"
+												},
+												"Description": {
+													"type": "string"
+												},
+												"ActionTypeId": {
+													"type": "integer",
+													"format": "int32"
+												},
+												"Attributes": {
+													"type": "object",
+													"additionalProperties": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"PagesCount",
+				"InitialGroupIsEmpty"
+			]
 		},
 		"output_schema": {
 			"type": "object"

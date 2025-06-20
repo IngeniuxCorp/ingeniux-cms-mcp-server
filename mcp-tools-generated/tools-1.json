@@ -401,7 +401,33 @@
 		"description": "Gets the names of all the css classes applicable to a Page Builder column or row.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"filterText": {
+					"type": "string"
+				},
+				"stylesheetRefs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"stylesheetContents": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"previewUrl": {
+					"type": "string"
+				},
+				"count": {
+					"type": "integer",
+					"format": "int32"
+				}
+			},
+			"required": [
+				"count"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -498,7 +524,46 @@
 		"description": "Gets all the trays for the In Context Edit view.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"start": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"end": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"type": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"language": {
+					"type": "string"
+				},
+				"includeCus": {
+					"type": "boolean"
+				},
+				"includeComps": {
+					"type": "boolean"
+				},
+				"includeSeparators": {
+					"type": "boolean"
+				},
+				"divideRatio": {
+					"type": "number",
+					"format": "double"
+				}
+			},
+			"required": [
+				"start",
+				"end",
+				"includeCus",
+				"includeComps",
+				"includeSeparators",
+				"divideRatio"
+			]
 		},
 		"output_schema": {
 			"type": "object"

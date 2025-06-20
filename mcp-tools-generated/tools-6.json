@@ -277,7 +277,95 @@
 		"description": "Update an existing Theme",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"IsDefault": {
+					"type": "boolean"
+				},
+				"IsSystem": {
+					"type": "boolean"
+				},
+				"Draft": {
+					"type": "boolean"
+				},
+				"Font": {
+					"type": "string"
+				},
+				"FontSize": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"Colors": {
+					"type": "array",
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"type": "object",
+										"x-abstract": true,
+										"properties": {
+											"Id": {
+												"type": "string"
+											}
+										}
+									},
+									{
+										"type": "object",
+										"properties": {
+											"Name": {
+												"type": "string"
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"Color": {
+										"type": "string"
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"IsDefault",
+				"IsSystem",
+				"Draft",
+				"FontSize"
+			]
 		},
 		"output_schema": {
 			"type": "object"

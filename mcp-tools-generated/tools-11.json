@@ -153,7 +153,24 @@
 		"description": "Advances the Workflow state for the asset specified in the AdvanceWorkflowRequest.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"ContentId": {
+					"type": "string",
+					"minLength": 1
+				},
+				"TransitionId": {
+					"type": "string"
+				},
+				"Comments": {
+					"type": "string"
+				},
+				"AssignToUserId": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"ContentId"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -170,7 +187,23 @@
 		"description": "Assign the asset specified in the AssignAssetUserGroupRequest\nto the group specified in the request.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"AssetId": {
+					"type": "string",
+					"minLength": 1
+				},
+				"UserGroupId": {
+					"type": "string",
+					"minLength": 1
+				},
+				"Comment": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"AssetId",
+				"UserGroupId"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -187,7 +220,23 @@
 		"description": "Assign the asset specified in the AssignAssetUserRequest\nto the user specified in the request.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"AssetId": {
+					"type": "string",
+					"minLength": 1
+				},
+				"UserId": {
+					"type": "string",
+					"minLength": 1
+				},
+				"Comment": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"AssetId",
+				"UserId"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -204,7 +253,28 @@
 		"description": "Check in the asset specified in the ContentItemCheckInRequest.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string",
+					"minLength": 1
+				},
+				"Recursive": {
+					"type": "boolean"
+				},
+				"PublishingTargetIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"Comment": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"Recursive",
+				"Id"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -222,7 +292,19 @@
 		"description": "Check out the asset specified in the ContentItemCheckOutRequest.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string",
+					"minLength": 1
+				},
+				"Recursive": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"Recursive",
+				"Id"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -279,7 +361,26 @@
 		"description": "Create an Asset Folder using information specified in the CreateAssetFolderRequest.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"AllowedExtensions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Overwrite": {
+					"type": "boolean"
+				},
+				"ParentId": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"Overwrite"
+			]
 		},
 		"output_schema": {
 			"type": "object"

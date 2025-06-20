@@ -257,7 +257,20 @@
 		"description": "Rename a Asset or Asset Folder.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string",
+					"minLength": 1
+				},
+				"Name": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			"required": [
+				"Id",
+				"Name"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -488,7 +501,19 @@
 		"description": "Revert the asset to the state it was in before being checked out.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string",
+					"minLength": 1
+				},
+				"Recursive": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"Recursive",
+				"Id"
+			]
 		},
 		"output_schema": {
 			"type": "object"

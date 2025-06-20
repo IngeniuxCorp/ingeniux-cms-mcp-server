@@ -205,16 +205,10 @@
 			"type": "object",
 			"properties": {
 				"start": {
-					"type": "integer",
-					"required": true,
-					"in": "query",
-					"description": "Starting index with sort applied"
+					"type": "string"
 				},
 				"end": {
-					"type": "integer",
-					"required": true,
-					"in": "query",
-					"description": "Ending index with sort applied"
+					"type": "string"
 				},
 				"sortField": {
 					"type": "string",
@@ -239,6 +233,24 @@
 					"required": false,
 					"in": "query",
 					"description": "Whether to included DITA Map Assets in recycle folder"
+				},
+				"name": {
+					"type": "string"
+				},
+				"id": {
+					"type": "string"
+				},
+				"path": {
+					"type": "string"
+				},
+				"workstate": {
+					"type": "string"
+				},
+				"logic": {
+					"type": "string"
+				},
+				"dateType": {
+					"type": "string"
 				}
 			},
 			"required": [
@@ -482,7 +494,36 @@
 		"description": "Adds or updates a localized rendering schema for DITA",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Locale": {
+					"type": "object",
+					"properties": {
+						"Locale": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						},
+						"EnglishName": {
+							"type": "string"
+						},
+						"BaseLocale": {
+							"type": "string"
+						}
+					}
+				},
+				"Schema": {
+					"type": "object",
+					"properties": {
+						"Id": {
+							"type": "string"
+						},
+						"Name": {
+							"type": "string"
+						}
+					}
+				}
+			}
 		},
 		"output_schema": {
 			"type": "object"
@@ -526,7 +567,58 @@
 		"description": "Adds or updates a parameter value for DITA-OT transformation during publish",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string",
+					"description": "The object types of parameters for DITA OT processing",
+					"x-enumNames": [
+						"String",
+						"Number",
+						"Enum",
+						"Bool"
+					],
+					"enum": [
+						"String",
+						"Number",
+						"Enum",
+						"Bool"
+					]
+				},
+				"DefaultValue": {
+					"type": "string"
+				},
+				"Choices": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"BelongToFormats": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"IsCommonParam": {
+					"type": "boolean"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"Instruction": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"Type",
+				"IsCommonParam"
+			]
 		},
 		"output_schema": {
 			"type": "object"

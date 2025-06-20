@@ -165,6 +165,51 @@
 					"required": true,
 					"in": "query",
 					"description": "Report locale/"
+				},
+				"reportId": {
+					"type": "string"
+				},
+				"involvedDocs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"query": {
+					"type": "string"
+				},
+				"parentFolderId": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"columns": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"width"
+						],
+						"properties": {
+							"attributeName": {
+								"type": "string"
+							},
+							"label": {
+								"type": "string"
+							},
+							"dataType": {
+								"type": "string"
+							},
+							"width": {
+								"type": "integer",
+								"format": "int32"
+							}
+						}
+					}
+				},
+				"idColumnName": {
+					"type": "string"
 				}
 			},
 			"required": [
@@ -226,6 +271,85 @@
 					"required": true,
 					"in": "query",
 					"description": "Report locale"
+				},
+				"reportId": {
+					"type": "string"
+				},
+				"involvedDocs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"query": {
+					"type": "string"
+				},
+				"parentFolderId": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"columns": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"width"
+						],
+						"properties": {
+							"attributeName": {
+								"type": "string"
+							},
+							"label": {
+								"type": "string"
+							},
+							"dataType": {
+								"type": "string"
+							},
+							"width": {
+								"type": "integer",
+								"format": "int32"
+							}
+						}
+					}
+				},
+				"idColumnName": {
+					"type": "string"
+				},
+				"parameters": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"label": {
+								"type": "string"
+							},
+							"type": {
+								"type": "string"
+							},
+							"defaultValue": {
+								"type": "string"
+							},
+							"options": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"label": {
+											"type": "string"
+										},
+										"value": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			},
 			"required": [
@@ -287,6 +411,15 @@
 					"required": true,
 					"in": "query",
 					"description": "Report locale"
+				},
+				"reportId": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"providerUrl": {
+					"type": "string"
 				}
 			},
 			"required": [
@@ -314,6 +447,53 @@
 					"required": true,
 					"in": "query",
 					"description": "Report locale"
+				},
+				"reportId": {
+					"type": "string"
+				},
+				"schedules": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"recurNumber"
+						],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"startTime": {
+								"type": "string"
+							},
+							"recipients": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"recurNumber": {
+								"type": "integer",
+								"format": "int32"
+							},
+							"recurUnit": {
+								"type": "string"
+							},
+							"paramValues": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"value": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			},
 			"required": [

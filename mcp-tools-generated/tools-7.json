@@ -4,7 +4,66 @@
 		"description": "Create Page Creation Rule",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"SchemaId": {
+					"type": "string",
+					"minLength": 1
+				},
+				"Name": {
+					"type": "string",
+					"minLength": 1
+				},
+				"Description": {
+					"type": "string"
+				},
+				"IsDefault": {
+					"type": "boolean"
+				},
+				"WorkflowId": {
+					"type": "string"
+				},
+				"AutoSelectParent": {
+					"type": "boolean"
+				},
+				"OverrideStylesheet": {
+					"type": "string"
+				},
+				"UserIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"GroupIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"ParentInfo": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"ParentOnly"
+						],
+						"properties": {
+							"PageId": {
+								"type": "string"
+							},
+							"ParentOnly": {
+								"type": "boolean"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"SchemaId",
+				"Name",
+				"IsDefault",
+				"AutoSelectParent"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -21,7 +80,87 @@
 		"description": "Set Page Creation Rule Info",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string",
+					"minLength": 1
+				},
+				"Name": {
+					"type": "string",
+					"minLength": 1
+				},
+				"SchemaId": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"IsDefault": {
+					"type": "boolean"
+				},
+				"WorkflowId": {
+					"type": "string"
+				},
+				"AutoSelectParent": {
+					"type": "boolean"
+				},
+				"OverrideStylesheet": {
+					"type": "string"
+				},
+				"UsersToAdd": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"UsersToRemove": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"GroupsToAdd": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"GroupsToRemove": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"ParentsToAdd": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"ParentOnly"
+						],
+						"properties": {
+							"PageId": {
+								"type": "string"
+							},
+							"ParentOnly": {
+								"type": "boolean"
+							}
+						}
+					}
+				},
+				"ParentsToRemove": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"Id",
+				"Name",
+				"IsDefault",
+				"AutoSelectParent"
+			]
 		},
 		"output_schema": {
 			"type": "object"

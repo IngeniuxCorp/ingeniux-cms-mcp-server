@@ -461,7 +461,152 @@
 		"description": "Updates an existing category.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"CreationUser": {
+					"type": "string"
+				},
+				"Created": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"LastModifiedUser": {
+					"type": "string"
+				},
+				"LastModified": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"EntityType": {
+					"type": "string"
+				},
+				"Archived": {
+					"type": "boolean"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"ChildrenCount": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"SiblingPosition": {
+					"type": "number",
+					"format": "double"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"TypeName": {
+					"type": "string"
+				},
+				"ExternalId": {
+					"type": "string"
+				},
+				"PageIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"AssetIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"Locale": {
+					"type": "string"
+				},
+				"Synonyms": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Locale": {
+								"type": "string"
+							},
+							"Value": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"SecurityLevel": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"GroupPermissions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"PermissionLevel"
+						],
+						"properties": {
+							"GroupId": {
+								"type": "string"
+							},
+							"GroupName": {
+								"type": "string"
+							},
+							"PermissionLevel": {
+								"type": "string",
+								"description": "The list of node-level permissions for Pages",
+								"x-enumNames": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
+								],
+								"enum": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
+								]
+							}
+						}
+					}
+				},
+				"Translations": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"RequiresUpdate"
+						],
+						"properties": {
+							"Locale": {
+								"type": "string"
+							},
+							"Name": {
+								"type": "string"
+							},
+							"Description": {
+								"type": "string"
+							},
+							"TypeName": {
+								"type": "string"
+							},
+							"RequiresUpdate": {
+								"type": "boolean"
+							}
+						}
+					}
+				}
+			},
+			"required": [
+				"Created",
+				"LastModified",
+				"Archived",
+				"ChildrenCount",
+				"SiblingPosition",
+				"SecurityLevel"
+			]
 		},
 		"output_schema": {
 			"type": "object"
@@ -544,7 +689,56 @@
 		"description": "Saves the category security model.",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"SecurityInherited": {
+					"type": "boolean"
+				},
+				"SecurityPermissions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"PermissionLevel"
+						],
+						"properties": {
+							"GroupId": {
+								"type": "string"
+							},
+							"GroupName": {
+								"type": "string"
+							},
+							"PermissionLevel": {
+								"type": "string",
+								"description": "The list of node-level permissions for Pages",
+								"x-enumNames": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
+								],
+								"enum": [
+									"NO_ACCESS",
+									"READ_ONLY",
+									"FULL_ACCESS"
+								]
+							}
+						}
+					}
+				},
+				"SecurityLevel": {
+					"type": "integer",
+					"format": "int32"
+				}
+			},
+			"required": [
+				"SecurityInherited",
+				"SecurityLevel"
+			]
 		},
 		"output_schema": {
 			"type": "object"

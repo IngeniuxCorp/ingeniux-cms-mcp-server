@@ -199,7 +199,43 @@
 		"description": "Settings post operation",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"DitavalAssetIds": {
+					"type": "array",
+					"items": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"PubMarking": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"MarkedVersion"
+						],
+						"properties": {
+							"PubTargetId": {
+								"type": "string"
+							},
+							"MarkedVersion": {
+								"type": "integer",
+								"format": "int32"
+							}
+						}
+					}
+				},
+				"Remove": {
+					"type": "boolean"
+				},
+				"Restore": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"Remove",
+				"Restore"
+			]
 		},
 		"output_schema": {
 			"type": "object"

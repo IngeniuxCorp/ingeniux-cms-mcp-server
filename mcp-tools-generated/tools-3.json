@@ -174,7 +174,35 @@
 		"description": "Publishes an entire collection of DITA Map Assets",
 		"input_schema": {
 			"type": "object",
-			"properties": {}
+			"properties": {
+				"mapId": {
+					"type": "string"
+				},
+				"pubTgtIds": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"replicate": {
+					"type": "boolean"
+				},
+				"formats": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"ditavals": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"replicate"
+			]
 		},
 		"output_schema": {
 			"type": "object"
