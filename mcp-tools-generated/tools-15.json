@@ -23,7 +23,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/pages/rename",
+		"endpoint": "/pages/rename",
 		"tags": [
 			"Pages"
 		],
@@ -61,7 +61,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/pages/checkin",
+		"endpoint": "/pages/checkin",
 		"tags": [
 			"Pages"
 		],
@@ -91,7 +91,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/pages/checkout",
+		"endpoint": "/pages/checkout",
 		"tags": [
 			"Pages"
 		],
@@ -132,7 +132,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/pages/page/pcr",
+		"endpoint": "/pages/page/pcr",
 		"tags": [
 			"Pages"
 		],
@@ -166,7 +166,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages/history",
+		"endpoint": "/pages/history",
 		"tags": [
 			"Pages"
 		],
@@ -193,7 +193,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages/page/workflow/workstates",
+		"endpoint": "/pages/page/workflow/workstates",
 		"tags": [
 			"Pages"
 		],
@@ -228,7 +228,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages/page/design/content-units",
+		"endpoint": "/pages/page/design/content-units",
 		"tags": [
 			"Pages"
 		],
@@ -263,7 +263,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/pages/page/workflow/advance",
+		"endpoint": "/pages/page/workflow/advance",
 		"tags": [
 			"Pages"
 		],
@@ -306,7 +306,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/pages/dita-alias",
+		"endpoint": "/pages/dita-alias",
 		"tags": [
 			"Pages"
 		]
@@ -336,7 +336,7 @@
 			"type": "object"
 		},
 		"method": "patch",
-		"endpoint": "/api/v1/pages/dita-alias",
+		"endpoint": "/pages/dita-alias",
 		"tags": [
 			"Pages"
 		]
@@ -355,7 +355,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/setting",
+		"endpoint": "/settings/setting",
 		"tags": [
 			"Settings"
 		],
@@ -382,7 +382,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/settings/setting",
+		"endpoint": "/settings/setting",
 		"tags": [
 			"Settings"
 		],
@@ -410,7 +410,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/section",
+		"endpoint": "/settings/section",
 		"tags": [
 			"Settings"
 		],
@@ -437,7 +437,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/settings/section",
+		"endpoint": "/settings/section",
 		"tags": [
 			"Settings"
 		],
@@ -462,7 +462,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/settings/data",
+		"endpoint": "/settings/data",
 		"tags": [
 			"Settings"
 		],
@@ -490,7 +490,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/settings/data",
+		"endpoint": "/settings/data",
 		"tags": [
 			"Settings"
 		],
@@ -508,7 +508,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/custom-tabs",
+		"endpoint": "/settings/custom-tabs",
 		"tags": [
 			"Settings"
 		],
@@ -526,7 +526,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/settings/custom-tabs",
+		"endpoint": "/settings/custom-tabs",
 		"tags": [
 			"Settings"
 		],
@@ -554,7 +554,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/task-users",
+		"endpoint": "/settings/task-users",
 		"tags": [
 			"Settings"
 		],
@@ -582,7 +582,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/settings/reset-client-secret",
+		"endpoint": "/settings/reset-client-secret",
 		"tags": [
 			"Settings"
 		],

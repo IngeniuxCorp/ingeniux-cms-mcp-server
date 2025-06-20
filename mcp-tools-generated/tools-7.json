@@ -69,7 +69,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/pcr",
+		"endpoint": "/pcr",
 		"tags": [
 			"PCR"
 		],
@@ -166,7 +166,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/pcr",
+		"endpoint": "/pcr",
 		"tags": [
 			"PCR"
 		],
@@ -193,7 +193,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/pcr",
+		"endpoint": "/pcr",
 		"tags": [
 			"PCR"
 		],
@@ -226,7 +226,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pcr/parents",
+		"endpoint": "/pcr/parents",
 		"tags": [
 			"PCR"
 		],
@@ -259,7 +259,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pcr/parentpages",
+		"endpoint": "/pcr/parentpages",
 		"tags": [
 			"PCR"
 		],
@@ -286,7 +286,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pcr/childpages",
+		"endpoint": "/pcr/childpages",
 		"tags": [
 			"PCR"
 		],
@@ -313,7 +313,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pcr/details",
+		"endpoint": "/pcr/details",
 		"tags": [
 			"PCR"
 		],
@@ -352,7 +352,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/page-xml",
+		"endpoint": "/preview/page-xml",
 		"tags": [
 			"Preview"
 		],
@@ -380,7 +380,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/page",
+		"endpoint": "/preview/page",
 		"tags": [
 			"Preview"
 		],
@@ -419,7 +419,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/page-descendants",
+		"endpoint": "/preview/page-descendants",
 		"tags": [
 			"Preview"
 		],
@@ -452,7 +452,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/page-map-by-path",
+		"endpoint": "/preview/page-map-by-path",
 		"tags": [
 			"Preview"
 		],
@@ -485,7 +485,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/page-map",
+		"endpoint": "/preview/page-map",
 		"tags": [
 			"Preview"
 		],
@@ -518,7 +518,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/asset-map",
+		"endpoint": "/preview/asset-map",
 		"tags": [
 			"Preview"
 		],
@@ -557,7 +557,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/asset-descendants",
+		"endpoint": "/preview/asset-descendants",
 		"tags": [
 			"Preview"
 		],
@@ -590,7 +590,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/asset-map-by-path",
+		"endpoint": "/preview/asset-map-by-path",
 		"tags": [
 			"Preview"
 		],
@@ -617,7 +617,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/page-reference",
+		"endpoint": "/preview/page-reference",
 		"tags": [
 			"Preview"
 		],
@@ -644,7 +644,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/asset-reference",
+		"endpoint": "/preview/asset-reference",
 		"tags": [
 			"Preview"
 		],
@@ -683,7 +683,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/asset-xmp",
+		"endpoint": "/preview/asset-xmp",
 		"tags": [
 			"Preview"
 		],
@@ -722,7 +722,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/asset-file",
+		"endpoint": "/preview/asset-file",
 		"tags": [
 			"Preview"
 		],
@@ -749,7 +749,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/taxonomy",
+		"endpoint": "/preview/taxonomy",
 		"tags": [
 			"Preview"
 		],

@@ -20,7 +20,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/taxonomy-by-page",
+		"endpoint": "/preview/taxonomy-by-page",
 		"tags": [
 			"Preview"
 		],
@@ -47,7 +47,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/taxonomy-by-asset",
+		"endpoint": "/preview/taxonomy-by-asset",
 		"tags": [
 			"Preview"
 		],
@@ -86,7 +86,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/taxonomy-descendants",
+		"endpoint": "/preview/taxonomy-descendants",
 		"tags": [
 			"Preview"
 		],
@@ -103,7 +103,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/global-exports",
+		"endpoint": "/preview/global-exports",
 		"tags": [
 			"Preview"
 		],
@@ -136,7 +136,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/stream/page-xml",
+		"endpoint": "/preview/stream/page-xml",
 		"tags": [
 			"Preview"
 		],
@@ -160,7 +160,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/stream/page-references",
+		"endpoint": "/preview/stream/page-references",
 		"tags": [
 			"Preview"
 		],
@@ -184,7 +184,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/stream/asset-references",
+		"endpoint": "/preview/stream/asset-references",
 		"tags": [
 			"Preview"
 		],
@@ -208,7 +208,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/stream/taxonomy",
+		"endpoint": "/preview/stream/taxonomy",
 		"tags": [
 			"Preview"
 		],
@@ -228,7 +228,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/page-forward-references",
+		"endpoint": "/preview/page-forward-references",
 		"tags": [
 			"Preview"
 		],
@@ -248,7 +248,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/page-cross-references",
+		"endpoint": "/preview/page-cross-references",
 		"tags": [
 			"Preview"
 		],
@@ -297,7 +297,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/dita-asset-preview-status",
+		"endpoint": "/preview/dita-asset-preview-status",
 		"tags": [
 			"Preview"
 		]
@@ -345,7 +345,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/preview/dita-asset-preview",
+		"endpoint": "/preview/dita-asset-preview",
 		"tags": [
 			"Preview"
 		]
@@ -393,7 +393,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/preview/dita-asset-preview",
+		"endpoint": "/preview/dita-asset-preview",
 		"tags": [
 			"Preview"
 		]
@@ -419,7 +419,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/preview/asset-dependents-csv",
+		"endpoint": "/preview/asset-dependents-csv",
 		"tags": [
 			"Preview"
 		],
@@ -462,7 +462,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/publishing/publish-preview-content",
+		"endpoint": "/publishing/publish-preview-content",
 		"tags": [
 			"Publishing"
 		],
@@ -517,7 +517,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/publishing/publish-preview",
+		"endpoint": "/publishing/publish-preview",
 		"tags": [
 			"Publishing"
 		],
@@ -544,7 +544,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/publishing/log-detail",
+		"endpoint": "/publishing/log-detail",
 		"tags": [
 			"Publishing"
 		],
@@ -571,7 +571,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/publishing/target-summary",
+		"endpoint": "/publishing/target-summary",
 		"tags": [
 			"Publishing"
 		],
@@ -588,7 +588,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/publishing/current-tasks",
+		"endpoint": "/publishing/current-tasks",
 		"tags": [
 			"Publishing"
 		],
@@ -626,7 +626,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/publishing/redirects",
+		"endpoint": "/publishing/redirects",
 		"tags": [
 			"Publishing"
 		],

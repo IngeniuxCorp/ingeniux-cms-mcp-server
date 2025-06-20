@@ -31,7 +31,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/schemas/search-asset-schemas",
+		"endpoint": "/schemas/search-asset-schemas",
 		"tags": [
 			"Schemas"
 		],
@@ -84,7 +84,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/schemas/schema-usage",
+		"endpoint": "/schemas/schema-usage",
 		"tags": [
 			"Schemas"
 		],
@@ -142,7 +142,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/schemas/schema-sync-log",
+		"endpoint": "/schemas/schema-sync-log",
 		"tags": [
 			"Schemas"
 		],
@@ -176,7 +176,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/assets/asset/workflow/advance",
+		"endpoint": "/assets/asset/workflow/advance",
 		"tags": [
 			"Assets"
 		],
@@ -209,7 +209,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/assets/assign-to-group",
+		"endpoint": "/assets/assign-to-group",
 		"tags": [
 			"Assets"
 		],
@@ -242,7 +242,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/assets/assign-to-user",
+		"endpoint": "/assets/assign-to-user",
 		"tags": [
 			"Assets"
 		],
@@ -280,7 +280,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/assets/checkin",
+		"endpoint": "/assets/checkin",
 		"tags": [
 			"Assets"
 		],
@@ -310,7 +310,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/assets/checkout",
+		"endpoint": "/assets/checkout",
 		"tags": [
 			"Assets"
 		],
@@ -350,7 +350,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/assets/copy",
+		"endpoint": "/assets/copy",
 		"tags": [
 			"Assets"
 		],
@@ -386,7 +386,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/assets/asset-folder",
+		"endpoint": "/assets/asset-folder",
 		"tags": [
 			"Assets"
 		],
@@ -409,7 +409,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/asset-aliases",
+		"endpoint": "/assets/asset-aliases",
 		"tags": [
 			"Assets"
 		]
@@ -438,7 +438,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/assets",
+		"endpoint": "/assets",
 		"tags": [
 			"Assets"
 		],
@@ -465,7 +465,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/asset/ancestors",
+		"endpoint": "/assets/asset/ancestors",
 		"tags": [
 			"Assets"
 		],
@@ -493,7 +493,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/asset",
+		"endpoint": "/assets/asset",
 		"tags": [
 			"Assets"
 		],
@@ -521,7 +521,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/asset-by-path",
+		"endpoint": "/assets/asset-by-path",
 		"tags": [
 			"Assets"
 		],
@@ -538,7 +538,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/assets/asset/context",
+		"endpoint": "/assets/asset/context",
 		"tags": [
 			"Assets"
 		],
@@ -572,7 +572,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/details",
+		"endpoint": "/assets/details",
 		"tags": [
 			"Assets"
 		],
@@ -606,7 +606,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/history",
+		"endpoint": "/assets/history",
 		"tags": [
 			"Assets"
 		],
@@ -645,7 +645,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/asset/children",
+		"endpoint": "/assets/asset/children",
 		"tags": [
 			"Assets"
 		],
@@ -678,7 +678,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/file",
+		"endpoint": "/assets/file",
 		"tags": [
 			"Assets"
 		],

@@ -27,7 +27,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/taxonomy/category/synonyms",
+		"endpoint": "/taxonomy/category/synonyms",
 		"tags": [
 			"Taxonomy"
 		],
@@ -61,7 +61,7 @@
 			"type": "object"
 		},
 		"method": "patch",
-		"endpoint": "/api/v1/taxonomy/category/rename",
+		"endpoint": "/taxonomy/category/rename",
 		"tags": [
 			"Taxonomy"
 		],
@@ -100,7 +100,7 @@
 			"type": "object"
 		},
 		"method": "patch",
-		"endpoint": "/api/v1/taxonomy/category/move",
+		"endpoint": "/taxonomy/category/move",
 		"tags": [
 			"Taxonomy"
 		],
@@ -152,7 +152,7 @@
 			"type": "object"
 		},
 		"method": "patch",
-		"endpoint": "/api/v1/taxonomy/category/copy",
+		"endpoint": "/taxonomy/category/copy",
 		"tags": [
 			"Taxonomy"
 		],
@@ -186,7 +186,7 @@
 			"type": "object"
 		},
 		"method": "patch",
-		"endpoint": "/api/v1/taxonomy/category/copy-associations",
+		"endpoint": "/taxonomy/category/copy-associations",
 		"tags": [
 			"Taxonomy"
 		],
@@ -229,7 +229,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/taxonomy/category/associations",
+		"endpoint": "/taxonomy/category/associations",
 		"tags": [
 			"Taxonomy"
 		],
@@ -257,7 +257,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/taxonomy/category/associations",
+		"endpoint": "/taxonomy/category/associations",
 		"tags": [
 			"Taxonomy"
 		],
@@ -285,7 +285,7 @@
 			"type": "object"
 		},
 		"method": "patch",
-		"endpoint": "/api/v1/taxonomy/category/associations",
+		"endpoint": "/taxonomy/category/associations",
 		"tags": [
 			"Taxonomy"
 		],
@@ -319,7 +319,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/taxonomy/category/association",
+		"endpoint": "/taxonomy/category/association",
 		"tags": [
 			"Taxonomy"
 		],
@@ -353,7 +353,7 @@
 			"type": "object"
 		},
 		"method": "patch",
-		"endpoint": "/api/v1/taxonomy/category/association",
+		"endpoint": "/taxonomy/category/association",
 		"tags": [
 			"Taxonomy"
 		],
@@ -380,7 +380,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/taxonomy/category/content-associations",
+		"endpoint": "/taxonomy/category/content-associations",
 		"tags": [
 			"Taxonomy"
 		],
@@ -397,7 +397,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/taxonomy/categories-with-path",
+		"endpoint": "/taxonomy/categories-with-path",
 		"tags": [
 			"Taxonomy"
 		],
@@ -430,7 +430,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/taxonomy/category/has-association",
+		"endpoint": "/taxonomy/category/has-association",
 		"tags": [
 			"Taxonomy"
 		],
@@ -463,7 +463,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/taxonomy/category/associated-descendants",
+		"endpoint": "/taxonomy/category/associated-descendants",
 		"tags": [
 			"Taxonomy"
 		],
@@ -490,7 +490,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/taxonomy/quick-search",
+		"endpoint": "/taxonomy/quick-search",
 		"tags": [
 			"Taxonomy"
 		],
@@ -523,7 +523,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/test/error",
+		"endpoint": "/test/error",
 		"tags": [
 			"Test"
 		],
@@ -540,7 +540,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/test/locale",
+		"endpoint": "/test/locale",
 		"tags": [
 			"Test"
 		],
@@ -567,7 +567,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/test/progress",
+		"endpoint": "/test/progress",
 		"tags": [
 			"Test"
 		],
@@ -584,7 +584,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/test/claims",
+		"endpoint": "/test/claims",
 		"tags": [
 			"Test"
 		],
@@ -601,7 +601,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/test/admin-perm-test",
+		"endpoint": "/test/admin-perm-test",
 		"tags": [
 			"Test"
 		],

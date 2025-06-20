@@ -10,7 +10,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/server-variables",
+		"endpoint": "/settings/server-variables",
 		"tags": [
 			"Settings"
 		]
@@ -35,7 +35,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/settings/force-archive",
+		"endpoint": "/settings/force-archive",
 		"tags": [
 			"Settings"
 		]
@@ -60,7 +60,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/settings/page-tree-group",
+		"endpoint": "/settings/page-tree-group",
 		"tags": [
 			"Settings"
 		]
@@ -85,7 +85,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/settings/asset-tree-group",
+		"endpoint": "/settings/asset-tree-group",
 		"tags": [
 			"Settings"
 		]
@@ -116,7 +116,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/settings/tinymce-group",
+		"endpoint": "/settings/tinymce-group",
 		"tags": [
 			"Settings"
 		]
@@ -141,7 +141,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/settings/dictionary",
+		"endpoint": "/settings/dictionary",
 		"tags": [
 			"Settings"
 		]
@@ -178,7 +178,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/settings/custom-locale",
+		"endpoint": "/settings/custom-locale",
 		"tags": [
 			"Settings"
 		]
@@ -203,7 +203,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/settings/custom-locale",
+		"endpoint": "/settings/custom-locale",
 		"tags": [
 			"Settings"
 		]
@@ -219,7 +219,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/taxonomy/statistics",
+		"endpoint": "/taxonomy/statistics",
 		"tags": [
 			"Taxonomy"
 		],
@@ -267,7 +267,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/taxonomy/categories",
+		"endpoint": "/taxonomy/categories",
 		"tags": [
 			"Taxonomy"
 		],
@@ -303,7 +303,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/taxonomy/root-categories",
+		"endpoint": "/taxonomy/root-categories",
 		"tags": [
 			"Taxonomy"
 		],
@@ -342,7 +342,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/taxonomy/category/children",
+		"endpoint": "/taxonomy/category/children",
 		"tags": [
 			"Taxonomy"
 		],
@@ -369,7 +369,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/taxonomy/category/parent",
+		"endpoint": "/taxonomy/category/parent",
 		"tags": [
 			"Taxonomy"
 		],
@@ -396,7 +396,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/taxonomy/category/ancestors",
+		"endpoint": "/taxonomy/category/ancestors",
 		"tags": [
 			"Taxonomy"
 		],
@@ -423,7 +423,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/taxonomy/category",
+		"endpoint": "/taxonomy/category",
 		"tags": [
 			"Taxonomy"
 		],
@@ -450,7 +450,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/taxonomy/category",
+		"endpoint": "/taxonomy/category",
 		"tags": [
 			"Taxonomy"
 		],
@@ -612,7 +612,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/taxonomy/category",
+		"endpoint": "/taxonomy/category",
 		"tags": [
 			"Taxonomy"
 		],
@@ -651,7 +651,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/taxonomy/category",
+		"endpoint": "/taxonomy/category",
 		"tags": [
 			"Taxonomy"
 		],
@@ -678,7 +678,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/taxonomy/category/security",
+		"endpoint": "/taxonomy/category/security",
 		"tags": [
 			"Taxonomy"
 		],
@@ -744,7 +744,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/taxonomy/category/security",
+		"endpoint": "/taxonomy/category/security",
 		"tags": [
 			"Taxonomy"
 		],

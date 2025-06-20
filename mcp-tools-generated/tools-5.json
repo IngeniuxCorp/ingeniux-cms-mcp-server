@@ -20,7 +20,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/insite-search/boost-schemas",
+		"endpoint": "/insite-search/boost-schemas",
 		"tags": [
 			"InsiteSearch"
 		],
@@ -47,7 +47,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/insite-search/boost-schemas",
+		"endpoint": "/insite-search/boost-schemas",
 		"tags": [
 			"InsiteSearch"
 		],
@@ -81,7 +81,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/insite-search/boost-fields",
+		"endpoint": "/insite-search/boost-fields",
 		"tags": [
 			"InsiteSearch"
 		],
@@ -115,7 +115,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/insite-search/boost-fields",
+		"endpoint": "/insite-search/boost-fields",
 		"tags": [
 			"InsiteSearch"
 		],
@@ -142,7 +142,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/insite-search/sitewide-boost-fields",
+		"endpoint": "/insite-search/sitewide-boost-fields",
 		"tags": [
 			"InsiteSearch"
 		],
@@ -169,7 +169,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/insite-search/site-wide-boost-fields",
+		"endpoint": "/insite-search/site-wide-boost-fields",
 		"tags": [
 			"InsiteSearch"
 		],
@@ -196,7 +196,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/insite-search/apply-to-target",
+		"endpoint": "/insite-search/apply-to-target",
 		"tags": [
 			"InsiteSearch"
 		],
@@ -213,7 +213,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/L10N/stats",
+		"endpoint": "/L10N/stats",
 		"tags": [
 			"L10N"
 		],
@@ -241,7 +241,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/L10N/page-schemas",
+		"endpoint": "/L10N/page-schemas",
 		"tags": [
 			"L10N"
 		],
@@ -269,7 +269,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/L10N/component-schemas",
+		"endpoint": "/L10N/component-schemas",
 		"tags": [
 			"L10N"
 		],
@@ -297,7 +297,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/L10N/asset-schemas",
+		"endpoint": "/L10N/asset-schemas",
 		"tags": [
 			"L10N"
 		],
@@ -325,7 +325,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/L10N/pcrs",
+		"endpoint": "/L10N/pcrs",
 		"tags": [
 			"L10N"
 		],
@@ -353,7 +353,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/L10N/workflow-definitions",
+		"endpoint": "/L10N/workflow-definitions",
 		"tags": [
 			"L10N"
 		],
@@ -381,7 +381,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/L10N/workstates",
+		"endpoint": "/L10N/workstates",
 		"tags": [
 			"L10N"
 		],
@@ -414,7 +414,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/logs/cms",
+		"endpoint": "/logs/cms",
 		"tags": [
 			"Logs"
 		],
@@ -431,7 +431,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/logs/cms/file",
+		"endpoint": "/logs/cms/file",
 		"tags": [
 			"Logs"
 		],
@@ -448,7 +448,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/logs/cms/archive",
+		"endpoint": "/logs/cms/archive",
 		"tags": [
 			"Logs"
 		],
@@ -465,7 +465,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/notifications/contentfreeze",
+		"endpoint": "/notifications/contentfreeze",
 		"tags": [
 			"Notifications"
 		],
@@ -489,7 +489,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/notifications/alerts",
+		"endpoint": "/notifications/alerts",
 		"tags": [
 			"Notifications"
 		],
@@ -506,7 +506,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/dashboard/overview",
+		"endpoint": "/dashboard/overview",
 		"tags": [
 			"Dashboard"
 		],

@@ -13,7 +13,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/publishing/redirects",
+		"endpoint": "/publishing/redirects",
 		"tags": [
 			"Publishing"
 		],
@@ -55,7 +55,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/publishing/redirect",
+		"endpoint": "/publishing/redirect",
 		"tags": [
 			"Publishing"
 		],
@@ -82,7 +82,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/publishing/redirect",
+		"endpoint": "/publishing/redirect",
 		"tags": [
 			"Publishing"
 		],
@@ -109,7 +109,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/publishing/target",
+		"endpoint": "/publishing/target",
 		"tags": [
 			"Publishing"
 		],
@@ -288,7 +288,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/publishing/target",
+		"endpoint": "/publishing/target",
 		"tags": [
 			"Publishing"
 		]
@@ -466,7 +466,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/publishing/target",
+		"endpoint": "/publishing/target",
 		"tags": [
 			"Publishing"
 		],
@@ -504,7 +504,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/publishing/targets",
+		"endpoint": "/publishing/targets",
 		"tags": [
 			"Publishing"
 		],
@@ -531,7 +531,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/publishing/target/groups",
+		"endpoint": "/publishing/target/groups",
 		"tags": [
 			"Publishing"
 		],
@@ -558,7 +558,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/publishing/target/groups",
+		"endpoint": "/publishing/target/groups",
 		"tags": [
 			"Publishing"
 		],
@@ -585,7 +585,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/publishing/content-publish-history",
+		"endpoint": "/publishing/content-publish-history",
 		"tags": [
 			"Publishing"
 		],
@@ -602,7 +602,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/publishing/user-agents",
+		"endpoint": "/publishing/user-agents",
 		"tags": [
 			"Publishing"
 		],
@@ -619,7 +619,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/publishing/sites",
+		"endpoint": "/publishing/sites",
 		"tags": [
 			"Publishing"
 		],
@@ -646,7 +646,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/publishing/gather-dependencies",
+		"endpoint": "/publishing/gather-dependencies",
 		"tags": [
 			"Publishing"
 		],
@@ -670,7 +670,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/publishing/dita-output-formats",
+		"endpoint": "/publishing/dita-output-formats",
 		"tags": [
 			"Publishing"
 		],
@@ -697,7 +697,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/publishing/content-processors",
+		"endpoint": "/publishing/content-processors",
 		"tags": [
 			"Publishing"
 		],
@@ -724,7 +724,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/publishing/content-processors",
+		"endpoint": "/publishing/content-processors",
 		"tags": [
 			"Publishing"
 		],
@@ -772,7 +772,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/publishing/content-processor-logs",
+		"endpoint": "/publishing/content-processor-logs",
 		"tags": [
 			"Publishing"
 		],
@@ -806,7 +806,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/reports/stats",
+		"endpoint": "/reports/stats",
 		"tags": [
 			"Reports"
 		],
@@ -840,7 +840,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/reports/scheduling",
+		"endpoint": "/reports/scheduling",
 		"tags": [
 			"Reports"
 		],
@@ -874,7 +874,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/reports/toggle-scheduler",
+		"endpoint": "/reports/toggle-scheduler",
 		"tags": [
 			"Reports"
 		],

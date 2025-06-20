@@ -20,7 +20,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/site/report/{sessionId}/file",
+		"endpoint": "/site/report/{sessionId}/file",
 		"tags": [
 			"Site"
 		],
@@ -109,7 +109,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/site/ranked-search",
+		"endpoint": "/site/ranked-search",
 		"tags": [
 			"Site"
 		],
@@ -136,7 +136,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/site/usage-summary",
+		"endpoint": "/site/usage-summary",
 		"tags": [
 			"Site"
 		],
@@ -180,7 +180,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/site/usage-report",
+		"endpoint": "/site/usage-report",
 		"tags": [
 			"Site"
 		],
@@ -210,7 +210,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages",
+		"endpoint": "/pages",
 		"tags": [
 			"Pages"
 		],
@@ -228,7 +228,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages/root",
+		"endpoint": "/pages/root",
 		"tags": [
 			"Pages"
 		],
@@ -246,7 +246,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages/recycle-folder",
+		"endpoint": "/pages/recycle-folder",
 		"tags": [
 			"Pages"
 		],
@@ -286,7 +286,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages/page/children",
+		"endpoint": "/pages/page/children",
 		"tags": [
 			"Pages"
 		],
@@ -325,7 +325,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages/page/descendants",
+		"endpoint": "/pages/page/descendants",
 		"tags": [
 			"Pages"
 		],
@@ -364,7 +364,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages/page/descendant-alias-count",
+		"endpoint": "/pages/page/descendant-alias-count",
 		"tags": [
 			"Pages"
 		],
@@ -391,7 +391,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages/page/parent",
+		"endpoint": "/pages/page/parent",
 		"tags": [
 			"Pages"
 		],
@@ -418,7 +418,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages/page/ancestors",
+		"endpoint": "/pages/page/ancestors",
 		"tags": [
 			"Pages"
 		],
@@ -446,7 +446,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages/page",
+		"endpoint": "/pages/page",
 		"tags": [
 			"Pages"
 		],
@@ -473,7 +473,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/pages/page",
+		"endpoint": "/pages/page",
 		"tags": [
 			"Pages"
 		],
@@ -507,7 +507,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages/page/details",
+		"endpoint": "/pages/page/details",
 		"tags": [
 			"Pages"
 		],
@@ -524,7 +524,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/pages/page/context",
+		"endpoint": "/pages/page/context",
 		"tags": [
 			"Pages"
 		],
@@ -551,7 +551,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/pages/page/associations",
+		"endpoint": "/pages/page/associations",
 		"tags": [
 			"Pages"
 		],
@@ -591,7 +591,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pages/by-category",
+		"endpoint": "/pages/by-category",
 		"tags": [
 			"Pages"
 		],
@@ -627,7 +627,7 @@
 			"type": "object"
 		},
 		"method": "patch",
-		"endpoint": "/api/v1/pages/move",
+		"endpoint": "/pages/move",
 		"tags": [
 			"Pages"
 		],
@@ -683,7 +683,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/pages/copy",
+		"endpoint": "/pages/copy",
 		"tags": [
 			"Pages"
 		],

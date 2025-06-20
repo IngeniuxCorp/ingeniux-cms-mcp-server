@@ -27,7 +27,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/reports/folder",
+		"endpoint": "/reports/folder",
 		"tags": [
 			"Reports"
 		],
@@ -68,7 +68,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/reports/folder",
+		"endpoint": "/reports/folder",
 		"tags": [
 			"Reports"
 		],
@@ -102,7 +102,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/reports/report",
+		"endpoint": "/reports/report",
 		"tags": [
 			"Reports"
 		],
@@ -148,7 +148,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/reports/columns",
+		"endpoint": "/reports/columns",
 		"tags": [
 			"Reports"
 		],
@@ -220,7 +220,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/reports/simple-report",
+		"endpoint": "/reports/simple-report",
 		"tags": [
 			"Reports"
 		],
@@ -254,7 +254,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/reports/simple-report",
+		"endpoint": "/reports/simple-report",
 		"tags": [
 			"Reports"
 		],
@@ -360,7 +360,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/reports/parameterized-report",
+		"endpoint": "/reports/parameterized-report",
 		"tags": [
 			"Reports"
 		],
@@ -394,7 +394,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/reports/parameterized-report",
+		"endpoint": "/reports/parameterized-report",
 		"tags": [
 			"Reports"
 		],
@@ -430,7 +430,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/reports/advanced-report",
+		"endpoint": "/reports/advanced-report",
 		"tags": [
 			"Reports"
 		],
@@ -504,7 +504,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/reports/report-schedules",
+		"endpoint": "/reports/report-schedules",
 		"tags": [
 			"Reports"
 		],
@@ -521,7 +521,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/schemas/upload",
+		"endpoint": "/schemas/upload",
 		"tags": [
 			"Schemas"
 		],
@@ -561,7 +561,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/schemas/generate-thumb-from-preview",
+		"endpoint": "/schemas/generate-thumb-from-preview",
 		"tags": [
 			"Schemas"
 		],
@@ -607,7 +607,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/schemas/pages-by-comp-schema",
+		"endpoint": "/schemas/pages-by-comp-schema",
 		"tags": [
 			"Schemas"
 		],
@@ -637,7 +637,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/schemas/schemas",
+		"endpoint": "/schemas/schemas",
 		"tags": [
 			"Schemas"
 		],
@@ -667,7 +667,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/schemas/asset-schemas",
+		"endpoint": "/schemas/asset-schemas",
 		"tags": [
 			"Schemas"
 		],
@@ -703,7 +703,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/schemas/asset-schemas-by-types",
+		"endpoint": "/schemas/asset-schemas-by-types",
 		"tags": [
 			"Schemas"
 		],
@@ -730,7 +730,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/schemas/schema",
+		"endpoint": "/schemas/schema",
 		"tags": [
 			"Schemas"
 		],
@@ -757,7 +757,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/schemas/asset-schema",
+		"endpoint": "/schemas/asset-schema",
 		"tags": [
 			"Schemas"
 		],
@@ -798,7 +798,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/schemas/page-or-asset-schema",
+		"endpoint": "/schemas/page-or-asset-schema",
 		"tags": [
 			"Schemas"
 		],
@@ -836,7 +836,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/schemas/search",
+		"endpoint": "/schemas/search",
 		"tags": [
 			"Schemas"
 		],

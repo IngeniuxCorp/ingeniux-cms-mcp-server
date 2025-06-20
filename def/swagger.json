@@ -18,7 +18,7 @@
         "application/json"
     ],
     "paths": {
-        "/api/v1/analytics/site-overview": {
+        "/analytics/site-overview": {
             "get": {
                 "tags": [
                     "Analytics"
@@ -68,7 +68,7 @@
                 ]
             }
         },
-        "/api/v1/analytics/page-overview": {
+        "/analytics/page-overview": {
             "get": {
                 "tags": [
                     "Analytics"
@@ -130,7 +130,7 @@
                 ]
             }
         },
-        "/api/v1/analytics/report": {
+        "/analytics/report": {
             "get": {
                 "tags": [
                     "Analytics"
@@ -195,7 +195,7 @@
                 ]
             }
         },
-        "/api/v1/analytics/google-analytic-authcode-flow": {
+        "/analytics/google-analytic-authcode-flow": {
             "post": {
                 "tags": [
                     "Analytics"
@@ -267,7 +267,7 @@
                 ]
             }
         },
-        "/api/v1/analytics/google-analytic-property-confirm": {
+        "/analytics/google-analytic-property-confirm": {
             "post": {
                 "tags": [
                     "Analytics"
@@ -323,7 +323,7 @@
                 ]
             }
         },
-        "/api/v1/analytics/google-analytic-revoke-token": {
+        "/analytics/google-analytic-revoke-token": {
             "post": {
                 "tags": [
                     "Analytics"
@@ -364,7 +364,7 @@
                 ]
             }
         },
-        "/api/v1/analytics/device-verification": {
+        "/analytics/device-verification": {
             "post": {
                 "tags": [
                     "Analytics"
@@ -419,7 +419,7 @@
                 ]
             }
         },
-        "/api/v1/content-units/content-unit-preview-data": {
+        "/content-units/content-unit-preview-data": {
             "get": {
                 "tags": [
                     "ContentUnits"
@@ -459,7 +459,7 @@
                 ]
             }
         },
-        "/api/v1/content-units/get-comp-unit-instances": {
+        "/content-units/get-comp-unit-instances": {
             "get": {
                 "tags": [
                     "ContentUnits"
@@ -495,7 +495,7 @@
                 ]
             }
         },
-        "/api/v1/content-units/get-comp-unit-content": {
+        "/content-units/get-comp-unit-content": {
             "get": {
                 "tags": [
                     "ContentUnits"
@@ -535,7 +535,7 @@
                 ]
             }
         },
-        "/api/v1/content-units/update-comp-unit-thumb": {
+        "/content-units/update-comp-unit-thumb": {
             "put": {
                 "tags": [
                     "ContentUnits"
@@ -583,7 +583,7 @@
                 ]
             }
         },
-        "/api/v1/content-units/get-class-names-from-css": {
+        "/content-units/get-class-names-from-css": {
             "post": {
                 "tags": [
                     "ContentUnits"
@@ -621,7 +621,7 @@
                 ]
             }
         },
-        "/api/v1/hooks": {
+        "/hooks": {
             "get": {
                 "tags": [
                     "Hooks"
@@ -652,7 +652,7 @@
                 ]
             }
         },
-        "/api/v1/hooks/macros": {
+        "/hooks/macros": {
             "get": {
                 "tags": [
                     "Hooks"
@@ -724,7 +724,7 @@
                 ]
             }
         },
-        "/api/v1/dialogs/ice-comp-picker/get-ice-comp-types": {
+        "/dialogs/ice-comp-picker/get-ice-comp-types": {
             "get": {
                 "tags": [
                     "IceComponentPicker"
@@ -750,7 +750,7 @@
                 ]
             }
         },
-        "/api/v1/dialogs/ice-comp-picker/get-trays": {
+        "/dialogs/ice-comp-picker/get-trays": {
             "post": {
                 "tags": [
                     "IceComponentPicker"
@@ -786,7 +786,7 @@
                 ]
             }
         },
-        "/api/v1/dialogs/ice-comp-picker/get-comp-thumb": {
+        "/dialogs/ice-comp-picker/get-comp-thumb": {
             "get": {
                 "tags": [
                     "IceComponentPicker"
@@ -819,7 +819,7 @@
                 ]
             }
         },
-        "/api/v1/dialogs/ice-comp-picker/get-list-page": {
+        "/dialogs/ice-comp-picker/get-list-page": {
             "get": {
                 "tags": [
                     "IceComponentPicker"
@@ -910,7 +910,7 @@
                 ]
             }
         },
-        "/api/v1/dita/base": {
+        "/dita/base": {
             "get": {
                 "tags": [
                     "DITA"
@@ -933,7 +933,7 @@
                 ]
             }
         },
-        "/api/v1/dita/setup-info": {
+        "/dita/setup-info": {
             "get": {
                 "tags": [
                     "DITA"
@@ -956,7 +956,7 @@
                 ]
             }
         },
-        "/api/v1/dita/output-formats": {
+        "/dita/output-formats": {
             "get": {
                 "tags": [
                     "DITA"
@@ -980,7 +980,7 @@
                 ]
             }
         },
-        "/api/v1/dita/ot-params-common": {
+        "/dita/ot-params-common": {
             "get": {
                 "tags": [
                     "DITA"
@@ -1006,7 +1006,7 @@
                 ]
             }
         },
-        "/api/v1/dita/ot-params-advanced": {
+        "/dita/ot-params-advanced": {
             "get": {
                 "tags": [
                     "DITA"
@@ -1030,7 +1030,7 @@
                 ]
             }
         },
-        "/api/v1/dita/ditavals": {
+        "/dita/ditavals": {
             "get": {
                 "tags": [
                     "DITA"
@@ -1056,7 +1056,7 @@
                 ]
             }
         },
-        "/api/v1/dita/aliases": {
+        "/dita/aliases": {
             "get": {
                 "tags": [
                     "DITA"
@@ -1192,7 +1192,7 @@
                 ]
             }
         },
-        "/api/v1/dita/viewalias": {
+        "/dita/viewalias": {
             "get": {
                 "tags": [
                     "DITA"
@@ -1225,7 +1225,7 @@
                 ]
             }
         },
-        "/api/v1/dita/ditamaps": {
+        "/dita/ditamaps": {
             "post": {
                 "tags": [
                     "DITA"
@@ -1318,7 +1318,7 @@
                 ]
             }
         },
-        "/api/v1/dita/ditamaptree": {
+        "/dita/ditamaptree": {
             "get": {
                 "tags": [
                     "DITA"
@@ -1379,7 +1379,7 @@
                 ]
             }
         },
-        "/api/v1/dita/ditamap-detail": {
+        "/dita/ditamap-detail": {
             "get": {
                 "tags": [
                     "DITA"
@@ -1426,7 +1426,7 @@
                 ]
             }
         },
-        "/api/v1/dita/ditamap-detail-config": {
+        "/dita/ditamap-detail-config": {
             "get": {
                 "tags": [
                     "DITA"
@@ -1530,7 +1530,7 @@
                 ]
             }
         },
-        "/api/v1/dita/setup-setting": {
+        "/dita/setup-setting": {
             "put": {
                 "tags": [
                     "DITA"
@@ -1571,7 +1571,7 @@
                 ]
             }
         },
-        "/api/v1/dita/output-format-norm": {
+        "/dita/output-format-norm": {
             "put": {
                 "tags": [
                     "DITA"
@@ -1612,7 +1612,7 @@
                 ]
             }
         },
-        "/api/v1/dita/output-format-static": {
+        "/dita/output-format-static": {
             "put": {
                 "tags": [
                     "DITA"
@@ -1660,7 +1660,7 @@
                 ]
             }
         },
-        "/api/v1/dita/localized-render-schema": {
+        "/dita/localized-render-schema": {
             "put": {
                 "tags": [
                     "DITA"
@@ -1705,7 +1705,7 @@
                 ]
             }
         },
-        "/api/v1/dita/remove-localized-render-schema": {
+        "/dita/remove-localized-render-schema": {
             "delete": {
                 "tags": [
                     "DITA"
@@ -1748,7 +1748,7 @@
                 ]
             }
         },
-        "/api/v1/dita/ot-param": {
+        "/dita/ot-param": {
             "put": {
                 "tags": [
                     "DITA"
@@ -1791,7 +1791,7 @@
                 ]
             }
         },
-        "/api/v1/dita/ot-params": {
+        "/dita/ot-params": {
             "put": {
                 "tags": [
                     "DITA"
@@ -1867,7 +1867,7 @@
                 ]
             }
         },
-        "/api/v1/dita/ditaval-manipulation": {
+        "/dita/ditaval-manipulation": {
             "patch": {
                 "tags": [
                     "DITA"
@@ -1902,7 +1902,7 @@
                 ]
             }
         },
-        "/api/v1/dita/remove-ditamap": {
+        "/dita/remove-ditamap": {
             "delete": {
                 "tags": [
                     "DITA"
@@ -1957,7 +1957,7 @@
                 ]
             }
         },
-        "/api/v1/dita/mark-ditamap": {
+        "/dita/mark-ditamap": {
             "put": {
                 "tags": [
                     "DITA"
@@ -2011,7 +2011,7 @@
                 ]
             }
         },
-        "/api/v1/dita/checkout-ditamap": {
+        "/dita/checkout-ditamap": {
             "post": {
                 "tags": [
                     "DITA"
@@ -2066,7 +2066,7 @@
                 ]
             }
         },
-        "/api/v1/dita/checkin-ditamap": {
+        "/dita/checkin-ditamap": {
             "post": {
                 "tags": [
                     "DITA"
@@ -2119,7 +2119,7 @@
                 ]
             }
         },
-        "/api/v1/dita/publish-ditamap": {
+        "/dita/publish-ditamap": {
             "post": {
                 "tags": [
                     "DITA"
@@ -2161,7 +2161,7 @@
                 ]
             }
         },
-        "/api/v1/dita/dita-maps-csv": {
+        "/dita/dita-maps-csv": {
             "get": {
                 "tags": [
                     "DITA"
@@ -2191,7 +2191,7 @@
                 ]
             }
         },
-        "/api/v1/dita/download-ditamap": {
+        "/dita/download-ditamap": {
             "get": {
                 "tags": [
                     "DITA"
@@ -2252,7 +2252,7 @@
                 ]
             }
         },
-        "/api/v1/configuration/help-text": {
+        "/configuration/help-text": {
             "get": {
                 "tags": [
                     "Configuration"
@@ -2285,7 +2285,7 @@
                 ]
             }
         },
-        "/api/v1/configuration/ai-help-text": {
+        "/configuration/ai-help-text": {
             "get": {
                 "tags": [
                     "Configuration"
@@ -2318,7 +2318,7 @@
                 ]
             }
         },
-        "/api/v1/configuration/help-text-by-content-item": {
+        "/configuration/help-text-by-content-item": {
             "get": {
                 "tags": [
                     "Configuration"
@@ -2351,7 +2351,7 @@
                 ]
             }
         },
-        "/api/v1/configuration/help-texts": {
+        "/configuration/help-texts": {
             "get": {
                 "tags": [
                     "Configuration"
@@ -2377,7 +2377,7 @@
                 ]
             }
         },
-        "/api/v1/configuration/pages/context-menu": {
+        "/configuration/pages/context-menu": {
             "get": {
                 "tags": [
                     "Configuration"
@@ -2403,7 +2403,7 @@
                 ]
             }
         },
-        "/api/v1/configuration/assets/context-menu": {
+        "/configuration/assets/context-menu": {
             "get": {
                 "tags": [
                     "Configuration"
@@ -2429,7 +2429,7 @@
                 ]
             }
         },
-        "/api/v1/configuration/legacy-globals": {
+        "/configuration/legacy-globals": {
             "get": {
                 "tags": [
                     "Configuration"
@@ -2452,7 +2452,7 @@
                 ]
             }
         },
-        "/api/v1/configuration/flag": {
+        "/configuration/flag": {
             "get": {
                 "tags": [
                     "Configuration"
@@ -2484,7 +2484,7 @@
                 ]
             }
         },
-        "/api/v1/configuration/global-custom-tabs": {
+        "/configuration/global-custom-tabs": {
             "get": {
                 "tags": [
                     "Configuration"
@@ -2510,7 +2510,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/custom-settings": {
+        "/insite-search/custom-settings": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -2589,7 +2589,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/batch-sizes": {
+        "/insite-search/batch-sizes": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -2675,7 +2675,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/keymatches": {
+        "/insite-search/keymatches": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -2737,7 +2737,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/import-csv": {
+        "/insite-search/import-csv": {
             "post": {
                 "tags": [
                     "InsiteSearch"
@@ -2760,7 +2760,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/synonyms": {
+        "/insite-search/synonyms": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -2821,7 +2821,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/import-synonyms": {
+        "/insite-search/import-synonyms": {
             "post": {
                 "tags": [
                     "InsiteSearch"
@@ -2844,7 +2844,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/indexing-schemas": {
+        "/insite-search/indexing-schemas": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -2924,7 +2924,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/indexing-schemas-only": {
+        "/insite-search/indexing-schemas-only": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -2960,7 +2960,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/indexing-fields": {
+        "/insite-search/indexing-fields": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -3056,7 +3056,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/sitewide-indexing-fields": {
+        "/insite-search/sitewide-indexing-fields": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -3092,7 +3092,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/site-wide-indexing-fields": {
+        "/insite-search/site-wide-indexing-fields": {
             "post": {
                 "tags": [
                     "InsiteSearch"
@@ -3138,7 +3138,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/assetfolder-children": {
+        "/insite-search/assetfolder-children": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -3174,7 +3174,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/indexed-asset-folders": {
+        "/insite-search/indexed-asset-folders": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -3210,7 +3210,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/asset-folders-detail": {
+        "/insite-search/asset-folders-detail": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -3243,7 +3243,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/indexing-asset-folders": {
+        "/insite-search/indexing-asset-folders": {
             "post": {
                 "tags": [
                     "InsiteSearch"
@@ -3289,7 +3289,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/boost-schemas": {
+        "/insite-search/boost-schemas": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -3369,7 +3369,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/boost-fields": {
+        "/insite-search/boost-fields": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -3465,7 +3465,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/sitewide-boost-fields": {
+        "/insite-search/sitewide-boost-fields": {
             "get": {
                 "tags": [
                     "InsiteSearch"
@@ -3501,7 +3501,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/site-wide-boost-fields": {
+        "/insite-search/site-wide-boost-fields": {
             "post": {
                 "tags": [
                     "InsiteSearch"
@@ -3547,7 +3547,7 @@
                 ]
             }
         },
-        "/api/v1/insite-search/apply-to-target": {
+        "/insite-search/apply-to-target": {
             "post": {
                 "tags": [
                     "InsiteSearch"
@@ -3593,7 +3593,7 @@
                 ]
             }
         },
-        "/api/v1/L10N/stats": {
+        "/L10N/stats": {
             "get": {
                 "tags": [
                     "L10N"
@@ -3618,7 +3618,7 @@
                 ]
             }
         },
-        "/api/v1/L10N/page-schemas": {
+        "/L10N/page-schemas": {
             "get": {
                 "tags": [
                     "L10N"
@@ -3659,7 +3659,7 @@
                 ]
             }
         },
-        "/api/v1/L10N/component-schemas": {
+        "/L10N/component-schemas": {
             "get": {
                 "tags": [
                     "L10N"
@@ -3700,7 +3700,7 @@
                 ]
             }
         },
-        "/api/v1/L10N/asset-schemas": {
+        "/L10N/asset-schemas": {
             "get": {
                 "tags": [
                     "L10N"
@@ -3741,7 +3741,7 @@
                 ]
             }
         },
-        "/api/v1/L10N/pcrs": {
+        "/L10N/pcrs": {
             "get": {
                 "tags": [
                     "L10N"
@@ -3782,7 +3782,7 @@
                 ]
             }
         },
-        "/api/v1/L10N/workflow-definitions": {
+        "/L10N/workflow-definitions": {
             "get": {
                 "tags": [
                     "L10N"
@@ -3823,7 +3823,7 @@
                 ]
             }
         },
-        "/api/v1/L10N/workstates": {
+        "/L10N/workstates": {
             "get": {
                 "tags": [
                     "L10N"
@@ -3864,7 +3864,7 @@
                 ]
             }
         },
-        "/api/v1/logs/cms": {
+        "/logs/cms": {
             "get": {
                 "tags": [
                     "Logs"
@@ -3909,7 +3909,7 @@
                 ]
             }
         },
-        "/api/v1/logs/cms/file": {
+        "/logs/cms/file": {
             "get": {
                 "tags": [
                     "Logs"
@@ -3932,7 +3932,7 @@
                 ]
             }
         },
-        "/api/v1/logs/cms/archive": {
+        "/logs/cms/archive": {
             "get": {
                 "tags": [
                     "Logs"
@@ -3955,7 +3955,7 @@
                 ]
             }
         },
-        "/api/v1/notifications/contentfreeze": {
+        "/notifications/contentfreeze": {
             "get": {
                 "tags": [
                     "Notifications"
@@ -3978,7 +3978,7 @@
                 ]
             }
         },
-        "/api/v1/notifications/alerts": {
+        "/notifications/alerts": {
             "get": {
                 "tags": [
                     "Notifications"
@@ -4011,7 +4011,7 @@
                 ]
             }
         },
-        "/api/v1/dashboard/overview": {
+        "/dashboard/overview": {
             "get": {
                 "tags": [
                     "Dashboard"
@@ -4034,7 +4034,7 @@
                 ]
             }
         },
-        "/api/v1/dashboard/online-users": {
+        "/dashboard/online-users": {
             "get": {
                 "tags": [
                     "Dashboard"
@@ -4071,7 +4071,7 @@
                 ]
             }
         },
-        "/api/v1/dashboard/comment": {
+        "/dashboard/comment": {
             "post": {
                 "tags": [
                     "Dashboard"
@@ -4104,7 +4104,7 @@
                 ]
             }
         },
-        "/api/v1/dashboard/activity-stream": {
+        "/dashboard/activity-stream": {
             "get": {
                 "tags": [
                     "Dashboard"
@@ -4141,7 +4141,7 @@
                 ]
             }
         },
-        "/api/v1/dashboard/analytic_traffic-data": {
+        "/dashboard/analytic_traffic-data": {
             "get": {
                 "tags": [
                     "Dashboard"
@@ -4174,7 +4174,7 @@
                 ]
             }
         },
-        "/api/v1/dashboard/analytic_medium-data": {
+        "/dashboard/analytic_medium-data": {
             "get": {
                 "tags": [
                     "Dashboard"
@@ -4207,7 +4207,7 @@
                 ]
             }
         },
-        "/api/v1/dashboard/production-data": {
+        "/dashboard/production-data": {
             "get": {
                 "tags": [
                     "Dashboard"
@@ -4256,7 +4256,7 @@
                 ]
             }
         },
-        "/api/v1/documents": {
+        "/documents": {
             "get": {
                 "tags": [
                     "Entity"
@@ -4291,7 +4291,7 @@
                 ]
             }
         },
-        "/api/v1/documents/archive": {
+        "/documents/archive": {
             "patch": {
                 "tags": [
                     "Entity"
@@ -4324,7 +4324,7 @@
                 ]
             }
         },
-        "/api/v1/documents/unarchive": {
+        "/documents/unarchive": {
             "patch": {
                 "tags": [
                     "Entity"
@@ -4357,7 +4357,7 @@
                 ]
             }
         },
-        "/api/v1/themes/theme": {
+        "/themes/theme": {
             "get": {
                 "tags": [
                     "Themes"
@@ -4454,7 +4454,7 @@
                 ]
             }
         },
-        "/api/v1/themes/less": {
+        "/themes/less": {
             "get": {
                 "tags": [
                     "Themes"
@@ -4495,7 +4495,7 @@
                 ]
             }
         },
-        "/api/v1/themes/scss": {
+        "/themes/scss": {
             "get": {
                 "tags": [
                     "Themes"
@@ -4536,7 +4536,7 @@
                 ]
             }
         },
-        "/api/v1/themes": {
+        "/themes": {
             "get": {
                 "tags": [
                     "Themes"
@@ -4610,7 +4610,7 @@
                 ]
             }
         },
-        "/api/v1/themes/default": {
+        "/themes/default": {
             "post": {
                 "tags": [
                     "Themes"
@@ -4643,7 +4643,7 @@
                 ]
             }
         },
-        "/api/v1/themes/upload": {
+        "/themes/upload": {
             "post": {
                 "tags": [
                     "Themes"
@@ -4667,7 +4667,7 @@
                 ]
             }
         },
-        "/api/v1/pcr/info": {
+        "/pcr/info": {
             "get": {
                 "tags": [
                     "PCR"
@@ -4706,7 +4706,7 @@
                 ]
             }
         },
-        "/api/v1/pcr": {
+        "/pcr": {
             "get": {
                 "tags": [
                     "PCR"
@@ -4836,7 +4836,7 @@
                 ]
             }
         },
-        "/api/v1/pcr/parents": {
+        "/pcr/parents": {
             "get": {
                 "tags": [
                     "PCR"
@@ -4881,7 +4881,7 @@
                 ]
             }
         },
-        "/api/v1/pcr/parentpages": {
+        "/pcr/parentpages": {
             "get": {
                 "tags": [
                     "PCR"
@@ -4925,7 +4925,7 @@
                 ]
             }
         },
-        "/api/v1/pcr/childpages": {
+        "/pcr/childpages": {
             "get": {
                 "tags": [
                     "PCR"
@@ -4961,7 +4961,7 @@
                 ]
             }
         },
-        "/api/v1/pcr/details": {
+        "/pcr/details": {
             "get": {
                 "tags": [
                     "PCR"
@@ -4994,7 +4994,7 @@
                 ]
             }
         },
-        "/api/v1/preview/page-xml": {
+        "/preview/page-xml": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5045,7 +5045,7 @@
                 ]
             }
         },
-        "/api/v1/preview/page": {
+        "/preview/page": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5078,7 +5078,7 @@
                 ]
             }
         },
-        "/api/v1/preview/page-descendants": {
+        "/preview/page-descendants": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5132,7 +5132,7 @@
                 ]
             }
         },
-        "/api/v1/preview/page-map-by-path": {
+        "/preview/page-map-by-path": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5173,7 +5173,7 @@
                 ]
             }
         },
-        "/api/v1/preview/page-map": {
+        "/preview/page-map": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5214,7 +5214,7 @@
                 ]
             }
         },
-        "/api/v1/preview/asset-map": {
+        "/preview/asset-map": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5255,7 +5255,7 @@
                 ]
             }
         },
-        "/api/v1/preview/asset-descendants": {
+        "/preview/asset-descendants": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5309,7 +5309,7 @@
                 ]
             }
         },
-        "/api/v1/preview/asset-map-by-path": {
+        "/preview/asset-map-by-path": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5350,7 +5350,7 @@
                 ]
             }
         },
-        "/api/v1/preview/page-reference": {
+        "/preview/page-reference": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5383,7 +5383,7 @@
                 ]
             }
         },
-        "/api/v1/preview/asset-reference": {
+        "/preview/asset-reference": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5416,7 +5416,7 @@
                 ]
             }
         },
-        "/api/v1/preview/asset-xmp": {
+        "/preview/asset-xmp": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5466,7 +5466,7 @@
                 ]
             }
         },
-        "/api/v1/preview/asset-file": {
+        "/preview/asset-file": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5516,7 +5516,7 @@
                 ]
             }
         },
-        "/api/v1/preview/taxonomy": {
+        "/preview/taxonomy": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5549,7 +5549,7 @@
                 ]
             }
         },
-        "/api/v1/preview/taxonomy-by-page": {
+        "/preview/taxonomy-by-page": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5585,7 +5585,7 @@
                 ]
             }
         },
-        "/api/v1/preview/taxonomy-by-asset": {
+        "/preview/taxonomy-by-asset": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5621,7 +5621,7 @@
                 ]
             }
         },
-        "/api/v1/preview/taxonomy-descendants": {
+        "/preview/taxonomy-descendants": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5675,7 +5675,7 @@
                 ]
             }
         },
-        "/api/v1/preview/global-exports": {
+        "/preview/global-exports": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5701,7 +5701,7 @@
                 ]
             }
         },
-        "/api/v1/preview/stream/page-xml": {
+        "/preview/stream/page-xml": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5746,7 +5746,7 @@
                 ]
             }
         },
-        "/api/v1/preview/stream/page-references": {
+        "/preview/stream/page-references": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5783,7 +5783,7 @@
                 ]
             }
         },
-        "/api/v1/preview/stream/asset-references": {
+        "/preview/stream/asset-references": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5820,7 +5820,7 @@
                 ]
             }
         },
-        "/api/v1/preview/stream/taxonomy": {
+        "/preview/stream/taxonomy": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5857,7 +5857,7 @@
                 ]
             }
         },
-        "/api/v1/preview/page-forward-references": {
+        "/preview/page-forward-references": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5898,7 +5898,7 @@
                 ]
             }
         },
-        "/api/v1/preview/page-cross-references": {
+        "/preview/page-cross-references": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5939,7 +5939,7 @@
                 ]
             }
         },
-        "/api/v1/preview/dita-asset-preview-status": {
+        "/preview/dita-asset-preview-status": {
             "get": {
                 "tags": [
                     "Preview"
@@ -5997,7 +5997,7 @@
                 ]
             }
         },
-        "/api/v1/preview/dita-asset-preview": {
+        "/preview/dita-asset-preview": {
             "delete": {
                 "tags": [
                     "Preview"
@@ -6111,7 +6111,7 @@
                 ]
             }
         },
-        "/api/v1/preview/asset-dependents-csv": {
+        "/preview/asset-dependents-csv": {
             "get": {
                 "tags": [
                     "Preview"
@@ -6144,7 +6144,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/publish-preview-content": {
+        "/publishing/publish-preview-content": {
             "get": {
                 "tags": [
                     "Publishing"
@@ -6201,7 +6201,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/publish-preview": {
+        "/publishing/publish-preview": {
             "post": {
                 "tags": [
                     "Publishing"
@@ -6266,7 +6266,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/log-detail": {
+        "/publishing/log-detail": {
             "get": {
                 "tags": [
                     "Publishing"
@@ -6299,7 +6299,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/target-summary": {
+        "/publishing/target-summary": {
             "get": {
                 "tags": [
                     "Publishing"
@@ -6332,7 +6332,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/current-tasks": {
+        "/publishing/current-tasks": {
             "get": {
                 "tags": [
                     "Publishing"
@@ -6355,7 +6355,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/redirects": {
+        "/publishing/redirects": {
             "get": {
                 "tags": [
                     "Publishing"
@@ -6445,7 +6445,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/redirect": {
+        "/publishing/redirect": {
             "put": {
                 "tags": [
                     "Publishing"
@@ -6511,7 +6511,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/target": {
+        "/publishing/target": {
             "get": {
                 "tags": [
                     "Publishing"
@@ -6608,7 +6608,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/targets": {
+        "/publishing/targets": {
             "get": {
                 "tags": [
                     "Publishing"
@@ -6667,7 +6667,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/target/groups": {
+        "/publishing/target/groups": {
             "post": {
                 "tags": [
                     "Publishing"
@@ -6750,7 +6750,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/content-publish-history": {
+        "/publishing/content-publish-history": {
             "post": {
                 "tags": [
                     "Publishing"
@@ -6799,7 +6799,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/user-agents": {
+        "/publishing/user-agents": {
             "get": {
                 "tags": [
                     "Publishing"
@@ -6825,7 +6825,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/sites": {
+        "/publishing/sites": {
             "get": {
                 "tags": [
                     "Publishing"
@@ -6851,7 +6851,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/gather-dependencies": {
+        "/publishing/gather-dependencies": {
             "post": {
                 "tags": [
                     "Publishing"
@@ -6897,7 +6897,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/dita-output-formats": {
+        "/publishing/dita-output-formats": {
             "get": {
                 "tags": [
                     "Publishing"
@@ -6933,7 +6933,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/content-processors": {
+        "/publishing/content-processors": {
             "get": {
                 "tags": [
                     "Publishing"
@@ -7013,7 +7013,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/content-processor-logs": {
+        "/publishing/content-processor-logs": {
             "get": {
                 "tags": [
                     "Publishing"
@@ -7080,7 +7080,7 @@
                 ]
             }
         },
-        "/api/v1/reports/stats": {
+        "/reports/stats": {
             "get": {
                 "tags": [
                     "Reports"
@@ -7121,7 +7121,7 @@
                 ]
             }
         },
-        "/api/v1/reports/scheduling": {
+        "/reports/scheduling": {
             "get": {
                 "tags": [
                     "Reports"
@@ -7163,7 +7163,7 @@
                 ]
             }
         },
-        "/api/v1/reports/toggle-scheduler": {
+        "/reports/toggle-scheduler": {
             "post": {
                 "tags": [
                     "Reports"
@@ -7204,7 +7204,7 @@
                 ]
             }
         },
-        "/api/v1/reports/folder": {
+        "/reports/folder": {
             "get": {
                 "tags": [
                     "Reports"
@@ -7292,7 +7292,7 @@
                 ]
             }
         },
-        "/api/v1/reports/report": {
+        "/reports/report": {
             "get": {
                 "tags": [
                     "Reports"
@@ -7333,7 +7333,7 @@
                 ]
             }
         },
-        "/api/v1/reports/columns": {
+        "/reports/columns": {
             "get": {
                 "tags": [
                     "Reports"
@@ -7391,7 +7391,7 @@
                 ]
             }
         },
-        "/api/v1/reports/simple-report": {
+        "/reports/simple-report": {
             "put": {
                 "tags": [
                     "Reports"
@@ -7473,7 +7473,7 @@
                 ]
             }
         },
-        "/api/v1/reports/parameterized-report": {
+        "/reports/parameterized-report": {
             "put": {
                 "tags": [
                     "Reports"
@@ -7568,7 +7568,7 @@
                 ]
             }
         },
-        "/api/v1/reports/advanced-report": {
+        "/reports/advanced-report": {
             "put": {
                 "tags": [
                     "Reports"
@@ -7611,7 +7611,7 @@
                 ]
             }
         },
-        "/api/v1/reports/report-schedules": {
+        "/reports/report-schedules": {
             "put": {
                 "tags": [
                     "Reports"
@@ -7654,7 +7654,7 @@
                 ]
             }
         },
-        "/api/v1/schemas/upload": {
+        "/schemas/upload": {
             "post": {
                 "tags": [
                     "Schemas"
@@ -7677,7 +7677,7 @@
                 ]
             }
         },
-        "/api/v1/schemas/generate-thumb-from-preview": {
+        "/schemas/generate-thumb-from-preview": {
             "post": {
                 "tags": [
                     "Schemas"
@@ -7727,7 +7727,7 @@
                 ]
             }
         },
-        "/api/v1/schemas/pages-by-comp-schema": {
+        "/schemas/pages-by-comp-schema": {
             "get": {
                 "tags": [
                     "Schemas"
@@ -7786,7 +7786,7 @@
                 ]
             }
         },
-        "/api/v1/schemas/schemas": {
+        "/schemas/schemas": {
             "get": {
                 "tags": [
                     "Schemas"
@@ -7829,7 +7829,7 @@
                 ]
             }
         },
-        "/api/v1/schemas/asset-schemas": {
+        "/schemas/asset-schemas": {
             "get": {
                 "tags": [
                     "Schemas"
@@ -7872,7 +7872,7 @@
                 ]
             }
         },
-        "/api/v1/schemas/asset-schemas-by-types": {
+        "/schemas/asset-schemas-by-types": {
             "get": {
                 "tags": [
                     "Schemas"
@@ -7926,7 +7926,7 @@
                 ]
             }
         },
-        "/api/v1/schemas/schema": {
+        "/schemas/schema": {
             "get": {
                 "tags": [
                     "Schemas"
@@ -7959,7 +7959,7 @@
                 ]
             }
         },
-        "/api/v1/schemas/asset-schema": {
+        "/schemas/asset-schema": {
             "get": {
                 "tags": [
                     "Schemas"
@@ -7992,7 +7992,7 @@
                 ]
             }
         },
-        "/api/v1/schemas/page-or-asset-schema": {
+        "/schemas/page-or-asset-schema": {
             "get": {
                 "tags": [
                     "Schemas"
@@ -8041,7 +8041,7 @@
                 ]
             }
         },
-        "/api/v1/schemas/search": {
+        "/schemas/search": {
             "get": {
                 "tags": [
                     "Schemas"
@@ -8092,7 +8092,7 @@
                 ]
             }
         },
-        "/api/v1/schemas/search-asset-schemas": {
+        "/schemas/search-asset-schemas": {
             "get": {
                 "tags": [
                     "Schemas"
@@ -8143,7 +8143,7 @@
                 ]
             }
         },
-        "/api/v1/schemas/schema-usage": {
+        "/schemas/schema-usage": {
             "get": {
                 "tags": [
                     "Schemas"
@@ -8228,7 +8228,7 @@
                 ]
             }
         },
-        "/api/v1/schemas/schema-sync-log": {
+        "/schemas/schema-sync-log": {
             "get": {
                 "tags": [
                     "Schemas"
@@ -8319,7 +8319,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset/workflow/advance": {
+        "/assets/asset/workflow/advance": {
             "post": {
                 "tags": [
                     "Assets"
@@ -8354,7 +8354,7 @@
                 ]
             }
         },
-        "/api/v1/assets/assign-to-group": {
+        "/assets/assign-to-group": {
             "post": {
                 "tags": [
                     "Assets"
@@ -8389,7 +8389,7 @@
                 ]
             }
         },
-        "/api/v1/assets/assign-to-user": {
+        "/assets/assign-to-user": {
             "post": {
                 "tags": [
                     "Assets"
@@ -8424,7 +8424,7 @@
                 ]
             }
         },
-        "/api/v1/assets/checkin": {
+        "/assets/checkin": {
             "post": {
                 "tags": [
                     "Assets"
@@ -8460,7 +8460,7 @@
                 ]
             }
         },
-        "/api/v1/assets/checkout": {
+        "/assets/checkout": {
             "post": {
                 "tags": [
                     "Assets"
@@ -8496,7 +8496,7 @@
                 ]
             }
         },
-        "/api/v1/assets/copy": {
+        "/assets/copy": {
             "post": {
                 "tags": [
                     "Assets"
@@ -8561,7 +8561,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset-folder": {
+        "/assets/asset-folder": {
             "post": {
                 "tags": [
                     "Assets"
@@ -8596,7 +8596,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset-aliases": {
+        "/assets/asset-aliases": {
             "get": {
                 "tags": [
                     "Assets"
@@ -8631,7 +8631,7 @@
                 ]
             }
         },
-        "/api/v1/assets": {
+        "/assets": {
             "delete": {
                 "tags": [
                     "Assets"
@@ -8675,7 +8675,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset/ancestors": {
+        "/assets/asset/ancestors": {
             "get": {
                 "tags": [
                     "Assets"
@@ -8712,7 +8712,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset": {
+        "/assets/asset": {
             "get": {
                 "tags": [
                     "Assets"
@@ -8746,7 +8746,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset-by-path": {
+        "/assets/asset-by-path": {
             "get": {
                 "tags": [
                     "Assets"
@@ -8779,7 +8779,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset/context": {
+        "/assets/asset/context": {
             "post": {
                 "tags": [
                     "Assets"
@@ -8821,7 +8821,7 @@
                 ]
             }
         },
-        "/api/v1/assets/details": {
+        "/assets/details": {
             "get": {
                 "tags": [
                     "Assets"
@@ -8864,7 +8864,7 @@
                 ]
             }
         },
-        "/api/v1/assets/history": {
+        "/assets/history": {
             "get": {
                 "tags": [
                     "Assets"
@@ -8909,7 +8909,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset/children": {
+        "/assets/asset/children": {
             "get": {
                 "tags": [
                     "Assets"
@@ -8960,7 +8960,7 @@
                 ]
             }
         },
-        "/api/v1/assets/file": {
+        "/assets/file": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9002,7 +9002,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset/descendant-targets": {
+        "/assets/asset/descendant-targets": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9038,7 +9038,7 @@
                 ]
             }
         },
-        "/api/v1/assets/recycle-folder": {
+        "/assets/recycle-folder": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9062,7 +9062,7 @@
                 ]
             }
         },
-        "/api/v1/assets/root": {
+        "/assets/root": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9086,7 +9086,7 @@
                 ]
             }
         },
-        "/api/v1/assets/root-folders": {
+        "/assets/root-folders": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9126,7 +9126,7 @@
                 ]
             }
         },
-        "/api/v1/assets/unmanaged": {
+        "/assets/unmanaged": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9159,7 +9159,7 @@
                 ]
             }
         },
-        "/api/v1/assets/unmanaged/children": {
+        "/assets/unmanaged/children": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9211,7 +9211,7 @@
                 ]
             }
         },
-        "/api/v1/assets/unmanaged/root-folders": {
+        "/assets/unmanaged/root-folders": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9255,7 +9255,7 @@
                 ]
             }
         },
-        "/api/v1/assets/dita-move-validation": {
+        "/assets/dita-move-validation": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9293,7 +9293,7 @@
                 ]
             }
         },
-        "/api/v1/assets/move": {
+        "/assets/move": {
             "patch": {
                 "tags": [
                     "Assets"
@@ -9350,7 +9350,7 @@
                 ]
             }
         },
-        "/api/v1/assets/rename": {
+        "/assets/rename": {
             "post": {
                 "tags": [
                     "Assets"
@@ -9385,7 +9385,7 @@
                 ]
             }
         },
-        "/api/v1/assets/search": {
+        "/assets/search": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9505,7 +9505,7 @@
                 ]
             }
         },
-        "/api/v1/assets/search-unmanaged": {
+        "/assets/search-unmanaged": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9625,7 +9625,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset/associations": {
+        "/assets/asset/associations": {
             "post": {
                 "tags": [
                     "Assets"
@@ -9672,7 +9672,7 @@
                 ]
             }
         },
-        "/api/v1/assets/total-size": {
+        "/assets/total-size": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9697,7 +9697,7 @@
                 ]
             }
         },
-        "/api/v1/assets/undo-checkout": {
+        "/assets/undo-checkout": {
             "post": {
                 "tags": [
                     "Assets"
@@ -9733,7 +9733,7 @@
                 ]
             }
         },
-        "/api/v1/assets/unzip": {
+        "/assets/unzip": {
             "post": {
                 "tags": [
                     "Assets"
@@ -9775,7 +9775,7 @@
                 ]
             }
         },
-        "/api/v1/assets/upload": {
+        "/assets/upload": {
             "post": {
                 "tags": [
                     "Assets"
@@ -9888,7 +9888,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset-dependency": {
+        "/assets/asset-dependency": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9919,7 +9919,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset-owners-deep": {
+        "/assets/asset-owners-deep": {
             "get": {
                 "tags": [
                     "Assets"
@@ -9956,7 +9956,7 @@
                 ]
             }
         },
-        "/api/v1/assets/dita-key-defs": {
+        "/assets/dita-key-defs": {
             "get": {
                 "tags": [
                     "Assets"
@@ -10003,7 +10003,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset-owners-csv": {
+        "/assets/asset-owners-csv": {
             "get": {
                 "tags": [
                     "Assets"
@@ -10054,7 +10054,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset-dependents-csv": {
+        "/assets/asset-dependents-csv": {
             "get": {
                 "tags": [
                     "Assets"
@@ -10105,7 +10105,7 @@
                 ]
             }
         },
-        "/api/v1/assets/ditamap-scopes": {
+        "/assets/ditamap-scopes": {
             "get": {
                 "tags": [
                     "Assets"
@@ -10146,7 +10146,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset-dependents-deep": {
+        "/assets/asset-dependents-deep": {
             "get": {
                 "tags": [
                     "Assets"
@@ -10183,7 +10183,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset-dita-output-formats": {
+        "/assets/asset-dita-output-formats": {
             "put": {
                 "tags": [
                     "Assets"
@@ -10230,7 +10230,7 @@
                 ]
             }
         },
-        "/api/v1/assets/asset-ditavals": {
+        "/assets/asset-ditavals": {
             "put": {
                 "tags": [
                     "Assets"
@@ -10277,7 +10277,7 @@
                 ]
             }
         },
-        "/api/v1/assets/dita-preview-cache": {
+        "/assets/dita-preview-cache": {
             "delete": {
                 "tags": [
                     "Assets"
@@ -10317,7 +10317,7 @@
                 ]
             }
         },
-        "/api/v1/assets/dita-oxygen-oauth-creds": {
+        "/assets/dita-oxygen-oauth-creds": {
             "put": {
                 "tags": [
                     "Assets"
@@ -10339,7 +10339,7 @@
                 ]
             }
         },
-        "/api/v1/site/content-item-search": {
+        "/site/content-item-search": {
             "get": {
                 "tags": [
                     "Site"
@@ -10441,7 +10441,7 @@
                 ]
             }
         },
-        "/api/v1/site/tab-model": {
+        "/site/tab-model": {
             "get": {
                 "tags": [
                     "Site"
@@ -10474,7 +10474,7 @@
                 ]
             }
         },
-        "/api/v1/site/generate-asset-reference-report": {
+        "/site/generate-asset-reference-report": {
             "post": {
                 "tags": [
                     "Site"
@@ -10509,7 +10509,7 @@
                 ]
             }
         },
-        "/api/v1/site/generate-broken-link-report": {
+        "/site/generate-broken-link-report": {
             "post": {
                 "tags": [
                     "Site"
@@ -10544,7 +10544,7 @@
                 ]
             }
         },
-        "/api/v1/site/generate-search-text-report": {
+        "/site/generate-search-text-report": {
             "post": {
                 "tags": [
                     "Site"
@@ -10579,7 +10579,7 @@
                 ]
             }
         },
-        "/api/v1/site/generate-search-asset-text-report": {
+        "/site/generate-search-asset-text-report": {
             "post": {
                 "tags": [
                     "Site"
@@ -10614,7 +10614,7 @@
                 ]
             }
         },
-        "/api/v1/site/generate-unused-assets-report": {
+        "/site/generate-unused-assets-report": {
             "post": {
                 "tags": [
                     "Site"
@@ -10649,7 +10649,7 @@
                 ]
             }
         },
-        "/api/v1/site/generate-page-reference-report": {
+        "/site/generate-page-reference-report": {
             "post": {
                 "tags": [
                     "Site"
@@ -10684,7 +10684,7 @@
                 ]
             }
         },
-        "/api/v1/site/report/{sessionId}/status": {
+        "/site/report/{sessionId}/status": {
             "get": {
                 "tags": [
                     "Site"
@@ -10718,7 +10718,7 @@
                 ]
             }
         },
-        "/api/v1/site/report/{sessionId}": {
+        "/site/report/{sessionId}": {
             "get": {
                 "tags": [
                     "Site"
@@ -10755,7 +10755,7 @@
                 ]
             }
         },
-        "/api/v1/site/report/cancel": {
+        "/site/report/cancel": {
             "post": {
                 "tags": [
                     "Site"
@@ -10789,7 +10789,7 @@
                 ]
             }
         },
-        "/api/v1/site/report/replace-entry": {
+        "/site/report/replace-entry": {
             "post": {
                 "tags": [
                     "Site"
@@ -10829,7 +10829,7 @@
                 ]
             }
         },
-        "/api/v1/site/report/{sessionId}/file": {
+        "/site/report/{sessionId}/file": {
             "get": {
                 "tags": [
                     "Site"
@@ -10863,7 +10863,7 @@
                 ]
             }
         },
-        "/api/v1/site/ranked-search": {
+        "/site/ranked-search": {
             "get": {
                 "tags": [
                     "Site"
@@ -10982,7 +10982,7 @@
                 ]
             }
         },
-        "/api/v1/site/usage-summary": {
+        "/site/usage-summary": {
             "get": {
                 "tags": [
                     "Site"
@@ -11016,7 +11016,7 @@
                 ]
             }
         },
-        "/api/v1/site/usage-report": {
+        "/site/usage-report": {
             "get": {
                 "tags": [
                     "Site"
@@ -11081,7 +11081,7 @@
                 ]
             }
         },
-        "/api/v1/pages": {
+        "/pages": {
             "get": {
                 "tags": [
                     "Pages"
@@ -11125,7 +11125,7 @@
                 ]
             }
         },
-        "/api/v1/pages/root": {
+        "/pages/root": {
             "get": {
                 "tags": [
                     "Pages"
@@ -11149,7 +11149,7 @@
                 ]
             }
         },
-        "/api/v1/pages/recycle-folder": {
+        "/pages/recycle-folder": {
             "get": {
                 "tags": [
                     "Pages"
@@ -11173,7 +11173,7 @@
                 ]
             }
         },
-        "/api/v1/pages/page/children": {
+        "/pages/page/children": {
             "get": {
                 "tags": [
                     "Pages"
@@ -11224,7 +11224,7 @@
                 ]
             }
         },
-        "/api/v1/pages/page/descendants": {
+        "/pages/page/descendants": {
             "get": {
                 "tags": [
                     "Pages"
@@ -11275,7 +11275,7 @@
                 ]
             }
         },
-        "/api/v1/pages/page/descendant-alias-count": {
+        "/pages/page/descendant-alias-count": {
             "get": {
                 "tags": [
                     "Pages"
@@ -11327,7 +11327,7 @@
                 ]
             }
         },
-        "/api/v1/pages/page/parent": {
+        "/pages/page/parent": {
             "get": {
                 "tags": [
                     "Pages"
@@ -11360,7 +11360,7 @@
                 ]
             }
         },
-        "/api/v1/pages/page/ancestors": {
+        "/pages/page/ancestors": {
             "get": {
                 "tags": [
                     "Pages"
@@ -11397,7 +11397,7 @@
                 ]
             }
         },
-        "/api/v1/pages/page": {
+        "/pages/page": {
             "get": {
                 "tags": [
                     "Pages"
@@ -11462,7 +11462,7 @@
                 ]
             }
         },
-        "/api/v1/pages/page/details": {
+        "/pages/page/details": {
             "get": {
                 "tags": [
                     "Pages"
@@ -11504,7 +11504,7 @@
                 ]
             }
         },
-        "/api/v1/pages/page/context": {
+        "/pages/page/context": {
             "post": {
                 "tags": [
                     "Pages"
@@ -11545,7 +11545,7 @@
                 ]
             }
         },
-        "/api/v1/pages/page/associations": {
+        "/pages/page/associations": {
             "post": {
                 "tags": [
                     "Pages"
@@ -11592,7 +11592,7 @@
                 ]
             }
         },
-        "/api/v1/pages/by-category": {
+        "/pages/by-category": {
             "get": {
                 "tags": [
                     "Pages"
@@ -11645,7 +11645,7 @@
                 ]
             }
         },
-        "/api/v1/pages/move": {
+        "/pages/move": {
             "patch": {
                 "tags": [
                     "Pages"
@@ -11711,7 +11711,7 @@
                 ]
             }
         },
-        "/api/v1/pages/copy": {
+        "/pages/copy": {
             "post": {
                 "tags": [
                     "Pages"
@@ -11801,7 +11801,7 @@
                 ]
             }
         },
-        "/api/v1/pages/rename": {
+        "/pages/rename": {
             "post": {
                 "tags": [
                     "Pages"
@@ -11836,7 +11836,7 @@
                 ]
             }
         },
-        "/api/v1/pages/checkin": {
+        "/pages/checkin": {
             "post": {
                 "tags": [
                     "Pages"
@@ -11872,7 +11872,7 @@
                 ]
             }
         },
-        "/api/v1/pages/checkout": {
+        "/pages/checkout": {
             "post": {
                 "tags": [
                     "Pages"
@@ -11908,7 +11908,7 @@
                 ]
             }
         },
-        "/api/v1/pages/page/pcr": {
+        "/pages/page/pcr": {
             "post": {
                 "tags": [
                     "Pages"
@@ -11944,7 +11944,7 @@
                 ]
             }
         },
-        "/api/v1/pages/history": {
+        "/pages/history": {
             "get": {
                 "tags": [
                     "Pages"
@@ -11989,7 +11989,7 @@
                 ]
             }
         },
-        "/api/v1/pages/page/workflow/workstates": {
+        "/pages/page/workflow/workstates": {
             "get": {
                 "tags": [
                     "Pages"
@@ -12026,7 +12026,7 @@
                 ]
             }
         },
-        "/api/v1/pages/page/design/content-units": {
+        "/pages/page/design/content-units": {
             "get": {
                 "tags": [
                     "Pages"
@@ -12068,7 +12068,7 @@
                 ]
             }
         },
-        "/api/v1/pages/page/workflow/advance": {
+        "/pages/page/workflow/advance": {
             "post": {
                 "tags": [
                     "Pages"
@@ -12104,7 +12104,7 @@
                 ]
             }
         },
-        "/api/v1/pages/dita-alias": {
+        "/pages/dita-alias": {
             "put": {
                 "tags": [
                     "Pages"
@@ -12195,7 +12195,7 @@
                 ]
             }
         },
-        "/api/v1/settings/setting": {
+        "/settings/setting": {
             "get": {
                 "tags": [
                     "Settings"
@@ -12264,7 +12264,7 @@
                 ]
             }
         },
-        "/api/v1/settings/section": {
+        "/settings/section": {
             "get": {
                 "tags": [
                     "Settings"
@@ -12348,7 +12348,7 @@
                 ]
             }
         },
-        "/api/v1/settings/data": {
+        "/settings/data": {
             "post": {
                 "tags": [
                     "Settings"
@@ -12418,7 +12418,7 @@
                 ]
             }
         },
-        "/api/v1/settings/custom-tabs": {
+        "/settings/custom-tabs": {
             "get": {
                 "tags": [
                     "Settings"
@@ -12485,7 +12485,7 @@
                 ]
             }
         },
-        "/api/v1/settings/task-users": {
+        "/settings/task-users": {
             "get": {
                 "tags": [
                     "Settings"
@@ -12522,7 +12522,7 @@
                 ]
             }
         },
-        "/api/v1/settings/reset-client-secret": {
+        "/settings/reset-client-secret": {
             "post": {
                 "tags": [
                     "Settings"
@@ -12556,7 +12556,7 @@
                 ]
             }
         },
-        "/api/v1/settings/access-tokens": {
+        "/settings/access-tokens": {
             "get": {
                 "tags": [
                     "Settings"
@@ -12621,7 +12621,7 @@
                 ]
             }
         },
-        "/api/v1/settings/global-variables": {
+        "/settings/global-variables": {
             "get": {
                 "tags": [
                     "Settings"
@@ -12683,7 +12683,7 @@
                 ]
             }
         },
-        "/api/v1/settings/deploy-dita-ot": {
+        "/settings/deploy-dita-ot": {
             "patch": {
                 "tags": [
                     "Settings"
@@ -12721,7 +12721,7 @@
                 ]
             }
         },
-        "/api/v1/settings/remove-dita-ot": {
+        "/settings/remove-dita-ot": {
             "delete": {
                 "tags": [
                     "Settings"
@@ -12743,7 +12743,7 @@
                 ]
             }
         },
-        "/api/v1/settings/remove-dita-ot-plugin": {
+        "/settings/remove-dita-ot-plugin": {
             "delete": {
                 "tags": [
                     "Settings"
@@ -12774,7 +12774,7 @@
                 ]
             }
         },
-        "/api/v1/settings/restore-dita-ot-plugin": {
+        "/settings/restore-dita-ot-plugin": {
             "delete": {
                 "tags": [
                     "Settings"
@@ -12805,7 +12805,7 @@
                 ]
             }
         },
-        "/api/v1/settings/add-dita-ot-plugin": {
+        "/settings/add-dita-ot-plugin": {
             "post": {
                 "tags": [
                     "Settings"
@@ -12827,7 +12827,7 @@
                 ]
             }
         },
-        "/api/v1/settings/deploy-custom-ot": {
+        "/settings/deploy-custom-ot": {
             "post": {
                 "tags": [
                     "Settings"
@@ -12849,7 +12849,7 @@
                 ]
             }
         },
-        "/api/v1/settings/ditaval-manipulation": {
+        "/settings/ditaval-manipulation": {
             "post": {
                 "tags": [
                     "Settings"
@@ -12882,7 +12882,7 @@
                 ]
             }
         },
-        "/api/v1/settings/archive-types": {
+        "/settings/archive-types": {
             "get": {
                 "tags": [
                     "Settings"
@@ -12907,7 +12907,7 @@
                 ]
             }
         },
-        "/api/v1/settings/page-tree-menu-groups": {
+        "/settings/page-tree-menu-groups": {
             "get": {
                 "tags": [
                     "Settings"
@@ -12932,7 +12932,7 @@
                 ]
             }
         },
-        "/api/v1/settings/asset-tree-menu-groups": {
+        "/settings/asset-tree-menu-groups": {
             "get": {
                 "tags": [
                     "Settings"
@@ -12957,7 +12957,7 @@
                 ]
             }
         },
-        "/api/v1/settings/page-tree-menu-items": {
+        "/settings/page-tree-menu-items": {
             "get": {
                 "tags": [
                     "Settings"
@@ -12982,7 +12982,7 @@
                 ]
             }
         },
-        "/api/v1/settings/asset-tree-menu-items": {
+        "/settings/asset-tree-menu-items": {
             "get": {
                 "tags": [
                     "Settings"
@@ -13007,7 +13007,7 @@
                 ]
             }
         },
-        "/api/v1/settings/tinymce-items": {
+        "/settings/tinymce-items": {
             "get": {
                 "tags": [
                     "Settings"
@@ -13041,7 +13041,7 @@
                 ]
             }
         },
-        "/api/v1/settings/timezones": {
+        "/settings/timezones": {
             "get": {
                 "tags": [
                     "Settings"
@@ -13066,7 +13066,7 @@
                 ]
             }
         },
-        "/api/v1/settings/tinymce-groups": {
+        "/settings/tinymce-groups": {
             "get": {
                 "tags": [
                     "Settings"
@@ -13100,7 +13100,7 @@
                 ]
             }
         },
-        "/api/v1/settings/presentation-formatters": {
+        "/settings/presentation-formatters": {
             "get": {
                 "tags": [
                     "Settings"
@@ -13125,7 +13125,7 @@
                 ]
             }
         },
-        "/api/v1/settings/server-variables": {
+        "/settings/server-variables": {
             "get": {
                 "tags": [
                     "Settings"
@@ -13150,7 +13150,7 @@
                 ]
             }
         },
-        "/api/v1/settings/force-archive": {
+        "/settings/force-archive": {
             "post": {
                 "tags": [
                     "Settings"
@@ -13181,7 +13181,7 @@
                 ]
             }
         },
-        "/api/v1/settings/page-tree-group": {
+        "/settings/page-tree-group": {
             "delete": {
                 "tags": [
                     "Settings"
@@ -13212,7 +13212,7 @@
                 ]
             }
         },
-        "/api/v1/settings/asset-tree-group": {
+        "/settings/asset-tree-group": {
             "delete": {
                 "tags": [
                     "Settings"
@@ -13243,7 +13243,7 @@
                 ]
             }
         },
-        "/api/v1/settings/tinymce-group": {
+        "/settings/tinymce-group": {
             "delete": {
                 "tags": [
                     "Settings"
@@ -13281,7 +13281,7 @@
                 ]
             }
         },
-        "/api/v1/settings/dictionary": {
+        "/settings/dictionary": {
             "delete": {
                 "tags": [
                     "Settings"
@@ -13312,7 +13312,7 @@
                 ]
             }
         },
-        "/api/v1/settings/custom-locale": {
+        "/settings/custom-locale": {
             "put": {
                 "tags": [
                     "Settings"
@@ -13386,7 +13386,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/statistics": {
+        "/taxonomy/statistics": {
             "get": {
                 "tags": [
                     "Taxonomy"
@@ -13409,7 +13409,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/categories": {
+        "/taxonomy/categories": {
             "get": {
                 "tags": [
                     "Taxonomy"
@@ -13476,7 +13476,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/root-categories": {
+        "/taxonomy/root-categories": {
             "get": {
                 "tags": [
                     "Taxonomy"
@@ -13527,7 +13527,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/children": {
+        "/taxonomy/category/children": {
             "get": {
                 "tags": [
                     "Taxonomy"
@@ -13578,7 +13578,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/parent": {
+        "/taxonomy/category/parent": {
             "get": {
                 "tags": [
                     "Taxonomy"
@@ -13611,7 +13611,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/ancestors": {
+        "/taxonomy/category/ancestors": {
             "get": {
                 "tags": [
                     "Taxonomy"
@@ -13647,7 +13647,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category": {
+        "/taxonomy/category": {
             "get": {
                 "tags": [
                     "Taxonomy"
@@ -13791,7 +13791,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/security": {
+        "/taxonomy/category/security": {
             "get": {
                 "tags": [
                     "Taxonomy"
@@ -13857,7 +13857,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/synonyms": {
+        "/taxonomy/category/synonyms": {
             "put": {
                 "tags": [
                     "Taxonomy"
@@ -13911,7 +13911,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/rename": {
+        "/taxonomy/category/rename": {
             "patch": {
                 "tags": [
                     "Taxonomy"
@@ -13952,7 +13952,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/move": {
+        "/taxonomy/category/move": {
             "patch": {
                 "tags": [
                     "Taxonomy"
@@ -14000,7 +14000,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/copy": {
+        "/taxonomy/category/copy": {
             "patch": {
                 "tags": [
                     "Taxonomy"
@@ -14065,7 +14065,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/copy-associations": {
+        "/taxonomy/category/copy-associations": {
             "patch": {
                 "tags": [
                     "Taxonomy"
@@ -14109,7 +14109,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/associations": {
+        "/taxonomy/category/associations": {
             "get": {
                 "tags": [
                     "Taxonomy"
@@ -14262,7 +14262,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/association": {
+        "/taxonomy/category/association": {
             "delete": {
                 "tags": [
                     "Taxonomy"
@@ -14342,7 +14342,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/content-associations": {
+        "/taxonomy/category/content-associations": {
             "post": {
                 "tags": [
                     "Taxonomy"
@@ -14388,7 +14388,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/categories-with-path": {
+        "/taxonomy/categories-with-path": {
             "post": {
                 "tags": [
                     "Taxonomy"
@@ -14429,7 +14429,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/has-association": {
+        "/taxonomy/category/has-association": {
             "get": {
                 "tags": [
                     "Taxonomy"
@@ -14470,7 +14470,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/category/associated-descendants": {
+        "/taxonomy/category/associated-descendants": {
             "get": {
                 "tags": [
                     "Taxonomy"
@@ -14514,7 +14514,7 @@
                 ]
             }
         },
-        "/api/v1/taxonomy/quick-search": {
+        "/taxonomy/quick-search": {
             "get": {
                 "tags": [
                     "Taxonomy"
@@ -14550,7 +14550,7 @@
                 ]
             }
         },
-        "/api/v1/test/error": {
+        "/test/error": {
             "get": {
                 "tags": [
                     "Test"
@@ -14592,7 +14592,7 @@
                 ]
             }
         },
-        "/api/v1/test/locale": {
+        "/test/locale": {
             "get": {
                 "tags": [
                     "Test"
@@ -14615,7 +14615,7 @@
                 ]
             }
         },
-        "/api/v1/test/progress": {
+        "/test/progress": {
             "post": {
                 "tags": [
                     "Test"
@@ -14649,7 +14649,7 @@
                 ]
             }
         },
-        "/api/v1/test/claims": {
+        "/test/claims": {
             "get": {
                 "tags": [
                     "Test"
@@ -14672,7 +14672,7 @@
                 ]
             }
         },
-        "/api/v1/test/admin-perm-test": {
+        "/test/admin-perm-test": {
             "get": {
                 "tags": [
                     "Test"
@@ -14695,7 +14695,7 @@
                 ]
             }
         },
-        "/api/v1/accounts/login": {
+        "/accounts/login": {
             "post": {
                 "tags": [
                     "Accounts"
@@ -14732,7 +14732,7 @@
                 ]
             }
         },
-        "/api/v1/accounts/membership-providers": {
+        "/accounts/membership-providers": {
             "get": {
                 "tags": [
                     "Accounts"
@@ -14757,7 +14757,7 @@
                 ]
             }
         },
-        "/api/v1/accounts/security-groups": {
+        "/accounts/security-groups": {
             "get": {
                 "tags": [
                     "Accounts"
@@ -14802,7 +14802,7 @@
                 ]
             }
         },
-        "/api/v1/accounts/users/reset-passwords": {
+        "/accounts/users/reset-passwords": {
             "post": {
                 "tags": [
                     "Accounts"
@@ -14845,7 +14845,7 @@
                 ]
             }
         },
-        "/api/v1/groups": {
+        "/groups": {
             "get": {
                 "tags": [
                     "UserGroups"
@@ -14888,7 +14888,7 @@
                 ]
             }
         },
-        "/api/v1/groups/group": {
+        "/groups/group": {
             "get": {
                 "tags": [
                     "UserGroups"
@@ -14921,7 +14921,7 @@
                 ]
             }
         },
-        "/api/v1/groups/new-group": {
+        "/groups/new-group": {
             "put": {
                 "tags": [
                     "UserGroups"
@@ -14955,7 +14955,7 @@
                 ]
             }
         },
-        "/api/v1/groups/search": {
+        "/groups/search": {
             "get": {
                 "tags": [
                     "UserGroups"
@@ -15006,7 +15006,7 @@
                 ]
             }
         },
-        "/api/v1/users": {
+        "/users": {
             "get": {
                 "tags": [
                     "User"
@@ -15057,7 +15057,7 @@
                 ]
             }
         },
-        "/api/v1/users/user": {
+        "/users/user": {
             "get": {
                 "tags": [
                     "User"
@@ -15090,7 +15090,7 @@
                 ]
             }
         },
-        "/api/v1/users/assignments": {
+        "/users/assignments": {
             "get": {
                 "tags": [
                     "User"
@@ -15195,7 +15195,7 @@
                 ]
             }
         },
-        "/api/v1/workflows/workflow": {
+        "/workflows/workflow": {
             "get": {
                 "tags": [
                     "Workflow"
@@ -15228,7 +15228,7 @@
                 ]
             }
         },
-        "/api/v1/workflows/by-content": {
+        "/workflows/by-content": {
             "get": {
                 "tags": [
                     "Workflow"
@@ -15261,7 +15261,7 @@
                 ]
             }
         },
-        "/api/v1/workflows/content-work-state": {
+        "/workflows/content-work-state": {
             "get": {
                 "tags": [
                     "Workflow"
@@ -15297,7 +15297,7 @@
                 ]
             }
         },
-        "/api/v1/workflows/workstates": {
+        "/workflows/workstates": {
             "get": {
                 "tags": [
                     "Workflow"
@@ -15336,7 +15336,7 @@
                 ]
             }
         },
-        "/api/v1/workflows/definitions": {
+        "/workflows/definitions": {
             "get": {
                 "tags": [
                     "Workflow"
@@ -15381,7 +15381,7 @@
                 ]
             }
         },
-        "/api/v1/workflows/definition-detail": {
+        "/workflows/definition-detail": {
             "get": {
                 "tags": [
                     "Workflow"
@@ -15414,7 +15414,7 @@
                 ]
             }
         },
-        "/api/v1/workflows/report": {
+        "/workflows/report": {
             "get": {
                 "tags": [
                     "Workflow"
@@ -15479,7 +15479,7 @@
                 ]
             }
         },
-        "/api/v1/workflows/default-transition": {
+        "/workflows/default-transition": {
             "get": {
                 "tags": [
                     "Workflow"
@@ -15502,7 +15502,7 @@
                 ]
             }
         },
-        "/api/v1/workflows/definition": {
+        "/workflows/definition": {
             "put": {
                 "tags": [
                     "Workflow"
@@ -15568,7 +15568,7 @@
                 ]
             }
         },
-        "/api/v1/workflows/workstate": {
+        "/workflows/workstate": {
             "put": {
                 "tags": [
                     "Workflow"
@@ -15675,7 +15675,7 @@
                 ]
             }
         },
-        "/api/v1/workflows/prepare-template": {
+        "/workflows/prepare-template": {
             "post": {
                 "tags": [
                     "Workflow"
@@ -15710,7 +15710,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/replication/target": {
+        "/publishing/replication/target": {
             "post": {
                 "tags": [
                     "Replication"
@@ -15852,7 +15852,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/replication/aws-region-endpoints": {
+        "/publishing/replication/aws-region-endpoints": {
             "get": {
                 "tags": [
                     "Replication"
@@ -15878,7 +15878,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/replication/target/log-detail": {
+        "/publishing/replication/target/log-detail": {
             "get": {
                 "tags": [
                     "Replication"
@@ -15911,7 +15911,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/replication/target-types": {
+        "/publishing/replication/target-types": {
             "get": {
                 "tags": [
                     "Replication"
@@ -15937,7 +15937,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/replication/targets": {
+        "/publishing/replication/targets": {
             "get": {
                 "tags": [
                     "Replication"
@@ -16020,7 +16020,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/replication/upload-cert": {
+        "/publishing/replication/upload-cert": {
             "post": {
                 "tags": [
                     "Replication"
@@ -16042,7 +16042,7 @@
                 ]
             }
         },
-        "/api/v1/publishing/replication/upload-private-key": {
+        "/publishing/replication/upload-private-key": {
             "post": {
                 "tags": [
                     "Replication"

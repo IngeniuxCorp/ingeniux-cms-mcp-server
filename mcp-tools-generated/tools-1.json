@@ -34,7 +34,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/analytics/site-overview",
+		"endpoint": "/analytics/site-overview",
 		"tags": [
 			"Analytics"
 		],
@@ -81,7 +81,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/analytics/page-overview",
+		"endpoint": "/analytics/page-overview",
 		"tags": [
 			"Analytics"
 		],
@@ -136,7 +136,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/analytics/report",
+		"endpoint": "/analytics/report",
 		"tags": [
 			"Analytics"
 		],
@@ -177,7 +177,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/analytics/google-analytic-authcode-flow",
+		"endpoint": "/analytics/google-analytic-authcode-flow",
 		"tags": [
 			"Analytics"
 		],
@@ -219,7 +219,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/analytics/google-analytic-property-confirm",
+		"endpoint": "/analytics/google-analytic-property-confirm",
 		"tags": [
 			"Analytics"
 		],
@@ -246,7 +246,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/analytics/google-analytic-revoke-token",
+		"endpoint": "/analytics/google-analytic-revoke-token",
 		"tags": [
 			"Analytics"
 		],
@@ -274,7 +274,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/analytics/device-verification",
+		"endpoint": "/analytics/device-verification",
 		"tags": [
 			"Analytics"
 		],
@@ -302,7 +302,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/content-units/content-unit-preview-data",
+		"endpoint": "/content-units/content-unit-preview-data",
 		"tags": [
 			"ContentUnits"
 		],
@@ -329,7 +329,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/content-units/get-comp-unit-instances",
+		"endpoint": "/content-units/get-comp-unit-instances",
 		"tags": [
 			"ContentUnits"
 		],
@@ -356,7 +356,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/content-units/get-comp-unit-content",
+		"endpoint": "/content-units/get-comp-unit-content",
 		"tags": [
 			"ContentUnits"
 		],
@@ -390,7 +390,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/content-units/update-comp-unit-thumb",
+		"endpoint": "/content-units/update-comp-unit-thumb",
 		"tags": [
 			"ContentUnits"
 		],
@@ -433,7 +433,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/content-units/get-class-names-from-css",
+		"endpoint": "/content-units/get-class-names-from-css",
 		"tags": [
 			"ContentUnits"
 		],
@@ -450,7 +450,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/hooks",
+		"endpoint": "/hooks",
 		"tags": [
 			"Hooks"
 		],
@@ -468,7 +468,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/hooks/macros",
+		"endpoint": "/hooks/macros",
 		"tags": [
 			"Hooks"
 		],
@@ -496,7 +496,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/hooks/macros",
+		"endpoint": "/hooks/macros",
 		"tags": [
 			"Hooks"
 		],
@@ -513,7 +513,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-ice-comp-types",
+		"endpoint": "/dialogs/ice-comp-picker/get-ice-comp-types",
 		"tags": [
 			"IceComponentPicker"
 		],
@@ -569,7 +569,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-trays",
+		"endpoint": "/dialogs/ice-comp-picker/get-trays",
 		"tags": [
 			"IceComponentPicker"
 		],
@@ -597,7 +597,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-comp-thumb",
+		"endpoint": "/dialogs/ice-comp-picker/get-comp-thumb",
 		"tags": [
 			"IceComponentPicker"
 		],
@@ -673,7 +673,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/dialogs/ice-comp-picker/get-list-page",
+		"endpoint": "/dialogs/ice-comp-picker/get-list-page",
 		"tags": [
 			"IceComponentPicker"
 		],
@@ -690,7 +690,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/dita/base",
+		"endpoint": "/dita/base",
 		"tags": [
 			"DITA"
 		],

@@ -182,13 +182,15 @@ function buildOutputSchema(endpoint: SwaggerEndpoint) {
 }
 
 function endpointToToolDef(endpoint: SwaggerEndpoint, swaggerDefs?: Record<string, any>): MCPToolDef {
+    // const endpointPath = endpoint.path.substring("/api/v1".length);
+    const endpointPath = endpoint.path;
     const toolDef: MCPToolDef = {
         tool_name: toToolName(endpoint.operationId),
         description: enrichDescription(endpoint),
         input_schema: flattenAllOfSchema(buildInputSchema(endpoint, swaggerDefs)),
         output_schema: flattenAllOfSchema(buildOutputSchema(endpoint)),
         method: endpoint.method,
-        endpoint: endpoint.path,
+        endpoint: endpointPath,
         tags: endpoint.tags ?? []
     };
 

@@ -17,7 +17,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/dashboard/online-users",
+		"endpoint": "/dashboard/online-users",
 		"tags": [
 			"Dashboard"
 		],
@@ -44,7 +44,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/dashboard/comment",
+		"endpoint": "/dashboard/comment",
 		"tags": [
 			"Dashboard"
 		],
@@ -68,7 +68,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/dashboard/activity-stream",
+		"endpoint": "/dashboard/activity-stream",
 		"tags": [
 			"Dashboard"
 		],
@@ -95,7 +95,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/dashboard/analytic_traffic-data",
+		"endpoint": "/dashboard/analytic_traffic-data",
 		"tags": [
 			"Dashboard"
 		],
@@ -122,7 +122,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/dashboard/analytic_medium-data",
+		"endpoint": "/dashboard/analytic_medium-data",
 		"tags": [
 			"Dashboard"
 		],
@@ -158,7 +158,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/dashboard/production-data",
+		"endpoint": "/dashboard/production-data",
 		"tags": [
 			"Dashboard"
 		],
@@ -185,7 +185,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/documents",
+		"endpoint": "/documents",
 		"tags": [
 			"Entity"
 		],
@@ -212,7 +212,7 @@
 			"type": "object"
 		},
 		"method": "patch",
-		"endpoint": "/api/v1/documents/archive",
+		"endpoint": "/documents/archive",
 		"tags": [
 			"Entity"
 		],
@@ -239,7 +239,7 @@
 			"type": "object"
 		},
 		"method": "patch",
-		"endpoint": "/api/v1/documents/unarchive",
+		"endpoint": "/documents/unarchive",
 		"tags": [
 			"Entity"
 		],
@@ -266,7 +266,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/themes/theme",
+		"endpoint": "/themes/theme",
 		"tags": [
 			"Themes"
 		],
@@ -371,7 +371,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/themes/theme",
+		"endpoint": "/themes/theme",
 		"tags": [
 			"Themes"
 		],
@@ -398,7 +398,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/themes/theme",
+		"endpoint": "/themes/theme",
 		"tags": [
 			"Themes"
 		],
@@ -431,7 +431,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/themes/less",
+		"endpoint": "/themes/less",
 		"tags": [
 			"Themes"
 		],
@@ -464,7 +464,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/themes/scss",
+		"endpoint": "/themes/scss",
 		"tags": [
 			"Themes"
 		],
@@ -494,7 +494,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/themes",
+		"endpoint": "/themes",
 		"tags": [
 			"Themes"
 		],
@@ -521,7 +521,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/themes",
+		"endpoint": "/themes",
 		"tags": [
 			"Themes"
 		],
@@ -548,7 +548,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/themes/default",
+		"endpoint": "/themes/default",
 		"tags": [
 			"Themes"
 		],
@@ -565,7 +565,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/themes/upload",
+		"endpoint": "/themes/upload",
 		"tags": [
 			"Themes"
 		],
@@ -594,7 +594,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pcr/info",
+		"endpoint": "/pcr/info",
 		"tags": [
 			"PCR"
 		],
@@ -621,7 +621,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/pcr",
+		"endpoint": "/pcr",
 		"tags": [
 			"PCR"
 		],

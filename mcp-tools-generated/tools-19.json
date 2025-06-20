@@ -26,7 +26,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/accounts/login",
+		"endpoint": "/accounts/login",
 		"tags": [
 			"Accounts"
 		],
@@ -43,7 +43,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/accounts/membership-providers",
+		"endpoint": "/accounts/membership-providers",
 		"tags": [
 			"Accounts"
 		],
@@ -73,7 +73,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/accounts/security-groups",
+		"endpoint": "/accounts/security-groups",
 		"tags": [
 			"Accounts"
 		],
@@ -90,7 +90,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/accounts/users/reset-passwords",
+		"endpoint": "/accounts/users/reset-passwords",
 		"tags": [
 			"Accounts"
 		],
@@ -120,7 +120,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/groups",
+		"endpoint": "/groups",
 		"tags": [
 			"UserGroups"
 		],
@@ -147,7 +147,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/groups/group",
+		"endpoint": "/groups/group",
 		"tags": [
 			"UserGroups"
 		],
@@ -174,7 +174,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/groups/new-group",
+		"endpoint": "/groups/new-group",
 		"tags": [
 			"UserGroups"
 		],
@@ -213,7 +213,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/groups/search",
+		"endpoint": "/groups/search",
 		"tags": [
 			"UserGroups"
 		],
@@ -249,7 +249,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/users",
+		"endpoint": "/users",
 		"tags": [
 			"User"
 		],
@@ -276,7 +276,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/users/user",
+		"endpoint": "/users/user",
 		"tags": [
 			"User"
 		],
@@ -359,7 +359,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/users/assignments",
+		"endpoint": "/users/assignments",
 		"tags": [
 			"User"
 		],
@@ -386,7 +386,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/workflows/workflow",
+		"endpoint": "/workflows/workflow",
 		"tags": [
 			"Workflow"
 		],
@@ -413,7 +413,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/workflows/by-content",
+		"endpoint": "/workflows/by-content",
 		"tags": [
 			"Workflow"
 		],
@@ -440,7 +440,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/workflows/content-work-state",
+		"endpoint": "/workflows/content-work-state",
 		"tags": [
 			"Workflow"
 		],
@@ -468,7 +468,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/workflows/workstates",
+		"endpoint": "/workflows/workstates",
 		"tags": [
 			"Workflow"
 		],
@@ -501,7 +501,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/workflows/definitions",
+		"endpoint": "/workflows/definitions",
 		"tags": [
 			"Workflow"
 		],
@@ -528,7 +528,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/workflows/definition-detail",
+		"endpoint": "/workflows/definition-detail",
 		"tags": [
 			"Workflow"
 		],
@@ -571,7 +571,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/workflows/report",
+		"endpoint": "/workflows/report",
 		"tags": [
 			"Workflow"
 		],
@@ -588,7 +588,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/workflows/default-transition",
+		"endpoint": "/workflows/default-transition",
 		"tags": [
 			"Workflow"
 		],
@@ -731,7 +731,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/workflows/definition",
+		"endpoint": "/workflows/definition",
 		"tags": [
 			"Workflow"
 		],

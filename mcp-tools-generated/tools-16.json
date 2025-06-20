@@ -10,7 +10,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/access-tokens",
+		"endpoint": "/settings/access-tokens",
 		"tags": [
 			"Settings"
 		],
@@ -27,7 +27,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/settings/access-tokens",
+		"endpoint": "/settings/access-tokens",
 		"tags": [
 			"Settings"
 		],
@@ -44,7 +44,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/global-variables",
+		"endpoint": "/settings/global-variables",
 		"tags": [
 			"Settings"
 		]
@@ -60,7 +60,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/settings/global-variables",
+		"endpoint": "/settings/global-variables",
 		"tags": [
 			"Settings"
 		]
@@ -91,7 +91,7 @@
 			"type": "object"
 		},
 		"method": "patch",
-		"endpoint": "/api/v1/settings/deploy-dita-ot",
+		"endpoint": "/settings/deploy-dita-ot",
 		"tags": [
 			"Settings"
 		]
@@ -107,7 +107,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/settings/remove-dita-ot",
+		"endpoint": "/settings/remove-dita-ot",
 		"tags": [
 			"Settings"
 		]
@@ -132,7 +132,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/settings/remove-dita-ot-plugin",
+		"endpoint": "/settings/remove-dita-ot-plugin",
 		"tags": [
 			"Settings"
 		]
@@ -157,7 +157,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/settings/restore-dita-ot-plugin",
+		"endpoint": "/settings/restore-dita-ot-plugin",
 		"tags": [
 			"Settings"
 		]
@@ -173,7 +173,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/settings/add-dita-ot-plugin",
+		"endpoint": "/settings/add-dita-ot-plugin",
 		"tags": [
 			"Settings"
 		]
@@ -189,7 +189,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/settings/deploy-custom-ot",
+		"endpoint": "/settings/deploy-custom-ot",
 		"tags": [
 			"Settings"
 		]
@@ -241,7 +241,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/settings/ditaval-manipulation",
+		"endpoint": "/settings/ditaval-manipulation",
 		"tags": [
 			"Settings"
 		]
@@ -257,7 +257,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/archive-types",
+		"endpoint": "/settings/archive-types",
 		"tags": [
 			"Settings"
 		]
@@ -273,7 +273,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/page-tree-menu-groups",
+		"endpoint": "/settings/page-tree-menu-groups",
 		"tags": [
 			"Settings"
 		]
@@ -289,7 +289,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/asset-tree-menu-groups",
+		"endpoint": "/settings/asset-tree-menu-groups",
 		"tags": [
 			"Settings"
 		]
@@ -305,7 +305,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/page-tree-menu-items",
+		"endpoint": "/settings/page-tree-menu-items",
 		"tags": [
 			"Settings"
 		]
@@ -321,7 +321,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/asset-tree-menu-items",
+		"endpoint": "/settings/asset-tree-menu-items",
 		"tags": [
 			"Settings"
 		]
@@ -346,7 +346,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/tinymce-items",
+		"endpoint": "/settings/tinymce-items",
 		"tags": [
 			"Settings"
 		]
@@ -362,7 +362,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/timezones",
+		"endpoint": "/settings/timezones",
 		"tags": [
 			"Settings"
 		]
@@ -387,7 +387,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/tinymce-groups",
+		"endpoint": "/settings/tinymce-groups",
 		"tags": [
 			"Settings"
 		]
@@ -403,7 +403,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/settings/presentation-formatters",
+		"endpoint": "/settings/presentation-formatters",
 		"tags": [
 			"Settings"
 		]

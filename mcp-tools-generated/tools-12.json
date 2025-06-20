@@ -20,7 +20,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/asset/descendant-targets",
+		"endpoint": "/assets/asset/descendant-targets",
 		"tags": [
 			"Assets"
 		],
@@ -37,7 +37,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/recycle-folder",
+		"endpoint": "/assets/recycle-folder",
 		"tags": [
 			"Assets"
 		],
@@ -55,7 +55,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/root",
+		"endpoint": "/assets/root",
 		"tags": [
 			"Assets"
 		],
@@ -84,7 +84,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/root-folders",
+		"endpoint": "/assets/root-folders",
 		"tags": [
 			"Assets"
 		]
@@ -110,7 +110,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/unmanaged",
+		"endpoint": "/assets/unmanaged",
 		"tags": [
 			"Assets"
 		],
@@ -149,7 +149,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/unmanaged/children",
+		"endpoint": "/assets/unmanaged/children",
 		"tags": [
 			"Assets"
 		],
@@ -180,7 +180,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/unmanaged/root-folders",
+		"endpoint": "/assets/unmanaged/root-folders",
 		"tags": [
 			"Assets"
 		],
@@ -213,7 +213,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/dita-move-validation",
+		"endpoint": "/assets/dita-move-validation",
 		"tags": [
 			"Assets"
 		]
@@ -246,7 +246,7 @@
 			"type": "object"
 		},
 		"method": "patch",
-		"endpoint": "/api/v1/assets/move",
+		"endpoint": "/assets/move",
 		"tags": [
 			"Assets"
 		],
@@ -276,7 +276,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/assets/rename",
+		"endpoint": "/assets/rename",
 		"tags": [
 			"Assets"
 		],
@@ -359,7 +359,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/search",
+		"endpoint": "/assets/search",
 		"tags": [
 			"Assets"
 		],
@@ -443,7 +443,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/search-unmanaged",
+		"endpoint": "/assets/search-unmanaged",
 		"tags": [
 			"Assets"
 		],
@@ -471,7 +471,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/assets/asset/associations",
+		"endpoint": "/assets/asset/associations",
 		"tags": [
 			"Assets"
 		],
@@ -489,7 +489,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/total-size",
+		"endpoint": "/assets/total-size",
 		"tags": [
 			"Assets"
 		],
@@ -519,7 +519,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/assets/undo-checkout",
+		"endpoint": "/assets/undo-checkout",
 		"tags": [
 			"Assets"
 		],
@@ -554,7 +554,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/assets/unzip",
+		"endpoint": "/assets/unzip",
 		"tags": [
 			"Assets"
 		],
@@ -653,7 +653,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/assets/upload",
+		"endpoint": "/assets/upload",
 		"tags": [
 			"Assets"
 		],
@@ -679,7 +679,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/asset-dependency",
+		"endpoint": "/assets/asset-dependency",
 		"tags": [
 			"Assets"
 		]
@@ -705,7 +705,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/asset-owners-deep",
+		"endpoint": "/assets/asset-owners-deep",
 		"tags": [
 			"Assets"
 		],
@@ -742,7 +742,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/dita-key-defs",
+		"endpoint": "/assets/dita-key-defs",
 		"tags": [
 			"Assets"
 		]

@@ -10,7 +10,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/dita/ot-params",
+		"endpoint": "/dita/ot-params",
 		"tags": [
 			"DITA"
 		],
@@ -31,7 +31,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/dita/ot-params",
+		"endpoint": "/dita/ot-params",
 		"tags": [
 			"DITA"
 		],
@@ -52,7 +52,7 @@
 			"type": "object"
 		},
 		"method": "patch",
-		"endpoint": "/api/v1/dita/ditaval-manipulation",
+		"endpoint": "/dita/ditaval-manipulation",
 		"tags": [
 			"DITA"
 		],
@@ -79,7 +79,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/dita/remove-ditamap",
+		"endpoint": "/dita/remove-ditamap",
 		"tags": [
 			"DITA"
 		],
@@ -107,7 +107,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/dita/mark-ditamap",
+		"endpoint": "/dita/mark-ditamap",
 		"tags": [
 			"DITA"
 		],
@@ -135,7 +135,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/dita/checkout-ditamap",
+		"endpoint": "/dita/checkout-ditamap",
 		"tags": [
 			"DITA"
 		],
@@ -163,7 +163,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/dita/checkin-ditamap",
+		"endpoint": "/dita/checkin-ditamap",
 		"tags": [
 			"DITA"
 		],
@@ -208,7 +208,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/dita/publish-ditamap",
+		"endpoint": "/dita/publish-ditamap",
 		"tags": [
 			"DITA"
 		],
@@ -225,7 +225,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/dita/dita-maps-csv",
+		"endpoint": "/dita/dita-maps-csv",
 		"tags": [
 			"DITA"
 		],
@@ -258,7 +258,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/dita/download-ditamap",
+		"endpoint": "/dita/download-ditamap",
 		"tags": [
 			"DITA"
 		],
@@ -285,7 +285,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/configuration/help-text",
+		"endpoint": "/configuration/help-text",
 		"tags": [
 			"Configuration"
 		],
@@ -312,7 +312,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/configuration/ai-help-text",
+		"endpoint": "/configuration/ai-help-text",
 		"tags": [
 			"Configuration"
 		],
@@ -339,7 +339,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/configuration/help-text-by-content-item",
+		"endpoint": "/configuration/help-text-by-content-item",
 		"tags": [
 			"Configuration"
 		],
@@ -356,7 +356,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/configuration/help-texts",
+		"endpoint": "/configuration/help-texts",
 		"tags": [
 			"Configuration"
 		],
@@ -373,7 +373,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/configuration/pages/context-menu",
+		"endpoint": "/configuration/pages/context-menu",
 		"tags": [
 			"Configuration"
 		],
@@ -390,7 +390,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/configuration/assets/context-menu",
+		"endpoint": "/configuration/assets/context-menu",
 		"tags": [
 			"Configuration"
 		],
@@ -407,7 +407,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/configuration/legacy-globals",
+		"endpoint": "/configuration/legacy-globals",
 		"tags": [
 			"Configuration"
 		],
@@ -433,7 +433,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/configuration/flag",
+		"endpoint": "/configuration/flag",
 		"tags": [
 			"Configuration"
 		],
@@ -450,7 +450,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/configuration/global-custom-tabs",
+		"endpoint": "/configuration/global-custom-tabs",
 		"tags": [
 			"Configuration"
 		],
@@ -474,7 +474,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/insite-search/custom-settings",
+		"endpoint": "/insite-search/custom-settings",
 		"tags": [
 			"InsiteSearch"
 		],

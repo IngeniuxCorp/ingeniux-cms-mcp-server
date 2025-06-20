@@ -35,7 +35,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/asset-owners-csv",
+		"endpoint": "/assets/asset-owners-csv",
 		"tags": [
 			"Assets"
 		]
@@ -76,7 +76,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/asset-dependents-csv",
+		"endpoint": "/assets/asset-dependents-csv",
 		"tags": [
 			"Assets"
 		]
@@ -109,7 +109,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/ditamap-scopes",
+		"endpoint": "/assets/ditamap-scopes",
 		"tags": [
 			"Assets"
 		],
@@ -136,7 +136,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/assets/asset-dependents-deep",
+		"endpoint": "/assets/asset-dependents-deep",
 		"tags": [
 			"Assets"
 		],
@@ -164,7 +164,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/assets/asset-dita-output-formats",
+		"endpoint": "/assets/asset-dita-output-formats",
 		"tags": [
 			"Assets"
 		],
@@ -192,7 +192,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/assets/asset-ditavals",
+		"endpoint": "/assets/asset-ditavals",
 		"tags": [
 			"Assets"
 		],
@@ -226,7 +226,7 @@
 			"type": "object"
 		},
 		"method": "delete",
-		"endpoint": "/api/v1/assets/dita-preview-cache",
+		"endpoint": "/assets/dita-preview-cache",
 		"tags": [
 			"Assets"
 		],
@@ -243,7 +243,7 @@
 			"type": "object"
 		},
 		"method": "put",
-		"endpoint": "/api/v1/assets/dita-oxygen-oauth-creds",
+		"endpoint": "/assets/dita-oxygen-oauth-creds",
 		"tags": [
 			"Assets"
 		]
@@ -315,7 +315,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/site/content-item-search",
+		"endpoint": "/site/content-item-search",
 		"tags": [
 			"Site"
 		],
@@ -343,7 +343,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/site/tab-model",
+		"endpoint": "/site/tab-model",
 		"tags": [
 			"Site"
 		],
@@ -373,7 +373,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/site/generate-asset-reference-report",
+		"endpoint": "/site/generate-asset-reference-report",
 		"tags": [
 			"Site"
 		],
@@ -404,7 +404,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/site/generate-broken-link-report",
+		"endpoint": "/site/generate-broken-link-report",
 		"tags": [
 			"Site"
 		],
@@ -440,7 +440,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/site/generate-search-text-report",
+		"endpoint": "/site/generate-search-text-report",
 		"tags": [
 			"Site"
 		],
@@ -476,7 +476,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/site/generate-search-asset-text-report",
+		"endpoint": "/site/generate-search-asset-text-report",
 		"tags": [
 			"Site"
 		],
@@ -501,7 +501,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/site/generate-unused-assets-report",
+		"endpoint": "/site/generate-unused-assets-report",
 		"tags": [
 			"Site"
 		],
@@ -531,7 +531,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/site/generate-page-reference-report",
+		"endpoint": "/site/generate-page-reference-report",
 		"tags": [
 			"Site"
 		],
@@ -558,7 +558,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/site/report/{sessionId}/status",
+		"endpoint": "/site/report/{sessionId}/status",
 		"tags": [
 			"Site"
 		],
@@ -586,7 +586,7 @@
 			"type": "object"
 		},
 		"method": "get",
-		"endpoint": "/api/v1/site/report/{sessionId}",
+		"endpoint": "/site/report/{sessionId}",
 		"tags": [
 			"Site"
 		],
@@ -614,7 +614,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/site/report/cancel",
+		"endpoint": "/site/report/cancel",
 		"tags": [
 			"Site"
 		],
@@ -645,7 +645,7 @@
 			"type": "object"
 		},
 		"method": "post",
-		"endpoint": "/api/v1/site/report/replace-entry",
+		"endpoint": "/site/report/replace-entry",
 		"tags": [
 			"Site"
 		],
