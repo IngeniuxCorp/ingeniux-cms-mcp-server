@@ -374,7 +374,7 @@ function generateExampleCall(endpoint: MCPToolDef, paramInfo: ParameterAnalysis)
 	};
 }
 
-function generateNextStepInstruction(endpoint: MCPToolDef, paramInfo: ParameterAnalysis) {
+function generateNextStepInstruction(endpoint: MCPToolDef, _paramInfo: ParameterAnalysis) {
 	return `
 To execute this endpoint, call the 'cms_endpoint_executor' tool with:
 {

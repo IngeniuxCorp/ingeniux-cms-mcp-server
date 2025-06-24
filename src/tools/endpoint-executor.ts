@@ -134,7 +134,6 @@ function resolveEndpointDefinition(path: string, method: string, allEndpoints: M
 function validateRequestParameters(requestData: Record<string, any>, endpoint: MCPToolDef) {
 	const inputSchema = endpoint.input_schema;
 	const required = inputSchema?.required || [];
-	const properties = inputSchema?.properties || {};
 	const missingRequired: string[] = [];
 	for (const req of required) {
 		if (!Object.prototype.hasOwnProperty.call(requestData, req)) {
@@ -168,10 +167,10 @@ export async function executeEndpoint(
 				resp = await apiClient.get(url, queryParams);
 				break;
 			case 'POST':
-				resp = await apiClient.post(url, bodyData, { params: queryParams });
+				resp = await apiClient.post(url, bodyData && Object.keys(bodyData).length > 0 ? bodyData : undefined, { params: queryParams });
 				break;
 			case 'PUT':
-				resp = await apiClient.put(url, bodyData, { params: queryParams });
+				resp = await apiClient.put(url, bodyData && Object.keys(bodyData).length > 0 ? bodyData : undefined, { params: queryParams });
 				break;
 			case 'DELETE':
 				resp = await apiClient.request({ method: 'DELETE', url, params: queryParams });

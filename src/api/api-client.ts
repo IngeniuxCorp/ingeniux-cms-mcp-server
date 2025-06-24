@@ -101,7 +101,7 @@ export class APIClient {
     /**
      * POST request
      */
-    public async post<T = any>(url: string, data?: any, headers?: Record<string, string>): Promise<APIResponse<T>> {
+    public async post<T = any>(url: string, data?: any, headers?: Record<string, string> | { params?: any }): Promise<APIResponse<T>> {
         return this.request<T>({
             method: 'POST',
             url,
@@ -113,7 +113,7 @@ export class APIClient {
     /**
      * PUT request
      */
-    public async put<T = any>(url: string, data?: any, headers?: Record<string, string>): Promise<APIResponse<T>> {
+    public async put<T = any>(url: string, data?: any, headers?: Record<string, string> | { params?: any }): Promise<APIResponse<T>> {
         return this.request<T>({
             method: 'PUT',
             url,
