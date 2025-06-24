@@ -181,27 +181,27 @@ function buildOutputSchema(endpoint: SwaggerEndpoint) {
     return { type: 'object' };
 }
 
-function endpointToToolDef(endpoint: SwaggerEndpoint, swaggerDefs?: Record<string, any>): MCPToolDef {
-    // const endpointPath = endpoint.path.substring("/api/v1".length);
-    const endpointPath = endpoint.path;
-    const toolDef: MCPToolDef = {
-        tool_name: toToolName(endpoint.operationId),
-        description: enrichDescription(endpoint),
-        input_schema: flattenAllOfSchema(buildInputSchema(endpoint, swaggerDefs)),
-        output_schema: flattenAllOfSchema(buildOutputSchema(endpoint)),
-        method: endpoint.method,
-        endpoint: endpointPath,
-        tags: endpoint.tags ?? []
-    };
+async function endpointToToolDef(endpoint: SwaggerEndpoint, swaggerDefs?: Record<string, any>): Promise<MCPToolDef> {
+	// const endpointPath = endpoint.path.substring("/api/v1".length);
+	const endpointPath = endpoint.path;
+	const toolDef: MCPToolDef = {
+		tool_name: toToolName(endpoint.operationId),
+		description: await enrichDescription(endpoint),
+		input_schema: flattenAllOfSchema(buildInputSchema(endpoint, swaggerDefs)),
+		output_schema: flattenAllOfSchema(buildOutputSchema(endpoint)),
+		method: endpoint.method,
+		endpoint: endpointPath,
+		tags: endpoint.tags ?? []
+	};
 
-    if (endpoint.summary) {
-        toolDef.summary = endpoint.summary;
-    }
-    if (endpoint.description) {
-        toolDef.endpoint_description = endpoint.description;
-    }
+	if (endpoint.summary) {
+		toolDef.summary = endpoint.summary;
+	}
+	if (endpoint.description) {
+		toolDef.endpoint_description = endpoint.description;
+	}
 
-    return toolDef;
+	return toolDef;
 }
 
 // Convert OpenAPI (swagger.json) to array of endpoint objects
@@ -246,38 +246,38 @@ function splitChunks<T>(arr: T[], maxPerChunk: number): T[][] {
     return out;
 }
 
-function main() {
-    try {
-        ensureDir(OUT_DIR);
-        const swagger = safeReadJSON(SWAGGER_PATH);
-        if (!swagger || !swagger.paths) {
-            console.error('Invalid def/swagger.json');
-            return;
-        }
-        const swaggerDefs =
-            swagger.definitions ||
-            (swagger.components && swagger.components.schemas) ||
-            {};
-        const endpoints: SwaggerEndpoint[] = convertSwaggerToStructuredData(swagger);
-        const toolDefs: MCPToolDef[] = [];
-        for (const ep of endpoints) {
-            if (!ep.operationId || !ep.method || !ep.path) continue;
-            try {
-                toolDefs.push(endpointToToolDef(ep, swaggerDefs));
-            } catch (e) {
-                console.error('Failed to process endpoint:', ep.operationId, e);
-            }
-        }
-        const chunkSize = 20;
-        const chunks = splitChunks(toolDefs, chunkSize);
-        chunks.forEach((chunk, idx) => {
-            const outPath = path.join(OUT_DIR, `tools-${idx + 1}.json`);
-            fs.writeFileSync(outPath, JSON.stringify(chunk, null, '\t'));
-        });
-        console.log(`Generated ${chunks.length} tool definition files in ${OUT_DIR}`);
-    } catch (e) {
-        console.error('Fatal error:', e);
-    }
+async function main() {
+	try {
+		ensureDir(OUT_DIR);
+		const swagger = safeReadJSON(SWAGGER_PATH);
+		if (!swagger || !swagger.paths) {
+			console.error('Invalid def/swagger.json');
+			return;
+		}
+		const swaggerDefs =
+			swagger.definitions ||
+			(swagger.components && swagger.components.schemas) ||
+			{};
+		const endpoints: SwaggerEndpoint[] = convertSwaggerToStructuredData(swagger);
+		const toolDefs: MCPToolDef[] = [];
+		for (const ep of endpoints) {
+			if (!ep.operationId || !ep.method || !ep.path) continue;
+			try {
+				toolDefs.push(await endpointToToolDef(ep, swaggerDefs));
+			} catch (e) {
+				console.error('Failed to process endpoint:', ep.operationId, e);
+			}
+		}
+		const chunkSize = 20;
+		const chunks = splitChunks(toolDefs, chunkSize);
+		chunks.forEach((chunk, idx) => {
+			const outPath = path.join(OUT_DIR, `tools-${idx + 1}.json`);
+			fs.writeFileSync(outPath, JSON.stringify(chunk, null, '\t'));
+		});
+		console.log(`Generated ${chunks.length} tool definition files in ${OUT_DIR}`);
+	} catch (e) {
+		console.error('Fatal error:', e);
+	}
 }
 
 main();

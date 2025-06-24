@@ -1,7 +1,12 @@
 // Batch flatten input_schema for POST/PUT tools in mcp-tools-generated/tools-*.json
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
 import { flattenSchema } from '../flattening/schema-resolver';
+
+// Use ES module compatible __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const GENERATED_DIR = path.resolve(__dirname, '../../mcp-tools-generated');
 
@@ -58,7 +63,8 @@ function main() {
 	console.log('Flattening complete. Files updated:', totalChanged);
 }
 
-if (require.main === module) {
+// ES module compatible entry point check
+if (import.meta.url === `file://${process.argv[1]}`) {
 	try {
 		main();
 	} catch (e) {

@@ -7,6 +7,7 @@ import { authMiddleware } from '../auth/auth-middleware.js';
 import { TokenData } from '../types/api-types.js';
 import { CLIConfig } from './types/cli-types.js';
 import { logger } from '../utils/logger.js';
+import { tokenStore } from '../auth/token-store.js';
 
 export class OAuthFlowHandler {
 	private oauthManager: OAuthManager;
@@ -36,7 +37,6 @@ export class OAuthFlowHandler {
 			if (!token) return null;
 			
 			// Get token details from token store
-			const tokenStore = require('../auth/token-store.js').tokenStore;
 			return {
 				accessToken: token,
 				refreshToken: tokenStore.getRefreshToken() || '',

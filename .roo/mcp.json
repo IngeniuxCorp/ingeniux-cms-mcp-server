@@ -1,3 +1,32 @@
 {
-  "mcpServers": {}
+  "mcpServers": {
+    "ingeniux-cms": {
+      "command": "node",
+      "args": [
+        "./dist/index.js"
+      ],
+      "env": {
+        "CMS_BASE_URL": "http://localhost/cxp4/api",
+        "OAUTH_CLIENT_ID": "YzgxMzg1ZWMxYTYwNDE0NzlkNzZlODYzY2Y3M2E4NWE",
+        "OAUTH_CLIENT_SECRET": "f/7DXqeX61/RgA72Ll8lF6Eiydl75jaiGHp6DvL3elivKyKozcr6S+nlS55WBcFfW/bSsATT930=",
+        "OAUTH_REDIRECT_URI": "urn:ietf:wg:oauth:2.0:oob",
+        "API_TIMEOUT": "10000",
+        "MAX_RETRIES": "3",
+        "LOG_LEVEL": "info",
+        "CACHE_TTL": "300",
+        "ENABLE_FILE_LOGGING": "true"
+      },
+      "alwaysAllow": [
+        "health_check",
+        "auth_status",
+        "initiate_oauth",
+        "cms_get_page",
+        "cms_create_page",
+        "cms_update_page",
+        "Workflow_ListWorkflowDefinitions",
+        "Pages Tools",
+        "cms_endpoint_executor"
+      ]
+    }
+  }
 }

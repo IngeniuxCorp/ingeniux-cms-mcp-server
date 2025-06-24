@@ -6,6 +6,7 @@ import { OAuthManager } from './oauth-manager.js';
 import { AuthenticatedRequest, MCPRequest } from '../types/mcp-types.js';
 import { errorHandler } from '../utils/error-handler.js';
 import { logger } from '../utils/logger.js';
+import { tokenStore } from './token-store.js';
 
 export class AuthMiddleware {
 	private static instance: AuthMiddleware;
@@ -200,13 +201,16 @@ export class AuthMiddleware {
 			});
 			
 			if (isAuthenticated) {
-				const tokenStore = require('./token-store.js').tokenStore;
+				// tokenStore is already imported at the top
 				const expiry = tokenStore.getExpirationTime();
 				
-				const result = {
-					isAuthenticated: true,
-					tokenExpiry: expiry || undefined
+				const result: { isAuthenticated: boolean; tokenExpiry?: Date } = {
+					isAuthenticated: true
 				};
+				
+				if (expiry) {
+					result.tokenExpiry = expiry;
+				}
 
 				logger.info('getAuthStatus() - Method exit - Authenticated', {
 					operation: 'getAuthStatus',
@@ -263,7 +267,6 @@ export class AuthMiddleware {
 				return false;
 			}
 
-			const tokenStore = require('./token-store.js').tokenStore;
 			const expiresWithin10Min = tokenStore.expiresWithin(10);
 			
 			logger.debug('refreshIfNeeded() - Token expiry check', {

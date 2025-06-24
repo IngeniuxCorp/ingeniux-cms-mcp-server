@@ -2,6 +2,11 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 // Types for endpoint definitions and responses
 type MCPToolDef = {
 	tool_name: string;
@@ -224,7 +229,7 @@ function getAvailableCategories() {
 	}
 }
 
-// Main handler
+// Main handler (must be exported)
 export async function listEndpoints(args: EndpointListerArgs): Promise<EndpointListingResponse | EndpointListerErrorResponse> {
 	try {
 		const validatedArgs = validateListerInput(args);

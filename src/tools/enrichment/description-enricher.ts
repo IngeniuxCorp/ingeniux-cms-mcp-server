@@ -79,7 +79,7 @@ export class DescriptionEnricher {
 }
 
 // Factory function to create enricher with default strategies
-export function createDefaultEnricher(): DescriptionEnricher {
+export async function createDefaultEnricher(): Promise<DescriptionEnricher> {
 	try {
 		// Import strategies dynamically to avoid circular imports
 		const {
@@ -87,7 +87,7 @@ export function createDefaultEnricher(): DescriptionEnricher {
 			TagDescriptionStrategy,
 			OperationIdStrategy,
 			FallbackStrategy
-		} = require('./enrichment-strategies.js');
+		} = await import('./enrichment-strategies.js');
 
 		const strategies = [
 			new SummaryStrategy(),
@@ -104,9 +104,9 @@ export function createDefaultEnricher(): DescriptionEnricher {
 }
 
 // Utility function for backward compatibility
-export function enrichDescription(endpoint: SwaggerEndpoint): string {
+export async function enrichDescription(endpoint: SwaggerEndpoint): Promise<string> {
 	try {
-		const enricher = createDefaultEnricher();
+		const enricher = await createDefaultEnricher();
 		return enricher.enrich(endpoint);
 	} catch (e) {
 		// Fallback to basic description

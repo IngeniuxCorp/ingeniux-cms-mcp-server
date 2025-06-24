@@ -1,126 +1,69 @@
-// Auto-generated MCP tool loader for Swagger-based endpoints
-import * as fs from 'fs';
-import * as path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+// MCP tool registry for Swagger-based endpoints (3-tool system)
 import { APIClient } from '../api/api-client.js';
 import { MCPTool } from '../types/mcp-types.js';
-import { logger } from '../utils/logger.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const GENERATED_DIR = path.resolve(__dirname, '../../mcp-tools-generated');
+// Import new modular tools
+import { listEndpoints } from './endpoint-lister.js';
+import { provideSchema } from './schema-provider.js';
+import { executeEndpoint } from './endpoint-executor.js';
 
-type MCPToolDef = {
-	tool_name: string;
-	description: string;
-	input_schema: any;
-	output_schema: any;
-	method: string;
-	endpoint: string;
-	tags?: string[];
-};
-
-function loadSwaggerToolDefs(): MCPToolDef[] {
-	const files = fs.readdirSync(GENERATED_DIR)
-		.filter(f => f.startsWith('tools-') && f.endsWith('.json'));
-	const all: MCPToolDef[] = [];
-	for (const file of files) {
-		const fullPath = path.join(GENERATED_DIR, file);
-		try {
-			const chunk = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
-			if (Array.isArray(chunk)) all.push(...chunk);
-		} catch (e) {
-			console.error('Failed to load tool def:', file, e);
-		}
-	}
-	return all;
-}
-
-function buildToolHandler(def: MCPToolDef, apiClient: APIClient) {
-	return async (args: any) => {
-		const method = def.method.toUpperCase();
-		let url = def.endpoint;
-		try {		
-
-			let resp;
-			switch (method) {
-				case 'GET':
-					resp = await apiClient.get(url, args);
-					break;
-				case 'POST':
-					resp = await apiClient.post(url, args);
-					break;
-				case 'PUT':
-					resp = await apiClient.put(url, args);
-					break;
-				case 'DELETE':
-					// For Swagger MCP tools, treat DELETE like GET: all params as query string
-					resp = await apiClient.request({ method: 'DELETE', url, params: args });
-					break;
-				case 'PATCH':
-					// For Swagger MCP tools, treat PATCH like GET: all params as query string
-					resp = await apiClient.request({ method: 'PATCH', url, params: args });
-					break;
-				default:
-					throw new Error('Unsupported HTTP method: ' + method);
+// Utility to wrap tool result in ToolResult format
+function wrapResult(result: any): any {
+	return {
+		content: [
+			{
+				type: 'text',
+				text: typeof result === 'string' ? result : JSON.stringify(result, null, 2)
 			}
-			return {
-				content: [
-					{
-						type: 'text' as const,
-						text: typeof resp === 'string' ? resp : JSON.stringify(resp)
-					}
-				]
-			};
-		} catch (e) {
-			// Collect detailed error info for logging
-			const errorDetails: Record<string, any> = {};
-			if (e && typeof e === 'object') {
-				const err = e as any;
-				errorDetails.message = err.message ?? '';
-				errorDetails.stack = err.stack ?? '';
-				errorDetails.code = err.code ?? '';
-				errorDetails.data = err.data ?? '';
-				errorDetails.response = err.response ?? '';
-				errorDetails.toString = typeof err.toString === 'function' ? err.toString() : String(err);
-				// Include all enumerable properties
-				for (const key of Object.keys(err)) {
-					if (!(key in errorDetails)) {
-						errorDetails[key] = err[key];
-					}
-				}
-			} else {
-				errorDetails.raw = String(e);
-			}
-			logger.error(
-				`Tool call failed for ${def.tool_name} (${def.method} ${def.endpoint})`,
-				{ error: errorDetails, args }
-			);
-			return {
-				content: [
-					{
-						type: 'text' as const,
-						text:
-							e instanceof Error
-								? (e.message || e.toString())
-								: String(e)
-					}
-				],
-				isError: true
-			};
-		}
+		]
 	};
 }
 
+// Tool registry
 export function getSwaggerMcpTools(apiClient: APIClient): MCPTool[] {
-	const defs = loadSwaggerToolDefs();
-	return defs.map(def => ({
-		name: def.tool_name,
-		description: def.description,
-		inputSchema: def.input_schema,
-		outputSchema: def.output_schema,
-		handler: buildToolHandler(def, apiClient),
-		tags: def.tags || []
-	}));
+	return [
+		{
+			name: 'cms_endpoint_lister',
+			description: 'List available CMS endpoints for LLM selection and decision-making',
+			inputSchema: {
+				type: 'object',
+				properties: {
+					category_filter: { type: 'string', description: 'Filter by endpoint category' },
+					method_filter: { type: 'string', enum: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'] },
+					search_term: { type: 'string', description: 'Search term for endpoint names/descriptions' },
+					include_details: { type: 'boolean', default: false, description: 'Include detailed endpoint information' }
+				}
+			},
+			handler: async (args: any) => wrapResult(await listEndpoints(args))
+		},
+		{
+			name: 'cms_schema_provider',
+			description: 'Provide endpoint schemas and execution instructions based on LLM selection',
+			inputSchema: {
+				type: 'object',
+				properties: {
+					tool_name: { type: 'string', description: 'Selected tool name from endpoint listing' },
+					method: { type: 'string', enum: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'] },
+					endpoint_path: { type: 'string', description: 'Selected endpoint path' }
+				},
+				required: ['tool_name', 'method', 'endpoint_path']
+			},
+			handler: async (args: any) => wrapResult(await provideSchema(args))
+		},
+		{
+			name: 'cms_endpoint_executor',
+			description: 'Execute validated CMS API calls with resolved endpoint paths',
+			inputSchema: {
+				type: 'object',
+				properties: {
+					endpoint_path: { type: 'string', description: 'Resolved API endpoint path' },
+					method: { type: 'string', enum: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'] },
+					request_data: { type: 'object', description: 'Request parameters and body data' },
+					validation_required: { type: 'boolean', default: true }
+				},
+				required: ['endpoint_path', 'method']
+			},
+			handler: (args: any) => executeEndpoint(args, apiClient)
+		}
+	];
 }

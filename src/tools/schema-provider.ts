@@ -1,6 +1,11 @@
 // Schema Provider Tool: Provides endpoint schemas and execution instructions based on LLM selection
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
+
+// Use ES module compatible __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Types for endpoint definitions and responses
 type MCPToolDef = {
@@ -49,6 +54,13 @@ type TypeAnalysis = {
 	has_complex_types: boolean;
 };
 
+type MethodInfo = {
+	description: string;
+	uses_query_params: boolean;
+	uses_body: boolean;
+	idempotent: boolean;
+};
+
 type ParameterAnalysis = {
 	total_parameters: number;
 	required_parameters: ParameterDetail[];
@@ -57,13 +69,6 @@ type ParameterAnalysis = {
 	type_analysis: TypeAnalysis;
 	requires_body: boolean;
 	method_info: MethodInfo;
-};
-
-type MethodInfo = {
-	description: string;
-	uses_query_params: boolean;
-	uses_body: boolean;
-	idempotent: boolean;
 };
 
 type ParameterGuidance = {
@@ -109,6 +114,7 @@ type SchemaProviderErrorResponse = {
 const GENERATED_DIR = path.resolve(__dirname, '../../mcp-tools-generated');
 const SUPPORTED_METHODS = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'];
 
+// --- Helper functions ---
 function loadSwaggerToolDefs(): MCPToolDef[] {
 	try {
 		const files = fs.readdirSync(GENERATED_DIR)
@@ -202,12 +208,7 @@ function extractSchemas(endpoint: MCPToolDef) {
 	const outputSchema = endpoint.output_schema || { type: 'object' };
 	const normalizedInput = normalizeSchema(inputSchema);
 	const normalizedOutput = normalizeSchema(outputSchema);
-	return {
-		input: normalizedInput,
-		output: normalizedOutput,
-		has_input_schema: !!endpoint.input_schema,
-		has_output_schema: !!endpoint.output_schema
-	};
+	return { input: normalizedInput, output: normalizedOutput };
 }
 
 function normalizeSchema(schema: any): NormalizedSchema {
@@ -343,18 +344,9 @@ function generateParameterGuidance(paramInfo: ParameterAnalysis): ParameterGuida
 	return guidance;
 }
 
-function generateOverview(endpoint: MCPToolDef, paramInfo: ParameterAnalysis) {
-	return `
-Execute ${endpoint.method} request to ${endpoint.endpoint}
-Description: ${endpoint.description}
-Method: ${paramInfo.method_info.description}
-Requires body data: ${paramInfo.requires_body ? 'Yes' : 'No'}
-Total parameters: ${paramInfo.total_parameters}
-Required parameters: ${paramInfo.required_parameters.length}
-	`.trim();
-}
-
-function generateExampleCall(endpoint: MCPToolDef, paramInfo: ParameterAnalysis) {
+function generateExecutionInstructions(endpoint: MCPToolDef, paramInfo: ParameterAnalysis): ExecutionInstructions {
+	const overview = `Execute ${endpoint.method} request to ${endpoint.endpoint}. ${endpoint.description}. Method: ${paramInfo.method_info.description}. Requires body: ${paramInfo.requires_body ? 'Yes' : 'No'}. Total parameters: ${paramInfo.total_parameters}. Required: ${paramInfo.required_parameters.length}`;
+	
 	const exampleData: Record<string, any> = {};
 	for (const param of paramInfo.required_parameters) {
 		exampleData[param.name] = generateParamExample(param);
@@ -363,60 +355,42 @@ function generateExampleCall(endpoint: MCPToolDef, paramInfo: ParameterAnalysis)
 		const firstOptional = paramInfo.optional_parameters[0];
 		exampleData[firstOptional.name] = generateParamExample(firstOptional);
 	}
-	return {
-		tool_name: 'cms_endpoint_executor',
-		parameters: {
-			endpoint_path: endpoint.endpoint,
-			method: endpoint.method,
-			request_data: exampleData
-		},
-		description: `Example call to execute ${endpoint.method} ${endpoint.endpoint}`
-	};
-}
-
-function generateNextStepInstruction(endpoint: MCPToolDef, _paramInfo: ParameterAnalysis) {
-	return `
-To execute this endpoint, call the 'cms_endpoint_executor' tool with:
-{
-  "endpoint_path": "${endpoint.endpoint}",
-  "method": "${endpoint.method}",
-  "request_data": { /* fill with required and optional parameters as shown above */ }
-}
-This will perform the actual API call using the provided schemas and parameter guidance.
-	`.trim();
-}
-
-function generateValidationNotes(paramInfo: ParameterAnalysis) {
-	const notes: string[] = [];
+	
+	const validationNotes: string[] = [];
 	if (paramInfo.path_parameters.length > 0) {
-		notes.push('Path parameters will be automatically interpolated into the URL');
+		validationNotes.push('Path parameters will be automatically interpolated into the URL');
 	}
 	if (paramInfo.requires_body) {
-		notes.push('Body parameters will be sent as JSON in the request body');
+		validationNotes.push('Body parameters will be sent as JSON in the request body');
 	} else {
-		notes.push('Parameters will be sent as query parameters');
+		validationNotes.push('Parameters will be sent as query parameters');
 	}
 	if (paramInfo.type_analysis.has_complex_types) {
-		notes.push('This endpoint has complex object/array parameters - review the schema carefully');
+		validationNotes.push('This endpoint has complex object/array parameters - review the schema carefully');
 	}
 	if (paramInfo.required_parameters.length > 0) {
-		notes.push(`${paramInfo.required_parameters.length} parameters are required for this endpoint`);
+		validationNotes.push(`${paramInfo.required_parameters.length} parameters are required for this endpoint`);
 	}
-	return notes;
-}
 
-function generateExecutionInstructions(endpoint: MCPToolDef, paramInfo: ParameterAnalysis): ExecutionInstructions {
 	return {
 		next_tool: 'cms_endpoint_executor',
-		overview: generateOverview(endpoint, paramInfo),
+		overview,
 		parameter_guidance: generateParameterGuidance(paramInfo),
-		example_call: generateExampleCall(endpoint, paramInfo),
-		validation_notes: generateValidationNotes(paramInfo),
-		next_step_instruction: generateNextStepInstruction(endpoint, paramInfo)
+		example_call: {
+			tool_name: 'cms_endpoint_executor',
+			parameters: {
+				endpoint_path: endpoint.endpoint,
+				method: endpoint.method,
+				request_data: exampleData
+			},
+			description: `Example call to execute ${endpoint.method} ${endpoint.endpoint}`
+		},
+		validation_notes: validationNotes,
+		next_step_instruction: `To execute this endpoint, call the 'cms_endpoint_executor' tool with: { "endpoint_path": "${endpoint.endpoint}", "method": "${endpoint.method}", "request_data": { /* fill with required and optional parameters as shown above */ } }. This will perform the actual API call using the provided schemas and parameter guidance.`
 	};
 }
 
-// Main handler
+// Main handler (must be exported)
 export async function provideSchema(args: SchemaProviderArgs): Promise<SchemaProviderResponse | SchemaProviderErrorResponse> {
 	try {
 		const validatedArgs = validateSchemaInput(args);
