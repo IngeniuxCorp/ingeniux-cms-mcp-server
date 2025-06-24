@@ -37,6 +37,7 @@ type EndpointListingResponse = {
 	categories: string[];
 	endpoints: Record<string, FormattedEndpoint[]>;
 	instructions: string;
+	next_step_instruction: string;
 };
 
 type EndpointListerErrorResponse = {
@@ -204,6 +205,12 @@ The schema provider will then give you the input/output schemas and execution in
 	`.trim();
 }
 
+function generateNextStepInstruction() {
+	return `
+To proceed, call the 'cms_schema_provider' tool with the selected endpoint's tool_name, method, and endpoint_path as shown above. This will provide you with the input/output schemas and instructions for execution.
+	`.trim();
+}
+
 function getAvailableCategories() {
 	try {
 		const all = loadSwaggerToolDefs();
@@ -230,7 +237,8 @@ export async function listEndpoints(args: EndpointListerArgs): Promise<EndpointL
 			total_endpoints: filteredEndpoints.length,
 			categories: Object.keys(categorized),
 			endpoints: formatted,
-			instructions: generateLLMSelectionInstructions()
+			instructions: generateLLMSelectionInstructions(),
+			next_step_instruction: generateNextStepInstruction()
 		};
 	} catch (error: any) {
 		return {

@@ -79,6 +79,7 @@ type ExecutionInstructions = {
 	parameter_guidance: ParameterGuidance;
 	example_call: any;
 	validation_notes: string[];
+	next_step_instruction: string;
 };
 
 type SchemaProviderResponse = {
@@ -373,6 +374,18 @@ function generateExampleCall(endpoint: MCPToolDef, paramInfo: ParameterAnalysis)
 	};
 }
 
+function generateNextStepInstruction(endpoint: MCPToolDef, paramInfo: ParameterAnalysis) {
+	return `
+To execute this endpoint, call the 'cms_endpoint_executor' tool with:
+{
+  "endpoint_path": "${endpoint.endpoint}",
+  "method": "${endpoint.method}",
+  "request_data": { /* fill with required and optional parameters as shown above */ }
+}
+This will perform the actual API call using the provided schemas and parameter guidance.
+	`.trim();
+}
+
 function generateValidationNotes(paramInfo: ParameterAnalysis) {
 	const notes: string[] = [];
 	if (paramInfo.path_parameters.length > 0) {
@@ -398,7 +411,8 @@ function generateExecutionInstructions(endpoint: MCPToolDef, paramInfo: Paramete
 		overview: generateOverview(endpoint, paramInfo),
 		parameter_guidance: generateParameterGuidance(paramInfo),
 		example_call: generateExampleCall(endpoint, paramInfo),
-		validation_notes: generateValidationNotes(paramInfo)
+		validation_notes: generateValidationNotes(paramInfo),
+		next_step_instruction: generateNextStepInstruction(endpoint, paramInfo)
 	};
 }
 
