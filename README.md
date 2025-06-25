@@ -143,6 +143,72 @@ Each module is kept under 500 lines for maintainability. The codebase uses:
 2. Register tool in the appropriate tool class
 3. Add tool to the registry in `src/core/mcp-server.ts`
 
+## Cursor Directory Publishing
+
+This MCP server is ready for submission to [cursor.directory](https://cursor.directory) with automated compliance validation and publishing workflow.
+
+### Publishing Workflow
+
+The project includes a comprehensive publishing system in [`src/marketplace/cursor-directory/`](src/marketplace/cursor-directory/):
+
+- **Validators**: [`repository-validator.ts`](src/marketplace/cursor-directory/validators/repository-validator.ts), [`mcp-compliance-validator.ts`](src/marketplace/cursor-directory/validators/mcp-compliance-validator.ts), [`documentation-validator.ts`](src/marketplace/cursor-directory/validators/documentation-validator.ts)
+- **Generators**: [`directory-entry-generator.ts`](src/marketplace/cursor-directory/generators/directory-entry-generator.ts), [`submission-pr-generator.ts`](src/marketplace/cursor-directory/generators/submission-pr-generator.ts), [`installation-guide-generator.ts`](src/marketplace/cursor-directory/generators/installation-guide-generator.ts)
+- **Orchestrator**: [`publishing-orchestrator.ts`](src/marketplace/cursor-directory/orchestrator/publishing-orchestrator.ts)
+- **Submitters**: [`cursor-directory-submitter.ts`](src/marketplace/cursor-directory/submitters/cursor-directory-submitter.ts), [`github-api-client.ts`](src/marketplace/cursor-directory/submitters/github-api-client.ts)
+
+### Submission Script Usage
+
+Use [`scripts/submit-to-cursor-directory.ts`](scripts/submit-to-cursor-directory.ts) for validation and submission:
+
+#### Validation Only
+```bash
+# Validate project structure and compliance
+bun run scripts/submit-to-cursor-directory.ts --validate-only
+
+# Validate specific project path
+bun run scripts/submit-to-cursor-directory.ts --validate-only --project-path /path/to/project
+```
+
+#### Full Submission
+```bash
+# Submit with GitHub token (environment variable)
+GITHUB_TOKEN=your_token bun run scripts/submit-to-cursor-directory.ts
+
+# Submit with explicit token
+bun run scripts/submit-to-cursor-directory.ts --github-token your_token
+
+# Dry run (simulate without creating PR)
+bun run scripts/submit-to-cursor-directory.ts --dry-run
+```
+
+#### Available Options
+- `--validate-only` - Run validation checks without submitting
+- `--project-path` - Path to project directory (default: current directory)
+- `--github-token` - GitHub token for API access (or use `GITHUB_TOKEN` env var)
+- `--dry-run` - Simulate submission without creating actual PR
+- `--verbose` - Enable verbose output
+- `--help` - Show help message
+
+### Prerequisites for Submission
+
+Before submitting to Cursor Directory, ensure:
+
+1. **Built Project**: Run `npm run build` to generate `dist/index.js`
+2. **Valid Package**: [`package.json`](package.json) with required fields (name, description, repository, license)
+3. **Documentation**: Complete [`README.md`](README.md) and [`LICENSE`](LICENSE) files
+4. **GitHub Repository**: Public repository with proper URL in [`package.json`](package.json)
+5. **GitHub Token**: Personal access token with repo permissions for submission
+
+### Validation Process
+
+The submission script validates:
+
+1. **Repository Structure** - Required files and build artifacts
+2. **MCP Compliance** - Protocol implementation and tool registration
+3. **Documentation** - README completeness and examples
+4. **Entry Generation** - Cursor Directory metadata creation
+5. **Submission** - Pull request creation to cursor.directory
+
 ## License
 
 MIT License - see LICENSE file for details.
