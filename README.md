@@ -242,7 +242,7 @@ LOG_LEVEL=debug
 
 ### Getting Help
 
-1. Check the [Issues](https://github.com/your-repo/issues) page for known problems
+1. Check the [Issues](https://github.com/IngeniuxCorp/ingeniux-cms-mcp-server/issues) page for known problems
 2. Review the error logs in the console output
 3. Verify your environment configuration matches the requirements
 4. For Ingeniux CMS specific issues, consult the official documentation

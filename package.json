@@ -1,6 +1,6 @@
 {
 	"name": "ingeniux-cms-mcp-server",
-	"version": "1.0.25",
+	"version": "0.8.26",
 	"description": "Production-ready Ingeniux CMS MCP server with OAuth, Roo integration, and modular architecture.",
 	"main": "dist/index.js",
 	"type": "module",
@@ -14,7 +14,7 @@
 		"dist",
 		"docs",
 		"mcp-tools-generated",
-		"install.sh",
+    "install.sh",
 		"install.ps1",
 		"Dockerfile",
 		".env.example",
@@ -52,13 +52,13 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ingeniux/ingeniux-cms-mcp-server.git"
+		"url": "https://github.com/IngeniuxCorp/ingeniux-cms-mcp-server.git"
 	},
-	"homepage": "https://github.com/ingeniux/ingeniux-cms-mcp-server#readme",
+	"homepage": "https://github.com/IngeniuxCorp/ingeniux-cms-mcp-server#readme",
 	"bugs": {
-		"url": "https://github.com/ingeniux/ingeniux-cms-mcp-server/issues"
+		"url": "https://github.com/IngeniuxCorp/ingeniux-cms-mcp-server/issues"
 	},
-	"author": "MCP Server Developer",
+	"author": "Arnold Wang",
 	"license": "MIT",
 	"publishConfig": {
 		"access": "public"
