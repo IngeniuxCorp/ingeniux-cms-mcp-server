@@ -1,12 +1,21 @@
 #!/usr/bin/env node
 /**
  * Entry point for Ingeniux CMS MCP Server
+ * Implements Model Context Protocol (MCP) server with:
+ * - Tool registration (listTools, callTool)
+ * - StdioServerTransport for communication
+ * - Input validation and error handling
+ * - OAuth authentication and CMS integration
  */
 
 import 'dotenv/config';
 import { mcpServer } from './core/mcp-server.js';
 import { configManager } from './utils/config-manager.js';
 import { logger } from './utils/logger.js';
+
+// MCP Server with registered tools and stdio transport
+// Tools include: cms_get_page, cms_create_page, cms_update_page, etc.
+// Uses @modelcontextprotocol/sdk for MCP implementation
 
 /**
  * Main function to start the MCP server

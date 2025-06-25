@@ -141,15 +141,9 @@ export class MCPServer {
 			// Handle tool listing
 			this.server.setRequestHandler(ListToolsRequestSchema, async () => {
 				try {
-					const result = await this.requestHandler.processRequest({
-						method: 'tools/list'
-					});
 					return {
-                        jsonrpc: '2.0',
-                        result: result.result,
-                        id: result.id,
-                        tools: toolRegistry.exportToolDefinitions()
-                    };
+						tools: toolRegistry.exportToolDefinitions()
+					};
 				} catch (error) {
 					throw errorHandler.handleError(error);
 				}

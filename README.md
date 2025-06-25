@@ -209,6 +209,44 @@ The submission script validates:
 4. **Entry Generation** - Cursor Directory metadata creation
 5. **Submission** - Pull request creation to cursor.directory
 
+## Troubleshooting
+
+### Common Issues
+
+#### Authentication Problems
+- **Error**: `OAuth authentication failed`
+  - **Solution**: Verify your `OAUTH_CLIENT_ID`, `OAUTH_CLIENT_SECRET`, and `OAUTH_REDIRECT_URI` in `.env`
+  - **Check**: Ensure the OAuth app is properly configured in your Ingeniux CMS instance
+
+#### Connection Issues
+- **Error**: `Connection timeout` or `ECONNREFUSED`
+  - **Solution**: Check your `CMS_BASE_URL` and ensure the CMS instance is accessible
+  - **Check**: Verify network connectivity and firewall settings
+
+#### Build Errors
+- **Error**: TypeScript compilation errors
+  - **Solution**: Run `npm install` to ensure all dependencies are installed
+  - **Check**: Verify Node.js version is >= 18.0.0
+
+#### Runtime Errors
+- **Error**: `Environment validation failed`
+  - **Solution**: Copy `.env.example` to `.env` and configure all required variables
+  - **Check**: Ensure all required environment variables are set
+
+### Debug Mode
+
+Enable debug logging by setting:
+```bash
+LOG_LEVEL=debug
+```
+
+### Getting Help
+
+1. Check the [Issues](https://github.com/your-repo/issues) page for known problems
+2. Review the error logs in the console output
+3. Verify your environment configuration matches the requirements
+4. For Ingeniux CMS specific issues, consult the official documentation
+
 ## License
 
 MIT License - see LICENSE file for details.
