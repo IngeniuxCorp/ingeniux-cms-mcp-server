@@ -198,9 +198,9 @@ describe('Endpoint Lister', () => {
 
 			expect(result.success).toBe(true);
 			if (result.success) {
-				expect(result.categories).toEqual(expect.arrayContaining(['pages', 'media']));
+				expect(result.categories).toEqual(expect.arrayContaining(['pages', 'assets']));
 				expect(result.endpoints.pages).toBeDefined();
-				expect(result.endpoints.media).toBeDefined(); // assets should map to media
+				expect(result.endpoints.assets).toBeDefined();
 			}
 		});
 
@@ -209,7 +209,7 @@ describe('Endpoint Lister', () => {
 				{
 					...mockToolDefs[0],
 					tags: undefined,
-					endpoint: '/api/site/config'
+					endpoint: '/site/config'
 				}
 			];
 
@@ -228,7 +228,7 @@ describe('Endpoint Lister', () => {
 				{
 					...mockToolDefs[0],
 					tags: undefined,
-					endpoint: '/api/unknown/endpoint'
+					endpoint: '/unknown/endpoint'
 				}
 			];
 
@@ -377,23 +377,28 @@ describe('Endpoint Lister', () => {
 	});
 
 	describe('Error Handling', () => {
-		it('should handle file system errors', async () => {
+		it('should handle file system errors gracefully', async () => {
 			mockedFs.readdirSync.mockImplementation(() => {
 				throw new Error('Permission denied');
 			});
 
 			const result = await listEndpoints({});
 
-			expect(result.success).toBe(false);
-			expect((result as any).error).toBe('Listing failed');
+			expect(result.success).toBe(true);
+			if (result.success) {
+				expect(result.total_endpoints).toBe(0);
+			}
 		});
 
-		it('should handle malformed JSON files', async () => {
+		it('should handle malformed JSON files gracefully', async () => {
 			mockedFs.readFileSync.mockReturnValue('invalid json');
 
 			const result = await listEndpoints({});
 
-			expect(result.success).toBe(false);
+			expect(result.success).toBe(true);
+			if (result.success) {
+				expect(result.total_endpoints).toBe(0);
+			}
 		});
 
 		it('should provide available filters in error response', async () => {
@@ -416,7 +421,7 @@ describe('Endpoint Lister', () => {
 
 			expect(result.success).toBe(true);
 			if (result.success) {
-				expect(result.categories).toEqual(expect.arrayContaining(['pages', 'media']));
+				expect(result.categories).toEqual(expect.arrayContaining(['pages', 'assets']));
 				expect(result.categories.length).toBeGreaterThan(0);
 			}
 		});

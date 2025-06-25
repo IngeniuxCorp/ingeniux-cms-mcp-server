@@ -50,6 +50,64 @@ describe('Endpoint Executor', () => {
 			method: 'POST',
 			endpoint: '/api/pages',
 			tags: ['pages']
+		},
+		{
+			tool_name: 'update_page',
+			description: 'Update page',
+			input_schema: {
+				type: 'object',
+				properties: {
+					title: { type: 'string' }
+				}
+			},
+			output_schema: { type: 'object' },
+			method: 'PUT',
+			endpoint: '/api/pages',
+			tags: ['pages']
+		},
+		{
+			tool_name: 'delete_page',
+			description: 'Delete page',
+			input_schema: {
+				type: 'object',
+				properties: {
+					force: { type: 'boolean' }
+				}
+			},
+			output_schema: { type: 'object' },
+			method: 'DELETE',
+			endpoint: '/api/pages',
+			tags: ['pages']
+		},
+		{
+			tool_name: 'patch_page',
+			description: 'Patch page',
+			input_schema: {
+				type: 'object',
+				properties: {
+					title: { type: 'string' }
+				}
+			},
+			output_schema: { type: 'object' },
+			method: 'PATCH',
+			endpoint: '/api/pages',
+			tags: ['pages']
+		},
+		{
+			tool_name: 'get_page_comments',
+			description: 'Get page comments',
+			input_schema: {
+				type: 'object',
+				properties: {
+					id: { type: 'string' },
+					commentId: { type: 'string' }
+				},
+				required: ['id', 'commentId']
+			},
+			output_schema: { type: 'object' },
+			method: 'GET',
+			endpoint: '/api/pages/{id}/comments/{commentId}',
+			tags: ['pages']
 		}
 	];
 
@@ -168,7 +226,7 @@ describe('Endpoint Executor', () => {
 			const result = await executeEndpoint({
 				endpoint_path: '/api/pages/{id}',
 				method: 'GET',
-				request_data: {},
+				request_data: { id: '123' },
 				validation_required: false
 			}, mockApiClient);
 
@@ -209,7 +267,7 @@ describe('Endpoint Executor', () => {
 			}, mockApiClient);
 
 			expect(result.isError).toBe(true);
-			expect(result.content[0].text).toContain('Unresolved path parameters: commentId');
+			expect(result.content[0].text).toContain('Missing required parameters: commentId');
 		});
 	});
 

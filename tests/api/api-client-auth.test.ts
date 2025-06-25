@@ -22,6 +22,7 @@ global.AbortSignal = {
 // Mock auth middleware
 jest.mock('../../src/auth/auth-middleware', () => ({
 	authMiddleware: {
+		initialize: jest.fn(),
 		isAuthenticated: jest.fn(),
 		authenticate: jest.fn()
 	}
@@ -66,7 +67,10 @@ describe('APIClient - Authorization Header Injection', () => {
 				status: 200,
 				statusText: 'OK',
 				headers: new Headers({ 'content-type': 'application/json' }),
-				json: jest.fn().mockResolvedValue({ data: 'success' })
+				json: jest.fn().mockResolvedValue({ data: 'success' }),
+				blob: jest.fn().mockResolvedValue(new Blob([])),
+				text: jest.fn().mockResolvedValue(''),
+				arrayBuffer: jest.fn().mockResolvedValue(new ArrayBuffer(0))
 			};
 			mockFetch.mockResolvedValueOnce(mockResponse);
 

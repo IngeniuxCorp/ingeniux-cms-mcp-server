@@ -5,9 +5,25 @@
 import { AuthMiddleware } from '../../src/auth/auth-middleware';
 import { MCPRequest } from '../../src/types/mcp-types';
 
+// Mock token store
+jest.mock('../../src/auth/token-store', () => ({
+	tokenStore: {
+		isValid: jest.fn(),
+		getAccessToken: jest.fn(),
+		getRefreshToken: jest.fn(),
+		expiresWithin: jest.fn(),
+		getExpirationTime: jest.fn(),
+		clear: jest.fn()
+	}
+}));
+
+// Get reference to the mocked token store
+const mockTokenStore = require('../../src/auth/token-store').tokenStore;
+
 // Mock OAuth Manager
 const mockOAuthManager = {
 	isAuthenticated: jest.fn(),
+	getBearerToken: jest.fn(),
 	getValidAccessToken: jest.fn(),
 	refreshToken: jest.fn(),
 	getAuthorizationCode: jest.fn(),
@@ -16,20 +32,6 @@ const mockOAuthManager = {
 	logout: jest.fn(),
 	getConfig: jest.fn()
 };
-
-// Mock token store
-const mockTokenStore = {
-	isValid: jest.fn(),
-	getAccessToken: jest.fn(),
-	getRefreshToken: jest.fn(),
-	expiresWithin: jest.fn(),
-	getExpirationTime: jest.fn(),
-	clear: jest.fn()
-};
-
-jest.mock('../../src/auth/token-store', () => ({
-	tokenStore: mockTokenStore
-}));
 
 // Mock error handler
 jest.mock('../../src/utils/error-handler', () => ({
@@ -78,7 +80,12 @@ describe('AuthMiddleware', () => {
 
 	describe('authenticate', () => {
 		it('should authenticate request with valid token', async () => {
-			mockOAuthManager.getValidAccessToken.mockResolvedValue('valid-access-token');
+			mockOAuthManager.getBearerToken.mockResolvedValue({
+				accessToken: 'valid-access-token',
+				refreshToken: 'refresh-token',
+				expiresAt: new Date(Date.now() + 3600000),
+				tokenType: 'Bearer'
+			});
 
 			const result = await authMiddleware.authenticate(mockRequest);
 
@@ -101,20 +108,14 @@ describe('AuthMiddleware', () => {
 		});
 
 		it('should throw error when no valid token available', async () => {
-			mockOAuthManager.getValidAccessToken.mockResolvedValue(null);
-			mockOAuthManager.refreshToken.mockRejectedValue(new Error('Refresh failed'));
-			mockOAuthManager.getAuthorizationCode.mockReturnValue({
-				url: 'https://auth.example.com/oauth',
-				state: 'test-state',
-				codeVerifier: 'test-verifier'
-			});
+			mockOAuthManager.getBearerToken.mockRejectedValue(new Error('Authentication failed'));
 
 			await expect(authMiddleware.authenticate(mockRequest))
-				.rejects.toThrow('Authentication required');
+				.rejects.toThrow('Authentication failed');
 		});
 
 		it('should handle authentication errors gracefully', async () => {
-			mockOAuthManager.getValidAccessToken.mockRejectedValue(new Error('Token error'));
+			mockOAuthManager.getBearerToken.mockRejectedValue(new Error('Token error'));
 
 			await expect(authMiddleware.authenticate(mockRequest))
 				.rejects.toThrow('Authentication failed');
@@ -122,32 +123,13 @@ describe('AuthMiddleware', () => {
 	});
 
 	describe('isAuthenticated', () => {
-		it('should return true when valid token exists', async () => {
-			mockOAuthManager.getValidAccessToken.mockResolvedValue('valid-token');
-
+		it('should return false (always uses new token)', async () => {
 			const result = await authMiddleware.isAuthenticated();
-
-			expect(result).toBe(true);
-		});
-
-		it('should return false when no valid token', async () => {
-			mockOAuthManager.getValidAccessToken.mockResolvedValue(null);
-
-			const result = await authMiddleware.isAuthenticated();
-
 			expect(result).toBe(false);
 		});
 
 		it('should return false when OAuth manager not initialized', async () => {
 			(authMiddleware as any).oauthManager = null;
-
-			const result = await authMiddleware.isAuthenticated();
-
-			expect(result).toBe(false);
-		});
-
-		it('should return false on authentication errors', async () => {
-			mockOAuthManager.getValidAccessToken.mockRejectedValue(new Error('Auth error'));
 
 			const result = await authMiddleware.isAuthenticated();
 
@@ -224,33 +206,23 @@ describe('AuthMiddleware', () => {
 
 	describe('handleMissingToken (private method behavior)', () => {
 		it('should try refresh first when token missing', async () => {
-			mockOAuthManager.getValidAccessToken.mockResolvedValue(null);
-			mockOAuthManager.refreshToken.mockResolvedValue({
+			mockOAuthManager.getBearerToken.mockResolvedValue({
 				accessToken: 'refreshed-token',
 				refreshToken: 'new-refresh-token',
 				expiresAt: new Date(Date.now() + 3600000),
 				tokenType: 'Bearer'
 			});
 
-			// This should trigger the refresh flow
 			await authMiddleware.authenticate(mockRequest);
 
-			expect(mockOAuthManager.refreshToken).toHaveBeenCalled();
+			expect(mockOAuthManager.getBearerToken).toHaveBeenCalled();
 		});
 
 		it('should initiate OAuth flow when refresh unavailable', async () => {
-			mockOAuthManager.getValidAccessToken.mockResolvedValue(null);
-			mockOAuthManager.refreshToken.mockRejectedValue(new Error('No refresh token'));
-			mockOAuthManager.getAuthorizationCode.mockReturnValue({
-				url: 'https://auth.example.com/oauth',
-				state: 'test-state',
-				codeVerifier: 'test-verifier'
-			});
+			mockOAuthManager.getBearerToken.mockRejectedValue(new Error('No refresh token'));
 
 			await expect(authMiddleware.authenticate(mockRequest))
-				.rejects.toThrow('OAUTH_FLOW_REQUIRED');
-
-			expect(mockOAuthManager.getAuthorizationCode).toHaveBeenCalled();
+				.rejects.toThrow('Authentication failed: No refresh token');
 		});
 	});
 

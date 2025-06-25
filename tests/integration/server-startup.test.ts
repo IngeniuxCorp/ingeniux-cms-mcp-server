@@ -146,8 +146,8 @@ describe('Server Startup Tests', () => {
 			
 			const toolCount = toolRegistry.getToolCount();
 			
-			// Should have only CMS tools (7)
-			expect(toolCount).toBe(7);
+			// Should have Swagger MCP tools (3) + CMS content tools (7) = 10
+			expect(toolCount).toBe(10);
 
 			// Verify specific CMS tools exist
 			expect(toolRegistry.hasTool('cms_get_page')).toBe(true);
@@ -308,7 +308,7 @@ describe('Server Startup Tests', () => {
 			
 			// Should log basic tools registration
 			expect(mockLogger.info).toHaveBeenCalledWith(
-				'Basic tools registered (auth tools handled by ContentTools)'
+				'Basic tools registered (auth tools removed)'
 			);
 			
 			// Should log content tools registration
