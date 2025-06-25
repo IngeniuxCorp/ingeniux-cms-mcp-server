@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /**
  * Entry point for Ingeniux CMS MCP Server
  */

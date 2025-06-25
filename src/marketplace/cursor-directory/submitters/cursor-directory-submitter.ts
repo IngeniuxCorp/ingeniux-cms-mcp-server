@@ -281,8 +281,12 @@ export class CursorDirectorySubmitter {
 
 			if (prResult.success) {
 				result.success = true;
-				result.prUrl = prResult.prUrl;
-				result.prNumber = prResult.prNumber;
+				if (prResult.prUrl) {
+					result.prUrl = prResult.prUrl;
+				}
+				if (prResult.prNumber) {
+					result.prNumber = prResult.prNumber;
+				}
 			} else {
 				result.errors.push(`Failed to create pull request: ${prResult.error}`);
 			}
@@ -388,7 +392,7 @@ export class CursorDirectorySubmitter {
 	 * Checks for potential duplicate entries
 	 */
 	private async checkForDuplicateEntry(
-		entry: CursorDirectoryEntry,
+		_entry: CursorDirectoryEntry,
 		warnings: string[]
 	): Promise<void> {
 		try {

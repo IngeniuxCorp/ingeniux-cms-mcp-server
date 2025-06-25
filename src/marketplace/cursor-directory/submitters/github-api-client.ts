@@ -72,14 +72,14 @@ export class GitHubApiClient {
 			const response = await this.makeRequest('POST', endpoint, {});
 			
 			if (response.ok) {
-				const data = await response.json();
+				const data = await response.json() as any;
 				return {
 					success: true,
 					forkUrl: data.clone_url,
 					forkName: data.full_name
 				};
 			} else {
-				const errorData = await response.json().catch(() => ({}));
+				const errorData = await response.json().catch(() => ({})) as any;
 				return {
 					success: false,
 					error: errorData.message || `HTTP ${response.status}: ${response.statusText}`
@@ -110,7 +110,7 @@ export class GitHubApiClient {
 				};
 			}
 
-			const baseRefData = await baseRefResponse.json();
+			const baseRefData = await baseRefResponse.json() as any;
 			const baseSha = baseRefData.object.sha;
 
 			// Create new branch
@@ -128,7 +128,7 @@ export class GitHubApiClient {
 					branchName
 				};
 			} else {
-				const errorData = await response.json().catch(() => ({}));
+				const errorData = await response.json().catch(() => ({})) as any;
 				return {
 					success: false,
 					error: errorData.message || `Failed to create branch: HTTP ${response.status}`
@@ -162,7 +162,7 @@ export class GitHubApiClient {
 			try {
 				const existingFileResponse = await this.makeRequest('GET', `${endpoint}?ref=${branch}`);
 				if (existingFileResponse.ok) {
-					const existingFileData = await existingFileResponse.json();
+					const existingFileData = await existingFileResponse.json() as any;
 					sha = existingFileData.sha;
 				}
 			} catch {
@@ -184,7 +184,7 @@ export class GitHubApiClient {
 					filePath
 				};
 			} else {
-				const errorData = await response.json().catch(() => ({}));
+				const errorData = await response.json().catch(() => ({})) as any;
 				return {
 					success: false,
 					error: errorData.message || `Failed to create/update file: HTTP ${response.status}`
@@ -224,14 +224,14 @@ export class GitHubApiClient {
 			const response = await this.makeRequest('POST', endpoint, payload);
 			
 			if (response.ok) {
-				const data = await response.json();
+				const data = await response.json() as any;
 				return {
 					success: true,
 					prUrl: data.html_url,
 					prNumber: data.number
 				};
 			} else {
-				const errorData = await response.json().catch(() => ({}));
+				const errorData = await response.json().catch(() => ({})) as any;
 				return {
 					success: false,
 					error: errorData.message || `Failed to create PR: HTTP ${response.status}`

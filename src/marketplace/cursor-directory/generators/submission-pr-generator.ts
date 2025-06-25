@@ -16,9 +16,12 @@ export interface PrGenerationOptions {
 	includeValidationDetails?: boolean;
 	includeTesting?: boolean;
 	customMessage?: string;
+	projectPath?: string;
+	includePackagedFiles?: boolean;
 }
 
 import { CursorDirectoryEntry } from './directory-entry-generator.js';
+import { ProjectPackager } from '../utils/project-packager.js';
 
 export class SubmissionPrGenerator {
 	private readonly cursorDirectoryPath = 'servers';
@@ -33,7 +36,7 @@ export class SubmissionPrGenerator {
 	): PullRequestData {
 		try {
 			const branchName = this.generateBranchName(entry);
-			const files = this.generatePrFiles(entry);
+			const files = this.generatePrFiles(entry, options);
 			
 			const prData: PullRequestData = {
 				title: this.generatePrTitle(entry),
@@ -217,7 +220,7 @@ export class SubmissionPrGenerator {
 	/**
 	 * Generates files to be included in the pull request
 	 */
-	private generatePrFiles(entry: CursorDirectoryEntry): PrFileChange[] {
+	private generatePrFiles(entry: CursorDirectoryEntry, options: PrGenerationOptions = {}): PrFileChange[] {
 		const files: PrFileChange[] = [];
 
 		// Main server entry file
@@ -235,6 +238,30 @@ export class SubmissionPrGenerator {
 			content: this.generateServerReadme(entry),
 			mode: 'create'
 		});
+
+		// Include packaged project files if requested and project path provided
+		if (options.includePackagedFiles && options.projectPath) {
+			try {
+				const packager = new ProjectPackager();
+				const config = ProjectPackager.getDefaultConfig(options.projectPath);
+				const packageResult = packager.packageProject(config);
+
+				if (packageResult.success) {
+					// Add each packaged file to the PR
+					for (const packagedFile of packageResult.files) {
+						const prFilePath = `${this.cursorDirectoryPath}/${entry.slug}/package/${packagedFile.relativePath}`;
+						files.push({
+							path: prFilePath,
+							content: packagedFile.content,
+							mode: 'create'
+						});
+					}
+				}
+			} catch (error) {
+				// Continue without packaging if it fails - just log the issue
+				console.warn(`Failed to package project files: ${error instanceof Error ? error.message : 'Unknown error'}`);
+			}
+		}
 
 		return files;
 	}

@@ -149,7 +149,9 @@ export class PublishingOrchestrator {
 			const submissionResult = await this.submitter.submitServer(directoryEntry, {
 				includeValidationDetails: true,
 				includeTesting: true,
-				customMessage: config.customOptions?.message
+				customMessage: config.customOptions?.message,
+				projectPath: config.projectPath,
+				includePackagedFiles: true
 			});
 
 			if (!submissionResult.success) {
@@ -161,8 +163,12 @@ export class PublishingOrchestrator {
 
 			// Success
 			result.success = true;
-			result.prUrl = submissionResult.prUrl;
-			result.prNumber = submissionResult.prNumber;
+			if (submissionResult.prUrl) {
+				result.prUrl = submissionResult.prUrl;
+			}
+			if (submissionResult.prNumber) {
+				result.prNumber = submissionResult.prNumber;
+			}
 			result.warnings.push(...submissionResult.warnings);
 			
 			if (submissionResult.prUrl && submissionResult.prNumber) {
@@ -235,6 +241,7 @@ export class PublishingOrchestrator {
 		const issues: string[] = [];
 		let hasValidStructure = false;
 		let canSubmit = false;
+		let lastSubmission: any = null;
 
 		try {
 			// Check basic structure
@@ -253,7 +260,6 @@ export class PublishingOrchestrator {
 			}
 
 			// Check last submission
-			let lastSubmission = null;
 			if (packageJson?.name) {
 				const slug = this.entryGenerator.generateSlug(packageJson.name);
 				lastSubmission = this.statusTracker.getLatestSubmissionForSlug(slug);
@@ -362,7 +368,7 @@ export class PublishingOrchestrator {
 	 */
 	public async validateGitHubToken(): Promise<boolean> {
 		try {
-			const status = await this.submitter.getSubmissionStatus();
+			const status = this.submitter.getSubmissionStatus();
 			return await status.hasValidToken;
 		} catch {
 			return false;

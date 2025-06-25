@@ -96,7 +96,7 @@ export class DirectoryEntryGenerator {
 	/**
 	 * Generates URL-safe slug from package name
 	 */
-	private generateSlug(name: string): string {
+	public generateSlug(name: string): string {
 		if (!name) {
 			throw new Error('Name is required for slug generation');
 		}
@@ -261,7 +261,7 @@ export class DirectoryEntryGenerator {
 	/**
 	 * Extracts configuration information from package.json and common patterns
 	 */
-	private extractConfigurationInfo(packageJson: PackageJsonStructure): ConfigurationInfo {
+	private extractConfigurationInfo(_packageJson: PackageJsonStructure): ConfigurationInfo {
 		const configuration: ConfigurationInfo = {
 			required: [],
 			optional: []

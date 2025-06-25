@@ -30,12 +30,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 export class DocumentationValidator {
-	private readonly requiredReadmeSections = [
-		'installation',
-		'configuration',
-		'usage',
-		'authentication'
-	];
 
 	private readonly validOssLicenses = [
 		'MIT',

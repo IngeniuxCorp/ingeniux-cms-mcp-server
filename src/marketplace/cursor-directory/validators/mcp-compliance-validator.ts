@@ -21,14 +21,8 @@ export interface McpServer {
 }
 
 import * as fs from 'fs';
-import * as path from 'path';
 
 export class McpComplianceValidator {
-	private readonly requiredMethods = [
-		'listTools',
-		'callTool'
-	];
-
 	/**
 	 * Validates MCP server compliance for Cursor Directory requirements
 	 */
