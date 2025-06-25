@@ -302,23 +302,47 @@ export class GitHubApiClient {
     private async makeRequest(method: string, url: string, body?: any): Promise<Response> {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), this.timeout);
-
+   
         try {
             const options: RequestInit = {
                 method,
                 headers: this.headers,
                 signal: controller.signal
             };
-
+   
             if (body && (method === 'POST' || method === 'PUT' || method === 'PATCH')) {
                 options.body = JSON.stringify(body);
             }
-
+   
+            // Log outgoing request
+            console.log('[GitHubApiClient] Request:', {
+                method,
+                url,
+                headers: this.headers,
+                body: body ? JSON.stringify(body) : undefined
+            });
+   
             const response = await tryCatchFetch(url, options);
             clearTimeout(timeoutId);
-
+   
+            // Clone response for body logging
+            const resClone = response.clone();
+            let responseBody;
+            try {
+                responseBody = await resClone.text();
+            } catch {
+                responseBody = '[unreadable]';
+            }
+   
+            console.log('[GitHubApiClient] Response:', {
+                status: response.status,
+                statusText: response.statusText,
+                headers: Object.fromEntries(response.headers.entries()),
+                body: responseBody
+            });
+   
             return response;
-
+   
         } catch (error) {
             clearTimeout(timeoutId);
             if (error instanceof Error && error.name === 'AbortError') {

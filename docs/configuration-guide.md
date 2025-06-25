@@ -49,7 +49,7 @@ CMS_BASE_URL=https://cms.example.com/api
 # OAuth Application Credentials
 OAUTH_CLIENT_ID=your_client_id
 OAUTH_CLIENT_SECRET=your_client_secret
-OAUTH_REDIRECT_URI=http://localhost:3000/callback
+OAUTH_REDIRECT_URI="urn:ietf:wg:oauth:2.0:oob"
 ```
 
 ### OAuth URL Construction
