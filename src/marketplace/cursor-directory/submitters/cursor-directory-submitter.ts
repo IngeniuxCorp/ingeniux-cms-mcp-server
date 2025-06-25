@@ -37,9 +37,9 @@ export class CursorDirectorySubmitter {
 		this.prGenerator = new SubmissionPrGenerator();
 		
 		this.cursorDirectoryRepo = config.cursorDirectoryRepo || {
-			owner: 'cursor-ai',
-			name: 'cursor-directory',
-			url: 'https://github.com/cursor-ai/cursor-directory'
+			owner: 'IngeniuxCorp',
+			name: 'ingeniux-cms-mcp-server',
+			url: 'https://github.com/IngeniuxCorp/ingeniux-cms-mcp-server'
 		};
 		
 		this.dryRun = config.dryRun || false;

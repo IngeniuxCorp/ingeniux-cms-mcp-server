@@ -116,12 +116,17 @@ export class McpComplianceValidator {
 		try {
 			const content = fs.readFileSync(entryPoint, 'utf-8');
 
-			// Extract tool information from the file content
-			const tools = this.extractToolsFromContent(content);
+			// Extract tool information from the entry point
+			let tools = this.extractToolsFromContent(content);
+
+			// Also check for tools in the tools directory (for modular implementations)
+			const toolsFromModules = await this.extractToolsFromModules(entryPoint);
+			tools = [...tools, ...toolsFromModules];
+
 			result.toolsRegistered = tools;
 
 			if (tools.length === 0) {
-				result.warnings.push('No tools detected in server implementation');
+				result.errors.push('At least one tool must be registered');
 			}
 
 			// Validate tool structure
@@ -186,7 +191,53 @@ export class McpComplianceValidator {
 			}
 
 			// Remove duplicates
-			const uniqueTools = tools.filter((tool, index, self) => 
+			const uniqueTools = tools.filter((tool, index, self) =>
+				index === self.findIndex(t => t.name === tool.name)
+			);
+
+			return uniqueTools;
+
+		} catch (error) {
+			// Return empty array if extraction fails
+			return [];
+		}
+	}
+
+	/**
+	 * Extracts tools from modular tool implementations
+	 */
+	private async extractToolsFromModules(entryPoint: string): Promise<ToolInfo[]> {
+		const tools: ToolInfo[] = [];
+
+		try {
+			const basePath = entryPoint.replace(/[^\/\\]+$/, ''); // Get directory path
+			const toolsPath = basePath + 'tools';
+
+			// Check if tools directory exists
+			if (!fs.existsSync(toolsPath)) {
+				return tools;
+			}
+
+			// Look for common tool files
+			const toolFiles = [
+				'swagger-mcp-tools.js',
+				'content-tools.js',
+				'endpoint-lister.js',
+				'schema-provider.js',
+				'endpoint-executor.js'
+			];
+
+			for (const fileName of toolFiles) {
+				const filePath = `${toolsPath}/${fileName}`;
+				if (fs.existsSync(filePath)) {
+					const fileContent = fs.readFileSync(filePath, 'utf-8');
+					const fileTools = this.extractToolsFromContent(fileContent);
+					tools.push(...fileTools);
+				}
+			}
+
+			// Remove duplicates
+			const uniqueTools = tools.filter((tool, index, self) =>
 				index === self.findIndex(t => t.name === tool.name)
 			);
 
