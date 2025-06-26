@@ -7,3 +7,4 @@ logs/**/*
 .env
 .DS_Store
 .cursor-directory-submissions.json
+mcp.json
