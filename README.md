@@ -25,7 +25,7 @@ Run the following command to find where the package was installed:
 npm root -g
 ```
 
-Note the output path - you'll need it for the configuration.
+Note the output path that is the **Global NPM Modules Root**- you'll need it for the configuration.
 
 ### 3. Add MCP Server to Cline
 
@@ -33,7 +33,7 @@ Configure the MCP server in Cline's settings by adding it to your MCP configurat
 
 ### 4. Configure the MCP Server
 
-Add the following configuration to your Cline MCP settings:
+Add the following configuration to your Cline MCP settings, either in mcp.json for specific project, or add it in global mcp configuration file.
 
 ```json
 {
@@ -41,7 +41,7 @@ Add the following configuration to your Cline MCP settings:
 		"ingeniux-cms": {
 			"command": "node",
 			"args": [
-				"./dist/index.js"
+				"[global npm modules root]/ingeniux-cms-mcp-server/dist/index.js"
 			],
 			"env": {
 				"CMS_BASE_URL": "[your CMS base url]/api",

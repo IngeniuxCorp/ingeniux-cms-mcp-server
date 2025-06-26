@@ -5,7 +5,7 @@ This guide walks you through setting up the [`ingeniux-cms-mcp-server`](../READM
 ## Prerequisites
 
 - Node.js 18+ installed
-- Cline Extension for VsCode installed
+- Cline extension for VsCode installed
 - Access to an Ingeniux CMS instance
 - OAuth client credentials for your CMS
 
@@ -25,7 +25,7 @@ Run the following command to find where the package was installed:
 npm root -g
 ```
 
-Note the output path - you'll need it for the configuration.
+Note the output path that is the **Global NPM Modules Root**- you'll need it for the configuration.
 
 ### 3. Add MCP Server to Cline
 
@@ -33,29 +33,29 @@ Configure the MCP server in Cline's settings by adding it to your MCP configurat
 
 ### 4. Configure the MCP Server
 
-Add the following configuration to your Cline MCP settings:
+Add the following configuration to your Cline MCP settings, either in mcp.json for specific project, or add it in global mcp configuration file.
 
 ```json
 {
-	"mcpServers": {
-		"ingeniux-cms": {
-			"command": "node",
-			"args": [
-				"./dist/index.js"
-			],
-			"env": {
-				"CMS_BASE_URL": "[your CMS base url]/api",
-				"OAUTH_CLIENT_ID": "[OAuth identity client id]",
-				"OAUTH_CLIENT_SECRET": "[OAuth identity client secret]",
-				"OAUTH_REDIRECT_URI": "urn:ietf:wg:oauth:2.0:oob",
-				"API_TIMEOUT": "10000",
-				"MAX_RETRIES": "3",
-				"LOG_LEVEL": "info",
-				"CACHE_TTL": "300",
-				"ENABLE_FILE_LOGGING": "true"
-			}
-		}
-	}
+    "mcpServers": {
+        "ingeniux-cms": {
+            "command": "node",
+            "args": [
+                "[global npm modules root]/ingeniux-cms-mcp-server/dist/index.js"
+            ],
+            "env": {
+                "CMS_BASE_URL": "[your CMS base url]/api",
+                "OAUTH_CLIENT_ID": "[OAuth identity client id]",
+                "OAUTH_CLIENT_SECRET": "[OAuth identity client secret]",
+                "OAUTH_REDIRECT_URI": "urn:ietf:wg:oauth:2.0:oob",
+                "API_TIMEOUT": "10000",
+                "MAX_RETRIES": "3",
+                "LOG_LEVEL": "info",
+                "CACHE_TTL": "300",
+                "ENABLE_FILE_LOGGING": "true"
+            }
+        }
+    }
 }
 ```
 
@@ -167,8 +167,8 @@ When `ENABLE_FILE_LOGGING` is true, logs are written to:
 ### Getting Help
 
 For additional support:
-- Review the [troubleshooting guide](troubleshooting-guide.md)
-- Check the [configuration guide](configuration-guide.md)
+- Review the [troubleshooting guide](docs/troubleshooting-guide.md)
+- Check the [configuration guide](docs/configuration-guide.md)
 - Visit the project repository for issues and documentation
 
 ## Next Steps
@@ -176,7 +176,7 @@ For additional support:
 After successful setup:
 1. Test the connection by using simple command like "get page x123 from ingeniux cms"
 2. Explore the available CMS operations
-3. Review the [usage examples](usage-examples.md) for advanced scenarios
-4. Configure additional [security settings](security-guide.md) if needed
+3. Review the [usage examples](docs/usage-examples.md) for advanced scenarios
+4. Configure additional [security settings](docs/security-guide.md) if needed
 
 The MCP server is now ready to use with Cline for seamless Ingeniux CMS integration.
