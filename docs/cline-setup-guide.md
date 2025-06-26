@@ -5,7 +5,7 @@ This guide walks you through setting up the [`ingeniux-cms-mcp-server`](../READM
 ## Prerequisites
 
 - Node.js 18+ installed
-- Cline extension for VsCode installed
+- Cline Extension for VsCode installed
 - Access to an Ingeniux CMS instance
 - OAuth client credentials for your CMS
 
@@ -167,8 +167,8 @@ When `ENABLE_FILE_LOGGING` is true, logs are written to:
 ### Getting Help
 
 For additional support:
-- Review the [troubleshooting guide](docs/troubleshooting-guide.md)
-- Check the [configuration guide](docs/configuration-guide.md)
+- Review the [troubleshooting guide](troubleshooting-guide.md)
+- Check the [configuration guide](configuration-guide.md)
 - Visit the project repository for issues and documentation
 
 ## Next Steps
@@ -176,7 +176,7 @@ For additional support:
 After successful setup:
 1. Test the connection by using simple command like "get page x123 from ingeniux cms"
 2. Explore the available CMS operations
-3. Review the [usage examples](docs/usage-examples.md) for advanced scenarios
-4. Configure additional [security settings](docs/security-guide.md) if needed
+3. Review the [usage examples](usage-examples.md) for advanced scenarios
+4. Configure additional [security settings](security-guide.md) if needed
 
 The MCP server is now ready to use with Cline for seamless Ingeniux CMS integration.
